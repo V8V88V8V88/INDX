@@ -6,11 +6,11 @@ export interface State {
   capital: string;
   region: "North" | "South" | "East" | "West" | "Central" | "Northeast";
   population: number;
-  area: number;
-  density: number;
-  literacyRate: number;
-  gdp: number;
-  hdi: number;
+  area: number; // sq km
+  density: number; // per sq km
+  literacyRate: number; // %
+  gdp: number; // crores INR
+  hdi: number; // 0-1
   cities: City[];
 }
 
