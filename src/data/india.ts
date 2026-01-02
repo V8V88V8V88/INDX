@@ -2,6 +2,7 @@ import type { State, Country } from "@/types";
 
 // 2026 projected data - Census, RBI, NITI Aayog estimates
 // 28 States + 8 Union Territories
+// City tiers: Tier 1 = Major metros (1M+), Tier 2 = Regional centers (300K-1M), Tier 3 = Smaller cities (<300K)
 
 export const states: State[] = [
   // === STATES (28) ===
@@ -19,7 +20,7 @@ export const states: State[] = [
     hdi: 0.650,
     cities: [
       { id: "VIS", name: "Visakhapatnam", stateId: "AP", population: 2050000, area: 681, isCapital: false, isMetro: true, tier: 1 },
-      { id: "VIJ", name: "Vijayawada", stateId: "AP", population: 1240000, area: 61, isCapital: false, isMetro: false, tier: 2 },
+      { id: "VIJ", name: "Vijayawada", stateId: "AP", population: 1240000, area: 61, isCapital: false, isMetro: false, tier: 1 },
       { id: "GUN", name: "Guntur", stateId: "AP", population: 765000, area: 60, isCapital: false, isMetro: false, tier: 2 },
       { id: "NEL", name: "Nellore", stateId: "AP", population: 660000, area: 153, isCapital: false, isMetro: false, tier: 2 },
       { id: "AMR", name: "Amaravati", stateId: "AP", population: 125000, area: 217, isCapital: true, isMetro: false, tier: 3 },
@@ -57,8 +58,8 @@ export const states: State[] = [
     cities: [
       { id: "GHY", name: "Guwahati", stateId: "AS", population: 1150000, area: 328, isCapital: false, isMetro: true, tier: 1 },
       { id: "DSP", name: "Dispur", stateId: "AS", population: 28000, area: 5, isCapital: true, isMetro: false, tier: 3 },
-      { id: "SIB", name: "Silchar", stateId: "AS", population: 205000, area: 15, isCapital: false, isMetro: false, tier: 2 },
-      { id: "DIB", name: "Dibrugarh", stateId: "AS", population: 182000, area: 15, isCapital: false, isMetro: false, tier: 2 },
+      { id: "SIB", name: "Silchar", stateId: "AS", population: 205000, area: 15, isCapital: false, isMetro: false, tier: 3 },
+      { id: "DIB", name: "Dibrugarh", stateId: "AS", population: 182000, area: 15, isCapital: false, isMetro: false, tier: 3 },
     ],
   },
   {
@@ -132,8 +133,8 @@ export const states: State[] = [
     cities: [
       { id: "AMD", name: "Ahmedabad", stateId: "GJ", population: 6350000, area: 464, isCapital: false, isMetro: true, tier: 1 },
       { id: "SUR", name: "Surat", stateId: "GJ", population: 5420000, area: 326, isCapital: false, isMetro: true, tier: 1 },
-      { id: "VAD", name: "Vadodara", stateId: "GJ", population: 1950000, area: 235, isCapital: false, isMetro: false, tier: 2 },
-      { id: "RAJ", name: "Rajkot", stateId: "GJ", population: 1520000, area: 170, isCapital: false, isMetro: false, tier: 2 },
+      { id: "VAD", name: "Vadodara", stateId: "GJ", population: 1950000, area: 235, isCapital: false, isMetro: false, tier: 1 },
+      { id: "RAJ", name: "Rajkot", stateId: "GJ", population: 1520000, area: 170, isCapital: false, isMetro: false, tier: 1 },
       { id: "GND", name: "Gandhinagar", stateId: "GJ", population: 292000, area: 57, isCapital: true, isMetro: false, tier: 3 },
     ],
   },
@@ -153,7 +154,7 @@ export const states: State[] = [
       { id: "FAR", name: "Faridabad", stateId: "HR", population: 1680000, area: 204, isCapital: false, isMetro: true, tier: 1 },
       { id: "GGN", name: "Gurugram", stateId: "HR", population: 1150000, area: 232, isCapital: false, isMetro: true, tier: 1 },
       { id: "PNP", name: "Panipat", stateId: "HR", population: 355000, area: 29, isCapital: false, isMetro: false, tier: 2 },
-      { id: "AMB", name: "Ambala", stateId: "HR", population: 238000, area: 29, isCapital: false, isMetro: false, tier: 2 },
+      { id: "AMB", name: "Ambala", stateId: "HR", population: 238000, area: 29, isCapital: false, isMetro: false, tier: 3 },
     ],
   },
   {
@@ -169,7 +170,7 @@ export const states: State[] = [
     gdp: 245000,
     hdi: 0.720,
     cities: [
-      { id: "SML", name: "Shimla", stateId: "HP", population: 198000, area: 35, isCapital: true, isMetro: false, tier: 2 },
+      { id: "SML", name: "Shimla", stateId: "HP", population: 198000, area: 35, isCapital: true, isMetro: false, tier: 3 },
       { id: "MND", name: "Mandi", stateId: "HP", population: 32000, area: 24, isCapital: false, isMetro: false, tier: 3 },
       { id: "DRM", name: "Dharamshala", stateId: "HP", population: 62000, area: 29, isCapital: false, isMetro: false, tier: 3 },
       { id: "SLN", name: "Solan", stateId: "HP", population: 48000, area: 15, isCapital: false, isMetro: false, tier: 3 },
@@ -190,7 +191,7 @@ export const states: State[] = [
     cities: [
       { id: "RNC", name: "Ranchi", stateId: "JH", population: 1280000, area: 175, isCapital: true, isMetro: true, tier: 1 },
       { id: "JMD", name: "Jamshedpur", stateId: "JH", population: 750000, area: 64, isCapital: false, isMetro: false, tier: 2 },
-      { id: "DHN", name: "Dhanbad", stateId: "JH", population: 1380000, area: 24, isCapital: false, isMetro: false, tier: 2 },
+      { id: "DHN", name: "Dhanbad", stateId: "JH", population: 1380000, area: 24, isCapital: false, isMetro: false, tier: 1 },
       { id: "BKR", name: "Bokaro", stateId: "JH", population: 670000, area: 2861, isCapital: false, isMetro: false, tier: 2 },
     ],
   },
@@ -208,8 +209,8 @@ export const states: State[] = [
     hdi: 0.682,
     cities: [
       { id: "BLR", name: "Bengaluru", stateId: "KA", population: 9800000, area: 709, isCapital: true, isMetro: true, tier: 1 },
-      { id: "MYS", name: "Mysuru", stateId: "KA", population: 1080000, area: 128, isCapital: false, isMetro: false, tier: 2 },
-      { id: "HUB", name: "Hubballi-Dharwad", stateId: "KA", population: 1120000, area: 202, isCapital: false, isMetro: false, tier: 2 },
+      { id: "MYS", name: "Mysuru", stateId: "KA", population: 1080000, area: 128, isCapital: false, isMetro: false, tier: 1 },
+      { id: "HUB", name: "Hubballi-Dharwad", stateId: "KA", population: 1120000, area: 202, isCapital: false, isMetro: false, tier: 1 },
       { id: "MNG", name: "Mangaluru", stateId: "KA", population: 740000, area: 132, isCapital: false, isMetro: false, tier: 2 },
     ],
   },
@@ -226,7 +227,7 @@ export const states: State[] = [
     gdp: 1180000,
     hdi: 0.779,
     cities: [
-      { id: "TVM", name: "Thiruvananthapuram", stateId: "KL", population: 1120000, area: 215, isCapital: true, isMetro: false, tier: 2 },
+      { id: "TVM", name: "Thiruvananthapuram", stateId: "KL", population: 1120000, area: 215, isCapital: true, isMetro: false, tier: 1 },
       { id: "KOC", name: "Kochi", stateId: "KL", population: 780000, area: 94, isCapital: false, isMetro: true, tier: 1 },
       { id: "KZH", name: "Kozhikode", stateId: "KL", population: 710000, area: 118, isCapital: false, isMetro: false, tier: 2 },
       { id: "THR", name: "Thrissur", stateId: "KL", population: 375000, area: 101, isCapital: false, isMetro: false, tier: 2 },
@@ -247,8 +248,8 @@ export const states: State[] = [
     cities: [
       { id: "BHO", name: "Bhopal", stateId: "MP", population: 2120000, area: 285, isCapital: true, isMetro: true, tier: 1 },
       { id: "IND", name: "Indore", stateId: "MP", population: 2380000, area: 276, isCapital: false, isMetro: true, tier: 1 },
-      { id: "JAB", name: "Jabalpur", stateId: "MP", population: 1280000, area: 152, isCapital: false, isMetro: false, tier: 2 },
-      { id: "GWL", name: "Gwalior", stateId: "MP", population: 1240000, area: 289, isCapital: false, isMetro: false, tier: 2 },
+      { id: "JAB", name: "Jabalpur", stateId: "MP", population: 1280000, area: 152, isCapital: false, isMetro: false, tier: 1 },
+      { id: "GWL", name: "Gwalior", stateId: "MP", population: 1240000, area: 289, isCapital: false, isMetro: false, tier: 1 },
     ],
   },
   {
@@ -266,9 +267,9 @@ export const states: State[] = [
     cities: [
       { id: "MUM", name: "Mumbai", stateId: "MH", population: 13200000, area: 603, isCapital: true, isMetro: true, tier: 1 },
       { id: "PUN", name: "Pune", stateId: "MH", population: 3650000, area: 331, isCapital: false, isMetro: true, tier: 1 },
-      { id: "NAG", name: "Nagpur", stateId: "MH", population: 2680000, area: 227, isCapital: false, isMetro: false, tier: 2 },
-      { id: "NAS", name: "Nashik", stateId: "MH", population: 1720000, area: 259, isCapital: false, isMetro: false, tier: 2 },
-      { id: "AUR", name: "Aurangabad", stateId: "MH", population: 1380000, area: 139, isCapital: false, isMetro: false, tier: 2 },
+      { id: "NAG", name: "Nagpur", stateId: "MH", population: 2680000, area: 227, isCapital: false, isMetro: false, tier: 1 },
+      { id: "NAS", name: "Nashik", stateId: "MH", population: 1720000, area: 259, isCapital: false, isMetro: false, tier: 1 },
+      { id: "AUR", name: "Aurangabad", stateId: "MH", population: 1380000, area: 139, isCapital: false, isMetro: false, tier: 1 },
     ],
   },
   {
@@ -301,7 +302,7 @@ export const states: State[] = [
     gdp: 45000,
     hdi: 0.656,
     cities: [
-      { id: "SHL", name: "Shillong", stateId: "ML", population: 180000, area: 64, isCapital: true, isMetro: false, tier: 2 },
+      { id: "SHL", name: "Shillong", stateId: "ML", population: 180000, area: 64, isCapital: true, isMetro: false, tier: 3 },
       { id: "TUR", name: "Tura", stateId: "ML", population: 85000, area: 20, isCapital: false, isMetro: false, tier: 3 },
     ],
   },
@@ -336,7 +337,7 @@ export const states: State[] = [
     hdi: 0.679,
     cities: [
       { id: "KHM", name: "Kohima", stateId: "NL", population: 115000, area: 20, isCapital: true, isMetro: false, tier: 3 },
-      { id: "DMR", name: "Dimapur", stateId: "NL", population: 180000, area: 22, isCapital: false, isMetro: false, tier: 2 },
+      { id: "DMR", name: "Dimapur", stateId: "NL", population: 180000, area: 22, isCapital: false, isMetro: false, tier: 3 },
     ],
   },
   {
@@ -372,8 +373,8 @@ export const states: State[] = [
     hdi: 0.723,
     cities: [
       { id: "LUD", name: "Ludhiana", stateId: "PB", population: 1880000, area: 159, isCapital: false, isMetro: true, tier: 1 },
-      { id: "AMT", name: "Amritsar", stateId: "PB", population: 1320000, area: 139, isCapital: false, isMetro: false, tier: 2 },
-      { id: "JAL", name: "Jalandhar", stateId: "PB", population: 1010000, area: 107, isCapital: false, isMetro: false, tier: 2 },
+      { id: "AMT", name: "Amritsar", stateId: "PB", population: 1320000, area: 139, isCapital: false, isMetro: false, tier: 1 },
+      { id: "JAL", name: "Jalandhar", stateId: "PB", population: 1010000, area: 107, isCapital: false, isMetro: false, tier: 1 },
       { id: "PTL", name: "Patiala", stateId: "PB", population: 480000, area: 66, isCapital: false, isMetro: false, tier: 2 },
     ],
   },
@@ -391,8 +392,8 @@ export const states: State[] = [
     hdi: 0.629,
     cities: [
       { id: "JAI", name: "Jaipur", stateId: "RJ", population: 3580000, area: 467, isCapital: true, isMetro: true, tier: 1 },
-      { id: "JOD", name: "Jodhpur", stateId: "RJ", population: 1220000, area: 78, isCapital: false, isMetro: false, tier: 2 },
-      { id: "KOT", name: "Kota", stateId: "RJ", population: 1180000, area: 268, isCapital: false, isMetro: false, tier: 2 },
+      { id: "JOD", name: "Jodhpur", stateId: "RJ", population: 1220000, area: 78, isCapital: false, isMetro: false, tier: 1 },
+      { id: "KOT", name: "Kota", stateId: "RJ", population: 1180000, area: 268, isCapital: false, isMetro: false, tier: 1 },
       { id: "UDA", name: "Udaipur", stateId: "RJ", population: 540000, area: 64, isCapital: false, isMetro: false, tier: 2 },
     ],
   },
@@ -427,9 +428,9 @@ export const states: State[] = [
     hdi: 0.708,
     cities: [
       { id: "CHE", name: "Chennai", stateId: "TN", population: 5200000, area: 426, isCapital: true, isMetro: true, tier: 1 },
-      { id: "COI", name: "Coimbatore", stateId: "TN", population: 1850000, area: 257, isCapital: false, isMetro: false, tier: 2 },
-      { id: "MDU", name: "Madurai", stateId: "TN", population: 1180000, area: 147, isCapital: false, isMetro: false, tier: 2 },
-      { id: "TRI", name: "Tiruchirappalli", stateId: "TN", population: 1050000, area: 167, isCapital: false, isMetro: false, tier: 2 },
+      { id: "COI", name: "Coimbatore", stateId: "TN", population: 1850000, area: 257, isCapital: false, isMetro: false, tier: 1 },
+      { id: "MDU", name: "Madurai", stateId: "TN", population: 1180000, area: 147, isCapital: false, isMetro: false, tier: 1 },
+      { id: "TRI", name: "Tiruchirappalli", stateId: "TN", population: 1050000, area: 167, isCapital: false, isMetro: false, tier: 1 },
     ],
   },
   {
@@ -447,7 +448,7 @@ export const states: State[] = [
     cities: [
       { id: "HYD", name: "Hyderabad", stateId: "TG", population: 7850000, area: 650, isCapital: true, isMetro: true, tier: 1 },
       { id: "WRG", name: "Warangal", stateId: "TG", population: 820000, area: 55, isCapital: false, isMetro: false, tier: 2 },
-      { id: "NZB", name: "Nizamabad", stateId: "TG", population: 365000, area: 36, isCapital: false, isMetro: false, tier: 3 },
+      { id: "NZB", name: "Nizamabad", stateId: "TG", population: 365000, area: 36, isCapital: false, isMetro: false, tier: 2 },
       { id: "KMM", name: "Khammam", stateId: "TG", population: 308000, area: 28, isCapital: false, isMetro: false, tier: 3 },
     ],
   },
@@ -483,9 +484,9 @@ export const states: State[] = [
     cities: [
       { id: "LKO", name: "Lucknow", stateId: "UP", population: 3250000, area: 349, isCapital: true, isMetro: true, tier: 1 },
       { id: "KAN", name: "Kanpur", stateId: "UP", population: 3100000, area: 403, isCapital: false, isMetro: true, tier: 1 },
-      { id: "VNS", name: "Varanasi", stateId: "UP", population: 1420000, area: 82, isCapital: false, isMetro: false, tier: 2 },
-      { id: "AGR", name: "Agra", stateId: "UP", population: 1820000, area: 121, isCapital: false, isMetro: false, tier: 2 },
-      { id: "PYG", name: "Prayagraj", stateId: "UP", population: 1310000, area: 70, isCapital: false, isMetro: false, tier: 2 },
+      { id: "VNS", name: "Varanasi", stateId: "UP", population: 1420000, area: 82, isCapital: false, isMetro: false, tier: 1 },
+      { id: "AGR", name: "Agra", stateId: "UP", population: 1820000, area: 121, isCapital: false, isMetro: false, tier: 1 },
+      { id: "PYG", name: "Prayagraj", stateId: "UP", population: 1310000, area: 70, isCapital: false, isMetro: false, tier: 1 },
     ],
   },
   {
@@ -502,9 +503,9 @@ export const states: State[] = [
     hdi: 0.684,
     cities: [
       { id: "DDN", name: "Dehradun", stateId: "UK", population: 715000, area: 300, isCapital: true, isMetro: false, tier: 2 },
-      { id: "HDW", name: "Haridwar", stateId: "UK", population: 275000, area: 12, isCapital: false, isMetro: false, tier: 2 },
+      { id: "HDW", name: "Haridwar", stateId: "UK", population: 275000, area: 12, isCapital: false, isMetro: false, tier: 3 },
       { id: "RSK", name: "Rishikesh", stateId: "UK", population: 125000, area: 11, isCapital: false, isMetro: false, tier: 3 },
-      { id: "HLD", name: "Haldwani", stateId: "UK", population: 188000, area: 14, isCapital: false, isMetro: false, tier: 2 },
+      { id: "HLD", name: "Haldwani", stateId: "UK", population: 188000, area: 14, isCapital: false, isMetro: false, tier: 3 },
     ],
   },
   {
@@ -606,7 +607,7 @@ export const states: State[] = [
     gdp: 268000,
     hdi: 0.688,
     cities: [
-      { id: "SRN", name: "Srinagar", stateId: "JK", population: 1380000, area: 294, isCapital: true, isMetro: false, tier: 2 },
+      { id: "SRN", name: "Srinagar", stateId: "JK", population: 1380000, area: 294, isCapital: true, isMetro: false, tier: 1 },
       { id: "JMU", name: "Jammu", stateId: "JK", population: 590000, area: 112, isCapital: false, isMetro: false, tier: 2 },
       { id: "ANT", name: "Anantnag", stateId: "JK", population: 128000, area: 8, isCapital: false, isMetro: false, tier: 3 },
     ],
@@ -657,7 +658,7 @@ export const states: State[] = [
     gdp: 48000,
     hdi: 0.738,
     cities: [
-      { id: "PDY", name: "Puducherry", stateId: "PY", population: 285000, area: 19, isCapital: true, isMetro: false, tier: 2 },
+      { id: "PDY", name: "Puducherry", stateId: "PY", population: 285000, area: 19, isCapital: true, isMetro: false, tier: 3 },
       { id: "KRK", name: "Karaikal", stateId: "PY", population: 95000, area: 30, isCapital: false, isMetro: false, tier: 3 },
     ],
   },
