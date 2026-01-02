@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useCallback, useMemo, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import * as d3 from "d3";
 import { states } from "@/data/india";
 import type { State } from "@/types";
 
-// map geojson state names to our state codes
 const stateNameToCode: Record<string, string> = {
   "Andhra Pradesh": "AP",
   "Arunachal Pradesh": "AR",
@@ -71,11 +70,10 @@ export function IndiaMap({
   colorByMetric = "population",
   interactive = true,
 }: IndiaMapProps) {
-  const svgRef = useRef<SVGSVGElement>(null);
   const [geoData, setGeoData] = useState<GeoData | null>(null);
   const [hoveredState, setHoveredState] = useState<string | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // load geojson
   useEffect(() => {
     fetch("/india-states.json")
       .then((res) => res.json())
@@ -83,71 +81,63 @@ export function IndiaMap({
       .catch(console.error);
   }, []);
 
-  // color scale based on metric
+  // esc to exit fullscreen
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsFullscreen(false);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
   const colorScale = useMemo(() => {
     const values = states.map((s) => s[colorByMetric]);
     const min = Math.min(...values);
     const max = Math.max(...values);
     return (value: number) => {
       const t = (value - min) / (max - min);
-      // 5-step stone gradient
       const colors = ["#f5f5f4", "#d6d3d1", "#a8a29e", "#78716c", "#57534e"];
       const idx = Math.min(Math.floor(t * colors.length), colors.length - 1);
       return colors[idx];
     };
   }, [colorByMetric]);
 
-  const getStateData = useCallback((code: string) => {
-    return states.find((s) => s.id === code);
-  }, []);
+  const getStateData = useCallback((code: string) => states.find((s) => s.id === code), []);
+  const getStateCode = useCallback((name: string) => stateNameToCode[name] || null, []);
 
-  const getStateCode = useCallback((name: string) => {
-    return stateNameToCode[name] || null;
-  }, []);
-
-  // d3 projection
   const projection = useMemo(() => {
-    return d3.geoMercator()
-      .center([82, 22])
-      .scale(1000)
-      .translate([250, 280]);
+    return d3.geoMercator().center([82, 23]).scale(1100).translate([280, 320]);
   }, []);
 
-  const pathGenerator = useMemo(() => {
-    return d3.geoPath().projection(projection);
-  }, [projection]);
+  const pathGenerator = useMemo(() => d3.geoPath().projection(projection), [projection]);
 
   const hoveredData = hoveredState ? getStateData(hoveredState) : null;
 
   if (!geoData) {
     return (
-      <div className="flex h-[500px] items-center justify-center">
+      <div className="flex h-[600px] items-center justify-center">
         <div className="text-text-muted">Loading map...</div>
       </div>
     );
   }
 
-  return (
-    <div className="relative">
+  const mapContent = (
+    <>
       <svg
-        ref={svgRef}
-        viewBox="0 0 500 550"
-        className="w-full h-auto"
-        style={{ minHeight: "400px", maxHeight: "600px" }}
+        viewBox="0 0 560 700"
+        className={`w-full h-auto ${isFullscreen ? "max-h-[85vh]" : ""}`}
+        style={{ minHeight: isFullscreen ? "70vh" : "500px" }}
       >
         {geoData.features.map((feature, i) => {
           const stateName = feature.properties.ST_NM;
           const stateCode = getStateCode(stateName);
           const stateData = stateCode ? getStateData(stateCode) : null;
-          
+
           const isHovered = hoveredState === stateCode;
           const isSelected = selectedState === stateCode;
-          
-          // get fill color based on data or default gray
+
           let fill = "#e7e5e4";
-          if (stateData) {
-            fill = colorScale(stateData[colorByMetric]);
-          }
+          if (stateData) fill = colorScale(stateData[colorByMetric]);
           if (isSelected) fill = "var(--accent-primary)";
           if (isHovered) fill = "var(--accent-secondary)";
 
@@ -164,13 +154,10 @@ export function IndiaMap({
               style={{ cursor: interactive && stateCode ? "pointer" : "default" }}
               onMouseEnter={() => stateCode && setHoveredState(stateCode)}
               onMouseLeave={() => setHoveredState(null)}
-              onClick={() => {
-                if (interactive && stateCode) onStateSelect?.(stateCode);
-              }}
+              onClick={() => interactive && stateCode && onStateSelect?.(stateCode)}
             />
           );
 
-          // wrap in link if we have data for this state
           if (interactive && stateData) {
             return (
               <Link key={i} href={`/state/${stateCode}`}>
@@ -178,7 +165,6 @@ export function IndiaMap({
               </Link>
             );
           }
-
           return content;
         })}
       </svg>
@@ -193,7 +179,7 @@ export function IndiaMap({
         >
           <h3 className="text-lg font-semibold text-text-primary">{hoveredData.name}</h3>
           <p className="mb-2 text-sm text-text-tertiary">
-            {hoveredData.region} India · {hoveredData.capital}
+            {hoveredData.region} · {hoveredData.capital}
           </p>
           <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
             <div className="flex justify-between gap-4">
@@ -217,6 +203,44 @@ export function IndiaMap({
           </div>
         </motion.div>
       )}
-    </div>
+
+      {/* fullscreen toggle */}
+      <button
+        onClick={() => setIsFullscreen(!isFullscreen)}
+        className="absolute bottom-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-lg border border-border-light bg-bg-card text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
+        title={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+      >
+        {isFullscreen ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+          </svg>
+        )}
+      </button>
+    </>
+  );
+
+  return (
+    <>
+      <div className="relative">{mapContent}</div>
+
+      {/* fullscreen overlay */}
+      <AnimatePresence>
+        {isFullscreen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-bg-primary/95 backdrop-blur-sm p-8"
+            onClick={(e) => e.target === e.currentTarget && setIsFullscreen(false)}
+          >
+            <div className="relative w-full max-w-5xl">{mapContent}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

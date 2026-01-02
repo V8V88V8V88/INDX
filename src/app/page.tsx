@@ -8,28 +8,33 @@ import type { State } from "@/types";
 
 type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density">;
 
+const rankingMetrics: { key: MetricKey; label: string; format: (s: State) => string }[] = [
+  { key: "population", label: "Population", format: (s) => formatPopulation(s.population) },
+  { key: "gdp", label: "GDP", format: (s) => formatNumber(s.gdp) + " Cr" },
+  { key: "literacyRate", label: "Literacy", format: (s) => s.literacyRate + "%" },
+  { key: "hdi", label: "HDI", format: (s) => s.hdi.toFixed(3) },
+  { key: "density", label: "Density", format: (s) => s.density.toLocaleString() + "/km²" },
+];
+
 export default function Home() {
-  const [selectedMetric, setSelectedMetric] = useState<MetricKey>("population");
-
-  const topByPopulation = getTopStatesByMetric("population", 8);
-  const topByGDP = getTopStatesByMetric("gdp", 8);
-  const topByHDI = getTopStatesByMetric("hdi", 8);
-  const topByLiteracy = getTopStatesByMetric("literacyRate", 8);
-
-  const maxPopulation = Math.max(...states.map((s) => s.population));
-  const maxGDP = Math.max(...states.map((s) => s.gdp));
+  const [mapMetric, setMapMetric] = useState<MetricKey>("population");
+  const [rankingMetric, setRankingMetric] = useState<MetricKey>("population");
 
   const totalStates = states.length;
   const totalCities = states.reduce((sum, s) => sum + s.cities.length, 0);
   const avgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
   const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
 
+  const currentRankingConfig = rankingMetrics.find((m) => m.key === rankingMetric)!;
+  const rankedStates = getTopStatesByMetric(rankingMetric, 10);
+  const maxValue = Math.max(...rankedStates.map((s) => s[rankingMetric]));
+
   return (
     <div className="min-h-screen bg-bg-primary">
       <Header />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
-        {/* Hero Section */}
+        {/* Hero */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -38,55 +43,32 @@ export default function Home() {
         >
           <div className="mb-2 flex items-center gap-3">
             <span className="rounded-full bg-accent-muted px-3 py-1 text-xs font-medium text-accent-primary">
-              Phase 1
+              2026 Data
             </span>
           </div>
-          <h1 className="text-display mb-4 text-text-primary">
-            India
-          </h1>
+          <h1 className="text-display mb-4 text-text-primary">India</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
-            Geographic and statistical data visualization. 
-            Explore {totalStates} states and union territories, {totalCities}+ cities with comprehensive demographic and economic indicators.
+            Geographic and statistical data visualization. Explore {totalStates} states and union territories,{" "}
+            {totalCities}+ cities with comprehensive demographic and economic indicators.
           </p>
         </motion.section>
 
         {/* Summary Cards */}
         <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <MetricCard
-            title="Total Population"
-            value={formatPopulation(india.population)}
-            subtitle="2026 estimate"
-            delay={0.1}
-          />
-          <MetricCard
-            title="States & UTs"
-            value={totalStates}
-            subtitle={`${totalCities} cities tracked`}
-            delay={0.15}
-          />
-          <MetricCard
-            title="Avg Literacy Rate"
-            value={avgLiteracy.toFixed(1)}
-            unit="%"
-            subtitle="Across all states"
-            delay={0.2}
-          />
-          <MetricCard
-            title="Avg HDI"
-            value={avgHDI.toFixed(3)}
-            subtitle="Human Development Index"
-            delay={0.25}
-          />
+          <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} />
+          <MetricCard title="States & UTs" value={totalStates} subtitle={`${totalCities} cities tracked`} delay={0.15} />
+          <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} />
+          <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index" delay={0.25} />
         </section>
 
-        {/* Map and Controls */}
+        {/* Map Section */}
         <section className="mb-12">
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="text-headline text-text-primary">Interactive Map</h2>
               <p className="text-text-tertiary">Click any state to explore details</p>
             </div>
-            <MetricSelector selected={selectedMetric} onSelect={setSelectedMetric} />
+            <MetricSelector selected={mapMetric} onSelect={setMapMetric} />
           </div>
 
           <motion.div
@@ -95,81 +77,91 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="card overflow-hidden p-6"
           >
-            <IndiaMap colorByMetric={selectedMetric} interactive />
-            
+            <IndiaMap colorByMetric={mapMetric} interactive />
+
             {/* Legend */}
             <div className="mt-6 flex items-center justify-center gap-2">
               <span className="text-xs text-text-muted">Low</span>
               <div className="flex">
                 {["#f5f5f4", "#d6d3d1", "#a8a29e", "#78716c", "#57534e"].map((color, i) => (
-                  <div
-                    key={i}
-                    className="h-3 w-8"
-                    style={{ backgroundColor: color }}
-                  />
+                  <div key={i} className="h-3 w-8" style={{ backgroundColor: color }} />
                 ))}
               </div>
               <span className="text-xs text-text-muted">High</span>
               <span className="ml-4 text-xs font-medium text-text-tertiary">
-                {selectedMetric === "population" && "Population"}
-                {selectedMetric === "gdp" && "GDP"}
-                {selectedMetric === "literacyRate" && "Literacy Rate"}
-                {selectedMetric === "hdi" && "HDI"}
-                {selectedMetric === "density" && "Density"}
+                {mapMetric === "population" && "Population"}
+                {mapMetric === "gdp" && "GDP"}
+                {mapMetric === "literacyRate" && "Literacy Rate"}
+                {mapMetric === "hdi" && "HDI"}
+                {mapMetric === "density" && "Density"}
               </span>
             </div>
           </motion.div>
         </section>
 
-        {/* Rankings Grid */}
+        {/* Rankings Section */}
         <section className="mb-12">
-          <h2 className="text-headline mb-6 text-text-primary">Rankings</h2>
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <RankedList
-              title="By Population"
-              delay={0.1}
-              items={topByPopulation.map((s, i) => ({
-                rank: i + 1,
-                name: s.name,
-                value: formatPopulation(s.population),
-                href: `/state/${s.id}`,
-                barWidth: (s.population / maxPopulation) * 100,
-              }))}
-            />
-            <RankedList
-              title="By GDP (₹ Crores)"
-              delay={0.15}
-              items={topByGDP.map((s, i) => ({
-                rank: i + 1,
-                name: s.name,
-                value: formatNumber(s.gdp),
-                href: `/state/${s.id}`,
-                barWidth: (s.gdp / maxGDP) * 100,
-              }))}
-            />
-            <RankedList
-              title="By HDI"
-              delay={0.2}
-              items={topByHDI.map((s, i) => ({
-                rank: i + 1,
-                name: s.name,
-                value: s.hdi.toFixed(3),
-                href: `/state/${s.id}`,
-                barWidth: (s.hdi / 1) * 100,
-              }))}
-            />
-            <RankedList
-              title="By Literacy Rate"
-              delay={0.25}
-              items={topByLiteracy.map((s, i) => ({
-                rank: i + 1,
-                name: s.name,
-                value: `${s.literacyRate}%`,
-                href: `/state/${s.id}`,
-                barWidth: s.literacyRate,
-              }))}
-            />
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-headline text-text-primary">Rankings</h2>
+            {/* Pill filter for rankings */}
+            <div className="flex flex-wrap gap-2 rounded-xl bg-bg-secondary p-1.5">
+              {rankingMetrics.map((m) => (
+                <button
+                  key={m.key}
+                  onClick={() => setRankingMetric(m.key)}
+                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+                    rankingMetric === m.key
+                      ? "bg-bg-card text-text-primary shadow-sm"
+                      : "text-text-muted hover:text-text-secondary"
+                  }`}
+                >
+                  {m.label}
+                </button>
+              ))}
+            </div>
           </div>
+
+          <motion.div
+            key={rankingMetric}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="card p-6"
+          >
+            <div className="mb-4 text-sm font-medium uppercase tracking-wider text-text-muted">
+              Top 10 by {currentRankingConfig.label}
+            </div>
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+              {rankedStates.map((state, i) => (
+                <motion.a
+                  key={state.id}
+                  href={`/state/${state.id}`}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: i * 0.03 }}
+                  className="group relative block"
+                >
+                  <div className="flex items-center justify-between py-3">
+                    <div className="flex items-center gap-4">
+                      <span className="w-6 text-center text-lg font-semibold text-text-muted">{i + 1}</span>
+                      <span className="font-medium text-text-primary group-hover:text-accent-primary transition-colors">
+                        {state.name}
+                      </span>
+                    </div>
+                    <span className="font-mono text-text-secondary">{currentRankingConfig.format(state)}</span>
+                  </div>
+                  <div className="absolute bottom-0 left-10 right-0 h-1 overflow-hidden rounded-full bg-bg-tertiary">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${(state[rankingMetric] / maxValue) * 100}%` }}
+                      transition={{ duration: 0.5, delay: i * 0.03 }}
+                      className="h-full rounded-full bg-accent-primary/50"
+                    />
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
         </section>
 
         {/* All States Grid */}
@@ -185,7 +177,7 @@ export default function Home() {
                 href={`/state/${state.id}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.05 * Math.min(index, 12) }}
+                transition={{ duration: 0.3, delay: 0.02 * Math.min(index, 16) }}
                 whileHover={{ y: -4 }}
                 className="card card-interactive p-5"
               >
@@ -195,26 +187,18 @@ export default function Home() {
                   </span>
                   <span className="font-mono text-xs text-text-muted">{state.code}</span>
                 </div>
-                
-                <h3 className="mb-1 text-lg font-semibold text-text-primary">
-                  {state.name}
-                </h3>
-                <p className="mb-4 text-sm text-text-tertiary">
-                  Capital: {state.capital}
-                </p>
-                
+
+                <h3 className="mb-1 text-lg font-semibold text-text-primary">{state.name}</h3>
+                <p className="mb-4 text-sm text-text-tertiary">Capital: {state.capital}</p>
+
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <p className="text-xs text-text-muted">Population</p>
-                    <p className="font-medium text-text-secondary">
-                      {formatPopulation(state.population)}
-                    </p>
+                    <p className="font-medium text-text-secondary">{formatPopulation(state.population)}</p>
                   </div>
                   <div>
                     <p className="text-xs text-text-muted">Literacy</p>
-                    <p className="font-medium text-text-secondary">
-                      {state.literacyRate}%
-                    </p>
+                    <p className="font-medium text-text-secondary">{state.literacyRate}%</p>
                   </div>
                 </div>
               </motion.a>
@@ -231,12 +215,8 @@ export default function Home() {
               </div>
               <span className="font-semibold text-text-primary">INDX</span>
             </div>
-            <p className="text-sm text-text-muted">
-              Data visualization platform · Built for analytical exploration
-            </p>
-            <p className="text-sm text-text-muted">
-              © 2026 INDX
-            </p>
+            <p className="text-sm text-text-muted">Data visualization platform · Built for analytical exploration</p>
+            <p className="text-sm text-text-muted">© 2026 INDX</p>
           </div>
         </footer>
       </main>
