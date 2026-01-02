@@ -1,0 +1,7 @@
+[
+  {"id": "PY-PDY", "name": "Puducherry", "stateId": "PY", "population": 946600, "area": 293, "density": 3231, "literacyRate": 85.8, "sexRatio": 1037, "headquarters": "Puducherry"},
+  {"id": "PY-KRK", "name": "Karaikal", "stateId": "PY", "population": 200222, "area": 161, "density": 1244, "literacyRate": 87.0, "sexRatio": 1047, "headquarters": "Karaikal"},
+  {"id": "PY-MHE", "name": "Mahe", "stateId": "PY", "population": 41816, "area": 9, "density": 4646, "literacyRate": 97.9, "sexRatio": 1176, "headquarters": "Mahe"},
+  {"id": "PY-YNM", "name": "Yanam", "stateId": "PY", "population": 55626, "area": 30, "density": 1854, "literacyRate": 79.5, "sexRatio": 1038, "headquarters": "Yanam"}
+]
+

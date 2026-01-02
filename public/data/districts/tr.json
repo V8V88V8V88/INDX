@@ -1,0 +1,11 @@
+[
+  {"id": "TR-WST", "name": "West Tripura", "stateId": "TR", "population": 917534, "area": 943, "density": 973, "literacyRate": 91.3, "sexRatio": 962, "headquarters": "Agartala"},
+  {"id": "TR-STH", "name": "South Tripura", "stateId": "TR", "population": 433737, "area": 1534, "density": 283, "literacyRate": 86.8, "sexRatio": 951, "headquarters": "Belonia"},
+  {"id": "TR-NTH", "name": "North Tripura", "stateId": "TR", "population": 693281, "area": 2036, "density": 340, "literacyRate": 87.5, "sexRatio": 967, "headquarters": "Dharmanagar"},
+  {"id": "TR-DHL", "name": "Dhalai", "stateId": "TR", "population": 377988, "area": 2400, "density": 157, "literacyRate": 86.0, "sexRatio": 945, "headquarters": "Ambassa"},
+  {"id": "TR-KHW", "name": "Khowai", "stateId": "TR", "population": 327564, "area": 1005, "density": 326, "literacyRate": 88.5, "sexRatio": 958, "headquarters": "Khowai"},
+  {"id": "TR-SPR", "name": "Sepahijala", "stateId": "TR", "population": 484233, "area": 1044, "density": 464, "literacyRate": 89.0, "sexRatio": 960, "headquarters": "Bishramganj"},
+  {"id": "TR-GMT", "name": "Gomati", "stateId": "TR", "population": 436868, "area": 1521, "density": 287, "literacyRate": 85.5, "sexRatio": 948, "headquarters": "Udaipur"},
+  {"id": "TR-UNA", "name": "Unakoti", "stateId": "TR", "population": 276930, "area": 591, "density": 469, "literacyRate": 87.0, "sexRatio": 965, "headquarters": "Kailashahar"}
+]
+

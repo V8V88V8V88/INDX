@@ -1,0 +1,6 @@
+[
+  {"id": "AN-STH", "name": "South Andaman", "stateId": "AN", "population": 238142, "area": 3181, "density": 75, "literacyRate": 89.0, "sexRatio": 878, "headquarters": "Port Blair"},
+  {"id": "AN-NTH", "name": "North and Middle Andaman", "stateId": "AN", "population": 105597, "area": 3536, "density": 30, "literacyRate": 83.5, "sexRatio": 920, "headquarters": "Mayabunder"},
+  {"id": "AN-NCB", "name": "Nicobar", "stateId": "AN", "population": 36842, "area": 1841, "density": 20, "literacyRate": 78.0, "sexRatio": 777, "headquarters": "Car Nicobar"}
+]
+

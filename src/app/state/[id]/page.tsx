@@ -6,7 +6,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, MetricCard } from "@/components";
 import { BarChart } from "@/components/BarChart";
-import { CityCard } from "@/components/CityCard";
 import { StatComparison } from "@/components/StatComparison";
 import { DistrictList } from "@/components/DistrictList";
 import { getStateById, states, formatPopulation, formatNumber } from "@/data/india";
@@ -204,48 +203,20 @@ export default function StatePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Cities Section */}
+        {/* Districts & Cities Section */}
         <section className="mb-12">
           <div className="mb-6 flex items-center justify-between">
             <div>
-              <h2 className="text-headline text-text-primary">Cities</h2>
+              <h2 className="text-headline text-text-primary">Districts</h2>
               <p className="text-text-tertiary">
-                Major urban centers in {state.name}
+                Administrative divisions of {state.name}
               </p>
             </div>
-            <div className="flex gap-2">
-              <span className="rounded-md bg-accent-primary px-2 py-1 text-xs font-medium text-white">
-                {state.cities.filter((c) => c.tier === 1).length} Tier 1
-              </span>
-              <span className="rounded-md bg-accent-muted px-2 py-1 text-xs font-medium text-accent-primary">
-                {state.cities.filter((c) => c.tier === 2).length} Tier 2
-              </span>
-              <span className="rounded-md bg-bg-tertiary px-2 py-1 text-xs font-medium text-text-muted">
-                {state.cities.filter((c) => c.tier === 3).length} Tier 3
-              </span>
+            <div className="flex gap-2 text-xs text-text-muted">
+              <span>{state.cities.length} major cities</span>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {citiesByPopulation.map((city, index) => (
-              <CityCard
-                key={city.id}
-                city={city}
-                stateName={state.name}
-                delay={0.05 * index}
-              />
-            ))}
-          </div>
-        </section>
-
-        {/* Districts Section */}
-        <section className="mb-12">
-          <div className="mb-6">
-            <h2 className="text-headline text-text-primary">Districts</h2>
-            <p className="text-text-tertiary">
-              Administrative divisions of {state.name}
-            </p>
-          </div>
-          <DistrictList stateCode={state.id} stateName={state.name} />
+          <DistrictList stateCode={state.id} stateName={state.name} cities={state.cities} />
         </section>
 
         {/* Back Navigation */}

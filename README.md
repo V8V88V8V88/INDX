@@ -107,7 +107,3 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 ## License
 
 MIT License — See [LICENSE](./LICENSE) for details.
-
----
-
-Built as a serious data platform. Designed to impress.

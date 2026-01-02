@@ -1,0 +1,28 @@
+[
+  {"id": "AR-TWG", "name": "Tawang", "stateId": "AR", "population": 49977, "area": 2085, "density": 24, "literacyRate": 59.0, "sexRatio": 701, "headquarters": "Tawang"},
+  {"id": "AR-WKM", "name": "West Kameng", "stateId": "AR", "population": 83947, "area": 7422, "density": 11, "literacyRate": 60.6, "sexRatio": 755, "headquarters": "Bomdila"},
+  {"id": "AR-EKM", "name": "East Kameng", "stateId": "AR", "population": 78413, "area": 4134, "density": 19, "literacyRate": 61.0, "sexRatio": 1000, "headquarters": "Seppa"},
+  {"id": "AR-PPP", "name": "Papum Pare", "stateId": "AR", "population": 176385, "area": 2875, "density": 61, "literacyRate": 82.1, "sexRatio": 972, "headquarters": "Yupia"},
+  {"id": "AR-LWR", "name": "Lower Subansiri", "stateId": "AR", "population": 83030, "area": 3462, "density": 24, "literacyRate": 74.5, "sexRatio": 982, "headquarters": "Ziro"},
+  {"id": "AR-USN", "name": "Upper Subansiri", "stateId": "AR", "population": 83205, "area": 7032, "density": 12, "literacyRate": 62.0, "sexRatio": 981, "headquarters": "Daporijo"},
+  {"id": "AR-WSG", "name": "West Siang", "stateId": "AR", "population": 112272, "area": 8325, "density": 13, "literacyRate": 66.8, "sexRatio": 880, "headquarters": "Aalo"},
+  {"id": "AR-ESG", "name": "East Siang", "stateId": "AR", "population": 99019, "area": 4005, "density": 25, "literacyRate": 72.8, "sexRatio": 961, "headquarters": "Pasighat"},
+  {"id": "AR-USG", "name": "Upper Siang", "stateId": "AR", "population": 35320, "area": 6188, "density": 6, "literacyRate": 62.8, "sexRatio": 881, "headquarters": "Yingkiong"},
+  {"id": "AR-LWD", "name": "Lower Dibang Valley", "stateId": "AR", "population": 53986, "area": 3900, "density": 14, "literacyRate": 64.5, "sexRatio": 913, "headquarters": "Roing"},
+  {"id": "AR-DBV", "name": "Dibang Valley", "stateId": "AR", "population": 8004, "area": 9129, "density": 1, "literacyRate": 64.5, "sexRatio": 808, "headquarters": "Anini"},
+  {"id": "AR-LHT", "name": "Lohit", "stateId": "AR", "population": 145538, "area": 2402, "density": 61, "literacyRate": 68.2, "sexRatio": 901, "headquarters": "Tezu"},
+  {"id": "AR-NTD", "name": "Namsai", "stateId": "AR", "population": 95950, "area": 1587, "density": 60, "literacyRate": 68.5, "sexRatio": 915, "headquarters": "Namsai"},
+  {"id": "AR-CHG", "name": "Changlang", "stateId": "AR", "population": 147951, "area": 4662, "density": 32, "literacyRate": 61.9, "sexRatio": 914, "headquarters": "Changlang"},
+  {"id": "AR-TRP", "name": "Tirap", "stateId": "AR", "population": 111975, "area": 2362, "density": 47, "literacyRate": 52.2, "sexRatio": 940, "headquarters": "Khonsa"},
+  {"id": "AR-LNK", "name": "Longding", "stateId": "AR", "population": 60000, "area": 1200, "density": 50, "literacyRate": 50.0, "sexRatio": 920, "headquarters": "Longding"},
+  {"id": "AR-AJG", "name": "Anjaw", "stateId": "AR", "population": 21167, "area": 6190, "density": 3, "literacyRate": 57.2, "sexRatio": 786, "headquarters": "Hawai"},
+  {"id": "AR-KKR", "name": "Kra Daadi", "stateId": "AR", "population": 45000, "area": 2200, "density": 20, "literacyRate": 55.0, "sexRatio": 970, "headquarters": "Jamin"},
+  {"id": "AR-KRL", "name": "Kurung Kumey", "stateId": "AR", "population": 89717, "area": 8818, "density": 10, "literacyRate": 42.0, "sexRatio": 1032, "headquarters": "Koloriang"},
+  {"id": "AR-SYK", "name": "Siang", "stateId": "AR", "population": 32000, "area": 2000, "density": 16, "literacyRate": 68.0, "sexRatio": 890, "headquarters": "Boleng"},
+  {"id": "AR-LPN", "name": "Lower Siang", "stateId": "AR", "population": 50000, "area": 1500, "density": 33, "literacyRate": 65.0, "sexRatio": 880, "headquarters": "Likabali"},
+  {"id": "AR-LKP", "name": "Lepa Rada", "stateId": "AR", "population": 25000, "area": 800, "density": 31, "literacyRate": 67.0, "sexRatio": 895, "headquarters": "Basar"},
+  {"id": "AR-SKS", "name": "Shi Yomi", "stateId": "AR", "population": 15000, "area": 1800, "density": 8, "literacyRate": 60.0, "sexRatio": 870, "headquarters": "Mechuka"},
+  {"id": "AR-PKG", "name": "Pakke-Kessang", "stateId": "AR", "population": 24000, "area": 1800, "density": 13, "literacyRate": 58.0, "sexRatio": 990, "headquarters": "Lemmi"},
+  {"id": "AR-KMK", "name": "Kamle", "stateId": "AR", "population": 22000, "area": 1200, "density": 18, "literacyRate": 56.0, "sexRatio": 975, "headquarters": "Raga"}
+]
+

@@ -1,0 +1,14 @@
+[
+  {"id": "MZ-AZL", "name": "Aizawl", "stateId": "MZ", "population": 404054, "area": 3577, "density": 113, "literacyRate": 98.5, "sexRatio": 1009, "headquarters": "Aizawl"},
+  {"id": "MZ-LNG", "name": "Lunglei", "stateId": "MZ", "population": 161428, "area": 4536, "density": 36, "literacyRate": 88.9, "sexRatio": 947, "headquarters": "Lunglei"},
+  {"id": "MZ-CHM", "name": "Champhai", "stateId": "MZ", "population": 125370, "area": 3185, "density": 39, "literacyRate": 95.9, "sexRatio": 984, "headquarters": "Champhai"},
+  {"id": "MZ-SRC", "name": "Serchhip", "stateId": "MZ", "population": 64937, "area": 1421, "density": 46, "literacyRate": 98.8, "sexRatio": 977, "headquarters": "Serchhip"},
+  {"id": "MZ-KLW", "name": "Kolasib", "stateId": "MZ", "population": 83955, "area": 1382, "density": 61, "literacyRate": 94.5, "sexRatio": 956, "headquarters": "Kolasib"},
+  {"id": "MZ-MMP", "name": "Mamit", "stateId": "MZ", "population": 85757, "area": 3025, "density": 28, "literacyRate": 85.0, "sexRatio": 927, "headquarters": "Mamit"},
+  {"id": "MZ-LWN", "name": "Lawngtlai", "stateId": "MZ", "population": 117894, "area": 2557, "density": 46, "literacyRate": 66.4, "sexRatio": 945, "headquarters": "Lawngtlai"},
+  {"id": "MZ-SLT", "name": "Saiha", "stateId": "MZ", "population": 56574, "area": 1399, "density": 40, "literacyRate": 90.0, "sexRatio": 978, "headquarters": "Saiha"},
+  {"id": "MZ-HNT", "name": "Hnahthial", "stateId": "MZ", "population": 43800, "area": 1243, "density": 35, "literacyRate": 88.5, "sexRatio": 950, "headquarters": "Hnahthial"},
+  {"id": "MZ-KHW", "name": "Khawzawl", "stateId": "MZ", "population": 38000, "area": 675, "density": 56, "literacyRate": 96.0, "sexRatio": 988, "headquarters": "Khawzawl"},
+  {"id": "MZ-SCL", "name": "Saitual", "stateId": "MZ", "population": 36000, "area": 1400, "density": 26, "literacyRate": 97.5, "sexRatio": 985, "headquarters": "Saitual"}
+]
+

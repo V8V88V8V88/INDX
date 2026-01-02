@@ -1,0 +1,5 @@
+[
+  {"id": "GA-NTH", "name": "North Goa", "stateId": "GA", "population": 817761, "area": 1736, "density": 471, "literacyRate": 89.6, "sexRatio": 963, "headquarters": "Panaji"},
+  {"id": "GA-STH", "name": "South Goa", "stateId": "GA", "population": 639962, "area": 1966, "density": 326, "literacyRate": 88.3, "sexRatio": 986, "headquarters": "Margao"}
+]
+

@@ -1,0 +1,16 @@
+[
+  {"id": "UK-DDN", "name": "Dehradun", "stateId": "UK", "population": 1696694, "area": 3088, "density": 549, "literacyRate": 84.3, "sexRatio": 902, "headquarters": "Dehradun"},
+  {"id": "UK-HRD", "name": "Haridwar", "stateId": "UK", "population": 1890422, "area": 2360, "density": 801, "literacyRate": 73.4, "sexRatio": 879, "headquarters": "Haridwar"},
+  {"id": "UK-NNT", "name": "Nainital", "stateId": "UK", "population": 954605, "area": 4251, "density": 225, "literacyRate": 83.9, "sexRatio": 934, "headquarters": "Nainital"},
+  {"id": "UK-UDM", "name": "Udham Singh Nagar", "stateId": "UK", "population": 1648902, "area": 2542, "density": 649, "literacyRate": 73.1, "sexRatio": 919, "headquarters": "Rudrapur"},
+  {"id": "UK-ALM", "name": "Almora", "stateId": "UK", "population": 621927, "area": 3144, "density": 198, "literacyRate": 81.1, "sexRatio": 1139, "headquarters": "Almora"},
+  {"id": "UK-PTG", "name": "Pithoragarh", "stateId": "UK", "population": 483439, "area": 7110, "density": 68, "literacyRate": 82.9, "sexRatio": 1020, "headquarters": "Pithoragarh"},
+  {"id": "UK-CHP", "name": "Chamoli", "stateId": "UK", "population": 391605, "area": 8030, "density": 49, "literacyRate": 82.7, "sexRatio": 1019, "headquarters": "Gopeshwar"},
+  {"id": "UK-RDR", "name": "Rudraprayag", "stateId": "UK", "population": 242285, "area": 1984, "density": 122, "literacyRate": 81.3, "sexRatio": 1114, "headquarters": "Rudraprayag"},
+  {"id": "UK-TTR", "name": "Tehri Garhwal", "stateId": "UK", "population": 618931, "area": 4085, "density": 151, "literacyRate": 76.4, "sexRatio": 1077, "headquarters": "New Tehri"},
+  {"id": "UK-PWR", "name": "Pauri Garhwal", "stateId": "UK", "population": 687271, "area": 5230, "density": 131, "literacyRate": 82.0, "sexRatio": 1103, "headquarters": "Pauri"},
+  {"id": "UK-UTK", "name": "Uttarkashi", "stateId": "UK", "population": 330086, "area": 8016, "density": 41, "literacyRate": 75.8, "sexRatio": 958, "headquarters": "Uttarkashi"},
+  {"id": "UK-CHM", "name": "Champawat", "stateId": "UK", "population": 259648, "area": 1766, "density": 147, "literacyRate": 79.8, "sexRatio": 980, "headquarters": "Champawat"},
+  {"id": "UK-BGS", "name": "Bageshwar", "stateId": "UK", "population": 259898, "area": 2246, "density": 116, "literacyRate": 80.7, "sexRatio": 1090, "headquarters": "Bageshwar"}
+]
+

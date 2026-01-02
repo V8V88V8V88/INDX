@@ -1,0 +1,19 @@
+[
+  {"id": "MN-IMP", "name": "Imphal West", "stateId": "MN", "population": 517992, "area": 519, "density": 998, "literacyRate": 86.1, "sexRatio": 1031, "headquarters": "Imphal"},
+  {"id": "MN-IME", "name": "Imphal East", "stateId": "MN", "population": 452661, "area": 709, "density": 639, "literacyRate": 83.0, "sexRatio": 1017, "headquarters": "Porompat"},
+  {"id": "MN-THB", "name": "Thoubal", "stateId": "MN", "population": 420517, "area": 514, "density": 818, "literacyRate": 76.7, "sexRatio": 1002, "headquarters": "Thoubal"},
+  {"id": "MN-BSP", "name": "Bishnupur", "stateId": "MN", "population": 237399, "area": 496, "density": 479, "literacyRate": 76.4, "sexRatio": 999, "headquarters": "Bishnupur"},
+  {"id": "MN-CCR", "name": "Churachandpur", "stateId": "MN", "population": 271274, "area": 4570, "density": 59, "literacyRate": 82.8, "sexRatio": 975, "headquarters": "Churachandpur"},
+  {"id": "MN-CHD", "name": "Chandel", "stateId": "MN", "population": 144028, "area": 3313, "density": 43, "literacyRate": 71.1, "sexRatio": 933, "headquarters": "Chandel"},
+  {"id": "MN-UKL", "name": "Ukhrul", "stateId": "MN", "population": 183115, "area": 4544, "density": 40, "literacyRate": 81.8, "sexRatio": 943, "headquarters": "Ukhrul"},
+  {"id": "MN-SNP", "name": "Senapati", "stateId": "MN", "population": 354772, "area": 3271, "density": 108, "literacyRate": 63.6, "sexRatio": 938, "headquarters": "Senapati"},
+  {"id": "MN-TMG", "name": "Tamenglong", "stateId": "MN", "population": 140143, "area": 4391, "density": 32, "literacyRate": 70.1, "sexRatio": 943, "headquarters": "Tamenglong"},
+  {"id": "MN-JRB", "name": "Jiribam", "stateId": "MN", "population": 43818, "area": 236, "density": 186, "literacyRate": 87.5, "sexRatio": 984, "headquarters": "Jiribam"},
+  {"id": "MN-KKC", "name": "Kakching", "stateId": "MN", "population": 135481, "area": 305, "density": 444, "literacyRate": 81.2, "sexRatio": 1015, "headquarters": "Kakching"},
+  {"id": "MN-KMP", "name": "Kamjong", "stateId": "MN", "population": 45616, "area": 1990, "density": 23, "literacyRate": 73.0, "sexRatio": 920, "headquarters": "Kamjong"},
+  {"id": "MN-NNY", "name": "Noney", "stateId": "MN", "population": 60000, "area": 1280, "density": 47, "literacyRate": 72.5, "sexRatio": 935, "headquarters": "Noney"},
+  {"id": "MN-PHZ", "name": "Pherzawl", "stateId": "MN", "population": 46500, "area": 1384, "density": 34, "literacyRate": 74.0, "sexRatio": 948, "headquarters": "Pherzawl"},
+  {"id": "MN-TNG", "name": "Tengnoupal", "stateId": "MN", "population": 64000, "area": 1234, "density": 52, "literacyRate": 69.5, "sexRatio": 925, "headquarters": "Tengnoupal"},
+  {"id": "MN-KGP", "name": "Kangpokpi", "stateId": "MN", "population": 180000, "area": 1823, "density": 99, "literacyRate": 68.0, "sexRatio": 942, "headquarters": "Kangpokpi"}
+]
+
