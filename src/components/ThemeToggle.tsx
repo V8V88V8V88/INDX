@@ -1,29 +1,48 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore, useCallback } from "react";
 import { motion } from "framer-motion";
 
+function getTheme(): "light" | "dark" {
+  if (typeof window === "undefined") return "light";
+  const stored = localStorage.getItem("theme");
+  if (stored === "dark" || stored === "light") return stored;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function subscribe(callback: () => void) {
+  // Listen to storage changes from other tabs
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+}
+
+function getSnapshot() {
+  return getTheme();
+}
+
+function getServerSnapshot(): "light" | "dark" {
+  return "light";
+}
+
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  useEffect(() => {
-    // check localStorage or system pref
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark" || stored === "light") {
-      setTheme(stored);
-      document.documentElement.classList.toggle("dark", stored === "dark");
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+  // Hydration-safe mounting
+  if (typeof window !== "undefined" && !mounted) {
+    setMounted(true);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }
 
-  const toggle = () => {
+  const toggle = useCallback(() => {
     const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
     localStorage.setItem("theme", next);
     document.documentElement.classList.toggle("dark", next === "dark");
-  };
+    // Dispatch storage event to trigger re-render via useSyncExternalStore
+    window.dispatchEvent(new Event("storage"));
+  }, [theme]);
+
+  if (!mounted) return <div className="h-9 w-9" />;
 
   return (
     <motion.button
@@ -53,4 +72,3 @@ export function ThemeToggle() {
     </motion.button>
   );
 }
-

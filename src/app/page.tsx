@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Header, MetricCard, RankedList, IndiaMap, MetricSelector } from "@/components";
+import { Header, MetricCard, IndiaMap, MetricSelector } from "@/components";
 import { states, india, formatPopulation, formatNumber, getTopStatesByMetric } from "@/data/india";
 import type { State } from "@/types";
 
@@ -56,7 +56,7 @@ export default function Home() {
         {/* Summary Cards */}
         <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} />
-          <MetricCard title="States & UTs" value={totalStates} subtitle={`${totalCities} cities tracked`} delay={0.15} />
+          <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} />
           <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} />
           <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index" delay={0.25} />
         </section>

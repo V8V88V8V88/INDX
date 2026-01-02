@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { QueryProvider } from "@/lib/query-provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "INDX — India Data Explorer",
   description: "Geographic and statistical data visualization for India. Explore country, state, and city-level insights.",
-  keywords: ["India", "data visualization", "statistics", "geography", "states", "cities"],
+  keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],
 };
 
 export default function RootLayout({
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased">
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

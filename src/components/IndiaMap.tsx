@@ -97,10 +97,11 @@ export function IndiaMap({
       });
 
     zoomRef.current = zoom;
-    d3.select(svgRef.current).call(zoom);
+    const svgNode = svgRef.current;
+    d3.select(svgNode).call(zoom);
 
     return () => {
-      d3.select(svgRef.current).on(".zoom", null);
+      d3.select(svgNode).on(".zoom", null);
     };
   }, [geoData]);
 

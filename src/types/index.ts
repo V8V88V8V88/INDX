@@ -1,4 +1,16 @@
 // geo types
+export interface District {
+  id: string;
+  name: string;
+  stateId: string;
+  population: number;
+  area: number; // sq km
+  density: number;
+  literacyRate: number;
+  sexRatio: number; // females per 1000 males
+  headquarters?: string;
+}
+
 export interface State {
   id: string;
   name: string;
@@ -12,12 +24,14 @@ export interface State {
   gdp: number; // crores INR
   hdi: number; // 0-1
   cities: City[];
+  districts?: District[];
 }
 
 export interface City {
   id: string;
   name: string;
   stateId: string;
+  districtId?: string;
   population: number;
   area: number;
   isCapital: boolean;
@@ -32,6 +46,23 @@ export interface Country {
   population: number;
   area: number;
   states: State[];
+}
+
+// API response types
+export interface CensusAPIResponse {
+  records: CensusRecord[];
+  total: number;
+  count: number;
+}
+
+export interface CensusRecord {
+  state_name: string;
+  district_name: string;
+  population: string;
+  area_sq_km: string;
+  density: string;
+  literacy_rate: string;
+  sex_ratio: string;
 }
 
 // viz types

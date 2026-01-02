@@ -8,6 +8,7 @@ import { Header, MetricCard } from "@/components";
 import { BarChart } from "@/components/BarChart";
 import { CityCard } from "@/components/CityCard";
 import { StatComparison } from "@/components/StatComparison";
+import { DistrictList } from "@/components/DistrictList";
 import { getStateById, states, formatPopulation, formatNumber } from "@/data/india";
 
 interface PageProps {
@@ -234,6 +235,17 @@ export default function StatePage({ params }: PageProps) {
               />
             ))}
           </div>
+        </section>
+
+        {/* Districts Section */}
+        <section className="mb-12">
+          <div className="mb-6">
+            <h2 className="text-headline text-text-primary">Districts</h2>
+            <p className="text-text-tertiary">
+              Administrative divisions of {state.name}
+            </p>
+          </div>
+          <DistrictList stateCode={state.id} stateName={state.name} />
         </section>
 
         {/* Back Navigation */}

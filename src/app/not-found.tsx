@@ -20,7 +20,7 @@ export default function NotFound() {
             Page Not Found
           </h1>
           <p className="mb-8 max-w-md text-text-tertiary">
-            The page you're looking for doesn't exist or the state/city data 
+            The page you&apos;re looking for doesn&apos;t exist or the state/city data 
             is not available yet.
           </p>
           <Link
