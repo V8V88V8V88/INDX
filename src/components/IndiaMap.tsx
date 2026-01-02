@@ -106,7 +106,7 @@ export function IndiaMap({
   const getStateCode = useCallback((name: string) => stateNameToCode[name] || null, []);
 
   const projection = useMemo(() => {
-    return d3.geoMercator().center([82, 23]).scale(1100).translate([280, 320]);
+    return d3.geoMercator().center([80, 22]).scale(1000).translate([280, 300]);
   }, []);
 
   const pathGenerator = useMemo(() => d3.geoPath().projection(projection), [projection]);
@@ -124,7 +124,7 @@ export function IndiaMap({
   const mapContent = (
     <>
       <svg
-        viewBox="0 0 560 700"
+        viewBox="-40 0 620 680"
         className="w-full h-auto"
         style={{ 
           minHeight: isFullscreen ? "70vh" : "380px",
