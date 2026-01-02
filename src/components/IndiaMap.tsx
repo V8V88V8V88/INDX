@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import * as d3 from "d3";
@@ -70,15 +70,46 @@ export function IndiaMap({
   colorByMetric = "population",
   interactive = true,
 }: IndiaMapProps) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const gRef = useRef<SVGGElement>(null);
   const [geoData, setGeoData] = useState<GeoData | null>(null);
   const [hoveredState, setHoveredState] = useState<string | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [transform, setTransform] = useState({ k: 1, x: 0, y: 0 });
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown>>();
 
   useEffect(() => {
     fetch("/india-states.json")
       .then((res) => res.json())
       .then((data) => setGeoData(data))
       .catch(console.error);
+  }, []);
+
+  // setup zoom behavior
+  useEffect(() => {
+    if (!svgRef.current) return;
+
+    const zoom = d3.zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.5, 8])
+      .on("zoom", (event) => {
+        setTransform({ k: event.transform.k, x: event.transform.x, y: event.transform.y });
+      });
+
+    zoomRef.current = zoom;
+    d3.select(svgRef.current).call(zoom);
+
+    return () => {
+      d3.select(svgRef.current).on(".zoom", null);
+    };
+  }, [geoData]);
+
+  const resetZoom = useCallback(() => {
+    if (!svgRef.current || !zoomRef.current) return;
+    d3.select(svgRef.current)
+      .transition()
+      .duration(300)
+      .call(zoomRef.current.transform, d3.zoomIdentity);
   }, []);
 
   // esc to exit fullscreen
@@ -124,72 +155,79 @@ export function IndiaMap({
   const mapContent = (
     <>
       <svg
+        ref={svgRef}
         viewBox="-80 -20 700 720"
-        className="w-full h-auto"
+        className="w-full h-auto touch-none"
         style={{ 
           minHeight: isFullscreen ? "70vh" : "380px",
-          maxHeight: isFullscreen ? "85vh" : "520px"
+          maxHeight: isFullscreen ? "85vh" : "520px",
+          cursor: "grab"
         }}
+        onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
       >
-        {geoData.features.map((feature, i) => {
-          const stateName = feature.properties.ST_NM;
-          const stateCode = getStateCode(stateName);
-          const stateData = stateCode ? getStateData(stateCode) : null;
+        <g ref={gRef} transform={`translate(${transform.x}, ${transform.y}) scale(${transform.k})`}>
+          {geoData.features.map((feature, i) => {
+            const stateName = feature.properties.ST_NM;
+            const stateCode = getStateCode(stateName);
+            const stateData = stateCode ? getStateData(stateCode) : null;
 
-          const isHovered = hoveredState === stateCode;
-          const isSelected = selectedState === stateCode;
+            const isHovered = hoveredState === stateCode;
+            const isSelected = selectedState === stateCode;
 
-          let fill = "#e7e5e4";
-          if (stateData) fill = colorScale(stateData[colorByMetric]);
-          if (isSelected) fill = "var(--accent-primary)";
-          if (isHovered) fill = "var(--accent-secondary)";
+            let fill = "#e7e5e4";
+            if (stateData) fill = colorScale(stateData[colorByMetric]);
+            if (isSelected) fill = "var(--accent-primary)";
+            if (isHovered) fill = "var(--accent-secondary)";
 
-          const path = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
-          const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
-          
-          // microscopic UTs need visible markers
-          const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
+            const path = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
+            const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
+            
+            // microscopic UTs need visible markers
+            const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
 
-          const content = (
-            <g key={i}>
-              <path
-                d={path}
-                fill={fill}
-                stroke="var(--text-muted)"
-                strokeWidth={isHovered || isSelected ? 1.5 : 0.75}
-                className="transition-colors duration-150"
-                style={{ cursor: interactive && stateCode ? "pointer" : "default" }}
-                onMouseEnter={() => stateCode && setHoveredState(stateCode)}
-                onMouseLeave={() => setHoveredState(null)}
-                onClick={() => interactive && stateCode && onStateSelect?.(stateCode)}
-              />
-              {/* marker for tiny UTs */}
-              {isTinyUT && centroid[0] && centroid[1] && (
-                <circle
-                  cx={centroid[0]}
-                  cy={centroid[1]}
-                  r={isHovered ? 6 : 4}
+            const content = (
+              <g key={i}>
+                <path
+                  d={path}
                   fill={fill}
-                  stroke={isHovered ? "var(--accent-primary)" : "var(--text-tertiary)"}
-                  strokeWidth={1}
-                  className="transition-all duration-150"
-                  style={{ cursor: "pointer" }}
+                  stroke="var(--text-muted)"
+                  strokeWidth={(isHovered || isSelected ? 1.5 : 0.75) / transform.k}
+                  className="transition-colors duration-150"
+                  style={{ cursor: interactive && stateCode ? "pointer" : "default" }}
                   onMouseEnter={() => stateCode && setHoveredState(stateCode)}
                   onMouseLeave={() => setHoveredState(null)}
-                />
-              )}
-            </g>
-          );
-
-          if (interactive && stateData) {
-            return (
-              <Link key={i} href={`/state/${stateCode}`}>
-                {content}
-              </Link>
+                  onClick={() => interactive && stateCode && onStateSelect?.(stateCode)}
+                >
+                  </path>
+                {/* marker for tiny UTs */}
+                {isTinyUT && centroid[0] && centroid[1] && (
+                  <circle
+                    cx={centroid[0]}
+                    cy={centroid[1]}
+                    r={(isHovered ? 6 : 4) / transform.k}
+                    fill={fill}
+                    stroke={isHovered ? "var(--accent-primary)" : "var(--text-tertiary)"}
+                    strokeWidth={1 / transform.k}
+                    className="transition-all duration-150"
+                    style={{ cursor: "pointer" }}
+                    onMouseEnter={() => stateCode && setHoveredState(stateCode)}
+                    onMouseLeave={() => setHoveredState(null)}
+                  >
+                    </circle>
+                )}
+              </g>
             );
-          }
-          return content;
-        })}
+
+            if (interactive && stateData) {
+              return (
+                <Link key={i} href={`/state/${stateCode}`}>
+                  {content}
+                </Link>
+              );
+            }
+            return content;
+          })}
+        </g>
       </svg>
 
       {/* tooltip */}
@@ -227,22 +265,57 @@ export function IndiaMap({
         </motion.div>
       )}
 
-      {/* fullscreen toggle */}
-      <button
-        onClick={() => setIsFullscreen(!isFullscreen)}
-        className="absolute bottom-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-lg border border-border-light bg-bg-card text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
-        title={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
-      >
-        {isFullscreen ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-          </svg>
+      {/* zoom controls */}
+      <div className="absolute bottom-4 right-4 z-10 flex gap-2">
+        {transform.k !== 1 && (
+          <button
+            onClick={resetZoom}
+            className="flex h-10 items-center gap-1.5 rounded-lg border border-border-light bg-bg-card px-3 text-xs font-medium text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
+            title="Reset zoom"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+            Reset
+          </button>
         )}
-      </button>
+        <button
+          onClick={() => setIsFullscreen(!isFullscreen)}
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border-light bg-bg-card text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
+          title={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+        >
+          {isFullscreen ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {/* zoom level indicator */}
+      {transform.k !== 1 && (
+        <div className="absolute top-4 right-4 z-10 rounded-lg bg-bg-card/90 px-2 py-1 text-xs font-mono text-text-muted border border-border-light">
+          {Math.round(transform.k * 100)}%
+        </div>
+      )}
+
+      {/* instant hover label */}
+      {hoveredState && (
+        <div
+          className="pointer-events-none fixed z-50 rounded-md bg-text-primary px-2 py-1 text-xs font-medium text-bg-primary shadow-lg"
+          style={{
+            left: mousePos.x + 12,
+            top: mousePos.y - 8,
+          }}
+        >
+          {getStateData(hoveredState)?.name || hoveredState}
+        </div>
+      )}
     </>
   );
 
