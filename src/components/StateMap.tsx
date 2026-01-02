@@ -1,137 +1,163 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import * as d3 from "d3";
 import type { State } from "@/types";
-
-const stateNameToCode: Record<string, string> = {
-  "Andhra Pradesh": "AP",
-  "Arunachal Pradesh": "AR",
-  "Assam": "AS",
-  "Bihar": "BR",
-  "Chhattisgarh": "CG",
-  "Goa": "GA",
-  "Gujarat": "GJ",
-  "Haryana": "HR",
-  "Himachal Pradesh": "HP",
-  "Jharkhand": "JH",
-  "Karnataka": "KA",
-  "Kerala": "KL",
-  "Madhya Pradesh": "MP",
-  "Maharashtra": "MH",
-  "Manipur": "MN",
-  "Meghalaya": "ML",
-  "Mizoram": "MZ",
-  "Nagaland": "NL",
-  "Odisha": "OR",
-  "Punjab": "PB",
-  "Rajasthan": "RJ",
-  "Sikkim": "SK",
-  "Tamil Nadu": "TN",
-  "Telangana": "TG",
-  "Tripura": "TR",
-  "Uttar Pradesh": "UP",
-  "Uttarakhand": "UK",
-  "West Bengal": "WB",
-  "Delhi": "DL",
-  "Jammu & Kashmir": "JK",
-  "Ladakh": "LA",
-  "Puducherry": "PY",
-  "Chandigarh": "CH",
-  "Andaman & Nicobar": "AN",
-  "Lakshadweep": "LD",
-  "Dadra and Nagar Haveli and Daman and Diu": "DD",
-};
 
 interface StateMapProps {
   stateCode: string;
   state: State;
 }
 
-interface GeoFeature {
+interface DistrictFeature {
   type: string;
-  properties: { ST_NM: string };
+  properties: {
+    district: string;
+    dt_code?: string;
+    st_nm?: string;
+  };
   geometry: unknown;
 }
 
-interface GeoData {
+interface DistrictGeoData {
   type: string;
-  features: GeoFeature[];
+  features: DistrictFeature[];
 }
 
 export function StateMap({ stateCode, state }: StateMapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const [geoData, setGeoData] = useState<GeoData | null>(null);
+  const [geoData, setGeoData] = useState<DistrictGeoData | null>(null);
+  const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/india-states.json")
-      .then((res) => res.json())
-      .then((data) => setGeoData(data))
-      .catch(console.error);
-  }, []);
-
-  const stateFeature = useMemo(() => {
-    if (!geoData) return null;
-    return geoData.features.find((f) => {
-      const code = stateNameToCode[f.properties.ST_NM];
-      return code === stateCode;
-    });
-  }, [geoData, stateCode]);
+    setLoading(true);
+    fetch(`/geo/states/${stateCode}.json`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Not found");
+        return res.json();
+      })
+      .then((data) => {
+        setGeoData(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setGeoData(null);
+        setLoading(false);
+      });
+  }, [stateCode]);
 
   const mapData = useMemo(() => {
-    if (!stateFeature) {
-      return { path: "", viewBox: "0 0 600 400" };
+    if (!geoData || !geoData.features?.length) {
+      return { paths: [], viewBox: "0 0 600 400" };
     }
 
     const width = 600;
     const height = 400;
-    const padding = 40;
+    const padding = 30;
 
-    // Use fitSize to properly scale and center the state
+    // Combine all features into a single FeatureCollection for fitSize
+    const featureCollection = {
+      type: "FeatureCollection",
+      features: geoData.features,
+    };
+
     const projection = d3.geoMercator().fitSize(
       [width - padding * 2, height - padding * 2],
-      stateFeature as unknown as d3.GeoPermissibleObjects
+      featureCollection as unknown as d3.GeoPermissibleObjects
     );
-    
-    // Adjust translate to account for padding
+
     const [tx, ty] = projection.translate();
     projection.translate([tx + padding, ty + padding]);
 
     const pathGenerator = d3.geoPath().projection(projection);
-    const pathStr = pathGenerator(stateFeature as unknown as d3.GeoPermissibleObjects) || "";
 
-    return { path: pathStr, viewBox: `0 0 ${width} ${height}` };
-  }, [stateFeature]);
+    const paths = geoData.features.map((feature) => ({
+      d: pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "",
+      name: feature.properties.district || "Unknown",
+    }));
 
-  if (!geoData || !stateFeature) {
+    return { paths, viewBox: `0 0 ${width} ${height}` };
+  }, [geoData]);
+
+  if (loading) {
     return (
-      <div className="flex h-[300px] items-center justify-center rounded-lg border border-border-light bg-bg-secondary">
-        <div className="text-text-muted">Loading map...</div>
+      <div className="card overflow-hidden p-0">
+        <div className="border-b border-border-light bg-bg-secondary px-6 py-4">
+          <h3 className="text-lg font-semibold text-text-primary">District Map</h3>
+          <p className="text-sm text-text-tertiary">Loading boundaries...</p>
+        </div>
+        <div className="flex h-[300px] items-center justify-center bg-bg-primary">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-accent-primary border-t-transparent" />
+        </div>
       </div>
     );
   }
 
+  if (!geoData || mapData.paths.length === 0) {
+    return (
+      <div className="card overflow-hidden p-0">
+        <div className="border-b border-border-light bg-bg-secondary px-6 py-4">
+          <h3 className="text-lg font-semibold text-text-primary">District Map</h3>
+          <p className="text-sm text-text-tertiary">Geographic boundaries of {state.name}</p>
+        </div>
+        <div className="flex h-[200px] items-center justify-center bg-bg-primary text-text-muted">
+          District boundaries not available
+        </div>
+      </div>
+    );
+  }
+
+  const hoveredData = hoveredDistrict
+    ? mapData.paths.find((p) => p.name === hoveredDistrict)
+    : null;
+
   return (
     <div className="card overflow-hidden p-0">
       <div className="border-b border-border-light bg-bg-secondary px-6 py-4">
-        <h3 className="text-lg font-semibold text-text-primary">State Map</h3>
-        <p className="text-sm text-text-tertiary">Geographic boundaries of {state.name}</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-lg font-semibold text-text-primary">District Map</h3>
+            <p className="text-sm text-text-tertiary">
+              {geoData.features.length} districts of {state.name}
+            </p>
+          </div>
+          {hoveredData && (
+            <motion.div
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="rounded-lg bg-accent-primary px-3 py-1.5 text-sm font-medium text-white"
+            >
+              {hoveredData.name}
+            </motion.div>
+          )}
+        </div>
       </div>
       <div className="bg-bg-primary p-4">
         <svg
           ref={svgRef}
           viewBox={mapData.viewBox}
-          className="mx-auto w-full max-w-lg"
-          style={{ height: "300px" }}
+          className="mx-auto w-full"
+          style={{ height: "400px" }}
           preserveAspectRatio="xMidYMid meet"
         >
-          <path
-            d={mapData.path}
-            fill="var(--accent-primary)"
-            fillOpacity={0.15}
-            stroke="var(--accent-primary)"
-            strokeWidth={2}
-          />
+          {mapData.paths.map((district, i) => {
+            const isHovered = hoveredDistrict === district.name;
+            return (
+              <path
+                key={i}
+                d={district.d}
+                fill={isHovered ? "var(--accent-primary)" : "var(--accent-muted)"}
+                fillOpacity={isHovered ? 0.4 : 0.3}
+                stroke="var(--accent-primary)"
+                strokeWidth={isHovered ? 1.5 : 0.75}
+                className="cursor-pointer transition-all duration-150"
+                onMouseEnter={() => setHoveredDistrict(district.name)}
+                onMouseLeave={() => setHoveredDistrict(null)}
+              />
+            );
+          })}
         </svg>
       </div>
     </div>
