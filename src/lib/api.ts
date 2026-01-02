@@ -1,4 +1,5 @@
 import type { District } from "@/types";
+import { getSettings } from "./settings";
 
 const API_KEY = process.env.NEXT_PUBLIC_DATA_GOV_API_KEY || "";
 const API_BASE = "https://api.data.gov.in/resource";
@@ -83,6 +84,9 @@ const STATE_NAMES: Record<string, string> = {
 };
 
 export async function fetchDistrictsFromAPI(stateCode: string): Promise<District[]> {
+  const settings = getSettings();
+  const useLocalData = !settings.disableLocalData;
+
   // Try API first if we have a resource ID for this state
   if (API_KEY && RESOURCE_IDS[stateCode]) {
     try {
@@ -116,10 +120,18 @@ export async function fetchDistrictsFromAPI(stateCode: string): Promise<District
       }
     } catch (error) {
       console.warn(`API fetch failed for ${stateCode}:`, error);
+      if (!useLocalData) {
+        // If local data is disabled and API failed, return empty
+        return [];
+      }
     }
   }
 
-  // Fallback to local JSON files (comprehensive Census 2011 data)
+  // Fallback to local JSON files (only if enabled)
+  if (!useLocalData) {
+    return [];
+  }
+
   try {
     const response = await fetch(`/data/districts/${stateCode.toLowerCase()}.json`);
     if (response.ok) {

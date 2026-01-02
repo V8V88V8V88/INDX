@@ -145,7 +145,7 @@ export function DistrictList({ stateCode, stateName, cities = [] }: DistrictList
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filteredAndSorted.map((item, i) => (
           <DistrictItem key={item.id} item={item} delay={i * 0.015} />
         ))}
@@ -168,22 +168,22 @@ function DistrictItem({ item, delay }: { item: ItemWithCity; delay: number }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2, delay: Math.min(delay, 0.3) }}
-      className={`rounded-lg border p-3 transition-colors hover:bg-bg-secondary ${
+      className={`rounded-lg border p-4 transition-colors hover:bg-bg-secondary ${
         item.hasCity
           ? "border-accent-primary/30 bg-accent-primary/5"
           : "border-border-light bg-bg-secondary/50"
       }`}
     >
-      <div className="mb-2 flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <h4 className="font-medium text-text-primary">{item.name}</h4>
           {city?.isCapital && (
-            <span className="rounded bg-accent-primary px-1.5 py-0.5 text-[10px] font-bold text-white">
+            <span className="rounded bg-accent-primary px-2 py-0.5 text-xs font-bold text-white">
               Capital
             </span>
           )}
           {city && !city.isCapital && (
-            <span className="rounded bg-accent-muted px-1.5 py-0.5 text-[10px] font-medium text-accent-primary">
+            <span className="rounded bg-accent-muted px-2 py-0.5 text-xs font-medium text-accent-primary">
               Tier {city.tier}
             </span>
           )}
@@ -193,7 +193,7 @@ function DistrictItem({ item, delay }: { item: ItemWithCity; delay: number }) {
         )}
       </div>
       
-      <div className="grid grid-cols-2 gap-2 text-xs">
+      <div className="grid grid-cols-2 gap-3 text-sm">
         <div>
           <span className="text-text-muted">Pop: </span>
           <span className="font-mono text-text-secondary">

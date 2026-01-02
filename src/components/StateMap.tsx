@@ -33,19 +33,30 @@ export function StateMap({ stateCode, state }: StateMapProps) {
 
   useEffect(() => {
     setLoading(true);
+  }, [stateCode]);
+
+  useEffect(() => {
+    let cancelled = false;
     fetch(`/geo/states/${stateCode}.json`)
       .then((res) => {
         if (!res.ok) throw new Error("Not found");
         return res.json();
       })
       .then((data) => {
-        setGeoData(data);
-        setLoading(false);
+        if (!cancelled) {
+          setGeoData(data);
+          setLoading(false);
+        }
       })
       .catch(() => {
-        setGeoData(null);
-        setLoading(false);
+        if (!cancelled) {
+          setGeoData(null);
+          setLoading(false);
+        }
       });
+    return () => {
+      cancelled = true;
+    };
   }, [stateCode]);
 
   const mapData = useMemo(() => {
