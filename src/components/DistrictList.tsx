@@ -170,7 +170,7 @@ function DistrictItem({ item, delay }: { item: ItemWithCity; delay: number }) {
       transition={{ duration: 0.2, delay: Math.min(delay, 0.3) }}
       className={`rounded-lg border p-4 transition-colors hover:bg-bg-secondary ${
         item.hasCity
-          ? "border-accent-primary/30 bg-accent-primary/5"
+          ? "border-accent-primary/50 bg-accent-muted/60"
           : "border-border-light bg-bg-secondary/50"
       }`}
     >
