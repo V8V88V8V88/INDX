@@ -106,7 +106,7 @@ export function IndiaMap({
   const getStateCode = useCallback((name: string) => stateNameToCode[name] || null, []);
 
   const projection = useMemo(() => {
-    return d3.geoMercator().center([80, 22]).scale(1000).translate([280, 300]);
+    return d3.geoMercator().center([82, 22]).scale(1000).translate([300, 300]);
   }, []);
 
   const pathGenerator = useMemo(() => d3.geoPath().projection(projection), [projection]);
@@ -124,7 +124,7 @@ export function IndiaMap({
   const mapContent = (
     <>
       <svg
-        viewBox="-40 0 620 680"
+        viewBox="-80 -20 700 720"
         className="w-full h-auto"
         style={{ 
           minHeight: isFullscreen ? "70vh" : "380px",
@@ -145,20 +145,40 @@ export function IndiaMap({
           if (isHovered) fill = "var(--accent-secondary)";
 
           const path = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
+          const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
+          
+          // microscopic UTs need visible markers
+          const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
 
           const content = (
-            <path
-              key={i}
-              d={path}
-              fill={fill}
-              stroke="var(--bg-card)"
-              strokeWidth={isHovered || isSelected ? 1.5 : 0.5}
-              className="transition-colors duration-150"
-              style={{ cursor: interactive && stateCode ? "pointer" : "default" }}
-              onMouseEnter={() => stateCode && setHoveredState(stateCode)}
-              onMouseLeave={() => setHoveredState(null)}
-              onClick={() => interactive && stateCode && onStateSelect?.(stateCode)}
-            />
+            <g key={i}>
+              <path
+                d={path}
+                fill={fill}
+                stroke="var(--text-muted)"
+                strokeWidth={isHovered || isSelected ? 1.5 : 0.75}
+                className="transition-colors duration-150"
+                style={{ cursor: interactive && stateCode ? "pointer" : "default" }}
+                onMouseEnter={() => stateCode && setHoveredState(stateCode)}
+                onMouseLeave={() => setHoveredState(null)}
+                onClick={() => interactive && stateCode && onStateSelect?.(stateCode)}
+              />
+              {/* marker for tiny UTs */}
+              {isTinyUT && centroid[0] && centroid[1] && (
+                <circle
+                  cx={centroid[0]}
+                  cy={centroid[1]}
+                  r={isHovered ? 6 : 4}
+                  fill={fill}
+                  stroke={isHovered ? "var(--accent-primary)" : "var(--text-tertiary)"}
+                  strokeWidth={1}
+                  className="transition-all duration-150"
+                  style={{ cursor: "pointer" }}
+                  onMouseEnter={() => stateCode && setHoveredState(stateCode)}
+                  onMouseLeave={() => setHoveredState(null)}
+                />
+              )}
+            </g>
           );
 
           if (interactive && stateData) {

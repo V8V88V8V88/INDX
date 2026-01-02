@@ -26,7 +26,7 @@ export default function Home() {
   const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
 
   const currentRankingConfig = rankingMetrics.find((m) => m.key === rankingMetric)!;
-  const rankedStates = getTopStatesByMetric(rankingMetric, 10);
+  const rankedStates = getTopStatesByMetric(rankingMetric, 36); // all 28 states + 8 UTs
   const maxValue = Math.max(...rankedStates.map((s) => s[rankingMetric]));
 
   return (
@@ -128,34 +128,37 @@ export default function Home() {
             transition={{ duration: 0.3 }}
             className="card p-6"
           >
-            <div className="mb-4 text-sm font-medium uppercase tracking-wider text-text-muted">
-              Top 10 by {currentRankingConfig.label}
+            <div className="mb-4 flex items-center justify-between">
+              <span className="text-sm font-medium uppercase tracking-wider text-text-muted">
+                All States & UTs by {currentRankingConfig.label}
+              </span>
+              <span className="text-xs text-text-muted">{rankedStates.length} regions</span>
             </div>
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-3">
               {rankedStates.map((state, i) => (
                 <motion.a
                   key={state.id}
                   href={`/state/${state.id}`}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.2, delay: i * 0.03 }}
+                  transition={{ duration: 0.15, delay: Math.min(i * 0.02, 0.5) }}
                   className="group relative block"
                 >
-                  <div className="flex items-center justify-between py-3">
-                    <div className="flex items-center gap-4">
-                      <span className="w-6 text-center text-lg font-semibold text-text-muted">{i + 1}</span>
-                      <span className="font-medium text-text-primary group-hover:text-accent-primary transition-colors">
+                  <div className="flex items-center justify-between py-2">
+                    <div className="flex items-center gap-3">
+                      <span className="w-7 text-center text-sm font-semibold text-text-muted">{i + 1}</span>
+                      <span className="text-sm font-medium text-text-primary group-hover:text-accent-primary transition-colors">
                         {state.name}
                       </span>
                     </div>
-                    <span className="font-mono text-text-secondary">{currentRankingConfig.format(state)}</span>
+                    <span className="font-mono text-xs text-text-secondary">{currentRankingConfig.format(state)}</span>
                   </div>
-                  <div className="absolute bottom-0 left-10 right-0 h-1 overflow-hidden rounded-full bg-bg-tertiary">
+                  <div className="absolute bottom-0 left-10 right-0 h-0.5 overflow-hidden rounded-full bg-bg-tertiary">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${(state[rankingMetric] / maxValue) * 100}%` }}
-                      transition={{ duration: 0.5, delay: i * 0.03 }}
-                      className="h-full rounded-full bg-accent-primary/50"
+                      transition={{ duration: 0.4, delay: Math.min(i * 0.02, 0.5) }}
+                      className="h-full rounded-full bg-accent-primary/40"
                     />
                   </div>
                 </motion.a>
