@@ -8,6 +8,7 @@ import { Header, MetricCard } from "@/components";
 import { BarChart } from "@/components/BarChart";
 import { StatComparison } from "@/components/StatComparison";
 import { DistrictList } from "@/components/DistrictList";
+import { StateMap } from "@/components/StateMap";
 import { getStateById, states, formatPopulation, formatNumber } from "@/data/india";
 
 interface PageProps {
@@ -98,6 +99,16 @@ export default function StatePage({ params }: PageProps) {
             delay={0.25}
           />
         </section>
+
+        {/* State Map */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="mb-10"
+        >
+          <StateMap stateCode={state.id} state={state} />
+        </motion.section>
 
         {/* Comparison and Charts Row */}
         <section className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
