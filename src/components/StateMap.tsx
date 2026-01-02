@@ -80,38 +80,32 @@ export function StateMap({ stateCode, state }: StateMapProps) {
 
   const mapData = useMemo(() => {
     if (!stateFeature) {
-      const proj = d3.geoMercator().center([82, 22]).scale(1000);
-      const pathGen = d3.geoPath().projection(proj);
-      return { pathGenerator: pathGen, viewBox: "0 0 600 400", path: "" };
+      return { path: "", viewBox: "0 0 600 400" };
     }
 
     const width = 600;
     const height = 400;
-    const proj = d3.geoMercator().precision(0.1);
-    const pathGen = d3.geoPath().projection(proj);
+    const padding = 40;
+
+    // Use fitSize to properly scale and center the state
+    const projection = d3.geoMercator().fitSize(
+      [width - padding * 2, height - padding * 2],
+      stateFeature as unknown as d3.GeoPermissibleObjects
+    );
     
-    const bounds = pathGen.bounds(stateFeature as unknown as d3.GeoPermissibleObjects);
-    const dx = bounds[1][0] - bounds[0][0];
-    const dy = bounds[1][1] - bounds[0][1];
-    const x = (bounds[0][0] + bounds[1][0]) / 2;
-    const y = (bounds[0][1] + bounds[1][1]) / 2;
-    const scale = 0.9 / Math.max(dx / width, dy / height);
-    const translate: [number, number] = [width / 2 - scale * x, height / 2 - scale * y];
-    
-    proj.scale(scale).translate(translate);
-    
-    const newBounds = pathGen.bounds(stateFeature as unknown as d3.GeoPermissibleObjects);
-    const padding = 20;
-    const vb = `${newBounds[0][0] - padding} ${newBounds[0][1] - padding} ${newBounds[1][0] - newBounds[0][0] + padding * 2} ${newBounds[1][1] - newBounds[0][1] + padding * 2}`;
-    
-    const pathStr = pathGen(stateFeature as unknown as d3.GeoPermissibleObjects) || "";
-    
-    return { pathGenerator: pathGen, viewBox: vb, path: pathStr };
+    // Adjust translate to account for padding
+    const [tx, ty] = projection.translate();
+    projection.translate([tx + padding, ty + padding]);
+
+    const pathGenerator = d3.geoPath().projection(projection);
+    const pathStr = pathGenerator(stateFeature as unknown as d3.GeoPermissibleObjects) || "";
+
+    return { path: pathStr, viewBox: `0 0 ${width} ${height}` };
   }, [stateFeature]);
 
   if (!geoData || !stateFeature) {
     return (
-      <div className="flex h-[400px] items-center justify-center rounded-lg border border-border-light bg-bg-secondary">
+      <div className="flex h-[300px] items-center justify-center rounded-lg border border-border-light bg-bg-secondary">
         <div className="text-text-muted">Loading map...</div>
       </div>
     );
@@ -123,23 +117,23 @@ export function StateMap({ stateCode, state }: StateMapProps) {
         <h3 className="text-lg font-semibold text-text-primary">State Map</h3>
         <p className="text-sm text-text-tertiary">Geographic boundaries of {state.name}</p>
       </div>
-      <div className="bg-bg-secondary p-4">
+      <div className="bg-bg-primary p-4">
         <svg
           ref={svgRef}
           viewBox={mapData.viewBox}
-          className="w-full"
-          style={{ minHeight: "400px", maxHeight: "500px" }}
+          className="mx-auto w-full max-w-lg"
+          style={{ height: "300px" }}
+          preserveAspectRatio="xMidYMid meet"
         >
           <path
             d={mapData.path}
             fill="var(--accent-primary)"
-            fillOpacity={0.2}
+            fillOpacity={0.15}
             stroke="var(--accent-primary)"
-            strokeWidth={1.5}
+            strokeWidth={2}
           />
         </svg>
       </div>
     </div>
   );
 }
-
