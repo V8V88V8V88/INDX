@@ -1,0 +1,24 @@
+[
+  {"id": "PB-LDH", "name": "Ludhiana", "stateId": "PB", "population": 3498739, "area": 3767, "density": 929, "literacyRate": 82.2, "sexRatio": 869, "headquarters": "Ludhiana"},
+  {"id": "PB-AMR", "name": "Amritsar", "stateId": "PB", "population": 2490656, "area": 2683, "density": 928, "literacyRate": 77.2, "sexRatio": 887, "headquarters": "Amritsar"},
+  {"id": "PB-JLN", "name": "Jalandhar", "stateId": "PB", "population": 2181753, "area": 2632, "density": 829, "literacyRate": 82.4, "sexRatio": 912, "headquarters": "Jalandhar"},
+  {"id": "PB-PTL", "name": "Patiala", "stateId": "PB", "population": 1892516, "area": 3218, "density": 588, "literacyRate": 76.6, "sexRatio": 892, "headquarters": "Patiala"},
+  {"id": "PB-BTD", "name": "Bathinda", "stateId": "PB", "population": 1388525, "area": 3385, "density": 410, "literacyRate": 69.6, "sexRatio": 867, "headquarters": "Bathinda"},
+  {"id": "PB-FDK", "name": "Firozpur", "stateId": "PB", "population": 2026831, "area": 5303, "density": 382, "literacyRate": 69.8, "sexRatio": 893, "headquarters": "Firozpur"},
+  {"id": "PB-SGR", "name": "Sri Muktsar Sahib", "stateId": "PB", "population": 902702, "area": 2615, "density": 345, "literacyRate": 67.4, "sexRatio": 895, "headquarters": "Muktsar"},
+  {"id": "PB-MNS", "name": "Mansa", "stateId": "PB", "population": 768808, "area": 2171, "density": 354, "literacyRate": 62.8, "sexRatio": 883, "headquarters": "Mansa"},
+  {"id": "PB-SNG", "name": "Sangrur", "stateId": "PB", "population": 1655169, "area": 3625, "density": 457, "literacyRate": 69.6, "sexRatio": 882, "headquarters": "Sangrur"},
+  {"id": "PB-BRN", "name": "Barnala", "stateId": "PB", "population": 596294, "area": 1410, "density": 423, "literacyRate": 68.7, "sexRatio": 876, "headquarters": "Barnala"},
+  {"id": "PB-FTG", "name": "Fatehgarh Sahib", "stateId": "PB", "population": 599814, "area": 1180, "density": 508, "literacyRate": 79.1, "sexRatio": 871, "headquarters": "Fatehgarh Sahib"},
+  {"id": "PB-MGH", "name": "Moga", "stateId": "PB", "population": 995746, "area": 2216, "density": 449, "literacyRate": 71.5, "sexRatio": 893, "headquarters": "Moga"},
+  {"id": "PB-FZK", "name": "Fazilka", "stateId": "PB", "population": 1180483, "area": 3125, "density": 378, "literacyRate": 65.1, "sexRatio": 899, "headquarters": "Fazilka"},
+  {"id": "PB-KPT", "name": "Kapurthala", "stateId": "PB", "population": 817668, "area": 1632, "density": 501, "literacyRate": 78.3, "sexRatio": 912, "headquarters": "Kapurthala"},
+  {"id": "PB-HSP", "name": "Hoshiarpur", "stateId": "PB", "population": 1582793, "area": 3365, "density": 470, "literacyRate": 84.6, "sexRatio": 962, "headquarters": "Hoshiarpur"},
+  {"id": "PB-NWS", "name": "Nawanshahr", "stateId": "PB", "population": 614362, "area": 1258, "density": 488, "literacyRate": 81.1, "sexRatio": 948, "headquarters": "Nawanshahr"},
+  {"id": "PB-RPN", "name": "Rupnagar", "stateId": "PB", "population": 683349, "area": 1369, "density": 499, "literacyRate": 83.3, "sexRatio": 914, "headquarters": "Rupnagar"},
+  {"id": "PB-SAS", "name": "Sahibzada Ajit Singh Nagar", "stateId": "PB", "population": 988853, "area": 1099, "density": 900, "literacyRate": 84.9, "sexRatio": 880, "headquarters": "Mohali"},
+  {"id": "PB-GRD", "name": "Gurdaspur", "stateId": "PB", "population": 2298323, "area": 3542, "density": 649, "literacyRate": 81.1, "sexRatio": 895, "headquarters": "Gurdaspur"},
+  {"id": "PB-PTK", "name": "Pathankot", "stateId": "PB", "population": 666475, "area": 929, "density": 717, "literacyRate": 82.0, "sexRatio": 891, "headquarters": "Pathankot"},
+  {"id": "PB-TTS", "name": "Tarn Taran", "stateId": "PB", "population": 1120070, "area": 2449, "density": 457, "literacyRate": 68.7, "sexRatio": 893, "headquarters": "Tarn Taran"}
+]
+

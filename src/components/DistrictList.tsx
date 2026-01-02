@@ -27,16 +27,7 @@ export function DistrictList({ stateCode, stateName }: DistrictListProps) {
     return (
       <div className="card p-6">
         <p className="text-text-muted">
-          District data not available for {stateName}.{" "}
-          <a
-            href="https://data.gov.in/user/register"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent-primary hover:underline"
-          >
-            Configure API key
-          </a>{" "}
-          for live data.
+          District data for {stateName} coming soon.
         </p>
       </div>
     );
