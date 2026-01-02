@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Header, MetricCard, IndiaMap, MetricSelector } from "@/components";
-import { states, india, formatPopulation, formatNumber, getTopStatesByMetric } from "@/data/india";
+import { states, india, formatPopulation, formatNumber } from "@/data/india";
 import type { State } from "@/types";
 
 type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density">;
+type SortOrder = "desc" | "asc" | "alpha";
 
 const rankingMetrics: { key: MetricKey; label: string; format: (s: State) => string }[] = [
   { key: "population", label: "Population", format: (s) => formatPopulation(s.population) },
@@ -19,6 +20,7 @@ const rankingMetrics: { key: MetricKey; label: string; format: (s: State) => str
 export default function Home() {
   const [mapMetric, setMapMetric] = useState<MetricKey>("population");
   const [rankingMetric, setRankingMetric] = useState<MetricKey>("population");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
 
   const totalStates = states.length;
   const totalCities = states.reduce((sum, s) => sum + s.cities.length, 0);
@@ -26,8 +28,19 @@ export default function Home() {
   const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
 
   const currentRankingConfig = rankingMetrics.find((m) => m.key === rankingMetric)!;
-  const rankedStates = getTopStatesByMetric(rankingMetric, 36); // all 28 states + 8 UTs
-  const maxValue = Math.max(...rankedStates.map((s) => s[rankingMetric]));
+  
+  const rankedStates = useMemo(() => {
+    const sorted = [...states];
+    if (sortOrder === "alpha") {
+      return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOrder === "asc") {
+      return sorted.sort((a, b) => a[rankingMetric] - b[rankingMetric]);
+    } else {
+      return sorted.sort((a, b) => b[rankingMetric] - a[rankingMetric]);
+    }
+  }, [rankingMetric, sortOrder]);
+  
+  const maxValue = Math.max(...states.map((s) => s[rankingMetric]));
 
   return (
     <div className="min-h-screen bg-bg-primary">
@@ -103,21 +116,57 @@ export default function Home() {
         <section className="mb-12">
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-headline text-text-primary">Rankings</h2>
-            {/* Pill filter for rankings */}
-            <div className="flex flex-wrap gap-2 rounded-xl bg-bg-secondary p-1.5">
-              {rankingMetrics.map((m) => (
+            <div className="flex flex-wrap items-center gap-4">
+              {/* Metric Pills */}
+              <div className="flex flex-wrap gap-2 rounded-xl bg-bg-secondary p-1.5">
+                {rankingMetrics.map((m) => (
+                  <button
+                    key={m.key}
+                    onClick={() => setRankingMetric(m.key)}
+                    className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+                      rankingMetric === m.key
+                        ? "bg-bg-card text-text-primary shadow-sm"
+                        : "text-text-muted hover:text-text-secondary"
+                    }`}
+                  >
+                    {m.label}
+                  </button>
+                ))}
+              </div>
+              {/* Sort Order */}
+              <div className="flex items-center gap-1">
                 <button
-                  key={m.key}
-                  onClick={() => setRankingMetric(m.key)}
-                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                    rankingMetric === m.key
-                      ? "bg-bg-card text-text-primary shadow-sm"
-                      : "text-text-muted hover:text-text-secondary"
+                  onClick={() => setSortOrder("desc")}
+                  title="Highest first"
+                  className={`rounded-lg p-2 transition-colors ${
+                    sortOrder === "desc" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
                   }`}
                 >
-                  {m.label}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 5v14M5 12l7 7 7-7" />
+                  </svg>
                 </button>
-              ))}
+                <button
+                  onClick={() => setSortOrder("asc")}
+                  title="Lowest first"
+                  className={`rounded-lg p-2 transition-colors ${
+                    sortOrder === "asc" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
+                  }`}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => setSortOrder("alpha")}
+                  title="Alphabetical"
+                  className={`rounded-lg px-2 py-1 text-xs font-bold transition-colors ${
+                    sortOrder === "alpha" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
+                  }`}
+                >
+                  A-Z
+                </button>
+              </div>
             </div>
           </div>
 
@@ -130,7 +179,7 @@ export default function Home() {
           >
             <div className="mb-4 flex items-center justify-between">
               <span className="text-sm font-medium uppercase tracking-wider text-text-muted">
-                All States & UTs by {currentRankingConfig.label}
+                All States & UTs {sortOrder === "alpha" ? "(A-Z)" : `by ${currentRankingConfig.label}`}
               </span>
               <span className="text-xs text-text-muted">{rankedStates.length} regions</span>
             </div>

@@ -1,9 +1,13 @@
 "use client";
 
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useDistricts } from "@/hooks/useDistricts";
 import { formatPopulation } from "@/data/india";
-import type { City } from "@/types";
+import type { City, District } from "@/types";
+
+type FilterType = "all" | "cities";
+type SortType = "population" | "name" | "literacy" | "density";
 
 interface DistrictListProps {
   stateCode: string;
@@ -12,7 +16,65 @@ interface DistrictListProps {
 }
 
 export function DistrictList({ stateCode, stateName, cities = [] }: DistrictListProps) {
-  const { data: districts, isLoading, error } = useDistricts(stateCode);
+  const [filter, setFilter] = useState<FilterType>("all");
+  const [sortBy, setSortBy] = useState<SortType>("population");
+  const { data: districts, isLoading } = useDistricts(stateCode);
+
+  // Merge districts and cities
+  const items = useMemo(() => {
+    const districtList = districts || [];
+    const cityNames = new Set(cities.map((c) => c.name.toLowerCase()));
+    
+    const markedDistricts = districtList.map((d) => ({
+      ...d,
+      hasCity: cityNames.has(d.name.toLowerCase()) || 
+               cityNames.has(d.headquarters?.toLowerCase() || ""),
+      cityData: cities.find(
+        (c) => c.name.toLowerCase() === d.name.toLowerCase() ||
+               c.name.toLowerCase() === d.headquarters?.toLowerCase()
+      ),
+    }));
+
+    const districtNames = new Set(districtList.map((d) => d.name.toLowerCase()));
+    const hqNames = new Set(districtList.map((d) => d.headquarters?.toLowerCase() || ""));
+    
+    const standaloneCities = cities
+      .filter((c) => !districtNames.has(c.name.toLowerCase()) && !hqNames.has(c.name.toLowerCase()))
+      .map((c) => ({
+        id: c.id,
+        name: c.name,
+        stateId: c.stateId,
+        population: c.population,
+        area: c.area,
+        density: Math.round(c.population / c.area),
+        literacyRate: 0,
+        sexRatio: 0,
+        headquarters: undefined,
+        hasCity: true,
+        cityData: c,
+        isCity: true,
+      }));
+
+    return [...markedDistricts, ...standaloneCities];
+  }, [districts, cities]);
+
+  const filteredAndSorted = useMemo(() => {
+    const result = filter === "cities" ? items.filter((item) => item.hasCity) : items;
+    
+    return [...result].sort((a, b) => {
+      switch (sortBy) {
+        case "name":
+          return a.name.localeCompare(b.name);
+        case "literacy":
+          return b.literacyRate - a.literacyRate;
+        case "density":
+          return b.density - a.density;
+        case "population":
+        default:
+          return b.population - a.population;
+      }
+    });
+  }, [items, filter, sortBy]);
 
   if (isLoading) {
     return (
@@ -25,151 +87,141 @@ export function DistrictList({ stateCode, stateName, cities = [] }: DistrictList
     );
   }
 
-  const sortedDistricts = districts ? [...districts].sort((a, b) => b.population - a.population) : [];
-  const sortedCities = [...cities].sort((a, b) => b.population - a.population);
-
-  // If no districts, show cities
-  if (error || !districts || districts.length === 0) {
-    if (cities.length === 0) {
-      return (
-        <div className="card p-6">
-          <p className="text-text-muted">Data for {stateName} coming soon.</p>
-        </div>
-      );
-    }
-
+  if (items.length === 0) {
     return (
       <div className="card p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-sm font-medium uppercase tracking-wider text-text-muted">
-            Major Cities
-          </h3>
-          <span className="text-xs text-text-muted">{cities.length} cities</span>
-        </div>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {sortedCities.map((city, i) => (
-            <CityItem key={city.id} city={city} delay={i * 0.02} />
-          ))}
-        </div>
+        <p className="text-text-muted">Data for {stateName} coming soon.</p>
       </div>
     );
   }
 
+  const cityCount = items.filter((i) => i.hasCity).length;
+
   return (
-    <div className="space-y-6">
-      {/* Districts */}
-      <div className="card p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-sm font-medium uppercase tracking-wider text-text-muted">
-            Districts
-          </h3>
-          <span className="text-xs text-text-muted">{districts.length} districts</span>
+    <div className="card p-6">
+      {/* Filters & Sort */}
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+        {/* Filter Pills */}
+        <div className="flex gap-2">
+          <button
+            onClick={() => setFilter("all")}
+            className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+              filter === "all"
+                ? "bg-accent-primary text-white"
+                : "bg-bg-secondary text-text-secondary hover:bg-bg-tertiary"
+            }`}
+          >
+            All ({items.length})
+          </button>
+          <button
+            onClick={() => setFilter("cities")}
+            className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+              filter === "cities"
+                ? "bg-accent-primary text-white"
+                : "bg-bg-secondary text-text-secondary hover:bg-bg-tertiary"
+            }`}
+          >
+            Major Cities ({cityCount})
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {sortedDistricts.map((district, i) => (
-            <motion.div
-              key={district.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: Math.min(i * 0.02, 0.4) }}
-              className="rounded-lg border border-border-light bg-bg-secondary/50 p-3 transition-colors hover:bg-bg-secondary"
+        {/* Sort Pills */}
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-text-muted">Sort:</span>
+          {(["population", "name", "literacy", "density"] as SortType[]).map((s) => (
+            <button
+              key={s}
+              onClick={() => setSortBy(s)}
+              className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                sortBy === s
+                  ? "bg-text-primary text-bg-primary"
+                  : "bg-bg-secondary text-text-muted hover:text-text-secondary"
+              }`}
             >
-              <div className="mb-2 flex items-center justify-between">
-                <h4 className="font-medium text-text-primary">{district.name}</h4>
-                {district.headquarters && (
-                  <span className="text-xs text-text-muted">HQ: {district.headquarters}</span>
-                )}
-              </div>
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                <div>
-                  <span className="text-text-muted">Pop: </span>
-                  <span className="font-mono text-text-secondary">
-                    {formatPopulation(district.population)}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-text-muted">Literacy: </span>
-                  <span className="font-mono text-text-secondary">{district.literacyRate}%</span>
-                </div>
-                <div>
-                  <span className="text-text-muted">Density: </span>
-                  <span className="font-mono text-text-secondary">{district.density}/km²</span>
-                </div>
-                <div>
-                  <span className="text-text-muted">Sex Ratio: </span>
-                  <span className="font-mono text-text-secondary">{district.sexRatio}</span>
-                </div>
-              </div>
-            </motion.div>
+              {s === "population" ? "Pop" : s === "literacy" ? "Lit%" : s === "density" ? "Den" : "A-Z"}
+            </button>
           ))}
         </div>
       </div>
 
-      {/* Cities */}
-      {cities.length > 0 && (
-        <div className="card p-6">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-sm font-medium uppercase tracking-wider text-text-muted">
-              Major Cities
-            </h3>
-            <div className="flex gap-2">
-              {cities.filter((c) => c.tier === 1).length > 0 && (
-                <span className="rounded-md bg-accent-primary px-2 py-1 text-xs font-medium text-white">
-                  {cities.filter((c) => c.tier === 1).length} Tier 1
-                </span>
-              )}
-              {cities.filter((c) => c.tier === 2).length > 0 && (
-                <span className="rounded-md bg-accent-muted px-2 py-1 text-xs font-medium text-accent-primary">
-                  {cities.filter((c) => c.tier === 2).length} Tier 2
-                </span>
-              )}
-              {cities.filter((c) => c.tier === 3).length > 0 && (
-                <span className="rounded-md bg-bg-tertiary px-2 py-1 text-xs font-medium text-text-muted">
-                  {cities.filter((c) => c.tier === 3).length} Tier 3
-                </span>
-              )}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {sortedCities.map((city, i) => (
-              <CityItem key={city.id} city={city} delay={i * 0.02} />
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Grid */}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {filteredAndSorted.map((item, i) => (
+          <DistrictItem key={item.id} item={item} delay={i * 0.015} />
+        ))}
+      </div>
     </div>
   );
 }
 
-function CityItem({ city, delay }: { city: City; delay: number }) {
+interface ItemWithCity extends District {
+  hasCity?: boolean;
+  cityData?: City;
+  isCity?: boolean;
+}
+
+function DistrictItem({ item, delay }: { item: ItemWithCity; delay: number }) {
+  const city = item.cityData;
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, delay: Math.min(delay, 0.4) }}
-      className="rounded-lg border border-border-light bg-bg-secondary/50 p-3 transition-colors hover:bg-bg-secondary"
+      transition={{ duration: 0.2, delay: Math.min(delay, 0.3) }}
+      className={`rounded-lg border p-3 transition-colors hover:bg-bg-secondary ${
+        item.hasCity
+          ? "border-accent-primary/30 bg-accent-primary/5"
+          : "border-border-light bg-bg-secondary/50"
+      }`}
     >
       <div className="mb-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h4 className="font-medium text-text-primary">{city.name}</h4>
-          {city.isCapital && (
-            <span className="rounded bg-accent-primary/20 px-1.5 py-0.5 text-[10px] font-medium text-accent-primary">
+          <h4 className="font-medium text-text-primary">{item.name}</h4>
+          {city?.isCapital && (
+            <span className="rounded bg-accent-primary px-1.5 py-0.5 text-[10px] font-bold text-white">
               Capital
             </span>
           )}
+          {city && !city.isCapital && (
+            <span className="rounded bg-accent-muted px-1.5 py-0.5 text-[10px] font-medium text-accent-primary">
+              Tier {city.tier}
+            </span>
+          )}
         </div>
-        <span className="text-xs text-text-muted">Tier {city.tier}</span>
+        {item.headquarters && !item.isCity && (
+          <span className="text-xs text-text-muted">{item.headquarters}</span>
+        )}
       </div>
+      
       <div className="grid grid-cols-2 gap-2 text-xs">
         <div>
           <span className="text-text-muted">Pop: </span>
-          <span className="font-mono text-text-secondary">{formatPopulation(city.population)}</span>
+          <span className="font-mono text-text-secondary">
+            {formatPopulation(item.population)}
+          </span>
         </div>
+        {!item.isCity && item.literacyRate > 0 && (
+          <div>
+            <span className="text-text-muted">Literacy: </span>
+            <span className="font-mono text-text-secondary">{item.literacyRate}%</span>
+          </div>
+        )}
         <div>
-          <span className="text-text-muted">Area: </span>
-          <span className="font-mono text-text-secondary">{city.area} km²</span>
+          <span className="text-text-muted">Density: </span>
+          <span className="font-mono text-text-secondary">{item.density.toLocaleString()}/km²</span>
         </div>
+        {!item.isCity && item.sexRatio > 0 && (
+          <div>
+            <span className="text-text-muted">Sex Ratio: </span>
+            <span className="font-mono text-text-secondary">{item.sexRatio}</span>
+          </div>
+        )}
+        {item.isCity && city && (
+          <div>
+            <span className="text-text-muted">Area: </span>
+            <span className="font-mono text-text-secondary">{city.area} km²</span>
+          </div>
+        )}
       </div>
     </motion.div>
   );
