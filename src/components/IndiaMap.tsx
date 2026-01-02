@@ -125,8 +125,11 @@ export function IndiaMap({
     <>
       <svg
         viewBox="0 0 560 700"
-        className={`w-full h-auto ${isFullscreen ? "max-h-[85vh]" : ""}`}
-        style={{ minHeight: isFullscreen ? "70vh" : "500px" }}
+        className="w-full h-auto"
+        style={{ 
+          minHeight: isFullscreen ? "70vh" : "380px",
+          maxHeight: isFullscreen ? "85vh" : "520px"
+        }}
       >
         {geoData.features.map((feature, i) => {
           const stateName = feature.properties.ST_NM;
