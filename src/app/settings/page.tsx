@@ -49,7 +49,7 @@ export default function SettingsPage() {
               <div className="flex-1">
                 <h3 className="mb-1 font-medium text-text-primary">Disable Local JSON Data</h3>
                 <p className="text-sm text-text-tertiary">
-                  When enabled, the app will only use API data and won't fallback to local JSON files.
+                  When enabled, the app will only use API data and won&apos;t fallback to local JSON files.
                   Use this to test your API integration without local data interference.
                 </p>
               </div>

@@ -32,10 +32,6 @@ export function StateMap({ stateCode, state }: StateMapProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-  }, [stateCode]);
-
-  useEffect(() => {
     let cancelled = false;
     fetch(`/geo/states/${stateCode}.json`)
       .then((res) => {
