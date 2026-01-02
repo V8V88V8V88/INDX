@@ -71,7 +71,6 @@
   {"id": "UP-BHD", "name": "Bhadohi", "stateId": "UP", "population": 1554203, "area": 1039, "density": 1496, "literacyRate": 70.1, "sexRatio": 937, "headquarters": "Bhadohi"},
   {"id": "UP-CND", "name": "Chandauli", "stateId": "UP", "population": 1952756, "area": 2554, "density": 765, "literacyRate": 72.9, "sexRatio": 921, "headquarters": "Chandauli"},
   {"id": "UP-GZP2", "name": "Ghazipur", "stateId": "UP", "population": 3622727, "area": 3377, "density": 1073, "literacyRate": 71.8, "sexRatio": 955, "headquarters": "Ghazipur"},
-  {"id": "UP-APR", "name": "Amethi", "stateId": "UP", "population": 1807248, "area": 3053, "density": 592, "literacyRate": 65.1, "sexRatio": 935, "headquarters": "Gauriganj"},
-  {"id": "UP-PHL", "name": "Prayagraj", "stateId": "UP", "population": 5959798, "area": 5481, "density": 1087, "literacyRate": 72.3, "sexRatio": 902, "headquarters": "Prayagraj"}
+  {"id": "UP-APR", "name": "Amethi", "stateId": "UP", "population": 1807248, "area": 3053, "density": 592, "literacyRate": 65.1, "sexRatio": 935, "headquarters": "Gauriganj"}
 ]
 

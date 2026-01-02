@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:districts": "bun scripts/check-district-anomalies.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.16",
