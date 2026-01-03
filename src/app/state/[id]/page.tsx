@@ -271,6 +271,15 @@ export default function StatePage({ params }: PageProps) {
             <p className="text-sm text-text-muted">
               Data visualization platform · Built for analytical exploration
             </p>
+            <div className="flex flex-col items-end gap-1 sm:items-center">
+              <p className="text-sm text-text-muted">© 2026 INDX</p>
+              <p className="text-sm text-text-muted">
+                Made with <span className="text-black dark:text-white">❤️</span> by{" "}
+                <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
+                  Vaibhav
+                </a>
+              </p>
+            </div>
           </div>
         </footer>
       </main>
