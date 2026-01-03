@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
-import { APIStatus } from "./APIStatus";
 
 interface BreadcrumbItem {
   label: string;

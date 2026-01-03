@@ -18,7 +18,7 @@ interface DistrictListProps {
 export function DistrictList({ stateCode, stateName, cities = [] }: DistrictListProps) {
   const [filter, setFilter] = useState<FilterType>("all");
   const [sortBy, setSortBy] = useState<SortType>("population");
-  const { data: districts, isLoading } = useDistricts(stateCode);
+  const { data: districts, isLoading, error } = useDistricts(stateCode);
 
   // Merge districts and cities
   const items = useMemo(() => {
@@ -82,6 +82,22 @@ export function DistrictList({ stateCode, stateName, cities = [] }: DistrictList
         <div className="flex items-center gap-3">
           <div className="h-5 w-5 animate-spin rounded-full border-2 border-accent-primary border-t-transparent" />
           <span className="text-text-muted">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="card p-6">
+        <div className="flex flex-col gap-2">
+          <p className="font-medium text-text-primary">Error loading district data</p>
+          <p className="text-sm text-text-muted">
+            {error instanceof Error ? error.message : "Failed to fetch data from API"}
+          </p>
+          <p className="text-xs text-text-tertiary mt-2">
+            Please check your API configuration or enable local data fallback in settings.
+          </p>
         </div>
       </div>
     );
