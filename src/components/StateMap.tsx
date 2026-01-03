@@ -9,6 +9,8 @@ import { useDistricts } from "@/hooks/useDistricts";
 interface StateMapProps {
   stateCode: string;
   state: State;
+  selectedDistrict?: string | null;
+  onDistrictSelect?: (district: string | null) => void;
 }
 
 interface DistrictFeature {
@@ -26,13 +28,22 @@ interface DistrictGeoData {
   features: DistrictFeature[];
 }
 
-export function StateMap({ stateCode, state }: StateMapProps) {
+export function StateMap({ stateCode, state, selectedDistrict: externalSelectedDistrict, onDistrictSelect }: StateMapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
   const [geoData, setGeoData] = useState<DistrictGeoData | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
-  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
+  const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
+  const [showInfoCard, setShowInfoCard] = useState(false);
   const [loading, setLoading] = useState(true);
   const { data: districts } = useDistricts(stateCode);
+  
+  // Use external selectedDistrict if provided, otherwise use internal state
+  const selectedDistrict = externalSelectedDistrict !== undefined ? externalSelectedDistrict : internalSelectedDistrict;
+  const setSelectedDistrict = onDistrictSelect || setInternalSelectedDistrict;
+  
+  // Show info card only when district is selected from map click (not from list)
+  const displayedSelectedDistrict = showInfoCard ? selectedDistrict : null;
 
   useEffect(() => {
     let cancelled = false;
@@ -61,7 +72,7 @@ export function StateMap({ stateCode, state }: StateMapProps) {
   // Reset selected district when state changes
   useEffect(() => {
     setSelectedDistrict(null);
-  }, [stateCode]);
+  }, [stateCode, setSelectedDistrict]);
 
   const mapData = useMemo(() => {
     if (!geoData || !geoData.features?.length) {
@@ -110,24 +121,24 @@ export function StateMap({ stateCode, state }: StateMapProps) {
 
   // Get district info from fetched districts data
   const selectedDistrictInfo = useMemo(() => {
-    if (!selectedDistrict || !districts || districts.length === 0) return null;
+    if (!displayedSelectedDistrict || !districts || districts.length === 0) return null;
     
     // Try exact match first
     let match = districts.find(
-      (d) => normalizeDistrictName(d.name) === normalizeDistrictName(selectedDistrict)
+      (d) => normalizeDistrictName(d.name) === normalizeDistrictName(displayedSelectedDistrict)
     );
     
     // If no exact match, try partial match (e.g., "North West" matches "North West Delhi")
     if (!match) {
       match = districts.find((d) => {
-        const geoName = normalizeDistrictName(selectedDistrict);
+        const geoName = normalizeDistrictName(displayedSelectedDistrict);
         const districtName = normalizeDistrictName(d.name);
         return districtName.includes(geoName) || geoName.includes(districtName);
       });
     }
     
     return match || null;
-  }, [selectedDistrict, districts]);
+  }, [displayedSelectedDistrict, districts]);
 
   // Format helper functions
   const formatPopulation = (pop: number) => {
@@ -160,7 +171,7 @@ export function StateMap({ stateCode, state }: StateMapProps) {
   const hoveredName = hoveredDistrict;
 
   return (
-    <div className="relative w-full" style={{ overflow: "visible" }}>
+    <div ref={mapContainerRef} className="relative w-full" style={{ overflow: "visible" }}>
       <svg
         ref={svgRef}
         viewBox={mapData.viewBox}
@@ -180,31 +191,43 @@ export function StateMap({ stateCode, state }: StateMapProps) {
         {mapData.paths.map((district, i) => {
           const isHovered = hoveredDistrict === district.name;
           const isSelected = selectedDistrict === district.name;
+          const hasActiveDistrict = hoveredDistrict || selectedDistrict;
+          const isInactive = hasActiveDistrict && !isHovered && !isSelected;
+          
           return (
             <motion.path
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{
-                opacity: 1,
+                opacity: isInactive ? 0.25 : 1,
                 scale: 1,
-                strokeOpacity: 1,
+                strokeOpacity: isInactive ? 0.3 : 1,
                 strokeWidth: isSelected ? 3 : isHovered ? 2.5 : 1.5
               }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
               d={district.d}
               stroke="currentColor"
-              className={`cursor-pointer transition-all duration-300 ${!isHovered && !isSelected ? "fill-opacity-10 dark:fill-opacity-20" : ""} stroke-[var(--map-border)]`}
+              className={`cursor-pointer transition-all duration-150 stroke-[var(--map-border)]`}
               style={{
                 filter: isSelected ? "url(#selectedGlow)" : isHovered ? "url(#glow)" : "none",
                 fill: isSelected
                   ? "var(--accent-secondary)"
                   : isHovered
                     ? "var(--accent-secondary)"
-                    : "var(--accent-primary)"
+                    : "var(--accent-primary)",
+                fillOpacity: isSelected || isHovered 
+                  ? 0.7 
+                  : hasActiveDistrict 
+                    ? 0.15 
+                    : 0.6
               }}
               onMouseEnter={() => setHoveredDistrict(district.name)}
               onMouseLeave={() => setHoveredDistrict(null)}
-              onClick={() => setSelectedDistrict(district.name === selectedDistrict ? null : district.name)}
+              onClick={() => {
+                const newSelection = district.name === selectedDistrict ? null : district.name;
+                setSelectedDistrict(newSelection);
+                setShowInfoCard(newSelection !== null);
+              }}
             />
           );
         })}
@@ -221,20 +244,20 @@ export function StateMap({ stateCode, state }: StateMapProps) {
         >
           {hoveredName}
           {selectedDistrict !== hoveredName && (
-            <span className="ml-2 text-xs text-text-muted">(click to select)</span>
+            <span className="ml-2 text-xs text-text-muted">(click for details)</span>
           )}
         </div>
       )}
 
       {/* Selected District Info Panel - Floating Card */}
       <AnimatePresence>
-        {selectedDistrict && (
+        {displayedSelectedDistrict && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-4 right-4 z-50 max-w-sm rounded-2xl bg-bg-card shadow-2xl ring-1 ring-border-light/50 backdrop-blur-xl"
+            className="absolute bottom-4 left-4 z-50 max-w-sm rounded-2xl bg-bg-card shadow-2xl ring-1 ring-border-light/50 backdrop-blur-xl"
             style={{ 
               maxHeight: "calc(100vh - 12rem)",
               width: "min(calc(100vw - 2rem), 28rem)",
@@ -247,11 +270,14 @@ export function StateMap({ stateCode, state }: StateMapProps) {
                 <div className="flex items-center gap-3">
                   <div className="h-2.5 w-2.5 rounded-full bg-accent-secondary shadow-lg shadow-accent-secondary/50" />
                   <h3 className="text-lg font-bold text-text-primary">
-                    {selectedDistrictInfo?.name || selectedDistrict}
+                    {selectedDistrictInfo?.name || displayedSelectedDistrict}
                   </h3>
                 </div>
                 <button
-                  onClick={() => setSelectedDistrict(null)}
+                  onClick={() => {
+                    setShowInfoCard(false);
+                    setSelectedDistrict(null);
+                  }}
                   className="rounded-lg p-1.5 text-text-muted hover:bg-bg-secondary hover:text-text-primary transition-all hover:scale-110"
                   aria-label="Close"
                 >

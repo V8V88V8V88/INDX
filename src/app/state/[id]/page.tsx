@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -20,6 +20,7 @@ export default function StatePage({ params }: PageProps) {
   const { id } = use(params);
   const state = getStateById(id);
   const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
+  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
 
   if (!state) {
     notFound();
@@ -108,7 +109,7 @@ export default function StatePage({ params }: PageProps) {
           </div>
 
           {/* Right Column: Map - Now takes full column */}
-          <div>
+          <div id="state-map">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -117,7 +118,12 @@ export default function StatePage({ params }: PageProps) {
               style={{ overflow: "visible" }}
             >
               <div className="w-full" style={{ minHeight: "500px", overflow: "visible" }}>
-                <StateMap stateCode={state.id} state={state} />
+                <StateMap 
+                  stateCode={state.id} 
+                  state={state} 
+                  selectedDistrict={selectedDistrict}
+                  onDistrictSelect={setSelectedDistrict}
+                />
               </div>
               <p className="mt-2 text-xs text-text-tertiary">
                 Showing {state.districts?.length || 0} districts
@@ -243,7 +249,13 @@ export default function StatePage({ params }: PageProps) {
               <span>{state.cities.length} major cities</span>
             </div>
           </div>
-          <DistrictList stateCode={state.id} stateName={state.name} cities={state.cities} />
+          <DistrictList 
+            stateCode={state.id} 
+            stateName={state.name} 
+            cities={state.cities}
+            selectedDistrict={selectedDistrict}
+            onDistrictSelect={setSelectedDistrict}
+          />
         </section>
 
         {/* Back Navigation */}

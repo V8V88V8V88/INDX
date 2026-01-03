@@ -13,9 +13,11 @@ interface DistrictListProps {
   stateCode: string;
   stateName: string;
   cities?: City[];
+  selectedDistrict?: string | null;
+  onDistrictSelect?: (districtName: string) => void;
 }
 
-export function DistrictList({ stateCode, stateName, cities = [] }: DistrictListProps) {
+export function DistrictList({ stateCode, stateName, cities = [], selectedDistrict, onDistrictSelect }: DistrictListProps) {
   const [filter, setFilter] = useState<FilterType>("all");
   const [sortBy, setSortBy] = useState<SortType>("population");
   const { data: districts, isLoading, error } = useDistricts(stateCode);
@@ -160,7 +162,13 @@ export function DistrictList({ stateCode, stateName, cities = [] }: DistrictList
       {/* Grid */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         {filteredAndSorted.map((item, i) => (
-          <DistrictItem key={item.id} item={item} delay={i * 0.015} />
+          <DistrictItem 
+            key={item.id} 
+            item={item} 
+            delay={i * 0.015}
+            isSelected={selectedDistrict?.toLowerCase() === item.name.toLowerCase()}
+            onSelect={() => onDistrictSelect?.(item.name)}
+          />
         ))}
       </div>
     </div>
@@ -173,19 +181,34 @@ interface ItemWithCity extends District {
   isCity?: boolean;
 }
 
-function DistrictItem({ item, delay }: { item: ItemWithCity; delay: number }) {
+function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCity; delay: number; isSelected?: boolean; onSelect?: () => void }) {
   const city = item.cityData;
   const { formatPopulation, formatDensity } = useFormat();
+
+  const handleClick = () => {
+    if (onSelect) {
+      onSelect();
+      // Scroll to map
+      const mapElement = document.getElementById("state-map");
+      if (mapElement) {
+        mapElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2, delay: Math.min(delay, 0.3) }}
-      className={`rounded-xl border p-5 transition-all hover:shadow-md hover:bg-bg-secondary ${item.hasCity
-        ? "border-accent-primary/20 bg-bg-secondary/60"
-        : "border-border-light bg-bg-secondary/40"
-        }`}
+      onClick={handleClick}
+      className={`rounded-xl border p-5 transition-all hover:shadow-md hover:bg-bg-secondary cursor-pointer ${
+        isSelected
+          ? "border-accent-primary bg-accent-muted/30 shadow-md ring-2 ring-accent-primary/20"
+          : item.hasCity
+            ? "border-accent-primary/20 bg-bg-secondary/60"
+            : "border-border-light bg-bg-secondary/40"
+      }`}
     >
       <div className="mb-4 flex items-center justify-between">
         <div className="flex flex-col gap-1">
