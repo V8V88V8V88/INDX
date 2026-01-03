@@ -32,7 +32,7 @@ export default function StatePage({ params }: PageProps) {
   
   // Handle hash fragments from URL (e.g., #city-VIS, #district-Name)
   useEffect(() => {
-    const handleHashChange = () => {
+    const processHash = () => {
       const hash = window.location.hash.slice(1); // Remove the '#'
       
       if (!hash) {
@@ -46,36 +46,49 @@ export default function StatePage({ params }: PageProps) {
         const city = state.cities.find((c) => c.id === cityId);
         if (city) {
           setSelectedDistrict(city.name);
-          // Scroll to districts section after a short delay to ensure DOM is ready
-          setTimeout(() => {
-            const districtsSection = document.querySelector('[data-districts-section]');
-            if (districtsSection) {
-              districtsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-          }, 100);
         }
       }
       // Handle district hash (#district-Name)
       else if (hash.startsWith("district-")) {
         const districtName = hash.replace("district-", "");
         setSelectedDistrict(districtName);
-        // Scroll to districts section after a short delay to ensure DOM is ready
-        setTimeout(() => {
-          const districtsSection = document.querySelector('[data-districts-section]');
-          if (districtsSection) {
-            districtsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }, 100);
       }
     };
 
-    // Check hash on mount
-    handleHashChange();
+    // Process hash immediately
+    processHash();
 
-    // Listen for hash changes
+    // Listen for hash changes (for same-page navigation)
+    const handleHashChange = () => processHash();
     window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    
+    // Also check hash on focus (for programmatic hash changes)
+    const handleFocus = () => processHash();
+    window.addEventListener("focus", handleFocus);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("focus", handleFocus);
+    };
   }, [state.cities]);
+
+  // Scroll to map section when district is selected from hash
+  useEffect(() => {
+    if (!selectedDistrict || !window.location.hash) return;
+
+    const hash = window.location.hash.slice(1);
+    if (!hash.startsWith("city-") && !hash.startsWith("district-")) return;
+
+    // Scroll to map section (not districts) since user clicked from search
+    const timeoutId = setTimeout(() => {
+      const mapElement = document.getElementById("state-map");
+      if (mapElement) {
+        mapElement.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [selectedDistrict]);
   
   // Function to normalize district names for matching
   const normalizeDistrictName = (name: string): string => {

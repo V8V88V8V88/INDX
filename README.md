@@ -1,69 +1,60 @@
 # INDX — India Data Explorer
 
-A modern, visual-first data visualization platform for exploring geographic and statistical data across India. Built with clean drill-downs from **Country → State → City**.
+A comprehensive data visualization platform for exploring India's geographic and statistical data. Built with Next.js, React, and D3.js.
 
-![INDX](https://img.shields.io/badge/status-Phase%201-teal)
-![Next.js](https://img.shields.io/badge/Next.js-16-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![Tailwind](https://img.shields.io/badge/Tailwind-4-cyan)
+## 🌟 Features
 
-## Overview
+### Interactive Maps
+- **India Map**: Interactive choropleth map of all 28 states and 8 union territories
+- **State Maps**: Detailed district-level maps for each state
+- **Dynamic Metrics**: Visualize data by Population, GDP, Literacy Rate, HDI, Density, Sex Ratio, and Area
+- **Color-coded Legends**: Synchronized color scales matching map visualizations
+- **Zoom & Pan**: Fullscreen mode with zoom controls for detailed exploration
 
-INDX is a calm, analytical data platform designed for serious exploration. No clutter, no government-portal aesthetics—just clean data visualization with a professional engineering-grade design.
+### State & District Pages
+- **State Details**: Comprehensive statistics, rankings, and comparisons
+- **District Information**: Detailed district-level data with interactive maps
+- **City Data**: Information about major cities within each state
+- **Comparative Analysis**: State metrics compared against national averages
+- **Bar Charts**: Visual representation of city populations and other metrics
 
-### Features
+### Search & Navigation
+- **Spotlight Search**: Apple Spotlight-style search (Cmd+K / Ctrl+K) for quick navigation
+- **Fuzzy Search**: Search by state codes (e.g., "UP" for Uttar Pradesh, "MP" for Madhya Pradesh)
+- **Multi-type Search**: Search across states, cities, and districts simultaneously
+- **Keyboard Navigation**: Full keyboard support with arrow keys and Enter
+- **Smart Highlighting**: Auto-highlight and scroll to selected locations on maps
 
-- **Interactive India Map** — Choropleth visualization with multiple metrics (Population, GDP, HDI, Literacy, Density)
-- **State Drill-Down** — Click any state to explore detailed demographics, rankings, and city-level data
-- **City Explorer** — View all major cities with tier classification, population, and geographic data
-- **Comparative Analysis** — State vs National average comparisons
-- **Ranked Lists** — Top states by various metrics with animated progress bars
-- **Responsive Bento Layout** — Desktop-first design with mobile compatibility
+### Data Visualization
+- **Metric Cards**: Key indicators with rankings and trends
+- **Ranked Lists**: Sortable lists of states by various metrics
+- **Bar Charts**: Population and metric comparisons
+- **Statistical Comparisons**: State vs National averages
 
-## Tech Stack
+### UI/UX Features
+- **Dark Mode**: Theme toggle with multiple accent colors
+- **Responsive Design**: Mobile-first, works on all screen sizes
+- **Smooth Animations**: Framer Motion powered transitions
+- **Accessible**: Keyboard navigation and ARIA labels
 
-| Technology | Purpose |
-|------------|---------|
-| **Next.js 16 (App Router)** | Server-side rendering, routing, optimized builds |
-| **TypeScript** | Type safety and developer experience |
-| **Tailwind CSS 4** | Utility-first styling with CSS variables |
-| **Framer Motion** | Smooth page transitions and micro-interactions |
-| **D3.js** | Data-driven visualizations (available for extensions) |
-| **Recharts** | Chart components (available for extensions) |
+## 🛠️ Tech Stack
 
-## Project Structure
+- **Framework**: Next.js 16 (App Router)
+- **UI**: React 19, Tailwind CSS
+- **Maps**: D3.js (geoMercator, geoPath)
+- **Animations**: Framer Motion
+- **Data Fetching**: TanStack Query (React Query)
+- **State Management**: React Hooks (useState, useEffect, useMemo)
+- **Language**: TypeScript
+- **Package Manager**: Bun
 
-```
-src/
-├── app/
-│   ├── page.tsx              # Main India overview page
-│   ├── state/[id]/page.tsx   # State detail page with city drill-down
-│   ├── not-found.tsx         # 404 page
-│   ├── layout.tsx            # Root layout with fonts
-│   └── globals.css           # Design system tokens
-├── components/
-│   ├── Header.tsx            # Navigation with breadcrumbs
-│   ├── IndiaMap.tsx          # Interactive SVG map
-│   ├── MetricCard.tsx        # Summary statistic cards
-│   ├── RankedList.tsx        # Ranked items with progress bars
-│   ├── BarChart.tsx          # Horizontal bar visualization
-│   ├── CityCard.tsx          # City information cards
-│   ├── StateCard.tsx         # State preview cards
-│   ├── StatComparison.tsx    # Side-by-side comparison table
-│   └── MetricSelector.tsx    # Metric toggle buttons
-├── data/
-│   └── india.ts              # State and city datasets
-└── types/
-    └── index.ts              # TypeScript type definitions
-```
-
-## Getting Started
+## 📦 Installation
 
 ```bash
 # Install dependencies
 bun install
 
-# Start development server
+# Run development server
 bun run dev
 
 # Build for production
@@ -73,37 +64,112 @@ bun run build
 bun start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application.
+## 🚀 Getting Started
 
-## Design Philosophy
+1. Clone the repository
+2. Install dependencies: `bun install`
+3. Run the development server: `bun run dev`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### Visual Direction
-- **Minimal** — Generous whitespace, no visual clutter
-- **Bento-style** — Card-based layouts with soft rounded corners
-- **Muted palette** — Warm stone neutrals with teal accents
-- **Strong typography** — Clear hierarchy with Inter font family
-- **Subtle depth** — Light shadows and borders for layering
+## 📁 Project Structure
 
-### Product Tone
-- **Neutral & factual** — Data speaks for itself
-- **Analytical** — Designed for understanding, not storytelling
-- **Professional** — Engineering-grade, portfolio-worthy
+```
+src/
+├── app/                    # Next.js app router pages
+│   ├── page.tsx           # Home page with India map
+│   ├── state/[id]/        # State detail pages
+│   └── settings/          # Settings page
+├── components/            # React components
+│   ├── IndiaMap.tsx       # Interactive India map
+│   ├── StateMap.tsx       # State district maps
+│   ├── Spotlight.tsx      # Search functionality
+│   ├── DistrictList.tsx   # District/city listings
+│   ├── MetricCard.tsx     # Metric display cards
+│   └── ...
+├── data/                  # Static data files
+│   └── india.ts          # State, city, and country data
+├── hooks/                 # Custom React hooks
+│   ├── useDistricts.ts   # District data fetching
+│   └── useFormat.ts      # Number formatting utilities
+├── lib/                   # Utility libraries
+│   ├── api.ts            # API functions
+│   └── query-provider.tsx # React Query setup
+└── types/                 # TypeScript type definitions
+```
 
-## Data Coverage (Phase 1)
+## 🎨 Features in Detail
 
-- **24 States & UTs** with full demographic data
-- **85+ Cities** with tier classification
-- Metrics: Population, GDP, HDI, Literacy Rate, Area, Density
+### Interactive Maps
+- Click on states to navigate to state detail pages
+- Hover to see tooltips with state data and country averages
+- Switch between different metrics (Population, GDP, Literacy, HDI, etc.)
+- State names displayed with text shadows for visibility
+- Fullscreen mode for detailed exploration
 
-## Roadmap
+### State Pages
+- Key metrics: Population, GDP, Literacy Rate, HDI
+- Interactive district maps with hover and click effects
+- District information cards with detailed statistics
+- City listings with filtering and sorting
+- Comparative charts and visualizations
+- Click on capital name to highlight district on map
 
-- [ ] Add more states and union territories
-- [ ] Historical data comparison (year-over-year)
-- [ ] Additional metrics (health, infrastructure, education)
-- [ ] Export functionality (CSV, PDF reports)
-- [ ] API layer with PostgreSQL + Prisma
-- [ ] Multi-country support (Phase 2)
+### Search (Spotlight)
+- **Keyboard Shortcut**: `Cmd+K` (Mac) or `Ctrl+K` (Windows/Linux)
+- **Search Icon**: Click the search icon in the header
+- **Search Types**:
+  - States (full name or code: UP, MP, etc.)
+  - Cities (with state context)
+  - Districts (with state context)
+- **Features**:
+  - Real-time search as you type
+  - Keyboard navigation (↑↓ arrows, Enter to select)
+  - Auto-highlight and scroll to selected location
+  - Works across all pages
 
-## License
+### Settings
+- Theme customization (accent colors)
+- Visual preferences
+- Application behavior settings
 
-MIT License — See [LICENSE](./LICENSE) for details.
+## 📊 Data Sources
+
+- Census of India 2011
+- RBI estimates
+- NITI Aayog projections
+- 2026 projected data
+
+## 🎯 Current Status
+
+### ✅ Implemented
+- Home page with interactive India map
+- State detail pages with district maps
+- District and city data visualization
+- Spotlight search functionality
+- Dark mode and theme customization
+- Responsive design
+- Keyboard navigation
+- Hash fragment routing for deep links
+
+### 🔄 Data Coverage
+- All 28 states and 8 union territories
+- Major cities with tier classification
+- District-level data (via API)
+- Population, GDP, Literacy, HDI metrics
+- Geographic boundaries (GeoJSON)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📝 License
+
+This project is built for data visualization and exploration.
+
+## 👨‍💻 Author
+
+Made with ❤️ by [Vaibhav](https://v8v88v8v88.com/)
+
+---
+
+**Note**: This is a data visualization platform built for analytical exploration of India's geographic and statistical data.

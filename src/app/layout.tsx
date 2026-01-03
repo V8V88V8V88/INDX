@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 
 import { ThemeInitializer } from "@/components/ThemeInitializer";
 import { SettingsProvider } from "@/contexts/SettingsContext";
+import { Spotlight } from "@/components/Spotlight";
 
 export default function RootLayout({
   children,
@@ -34,7 +35,10 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeInitializer />
         <SettingsProvider>
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            {children}
+            <Spotlight />
+          </QueryProvider>
         </SettingsProvider>
       </body>
     </html>
