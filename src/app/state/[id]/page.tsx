@@ -30,6 +30,16 @@ export default function StatePage({ params }: PageProps) {
   
   const { data: districts } = useDistricts(state.id);
   
+  // Function to normalize district names for matching
+  const normalizeDistrictName = (name: string): string => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/[’'".,()/]/g, "")
+      .replace(/&/g, "and");
+  };
+  
   // Handle hash fragments from URL (e.g., #city-VIS, #district-Name)
   useEffect(() => {
     const processHash = () => {
@@ -50,12 +60,28 @@ export default function StatePage({ params }: PageProps) {
       }
       // Handle district hash (#district-Name)
       else if (hash.startsWith("district-")) {
-        const districtName = hash.replace("district-", "");
-        setSelectedDistrict(districtName);
+        const districtName = decodeURIComponent(hash.replace("district-", ""));
+        // Try to find matching district using normalized names
+        if (districts && districts.length > 0) {
+          const normalizedHash = normalizeDistrictName(districtName);
+          const match = districts.find((d) => {
+            const normalizedDistrict = normalizeDistrictName(d.name);
+            return normalizedDistrict === normalizedHash || 
+                   normalizedDistrict.includes(normalizedHash) || 
+                   normalizedHash.includes(normalizedDistrict);
+          });
+          if (match) {
+            setSelectedDistrict(match.name);
+          } else {
+            // Fallback to the hash name if no match found
+            setSelectedDistrict(districtName);
+          }
+        }
+        // If districts not loaded yet, don't set anything - will retry when districts load
       }
     };
 
-    // Process hash immediately
+    // Process hash immediately (cities work immediately, districts need data)
     processHash();
 
     // Listen for hash changes (for same-page navigation)
@@ -70,7 +96,7 @@ export default function StatePage({ params }: PageProps) {
       window.removeEventListener("hashchange", handleHashChange);
       window.removeEventListener("focus", handleFocus);
     };
-  }, [state.cities]);
+  }, [state.cities, districts]);
 
   // Scroll to map section when district is selected from hash
   useEffect(() => {
@@ -89,16 +115,6 @@ export default function StatePage({ params }: PageProps) {
 
     return () => clearTimeout(timeoutId);
   }, [selectedDistrict]);
-  
-  // Function to normalize district names for matching
-  const normalizeDistrictName = (name: string): string => {
-    return name
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/[’'".,()/]/g, "")
-      .replace(/&/g, "and");
-  };
   
   // Get district info from fetched districts data
   const selectedDistrictInfo = useMemo(() => {

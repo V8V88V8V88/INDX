@@ -169,7 +169,7 @@ export function Spotlight() {
             name: district.name,
             stateName: state.name,
             stateId: state.id,
-            path: `/state/${state.id}#district-${district.name}`,
+            path: `/state/${state.id}#district-${encodeURIComponent(district.name)}`,
           });
         }
       });
@@ -214,19 +214,8 @@ export function Spotlight() {
     setQuery("");
     setSelectedIndex(0);
     
-    // For paths with hash, navigate to base path first, then set hash
-    if (result.path.includes('#')) {
-      const [basePath, hash] = result.path.split('#');
-      router.push(basePath);
-      // Set hash after a brief delay to ensure page has loaded
-      setTimeout(() => {
-        window.location.hash = hash;
-        // Force a hashchange event in case the hash was already set
-        window.dispatchEvent(new HashChangeEvent('hashchange'));
-      }, 150);
-    } else {
-      router.push(result.path);
-    }
+    // Navigate directly with the full path including hash
+    router.push(result.path);
   };
 
   return (
@@ -332,7 +321,7 @@ export function Spotlight() {
                                 </svg>
                               </div>
                             ) : (
-                              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-muted/30">
+                              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-secondary/20">
                                 <svg
                                   width="16"
                                   height="16"
@@ -340,11 +329,10 @@ export function Spotlight() {
                                   fill="none"
                                   stroke="currentColor"
                                   strokeWidth="2"
-                                  className="text-accent-primary"
+                                  className="text-accent-secondary"
                                 >
-                                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                                  <line x1="3" y1="9" x2="21" y2="9" />
-                                  <line x1="9" y1="21" x2="9" y2="9" />
+                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                  <circle cx="12" cy="10" r="3" />
                                 </svg>
                               </div>
                             )}
