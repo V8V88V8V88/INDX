@@ -68,6 +68,20 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     setSelectedDistrict(null);
   }, [stateCode, setSelectedDistrict]);
 
+  // Normalize geo JSON district names to match data JSON format (especially for Delhi)
+  const normalizeGeoDistrictName = (geoName: string, stateCode: string): string => {
+    if (stateCode === "DL") {
+      // For Delhi, add "Delhi" suffix to names that don't have it (except "New Delhi" and "Shahdara")
+      if (geoName === "New Delhi" || geoName === "Shahdara") {
+        return geoName;
+      }
+      if (!geoName.endsWith("Delhi")) {
+        return `${geoName} Delhi`;
+      }
+    }
+    return geoName;
+  };
+
   const mapData = useMemo(() => {
     if (!geoData || !geoData.features?.length) {
       return { paths: [], viewBox: "0 0 700 600" };
@@ -95,11 +109,11 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
 
     const paths = geoData.features.map((feature) => ({
       d: pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "",
-      name: feature.properties.district || "Unknown",
+      name: normalizeGeoDistrictName(feature.properties.district || "Unknown", stateCode),
     }));
 
     return { paths, viewBox: `0 0 ${width} ${height}` };
-  }, [geoData]);
+  }, [geoData, stateCode]);
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 

@@ -94,6 +94,10 @@ export function IndiaMap({
 
     const zoom = d3.zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.5, 8])
+      .wheelDelta((event) => {
+        // Faster zoom - multiply wheel delta for more responsive zooming
+        return -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 0.002) * 3;
+      })
       .on("zoom", (event) => {
         setTransform({ k: event.transform.k, x: event.transform.x, y: event.transform.y });
       });

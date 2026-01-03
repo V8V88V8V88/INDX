@@ -431,7 +431,7 @@ export default function StatePage({ params }: PageProps) {
             <p className="text-sm text-text-muted">
               Made with <span className="text-accent-primary">❤️</span> by{" "}
               <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
-                Vaibhav
+                Vaibhav Pratap Singh
               </a>
             </p>
           </div>

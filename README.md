@@ -168,7 +168,7 @@ This project is built for data visualization and exploration.
 
 ## 👨‍💻 Author
 
-Made with ❤️ by [Vaibhav](https://v8v88v8v88.com/)
+Made with ❤️ by [Vaibhav Pratap Singh](https://v8v88v8v88.com/)
 
 ---
 
