@@ -10,9 +10,11 @@ interface CityCardProps {
   delay?: number;
 }
 
-const tierStyles = {
+const tierStyles: Record<1 | 1.5 | 2 | 2.5 | 3, string> = {
   1: "bg-accent-primary text-white",
+  1.5: "bg-accent-primary/80 text-white",
   2: "bg-accent-muted text-accent-primary",
+  2.5: "bg-accent-muted/80 text-accent-primary",
   3: "bg-bg-tertiary text-text-muted",
 };
 
