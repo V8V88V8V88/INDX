@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useMemo } from "react";
+import { use, useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -29,6 +29,53 @@ export default function StatePage({ params }: PageProps) {
   }
   
   const { data: districts } = useDistricts(state.id);
+  
+  // Handle hash fragments from URL (e.g., #city-VIS, #district-Name)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1); // Remove the '#'
+      
+      if (!hash) {
+        setSelectedDistrict(null);
+        return;
+      }
+
+      // Handle city hash (#city-ID)
+      if (hash.startsWith("city-")) {
+        const cityId = hash.replace("city-", "");
+        const city = state.cities.find((c) => c.id === cityId);
+        if (city) {
+          setSelectedDistrict(city.name);
+          // Scroll to districts section after a short delay to ensure DOM is ready
+          setTimeout(() => {
+            const districtsSection = document.querySelector('[data-districts-section]');
+            if (districtsSection) {
+              districtsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }, 100);
+        }
+      }
+      // Handle district hash (#district-Name)
+      else if (hash.startsWith("district-")) {
+        const districtName = hash.replace("district-", "");
+        setSelectedDistrict(districtName);
+        // Scroll to districts section after a short delay to ensure DOM is ready
+        setTimeout(() => {
+          const districtsSection = document.querySelector('[data-districts-section]');
+          if (districtsSection) {
+            districtsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      }
+    };
+
+    // Check hash on mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [state.cities]);
   
   // Function to normalize district names for matching
   const normalizeDistrictName = (name: string): string => {
@@ -285,7 +332,7 @@ export default function StatePage({ params }: PageProps) {
         </section>
 
         {/* Districts & Cities Section */}
-        <section className="mb-12">
+        <section className="mb-12" data-districts-section>
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h2 className="text-headline text-text-primary">Districts</h2>
