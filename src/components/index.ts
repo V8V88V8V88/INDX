@@ -8,6 +8,5 @@ export { BarChart } from "./BarChart";
 export { CityCard } from "./CityCard";
 export { StatComparison } from "./StatComparison";
 export { ThemeToggle } from "./ThemeToggle";
-export { APIStatus } from "./APIStatus";
 export { DistrictList } from "./DistrictList";
 

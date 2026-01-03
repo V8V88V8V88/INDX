@@ -13,8 +13,10 @@
   --text-muted: #a8a29e;
 
   --accent-primary: #0f766e;
-  --accent-secondary: #14b8a6;
+  --accent-secondary: #0f766e;
   --accent-muted: #ccfbf1;
+  --accent-dark: #115e59;
+  --map-border: var(--accent-dark);
 
   /* choropleth scale */
   --choro-0: #f5f5f4;
@@ -51,6 +53,9 @@
   --accent-primary: #14b8a6;
   --accent-secondary: #2dd4bf;
   --accent-muted: #134e4a;
+  --accent-dark: #0f766e;
+  /* Use accent-muted (very bright) for map border in dark mode */
+  --map-border: var(--accent-muted);
 
   --choro-0: #1c1917;
   --choro-1: #292524;
@@ -78,6 +83,7 @@
   --color-accent-primary: var(--accent-primary);
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-muted: var(--accent-muted);
+  --color-accent-dark: var(--accent-dark);
   --color-border-light: var(--border-light);
   --color-border-medium: var(--border-medium);
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;

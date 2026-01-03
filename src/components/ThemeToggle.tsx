@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore, useCallback } from "react";
+import { useState, useSyncExternalStore, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 
 function getTheme(): "light" | "dark" {
@@ -28,11 +28,13 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  // Hydration-safe mounting
-  if (typeof window !== "undefined" && !mounted) {
+  useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
-  }
+  }, [theme]);
 
   const toggle = useCallback(() => {
     const next = theme === "light" ? "dark" : "light";

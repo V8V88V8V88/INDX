@@ -55,7 +55,6 @@ export function Header({ breadcrumbs }: HeaderProps) {
         )}
 
         <div className="flex items-center gap-3">
-          <APIStatus />
           <ThemeToggle />
           <Link href="/settings">
             <motion.button
@@ -64,9 +63,9 @@ export function Header({ breadcrumbs }: HeaderProps) {
               className="rounded-lg border border-border-light p-2 text-text-secondary transition-colors hover:bg-bg-secondary"
               aria-label="Settings"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.39a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
                 <circle cx="12" cy="12" r="3" />
-                <path d="M12 1v6m0 6v6m9-9h-6M9 12H3m15.364-6.364l-4.243 4.243M8.879 15.121l-4.243 4.243m11.314 0l-4.243-4.243M8.879 8.879L4.636 4.636" />
               </svg>
             </motion.button>
           </Link>

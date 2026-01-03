@@ -14,6 +14,8 @@ interface MetricCardProps {
   className?: string;
 }
 
+// MetricCard component updated to handle localized formatting potentially in the future
+// Currently keeping as is, but ensuring it accepts strings which our useFormat returns
 export function MetricCard({
   title,
   value,

@@ -9,7 +9,8 @@ import { BarChart } from "@/components/BarChart";
 import { StatComparison } from "@/components/StatComparison";
 import { DistrictList } from "@/components/DistrictList";
 import { StateMap } from "@/components/StateMap";
-import { getStateById, states, formatPopulation, formatNumber } from "@/data/india";
+import { getStateById, states } from "@/data/india";
+import { useFormat } from "@/hooks/useFormat";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,6 +19,7 @@ interface PageProps {
 export default function StatePage({ params }: PageProps) {
   const { id } = use(params);
   const state = getStateById(id);
+  const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
 
   if (!state) {
     notFound();
@@ -50,7 +52,7 @@ export default function StatePage({ params }: PageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-10"
+          className="mb-8"
         >
           <div className="mb-3 flex flex-wrap items-center gap-3">
             <span className="rounded-full bg-accent-muted px-3 py-1 text-xs font-medium text-accent-primary">
@@ -66,49 +68,62 @@ export default function StatePage({ params }: PageProps) {
             {" · "}
             {state.cities.length} major cities tracked
             {" · "}
-            {formatNumber(state.area)} km² area
+            {formatArea(state.area)} area
           </p>
         </motion.section>
 
-        {/* Key Metrics */}
-        <section className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <MetricCard
-            title="Population"
-            value={formatPopulation(state.population)}
-            subtitle={`#${populationRank} in India`}
-            delay={0.1}
-          />
-          <MetricCard
-            title="GDP"
-            value={formatNumber(state.gdp)}
-            unit="Cr"
-            subtitle={`#${gdpRank} in India`}
-            delay={0.15}
-          />
-          <MetricCard
-            title="Literacy Rate"
-            value={state.literacyRate}
-            unit="%"
-            subtitle={`#${literacyRank} in India`}
-            delay={0.2}
-          />
-          <MetricCard
-            title="HDI"
-            value={state.hdi.toFixed(3)}
-            subtitle={`#${hdiRank} in India`}
-            delay={0.25}
-          />
-        </section>
+        {/* Metrics & Map Grid */}
+        <div className="mb-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {/* Left Column: Metrics */}
+          <div className="flex flex-col gap-4">
+            {/* Key Metrics Grid */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <MetricCard
+                title="Population"
+                value={formatPopulation(state.population)}
+                subtitle={`#${populationRank} in India`}
+                delay={0.1}
+              />
+              <MetricCard
+                title="GDP"
+                value={formatCurrency(state.gdp * 10000000)}
+                unit=""
+                subtitle={`#${gdpRank} in India`}
+                delay={0.15}
+              />
+              <MetricCard
+                title="Literacy Rate"
+                value={state.literacyRate}
+                unit="%"
+                subtitle={`#${literacyRank} in India`}
+                delay={0.2}
+              />
+              <MetricCard
+                title="HDI"
+                value={state.hdi.toFixed(3)}
+                subtitle={`#${hdiRank} in India`}
+                delay={0.25}
+              />
+            </div>
+          </div>
 
-        {/* State Map */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="mb-10"
-        >
-          <StateMap stateCode={state.id} state={state} />
-        </motion.section>
+          {/* Right Column: Map - Now takes full column */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col items-center justify-center"
+            >
+              <div className="w-full" style={{ minHeight: "500px" }}>
+                <StateMap stateCode={state.id} state={state} />
+              </div>
+              <p className="mt-2 text-xs text-text-tertiary">
+                Showing {state.districts?.length || 0} districts
+              </p>
+            </motion.div>
+          </div>
+        </div>
 
         {/* Comparison and Charts Row */}
         <section className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -132,16 +147,16 @@ export default function StatePage({ params }: PageProps) {
               },
               {
                 label: "Density",
-                stateValue: state.density.toLocaleString(),
-                nationalValue: Math.round(nationalAvgDensity).toLocaleString(),
-                unit: "/km²",
+                stateValue: formatDensity(state.density),
+                nationalValue: formatDensity(Math.round(nationalAvgDensity)),
+                unit: "",
                 higher: null,
               },
               {
                 label: "GDP",
-                stateValue: formatNumber(state.gdp),
-                nationalValue: formatNumber(Math.round(nationalAvgGDP)),
-                unit: " Cr",
+                stateValue: formatCurrency(state.gdp * 10000000),
+                nationalValue: formatCurrency(Math.round(nationalAvgGDP) * 10000000),
+                unit: "",
                 higher: state.gdp > nationalAvgGDP ? "state" : "national",
               },
             ]}
@@ -169,16 +184,16 @@ export default function StatePage({ params }: PageProps) {
               <div>
                 <p className="mb-1 text-xs text-text-muted">Total Area</p>
                 <p className="text-xl font-semibold text-text-primary">
-                  {formatNumber(state.area)}
+                  {formatArea(state.area)}
                 </p>
                 <p className="text-xs text-text-muted">sq km</p>
               </div>
               <div>
                 <p className="mb-1 text-xs text-text-muted">Density</p>
                 <p className="text-xl font-semibold text-text-primary">
-                  {state.density.toLocaleString()}
+                  {formatDensity(state.density)}
                 </p>
-                <p className="text-xs text-text-muted">per sq km</p>
+                <p className="text-xs text-text-muted"></p>
               </div>
               <div>
                 <p className="mb-1 text-xs text-text-muted">Major Cities</p>
@@ -206,7 +221,7 @@ export default function StatePage({ params }: PageProps) {
               <div>
                 <p className="mb-1 text-xs text-text-muted">Per Capita GDP</p>
                 <p className="text-xl font-semibold text-text-primary">
-                  ₹{Math.round((state.gdp * 10000000) / state.population).toLocaleString()}
+                  {formatCurrency(Math.round((state.gdp * 10000000) / state.population))}
                 </p>
                 <p className="text-xs text-text-muted">approx</p>
               </div>
@@ -286,4 +301,3 @@ export default function StatePage({ params }: PageProps) {
     </div>
   );
 }
-

@@ -1,38 +1,32 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Header } from "@/components";
-import { getSettings, updateSetting, type Settings } from "@/lib/settings";
+import { useSettings } from "@/contexts/SettingsContext";
+import { THEMES } from "@/lib/theme";
 
 export default function SettingsPage() {
-  const [settings, setSettings] = useState<Settings>(() => {
-    if (typeof window !== "undefined") {
-      return getSettings();
-    }
-    return { disableLocalData: false };
-  });
+  const { settings, updateSetting } = useSettings();
 
-  const handleToggle = (key: keyof Settings, value: boolean) => {
-    const updated = updateSetting(key, value);
-    setSettings(updated);
+  const handleColorChange = (colorId: string) => {
+    updateSetting("accentColor", colorId);
   };
 
   return (
     <div className="min-h-screen bg-bg-primary">
       <Header breadcrumbs={[{ label: "Settings", href: "/settings" }]} />
-      
+
       <main className="mx-auto max-w-4xl px-6 py-8">
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="mb-10"
+          className="mb-8"
         >
-          <h1 className="text-display mb-3 text-text-primary">Settings</h1>
-          <p className="text-lg text-text-tertiary">
-            Configure data sources and API behavior for testing
+          <h1 className="text-headline mb-2 text-text-primary">Settings</h1>
+          <p className="text-text-tertiary">
+            Configure visual preferences and application behavior
           </p>
         </motion.section>
 
@@ -40,51 +34,100 @@ export default function SettingsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="card p-6"
+          className="card p-5"
         >
-          <h2 className="mb-4 text-xl font-semibold text-text-primary">Data Sources</h2>
-          
+          <h2 className="mb-3 text-lg font-semibold text-text-primary">Appearance</h2>
+
           <div className="space-y-6">
-            <div className="flex items-start justify-between gap-4 border-b border-border-light pb-6">
-              <div className="flex-1">
-                <h3 className="mb-1 font-medium text-text-primary">Disable Local JSON Data</h3>
-                <p className="text-sm text-text-tertiary">
-                  When enabled, the app will only use API data and won&apos;t fallback to local JSON files.
-                  Use this to test your API integration without local data interference.
-                </p>
+
+            {/* Accent Color */}
+            <div className="rounded-lg bg-bg-secondary p-3">
+              <h3 className="mb-3 text-sm font-medium text-text-primary">Accent Color</h3>
+              <div className="flex flex-wrap items-center gap-3">
+                {THEMES.map((theme) => {
+                  const isSelected = settings.accentColor === theme.id;
+                  return (
+                    <button
+                      key={theme.id}
+                      onClick={() => handleColorChange(theme.id)}
+                      title={theme.label}
+                      className={`group relative flex h-9 w-9 items-center justify-center rounded-full transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 ${isSelected ? "ring-2 ring-text-primary ring-offset-2" : ""
+                        }`}
+                      style={{ backgroundColor: theme.colors.secondary }}
+                    >
+                      {isSelected && (
+                        <motion.div
+                          layoutId="check"
+                          className="h-3.5 w-3.5 rounded-full border-[1.5px] border-white bg-transparent"
+                        />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
-              <button
-                onClick={() => handleToggle("disableLocalData", !settings.disableLocalData)}
-                className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 ${
-                  settings.disableLocalData ? "bg-accent-primary" : "bg-bg-tertiary"
-                }`}
-                role="switch"
-                aria-checked={settings.disableLocalData}
-              >
-                <span
-                  className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                    settings.disableLocalData ? "translate-x-5" : "translate-x-0"
-                  }`}
-                />
-              </button>
             </div>
 
-            <div className="rounded-lg bg-bg-secondary p-4">
-              <h4 className="mb-2 text-sm font-medium text-text-primary">Current Status</h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center justify-between">
-                  <span className="text-text-tertiary">Local JSON fallback:</span>
-                  <span className={`font-medium ${settings.disableLocalData ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}>
-                    {settings.disableLocalData ? "Disabled" : "Enabled"}
-                  </span>
+            {/* Units & Formats */}
+            <div className="grid gap-4 sm:grid-cols-2">
+
+              {/* Distance */}
+              <div className="rounded-lg bg-bg-secondary p-3">
+                <h3 className="mb-3 text-sm font-medium text-text-primary">Distance Unit</h3>
+                <div className="flex rounded-md bg-bg-tertiary p-1">
+                  {(["km", "miles"] as const).map((unit) => (
+                    <button
+                      key={unit}
+                      onClick={() => updateSetting("distanceUnit", unit)}
+                      className={`flex-1 rounded py-1.5 text-sm font-medium transition-all ${settings.distanceUnit === unit
+                          ? "bg-bg-primary text-text-primary shadow-sm"
+                          : "text-text-muted hover:text-text-secondary"
+                        }`}
+                    >
+                      {unit === "km" ? "Kilometers" : "Miles"}
+                    </button>
+                  ))}
                 </div>
-                {settings.disableLocalData && (
-                  <p className="mt-3 text-xs text-text-muted">
-                    ⚠️ API-only mode: If API requests fail, no data will be shown.
-                  </p>
-                )}
+              </div>
+
+              {/* Number Format */}
+              <div className="rounded-lg bg-bg-secondary p-3">
+                <h3 className="mb-3 text-sm font-medium text-text-primary">Number System</h3>
+                <div className="flex rounded-md bg-bg-tertiary p-1">
+                  {(["indian", "international"] as const).map((format) => (
+                    <button
+                      key={format}
+                      onClick={() => updateSetting("numberFormat", format)}
+                      className={`flex-1 rounded py-1.5 text-sm font-medium transition-all ${settings.numberFormat === format
+                          ? "bg-bg-primary text-text-primary shadow-sm"
+                          : "text-text-muted hover:text-text-secondary"
+                        }`}
+                    >
+                      {format === "indian" ? "Lakh / Crore" : "Million / Billion"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Currency */}
+              <div className="rounded-lg bg-bg-secondary p-3">
+                <h3 className="mb-3 text-sm font-medium text-text-primary">Currency</h3>
+                <div className="flex rounded-md bg-bg-tertiary p-1">
+                  {(["INR", "USD"] as const).map((curr) => (
+                    <button
+                      key={curr}
+                      onClick={() => updateSetting("currency", curr)}
+                      className={`flex-1 rounded py-1.5 text-sm font-medium transition-all ${settings.currency === curr
+                          ? "bg-bg-primary text-text-primary shadow-sm"
+                          : "text-text-muted hover:text-text-secondary"
+                        }`}
+                    >
+                      {curr === "INR" ? "Rupee (₹)" : "Dollar ($)"}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
+
           </div>
         </motion.section>
 
@@ -120,4 +163,3 @@ export default function SettingsPage() {
     </div>
   );
 }
-

@@ -3,24 +3,28 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Header, MetricCard, IndiaMap, MetricSelector } from "@/components";
-import { states, india, formatPopulation, formatNumber } from "@/data/india";
+import { states, india } from "@/data/india";
+import { useFormat } from "@/hooks/useFormat";
 import type { State } from "@/types";
 
-type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density">;
+type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area">;
 type SortOrder = "desc" | "asc" | "alpha";
-
-const rankingMetrics: { key: MetricKey; label: string; format: (s: State) => string }[] = [
-  { key: "population", label: "Population", format: (s) => formatPopulation(s.population) },
-  { key: "gdp", label: "GDP", format: (s) => formatNumber(s.gdp) + " Cr" },
-  { key: "literacyRate", label: "Literacy", format: (s) => s.literacyRate + "%" },
-  { key: "hdi", label: "HDI", format: (s) => s.hdi.toFixed(3) },
-  { key: "density", label: "Density", format: (s) => s.density.toLocaleString() + "/km²" },
-];
 
 export default function Home() {
   const [mapMetric, setMapMetric] = useState<MetricKey>("population");
   const [rankingMetric, setRankingMetric] = useState<MetricKey>("population");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
+  const { formatPopulation, formatCurrency, formatDensity, formatArea } = useFormat();
+
+  const rankingMetrics: { key: MetricKey; label: string; format: (s: State) => string }[] = useMemo(() => [
+    { key: "population", label: "Population", format: (s) => formatPopulation(s.population) },
+    { key: "gdp", label: "GDP", format: (s) => formatCurrency(s.gdp * 10000000) }, // gdp in crores * 1cr = INR
+    { key: "literacyRate", label: "Literacy", format: (s) => s.literacyRate + "%" },
+    { key: "hdi", label: "HDI", format: (s) => s.hdi.toFixed(3) },
+    { key: "density", label: "Density", format: (s) => formatDensity(s.density) },
+    { key: "sexRatio", label: "Sex Ratio", format: (s) => s.sexRatio.toString() },
+    { key: "area", label: "Area", format: (s) => formatArea(s.area) },
+  ], [formatPopulation, formatCurrency, formatDensity, formatArea]);
 
   const totalStates = states.length;
   const totalCities = states.reduce((sum, s) => sum + s.cities.length, 0);
@@ -28,7 +32,7 @@ export default function Home() {
   const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
 
   const currentRankingConfig = rankingMetrics.find((m) => m.key === rankingMetric)!;
-  
+
   const rankedStates = useMemo(() => {
     const sorted = [...states];
     if (sortOrder === "alpha") {
@@ -39,7 +43,7 @@ export default function Home() {
       return sorted.sort((a, b) => b[rankingMetric] - a[rankingMetric]);
     }
   }, [rankingMetric, sortOrder]);
-  
+
   const maxValue = Math.max(...states.map((s) => s[rankingMetric]));
 
   return (
@@ -123,11 +127,10 @@ export default function Home() {
                   <button
                     key={m.key}
                     onClick={() => setRankingMetric(m.key)}
-                    className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                      rankingMetric === m.key
-                        ? "bg-bg-card text-text-primary shadow-sm"
-                        : "text-text-muted hover:text-text-secondary"
-                    }`}
+                    className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all ${rankingMetric === m.key
+                      ? "bg-bg-card text-text-primary shadow-sm"
+                      : "text-text-muted hover:text-text-secondary"
+                      }`}
                   >
                     {m.label}
                   </button>
@@ -138,9 +141,8 @@ export default function Home() {
                 <button
                   onClick={() => setSortOrder("desc")}
                   title="Highest first"
-                  className={`rounded-lg p-2 transition-colors ${
-                    sortOrder === "desc" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
-                  }`}
+                  className={`rounded-lg p-2 transition-colors ${sortOrder === "desc" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
+                    }`}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 5v14M5 12l7 7 7-7" />
@@ -149,9 +151,8 @@ export default function Home() {
                 <button
                   onClick={() => setSortOrder("asc")}
                   title="Lowest first"
-                  className={`rounded-lg p-2 transition-colors ${
-                    sortOrder === "asc" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
-                  }`}
+                  className={`rounded-lg p-2 transition-colors ${sortOrder === "asc" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
+                    }`}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 19V5M5 12l7-7 7 7" />
@@ -160,9 +161,8 @@ export default function Home() {
                 <button
                   onClick={() => setSortOrder("alpha")}
                   title="Alphabetical"
-                  className={`rounded-lg px-2 py-1 text-xs font-bold transition-colors ${
-                    sortOrder === "alpha" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
-                  }`}
+                  className={`rounded-lg px-2 py-1 text-xs font-bold transition-colors ${sortOrder === "alpha" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
+                    }`}
                 >
                   A-Z
                 </button>
@@ -183,7 +183,7 @@ export default function Home() {
               </span>
               <span className="text-xs text-text-muted">{rankedStates.length} regions</span>
             </div>
-            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-3">
+            <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 space-y-4">
               {rankedStates.map((state, i) => (
                 <motion.a
                   key={state.id}
@@ -191,23 +191,23 @@ export default function Home() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.15, delay: Math.min(i * 0.02, 0.5) }}
-                  className="group relative block"
+                  className="group relative block break-inside-avoid rounded-xl border border-border-light bg-bg-secondary/30 p-3 hover:bg-bg-secondary overflow-hidden"
                 >
-                  <div className="flex items-center justify-between py-2">
+                  <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="w-7 text-center text-sm font-semibold text-text-muted">{i + 1}</span>
+                      <span className="w-6 text-right text-sm font-semibold text-text-muted">{i + 1}</span>
                       <span className="text-sm font-medium text-text-primary group-hover:text-accent-primary transition-colors">
                         {state.name}
                       </span>
                     </div>
                     <span className="font-mono text-xs text-text-secondary">{currentRankingConfig.format(state)}</span>
                   </div>
-                  <div className="absolute bottom-0 left-10 right-0 h-0.5 overflow-hidden rounded-full bg-bg-tertiary">
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bg-tertiary">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${(state[rankingMetric] / maxValue) * 100}%` }}
                       transition={{ duration: 0.4, delay: Math.min(i * 0.02, 0.5) }}
-                      className="h-full rounded-full bg-accent-primary/40"
+                      className="h-full bg-accent-primary/60"
                     />
                   </div>
                 </motion.a>

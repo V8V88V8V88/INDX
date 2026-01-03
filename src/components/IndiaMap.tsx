@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import * as d3 from "d3";
 import { states } from "@/data/india";
+import { useFormat } from "@/hooks/useFormat";
 import type { State } from "@/types";
 
 const stateNameToCode: Record<string, string> = {
@@ -49,7 +50,7 @@ const stateNameToCode: Record<string, string> = {
 interface IndiaMapProps {
   selectedState?: string | null;
   onStateSelect?: (stateId: string | null) => void;
-  colorByMetric?: keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density">;
+  colorByMetric?: keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area">;
   interactive?: boolean;
 }
 
@@ -77,7 +78,8 @@ export function IndiaMap({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [transform, setTransform] = useState({ k: 1, x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown>>();
+  const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
+  const { formatPopulation, formatDensity } = useFormat();
 
   useEffect(() => {
     fetch("/india-states.json")
@@ -128,7 +130,23 @@ export function IndiaMap({
     const max = Math.max(...values);
     return (value: number) => {
       const t = (value - min) / (max - min);
-      const colors = ["#f5f5f4", "#d6d3d1", "#a8a29e", "#78716c", "#57534e"];
+
+      let colors = ["#f5f5f4", "#d6d3d1", "#a8a29e", "#78716c", "#57534e"]; // Default (Stone)
+
+      if (colorByMetric === "sexRatio") {
+        // Purple/Pink scale for Sex Ratio
+        colors = ["#fce7f3", "#fbcfe8", "#f472b6", "#db2777", "#be185d"];
+      } else if (colorByMetric === "area") {
+        // Teal scale for Area
+        colors = ["#ccfbf1", "#99f6e4", "#5eead4", "#2dd4bf", "#14b8a6"];
+      } else if (colorByMetric === "hdi" || colorByMetric === "literacyRate") {
+        // Blue scale for positive development indicators
+        colors = ["#dbeafe", "#bfdbfe", "#93c5fd", "#60a5fa", "#3b82f6"];
+      } else if (colorByMetric === "density" || colorByMetric === "population") {
+        // Warm/Orange scale for intensity metrics
+        colors = ["#ffe4e6", "#fecdd3", "#fda4af", "#fb7185", "#f43f5e"];
+      }
+
       const idx = Math.min(Math.floor(t * colors.length), colors.length - 1);
       return colors[idx];
     };
@@ -159,7 +177,7 @@ export function IndiaMap({
         ref={svgRef}
         viewBox="-80 -20 700 720"
         className="w-full h-auto touch-none"
-        style={{ 
+        style={{
           minHeight: isFullscreen ? "70vh" : "380px",
           maxHeight: isFullscreen ? "85vh" : "520px",
           cursor: "grab"
@@ -182,7 +200,7 @@ export function IndiaMap({
 
             const path = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
             const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
-            
+
             // microscopic UTs need visible markers
             const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
 
@@ -199,7 +217,7 @@ export function IndiaMap({
                   onMouseLeave={() => setHoveredState(null)}
                   onClick={() => interactive && stateCode && onStateSelect?.(stateCode)}
                 >
-                  </path>
+                </path>
                 {/* marker for tiny UTs */}
                 {isTinyUT && centroid[0] && centroid[1] && (
                   <circle
@@ -214,7 +232,7 @@ export function IndiaMap({
                     onMouseEnter={() => stateCode && setHoveredState(stateCode)}
                     onMouseLeave={() => setHoveredState(null)}
                   >
-                    </circle>
+                  </circle>
                 )}
               </g>
             );
@@ -247,7 +265,7 @@ export function IndiaMap({
             <div className="flex justify-between gap-4">
               <span className="text-text-muted">Population</span>
               <span className="font-mono text-text-secondary">
-                {(hoveredData.population / 10000000).toFixed(1)} Cr
+                {formatPopulation(hoveredData.population)}
               </span>
             </div>
             <div className="flex justify-between gap-4">
@@ -260,7 +278,7 @@ export function IndiaMap({
             </div>
             <div className="flex justify-between gap-4">
               <span className="text-text-muted">Density</span>
-              <span className="font-mono text-text-secondary">{hoveredData.density}/km²</span>
+              <span className="font-mono text-text-secondary">{formatDensity(hoveredData.density)}</span>
             </div>
           </div>
         </motion.div>

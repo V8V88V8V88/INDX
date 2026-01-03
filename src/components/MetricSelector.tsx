@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { State } from "@/types";
-
-type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density">;
+import type { State, MetricKey } from "@/types";
 
 const metrics: { key: MetricKey; label: string }[] = [
   { key: "population", label: "Population" },
@@ -27,9 +25,8 @@ export function MetricSelector({ selected, onSelect }: MetricSelectorProps) {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => onSelect(m.key)}
-          className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-            selected === m.key ? "text-text-primary" : "text-text-muted hover:text-text-secondary"
-          }`}
+          className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors ${selected === m.key ? "text-text-primary" : "text-text-muted hover:text-text-secondary"
+            }`}
         >
           {selected === m.key && (
             <motion.div

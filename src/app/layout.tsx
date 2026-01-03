@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],
 };
 
+import { ThemeInitializer } from "@/components/ThemeInitializer";
+import { SettingsProvider } from "@/contexts/SettingsContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,7 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased">
-        <QueryProvider>{children}</QueryProvider>
+        <ThemeInitializer />
+        <SettingsProvider>
+          <QueryProvider>{children}</QueryProvider>
+        </SettingsProvider>
       </body>
     </html>
   );

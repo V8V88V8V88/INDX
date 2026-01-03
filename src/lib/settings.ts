@@ -2,17 +2,30 @@
 
 const SETTINGS_KEY = "indx_settings";
 
+
+
+export type DistanceUnit = "km" | "miles";
+export type NumberFormat = "indian" | "international";
+export type Currency = "INR" | "USD";
+
 export interface Settings {
-  disableLocalData: boolean;
+  accentColor: string;
+  distanceUnit: DistanceUnit;
+  numberFormat: NumberFormat;
+  currency: Currency;
 }
 
 const defaultSettings: Settings = {
-  disableLocalData: false,
+  accentColor: "teal",
+  distanceUnit: "km",
+  numberFormat: "indian",
+  currency: "INR",
 };
+
 
 export function getSettings(): Settings {
   if (typeof window === "undefined") return defaultSettings;
-  
+
   try {
     const stored = localStorage.getItem(SETTINGS_KEY);
     if (stored) {
@@ -22,13 +35,13 @@ export function getSettings(): Settings {
   } catch {
     // Invalid JSON, use defaults
   }
-  
+
   return defaultSettings;
 }
 
 export function saveSettings(settings: Settings): void {
   if (typeof window === "undefined") return;
-  
+
   try {
     localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
   } catch {

@@ -7,7 +7,7 @@ export interface District {
   area: number; // sq km
   density: number;
   literacyRate: number;
-  sexRatio: number; // females per 1000 males
+  sexRatio: number; // females 
   headquarters?: string;
 }
 
@@ -21,11 +21,14 @@ export interface State {
   area: number; // sq km
   density: number; // per sq km
   literacyRate: number; // %
+  sexRatio: number; // females per 1000 males
   gdp: number; // crores INR
   hdi: number; // 0-1
   cities: City[];
   districts?: District[];
 }
+
+export type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area">;
 
 export interface City {
   id: string;
@@ -36,7 +39,7 @@ export interface City {
   area: number;
   isCapital: boolean;
   isMetro: boolean;
-  tier: 1 | 2 | 3;
+  tier: 1 | 1.5 | 2 | 2.5 | 3;
 }
 
 export interface Country {
