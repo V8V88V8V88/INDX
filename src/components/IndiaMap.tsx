@@ -79,7 +79,7 @@ export function IndiaMap({
   const [transform, setTransform] = useState({ k: 1, x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
-  const { formatPopulation, formatDensity } = useFormat();
+  const { formatPopulation, formatDensity, formatCurrency, formatArea } = useFormat();
 
   useEffect(() => {
     fetch("/india-states.json")
@@ -142,7 +142,7 @@ export function IndiaMap({
       } else if (colorByMetric === "hdi" || colorByMetric === "literacyRate") {
         // Blue scale for positive development indicators
         colors = ["#dbeafe", "#bfdbfe", "#93c5fd", "#60a5fa", "#3b82f6"];
-      } else if (colorByMetric === "density" || colorByMetric === "population") {
+      } else if (colorByMetric === "density" || colorByMetric === "population" || colorByMetric === "gdp") {
         // Warm/Orange scale for intensity metrics
         colors = ["#ffe4e6", "#fecdd3", "#fda4af", "#fb7185", "#f43f5e"];
       }
@@ -185,6 +185,7 @@ export function IndiaMap({
         onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
       >
         <g ref={gRef} transform={`translate(${transform.x}, ${transform.y}) scale(${transform.k})`}>
+          {/* Render paths first */}
           {geoData.features.map((feature, i) => {
             const stateName = feature.properties.ST_NM;
             const stateCode = getStateCode(stateName);
@@ -204,8 +205,8 @@ export function IndiaMap({
             // microscopic UTs need visible markers
             const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
 
-            const content = (
-              <g key={i}>
+            const pathContent = (
+              <g key={`path-${i}`}>
                 <path
                   d={path}
                   fill={fill}
@@ -239,50 +240,137 @@ export function IndiaMap({
 
             if (interactive && stateData) {
               return (
-                <Link key={i} href={`/state/${stateCode}`}>
-                  {content}
+                <Link key={`link-${i}`} href={`/state/${stateCode}`}>
+                  {pathContent}
                 </Link>
               );
             }
-            return content;
+            return pathContent;
+          })}
+          {/* Render text labels on top */}
+          {geoData.features.map((feature, i) => {
+            const stateName = feature.properties.ST_NM;
+            const stateCode = getStateCode(stateName);
+            const stateData = stateCode ? getStateData(stateCode) : null;
+            const isHovered = hoveredState === stateCode;
+            const isSelected = selectedState === stateCode;
+            const path = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
+            const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
+            const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
+
+            if (!centroid[0] || !centroid[1] || !stateData) return null;
+
+            // Adjust label position for overlapping states
+            let labelX = centroid[0];
+            let labelY = centroid[1];
+            const fontSize = Math.max(isTinyUT ? 8 : 10, (isTinyUT ? 10 : 12) / transform.k);
+
+            // Offset Chandigarh label to avoid overlap with Punjab
+            if (stateCode === "CH") {
+              labelY = centroid[1] - (10 / transform.k); // Move up slightly
+            }
+
+            // Split long name for Dadra and Nagar Haveli and Daman and Diu
+            if (stateCode === "DD") {
+              const lineHeight = fontSize * 1.2;
+              return (
+                <text
+                  key={`text-${i}`}
+                  x={labelX}
+                  y={labelY - lineHeight / 2}
+                  textAnchor="middle"
+                  dominantBaseline="hanging"
+                  className="pointer-events-none select-none"
+                  stroke="white"
+                  strokeWidth="3"
+                  strokeOpacity="0.8"
+                  fill="#000000"
+                  style={{
+                    fontSize: `${fontSize}px`,
+                    fontWeight: isHovered || isSelected ? "600" : "500",
+                    opacity: isHovered || isSelected ? 1 : 0.9,
+                    paintOrder: "stroke fill",
+                  }}
+                >
+                  <tspan x={labelX} dy="0" stroke="white" strokeWidth="3" strokeOpacity="0.8" fill="#000000" style={{ paintOrder: "stroke fill" }}>Dadra & Nagar Haveli</tspan>
+                  <tspan x={labelX} dy={lineHeight} stroke="white" strokeWidth="3" strokeOpacity="0.8" fill="#000000" style={{ paintOrder: "stroke fill" }}>& Daman & Diu</tspan>
+                </text>
+              );
+            }
+
+            return (
+              <text
+                key={`text-${i}`}
+                x={labelX}
+                y={labelY}
+                textAnchor="middle"
+                dominantBaseline="central"
+                className="pointer-events-none select-none"
+                stroke="white"
+                strokeWidth="3"
+                strokeOpacity="0.8"
+                fill="#000000"
+                style={{
+                  fontSize: `${fontSize}px`,
+                  fontWeight: isHovered || isSelected ? "600" : "500",
+                  opacity: isHovered || isSelected ? 1 : 0.9,
+                  paintOrder: "stroke fill",
+                }}
+              >
+                {stateData.name}
+              </text>
+            );
           })}
         </g>
       </svg>
 
       {/* tooltip */}
-      {hoveredData && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          className="absolute bottom-4 left-4 z-10 rounded-xl border border-border-light bg-bg-card p-4 shadow-lg"
-        >
-          <h3 className="text-lg font-semibold text-text-primary">{hoveredData.name}</h3>
-          <p className="mb-2 text-sm text-text-tertiary">
-            {hoveredData.region} · {hoveredData.capital}
-          </p>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
-            <div className="flex justify-between gap-4">
-              <span className="text-text-muted">Population</span>
-              <span className="font-mono text-text-secondary">
-                {formatPopulation(hoveredData.population)}
-              </span>
+      {hoveredData && (() => {
+        const countryAvg = states.reduce((sum, s) => sum + s[colorByMetric], 0) / states.length;
+        const stateValue = hoveredData[colorByMetric];
+        
+        const formatValue = (value: number) => {
+          if (colorByMetric === "population") return formatPopulation(value);
+          if (colorByMetric === "density") return formatDensity(value);
+          if (colorByMetric === "gdp") return formatCurrency(value * 10000000);
+          if (colorByMetric === "literacyRate" || colorByMetric === "hdi") return value.toFixed(colorByMetric === "hdi" ? 3 : 1) + (colorByMetric === "literacyRate" ? "%" : "");
+          if (colorByMetric === "sexRatio") return value.toString();
+          if (colorByMetric === "area") return formatArea(value);
+          return value.toString();
+        };
+
+        const metricLabel = colorByMetric === "literacyRate" ? "Literacy Rate" : 
+                           colorByMetric === "sexRatio" ? "Sex Ratio" :
+                           colorByMetric.toUpperCase();
+
+        return (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="absolute bottom-4 left-4 z-10 rounded-xl border border-border-light bg-bg-card p-4 shadow-lg"
+          >
+            <h3 className="text-lg font-semibold text-text-primary">{hoveredData.name}</h3>
+            <p className="mb-3 text-sm text-text-tertiary">
+              {hoveredData.region} · {hoveredData.capital}
+            </p>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between gap-4">
+                <span className="text-text-muted">{metricLabel}</span>
+                <span className="font-mono font-semibold text-text-secondary">
+                  {formatValue(stateValue)}
+                </span>
+              </div>
+              <div className="flex justify-between gap-4">
+                <span className="text-text-muted">Country Average</span>
+                <span className="font-mono text-text-tertiary">
+                  {formatValue(countryAvg)}
+                </span>
+              </div>
             </div>
-            <div className="flex justify-between gap-4">
-              <span className="text-text-muted">Literacy</span>
-              <span className="font-mono text-text-secondary">{hoveredData.literacyRate}%</span>
-            </div>
-            <div className="flex justify-between gap-4">
-              <span className="text-text-muted">HDI</span>
-              <span className="font-mono text-text-secondary">{hoveredData.hdi.toFixed(3)}</span>
-            </div>
-            <div className="flex justify-between gap-4">
-              <span className="text-text-muted">Density</span>
-              <span className="font-mono text-text-secondary">{formatDensity(hoveredData.density)}</span>
-            </div>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        );
+      })()}
 
       {/* zoom controls */}
       <div className="absolute bottom-4 right-4 z-10 flex gap-2">

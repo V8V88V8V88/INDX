@@ -9,4 +9,5 @@ export { CityCard } from "./CityCard";
 export { StatComparison } from "./StatComparison";
 export { ThemeToggle } from "./ThemeToggle";
 export { DistrictList } from "./DistrictList";
+export { DistrictInfoCard } from "./DistrictInfoCard";
 

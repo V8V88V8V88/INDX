@@ -10,6 +10,21 @@ import type { State } from "@/types";
 type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area">;
 type SortOrder = "desc" | "asc" | "alpha";
 
+// Helper function to get color scale for legend (matches IndiaMap component)
+function getColorScale(metric: MetricKey): string[] {
+  if (metric === "sexRatio") {
+    return ["#fce7f3", "#fbcfe8", "#f472b6", "#db2777", "#be185d"];
+  } else if (metric === "area") {
+    return ["#ccfbf1", "#99f6e4", "#5eead4", "#2dd4bf", "#14b8a6"];
+  } else if (metric === "hdi" || metric === "literacyRate") {
+    return ["#dbeafe", "#bfdbfe", "#93c5fd", "#60a5fa", "#3b82f6"];
+  } else if (metric === "density" || metric === "population" || metric === "gdp") {
+    return ["#ffe4e6", "#fecdd3", "#fda4af", "#fb7185", "#f43f5e"];
+  }
+  // Default (Stone)
+  return ["#f5f5f4", "#d6d3d1", "#a8a29e", "#78716c", "#57534e"];
+}
+
 export default function Home() {
   const [mapMetric, setMapMetric] = useState<MetricKey>("population");
   const [rankingMetric, setRankingMetric] = useState<MetricKey>("population");
@@ -59,7 +74,7 @@ export default function Home() {
           className="mb-12"
         >
           <div className="mb-2 flex items-center gap-3">
-            <span className="rounded-full bg-accent-muted px-3 py-1 text-xs font-medium text-accent-primary">
+            <span className="rounded-full bg-accent-primary px-3 py-1 text-xs font-semibold text-white">
               2026 Data
             </span>
           </div>
@@ -100,7 +115,7 @@ export default function Home() {
             <div className="mt-6 flex items-center justify-center gap-2">
               <span className="text-xs text-text-muted">Low</span>
               <div className="flex">
-                {["#f5f5f4", "#d6d3d1", "#a8a29e", "#78716c", "#57534e"].map((color, i) => (
+                {getColorScale(mapMetric).map((color, i) => (
                   <div key={i} className="h-3 w-8" style={{ backgroundColor: color }} />
                 ))}
               </div>
@@ -111,6 +126,8 @@ export default function Home() {
                 {mapMetric === "literacyRate" && "Literacy Rate"}
                 {mapMetric === "hdi" && "HDI"}
                 {mapMetric === "density" && "Density"}
+                {mapMetric === "sexRatio" && "Sex Ratio"}
+                {mapMetric === "area" && "Area"}
               </span>
             </div>
           </motion.div>
@@ -270,13 +287,15 @@ export default function Home() {
             <p className="text-sm text-text-muted">Data visualization platform · Built for analytical exploration</p>
             <div className="flex flex-col items-end gap-1 sm:items-center">
               <p className="text-sm text-text-muted">© 2026 INDX</p>
-              <p className="text-sm text-text-muted">
-                Made with <span className="text-black dark:text-white">❤️</span> by{" "}
-                <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
-                  Vaibhav
-                </a>
-              </p>
             </div>
+          </div>
+          <div className="mt-4 flex justify-center">
+            <p className="text-sm text-text-muted">
+              Made with <span className="text-accent-primary">❤️</span> by{" "}
+              <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
+                Vaibhav
+              </a>
+            </p>
           </div>
         </footer>
       </main>

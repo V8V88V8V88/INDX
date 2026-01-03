@@ -69,13 +69,6 @@ export function Header({ breadcrumbs }: HeaderProps) {
               </svg>
             </motion.button>
           </Link>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="rounded-lg border border-border-light px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-bg-secondary"
-          >
-            Compare
-          </motion.button>
         </div>
       </div>
     </header>

@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,8 +9,10 @@ import { BarChart } from "@/components/BarChart";
 import { StatComparison } from "@/components/StatComparison";
 import { DistrictList } from "@/components/DistrictList";
 import { StateMap } from "@/components/StateMap";
+import { DistrictInfoCard } from "@/components/DistrictInfoCard";
 import { getStateById, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
+import { useDistricts } from "@/hooks/useDistricts";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -25,6 +27,39 @@ export default function StatePage({ params }: PageProps) {
   if (!state) {
     notFound();
   }
+  
+  const { data: districts } = useDistricts(state.id);
+  
+  // Function to normalize district names for matching
+  const normalizeDistrictName = (name: string): string => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/[’'".,()/]/g, "")
+      .replace(/&/g, "and");
+  };
+  
+  // Get district info from fetched districts data
+  const selectedDistrictInfo = useMemo(() => {
+    if (!selectedDistrict || !districts || districts.length === 0) return null;
+    
+    // Try exact match first
+    let match = districts.find(
+      (d) => normalizeDistrictName(d.name) === normalizeDistrictName(selectedDistrict)
+    );
+    
+    // If no exact match, try partial match (e.g., "North West" matches "North West Delhi")
+    if (!match) {
+      match = districts.find((d) => {
+        const geoName = normalizeDistrictName(selectedDistrict);
+        const districtName = normalizeDistrictName(d.name);
+        return districtName.includes(geoName) || geoName.includes(districtName);
+      });
+    }
+    
+    return match || null;
+  }, [selectedDistrict, districts]);
 
   // Calculate national averages
   const nationalAvgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
@@ -56,7 +91,7 @@ export default function StatePage({ params }: PageProps) {
           className="mb-8"
         >
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <span className="rounded-full bg-accent-muted px-3 py-1 text-xs font-medium text-accent-primary">
+            <span className="rounded-full bg-accent-primary/20 px-3 py-1 text-xs font-medium text-accent-primary">
               {state.region} India
             </span>
             <span className="rounded-full bg-bg-tertiary px-3 py-1 text-xs font-medium text-text-muted">
@@ -106,6 +141,15 @@ export default function StatePage({ params }: PageProps) {
                 delay={0.25}
               />
             </div>
+            
+            {/* District Info Card */}
+            {selectedDistrict && (
+              <DistrictInfoCard
+                district={selectedDistrictInfo}
+                districtName={selectedDistrict}
+                onClose={() => setSelectedDistrict(null)}
+              />
+            )}
           </div>
 
           {/* Right Column: Map - Now takes full column */}
@@ -123,11 +167,9 @@ export default function StatePage({ params }: PageProps) {
                   state={state} 
                   selectedDistrict={selectedDistrict}
                   onDistrictSelect={setSelectedDistrict}
+                  onDistrictClick={setSelectedDistrict}
                 />
               </div>
-              <p className="mt-2 text-xs text-text-tertiary">
-                Showing {state.districts?.length || 0} districts
-              </p>
             </motion.div>
           </div>
         </div>
@@ -301,13 +343,15 @@ export default function StatePage({ params }: PageProps) {
             </p>
             <div className="flex flex-col items-end gap-1 sm:items-center">
               <p className="text-sm text-text-muted">© 2026 INDX</p>
-              <p className="text-sm text-text-muted">
-                Made with <span className="text-black dark:text-white">❤️</span> by{" "}
-                <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
-                  Vaibhav
-                </a>
-              </p>
             </div>
+          </div>
+          <div className="mt-4 flex justify-center">
+            <p className="text-sm text-text-muted">
+              Made with <span className="text-accent-primary">❤️</span> by{" "}
+              <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
+                Vaibhav
+              </a>
+            </p>
           </div>
         </footer>
       </main>
