@@ -100,7 +100,13 @@ export default function StatePage({ params }: PageProps) {
           </div>
           <h1 className="text-display mb-3 text-text-primary">{state.name}</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
-            Capital: <span className="text-text-secondary">{state.capital}</span>
+            Capital:{" "}
+            <button
+              onClick={() => setSelectedDistrict(state.capital)}
+              className="text-text-secondary hover:text-accent-primary hover:underline transition-colors cursor-pointer"
+            >
+              {state.capital}
+            </button>
             {" · "}
             {state.cities.length} major cities tracked
             {" · "}
