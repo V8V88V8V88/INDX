@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import * as d3 from "d3";
 import type { State } from "@/types";
+import { useDistricts } from "@/hooks/useDistricts";
 
 interface StateMapProps {
   stateCode: string;
@@ -31,6 +32,7 @@ export function StateMap({ stateCode, state }: StateMapProps) {
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const { data: districts } = useDistricts(stateCode);
 
   useEffect(() => {
     let cancelled = false;
@@ -96,13 +98,36 @@ export function StateMap({ stateCode, state }: StateMapProps) {
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Get district info from state data if available
+  // Function to normalize district names for matching
+  const normalizeDistrictName = (name: string): string => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/[’'".,()/]/g, "")
+      .replace(/&/g, "and");
+  };
+
+  // Get district info from fetched districts data
   const selectedDistrictInfo = useMemo(() => {
-    if (!selectedDistrict || !state.districts) return null;
-    return state.districts.find(
-      (d) => d.name.toLowerCase() === selectedDistrict.toLowerCase()
+    if (!selectedDistrict || !districts || districts.length === 0) return null;
+    
+    // Try exact match first
+    let match = districts.find(
+      (d) => normalizeDistrictName(d.name) === normalizeDistrictName(selectedDistrict)
     );
-  }, [selectedDistrict, state.districts]);
+    
+    // If no exact match, try partial match (e.g., "North West" matches "North West Delhi")
+    if (!match) {
+      match = districts.find((d) => {
+        const geoName = normalizeDistrictName(selectedDistrict);
+        const districtName = normalizeDistrictName(d.name);
+        return districtName.includes(geoName) || geoName.includes(districtName);
+      });
+    }
+    
+    return match || null;
+  }, [selectedDistrict, districts]);
 
   // Format helper functions
   const formatPopulation = (pop: number) => {
@@ -135,7 +160,7 @@ export function StateMap({ stateCode, state }: StateMapProps) {
   const hoveredName = hoveredDistrict;
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" style={{ overflow: "visible" }}>
       <svg
         ref={svgRef}
         viewBox={mapData.viewBox}
@@ -201,86 +226,109 @@ export function StateMap({ stateCode, state }: StateMapProps) {
         </div>
       )}
 
-      {/* Selected District Info Panel */}
+      {/* Selected District Info Panel - Floating Card */}
       <AnimatePresence>
         {selectedDistrict && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3 }}
-            className="mt-4 rounded-xl bg-bg-card p-4 ring-1 ring-border-light"
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute top-4 right-4 z-50 max-w-sm rounded-2xl bg-bg-card shadow-2xl ring-1 ring-border-light/50 backdrop-blur-xl"
+            style={{ 
+              maxHeight: "calc(100vh - 12rem)",
+              width: "min(calc(100vw - 2rem), 28rem)",
+              maxWidth: "28rem"
+            }}
           >
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-accent-secondary" />
-                <h3 className="text-lg font-semibold text-text-primary">
-                  {selectedDistrict}
-                </h3>
+            <div className="overflow-hidden rounded-2xl">
+              {/* Header */}
+              <div className="flex items-center justify-between border-b border-border-light bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 px-5 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-2.5 w-2.5 rounded-full bg-accent-secondary shadow-lg shadow-accent-secondary/50" />
+                  <h3 className="text-lg font-bold text-text-primary">
+                    {selectedDistrictInfo?.name || selectedDistrict}
+                  </h3>
+                </div>
+                <button
+                  onClick={() => setSelectedDistrict(null)}
+                  className="rounded-lg p-1.5 text-text-muted hover:bg-bg-secondary hover:text-text-primary transition-all hover:scale-110"
+                  aria-label="Close"
+                >
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                    <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </button>
               </div>
-              <button
-                onClick={() => setSelectedDistrict(null)}
-                className="rounded-lg p-1.5 text-text-muted hover:bg-bg-secondary hover:text-text-primary transition-colors"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
 
-            {selectedDistrictInfo ? (
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-lg bg-bg-secondary p-3">
-                  <p className="text-xs text-text-muted mb-1">Population</p>
-                  <p className="text-xl font-bold text-text-primary">
-                    {formatPopulation(selectedDistrictInfo.population)}
-                  </p>
-                </div>
-                <div className="rounded-lg bg-bg-secondary p-3">
-                  <p className="text-xs text-text-muted mb-1">Area</p>
-                  <p className="text-xl font-bold text-text-primary">
-                    {formatArea(selectedDistrictInfo.area)} km²
-                  </p>
-                </div>
-                <div className="rounded-lg bg-bg-secondary p-3">
-                  <p className="text-xs text-text-muted mb-1">Density</p>
-                  <p className="text-xl font-bold text-text-primary">
-                    {selectedDistrictInfo.density.toLocaleString("en-IN")}/km²
-                  </p>
-                </div>
-                <div className="rounded-lg bg-bg-secondary p-3">
-                  <p className="text-xs text-text-muted mb-1">Literacy Rate</p>
-                  <p className="text-xl font-bold text-text-primary">
-                    {selectedDistrictInfo.literacyRate}%
-                  </p>
-                </div>
-                {selectedDistrictInfo.sexRatio && (
-                  <div className="rounded-lg bg-bg-secondary p-3">
-                    <p className="text-xs text-text-muted mb-1">Sex Ratio</p>
-                    <p className="text-xl font-bold text-text-primary">
-                      {selectedDistrictInfo.sexRatio}
-                    </p>
+              {/* Content */}
+              <div className="max-h-[500px] overflow-y-auto">
+                {selectedDistrictInfo ? (
+                  <div className="p-5">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="rounded-xl bg-gradient-to-br from-accent-primary/5 to-transparent p-4 border border-accent-primary/10">
+                        <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-2">Population</p>
+                        <p className="text-2xl font-bold text-text-primary">
+                          {formatPopulation(selectedDistrictInfo.population)}
+                        </p>
+                      </div>
+                      <div className="rounded-xl bg-gradient-to-br from-accent-secondary/5 to-transparent p-4 border border-accent-secondary/10">
+                        <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-2">Area</p>
+                        <p className="text-2xl font-bold text-text-primary">
+                          {formatArea(selectedDistrictInfo.area)}
+                        </p>
+                        <p className="text-xs text-text-tertiary mt-1">km²</p>
+                      </div>
+                      <div className="rounded-xl bg-bg-secondary/60 p-4 border border-border-light/50">
+                        <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-2">Density</p>
+                        <p className="text-xl font-bold text-text-primary">
+                          {selectedDistrictInfo.density.toLocaleString("en-IN")}
+                        </p>
+                        <p className="text-xs text-text-tertiary mt-1">per km²</p>
+                      </div>
+                      <div className="rounded-xl bg-bg-secondary/60 p-4 border border-border-light/50">
+                        <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-2">Literacy</p>
+                        <p className="text-xl font-bold text-text-primary">
+                          {selectedDistrictInfo.literacyRate}%
+                        </p>
+                      </div>
+                      {selectedDistrictInfo.sexRatio > 0 && (
+                        <div className="rounded-xl bg-bg-secondary/60 p-4 border border-border-light/50">
+                          <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-2">Sex Ratio</p>
+                          <p className="text-xl font-bold text-text-primary">
+                            {selectedDistrictInfo.sexRatio}
+                          </p>
+                        </div>
+                      )}
+                      {selectedDistrictInfo.headquarters && (
+                        <div className="rounded-xl bg-bg-secondary/60 p-4 border border-border-light/50 col-span-2">
+                          <p className="text-xs font-medium uppercase tracking-wider text-text-muted mb-2">Headquarters</p>
+                          <p className="text-lg font-semibold text-text-primary">
+                            {selectedDistrictInfo.headquarters}
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                )}
-                {selectedDistrictInfo.headquarters && (
-                  <div className="rounded-lg bg-bg-secondary p-3">
-                    <p className="text-xs text-text-muted mb-1">Headquarters</p>
-                    <p className="text-xl font-bold text-text-primary">
-                      {selectedDistrictInfo.headquarters}
+                ) : (
+                  <div className="p-8 text-center">
+                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-bg-secondary">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-text-muted">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 8V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 16H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <p className="text-text-muted font-medium mb-1">
+                      Data loading...
+                    </p>
+                    <p className="text-text-tertiary text-sm">
+                      Fetching district information
                     </p>
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="rounded-lg bg-bg-secondary p-4 text-center">
-                <p className="text-text-muted text-sm">
-                  Detailed district data not available yet for {selectedDistrict}
-                </p>
-                <p className="text-text-tertiary text-xs mt-1">
-                  District in {state.name}
-                </p>
-              </div>
-            )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

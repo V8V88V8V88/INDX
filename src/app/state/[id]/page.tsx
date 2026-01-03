@@ -114,8 +114,9 @@ export default function StatePage({ params }: PageProps) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col items-center justify-center"
+              style={{ overflow: "visible" }}
             >
-              <div className="w-full" style={{ minHeight: "500px" }}>
+              <div className="w-full" style={{ minHeight: "500px", overflow: "visible" }}>
                 <StateMap stateCode={state.id} state={state} />
               </div>
               <p className="mt-2 text-xs text-text-tertiary">
