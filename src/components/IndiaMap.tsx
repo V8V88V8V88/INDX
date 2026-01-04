@@ -135,10 +135,23 @@ export function IndiaMap({
   }, []);
 
   const colorScale = useMemo(() => {
-    const values = states.map((s) => s[colorByMetric]);
+    const values = states
+      .map((s) => {
+        const val = s[colorByMetric];
+        return val;
+      })
+      .filter((v) => v != null) as number[];
+    
+    if (values.length === 0) {
+      return () => "var(--accent-primary)";
+    }
+    
     const min = Math.min(...values);
     const max = Math.max(...values);
-    return (value: number) => {
+    
+    return (value: number | undefined) => {
+      if (value == null) return "var(--accent-primary)";
+      
       const t = (value - min) / (max - min);
 
       let colors = ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"]; // Default dynamic scale
@@ -224,7 +237,10 @@ export function IndiaMap({
             const isSelected = selectedState === stateCode;
 
             let fill = "var(--accent-primary)";
-            if (stateData) fill = colorScale(stateData[colorByMetric]);
+            if (stateData) {
+              const metricValue = stateData[colorByMetric];
+              fill = colorScale(metricValue);
+            }
             if (isSelected) fill = "var(--accent-secondary)";
             if (isHovered) fill = "var(--accent-secondary)";
 
@@ -233,7 +249,7 @@ export function IndiaMap({
                 <path
                   d={pathString}
                   fill={fill}
-                  stroke="var(--bg-card)"
+                  stroke="var(--map-border-color)"
                   strokeWidth={(isHovered || isSelected ? 1.5 : 0.75) / transform.k}
                   style={{ cursor: interactive && stateCode ? "pointer" : "default", willChange: "fill" }}
                   onMouseEnter={() => stateCode && setHoveredState(stateCode)}
@@ -339,8 +355,11 @@ export function IndiaMap({
 
       {/* tooltip */}
       {hoveredData && (() => {
-        const countryAvg = states.reduce((sum, s) => sum + s[colorByMetric], 0) / states.length;
-        const stateValue = hoveredData[colorByMetric];
+        const countryAvg = states.reduce((sum, s) => {
+          const val = s[colorByMetric];
+          return sum + (val ?? 0);
+        }, 0) / states.length;
+        const stateValue = hoveredData[colorByMetric] ?? 0;
 
         const formatValue = (value: number) => {
           if (colorByMetric === "population") return formatPopulation(value);

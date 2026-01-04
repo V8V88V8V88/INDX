@@ -54,13 +54,24 @@ export default function Home() {
     if (sortOrder === "alpha") {
       return sorted.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortOrder === "asc") {
-      return sorted.sort((a, b) => a[rankingMetric] - b[rankingMetric]);
+      return sorted.sort((a, b) => {
+        const aVal = a[rankingMetric] ?? 0;
+        const bVal = b[rankingMetric] ?? 0;
+        return aVal - bVal;
+      });
     } else {
-      return sorted.sort((a, b) => b[rankingMetric] - a[rankingMetric]);
+      return sorted.sort((a, b) => {
+        const aVal = a[rankingMetric] ?? 0;
+        const bVal = b[rankingMetric] ?? 0;
+        return bVal - aVal;
+      });
     }
   }, [rankingMetric, sortOrder]);
 
-  const maxValue = Math.max(...states.map((s) => s[rankingMetric]));
+  const maxValue = Math.max(...states.map((s) => {
+    const val = s[rankingMetric];
+    return val ?? 0;
+  }), 1); // Ensure at least 1 to avoid division by zero
 
   return (
     <div className="min-h-screen bg-bg-primary">
@@ -223,7 +234,7 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bg-tertiary">
                     <motion.div
                       initial={{ width: 0 }}
-                      animate={{ width: `${(state[rankingMetric] / maxValue) * 100}%` }}
+                      animate={{ width: `${((state[rankingMetric] ?? 0) / maxValue) * 100}%` }}
                       transition={{ duration: 0.4, delay: Math.min(i * 0.02, 0.5) }}
                       className="h-full bg-accent-primary/60"
                     />

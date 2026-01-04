@@ -166,7 +166,7 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
               }}
               transition={{ duration: 0.15, ease: "easeOut" }}
               d={district.d}
-              stroke="var(--bg-card)"
+              stroke="var(--map-border-color)"
               className={`cursor-pointer transition-all duration-150`}
               style={{
                 filter: isSelected ? "url(#selectedGlow)" : isHovered ? "url(#glow)" : "none",

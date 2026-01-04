@@ -27,13 +27,13 @@ export default function StatePage({ params }: PageProps) {
   if (!state) {
     notFound();
   }
-  
+
   const { data: districts } = useDistricts(state.id);
-  
+
   const capitalToDistrictMap: Record<string, string> = {
     "Itanagar": "Papum Pare",
   };
-  
+
   const normalizeDistrictName = (name: string): string => {
     return name
       .toLowerCase()
@@ -42,13 +42,13 @@ export default function StatePage({ params }: PageProps) {
       .replace(/[’'".,()/]/g, "")
       .replace(/&/g, "and");
   };
-  
+
   useEffect(() => {
     let lastHash = window.location.hash;
-    
+
     const processHash = () => {
       const hash = window.location.hash.slice(1);
-      
+
       if (!hash) {
         setSelectedDistrict(null);
         return;
@@ -67,9 +67,9 @@ export default function StatePage({ params }: PageProps) {
           const normalizedHash = normalizeDistrictName(districtName);
           const match = districts.find((d) => {
             const normalizedDistrict = normalizeDistrictName(d.name);
-            return normalizedDistrict === normalizedHash || 
-                   normalizedDistrict.includes(normalizedHash) || 
-                   normalizedHash.includes(normalizedDistrict);
+            return normalizedDistrict === normalizedHash ||
+              normalizedDistrict.includes(normalizedHash) ||
+              normalizedHash.includes(normalizedDistrict);
           });
           if (match) {
             setSelectedDistrict(match.name);
@@ -87,7 +87,7 @@ export default function StatePage({ params }: PageProps) {
       lastHash = window.location.hash;
     };
     window.addEventListener("hashchange", handleHashChange);
-    
+
     const handleFocus = () => processHash();
     window.addEventListener("focus", handleFocus);
 
@@ -121,14 +121,14 @@ export default function StatePage({ params }: PageProps) {
 
     return () => clearTimeout(timeoutId);
   }, [selectedDistrict]);
-  
+
   const selectedDistrictInfo = useMemo(() => {
     if (!selectedDistrict || !districts || districts.length === 0) return null;
-    
+
     let match = districts.find(
       (d) => normalizeDistrictName(d.name) === normalizeDistrictName(selectedDistrict)
     );
-    
+
     if (!match) {
       match = districts.find((d) => {
         const geoName = normalizeDistrictName(selectedDistrict);
@@ -136,7 +136,7 @@ export default function StatePage({ params }: PageProps) {
         return districtName.includes(geoName) || geoName.includes(districtName);
       });
     }
-    
+
     return match || null;
   }, [selectedDistrict, districts]);
 
@@ -253,7 +253,7 @@ export default function StatePage({ params }: PageProps) {
                 delay={0.25}
               />
             </div>
-            
+
             {/* District Info Card */}
             {selectedDistrict && (
               <DistrictInfoCard
@@ -274,9 +274,9 @@ export default function StatePage({ params }: PageProps) {
               style={{ overflow: "visible" }}
             >
               <div className="w-full" style={{ minHeight: "500px", overflow: "visible" }}>
-                <StateMap 
-                  stateCode={state.id} 
-                  state={state} 
+                <StateMap
+                  stateCode={state.id}
+                  state={state}
                   selectedDistrict={selectedDistrict}
                   onDistrictSelect={setSelectedDistrict}
                   onDistrictClick={setSelectedDistrict}
@@ -403,9 +403,9 @@ export default function StatePage({ params }: PageProps) {
               <span>{state.cities.length} major cities</span>
             </div>
           </div>
-          <DistrictList 
-            stateCode={state.id} 
-            stateName={state.name} 
+          <DistrictList
+            stateCode={state.id}
+            stateName={state.name}
             cities={state.cities}
             selectedDistrict={selectedDistrict}
             onDistrictSelect={setSelectedDistrict}

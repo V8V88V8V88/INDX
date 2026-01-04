@@ -17,6 +17,7 @@
   --accent-muted: #ccfbf1;
   --accent-dark: #115e59;
   --map-border: var(--accent-dark);
+  --map-border-color: #000000;
 
   /* choropleth scale - dynamically based on accent-primary */
   --choro-0: color-mix(in srgb, var(--accent-primary) 5%, var(--bg-card));
@@ -60,6 +61,7 @@
   --accent-dark: #0f766e;
   /* Use a more subtle color for general map-related borders in dark mode */
   --map-border: var(--border-light);
+  --map-border-color: #d6d3d1;
 
   --choro-0: color-mix(in srgb, var(--accent-primary) 10%, var(--bg-card));
   --choro-1: color-mix(in srgb, var(--accent-primary) 20%, var(--bg-card));
