@@ -413,15 +413,9 @@ export default function StatePage({ params }: PageProps) {
 
         {/* Footer */}
         <footer className="mt-12 border-t border-border-light py-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-primary">
-                <span className="text-xs font-bold text-white">IX</span>
-              </div>
-              <span className="font-semibold text-text-primary">INDX</span>
-            </div>
-            <p className="text-sm text-text-muted">
-              Data visualization platform · Built for analytical exploration
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-sm text-text-muted text-center">
+              Maps, data, and everything in between
             </p>
             <div className="flex items-center gap-2">
               <p className="text-sm text-text-muted">© 2026 INDX</p>
@@ -430,9 +424,7 @@ export default function StatePage({ params }: PageProps) {
                 About
               </Link>
             </div>
-          </div>
-          <div className="mt-4 flex flex-col items-center gap-3">
-            <p className="text-sm text-text-muted">
+            <p className="text-sm text-text-muted text-center">
               Made with <span className="text-accent-primary">❤️</span> by{" "}
               <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
                 Vaibhav Pratap Singh
