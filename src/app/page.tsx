@@ -14,16 +14,16 @@ type SortOrder = "desc" | "asc" | "alpha";
 // Helper function to get color scale for legend (matches IndiaMap component)
 function getColorScale(metric: MetricKey): string[] {
   if (metric === "sexRatio") {
-    return ["#fce7f3", "#fbcfe8", "#f472b6", "#db2777", "#be185d"];
+    return ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
   } else if (metric === "area") {
-    return ["#ccfbf1", "#99f6e4", "#5eead4", "#2dd4bf", "#14b8a6"];
+    return ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"];
   } else if (metric === "hdi" || metric === "literacyRate") {
-    return ["#dbeafe", "#bfdbfe", "#93c5fd", "#60a5fa", "#3b82f6"];
+    return ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
   } else if (metric === "density" || metric === "population" || metric === "gdp") {
-    return ["#ffe4e6", "#fecdd3", "#fda4af", "#fb7185", "#f43f5e"];
+    return ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
   }
-  // Default (Stone)
-  return ["#f5f5f4", "#d6d3d1", "#a8a29e", "#78716c", "#57534e"];
+  // Default dynamic scale
+  return ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"];
 }
 
 export default function Home() {

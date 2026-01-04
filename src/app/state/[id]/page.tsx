@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useMemo, useEffect } from "react";
+import { use, useState, useMemo, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -30,7 +30,10 @@ export default function StatePage({ params }: PageProps) {
   
   const { data: districts } = useDistricts(state.id);
   
-  // Function to normalize district names for matching
+  const capitalToDistrictMap: Record<string, string> = {
+    "Itanagar": "Papum Pare",
+  };
+  
   const normalizeDistrictName = (name: string): string => {
     return name
       .toLowerCase()
@@ -40,17 +43,17 @@ export default function StatePage({ params }: PageProps) {
       .replace(/&/g, "and");
   };
   
-  // Handle hash fragments from URL (e.g., #city-VIS, #district-Name)
   useEffect(() => {
+    let lastHash = window.location.hash;
+    
     const processHash = () => {
-      const hash = window.location.hash.slice(1); // Remove the '#'
+      const hash = window.location.hash.slice(1);
       
       if (!hash) {
         setSelectedDistrict(null);
         return;
       }
 
-      // Handle city hash (#city-ID)
       if (hash.startsWith("city-")) {
         const cityId = hash.replace("city-", "");
         const city = state.cities.find((c) => c.id === cityId);
@@ -58,10 +61,8 @@ export default function StatePage({ params }: PageProps) {
           setSelectedDistrict(city.name);
         }
       }
-      // Handle district hash (#district-Name)
       else if (hash.startsWith("district-")) {
         const districtName = decodeURIComponent(hash.replace("district-", ""));
-        // Try to find matching district using normalized names
         if (districts && districts.length > 0) {
           const normalizedHash = normalizeDistrictName(districtName);
           const match = districts.find((d) => {
@@ -73,39 +74,44 @@ export default function StatePage({ params }: PageProps) {
           if (match) {
             setSelectedDistrict(match.name);
           } else {
-            // Fallback to the hash name if no match found
             setSelectedDistrict(districtName);
           }
         }
-        // If districts not loaded yet, don't set anything - will retry when districts load
       }
     };
 
-    // Process hash immediately (cities work immediately, districts need data)
     processHash();
 
-    // Listen for hash changes (for same-page navigation)
-    const handleHashChange = () => processHash();
+    const handleHashChange = () => {
+      processHash();
+      lastHash = window.location.hash;
+    };
     window.addEventListener("hashchange", handleHashChange);
     
-    // Also check hash on focus (for programmatic hash changes)
     const handleFocus = () => processHash();
     window.addEventListener("focus", handleFocus);
+
+    const intervalId = setInterval(() => {
+      const currentHash = window.location.hash;
+      if (currentHash !== lastHash) {
+        lastHash = currentHash;
+        processHash();
+      }
+    }, 50);
 
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
       window.removeEventListener("focus", handleFocus);
+      clearInterval(intervalId);
     };
   }, [state.cities, districts]);
 
-  // Scroll to map section when district is selected from hash
   useEffect(() => {
     if (!selectedDistrict || !window.location.hash) return;
 
     const hash = window.location.hash.slice(1);
     if (!hash.startsWith("city-") && !hash.startsWith("district-")) return;
 
-    // Scroll to map section (not districts) since user clicked from search
     const timeoutId = setTimeout(() => {
       const mapElement = document.getElementById("state-map");
       if (mapElement) {
@@ -116,16 +122,13 @@ export default function StatePage({ params }: PageProps) {
     return () => clearTimeout(timeoutId);
   }, [selectedDistrict]);
   
-  // Get district info from fetched districts data
   const selectedDistrictInfo = useMemo(() => {
     if (!selectedDistrict || !districts || districts.length === 0) return null;
     
-    // Try exact match first
     let match = districts.find(
       (d) => normalizeDistrictName(d.name) === normalizeDistrictName(selectedDistrict)
     );
     
-    // If no exact match, try partial match (e.g., "North West" matches "North West Delhi")
     if (!match) {
       match = districts.find((d) => {
         const geoName = normalizeDistrictName(selectedDistrict);
@@ -137,19 +140,16 @@ export default function StatePage({ params }: PageProps) {
     return match || null;
   }, [selectedDistrict, districts]);
 
-  // Calculate national averages
   const nationalAvgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
   const nationalAvgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
   const nationalAvgDensity = states.reduce((sum, s) => sum + s.density, 0) / states.length;
   const nationalAvgGDP = states.reduce((sum, s) => sum + s.gdp, 0) / states.length;
 
-  // State rank calculations
   const populationRank = states.filter((s) => s.population > state.population).length + 1;
   const gdpRank = states.filter((s) => s.gdp > state.gdp).length + 1;
   const literacyRank = states.filter((s) => s.literacyRate > state.literacyRate).length + 1;
   const hdiRank = states.filter((s) => s.hdi > state.hdi).length + 1;
 
-  // City data for charts
   const citiesByPopulation = [...state.cities].sort((a, b) => b.population - a.population);
 
   return (
@@ -178,7 +178,37 @@ export default function StatePage({ params }: PageProps) {
           <p className="max-w-2xl text-lg text-text-tertiary">
             Capital:{" "}
             <button
-              onClick={() => setSelectedDistrict(state.capital)}
+              onClick={() => {
+                const capital = state.capital;
+                if (districts && districts.length > 0) {
+                  const normalizedCapital = normalizeDistrictName(capital);
+                  let districtMatch = districts.find((d) => {
+                    const normalizedDistrict = normalizeDistrictName(d.name);
+                    return normalizedDistrict === normalizedCapital;
+                  });
+                  if (!districtMatch) {
+                    districtMatch = districts.find((d) => {
+                      const normalizedHq = normalizeDistrictName(d.headquarters || "");
+                      return normalizedHq === normalizedCapital;
+                    });
+                  }
+                  if (!districtMatch && capitalToDistrictMap[capital]) {
+                    const mappedDistrictName = capitalToDistrictMap[capital];
+                    districtMatch = districts.find((d) => {
+                      return normalizeDistrictName(d.name) === normalizeDistrictName(mappedDistrictName);
+                    });
+                  }
+                  if (districtMatch) {
+                    setSelectedDistrict(districtMatch.name);
+                  } else {
+                    setSelectedDistrict(capital);
+                  }
+                } else if (capitalToDistrictMap[capital]) {
+                  setSelectedDistrict(capitalToDistrictMap[capital]);
+                } else {
+                  setSelectedDistrict(capital);
+                }
+              }}
               className="text-text-secondary hover:text-accent-primary hover:underline transition-colors cursor-pointer"
             >
               {state.capital}

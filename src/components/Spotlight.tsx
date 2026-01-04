@@ -65,7 +65,6 @@ export function Spotlight() {
   const [districtsCache, setDistrictsCache] = useState<Map<string, District[]>>(new Map());
   const router = useRouter();
 
-  // Expose open function globally
   useEffect(() => {
     openSpotlightFn = () => setIsOpen(true);
     return () => {
@@ -73,7 +72,6 @@ export function Spotlight() {
     };
   }, []);
 
-  // Fetch districts for all states (cached)
   useEffect(() => {
     const fetchAllDistricts = async () => {
       const cache = new Map<string, District[]>();
@@ -81,10 +79,9 @@ export function Spotlight() {
         states.map(async (state) => {
           try {
             const districts = await fetchDistrictsFromAPI(state.id);
-            cache.set(state.id, districts);
-          } catch (error) {
-            // Ignore errors for individual states
-          }
+                  cache.set(state.id, districts);
+                } catch (error) {
+                }
         })
       );
       setDistrictsCache(cache);
@@ -92,7 +89,6 @@ export function Spotlight() {
     fetchAllDistricts();
   }, []);
 
-  // Keyboard shortcut: Cmd+K or Ctrl+K
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -131,9 +127,7 @@ export function Spotlight() {
       }
     }
 
-    // Search states
     states.forEach((state) => {
-      // Skip if already added via state code match
       if (stateCodeMatch && state.name === stateCodeMatch) return;
 
       if (state.name.toLowerCase().includes(searchTerm) || state.code.toLowerCase() === searchTerm) {
@@ -145,7 +139,6 @@ export function Spotlight() {
         });
       }
 
-      // Search cities within state
       state.cities.forEach((city) => {
         if (city.name.toLowerCase().includes(searchTerm)) {
           matches.push({
@@ -175,7 +168,6 @@ export function Spotlight() {
       });
     });
 
-    // Sort: states first, then cities, then districts, then alphabetically
     return matches.sort((a, b) => {
       const typeOrder = { state: 0, city: 1, district: 2 };
       if (a.type !== b.type) return typeOrder[a.type] - typeOrder[b.type];
@@ -183,12 +175,10 @@ export function Spotlight() {
     });
   }, [query, districtsCache]);
 
-  // Reset selected index when results change
   useEffect(() => {
     setSelectedIndex(0);
   }, [results]);
 
-  // Handle keyboard navigation
   useEffect(() => {
     if (!isOpen) return;
 
@@ -214,7 +204,6 @@ export function Spotlight() {
     setQuery("");
     setSelectedIndex(0);
     
-    // Navigate directly with the full path including hash
     router.push(result.path);
   };
 
@@ -381,7 +370,6 @@ export function Spotlight() {
   );
 }
 
-// Export function to open spotlight programmatically
 export function openSpotlight() {
   if (openSpotlightFn) {
     openSpotlightFn();

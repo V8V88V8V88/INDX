@@ -22,7 +22,6 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   const [sortBy, setSortBy] = useState<SortType>("population");
   const { data: districts, isLoading, error } = useDistricts(stateCode);
 
-  // Merge districts and cities
   const items = useMemo(() => {
     const districtList = districts || [];
     const cityNames = new Set(cities.map((c) => c.name.toLowerCase()));
@@ -188,7 +187,6 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
   const handleClick = () => {
     if (onSelect) {
       onSelect();
-      // Scroll to map
       const mapElement = document.getElementById("state-map");
       if (mapElement) {
         mapElement.scrollIntoView({ behavior: "smooth", block: "start" });

@@ -88,14 +88,12 @@ export function IndiaMap({
       .catch(console.error);
   }, []);
 
-  // setup zoom behavior
   useEffect(() => {
     if (!svgRef.current) return;
 
     const zoom = d3.zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.5, 8])
       .wheelDelta((event) => {
-        // Faster zoom - multiply wheel delta for more responsive zooming
         return -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 0.002) * 3;
       })
       .on("zoom", (event) => {
@@ -119,7 +117,6 @@ export function IndiaMap({
       .call(zoomRef.current.transform, d3.zoomIdentity);
   }, []);
 
-  // esc to exit fullscreen
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsFullscreen(false);
@@ -135,20 +132,20 @@ export function IndiaMap({
     return (value: number) => {
       const t = (value - min) / (max - min);
 
-      let colors = ["#f5f5f4", "#d6d3d1", "#a8a29e", "#78716c", "#57534e"]; // Default (Stone)
+      let colors = ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"]; // Default dynamic scale
 
       if (colorByMetric === "sexRatio") {
-        // Purple/Pink scale for Sex Ratio
-        colors = ["#fce7f3", "#fbcfe8", "#f472b6", "#db2777", "#be185d"];
+        // Use dynamic scale for Sex Ratio as well (follows theme)
+        colors = ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
       } else if (colorByMetric === "area") {
-        // Teal scale for Area
-        colors = ["#ccfbf1", "#99f6e4", "#5eead4", "#2dd4bf", "#14b8a6"];
+        // Dynamic scale for Area
+        colors = ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"];
       } else if (colorByMetric === "hdi" || colorByMetric === "literacyRate") {
-        // Blue scale for positive development indicators
-        colors = ["#dbeafe", "#bfdbfe", "#93c5fd", "#60a5fa", "#3b82f6"];
+        // Dynamic scale for positive development indicators
+        colors = ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
       } else if (colorByMetric === "density" || colorByMetric === "population" || colorByMetric === "gdp") {
-        // Warm/Orange scale for intensity metrics
-        colors = ["#ffe4e6", "#fecdd3", "#fda4af", "#fb7185", "#f43f5e"];
+        // Dynamic scale for intensity metrics
+        colors = ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
       }
 
       const idx = Math.min(Math.floor(t * colors.length), colors.length - 1);
@@ -198,9 +195,9 @@ export function IndiaMap({
             const isHovered = hoveredState === stateCode;
             const isSelected = selectedState === stateCode;
 
-            let fill = "#e7e5e4";
+            let fill = "var(--accent-primary)";
             if (stateData) fill = colorScale(stateData[colorByMetric]);
-            if (isSelected) fill = "var(--accent-primary)";
+            if (isSelected) fill = "var(--accent-secondary)";
             if (isHovered) fill = "var(--accent-secondary)";
 
             const path = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
@@ -264,17 +261,14 @@ export function IndiaMap({
 
             if (!centroid[0] || !centroid[1] || !stateData) return null;
 
-            // Adjust label position for overlapping states
             let labelX = centroid[0];
             let labelY = centroid[1];
             const fontSize = Math.max(isTinyUT ? 8 : 10, (isTinyUT ? 10 : 12) / transform.k);
 
-            // Offset Chandigarh label to avoid overlap with Punjab
             if (stateCode === "CH") {
-              labelY = centroid[1] - (10 / transform.k); // Move up slightly
+              labelY = centroid[1] - (10 / transform.k);
             }
 
-            // Split long name for Dadra and Nagar Haveli and Daman and Diu
             if (stateCode === "DD") {
               const lineHeight = fontSize * 1.2;
               return (
@@ -332,7 +326,7 @@ export function IndiaMap({
       {hoveredData && (() => {
         const countryAvg = states.reduce((sum, s) => sum + s[colorByMetric], 0) / states.length;
         const stateValue = hoveredData[colorByMetric];
-        
+
         const formatValue = (value: number) => {
           if (colorByMetric === "population") return formatPopulation(value);
           if (colorByMetric === "density") return formatDensity(value);
@@ -343,9 +337,9 @@ export function IndiaMap({
           return value.toString();
         };
 
-        const metricLabel = colorByMetric === "literacyRate" ? "Literacy Rate" : 
-                           colorByMetric === "sexRatio" ? "Sex Ratio" :
-                           colorByMetric.toUpperCase();
+        const metricLabel = colorByMetric === "literacyRate" ? "Literacy Rate" :
+          colorByMetric === "sexRatio" ? "Sex Ratio" :
+            colorByMetric.toUpperCase();
 
         return (
           <motion.div

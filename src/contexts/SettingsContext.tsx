@@ -15,9 +15,9 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const [settings, setSettings] = useState<Settings>(() => {
         // Initialize with defaults first to match server render
         if (typeof window === "undefined") {
-            return getSettings(); // Uses defaults
+            return getSettings();
         }
-        return getSettings(); // Reads from localStorage
+        return getSettings();
     });
 
     useEffect(() => {

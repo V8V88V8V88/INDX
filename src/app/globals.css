@@ -18,13 +18,17 @@
   --accent-dark: #115e59;
   --map-border: var(--accent-dark);
 
-  /* choropleth scale */
-  --choro-0: #f5f5f4;
-  --choro-1: #d6d3d1;
-  --choro-2: #a8a29e;
-  --choro-3: #78716c;
-  --choro-4: #57534e;
-  --choro-5: #44403c;
+  /* choropleth scale - dynamically based on accent-primary */
+  --choro-0: color-mix(in srgb, var(--accent-primary) 5%, var(--bg-card));
+  --choro-1: color-mix(in srgb, var(--accent-primary) 15%, var(--bg-card));
+  --choro-2: color-mix(in srgb, var(--accent-primary) 30%, var(--bg-card));
+  --choro-3: color-mix(in srgb, var(--accent-primary) 45%, var(--bg-card));
+  --choro-4: color-mix(in srgb, var(--accent-primary) 60%, var(--bg-card));
+  --choro-5: color-mix(in srgb, var(--accent-primary) 70%, var(--bg-card));
+  --choro-6: color-mix(in srgb, var(--accent-primary) 80%, var(--bg-card));
+  --choro-7: color-mix(in srgb, var(--accent-primary) 90%, var(--bg-card));
+  --choro-8: var(--accent-primary);
+  --choro-9: var(--accent-dark);
 
   --border-light: #d6d3d1;
   --border-medium: #a8a29e;
@@ -57,12 +61,16 @@
   /* Use accent-muted (very bright) for map border in dark mode */
   --map-border: var(--accent-muted);
 
-  --choro-0: #1c1917;
-  --choro-1: #292524;
-  --choro-2: #44403c;
-  --choro-3: #57534e;
-  --choro-4: #78716c;
-  --choro-5: #a8a29e;
+  --choro-0: color-mix(in srgb, var(--accent-primary) 10%, var(--bg-card));
+  --choro-1: color-mix(in srgb, var(--accent-primary) 20%, var(--bg-card));
+  --choro-2: color-mix(in srgb, var(--accent-primary) 30%, var(--bg-card));
+  --choro-3: color-mix(in srgb, var(--accent-primary) 40%, var(--bg-card));
+  --choro-4: color-mix(in srgb, var(--accent-primary) 50%, var(--bg-card));
+  --choro-5: color-mix(in srgb, var(--accent-primary) 65%, var(--bg-card));
+  --choro-6: color-mix(in srgb, var(--accent-primary) 80%, var(--bg-card));
+  --choro-7: var(--accent-primary);
+  --choro-8: var(--accent-secondary);
+  --choro-9: #ffffff;
 
   --border-light: #292524;
   --border-medium: #44403c;

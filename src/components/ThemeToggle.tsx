@@ -11,7 +11,6 @@ function getTheme(): "light" | "dark" {
 }
 
 function subscribe(callback: () => void) {
-  // Listen to storage changes from other tabs
   window.addEventListener("storage", callback);
   return () => window.removeEventListener("storage", callback);
 }

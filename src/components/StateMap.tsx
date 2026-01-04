@@ -35,7 +35,6 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
   const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   
-  // Use external selectedDistrict if provided, otherwise use internal state
   const selectedDistrict = externalSelectedDistrict !== undefined ? externalSelectedDistrict : internalSelectedDistrict;
   const setSelectedDistrict = onDistrictSelect || setInternalSelectedDistrict;
 
@@ -63,15 +62,12 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     };
   }, [stateCode]);
 
-  // Reset selected district when state changes
   useEffect(() => {
     setSelectedDistrict(null);
   }, [stateCode, setSelectedDistrict]);
 
-  // Normalize geo JSON district names to match data JSON format (especially for Delhi)
   const normalizeGeoDistrictName = (geoName: string, stateCode: string): string => {
     if (stateCode === "DL") {
-      // For Delhi, add "Delhi" suffix to names that don't have it (except "New Delhi" and "Shahdara")
       if (geoName === "New Delhi" || geoName === "Shahdara") {
         return geoName;
       }
@@ -91,7 +87,6 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     const height = 600;
     const padding = 20;
 
-    // Combine all features into a single FeatureCollection for fitSize
     const featureCollection = {
       type: "FeatureCollection",
       features: geoData.features,

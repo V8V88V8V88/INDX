@@ -48,7 +48,7 @@ export function useFormat() {
 
     const formatDistance = (valInKm: number): string => {
         if (settings.distanceUnit === "km") {
-            return valInKm.toLocaleString("en-US") + " km"; // Use en-US for comma separation
+            return valInKm.toLocaleString("en-US") + " km";
         }
 
         // Convert to Miles (1 km = 0.621371 miles)
