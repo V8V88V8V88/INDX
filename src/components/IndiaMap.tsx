@@ -78,7 +78,9 @@ export function IndiaMap({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [transform, setTransform] = useState({ k: 1, x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [showLabels, setShowLabels] = useState(true);
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
+  const rafRef = useRef<number | null>(null);
   const { formatPopulation, formatDensity, formatCurrency, formatArea } = useFormat();
 
   useEffect(() => {
@@ -91,13 +93,18 @@ export function IndiaMap({
   useEffect(() => {
     if (!svgRef.current) return;
 
+    let zoomRafId: number | null = null;
     const zoom = d3.zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.5, 8])
       .wheelDelta((event) => {
         return -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 0.002) * 3;
       })
       .on("zoom", (event) => {
-        setTransform({ k: event.transform.k, x: event.transform.x, y: event.transform.y });
+        if (zoomRafId) return;
+        zoomRafId = requestAnimationFrame(() => {
+          setTransform({ k: event.transform.k, x: event.transform.x, y: event.transform.y });
+          zoomRafId = null;
+        });
       });
 
     zoomRef.current = zoom;
@@ -106,15 +113,17 @@ export function IndiaMap({
 
     return () => {
       d3.select(svgNode).on(".zoom", null);
+      if (zoomRafId) cancelAnimationFrame(zoomRafId);
     };
   }, [geoData]);
 
   const resetZoom = useCallback(() => {
     if (!svgRef.current || !zoomRef.current) return;
-    d3.select(svgRef.current)
-      .transition()
+    const svg = d3.select(svgRef.current);
+    svg.transition()
       .duration(300)
-      .call(zoomRef.current.transform, d3.zoomIdentity);
+      .call(zoomRef.current.transform as any, d3.zoomIdentity)
+      .on("end", () => setTransform({ k: 1, x: 0, y: 0 }));
   }, []);
 
   useEffect(() => {
@@ -157,12 +166,26 @@ export function IndiaMap({
   const getStateCode = useCallback((name: string) => stateNameToCode[name] || null, []);
 
   const projection = useMemo(() => {
-    return d3.geoMercator().center([82, 22]).scale(1000).translate([300, 300]);
+    return d3.geoMercator().center([82, 22]).scale(1150).translate([300, 340]);
   }, []);
 
   const pathGenerator = useMemo(() => d3.geoPath().projection(projection), [projection]);
 
-  const hoveredData = hoveredState ? getStateData(hoveredState) : null;
+  // Pre-compute all path data once for performance
+  const precomputedPaths = useMemo(() => {
+    if (!geoData) return [];
+    return geoData.features.map((feature) => {
+      const stateName = feature.properties.ST_NM;
+      const stateCode = stateNameToCode[stateName] || null;
+      const stateData = stateCode ? states.find((s) => s.id === stateCode) : null;
+      const pathString = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
+      const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
+      const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
+      return { feature, stateName, stateCode, stateData, pathString, centroid, isTinyUT };
+    });
+  }, [geoData, pathGenerator]);
+
+  const hoveredData = hoveredState ? states.find((s) => s.id === hoveredState) : null;
 
   if (!geoData) {
     return (
@@ -181,16 +204,21 @@ export function IndiaMap({
         style={{
           minHeight: isFullscreen ? "70vh" : "380px",
           maxHeight: isFullscreen ? "85vh" : "520px",
-          cursor: "grab"
+          cursor: "grab",
+          willChange: "transform"
         }}
-        onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
+        onMouseMove={(e) => {
+          if (rafRef.current) return;
+          rafRef.current = requestAnimationFrame(() => {
+            setMousePos({ x: e.clientX, y: e.clientY });
+            rafRef.current = null;
+          });
+        }}
       >
         <g ref={gRef} transform={`translate(${transform.x}, ${transform.y}) scale(${transform.k})`}>
           {/* Render paths first */}
-          {geoData.features.map((feature, i) => {
-            const stateName = feature.properties.ST_NM;
-            const stateCode = getStateCode(stateName);
-            const stateData = stateCode ? getStateData(stateCode) : null;
+          {precomputedPaths.map((item, i) => {
+            const { stateCode, stateData, pathString, centroid, isTinyUT } = item;
 
             const isHovered = hoveredState === stateCode;
             const isSelected = selectedState === stateCode;
@@ -200,21 +228,14 @@ export function IndiaMap({
             if (isSelected) fill = "var(--accent-secondary)";
             if (isHovered) fill = "var(--accent-secondary)";
 
-            const path = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
-            const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
-
-            // microscopic UTs need visible markers
-            const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
-
             const pathContent = (
               <g key={`path-${i}`}>
                 <path
-                  d={path}
+                  d={pathString}
                   fill={fill}
-                  stroke="var(--text-muted)"
+                  stroke="var(--bg-card)"
                   strokeWidth={(isHovered || isSelected ? 1.5 : 0.75) / transform.k}
-                  className="transition-colors duration-150"
-                  style={{ cursor: interactive && stateCode ? "pointer" : "default" }}
+                  style={{ cursor: interactive && stateCode ? "pointer" : "default", willChange: "fill" }}
                   onMouseEnter={() => stateCode && setHoveredState(stateCode)}
                   onMouseLeave={() => setHoveredState(null)}
                   onClick={() => interactive && stateCode && onStateSelect?.(stateCode)}
@@ -229,8 +250,7 @@ export function IndiaMap({
                     fill={fill}
                     stroke={isHovered ? "var(--accent-primary)" : "var(--text-tertiary)"}
                     strokeWidth={1 / transform.k}
-                    className="transition-all duration-150"
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer", willChange: "fill, r" }}
                     onMouseEnter={() => stateCode && setHoveredState(stateCode)}
                     onMouseLeave={() => setHoveredState(null)}
                   >
@@ -249,15 +269,10 @@ export function IndiaMap({
             return pathContent;
           })}
           {/* Render text labels on top */}
-          {geoData.features.map((feature, i) => {
-            const stateName = feature.properties.ST_NM;
-            const stateCode = getStateCode(stateName);
-            const stateData = stateCode ? getStateData(stateCode) : null;
+          {showLabels && precomputedPaths.map((item, i) => {
+            const { stateCode, stateData, centroid, isTinyUT } = item;
             const isHovered = hoveredState === stateCode;
             const isSelected = selectedState === stateCode;
-            const path = pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "";
-            const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
-            const isTinyUT = ["LD", "CH", "DD", "PY"].includes(stateCode || "");
 
             if (!centroid[0] || !centroid[1] || !stateData) return null;
 
@@ -279,10 +294,10 @@ export function IndiaMap({
                   textAnchor="middle"
                   dominantBaseline="hanging"
                   className="pointer-events-none select-none"
-                  stroke="white"
-                  strokeWidth="3"
-                  strokeOpacity="0.8"
-                  fill="#000000"
+                  stroke="var(--bg-card)"
+                  strokeWidth="4"
+                  strokeOpacity="0.9"
+                  fill="var(--text-primary)"
                   style={{
                     fontSize: `${fontSize}px`,
                     fontWeight: isHovered || isSelected ? "600" : "500",
@@ -290,8 +305,8 @@ export function IndiaMap({
                     paintOrder: "stroke fill",
                   }}
                 >
-                  <tspan x={labelX} dy="0" stroke="white" strokeWidth="3" strokeOpacity="0.8" fill="#000000" style={{ paintOrder: "stroke fill" }}>Dadra & Nagar Haveli</tspan>
-                  <tspan x={labelX} dy={lineHeight} stroke="white" strokeWidth="3" strokeOpacity="0.8" fill="#000000" style={{ paintOrder: "stroke fill" }}>& Daman & Diu</tspan>
+                  <tspan x={labelX} dy="0" stroke="var(--bg-card)" strokeWidth="4" strokeOpacity="0.9" fill="var(--text-primary)" style={{ paintOrder: "stroke fill" }}>Dadra & Nagar Haveli</tspan>
+                  <tspan x={labelX} dy={lineHeight} stroke="var(--bg-card)" strokeWidth="4" strokeOpacity="0.9" fill="var(--text-primary)" style={{ paintOrder: "stroke fill" }}>&amp; Daman &amp; Diu</tspan>
                 </text>
               );
             }
@@ -304,10 +319,10 @@ export function IndiaMap({
                 textAnchor="middle"
                 dominantBaseline="central"
                 className="pointer-events-none select-none"
-                stroke="white"
+                stroke="var(--bg-card)"
                 strokeWidth="3"
                 strokeOpacity="0.8"
-                fill="#000000"
+                fill="var(--text-primary)"
                 style={{
                   fontSize: `${fontSize}px`,
                   fontWeight: isHovered || isSelected ? "600" : "500",
@@ -385,6 +400,18 @@ export function IndiaMap({
             Reset
           </button>
         )}
+        <button
+          onClick={() => setShowLabels(!showLabels)}
+          className={`flex h-10 items-center gap-1.5 rounded-lg border border-border-light px-3 text-xs font-medium shadow-md transition-colors ${showLabels ? 'bg-accent-primary text-white' : 'bg-bg-card text-text-secondary hover:bg-bg-secondary'}`}
+          title={showLabels ? "Hide labels" : "Show labels"}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M4 7V4h16v3" />
+            <path d="M9 20h6" />
+            <path d="M12 4v16" />
+          </svg>
+          Labels
+        </button>
         <button
           onClick={() => setIsFullscreen(!isFullscreen)}
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-border-light bg-bg-card text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"

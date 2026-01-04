@@ -34,7 +34,7 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  
+
   const selectedDistrict = externalSelectedDistrict !== undefined ? externalSelectedDistrict : internalSelectedDistrict;
   const setSelectedDistrict = onDistrictSelect || setInternalSelectedDistrict;
 
@@ -153,7 +153,7 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
           const isSelected = selectedDistrict === district.name;
           const hasActiveDistrict = hoveredDistrict || selectedDistrict;
           const isInactive = hasActiveDistrict && !isHovered && !isSelected;
-          
+
           return (
             <motion.path
               key={i}
@@ -166,8 +166,8 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
               }}
               transition={{ duration: 0.15, ease: "easeOut" }}
               d={district.d}
-              stroke="currentColor"
-              className={`cursor-pointer transition-all duration-150 stroke-[var(--map-border)]`}
+              stroke="var(--bg-card)"
+              className={`cursor-pointer transition-all duration-150`}
               style={{
                 filter: isSelected ? "url(#selectedGlow)" : isHovered ? "url(#glow)" : "none",
                 fill: isSelected
@@ -175,10 +175,10 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
                   : isHovered
                     ? "var(--accent-secondary)"
                     : "var(--accent-primary)",
-                fillOpacity: isSelected || isHovered 
-                  ? 0.7 
-                  : hasActiveDistrict 
-                    ? 0.15 
+                fillOpacity: isSelected || isHovered
+                  ? 0.7
+                  : hasActiveDistrict
+                    ? 0.15
                     : 0.6
               }}
               onMouseEnter={() => setHoveredDistrict(district.name)}
