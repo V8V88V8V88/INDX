@@ -423,11 +423,15 @@ export default function StatePage({ params }: PageProps) {
             <p className="text-sm text-text-muted">
               Data visualization platform · Built for analytical exploration
             </p>
-            <div className="flex flex-col items-end gap-1 sm:items-center">
+            <div className="flex items-center gap-2">
               <p className="text-sm text-text-muted">© 2026 INDX</p>
+              <span className="text-text-muted">|</span>
+              <Link href="/about" className="text-sm text-accent-primary hover:opacity-80 transition-colors">
+                About
+              </Link>
             </div>
           </div>
-          <div className="mt-4 flex justify-center">
+          <div className="mt-4 flex flex-col items-center gap-3">
             <p className="text-sm text-text-muted">
               Made with <span className="text-accent-primary">❤️</span> by{" "}
               <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
