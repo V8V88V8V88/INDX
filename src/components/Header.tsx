@@ -56,6 +56,16 @@ export function Header({ breadcrumbs }: HeaderProps) {
         )}
 
         <div className="flex items-center gap-3">
+          <Link href="/compare">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="rounded-lg border border-border-light px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-bg-secondary hover:text-text-primary"
+              aria-label="Compare"
+            >
+              Compare
+            </motion.button>
+          </Link>
           <motion.button
             onClick={openSpotlight}
             whileHover={{ scale: 1.02 }}

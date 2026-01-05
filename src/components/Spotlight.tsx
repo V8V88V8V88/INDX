@@ -280,73 +280,73 @@ export function Spotlight() {
                   {results.length === 0 ? (
                     <div className="px-4 py-12 text-center">
                       <p className="text-sm text-text-tertiary">No results found for &quot;{query}&quot;</p>
-                    </div>
-                  ) : (
+                  </div>
+                ) : (
                     <>
                       <div className="py-1">
-                        {results.map((result, index) => (
-                          <button
-                            key={`${result.type}-${result.id}`}
-                            onClick={() => handleSelect(result)}
+                    {results.map((result, index) => (
+                      <button
+                        key={`${result.type}-${result.id}`}
+                        onClick={() => handleSelect(result)}
                             className={`w-full px-4 py-2.5 text-left transition-colors ${
-                              index === selectedIndex
+                          index === selectedIndex
                                 ? "bg-accent-primary/10"
                                 : "hover:bg-bg-secondary"
-                            }`}
-                          >
-                            <div className="flex items-center gap-3">
-                              {result.type === "state" ? (
+                        }`}
+                      >
+                          <div className="flex items-center gap-3">
+                            {result.type === "state" ? (
                                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-primary/15 flex-shrink-0">
-                                  <svg
+                                <svg
                                     width="18"
                                     height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="text-accent-primary"
-                                  >
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                    <polyline points="9 22 9 12 15 12 15 22" />
-                                  </svg>
-                                </div>
-                              ) : result.type === "city" ? (
+                                  className="text-accent-primary"
+                                >
+                                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                  <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg>
+                              </div>
+                            ) : result.type === "city" ? (
                                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-secondary/15 flex-shrink-0">
-                                  <svg
+                                <svg
                                     width="18"
                                     height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="text-accent-secondary"
-                                  >
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                  </svg>
-                                </div>
-                              ) : (
+                                  className="text-accent-secondary"
+                                >
+                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                  <circle cx="12" cy="10" r="3" />
+                                </svg>
+                              </div>
+                            ) : (
                                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-secondary/15 flex-shrink-0">
-                                  <svg
+                                <svg
                                     width="18"
                                     height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="text-accent-secondary"
-                                  >
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                  </svg>
-                                </div>
-                              )}
+                                  className="text-accent-secondary"
+                                >
+                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                  <circle cx="12" cy="10" r="3" />
+                                </svg>
+                              </div>
+                            )}
                               <div className="flex-1 min-w-0">
                                 <div className={`font-medium truncate ${index === selectedIndex ? "text-accent-primary" : "text-text-primary"}`}>
                                   {result.name}
@@ -354,30 +354,30 @@ export function Spotlight() {
                                 {result.stateName && (
                                   <div className="text-xs text-text-muted mt-0.5 truncate">
                                     {result.stateName}
-                                  </div>
-                                )}
-                              </div>
-                              {result.type === "state" && (
-                                <span className="text-xs text-text-muted flex-shrink-0">State</span>
-                              )}
                             </div>
-                          </button>
-                        ))}
-                      </div>
-                      <div className="border-t border-border-light px-4 py-2 text-xs text-text-muted">
-                        <div className="flex items-center justify-between">
-                          <span>
-                            {results.length} {results.length === 1 ? "result" : "results"}
-                          </span>
-                          <div className="flex items-center gap-4">
+                                )}
+                          </div>
+                          {result.type === "state" && (
+                                <span className="text-xs text-text-muted flex-shrink-0">State</span>
+                          )}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                <div className="border-t border-border-light px-4 py-2 text-xs text-text-muted">
+                  <div className="flex items-center justify-between">
+                    <span>
+                      {results.length} {results.length === 1 ? "result" : "results"}
+                    </span>
+                    <div className="flex items-center gap-4">
                             <span className="hidden sm:inline">
                               <kbd className="rounded bg-bg-secondary px-1.5 py-0.5 font-mono">↑↓</kbd> navigate
-                            </span>
+                      </span>
                             <span className="hidden sm:inline">
                               <kbd className="rounded bg-bg-secondary px-1.5 py-0.5 font-mono">↵</kbd> select
-                            </span>
-                          </div>
-                        </div>
+                      </span>
+                    </div>
+                  </div>
                       </div>
                     </>
                   )}

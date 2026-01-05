@@ -302,11 +302,11 @@ export default function Home() {
             <p className="text-sm text-text-muted text-center">Maps, data, and everything in between</p>
             <div className="flex flex-col sm:flex-row items-center sm:items-start sm:justify-between gap-4 text-center sm:text-left">
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                <p className="text-sm text-text-muted">© 2026 INDX</p>
-                <span className="text-text-muted">|</span>
-                <Link href="/about" className="text-sm text-accent-primary hover:opacity-80 transition-colors">
-                  About
-                </Link>
+              <p className="text-sm text-text-muted">© 2026 INDX</p>
+              <span className="text-text-muted">|</span>
+              <Link href="/about" className="text-sm text-accent-primary hover:opacity-80 transition-colors">
+                About
+              </Link>
                 <span className="text-text-muted">|</span>
                 <a 
                   href="https://github.com/v8V88V8V88/INDX" 
@@ -319,13 +319,13 @@ export default function Home() {
                   </svg>
                   Source
                 </a>
-              </div>
+            </div>
               <p className="text-sm text-text-muted">
-                Made with <span className="text-accent-primary">❤️</span> by{" "}
-                <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
-                  Vaibhav Pratap Singh
-                </a>
-              </p>
+              Made with <span className="text-accent-primary">❤️</span> by{" "}
+              <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
+                Vaibhav Pratap Singh
+              </a>
+            </p>
             </div>
           </div>
         </footer>

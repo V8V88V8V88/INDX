@@ -74,7 +74,7 @@ export default function StatePage({ params }: PageProps) {
 
       if (!hash) {
         if (!isInitial) {
-          setSelectedDistrict(null);
+        setSelectedDistrict(null);
         }
         return;
       }
@@ -102,7 +102,7 @@ export default function StatePage({ params }: PageProps) {
               normalizedHash.includes(normalizedDistrict);
           });
           setSelectedDistrict(match ? match.name : districtName);
-        } else {
+          } else {
           if (!selectedDistrict || selectedDistrict !== districtName) {
             setSelectedDistrict(districtName);
           }
@@ -303,11 +303,11 @@ export default function StatePage({ params }: PageProps) {
 
             <div className="min-h-[200px] transition-all duration-200">
               <AnimatePresence mode="wait">
-                {selectedDistrict && (
-                  <DistrictInfoCard
+            {selectedDistrict && (
+              <DistrictInfoCard
                     key={selectedDistrict}
-                    district={selectedDistrictInfo}
-                    districtName={selectedDistrict}
+                district={selectedDistrictInfo}
+                districtName={selectedDistrict}
                     onClose={() => {
                       setSelectedDistrict(null);
                       setHasScrolled(false);
@@ -315,8 +315,8 @@ export default function StatePage({ params }: PageProps) {
                         window.history.replaceState(null, "", window.location.pathname);
                       }
                     }}
-                  />
-                )}
+              />
+            )}
               </AnimatePresence>
             </div>
           </div>
