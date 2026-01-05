@@ -322,7 +322,7 @@ export default function StatePage({ params }: PageProps) {
           </div>
 
           {/* Right Column: Map - Now takes full column */}
-          <div id="state-map">
+          <div id="state-map" className="-mt-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -330,7 +330,7 @@ export default function StatePage({ params }: PageProps) {
               className="flex flex-col items-center justify-center"
               style={{ overflow: "visible" }}
             >
-              <div className="w-full" style={{ minHeight: "500px", overflow: "visible" }}>
+              <div className="w-full" style={{ minHeight: "650px", overflow: "visible" }}>
                 <StateMap
                   stateCode={state.id}
                   state={state}
@@ -394,57 +394,62 @@ export default function StatePage({ params }: PageProps) {
 
         {/* Additional Metrics */}
         <section className="mb-10">
-          <div className="card p-6">
-            <h3 className="mb-5 text-sm font-medium uppercase tracking-wider text-text-muted">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+            className="card p-6"
+          >
+            <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-text-muted">
               Geographic & Demographic Data
             </h3>
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
-              <div>
-                <p className="mb-1 text-xs text-text-muted">Total Area</p>
-                <p className="text-xl font-semibold text-text-primary">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
+              <div className="space-y-2">
+                <p className="text-xs font-medium text-text-muted">Total Area</p>
+                <p className="text-2xl font-bold text-text-primary">
                   {formatArea(state.area)}
                 </p>
                 <p className="text-xs text-text-muted">sq km</p>
               </div>
-              <div>
-                <p className="mb-1 text-xs text-text-muted">Density</p>
-                <p className="text-xl font-semibold text-text-primary">
+              <div className="space-y-2">
+                <p className="text-xs font-medium text-text-muted">Density</p>
+                <p className="text-2xl font-bold text-text-primary">
                   {formatDensity(state.density)}
                 </p>
                 <p className="text-xs text-text-muted"></p>
               </div>
-              <div>
-                <p className="mb-1 text-xs text-text-muted">Major Cities</p>
-                <p className="text-xl font-semibold text-text-primary">
+              <div className="space-y-2">
+                <p className="text-xs font-medium text-text-muted">Major Cities</p>
+                <p className="text-2xl font-bold text-text-primary">
                   {state.cities.length}
                 </p>
                 <p className="text-xs text-text-muted">tracked</p>
               </div>
-              <div>
-                <p className="mb-1 text-xs text-text-muted">Tier 1 Cities</p>
-                <p className="text-xl font-semibold text-text-primary">
+              <div className="space-y-2">
+                <p className="text-xs font-medium text-text-muted">Tier 1 Cities</p>
+                <p className="text-2xl font-bold text-text-primary">
                   {state.cities.filter((c) => c.tier === 1).length}
                 </p>
                 <p className="text-xs text-text-muted">metros</p>
               </div>
-              <div>
-                <p className="mb-1 text-xs text-text-muted">Urban Pop.</p>
-                <p className="text-xl font-semibold text-text-primary">
+              <div className="space-y-2">
+                <p className="text-xs font-medium text-text-muted">Urban Pop.</p>
+                <p className="text-2xl font-bold text-text-primary">
                   {formatPopulation(
                     state.cities.reduce((sum, c) => sum + c.population, 0)
                   )}
                 </p>
                 <p className="text-xs text-text-muted">in tracked cities</p>
               </div>
-              <div>
-                <p className="mb-1 text-xs text-text-muted">Per Capita GDP</p>
-                <p className="text-xl font-semibold text-text-primary">
+              <div className="space-y-2">
+                <p className="text-xs font-medium text-text-muted">Per Capita GDP</p>
+                <p className="text-2xl font-bold text-text-primary">
                   {formatCurrency(Math.round((state.gdp * 10000000) / state.population))}
                 </p>
                 <p className="text-xs text-text-muted">approx</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Districts & Cities Section */}

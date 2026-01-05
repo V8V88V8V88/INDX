@@ -51,7 +51,8 @@ export default function Home() {
     { key: "area", label: "Area", format: (s) => formatArea(s.area) },
   ], [formatPopulation, formatCurrency, formatDensity, formatArea]);
 
-  const totalStates = states.length;
+  const totalStates = 28;
+  const totalUTs = 8;
   const totalCities = states.reduce((sum, s) => sum + s.cities.length, 0);
   const avgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
   const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
@@ -101,8 +102,7 @@ export default function Home() {
           </div>
           <h1 className="text-display mb-4 text-text-primary">India</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
-            Geographic and statistical data visualization. Explore {totalStates} states and union territories,{" "}
-            {totalCities}+ cities, and 733 districts with comprehensive demographic and economic indicators.
+            Geographic and statistical data visualization. Explore {totalStates} states, {totalUTs} union territories and 733 districts with comprehensive demographic and economic indicators.
           </p>
         </motion.section>
 
