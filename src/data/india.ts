@@ -1,11 +1,8 @@
 import type { State, Country } from "@/types";
 
-// 2026 projected data - Census, RBI, NITI Aayog estimates
+// 2026 projected data from Census, RBI, NITI Aayog
 // 28 States + 8 Union Territories
-// City tiers (industry-standard classification):
-// Tier 1 = 8 major metros: Delhi, Mumbai, Bengaluru, Chennai, Hyderabad, Kolkata, Pune, Ahmedabad
-// Tier 2 = Large regional centers and economically strong cities
-// Tier 3 = Smaller cities and district headquarters
+// City tiers: Tier 1 = metros, Tier 2 = regional centers, Tier 3 = smaller cities
 
 export const states: State[] = [
   // === STATES (28) ===
@@ -721,7 +718,6 @@ export const india: Country = {
   states,
 };
 
-// helpers
 export function getStateById(id: string): State | undefined {
   return states.find((s) => s.id === id);
 }

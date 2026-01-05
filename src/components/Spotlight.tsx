@@ -18,7 +18,7 @@ interface SearchResult {
 
 let openSpotlightFn: (() => void) | null = null;
 
-// State code mappings for fuzzy search
+// State code shortcuts (e.g., "up" -> "Uttar Pradesh")
 const stateCodeMap: Record<string, string> = {
   "up": "Uttar Pradesh",
   "mp": "Madhya Pradesh",
@@ -113,7 +113,6 @@ export function Spotlight() {
     const searchTerm = query.toLowerCase().trim();
     const matches: SearchResult[] = [];
 
-    // Fuzzy search: Check if search term matches a state code
     const stateCodeMatch = stateCodeMap[searchTerm];
     if (stateCodeMatch) {
       const state = states.find((s) => s.name === stateCodeMatch);
@@ -276,7 +275,6 @@ export function Spotlight() {
                 </kbd>
               </div>
 
-              {/* Results - Only show when there's a query */}
               {query.trim() && (
                 <div className="border-t border-border-light max-h-96 overflow-y-auto">
                   {results.length === 0 ? (
@@ -366,7 +364,6 @@ export function Spotlight() {
                           </button>
                         ))}
                       </div>
-                      {/* Footer hint */}
                       <div className="border-t border-border-light px-4 py-2 text-xs text-text-muted">
                         <div className="flex items-center justify-between">
                           <span>

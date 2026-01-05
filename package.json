@@ -14,7 +14,8 @@
     "@types/d3": "^7.4.3",
     "@types/topojson-client": "^3.1.5",
     "d3": "^7.9.0",
-    "framer-motion": "^12.23.26",
+    "framer-motion": "^12.23.27",
+    "list": "^2.0.19",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -22,14 +23,14 @@
     "topojson-client": "^3.1.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
+    "eslint": "^9.39.2",
     "eslint-config-next": "16.1.1",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
   }
 }

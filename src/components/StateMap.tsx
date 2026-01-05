@@ -67,12 +67,9 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     setHoveredDistrict(null);
   }, [stateCode, setSelectedDistrict]);
 
-  // Clear hover when selected district changes externally
   useEffect(() => {
     if (externalSelectedDistrict !== undefined && externalSelectedDistrict !== hoveredDistrict) {
-      // Don't clear hover if it's the same as selected
       if (externalSelectedDistrict !== hoveredDistrict) {
-        // Small delay to allow smooth transition
         const timer = setTimeout(() => {
           if (externalSelectedDistrict !== hoveredDistrict) {
             setHoveredDistrict(null);

@@ -39,7 +39,6 @@ export function ThemeToggle() {
     const next = theme === "light" ? "dark" : "light";
     localStorage.setItem("theme", next);
     document.documentElement.classList.toggle("dark", next === "dark");
-    // Dispatch storage event to trigger re-render via useSyncExternalStore
     window.dispatchEvent(new Event("storage"));
   }, [theme]);
 

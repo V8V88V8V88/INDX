@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "INDX — India Data Explorer",
+  title: "INDX India Data Explorer",
   description: "Geographic and statistical data visualization for India. Explore country, state, and city-level insights.",
   keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],
 };

@@ -23,7 +23,6 @@ export default function StatePage({ params }: PageProps) {
   const state = getStateById(id);
   const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
   
-  // Initialize from hash immediately to persist on refresh
   const getInitialDistrictFromHash = (): string | null => {
     if (typeof window === "undefined") return null;
     const hash = window.location.hash.slice(1);
@@ -32,7 +31,6 @@ export default function StatePage({ params }: PageProps) {
     }
     if (hash.startsWith("city-")) {
       const cityId = hash.replace("city-", "");
-      // Will be converted to city name when state loads
       return cityId;
     }
     return null;
@@ -63,22 +61,18 @@ export default function StatePage({ params }: PageProps) {
       .replace(/&/g, "and");
   };
 
-  // Mark page as ready after initial render
   useEffect(() => {
-    // Small delay to ensure DOM is ready
     const timer = setTimeout(() => {
       setIsPageReady(true);
     }, 100);
     return () => clearTimeout(timer);
   }, []);
 
-  // Process hash on mount and when dependencies change
   useEffect(() => {
     const processHash = (isInitial = false) => {
       const hash = window.location.hash.slice(1);
 
       if (!hash) {
-        // Only clear on hash change, not on initial load if we have a selection
         if (!isInitial) {
           setSelectedDistrict(null);
         }
@@ -91,7 +85,6 @@ export default function StatePage({ params }: PageProps) {
         if (city) {
           setSelectedDistrict(city.name);
         } else if (selectedDistrict === cityId) {
-          // If we had cityId stored from initial load, try to find it now
           const foundCity = state.cities.find((c) => c.id === cityId);
           if (foundCity) {
             setSelectedDistrict(foundCity.name);
@@ -100,7 +93,6 @@ export default function StatePage({ params }: PageProps) {
       }
       else if (hash.startsWith("district-")) {
         const districtName = decodeURIComponent(hash.replace("district-", ""));
-        // If districts are loaded, try to match
         if (districts && districts.length > 0) {
           const normalizedHash = normalizeDistrictName(districtName);
           const match = districts.find((d) => {
@@ -111,15 +103,12 @@ export default function StatePage({ params }: PageProps) {
           });
           setSelectedDistrict(match ? match.name : districtName);
         } else {
-          // Keep the district name we already have from initial load
           if (!selectedDistrict || selectedDistrict !== districtName) {
             setSelectedDistrict(districtName);
           }
         }
       }
     };
-
-    // Process hash on mount and when districts/cities load
     if (!initialHashProcessed.current) {
       processHash(true);
       initialHashProcessed.current = true;
@@ -134,7 +123,6 @@ export default function StatePage({ params }: PageProps) {
       lastHashRef.current = window.location.hash;
     };
     
-    // Check for hash changes periodically (for same-page navigation via router.push)
     const checkHashChange = () => {
       const currentHash = window.location.hash;
       if (currentHash !== lastHashRef.current) {
@@ -143,7 +131,6 @@ export default function StatePage({ params }: PageProps) {
       }
     };
     
-    // Check every 150ms for hash changes (lightweight polling)
     const hashCheckInterval = setInterval(checkHashChange, 150);
     window.addEventListener("hashchange", handleHashChange);
 
@@ -159,11 +146,9 @@ export default function StatePage({ params }: PageProps) {
     const hash = window.location.hash.slice(1);
     if (!hash.startsWith("city-") && !hash.startsWith("district-")) return;
 
-    // Wait for page to be fully rendered and layout to stabilize before scrolling
     const scrollToMap = () => {
       const mapElement = document.getElementById("state-map");
       if (mapElement) {
-        // Check if we're coming from spotlight (same origin referrer)
         const isFromSpotlight = document.referrer && 
           document.referrer.includes(window.location.origin) &&
           !document.referrer.includes(window.location.pathname);
@@ -175,8 +160,6 @@ export default function StatePage({ params }: PageProps) {
         setHasScrolled(true);
       }
     };
-
-    // Wait for layout to stabilize
     const timer = setTimeout(() => {
       requestAnimationFrame(() => {
         requestAnimationFrame(scrollToMap);
@@ -231,10 +214,10 @@ export default function StatePage({ params }: PageProps) {
           className="mb-8"
         >
           <div className="mb-3 flex flex-wrap items-center gap-3">
-            <span className="rounded-full bg-accent-primary/20 px-3 py-1 text-xs font-medium text-accent-primary">
+            <span className="rounded-full bg-accent-primary px-3 py-1 text-xs font-semibold text-white">
               {state.region} India
             </span>
-            <span className="rounded-full bg-bg-tertiary px-3 py-1 text-xs font-medium text-text-muted">
+            <span className="rounded-full bg-bg-tertiary border border-accent-primary/40 dark:border-accent-primary/60 px-3 py-1 text-xs font-medium text-accent-primary dark:text-accent-secondary">
               {state.code}
             </span>
           </div>
@@ -318,7 +301,6 @@ export default function StatePage({ params }: PageProps) {
               />
             </div>
 
-            {/* District Info Card - Reserve space to prevent layout shift */}
             <div className="min-h-[200px] transition-all duration-200">
               <AnimatePresence mode="wait">
                 {selectedDistrict && (
@@ -329,8 +311,7 @@ export default function StatePage({ params }: PageProps) {
                     onClose={() => {
                       setSelectedDistrict(null);
                       setHasScrolled(false);
-                      // Remove hash when closing
-                      if (window.location.hash) {
+                    if (window.location.hash) {
                         window.history.replaceState(null, "", window.location.pathname);
                       }
                     }}

@@ -13,15 +13,10 @@ const SettingsContext = createContext<SettingsContextType | undefined>(undefined
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const [settings, setSettings] = useState<Settings>(() => {
-        // Initialize with defaults first to match server render
-        if (typeof window === "undefined") {
-            return getSettings();
-        }
         return getSettings();
     });
 
     useEffect(() => {
-        // Re-read settings on mount to ensure valid client state
         const current = getSettings();
         setSettings(current);
         applyTheme(current.accentColor);
@@ -39,11 +34,6 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
         }
     };
 
-    // We can simply render the provider. Hydration mismatch is handled by 
-    // ensuring initial state matches server (defaults), then updating in useEffect.
-    // usage of useState(() => ...) above with window check helps, but strictly 
-    // avoiding mismatch requires defaulting to server values first.
-    // But getting the context error is worse. We MUST render the Provider.
 
     return (
         <SettingsContext.Provider

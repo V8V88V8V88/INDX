@@ -154,7 +154,7 @@ export function IndiaMap({
       
       const t = (value - min) / (max - min);
 
-      let colors = ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"]; // Default dynamic scale
+      let colors = ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"];
 
       if (colorByMetric === "sexRatio") {
         // Use dynamic scale for Sex Ratio as well (follows theme)
@@ -184,7 +184,6 @@ export function IndiaMap({
 
   const pathGenerator = useMemo(() => d3.geoPath().projection(projection), [projection]);
 
-  // Pre-compute all path data once for performance
   const precomputedPaths = useMemo(() => {
     if (!geoData) return [];
     return geoData.features.map((feature) => {
@@ -229,7 +228,6 @@ export function IndiaMap({
         }}
       >
         <g ref={gRef} transform={`translate(${transform.x}, ${transform.y}) scale(${transform.k})`}>
-          {/* Render paths first */}
           {precomputedPaths.map((item, i) => {
             const { stateCode, stateData, pathString, centroid, isTinyUT } = item;
 
@@ -284,7 +282,6 @@ export function IndiaMap({
             }
             return pathContent;
           })}
-          {/* Render text labels on top */}
           {showLabels && precomputedPaths.map((item, i) => {
             const { stateCode, stateData, centroid, isTinyUT } = item;
             const isHovered = hoveredState === stateCode;

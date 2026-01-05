@@ -33,7 +33,6 @@ export function getSettings(): Settings {
       return { ...defaultSettings, ...parsed };
     }
   } catch {
-    // Invalid JSON, use defaults
   }
 
   return defaultSettings;

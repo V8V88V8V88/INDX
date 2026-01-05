@@ -21,7 +21,7 @@ function dedupeDistricts(input: District[]): District[] {
       continue;
     }
 
-    // Keep the more "complete" / higher-population record, but merge missing bits.
+    // Merge duplicate districts, keep the one with higher population
     const keep = (d.population || 0) >= (prev.population || 0) ? d : prev;
     const drop = keep === d ? prev : d;
 
@@ -74,7 +74,6 @@ export async function fetchDistrictsFromAPI(stateCode: string): Promise<District
   return [];
 }
 
-// Data sources info
 export const dataSources = {
   census: {
     name: "Census of India 2011",
