@@ -32,6 +32,17 @@ export default function Home() {
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const { formatPopulation, formatCurrency, formatDensity, formatArea } = useFormat();
 
+  // Synchronize map and ranking metrics
+  const handleMapMetricChange = (metric: MetricKey) => {
+    setMapMetric(metric);
+    setRankingMetric(metric);
+  };
+
+  const handleRankingMetricChange = (metric: MetricKey) => {
+    setRankingMetric(metric);
+    setMapMetric(metric);
+  };
+
   const rankingMetrics: { key: MetricKey; label: string; format: (s: State) => string }[] = useMemo(() => [
     { key: "population", label: "Population", format: (s) => formatPopulation(s.population) },
     { key: "gdp", label: "GDP", format: (s) => formatCurrency(s.gdp * 10000000) }, // gdp in crores * 1cr = INR
@@ -112,7 +123,7 @@ export default function Home() {
               <h2 className="text-headline text-text-primary">Interactive Map</h2>
               <p className="text-text-tertiary">Click any state to explore details</p>
             </div>
-            <MetricSelector selected={mapMetric} onSelect={setMapMetric} />
+            <MetricSelector selected={mapMetric} onSelect={handleMapMetricChange} />
           </div>
 
           <motion.div
@@ -155,7 +166,7 @@ export default function Home() {
                 {rankingMetrics.map((m) => (
                   <button
                     key={m.key}
-                    onClick={() => setRankingMetric(m.key)}
+                    onClick={() => handleRankingMetricChange(m.key)}
                     className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all ${rankingMetric === m.key
                       ? "bg-bg-card text-text-primary shadow-sm"
                       : "text-text-muted hover:text-text-secondary"

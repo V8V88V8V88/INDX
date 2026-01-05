@@ -78,7 +78,7 @@ export const states: State[] = [
     area: 94163,
     density: 1410,
     literacyRate: 74.3,
-    sexRatio: 1090,
+    sexRatio: 918,
     gdp: 975000,
     hdi: 0.620,
     cities: [
