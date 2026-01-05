@@ -65,7 +65,7 @@ export default function AboutPage() {
           transition={{ duration: 0.4, delay: 0.2 }}
           className="card mb-6 p-5"
         >
-          <h2 className="mb-4 text-lg font-semibold text-text-primary">Why I Build?</h2>
+          <h2 className="mb-4 text-lg font-semibold text-text-primary">Why did I build this site?</h2>
           <div className="space-y-3 text-text-tertiary">
             <p>
             Since childhood, I’ve been fascinated by maps and the information around them. There was never a single place where I could properly visualize everything in one coherent way, so I decided to build it myself.</p>

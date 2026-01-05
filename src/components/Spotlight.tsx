@@ -180,7 +180,13 @@ export function Spotlight() {
   }, [results]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!query.trim()) {
+      setSelectedIndex(0);
+    }
+  }, [query]);
+
+  useEffect(() => {
+    if (!isOpen || results.length === 0) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowDown") {
@@ -222,22 +228,25 @@ export function Spotlight() {
 
           {/* Spotlight Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            initial={{ opacity: 0, scale: 0.96, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            exit={{ opacity: 0, scale: 0.96, y: -10 }}
+            transition={{ duration: 0.15 }}
             className="fixed left-1/2 top-20 z-50 w-full max-w-2xl -translate-x-1/2"
           >
-            <div className="mx-4 rounded-2xl border border-border-light bg-bg-card shadow-2xl">
+            <div className="mx-4 rounded-xl border border-border-light bg-bg-card shadow-xl overflow-hidden">
               {/* Search Input */}
-              <div className="flex items-center gap-3 border-b border-border-light px-4 py-3">
+              <div className="flex items-center gap-3 px-4 py-3.5">
                 <svg
-                  width="20"
-                  height="20"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  className="text-text-muted"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-text-muted flex-shrink-0"
                 >
                   <circle cx="11" cy="11" r="8" />
                   <path d="m21 21-4.35-4.35" />
@@ -247,119 +256,134 @@ export function Spotlight() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search states, cities, or districts..."
-                  className="flex-1 bg-transparent text-text-primary placeholder:text-text-muted focus:outline-none"
+                  className="flex-1 bg-transparent text-base text-text-primary placeholder:text-text-muted focus:outline-none"
                   autoFocus
                 />
-                <kbd className="hidden rounded bg-bg-secondary px-2 py-1 text-xs font-mono text-text-muted sm:inline-block">
-                  ESC
+                {query && (
+                  <button
+                    onClick={() => setQuery("")}
+                    className="flex-shrink-0 rounded-full p-1 text-text-muted hover:bg-bg-secondary transition-colors"
+                    aria-label="Clear search"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
+                )}
+                <kbd className="hidden rounded-md bg-bg-secondary px-2 py-1 text-xs font-mono text-text-muted sm:inline-flex items-center gap-1">
+                  <span>ESC</span>
                 </kbd>
               </div>
 
-              {/* Results */}
-              <div className="max-h-96 overflow-y-auto">
-                {results.length === 0 && query.trim() ? (
-                  <div className="px-4 py-8 text-center text-text-tertiary">
-                    No results found for &quot;{query}&quot;
-                  </div>
-                ) : results.length === 0 ? (
-                  <div className="px-4 py-8 text-center text-text-tertiary">
-                    Start typing to search...
-                  </div>
-                ) : (
-                  <div className="py-2">
-                    {results.map((result, index) => (
-                      <button
-                        key={`${result.type}-${result.id}`}
-                        onClick={() => handleSelect(result)}
-                        className={`w-full px-4 py-3 text-left transition-colors ${
-                          index === selectedIndex
-                            ? "bg-accent-primary/10 text-accent-primary"
-                            : "hover:bg-bg-secondary text-text-primary"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            {result.type === "state" ? (
-                              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-primary/20">
-                                <svg
-                                  width="16"
-                                  height="16"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  className="text-accent-primary"
-                                >
-                                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                  <polyline points="9 22 9 12 15 12 15 22" />
-                                </svg>
-                              </div>
-                            ) : result.type === "city" ? (
-                              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-secondary/20">
-                                <svg
-                                  width="16"
-                                  height="16"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  className="text-accent-secondary"
-                                >
-                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                  <circle cx="12" cy="10" r="3" />
-                                </svg>
-                              </div>
-                            ) : (
-                              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-secondary/20">
-                                <svg
-                                  width="16"
-                                  height="16"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  className="text-accent-secondary"
-                                >
-                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                  <circle cx="12" cy="10" r="3" />
-                                </svg>
-                              </div>
-                            )}
-                            <div>
-                              <div className="font-medium">{result.name}</div>
-                              {result.stateName && (
-                                <div className="text-xs text-text-muted">
-                                  {result.stateName}
+              {/* Results - Only show when there's a query */}
+              {query.trim() && (
+                <div className="border-t border-border-light max-h-96 overflow-y-auto">
+                  {results.length === 0 ? (
+                    <div className="px-4 py-12 text-center">
+                      <p className="text-sm text-text-tertiary">No results found for &quot;{query}&quot;</p>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="py-1">
+                        {results.map((result, index) => (
+                          <button
+                            key={`${result.type}-${result.id}`}
+                            onClick={() => handleSelect(result)}
+                            className={`w-full px-4 py-2.5 text-left transition-colors ${
+                              index === selectedIndex
+                                ? "bg-accent-primary/10"
+                                : "hover:bg-bg-secondary"
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              {result.type === "state" ? (
+                                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-primary/15 flex-shrink-0">
+                                  <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="text-accent-primary"
+                                  >
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                  </svg>
+                                </div>
+                              ) : result.type === "city" ? (
+                                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-secondary/15 flex-shrink-0">
+                                  <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="text-accent-secondary"
+                                  >
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                  </svg>
+                                </div>
+                              ) : (
+                                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-secondary/15 flex-shrink-0">
+                                  <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="text-accent-secondary"
+                                  >
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                  </svg>
                                 </div>
                               )}
+                              <div className="flex-1 min-w-0">
+                                <div className={`font-medium truncate ${index === selectedIndex ? "text-accent-primary" : "text-text-primary"}`}>
+                                  {result.name}
+                                </div>
+                                {result.stateName && (
+                                  <div className="text-xs text-text-muted mt-0.5 truncate">
+                                    {result.stateName}
+                                  </div>
+                                )}
+                              </div>
+                              {result.type === "state" && (
+                                <span className="text-xs text-text-muted flex-shrink-0">State</span>
+                              )}
                             </div>
+                          </button>
+                        ))}
+                      </div>
+                      {/* Footer hint */}
+                      <div className="border-t border-border-light px-4 py-2 text-xs text-text-muted">
+                        <div className="flex items-center justify-between">
+                          <span>
+                            {results.length} {results.length === 1 ? "result" : "results"}
+                          </span>
+                          <div className="flex items-center gap-4">
+                            <span className="hidden sm:inline">
+                              <kbd className="rounded bg-bg-secondary px-1.5 py-0.5 font-mono">↑↓</kbd> navigate
+                            </span>
+                            <span className="hidden sm:inline">
+                              <kbd className="rounded bg-bg-secondary px-1.5 py-0.5 font-mono">↵</kbd> select
+                            </span>
                           </div>
-                          {result.type === "state" && (
-                            <span className="text-xs text-text-muted">State</span>
-                          )}
                         </div>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Footer hint */}
-              {results.length > 0 && (
-                <div className="border-t border-border-light px-4 py-2 text-xs text-text-muted">
-                  <div className="flex items-center justify-between">
-                    <span>
-                      {results.length} {results.length === 1 ? "result" : "results"}
-                    </span>
-                    <div className="flex items-center gap-4">
-                      <span>
-                        <kbd className="rounded bg-bg-secondary px-1.5 py-0.5 font-mono">↑↓</kbd> to navigate
-                      </span>
-                      <span>
-                        <kbd className="rounded bg-bg-secondary px-1.5 py-0.5 font-mono">↵</kbd> to select
-                      </span>
-                    </div>
-                  </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </div>

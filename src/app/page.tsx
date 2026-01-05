@@ -300,21 +300,23 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="border-t border-border-light py-8">
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col gap-4">
             <p className="text-sm text-text-muted text-center">Maps, data, and everything in between</p>
-            <div className="flex items-center gap-2">
-              <p className="text-sm text-text-muted">© 2026 INDX</p>
-              <span className="text-text-muted">|</span>
-              <Link href="/about" className="text-sm text-accent-primary hover:opacity-80 transition-colors">
-                About
-              </Link>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start sm:justify-between gap-4 text-center sm:text-left">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                <p className="text-sm text-text-muted">© 2026 INDX</p>
+                <span className="text-text-muted">|</span>
+                <Link href="/about" className="text-sm text-accent-primary hover:opacity-80 transition-colors">
+                  About
+                </Link>
+              </div>
+              <p className="text-sm text-text-muted">
+                Made with <span className="text-accent-primary">❤️</span> by{" "}
+                <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
+                  Vaibhav Pratap Singh
+                </a>
+              </p>
             </div>
-            <p className="text-sm text-text-muted text-center">
-              Made with <span className="text-accent-primary">❤️</span> by{" "}
-              <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
-                Vaibhav Pratap Singh
-              </a>
-            </p>
           </div>
         </footer>
       </main>

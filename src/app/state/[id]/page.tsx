@@ -1,7 +1,7 @@
 "use client";
 
 import { use, useState, useMemo, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, MetricCard } from "@/components";
@@ -22,7 +22,26 @@ export default function StatePage({ params }: PageProps) {
   const { id } = use(params);
   const state = getStateById(id);
   const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
-  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
+  
+  // Initialize from hash immediately to persist on refresh
+  const getInitialDistrictFromHash = (): string | null => {
+    if (typeof window === "undefined") return null;
+    const hash = window.location.hash.slice(1);
+    if (hash.startsWith("district-")) {
+      return decodeURIComponent(hash.replace("district-", ""));
+    }
+    if (hash.startsWith("city-")) {
+      const cityId = hash.replace("city-", "");
+      // Will be converted to city name when state loads
+      return cityId;
+    }
+    return null;
+  };
+
+  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(getInitialDistrictFromHash);
+  const [isPageReady, setIsPageReady] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const initialHashProcessed = useRef(false);
 
   if (!state) {
     notFound();
@@ -43,14 +62,25 @@ export default function StatePage({ params }: PageProps) {
       .replace(/&/g, "and");
   };
 
+  // Mark page as ready after initial render
   useEffect(() => {
-    let lastHash = window.location.hash;
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      setIsPageReady(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
-    const processHash = () => {
+  // Process hash on mount and when dependencies change
+  useEffect(() => {
+    const processHash = (isInitial = false) => {
       const hash = window.location.hash.slice(1);
 
       if (!hash) {
-        setSelectedDistrict(null);
+        // Only clear on hash change, not on initial load if we have a selection
+        if (!isInitial) {
+          setSelectedDistrict(null);
+        }
         return;
       }
 
@@ -59,10 +89,17 @@ export default function StatePage({ params }: PageProps) {
         const city = state.cities.find((c) => c.id === cityId);
         if (city) {
           setSelectedDistrict(city.name);
+        } else if (selectedDistrict === cityId) {
+          // If we had cityId stored from initial load, try to find it now
+          const foundCity = state.cities.find((c) => c.id === cityId);
+          if (foundCity) {
+            setSelectedDistrict(foundCity.name);
+          }
         }
       }
       else if (hash.startsWith("district-")) {
         const districtName = decodeURIComponent(hash.replace("district-", ""));
+        // If districts are loaded, try to match
         if (districts && districts.length > 0) {
           const normalizedHash = normalizeDistrictName(districtName);
           const match = districts.find((d) => {
@@ -71,56 +108,68 @@ export default function StatePage({ params }: PageProps) {
               normalizedDistrict.includes(normalizedHash) ||
               normalizedHash.includes(normalizedDistrict);
           });
-          if (match) {
-            setSelectedDistrict(match.name);
-          } else {
+          setSelectedDistrict(match ? match.name : districtName);
+        } else {
+          // Keep the district name we already have from initial load
+          if (!selectedDistrict || selectedDistrict !== districtName) {
             setSelectedDistrict(districtName);
           }
         }
       }
     };
 
-    processHash();
+    // Process hash on mount and when districts/cities load
+    if (!initialHashProcessed.current) {
+      processHash(true);
+      initialHashProcessed.current = true;
+    } else {
+      processHash(false);
+    }
 
     const handleHashChange = () => {
-      processHash();
-      lastHash = window.location.hash;
+      initialHashProcessed.current = false;
+      processHash(false);
+      setHasScrolled(false); // Reset scroll flag on hash change
     };
     window.addEventListener("hashchange", handleHashChange);
 
-    const handleFocus = () => processHash();
-    window.addEventListener("focus", handleFocus);
-
-    const intervalId = setInterval(() => {
-      const currentHash = window.location.hash;
-      if (currentHash !== lastHash) {
-        lastHash = currentHash;
-        processHash();
-      }
-    }, 50);
-
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
-      window.removeEventListener("focus", handleFocus);
-      clearInterval(intervalId);
     };
-  }, [state.cities, districts]);
+  }, [state.cities, districts, state.id]);
 
   useEffect(() => {
-    if (!selectedDistrict || !window.location.hash) return;
+    if (!selectedDistrict || !window.location.hash || !isPageReady || hasScrolled) return;
 
     const hash = window.location.hash.slice(1);
     if (!hash.startsWith("city-") && !hash.startsWith("district-")) return;
 
-    const timeoutId = setTimeout(() => {
+    // Wait for page to be fully rendered and layout to stabilize before scrolling
+    const scrollToMap = () => {
       const mapElement = document.getElementById("state-map");
       if (mapElement) {
-        mapElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        // Check if we're coming from spotlight (same origin referrer)
+        const isFromSpotlight = document.referrer && 
+          document.referrer.includes(window.location.origin) &&
+          !document.referrer.includes(window.location.pathname);
+        
+        mapElement.scrollIntoView({ 
+          behavior: isFromSpotlight ? "auto" : "smooth", 
+          block: "center" 
+        });
+        setHasScrolled(true);
       }
-    }, 300);
+    };
 
-    return () => clearTimeout(timeoutId);
-  }, [selectedDistrict]);
+    // Wait for layout to stabilize
+    const timer = setTimeout(() => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(scrollToMap);
+      });
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [selectedDistrict, isPageReady, hasScrolled]);
 
   const selectedDistrictInfo = useMemo(() => {
     if (!selectedDistrict || !districts || districts.length === 0) return null;
@@ -254,14 +303,26 @@ export default function StatePage({ params }: PageProps) {
               />
             </div>
 
-            {/* District Info Card */}
-            {selectedDistrict && (
-              <DistrictInfoCard
-                district={selectedDistrictInfo}
-                districtName={selectedDistrict}
-                onClose={() => setSelectedDistrict(null)}
-              />
-            )}
+            {/* District Info Card - Reserve space to prevent layout shift */}
+            <div className="min-h-[200px] transition-all duration-200">
+              <AnimatePresence mode="wait">
+                {selectedDistrict && (
+                  <DistrictInfoCard
+                    key={selectedDistrict}
+                    district={selectedDistrictInfo}
+                    districtName={selectedDistrict}
+                    onClose={() => {
+                      setSelectedDistrict(null);
+                      setHasScrolled(false);
+                      // Remove hash when closing
+                      if (window.location.hash) {
+                        window.history.replaceState(null, "", window.location.pathname);
+                      }
+                    }}
+                  />
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Right Column: Map - Now takes full column */}
