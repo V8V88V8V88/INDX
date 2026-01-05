@@ -64,7 +64,24 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
 
   useEffect(() => {
     setSelectedDistrict(null);
+    setHoveredDistrict(null);
   }, [stateCode, setSelectedDistrict]);
+
+  // Clear hover when selected district changes externally
+  useEffect(() => {
+    if (externalSelectedDistrict !== undefined && externalSelectedDistrict !== hoveredDistrict) {
+      // Don't clear hover if it's the same as selected
+      if (externalSelectedDistrict !== hoveredDistrict) {
+        // Small delay to allow smooth transition
+        const timer = setTimeout(() => {
+          if (externalSelectedDistrict !== hoveredDistrict) {
+            setHoveredDistrict(null);
+          }
+        }, 100);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [externalSelectedDistrict, hoveredDistrict]);
 
   const normalizeGeoDistrictName = (geoName: string, stateCode: string): string => {
     if (stateCode === "DL") {
@@ -156,18 +173,18 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
 
           return (
             <motion.path
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
+              key={`${district.name}-${selectedDistrict || 'none'}-${i}`}
+              initial={false}
               animate={{
                 opacity: isInactive ? 0.25 : 1,
                 scale: 1,
                 strokeOpacity: isInactive ? 0.3 : 1,
                 strokeWidth: isSelected ? 3 : isHovered ? 2.5 : 1.5
               }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
               d={district.d}
               stroke="var(--map-border-color)"
-              className={`cursor-pointer transition-all duration-150`}
+              className={`cursor-pointer transition-all duration-200`}
               style={{
                 filter: isSelected ? "url(#selectedGlow)" : isHovered ? "url(#glow)" : "none",
                 fill: isSelected

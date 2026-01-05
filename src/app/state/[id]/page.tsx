@@ -42,6 +42,7 @@ export default function StatePage({ params }: PageProps) {
   const [isPageReady, setIsPageReady] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const initialHashProcessed = useRef(false);
+  const lastHashRef = useRef<string>(typeof window !== "undefined" ? window.location.hash : "");
 
   if (!state) {
     notFound();
@@ -130,11 +131,25 @@ export default function StatePage({ params }: PageProps) {
       initialHashProcessed.current = false;
       processHash(false);
       setHasScrolled(false); // Reset scroll flag on hash change
+      lastHashRef.current = window.location.hash;
     };
+    
+    // Check for hash changes periodically (for same-page navigation via router.push)
+    const checkHashChange = () => {
+      const currentHash = window.location.hash;
+      if (currentHash !== lastHashRef.current) {
+        lastHashRef.current = currentHash;
+        handleHashChange();
+      }
+    };
+    
+    // Check every 150ms for hash changes (lightweight polling)
+    const hashCheckInterval = setInterval(checkHashChange, 150);
     window.addEventListener("hashchange", handleHashChange);
 
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
+      clearInterval(hashCheckInterval);
     };
   }, [state.cities, districts, state.id]);
 
