@@ -14,15 +14,15 @@ type SortOrder = "desc" | "asc" | "alpha";
 
 function getColorScale(metric: MetricKey): string[] {
   if (metric === "sexRatio") {
-    return ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
+    return ["var(--choro-1)", "var(--choro-2)", "var(--choro-4)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
   } else if (metric === "area") {
-    return ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"];
+    return ["var(--choro-0)", "var(--choro-1)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
   } else if (metric === "hdi" || metric === "literacyRate") {
-    return ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
+    return ["var(--choro-1)", "var(--choro-2)", "var(--choro-3)", "var(--choro-5)", "var(--choro-6)", "var(--choro-8)", "var(--choro-9)"];
   } else if (metric === "density" || metric === "population" || metric === "gdp") {
-    return ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
+    return ["var(--choro-0)", "var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
   }
-  return ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"];
+  return ["var(--choro-0)", "var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
 }
 
 export default function Home() {

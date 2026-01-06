@@ -135,43 +135,48 @@ export function IndiaMap({
   }, []);
 
   const colorScale = useMemo(() => {
-    const values = states
-      .map((s) => {
-        const val = s[colorByMetric];
-        return val;
-      })
-      .filter((v) => v != null) as number[];
-    
-    if (values.length === 0) {
+    // Get all state values with their IDs for ranking
+    const stateValues = states
+      .map((s) => ({
+        id: s.id,
+        value: s[colorByMetric],
+      }))
+      .filter((item) => item.value != null) as { id: string; value: number }[];
+
+    if (stateValues.length === 0) {
       return () => "var(--accent-primary)";
     }
-    
-    const min = Math.min(...values);
-    const max = Math.max(...values);
-    
-    return (value: number | undefined) => {
-      if (value == null) return "var(--accent-primary)";
-      
-      const t = (value - min) / (max - min);
 
-      let colors = ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"];
+    // Sort by value (descending) so highest value = top rank
+    stateValues.sort((a, b) => b.value - a.value);
 
-      if (colorByMetric === "sexRatio") {
-        // Use dynamic scale for Sex Ratio as well (follows theme)
-        colors = ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
-      } else if (colorByMetric === "area") {
-        // Dynamic scale for Area
-        colors = ["var(--choro-0)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-8)"];
-      } else if (colorByMetric === "hdi" || colorByMetric === "literacyRate") {
-        // Dynamic scale for positive development indicators
-        colors = ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
-      } else if (colorByMetric === "density" || colorByMetric === "population" || colorByMetric === "gdp") {
-        // Dynamic scale for intensity metrics
-        colors = ["var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-9)"];
-      }
+    // Create rank map: stateId -> rank (0 = top/highest, length-1 = bottom/lowest)
+    const rankMap = new Map<string, number>();
+    stateValues.forEach((item, index) => {
+      rankMap.set(item.id, index);
+    });
 
+    // Use more steps so neighboring states differ more clearly
+    let colors = ["var(--choro-0)", "var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
+
+    if (colorByMetric === "sexRatio") {
+      colors = ["var(--choro-1)", "var(--choro-2)", "var(--choro-4)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
+    } else if (colorByMetric === "area") {
+      colors = ["var(--choro-0)", "var(--choro-1)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
+    } else if (colorByMetric === "hdi" || colorByMetric === "literacyRate") {
+      colors = ["var(--choro-1)", "var(--choro-2)", "var(--choro-3)", "var(--choro-5)", "var(--choro-6)", "var(--choro-8)", "var(--choro-9)"];
+    }
+
+    return (value: number | undefined, stateId?: string) => {
+      if (value == null || !stateId) return "var(--accent-primary)";
+
+      const rank = rankMap.get(stateId);
+      if (rank == null) return "var(--accent-primary)";
+
+      // Map rank to color index (top rank = darkest color, so reverse the index)
+      const t = rank / (stateValues.length - 1);
       const idx = Math.min(Math.floor(t * colors.length), colors.length - 1);
-      return colors[idx];
+      return colors[colors.length - 1 - idx];
     };
   }, [colorByMetric]);
 
@@ -237,7 +242,7 @@ export function IndiaMap({
             let fill = "var(--accent-primary)";
             if (stateData) {
               const metricValue = stateData[colorByMetric];
-              fill = colorScale(metricValue);
+              fill = colorScale(metricValue, stateCode || undefined);
             }
             if (isSelected) fill = "var(--accent-secondary)";
             if (isHovered) fill = "var(--accent-secondary)";
