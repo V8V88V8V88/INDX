@@ -67,19 +67,6 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     setHoveredDistrict(null);
   }, [stateCode, setSelectedDistrict]);
 
-  useEffect(() => {
-    if (externalSelectedDistrict !== undefined && externalSelectedDistrict !== hoveredDistrict) {
-      if (externalSelectedDistrict !== hoveredDistrict) {
-        const timer = setTimeout(() => {
-          if (externalSelectedDistrict !== hoveredDistrict) {
-            setHoveredDistrict(null);
-          }
-        }, 100);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [externalSelectedDistrict, hoveredDistrict]);
-
   const normalizeGeoDistrictName = (geoName: string, stateCode: string): string => {
     if (stateCode === "DL") {
       if (geoName === "New Delhi" || geoName === "Shahdara") {
