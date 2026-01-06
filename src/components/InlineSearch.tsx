@@ -67,24 +67,61 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
   const [districtsCache, setDistrictsCache] = useState<Map<string, District[]>>(new Map());
+  const loadingStatesRef = useRef<Set<string>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Lazy-load districts only for states that are likely relevant to the current query,
+  // instead of fetching all states on initial page load.
   useEffect(() => {
-    const fetchAllDistricts = async () => {
-      const cache = new Map<string, District[]>();
-      await Promise.all(
-        states.map(async (state) => {
-          try {
-            const districts = await fetchDistrictsFromAPI(state.id);
-            cache.set(state.id, districts);
-          } catch (error) {
-          }
-        })
+    const searchTerm = query.toLowerCase().trim();
+    if (!searchTerm || searchTerm.length < 2) return;
+
+    // Find states that are most relevant to the query: name, code, or city name match.
+    const candidateStates = states.filter((state) => {
+      if (state.name.toLowerCase().includes(searchTerm)) return true;
+      if (state.code.toLowerCase() === searchTerm) return true;
+      return state.cities.some((city) => city.name.toLowerCase().includes(searchTerm));
+    });
+
+    let topCandidates = candidateStates.slice(0, 6);
+
+    // Fallback: if nothing matched (e.g., district names not yet fetched), optimistically load a small
+    // batch of uncached states so district search can still find matches like "Agra".
+    if (topCandidates.length === 0 && searchTerm.length >= 3) {
+      const uncached = states.filter(
+        (s) => !districtsCache.has(s.id) && !loadingStatesRef.current.has(s.id)
       );
-      setDistrictsCache(cache);
-    };
-    fetchAllDistricts();
-  }, []);
+      topCandidates = uncached.slice(0, 10);
+    }
+
+    if (topCandidates.length === 0) return;
+
+    const toFetch = topCandidates
+      .map((s) => s.id)
+      .filter(
+        (id) =>
+          !districtsCache.has(id) && !loadingStatesRef.current.has(id),
+      );
+
+    if (toFetch.length === 0) return;
+
+    toFetch.forEach((id) => loadingStatesRef.current.add(id));
+
+    (async () => {
+      const updates = new Map(districtsCache);
+      for (const stateId of toFetch) {
+        try {
+          const districts = await fetchDistrictsFromAPI(stateId);
+          updates.set(stateId, districts);
+        } catch {
+          // ignore individual fetch errors, we can try again on a future query
+        } finally {
+          loadingStatesRef.current.delete(stateId);
+        }
+      }
+      setDistrictsCache(updates);
+    })();
+  }, [query, districtsCache]);
 
   useEffect(() => {
     if (selectedState) {

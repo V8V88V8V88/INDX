@@ -41,6 +41,18 @@ export default function ComparePage() {
   const { data: leftDistricts } = useDistricts(leftState?.id || "");
   const { data: rightDistricts } = useDistricts(rightState?.id || "");
 
+  const leftName =
+    (leftItem?.type === "state" && leftItem.state?.name) ||
+    (leftItem?.type === "city" && leftItem.city?.name) ||
+    (leftItem?.type === "district" && leftItem.district?.name) ||
+    "";
+
+  const rightName =
+    (rightItem?.type === "state" && rightItem.state?.name) ||
+    (rightItem?.type === "city" && rightItem.city?.name) ||
+    (rightItem?.type === "district" && rightItem.district?.name) ||
+    "";
+
   const handleLeftSelect = (result: SearchResult) => {
     if (result.type === "state" && result.state) {
       setLeftItem({ type: "state", state: result.state });
@@ -293,10 +305,10 @@ export default function ComparePage() {
                 <div className="grid grid-cols-3 gap-4 border-b border-border-light pb-4">
                   <div className="text-xs font-semibold text-text-muted">Metric</div>
                   <div className="text-center text-xs font-semibold text-accent-primary">
-                    {leftItem.type === "state" ? leftItem.state?.name : (leftItem.type === "city" ? leftItem.city?.name : leftItem.district?.name)}
+                    {leftName || "—"}
                   </div>
                   <div className="text-center text-xs font-semibold text-accent-primary">
-                    {rightItem.type === "state" ? rightItem.state?.name : (rightItem.type === "city" ? rightItem.city?.name : rightItem.district?.name)}
+                    {rightName || "—"}
                   </div>
                 </div>
 

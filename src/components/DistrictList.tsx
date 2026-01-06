@@ -96,9 +96,30 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   if (isLoading) {
     return (
       <div className="card p-6">
-        <div className="flex items-center gap-3">
-          <div className="h-5 w-5 animate-spin rounded-full border-2 border-accent-primary border-t-transparent" />
-          <span className="text-text-muted">Loading...</span>
+        <div className="mb-4 flex items-center justify-between">
+          <div className="h-4 w-32 rounded-full bg-bg-secondary animate-pulse" />
+          <div className="h-3 w-20 rounded-full bg-bg-secondary animate-pulse" />
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, idx) => (
+            <div
+              key={idx}
+              className="rounded-xl border border-border-light bg-bg-secondary/40 p-4"
+            >
+              <div className="mb-3 h-4 w-40 rounded bg-bg-tertiary animate-pulse" />
+              <div className="mb-1 h-3 w-24 rounded bg-bg-tertiary animate-pulse" />
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <div className="h-2 w-16 rounded bg-bg-tertiary animate-pulse" />
+                  <div className="h-4 w-20 rounded bg-bg-tertiary animate-pulse" />
+                </div>
+                <div className="space-y-1">
+                  <div className="h-2 w-12 rounded bg-bg-tertiary animate-pulse" />
+                  <div className="h-4 w-16 rounded bg-bg-tertiary animate-pulse" />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     );

@@ -1,7 +1,8 @@
 "use client";
 
 import { use, useState, useMemo, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import type { Transition } from "framer-motion";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, MetricCard } from "@/components";
@@ -13,6 +14,7 @@ import { DistrictInfoCard } from "@/components/DistrictInfoCard";
 import { getStateById, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
+import type { City, District } from "@/types";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -22,6 +24,10 @@ export default function StatePage({ params }: PageProps) {
   const { id } = use(params);
   const state = getStateById(id);
   const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
+  const prefersReducedMotion = useReducedMotion();
+  const smooth: Transition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.45, ease: "easeOut", type: "tween" };
   
   const getInitialDistrictFromHash = (): string | null => {
     if (typeof window === "undefined") return null;
@@ -59,6 +65,23 @@ export default function StatePage({ params }: PageProps) {
       .replace(/\s+/g, " ")
       .replace(/[’'".,()/]/g, "")
       .replace(/&/g, "and");
+  };
+
+  // Keep this in sync with DistrictList's definition so that "major" places
+  // are derived from shared parameters instead of duplicated data.
+  const isMajorArea = (d: District, city?: City) => {
+    const pop = d.population;
+    const tier = city?.tier ?? d.tier;
+    const isMetro = !!(city?.isMetro || d.isMetro);
+    const density = d.density;
+    const literacy = d.literacyRate || 0;
+
+    if (isMetro || tier === 1) return true;
+
+    const bigUrban = pop >= 3_000_000 && density >= 1200;
+    const goodQuality = literacy >= 75;
+
+    return bigUrban && goodQuality;
   };
 
   useEffect(() => {
@@ -197,7 +220,49 @@ export default function StatePage({ params }: PageProps) {
   const literacyRank = states.filter((s) => s.literacyRate > state.literacyRate).length + 1;
   const hdiRank = states.filter((s) => s.hdi > state.hdi).length + 1;
 
-  const citiesByPopulation = [...state.cities].sort((a, b) => b.population - a.population);
+  const majorAreasByPopulation = useMemo(() => {
+    if (!districts || districts.length === 0) {
+      return [] as {
+        name: string;
+        value: number;
+        displayValue: string;
+        highlight: boolean;
+      }[];
+    }
+
+    const areas = districts
+      .map((d) => {
+        const matchedCity = state.cities.find(
+          (c) =>
+            normalizeDistrictName(c.name) === normalizeDistrictName(d.name) ||
+            normalizeDistrictName(c.name) === normalizeDistrictName(d.headquarters || "")
+        );
+
+        return { district: d, city: matchedCity };
+      })
+      .filter(({ district, city }) => isMajorArea(district, city));
+
+    if (areas.length === 0) {
+      return [...state.cities].sort((a, b) => b.population - a.population).slice(0, 6).map((city) => ({
+        name: city.name,
+        value: city.population,
+        displayValue: formatPopulation(city.population),
+        highlight: city.isCapital,
+      }));
+    }
+
+    return areas
+      .sort((a, b) => b.district.population - a.district.population)
+      .slice(0, 6)
+      .map(({ district, city }) => {
+        return {
+          name: district.name,
+          value: district.population,
+          displayValue: formatPopulation(district.population),
+          highlight: !!(city?.isCapital || district.isCapital),
+        };
+      });
+  }, [districts, state.cities, formatPopulation]);
 
   return (
     <div className="min-h-screen bg-bg-primary">
@@ -208,9 +273,9 @@ export default function StatePage({ params }: PageProps) {
       <main className="mx-auto max-w-7xl px-6 py-8">
         {/* Hero Section */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={smooth}
           className="mb-8"
         >
           <div className="mb-3 flex flex-wrap items-center gap-3">
@@ -324,9 +389,9 @@ export default function StatePage({ params }: PageProps) {
           {/* Right Column: Map - Now takes full column */}
           <div id="state-map" className="-mt-4">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.2 }}
               className="flex flex-col items-center justify-center"
               style={{ overflow: "visible" }}
             >
@@ -383,21 +448,16 @@ export default function StatePage({ params }: PageProps) {
           <BarChart
             title="Cities by Population"
             delay={0.35}
-            items={citiesByPopulation.slice(0, 6).map((city) => ({
-              name: city.name,
-              value: city.population,
-              displayValue: formatPopulation(city.population),
-              highlight: city.isCapital,
-            }))}
+            items={majorAreasByPopulation}
           />
         </section>
 
         {/* Additional Metrics */}
         <section className="mb-10">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.35 }}
             className="card p-6"
           >
             <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-text-muted">
@@ -476,9 +536,9 @@ export default function StatePage({ params }: PageProps) {
 
         {/* Back Navigation */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.4 }}
         >
           <Link
             href="/"

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import type { Transition } from "framer-motion";
 import Link from "next/link";
 import { Header, MetricCard, IndiaMap, MetricSelector } from "@/components";
 import { states, india } from "@/data/india";
@@ -28,7 +29,13 @@ export default function Home() {
   const [mapMetric, setMapMetric] = useState<MetricKey>("population");
   const [rankingMetric, setRankingMetric] = useState<MetricKey>("population");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
+  const [showAllRegions, setShowAllRegions] = useState(false);
   const { formatPopulation, formatCurrency, formatDensity, formatArea } = useFormat();
+  const prefersReducedMotion = useReducedMotion();
+
+  const smooth: Transition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.45, ease: "easeOut", type: "tween" };
 
   // Synchronize map and ranking metrics
   const handleMapMetricChange = (metric: MetricKey) => {
@@ -90,9 +97,9 @@ export default function Home() {
       <main className="mx-auto max-w-7xl px-6 py-8">
         {/* Hero */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={smooth}
           className="mb-12"
         >
           <div className="mb-2 flex items-center gap-3">
@@ -125,9 +132,9 @@ export default function Home() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.985 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.15 }}
             className="card overflow-hidden p-6"
           >
             <IndiaMap colorByMetric={mapMetric} interactive />
@@ -210,9 +217,9 @@ export default function Home() {
 
           <motion.div
             key={rankingMetric}
-            initial={{ opacity: 0, y: 10 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, duration: 0.35 }}
             className="card p-6"
           >
             <div className="mb-4 flex items-center justify-between">
@@ -223,13 +230,10 @@ export default function Home() {
             </div>
             <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 space-y-4">
               {rankedStates.map((state, i) => (
-                <motion.a
+                <Link
                   key={state.id}
                   href={`/state/${state.id}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.15, delay: Math.min(i * 0.02, 0.5) }}
-                  className="group relative block break-inside-avoid rounded-xl border border-border-light bg-bg-secondary/30 p-3 hover:bg-bg-secondary overflow-hidden"
+                  className="group relative block break-inside-avoid rounded-xl border border-border-light bg-bg-secondary/30 p-3 hover:bg-bg-secondary overflow-hidden transition-colors"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -248,7 +252,7 @@ export default function Home() {
                       className="h-full bg-accent-primary/60"
                     />
                   </div>
-                </motion.a>
+                </Link>
               ))}
             </div>
           </motion.div>
@@ -256,44 +260,55 @@ export default function Home() {
 
         {/* All States Grid */}
         <section className="mb-12">
-          <div className="mb-6 flex items-center justify-between">
+          <div className="mb-3">
             <h2 className="text-headline text-text-primary">All States & UTs</h2>
             <p className="text-sm text-text-muted">{totalStates} regions</p>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {states.map((state, index) => (
-              <motion.a
-                key={state.id}
-                href={`/state/${state.id}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.02 * Math.min(index, 16) }}
-                whileHover={{ y: -4 }}
-                className="card card-interactive p-5"
+
+          {!showAllRegions && (
+            <div className="mb-4">
+              <button
+                type="button"
+                onClick={() => setShowAllRegions(true)}
+                className="rounded-lg border border-border-light bg-bg-secondary px-4 py-2 text-sm font-medium text-text-secondary hover:bg-bg-tertiary transition-colors"
               >
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="rounded-md bg-bg-secondary px-2 py-1 text-xs font-medium text-text-muted">
-                    {state.region}
-                  </span>
-                  <span className="font-mono text-xs text-text-muted">{state.code}</span>
-                </div>
+                Show all states & union territories
+              </button>
+            </div>
+          )}
 
-                <h3 className="mb-1 text-lg font-semibold text-text-primary">{state.name}</h3>
-                <p className="mb-4 text-sm text-text-tertiary">Capital: {state.capital}</p>
+          {showAllRegions && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {states.map((state) => (
+                <Link
+                  key={state.id}
+                  href={`/state/${state.id}`}
+                  className="card card-interactive p-5 transition-transform hover:-translate-y-1"
+                >
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="rounded-md bg-bg-secondary px-2 py-1 text-xs font-medium text-text-muted">
+                      {state.region}
+                    </span>
+                    <span className="font-mono text-xs text-text-muted">{state.code}</span>
+                  </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <p className="text-xs text-text-muted">Population</p>
-                    <p className="font-medium text-text-secondary">{formatPopulation(state.population)}</p>
+                  <h3 className="mb-1 text-lg font-semibold text-text-primary">{state.name}</h3>
+                  <p className="mb-4 text-sm text-text-tertiary">Capital: {state.capital}</p>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <p className="text-xs text-text-muted">Population</p>
+                      <p className="font-medium text-text-secondary">{formatPopulation(state.population)}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-text-muted">Literacy</p>
+                      <p className="font-medium text-text-secondary">{state.literacyRate}%</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs text-text-muted">Literacy</p>
-                    <p className="font-medium text-text-secondary">{state.literacyRate}%</p>
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Footer */}

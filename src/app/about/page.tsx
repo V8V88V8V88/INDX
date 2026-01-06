@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { Header } from "@/components";
 
@@ -17,15 +17,17 @@ export default function AboutPage() {
     { name: "TopoJSON", version: "3.1.0" },
   ];
 
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <div className="min-h-screen bg-bg-primary">
       <Header breadcrumbs={[{ label: "About", href: "/about" }]} />
 
       <main className="mx-auto max-w-4xl px-6 py-8">
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.4 }}
           className="mb-8"
         >
           <h1 className="text-headline mb-2 text-text-primary">About</h1>
@@ -36,21 +38,21 @@ export default function AboutPage() {
 
         {/* Tech Stack */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.4, delay: prefersReducedMotion ? 0 : 0.1 }}
           className="card mb-6 p-4"
         >
           <h2 className="mb-3 text-base font-semibold text-text-primary">Tech Stack</h2>
           <div className="flex flex-wrap gap-2">
             {techStack.map((tech, index) => (
-              <motion.span
-                key={tech.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.2, delay: 0.1 + index * 0.03 }}
-                className="inline-flex items-center gap-1.5 rounded-md bg-bg-secondary px-2.5 py-1 text-xs"
-              >
+                <motion.span
+                  key={tech.name}
+                  initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.2, delay: prefersReducedMotion ? 0 : 0.1 + index * 0.03 }}
+                  className="inline-flex items-center gap-1.5 rounded-md bg-bg-secondary px-2.5 py-1 text-xs"
+                >
                 <span className="font-medium text-text-primary">{tech.name}</span>
                 <span className="text-text-muted">v{tech.version}</span>
               </motion.span>
@@ -60,9 +62,9 @@ export default function AboutPage() {
 
         {/* Why I Build */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.4, delay: prefersReducedMotion ? 0 : 0.2 }}
           className="card mb-6 p-5"
         >
           <h2 className="mb-4 text-lg font-semibold text-text-primary">Why did I build this site?</h2>
@@ -76,9 +78,9 @@ export default function AboutPage() {
 
         {/* Sources */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.4, delay: prefersReducedMotion ? 0 : 0.3 }}
           className="card p-5"
         >
           <h2 className="mb-4 text-lg font-semibold text-text-primary">Sources</h2>
@@ -167,9 +169,9 @@ export default function AboutPage() {
         </motion.section>
 
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: prefersReducedMotion ? 0 : 0.3 }}
           className="mt-8"
         >
           <Link

@@ -106,20 +106,16 @@ export function DistrictInfoCard({ district, districtName, onClose }: DistrictIn
             )}
           </div>
         ) : (
-          <div className="p-8 text-center">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-bg-secondary">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-text-muted">
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M12 8V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M12 16H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <p className="text-text-muted font-medium mb-1">
-              Data loading...
-            </p>
-            <p className="text-text-tertiary text-sm">
-              Fetching district information
-            </p>
+          <div className="grid grid-cols-2 gap-2">
+            {Array.from({ length: 4 }).map((_, idx) => (
+              <div
+                key={idx}
+                className="rounded-lg bg-accent-primary/10 p-3 border border-border-light/40"
+              >
+                <div className="h-2 w-20 rounded bg-bg-secondary animate-pulse mb-2" />
+                <div className="h-5 w-24 rounded bg-bg-secondary animate-pulse" />
+              </div>
+            ))}
           </div>
         )}
       </motion.div>
