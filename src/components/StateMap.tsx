@@ -67,6 +67,21 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     setHoveredDistrict(null);
   }, [stateCode, setSelectedDistrict]);
 
+  // Handle ESC key to unselect district
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && selectedDistrict) {
+        setSelectedDistrict(null);
+        setHoveredDistrict(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedDistrict, setSelectedDistrict]);
+
   const normalizeGeoDistrictName = (geoName: string, stateCode: string): string => {
     if (stateCode === "DL") {
       if (geoName === "New Delhi" || geoName === "Shahdara") {
