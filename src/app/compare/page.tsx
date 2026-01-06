@@ -19,12 +19,15 @@ interface SearchResult {
   stateId?: string;
   state?: State;
   city?: City;
+  district?: import("@/types").District;
 }
 
 type CompareItem = {
-  type: "state" | "city";
+  type: "state" | "city" | "district";
   state?: State;
   city?: City;
+  district?: import("@/types").District;
+  districtState?: State;
 };
 
 export default function ComparePage() {
@@ -32,8 +35,8 @@ export default function ComparePage() {
   const [rightItem, setRightItem] = useState<CompareItem | null>(null);
   const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
 
-  const leftState = leftItem?.type === "state" ? leftItem.state : (leftItem?.city ? getStateById(leftItem.city.stateId) : null);
-  const rightState = rightItem?.type === "state" ? rightItem.state : (rightItem?.city ? getStateById(rightItem.city.stateId) : null);
+  const leftState = leftItem?.type === "state" ? leftItem.state : (leftItem?.type === "city" && leftItem.city ? getStateById(leftItem.city.stateId) : (leftItem?.type === "district" ? leftItem.districtState : null));
+  const rightState = rightItem?.type === "state" ? rightItem.state : (rightItem?.type === "city" && rightItem.city ? getStateById(rightItem.city.stateId) : (rightItem?.type === "district" ? rightItem.districtState : null));
 
   const { data: leftDistricts } = useDistricts(leftState?.id || "");
   const { data: rightDistricts } = useDistricts(rightState?.id || "");
@@ -44,7 +47,14 @@ export default function ComparePage() {
     } else if (result.type === "city" && result.city) {
       const state = result.state || (result.stateId ? getStateById(result.stateId) : null);
       if (state) {
-        setLeftItem({ type: "city", city: result.city, state });
+        setLeftItem({ type: "city", city: result.city, state }); // Keeping state in leftItem context might be better managed by just deriving it, but existing logic used implicit derived state var. Wait, existing logic set state in setLeftItem? No, CompareItem doesn't have state prop for city type in my new definition? Ah, existing definition didn't have state in CompareItem for city type, but `setLeftItem` line 47 in original code had `state` property!
+        // The original CompareItem type: type: "state" | "city"; state?: State; city?: City; 
+        // So passing state is valid.
+      }
+    } else if (result.type === "district" && result.district) {
+      const state = result.state || (result.stateId ? getStateById(result.stateId) : null);
+      if (state) {
+        setLeftItem({ type: "district", district: result.district, districtState: state });
       }
     } else if (result.stateId) {
       const state = getStateById(result.stateId);
@@ -60,7 +70,12 @@ export default function ComparePage() {
     } else if (result.type === "city" && result.city) {
       const state = result.state || (result.stateId ? getStateById(result.stateId) : null);
       if (state) {
-        setRightItem({ type: "city", city: result.city, state });
+        setRightItem({ type: "city", city: result.city, state }); // Using state property on CompareItem
+      }
+    } else if (result.type === "district" && result.district) {
+      const state = result.state || (result.stateId ? getStateById(result.stateId) : null);
+      if (state) {
+        setRightItem({ type: "district", district: result.district, districtState: state });
       }
     } else if (result.stateId) {
       const state = getStateById(result.stateId);
@@ -137,33 +152,51 @@ export default function ComparePage() {
                         stateCode={leftItem.state.id}
                         state={leftItem.state}
                         selectedDistrict={null}
-                        onDistrictSelect={() => {}}
-                        onDistrictClick={() => {}}
+                        onDistrictSelect={() => { }}
+                        onDistrictClick={() => { }}
                       />
                     </div>
                   </>
-                ) : leftItem?.type === "city" && leftItem.city && leftState ? (
+                ) : (leftItem?.type === "city" && leftItem.city && leftState) || (leftItem?.type === "district" && leftItem.district && leftState) ? (
                   <>
                     <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-2xl font-bold text-text-primary">{leftItem.city.name}</h2>
+                      <h2 className="text-2xl font-bold text-text-primary">
+                        {leftItem.type === "city" ? leftItem.city!.name : leftItem.district!.name}
+                      </h2>
                       <span className="rounded-full bg-accent-secondary px-3 py-1 text-xs font-semibold text-white">
-                        {leftItem.city.tier === 1 ? "Metro" : `Tier ${leftItem.city.tier}`}
+                        {leftItem.type === "city"
+                          ? (leftItem.city!.tier === 1 ? "Metro" : `Tier ${leftItem.city!.tier}`)
+                          : `Tier ${leftItem.district!.tier || 3}`}
                       </span>
                     </div>
                     <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
                       <StateMap
                         stateCode={leftState.id}
                         state={leftState}
-                        selectedDistrict={leftItem.city.name}
-                        onDistrictSelect={() => {}}
-                        onDistrictClick={() => {}}
+                        selectedDistrict={leftItem.type === "city" ? leftItem.city!.name : leftItem.district!.name}
+                        onDistrictSelect={() => { }}
+                        onDistrictClick={() => { }}
                       />
                     </div>
-                    <CityCard city={leftItem.city} stateName={leftState.name} />
+                    {leftItem.type === "city" ? (
+                      <CityCard city={leftItem.city!} stateName={leftState.name} />
+                    ) : (
+                      <CityCard
+                        city={{
+                          ...leftItem.district!,
+                          id: leftItem.district!.id || leftItem.district!.name,
+                          districtId: leftItem.district!.id,
+                          isCapital: !!leftItem.district!.isCapital,
+                          isMetro: !!leftItem.district!.isMetro || leftItem.district!.tier === 1,
+                          tier: (leftItem.district!.tier || 3) as any,
+                        }}
+                        stateName={leftState.name}
+                      />
+                    )}
                   </>
                 ) : (
                   <div className="card p-4 flex items-center justify-center" style={{ minHeight: "500px" }}>
-                    <p className="text-text-muted">Select a state or city</p>
+                    <p className="text-text-muted">Select a state, city, or district</p>
                   </div>
                 )}
               </motion.div>
@@ -189,33 +222,51 @@ export default function ComparePage() {
                         stateCode={rightItem.state.id}
                         state={rightItem.state}
                         selectedDistrict={null}
-                        onDistrictSelect={() => {}}
-                        onDistrictClick={() => {}}
+                        onDistrictSelect={() => { }}
+                        onDistrictClick={() => { }}
                       />
                     </div>
                   </>
-                ) : rightItem?.type === "city" && rightItem.city && rightState ? (
+                ) : (rightItem?.type === "city" && rightItem.city && rightState) || (rightItem?.type === "district" && rightItem.district && rightState) ? (
                   <>
                     <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-2xl font-bold text-text-primary">{rightItem.city.name}</h2>
+                      <h2 className="text-2xl font-bold text-text-primary">
+                        {rightItem.type === "city" ? rightItem.city!.name : rightItem.district!.name}
+                      </h2>
                       <span className="rounded-full bg-accent-secondary px-3 py-1 text-xs font-semibold text-white">
-                        {rightItem.city.tier === 1 ? "Metro" : `Tier ${rightItem.city.tier}`}
+                        {rightItem.type === "city"
+                          ? (rightItem.city!.tier === 1 ? "Metro" : `Tier ${rightItem.city!.tier}`)
+                          : `Tier ${rightItem.district!.tier || 3}`}
                       </span>
                     </div>
                     <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
                       <StateMap
                         stateCode={rightState.id}
                         state={rightState}
-                        selectedDistrict={rightItem.city.name}
-                        onDistrictSelect={() => {}}
-                        onDistrictClick={() => {}}
+                        selectedDistrict={rightItem.type === "city" ? rightItem.city!.name : rightItem.district!.name}
+                        onDistrictSelect={() => { }}
+                        onDistrictClick={() => { }}
                       />
                     </div>
-                    <CityCard city={rightItem.city} stateName={rightState.name} />
+                    {rightItem.type === "city" ? (
+                      <CityCard city={rightItem.city!} stateName={rightState.name} />
+                    ) : (
+                      <CityCard
+                        city={{
+                          ...rightItem.district!,
+                          id: rightItem.district!.id || rightItem.district!.name,
+                          districtId: rightItem.district!.id,
+                          isCapital: !!rightItem.district!.isCapital,
+                          isMetro: !!rightItem.district!.isMetro || rightItem.district!.tier === 1,
+                          tier: (rightItem.district!.tier || 3) as any,
+                        }}
+                        stateName={rightState.name}
+                      />
+                    )}
                   </>
                 ) : (
                   <div className="card p-4 flex items-center justify-center" style={{ minHeight: "500px" }}>
-                    <p className="text-text-muted">Select a state or city</p>
+                    <p className="text-text-muted">Select a state, city, or district</p>
                   </div>
                 )}
               </motion.div>
@@ -242,10 +293,10 @@ export default function ComparePage() {
                 <div className="grid grid-cols-3 gap-4 border-b border-border-light pb-4">
                   <div className="text-xs font-semibold text-text-muted">Metric</div>
                   <div className="text-center text-xs font-semibold text-accent-primary">
-                    {leftItem.type === "state" ? leftItem.state?.name : leftItem.city?.name}
+                    {leftItem.type === "state" ? leftItem.state?.name : (leftItem.type === "city" ? leftItem.city?.name : leftItem.district?.name)}
                   </div>
                   <div className="text-center text-xs font-semibold text-accent-primary">
-                    {rightItem.type === "state" ? rightItem.state?.name : rightItem.city?.name}
+                    {rightItem.type === "state" ? rightItem.state?.name : (rightItem.type === "city" ? rightItem.city?.name : rightItem.district?.name)}
                   </div>
                 </div>
 
@@ -254,34 +305,38 @@ export default function ComparePage() {
                   const rightIsState = rightItem.type === "state";
                   const leftStateData = leftIsState ? leftItem.state : leftState;
                   const rightStateData = rightIsState ? rightItem.state : rightState;
-                  
+
                   const commonMetrics = [
-                    { 
-                      label: "Population", 
-                      left: leftIsState 
-                        ? formatPopulation(leftItem.state!.population) 
-                        : formatPopulation(leftItem.city!.population),
-                      right: rightIsState 
-                        ? formatPopulation(rightItem.state!.population) 
-                        : formatPopulation(rightItem.city!.population)
+                    {
+                      label: "Population",
+                      left: leftIsState
+                        ? formatPopulation(leftItem.state!.population)
+                        : (leftItem.type === "city" ? formatPopulation(leftItem.city!.population) : formatPopulation(leftItem.district!.population)),
+                      right: rightIsState
+                        ? formatPopulation(rightItem.state!.population)
+                        : (rightItem.type === "city" ? formatPopulation(rightItem.city!.population) : formatPopulation(rightItem.district!.population))
                     },
-                    { 
-                      label: "Area", 
-                      left: leftIsState 
-                        ? formatArea(leftItem.state!.area) 
-                        : formatArea(leftItem.city!.area),
-                      right: rightIsState 
-                        ? formatArea(rightItem.state!.area) 
-                        : formatArea(rightItem.city!.area)
+                    {
+                      label: "Area",
+                      left: leftIsState
+                        ? formatArea(leftItem.state!.area)
+                        : (leftItem.type === "city" ? formatArea(leftItem.city!.area) : formatArea(leftItem.district!.area)),
+                      right: rightIsState
+                        ? formatArea(rightItem.state!.area)
+                        : (rightItem.type === "city" ? formatArea(rightItem.city!.area) : formatArea(rightItem.district!.area))
                     },
-                    { 
-                      label: "Density", 
-                      left: leftIsState 
-                        ? formatDensity(leftItem.state!.density) 
-                        : formatDensity(Math.round(leftItem.city!.population / leftItem.city!.area)),
-                      right: rightIsState 
-                        ? formatDensity(rightItem.state!.density) 
-                        : formatDensity(Math.round(rightItem.city!.population / rightItem.city!.area))
+                    {
+                      label: "Density",
+                      left: leftIsState
+                        ? formatDensity(leftItem.state!.density)
+                        : (leftItem.type === "city"
+                          ? formatDensity(Math.round(leftItem.city!.population / leftItem.city!.area))
+                          : formatDensity(leftItem.district!.density)),
+                      right: rightIsState
+                        ? formatDensity(rightItem.state!.density)
+                        : (rightItem.type === "city"
+                          ? formatDensity(Math.round(rightItem.city!.population / rightItem.city!.area))
+                          : formatDensity(rightItem.district!.density))
                     },
                   ];
 
@@ -295,11 +350,49 @@ export default function ComparePage() {
                     { label: "Major Cities", left: leftItem.state!.cities.length.toString(), right: rightItem.state!.cities.length.toString() },
                   ] : [];
 
-                  const cityOnlyMetrics = !leftIsState && !rightIsState ? [
-                    { label: "Tier", left: leftItem.city!.tier === 1 ? "Metro" : `Tier ${leftItem.city!.tier}`, right: rightItem.city!.tier === 1 ? "Metro" : `Tier ${rightItem.city!.tier}` },
-                    { label: "Metro", left: leftItem.city!.isMetro ? "Yes" : "No", right: rightItem.city!.isMetro ? "Yes" : "No" },
-                    { label: "Capital", left: leftItem.city!.isCapital ? "Yes" : "No", right: rightItem.city!.isCapital ? "Yes" : "No" },
-                    { label: "State", left: leftStateData?.name || "", right: rightStateData?.name || "" },
+                  const cityOnlyMetrics = (!leftIsState && !rightIsState) ? [
+                    {
+                      label: "Tier",
+                      left: leftItem.type === "city"
+                        ? (leftItem.city!.tier === 1 ? "Metro" : `Tier ${leftItem.city!.tier}`)
+                        : (leftItem.district!.tier === 1 ? "Metro" : `Tier ${leftItem.district!.tier || 3}`),
+                      right: rightItem.type === "city"
+                        ? (rightItem.city!.tier === 1 ? "Metro" : `Tier ${rightItem.city!.tier}`)
+                        : (rightItem.district!.tier === 1 ? "Metro" : `Tier ${rightItem.district!.tier || 3}`)
+                    },
+                    {
+                      label: "Metro",
+                    left: leftItem.type === "city"
+                      ? (leftItem.city!.isMetro || leftItem.city!.tier === 1 ? "Yes" : "No")
+                      : (leftItem.district!.isMetro || leftItem.district!.tier === 1 ? "Yes" : "No"),
+                    right: rightItem.type === "city"
+                      ? (rightItem.city!.isMetro || rightItem.city!.tier === 1 ? "Yes" : "No")
+                      : (rightItem.district!.isMetro || rightItem.district!.tier === 1 ? "Yes" : "No")
+                    },
+                    {
+                      label: "Capital",
+                    left: leftItem.type === "city"
+                      ? (leftItem.city!.isCapital ? "Yes" : "No")
+                      : (leftItem.district!.isCapital ? "Yes" : "No"),
+                    right: rightItem.type === "city"
+                      ? (rightItem.city!.isCapital ? "Yes" : "No")
+                      : (rightItem.district!.isCapital ? "Yes" : "No")
+                    },
+                    {
+                      label: "State",
+                      left: leftStateData?.name || "",
+                      right: rightStateData?.name || ""
+                    },
+                    {
+                      label: "Sex Ratio",
+                      left: leftItem.type === "district" ? (leftItem.district!.sexRatio || "N/A") : "N/A",
+                      right: rightItem.type === "district" ? (rightItem.district!.sexRatio || "N/A") : "N/A"
+                    },
+                    {
+                      label: "Literacy",
+                      left: leftItem.type === "district" ? `${leftItem.district!.literacyRate}%` : "N/A",
+                      right: rightItem.type === "district" ? `${rightItem.district!.literacyRate}%` : "N/A"
+                    }
                   ] : [];
 
                   return [...commonMetrics, ...stateOnlyMetrics, ...cityOnlyMetrics].map((item, index, arr) => (

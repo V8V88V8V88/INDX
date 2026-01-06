@@ -9,6 +9,15 @@ export interface District {
   literacyRate: number;
   sexRatio: number; // females 
   headquarters?: string;
+  tier?: number;
+  /**
+   * True if this district contains the state/UT capital
+   */
+  isCapital?: boolean;
+  /**
+   * True if this district includes a metro city
+   */
+  isMetro?: boolean;
 }
 
 export interface State {
@@ -39,7 +48,7 @@ export interface City {
   area: number;
   isCapital: boolean;
   isMetro: boolean;
-  tier: 1 | 1.5 | 2 | 2.5 | 3;
+  tier: 1 | 1.5 | 2 | 2.5 | 3 | 4;
 }
 
 export interface Country {

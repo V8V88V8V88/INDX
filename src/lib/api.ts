@@ -1,4 +1,5 @@
 import type { District } from "@/types";
+import { getStateById } from "@/data/india";
 
 function normalizeKey(v: string): string {
   return v
@@ -50,6 +51,61 @@ function dedupeDistricts(input: District[]): District[] {
   return Array.from(byName.values());
 }
 
+function normalizeName(value: string | undefined | null): string {
+  return (value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+function markCapitalAndMetro(stateCode: string, districts: District[]): District[] {
+  const state = getStateById(stateCode);
+  if (!state) return districts;
+
+  const normalizedCapital = normalizeName(state.capital);
+  const metroCityNames = new Set(
+    state.cities
+      .filter((c) => c.isMetro)
+      .map((c) => normalizeName(c.name))
+  );
+  const capitalCityNames = new Set(
+    state.cities
+      .filter((c) => c.isCapital)
+      .map((c) => normalizeName(c.name))
+  );
+
+  return districts.map((d) => {
+    const name = normalizeName(d.name);
+    const hq = normalizeName(d.headquarters);
+
+    const isCapital =
+      !!d.isCapital ||
+      (!!normalizedCapital && (name === normalizedCapital || hq === normalizedCapital)) ||
+      capitalCityNames.has(name) ||
+      capitalCityNames.has(hq);
+
+    const isMetro =
+      !!d.isMetro ||
+      metroCityNames.has(name) ||
+      metroCityNames.has(hq) ||
+      // Treat districts that are themselves the capital in key metros as metro areas
+      // e.g. New Delhi district within the National Capital Region is a metro
+      (state.code === "DL" && !!normalizedCapital && (name === normalizedCapital || hq === normalizedCapital)) ||
+      // Districts marked as Tier 1 are effectively metro regions
+      d.tier === 1;
+
+    if (!isCapital && !isMetro) {
+      return d;
+    }
+
+    return {
+      ...d,
+      ...(isCapital ? { isCapital: true } : {}),
+      ...(isMetro ? { isMetro: true } : {}),
+    };
+  });
+}
+
 function createTimeoutSignal(ms: number): AbortSignal {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), ms);
@@ -65,7 +121,8 @@ export async function fetchDistrictsFromAPI(stateCode: string): Promise<District
     
     if (response.ok) {
       const districts = (await response.json()) as District[];
-      return dedupeDistricts(districts);
+      const uniqueDistricts = dedupeDistricts(districts);
+      return markCapitalAndMetro(stateCode, uniqueDistricts);
     }
   } catch (error) {
     console.warn(`Failed to fetch districts for ${stateCode}:`, error);

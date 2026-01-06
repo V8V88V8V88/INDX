@@ -14,6 +14,7 @@ interface SearchResult {
   stateId?: string;
   state?: State;
   city?: import("@/types").City;
+  district?: District;
 }
 
 const stateCodeMap: Record<string, string> = {
@@ -146,6 +147,7 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
             stateName: state.name,
             stateId: state.id,
             state: state,
+            district: district,
           });
         }
       });
@@ -278,11 +280,10 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
                     <button
                       key={`${result.type}-${result.id}`}
                       onClick={() => handleSelect(result)}
-                      className={`w-full px-4 py-2.5 text-left transition-colors ${
-                        index === selectedIndex
+                      className={`w-full px-4 py-2.5 text-left transition-colors ${index === selectedIndex
                           ? "bg-accent-primary/10"
                           : "hover:bg-bg-secondary"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-3">
                         {result.type === "state" ? (

@@ -1,4 +1,14 @@
 [
-  {"id": "CH-CHD", "name": "Chandigarh", "stateId": "CH", "population": 1055450, "area": 114, "density": 9258, "literacyRate": 86.4, "sexRatio": 818, "headquarters": "Chandigarh"}
+  {
+    "id": "CH-CHD",
+    "name": "Chandigarh",
+    "stateId": "CH",
+    "population": 1055450,
+    "area": 114,
+    "density": 9258,
+    "literacyRate": 86.4,
+    "sexRatio": 818,
+    "headquarters": "Chandigarh",
+    "tier": 2
+  }
 ]
-

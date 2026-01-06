@@ -27,8 +27,18 @@ export function DistrictInfoCard({ district, districtName, onClose }: DistrictIn
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 rounded-full bg-accent-secondary" />
-            <h3 className="text-base font-semibold text-text-primary">
-              {district?.name || districtName}
+            <h3 className="text-base font-semibold text-text-primary flex items-center gap-2">
+              <span>{district?.name || districtName}</span>
+              {district?.isCapital && (
+                <span className="rounded bg-accent-primary px-2 py-0.5 text-[10px] font-bold text-white shadow-sm">
+                  Capital
+                </span>
+              )}
+              {district?.isMetro && (
+                <span className="rounded bg-accent-secondary px-2 py-0.5 text-[10px] font-bold text-white shadow-sm">
+                  Metro
+                </span>
+              )}
             </h3>
           </div>
           <button
@@ -86,14 +96,22 @@ export function DistrictInfoCard({ district, districtName, onClose }: DistrictIn
                 </p>
               </div>
             )}
+            {district.tier && (
+              <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
+                <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Tier</p>
+                <p className="text-base font-bold text-text-primary">
+                  Tier {district.tier}
+                </p>
+              </div>
+            )}
           </div>
         ) : (
           <div className="p-8 text-center">
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-bg-secondary">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-text-muted">
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 8V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 16H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 8V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 16H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <p className="text-text-muted font-medium mb-1">

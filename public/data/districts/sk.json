@@ -1,9 +1,74 @@
 [
-  {"id": "SK-EST", "name": "East Sikkim", "stateId": "SK", "population": 283583, "area": 954, "density": 297, "literacyRate": 84.7, "sexRatio": 944, "headquarters": "Gangtok"},
-  {"id": "SK-WST", "name": "West Sikkim", "stateId": "SK", "population": 136299, "area": 1166, "density": 117, "literacyRate": 78.7, "sexRatio": 942, "headquarters": "Geyzing"},
-  {"id": "SK-NTH", "name": "North Sikkim", "stateId": "SK", "population": 43709, "area": 4226, "density": 10, "literacyRate": 77.4, "sexRatio": 769, "headquarters": "Mangan"},
-  {"id": "SK-STH", "name": "South Sikkim", "stateId": "SK", "population": 146742, "area": 750, "density": 196, "literacyRate": 82.1, "sexRatio": 914, "headquarters": "Namchi"},
-  {"id": "SK-PRK", "name": "Pakyong", "stateId": "SK", "population": 42500, "area": 202, "density": 210, "literacyRate": 83.5, "sexRatio": 938, "headquarters": "Pakyong"},
-  {"id": "SK-SRG", "name": "Soreng", "stateId": "SK", "population": 48200, "area": 235, "density": 205, "literacyRate": 79.2, "sexRatio": 945, "headquarters": "Soreng"}
+  {
+    "id": "SK-EST",
+    "name": "East Sikkim",
+    "stateId": "SK",
+    "population": 283583,
+    "area": 954,
+    "density": 297,
+    "literacyRate": 84.7,
+    "sexRatio": 944,
+    "headquarters": "Gangtok",
+    "tier": 3
+  },
+  {
+    "id": "SK-WST",
+    "name": "West Sikkim",
+    "stateId": "SK",
+    "population": 136299,
+    "area": 1166,
+    "density": 117,
+    "literacyRate": 78.7,
+    "sexRatio": 942,
+    "headquarters": "Geyzing",
+    "tier": 4
+  },
+  {
+    "id": "SK-NTH",
+    "name": "North Sikkim",
+    "stateId": "SK",
+    "population": 43709,
+    "area": 4226,
+    "density": 10,
+    "literacyRate": 77.4,
+    "sexRatio": 769,
+    "headquarters": "Mangan",
+    "tier": 4
+  },
+  {
+    "id": "SK-STH",
+    "name": "South Sikkim",
+    "stateId": "SK",
+    "population": 146742,
+    "area": 750,
+    "density": 196,
+    "literacyRate": 82.1,
+    "sexRatio": 914,
+    "headquarters": "Namchi",
+    "tier": 4
+  },
+  {
+    "id": "SK-PRK",
+    "name": "Pakyong",
+    "stateId": "SK",
+    "population": 42500,
+    "area": 202,
+    "density": 210,
+    "literacyRate": 83.5,
+    "sexRatio": 938,
+    "headquarters": "Pakyong",
+    "tier": 4
+  },
+  {
+    "id": "SK-SRG",
+    "name": "Soreng",
+    "stateId": "SK",
+    "population": 48200,
+    "area": 235,
+    "density": 205,
+    "literacyRate": 79.2,
+    "sexRatio": 945,
+    "headquarters": "Soreng",
+    "tier": 4
+  }
 ]
-

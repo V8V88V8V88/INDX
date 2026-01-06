@@ -1,5 +1,26 @@
 [
-  {"id": "LA-LEH", "name": "Leh", "stateId": "LA", "population": 133487, "area": 45110, "density": 3, "literacyRate": 77.2, "sexRatio": 690, "headquarters": "Leh"},
-  {"id": "LA-KRG", "name": "Kargil", "stateId": "LA", "population": 140802, "area": 14036, "density": 10, "literacyRate": 74.5, "sexRatio": 815, "headquarters": "Kargil"}
+  {
+    "id": "LA-LEH",
+    "name": "Leh",
+    "stateId": "LA",
+    "population": 133487,
+    "area": 45110,
+    "density": 3,
+    "literacyRate": 77.2,
+    "sexRatio": 690,
+    "headquarters": "Leh",
+    "tier": 3
+  },
+  {
+    "id": "LA-KRG",
+    "name": "Kargil",
+    "stateId": "LA",
+    "population": 140802,
+    "area": 14036,
+    "density": 10,
+    "literacyRate": 74.5,
+    "sexRatio": 815,
+    "headquarters": "Kargil",
+    "tier": 4
+  }
 ]
-

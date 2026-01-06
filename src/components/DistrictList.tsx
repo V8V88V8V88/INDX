@@ -17,6 +17,32 @@ interface DistrictListProps {
   onDistrictSelect?: (districtName: string) => void;
 }
 
+// Central definition of what counts as a "major city" (district-level) for this view.
+// Keep this strict so only truly significant, urban, livable economic centers show up automatically.
+// Criteria (any state):
+// - Known metro: explicit metro flag on city/district OR tier 1
+// - OR very large & urban & relatively high literacy:
+//   - population >= 30 lakh
+//   - density >= 1,200 / km²
+//   - literacy >= 75%
+function isMajorArea(d: District, city?: City) {
+  const pop = city?.population ?? d.population;
+  const tier = city?.tier ?? d.tier;
+  const isMetro = !!(city?.isMetro || d.isMetro);
+  const density =
+    d.density ||
+    (city && city.area > 0 ? Math.round(city.population / city.area) : 0);
+  const literacy = d.literacyRate || 0;
+
+  // Always include explicit metros / tier-1 cities
+  if (isMetro || tier === 1) return true;
+
+  const bigUrban = pop >= 3_000_000 && density >= 1200;
+  const goodQuality = literacy >= 75;
+
+  return bigUrban && goodQuality;
+}
+
 export function DistrictList({ stateCode, stateName, cities = [], selectedDistrict, onDistrictSelect }: DistrictListProps) {
   const [filter, setFilter] = useState<FilterType>("all");
   const [sortBy, setSortBy] = useState<SortType>("population");
@@ -24,43 +50,33 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
 
   const items = useMemo(() => {
     const districtList = districts || [];
+
     const cityNames = new Set(cities.map((c) => c.name.toLowerCase()));
 
-    const markedDistricts = districtList.map((d) => ({
-      ...d,
-      hasCity: cityNames.has(d.name.toLowerCase()) ||
-        cityNames.has(d.headquarters?.toLowerCase() || ""),
-      cityData: cities.find(
-        (c) => c.name.toLowerCase() === d.name.toLowerCase() ||
+    const markedDistricts = districtList.map((d) => {
+      const matchedCity = cities.find(
+        (c) =>
+          c.name.toLowerCase() === d.name.toLowerCase() ||
           c.name.toLowerCase() === d.headquarters?.toLowerCase()
-      ),
-    }));
+      );
 
-    const districtNames = new Set(districtList.map((d) => d.name.toLowerCase()));
-    const hqNames = new Set(districtList.map((d) => d.headquarters?.toLowerCase() || ""));
+      const isMajor = isMajorArea(d, matchedCity);
 
-    const standaloneCities = cities
-      .filter((c) => !districtNames.has(c.name.toLowerCase()) && !hqNames.has(c.name.toLowerCase()))
-      .map((c) => ({
-        id: c.id,
-        name: c.name,
-        stateId: c.stateId,
-        population: c.population,
-        area: c.area,
-        density: Math.round(c.population / c.area),
-        literacyRate: 0,
-        sexRatio: 0,
-        headquarters: undefined,
-        hasCity: true,
-        cityData: c,
-        isCity: true,
-      }));
+      return {
+        ...d,
+        hasCity: isMajor,
+        cityData: matchedCity,
+        isCity: false,
+        isMajor,
+      };
+    });
 
-    return [...markedDistricts, ...standaloneCities];
+    // We now work purely at district level: no standalone city rows, to avoid confusion/duplicates.
+    return markedDistricts;
   }, [districts, cities]);
 
   const filteredAndSorted = useMemo(() => {
-    const result = filter === "cities" ? items.filter((item) => item.hasCity) : items;
+    const result = filter === "cities" ? items.filter((item) => item.isMajor) : items;
 
     return [...result].sort((a, b) => {
       switch (sortBy) {
@@ -161,9 +177,9 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
       {/* Grid */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         {filteredAndSorted.map((item, i) => (
-          <DistrictItem 
-            key={item.id} 
-            item={item} 
+          <DistrictItem
+            key={item.id}
+            item={item}
             delay={i * 0.015}
             isSelected={selectedDistrict?.toLowerCase() === item.name.toLowerCase()}
             onSelect={() => onDistrictSelect?.(item.name)}
@@ -178,11 +194,19 @@ interface ItemWithCity extends District {
   hasCity?: boolean;
   cityData?: City;
   isCity?: boolean;
+  isMajor?: boolean;
 }
 
 function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCity; delay: number; isSelected?: boolean; onSelect?: () => void }) {
   const city = item.cityData;
   const { formatPopulation, formatDensity } = useFormat();
+
+  const isCapital = city?.isCapital || item.isCapital;
+  const isMetro =
+    city?.isMetro ||
+    item.isMetro ||
+    city?.tier === 1 ||
+    item.tier === 1;
 
   const handleClick = () => {
     if (onSelect) {
@@ -200,21 +224,25 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2, delay: Math.min(delay, 0.3) }}
       onClick={handleClick}
-      className={`rounded-xl border p-5 transition-all hover:shadow-md hover:bg-bg-secondary cursor-pointer ${
-        isSelected
+      className={`rounded-xl border p-5 transition-all hover:shadow-md hover:bg-bg-secondary cursor-pointer ${isSelected
           ? "border-accent-primary bg-accent-muted/30 shadow-md ring-2 ring-accent-primary/20"
           : item.hasCity
             ? "border-accent-primary/20 bg-bg-secondary/60"
             : "border-border-light bg-bg-secondary/40"
-      }`}
+        }`}
     >
       <div className="mb-4 flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
             <h4 className="text-xl font-bold text-text-primary">{item.name}</h4>
-            {city?.isCapital && (
+            {isCapital && (
               <span className="rounded bg-accent-primary px-2 py-0.5 text-xs font-bold text-white shadow-sm">
                 Capital
+              </span>
+            )}
+            {isMetro && (
+              <span className="rounded bg-accent-secondary px-2 py-0.5 text-xs font-bold text-white shadow-sm">
+                Metro
               </span>
             )}
           </div>
@@ -223,9 +251,9 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
           )}
         </div>
 
-        {city && (
+        {(city?.tier || item.tier) && (
           <span className="rounded-lg bg-bg-tertiary border border-border-light px-2.5 py-1 text-xs font-semibold text-text-secondary">
-            Tier {city.tier}
+            Tier {city?.tier || item.tier}
           </span>
         )}
       </div>

@@ -8,7 +8,8 @@
     "density": 1816,
     "literacyRate": 77.3,
     "sexRatio": 917,
-    "headquarters": "Lucknow"
+    "headquarters": "Lucknow",
+    "tier": 2
   },
   {
     "id": "UP-KNP",
@@ -19,7 +20,8 @@
     "density": 1452,
     "literacyRate": 79.7,
     "sexRatio": 862,
-    "headquarters": "Kanpur"
+    "headquarters": "Kanpur",
+    "tier": 2
   },
   {
     "id": "UP-AGR",
@@ -30,7 +32,8 @@
     "density": 1088,
     "literacyRate": 71.6,
     "sexRatio": 868,
-    "headquarters": "Agra"
+    "headquarters": "Agra",
+    "tier": 2
   },
   {
     "id": "UP-GZP",
@@ -41,7 +44,8 @@
     "density": 3954,
     "literacyRate": 78.1,
     "sexRatio": 878,
-    "headquarters": "Ghaziabad"
+    "headquarters": "Ghaziabad",
+    "tier": 1
   },
   {
     "id": "UP-VNS",
@@ -52,7 +56,8 @@
     "density": 2395,
     "literacyRate": 75.6,
     "sexRatio": 913,
-    "headquarters": "Varanasi"
+    "headquarters": "Varanasi",
+    "tier": 2
   },
   {
     "id": "UP-PYG",
@@ -63,7 +68,8 @@
     "density": 1086,
     "literacyRate": 72.3,
     "sexRatio": 902,
-    "headquarters": "Prayagraj"
+    "headquarters": "Prayagraj",
+    "tier": 2
   },
   {
     "id": "UP-MRU",
@@ -74,7 +80,8 @@
     "density": 1366,
     "literacyRate": 72.8,
     "sexRatio": 886,
-    "headquarters": "Meerut"
+    "headquarters": "Meerut",
+    "tier": 2
   },
   {
     "id": "UP-GKP",
@@ -85,7 +92,8 @@
     "density": 1336,
     "literacyRate": 70.8,
     "sexRatio": 946,
-    "headquarters": "Gorakhpur"
+    "headquarters": "Gorakhpur",
+    "tier": 2
   },
   {
     "id": "UP-AZM",
@@ -96,7 +104,8 @@
     "density": 1090,
     "literacyRate": 70.9,
     "sexRatio": 1000,
-    "headquarters": "Azamgarh"
+    "headquarters": "Azamgarh",
+    "tier": 4
   },
   {
     "id": "UP-MTH",
@@ -107,7 +116,8 @@
     "density": 763,
     "literacyRate": 72.7,
     "sexRatio": 858,
-    "headquarters": "Mathura"
+    "headquarters": "Mathura",
+    "tier": 3
   },
   {
     "id": "UP-BLY",
@@ -118,7 +128,8 @@
     "density": 1087,
     "literacyRate": 70.3,
     "sexRatio": 937,
-    "headquarters": "Ballia"
+    "headquarters": "Ballia",
+    "tier": 3
   },
   {
     "id": "UP-JNP",
@@ -129,7 +140,8 @@
     "density": 1109,
     "literacyRate": 71.5,
     "sexRatio": 1024,
-    "headquarters": "Jaunpur"
+    "headquarters": "Jaunpur",
+    "tier": 3
   },
   {
     "id": "UP-MRZ",
@@ -140,7 +152,8 @@
     "density": 552,
     "literacyRate": 68.5,
     "sexRatio": 903,
-    "headquarters": "Mirzapur"
+    "headquarters": "Mirzapur",
+    "tier": 3
   },
   {
     "id": "UP-SHJ",
@@ -151,7 +164,8 @@
     "density": 939,
     "literacyRate": 70.5,
     "sexRatio": 891,
-    "headquarters": "Saharanpur"
+    "headquarters": "Saharanpur",
+    "tier": 3
   },
   {
     "id": "UP-BRY",
@@ -162,7 +176,8 @@
     "density": 1080,
     "literacyRate": 58.5,
     "sexRatio": 882,
-    "headquarters": "Bareilly"
+    "headquarters": "Bareilly",
+    "tier": 2
   },
   {
     "id": "UP-MBD",
@@ -173,7 +188,8 @@
     "density": 1308,
     "literacyRate": 56.8,
     "sexRatio": 906,
-    "headquarters": "Moradabad"
+    "headquarters": "Moradabad",
+    "tier": 2
   },
   {
     "id": "UP-BDA",
@@ -182,9 +198,10 @@
     "population": 3499171,
     "area": 4352,
     "density": 804,
-    "literacyRate": 67.0,
+    "literacyRate": 67,
     "sexRatio": 890,
-    "headquarters": "Bulandshahr"
+    "headquarters": "Bulandshahr",
+    "tier": 4
   },
   {
     "id": "UP-BLI",
@@ -193,9 +210,10 @@
     "population": 2461056,
     "area": 2688,
     "density": 915,
-    "literacyRate": 69.0,
+    "literacyRate": 69,
     "sexRatio": 966,
-    "headquarters": "Basti"
+    "headquarters": "Basti",
+    "tier": 4
   },
   {
     "id": "UP-SIT",
@@ -206,7 +224,8 @@
     "density": 779,
     "literacyRate": 60.2,
     "sexRatio": 879,
-    "headquarters": "Sitapur"
+    "headquarters": "Sitapur",
+    "tier": 3
   },
   {
     "id": "UP-HRD",
@@ -217,7 +236,8 @@
     "density": 684,
     "literacyRate": 59.7,
     "sexRatio": 856,
-    "headquarters": "Hardoi"
+    "headquarters": "Hardoi",
+    "tier": 3
   },
   {
     "id": "UP-SLN",
@@ -228,7 +248,8 @@
     "density": 855,
     "literacyRate": 69.3,
     "sexRatio": 978,
-    "headquarters": "Sultanpur"
+    "headquarters": "Sultanpur",
+    "tier": 3
   },
   {
     "id": "UP-FZB",
@@ -239,7 +260,8 @@
     "density": 979,
     "literacyRate": 64.6,
     "sexRatio": 938,
-    "headquarters": "Ayodhya"
+    "headquarters": "Ayodhya",
+    "tier": 4
   },
   {
     "id": "UP-DEO",
@@ -250,7 +272,8 @@
     "density": 1223,
     "literacyRate": 71.2,
     "sexRatio": 959,
-    "headquarters": "Deoria"
+    "headquarters": "Deoria",
+    "tier": 4
   },
   {
     "id": "UP-GNZ",
@@ -261,7 +284,8 @@
     "density": 857,
     "literacyRate": 58.7,
     "sexRatio": 918,
-    "headquarters": "Gonda"
+    "headquarters": "Gonda",
+    "tier": 3
   },
   {
     "id": "UP-BAH",
@@ -272,7 +296,8 @@
     "density": 607,
     "literacyRate": 49.4,
     "sexRatio": 881,
-    "headquarters": "Bahraich"
+    "headquarters": "Bahraich",
+    "tier": 3
   },
   {
     "id": "UP-RAB",
@@ -283,7 +308,8 @@
     "density": 739,
     "literacyRate": 67.1,
     "sexRatio": 918,
-    "headquarters": "Raebareli"
+    "headquarters": "Raebareli",
+    "tier": 3
   },
   {
     "id": "UP-ETA",
@@ -292,9 +318,10 @@
     "population": 1774480,
     "area": 2456,
     "density": 722,
-    "literacyRate": 66.0,
+    "literacyRate": 66,
     "sexRatio": 866,
-    "headquarters": "Etah"
+    "headquarters": "Etah",
+    "tier": 4
   },
   {
     "id": "UP-FRR",
@@ -305,7 +332,8 @@
     "density": 827,
     "literacyRate": 70.5,
     "sexRatio": 879,
-    "headquarters": "Fatehgarh"
+    "headquarters": "Fatehgarh",
+    "tier": 4
   },
   {
     "id": "UP-MLB",
@@ -316,7 +344,8 @@
     "density": 669,
     "literacyRate": 70.3,
     "sexRatio": 880,
-    "headquarters": "Mainpuri"
+    "headquarters": "Mainpuri",
+    "tier": 3
   },
   {
     "id": "UP-KSG",
@@ -327,7 +356,8 @@
     "density": 723,
     "literacyRate": 62.5,
     "sexRatio": 876,
-    "headquarters": "Kasganj"
+    "headquarters": "Kasganj",
+    "tier": 4
   },
   {
     "id": "UP-FTP",
@@ -338,7 +368,8 @@
     "density": 634,
     "literacyRate": 67.6,
     "sexRatio": 898,
-    "headquarters": "Fatehpur"
+    "headquarters": "Fatehpur",
+    "tier": 3
   },
   {
     "id": "UP-PRT",
@@ -349,7 +380,8 @@
     "density": 854,
     "literacyRate": 70.1,
     "sexRatio": 997,
-    "headquarters": "Pratapgarh"
+    "headquarters": "Pratapgarh",
+    "tier": 4
   },
   {
     "id": "UP-KAU",
@@ -358,9 +390,10 @@
     "population": 1596909,
     "area": 1780,
     "density": 897,
-    "literacyRate": 64.0,
+    "literacyRate": 64,
     "sexRatio": 902,
-    "headquarters": "Manjhanpur"
+    "headquarters": "Manjhanpur",
+    "tier": 4
   },
   {
     "id": "UP-BND",
@@ -371,7 +404,8 @@
     "density": 408,
     "literacyRate": 68.1,
     "sexRatio": 863,
-    "headquarters": "Banda"
+    "headquarters": "Banda",
+    "tier": 3
   },
   {
     "id": "UP-CHT",
@@ -382,7 +416,8 @@
     "density": 313,
     "literacyRate": 65.1,
     "sexRatio": 888,
-    "headquarters": "Chitrakoot Dham"
+    "headquarters": "Chitrakoot Dham",
+    "tier": 4
   },
   {
     "id": "UP-HAM",
@@ -393,7 +428,8 @@
     "density": 268,
     "literacyRate": 68.8,
     "sexRatio": 866,
-    "headquarters": "Hamirpur"
+    "headquarters": "Hamirpur",
+    "tier": 4
   },
   {
     "id": "UP-MAH",
@@ -404,7 +440,8 @@
     "density": 304,
     "literacyRate": 65.3,
     "sexRatio": 882,
-    "headquarters": "Mahoba"
+    "headquarters": "Mahoba",
+    "tier": 4
   },
   {
     "id": "UP-JHL",
@@ -415,7 +452,8 @@
     "density": 398,
     "literacyRate": 75.1,
     "sexRatio": 895,
-    "headquarters": "Jhansi"
+    "headquarters": "Jhansi",
+    "tier": 2
   },
   {
     "id": "UP-LAL",
@@ -426,7 +464,8 @@
     "density": 242,
     "literacyRate": 63.5,
     "sexRatio": 907,
-    "headquarters": "Lalitpur"
+    "headquarters": "Lalitpur",
+    "tier": 3
   },
   {
     "id": "UP-JAL",
@@ -437,7 +476,8 @@
     "density": 366,
     "literacyRate": 72.5,
     "sexRatio": 865,
-    "headquarters": "Orai"
+    "headquarters": "Orai",
+    "tier": 4
   },
   {
     "id": "UP-AUR",
@@ -448,7 +488,8 @@
     "density": 668,
     "literacyRate": 74.4,
     "sexRatio": 861,
-    "headquarters": "Auraiya"
+    "headquarters": "Auraiya",
+    "tier": 4
   },
   {
     "id": "UP-ETW",
@@ -459,7 +500,8 @@
     "density": 683,
     "literacyRate": 78.4,
     "sexRatio": 867,
-    "headquarters": "Etawah"
+    "headquarters": "Etawah",
+    "tier": 3
   },
   {
     "id": "UP-KDP",
@@ -468,9 +510,10 @@
     "population": 1795092,
     "area": 3021,
     "density": 594,
-    "literacyRate": 76.0,
+    "literacyRate": 76,
     "sexRatio": 865,
-    "headquarters": "Akbarpur"
+    "headquarters": "Akbarpur",
+    "tier": 4
   },
   {
     "id": "UP-UNN",
@@ -481,7 +524,8 @@
     "density": 682,
     "literacyRate": 64.6,
     "sexRatio": 893,
-    "headquarters": "Unnao"
+    "headquarters": "Unnao",
+    "tier": 3
   },
   {
     "id": "UP-LKI",
@@ -492,7 +536,8 @@
     "density": 524,
     "literacyRate": 60.5,
     "sexRatio": 902,
-    "headquarters": "Lakhimpur"
+    "headquarters": "Lakhimpur",
+    "tier": 3
   },
   {
     "id": "UP-PBT",
@@ -503,7 +548,8 @@
     "density": 582,
     "literacyRate": 61.5,
     "sexRatio": 900,
-    "headquarters": "Pilibhit"
+    "headquarters": "Pilibhit",
+    "tier": 3
   },
   {
     "id": "UP-SHB",
@@ -514,7 +560,8 @@
     "density": 656,
     "literacyRate": 57.9,
     "sexRatio": 870,
-    "headquarters": "Shahjahanpur"
+    "headquarters": "Shahjahanpur",
+    "tier": 3
   },
   {
     "id": "UP-BDN",
@@ -525,7 +572,8 @@
     "density": 719,
     "literacyRate": 52.9,
     "sexRatio": 871,
-    "headquarters": "Budaun"
+    "headquarters": "Budaun",
+    "tier": 4
   },
   {
     "id": "UP-RMP",
@@ -536,7 +584,8 @@
     "density": 987,
     "literacyRate": 53.3,
     "sexRatio": 905,
-    "headquarters": "Rampur"
+    "headquarters": "Rampur",
+    "tier": 3
   },
   {
     "id": "UP-JBP",
@@ -547,7 +596,8 @@
     "density": 1048,
     "literacyRate": 54.6,
     "sexRatio": 903,
-    "headquarters": "Sambhal"
+    "headquarters": "Sambhal",
+    "tier": 3
   },
   {
     "id": "UP-BJP",
@@ -558,7 +608,8 @@
     "density": 807,
     "literacyRate": 67.4,
     "sexRatio": 916,
-    "headquarters": "Bijnor"
+    "headquarters": "Bijnor",
+    "tier": 4
   },
   {
     "id": "UP-AMR",
@@ -569,7 +620,8 @@
     "density": 744,
     "literacyRate": 62.5,
     "sexRatio": 913,
-    "headquarters": "Amroha"
+    "headquarters": "Amroha",
+    "tier": 4
   },
   {
     "id": "UP-MZN",
@@ -580,7 +632,8 @@
     "density": 1033,
     "literacyRate": 69.1,
     "sexRatio": 889,
-    "headquarters": "Muzaffarnagar"
+    "headquarters": "Muzaffarnagar",
+    "tier": 3
   },
   {
     "id": "UP-BGR",
@@ -591,7 +644,8 @@
     "density": 969,
     "literacyRate": 72.8,
     "sexRatio": 861,
-    "headquarters": "Baghpat"
+    "headquarters": "Baghpat",
+    "tier": 4
   },
   {
     "id": "UP-GBN",
@@ -602,7 +656,8 @@
     "density": 1162,
     "literacyRate": 80.1,
     "sexRatio": 851,
-    "headquarters": "Noida"
+    "headquarters": "Noida",
+    "tier": 1
   },
   {
     "id": "UP-HTP",
@@ -613,7 +668,8 @@
     "density": 2027,
     "literacyRate": 73.5,
     "sexRatio": 884,
-    "headquarters": "Hapur"
+    "headquarters": "Hapur",
+    "tier": 3
   },
   {
     "id": "UP-SHA",
@@ -624,7 +680,8 @@
     "density": 1198,
     "literacyRate": 66.3,
     "sexRatio": 889,
-    "headquarters": "Shamli"
+    "headquarters": "Shamli",
+    "tier": 4
   },
   {
     "id": "UP-AZG",
@@ -635,7 +692,8 @@
     "density": 732,
     "literacyRate": 67.5,
     "sexRatio": 882,
-    "headquarters": "Aligarh"
+    "headquarters": "Aligarh",
+    "tier": 2
   },
   {
     "id": "UP-HTA",
@@ -646,7 +704,8 @@
     "density": 894,
     "literacyRate": 66.4,
     "sexRatio": 868,
-    "headquarters": "Hathras"
+    "headquarters": "Hathras",
+    "tier": 4
   },
   {
     "id": "UP-FRZ",
@@ -657,7 +716,8 @@
     "density": 1057,
     "literacyRate": 66.9,
     "sexRatio": 876,
-    "headquarters": "Firozabad"
+    "headquarters": "Firozabad",
+    "tier": 2
   },
   {
     "id": "UP-MNT",
@@ -668,7 +728,8 @@
     "density": 908,
     "literacyRate": 65.9,
     "sexRatio": 942,
-    "headquarters": "Maharajganj"
+    "headquarters": "Maharajganj",
+    "tier": 4
   },
   {
     "id": "UP-KSN",
@@ -679,7 +740,8 @@
     "density": 1224,
     "literacyRate": 63.4,
     "sexRatio": 953,
-    "headquarters": "Padrauna"
+    "headquarters": "Padrauna",
+    "tier": 4
   },
   {
     "id": "UP-MAU",
@@ -690,7 +752,8 @@
     "density": 1287,
     "literacyRate": 67.8,
     "sexRatio": 977,
-    "headquarters": "Mau"
+    "headquarters": "Mau",
+    "tier": 4
   },
   {
     "id": "UP-SDR",
@@ -701,7 +764,8 @@
     "density": 882,
     "literacyRate": 55.5,
     "sexRatio": 932,
-    "headquarters": "Naugarh"
+    "headquarters": "Naugarh",
+    "tier": 4
   },
   {
     "id": "UP-SNT",
@@ -712,7 +776,8 @@
     "density": 1034,
     "literacyRate": 64.3,
     "sexRatio": 945,
-    "headquarters": "Khalilabad"
+    "headquarters": "Khalilabad",
+    "tier": 4
   },
   {
     "id": "UP-AMB",
@@ -723,7 +788,8 @@
     "density": 1020,
     "literacyRate": 70.3,
     "sexRatio": 979,
-    "headquarters": "Akbarpur"
+    "headquarters": "Akbarpur",
+    "tier": 4
   },
   {
     "id": "UP-SRV",
@@ -734,7 +800,8 @@
     "density": 559,
     "literacyRate": 46.7,
     "sexRatio": 881,
-    "headquarters": "Bhinga"
+    "headquarters": "Bhinga",
+    "tier": 4
   },
   {
     "id": "UP-BLR",
@@ -745,7 +812,8 @@
     "density": 642,
     "literacyRate": 49.5,
     "sexRatio": 912,
-    "headquarters": "Balrampur"
+    "headquarters": "Balrampur",
+    "tier": 4
   },
   {
     "id": "UP-SRN",
@@ -754,9 +822,10 @@
     "population": 1862559,
     "area": 6788,
     "density": 274,
-    "literacyRate": 65.0,
+    "literacyRate": 65,
     "sexRatio": 926,
-    "headquarters": "Robertsganj"
+    "headquarters": "Robertsganj",
+    "tier": 4
   },
   {
     "id": "UP-BHD",
@@ -767,7 +836,8 @@
     "density": 1496,
     "literacyRate": 70.1,
     "sexRatio": 937,
-    "headquarters": "Bhadohi"
+    "headquarters": "Bhadohi",
+    "tier": 4
   },
   {
     "id": "UP-CND",
@@ -778,7 +848,8 @@
     "density": 765,
     "literacyRate": 72.9,
     "sexRatio": 921,
-    "headquarters": "Chandauli"
+    "headquarters": "Chandauli",
+    "tier": 4
   },
   {
     "id": "UP-GZP2",
@@ -789,7 +860,8 @@
     "density": 1073,
     "literacyRate": 71.8,
     "sexRatio": 955,
-    "headquarters": "Ghazipur"
+    "headquarters": "Ghazipur",
+    "tier": 4
   },
   {
     "id": "UP-APR",
@@ -800,7 +872,8 @@
     "density": 592,
     "literacyRate": 65.1,
     "sexRatio": 935,
-    "headquarters": "Gauriganj"
+    "headquarters": "Gauriganj",
+    "tier": 4
   },
   {
     "id": "UP-BBK",
@@ -811,7 +884,8 @@
     "density": 741,
     "literacyRate": 61.8,
     "sexRatio": 910,
-    "headquarters": "Barabanki"
+    "headquarters": "Barabanki",
+    "tier": 4
   },
   {
     "id": "UP-KNJ",
@@ -822,6 +896,7 @@
     "density": 792,
     "literacyRate": 72.7,
     "sexRatio": 879,
-    "headquarters": "Kannauj"
+    "headquarters": "Kannauj",
+    "tier": 4
   }
 ]

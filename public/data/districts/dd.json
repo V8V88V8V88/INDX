@@ -1,6 +1,38 @@
 [
-  {"id": "DD-DDN", "name": "Dadra and Nagar Haveli", "stateId": "DD", "population": 343709, "area": 491, "density": 700, "literacyRate": 77.6, "sexRatio": 774, "headquarters": "Silvassa"},
-  {"id": "DD-DMN", "name": "Daman", "stateId": "DD", "population": 191173, "area": 72, "density": 2655, "literacyRate": 88.1, "sexRatio": 618, "headquarters": "Daman"},
-  {"id": "DD-DIU", "name": "Diu", "stateId": "DD", "population": 52074, "area": 40, "density": 1302, "literacyRate": 87.1, "sexRatio": 710, "headquarters": "Diu"}
+  {
+    "id": "DD-DDN",
+    "name": "Dadra and Nagar Haveli",
+    "stateId": "DD",
+    "population": 343709,
+    "area": 491,
+    "density": 700,
+    "literacyRate": 77.6,
+    "sexRatio": 774,
+    "headquarters": "Silvassa",
+    "tier": 4
+  },
+  {
+    "id": "DD-DMN",
+    "name": "Daman",
+    "stateId": "DD",
+    "population": 191173,
+    "area": 72,
+    "density": 2655,
+    "literacyRate": 88.1,
+    "sexRatio": 618,
+    "headquarters": "Daman",
+    "tier": 4
+  },
+  {
+    "id": "DD-DIU",
+    "name": "Diu",
+    "stateId": "DD",
+    "population": 52074,
+    "area": 40,
+    "density": 1302,
+    "literacyRate": 87.1,
+    "sexRatio": 710,
+    "headquarters": "Diu",
+    "tier": 3
+  }
 ]
-

@@ -10,12 +10,13 @@ interface CityCardProps {
   delay?: number;
 }
 
-const tierStyles: Record<1 | 1.5 | 2 | 2.5 | 3, string> = {
+const tierStyles: Record<1 | 1.5 | 2 | 2.5 | 3 | 4, string> = {
   1: "bg-accent-primary text-white",
   1.5: "bg-accent-primary/80 text-white",
-  2: "bg-accent-musted text-accent-primary",
-  2.5: "bg-accent-muted/80 text-accent-primary",
-  3: "bg-bg-tertiary text-text-muted",
+  2: "bg-accent-secondary/20 text-accent-secondary border border-accent-secondary/30",
+  2.5: "bg-accent-secondary/15 text-accent-secondary border border-accent-secondary/20",
+  3: "bg-bg-tertiary text-text-secondary border border-border-light",
+  4: "bg-bg-secondary text-text-muted border border-border-light/50",
 };
 
 export function CityCard({ city, stateName, delay = 0 }: CityCardProps) {
