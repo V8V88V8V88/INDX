@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import type { District } from "@/types";
 import { useFormat } from "@/hooks/useFormat";
 
@@ -16,14 +16,13 @@ export function DistrictInfoCard({ district, districtName, onClose }: DistrictIn
   if (!districtName) return null;
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="card p-4"
-      >
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="card p-4"
+    >
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 rounded-full bg-accent-secondary" />
@@ -118,8 +117,7 @@ export function DistrictInfoCard({ district, districtName, onClose }: DistrictIn
             ))}
           </div>
         )}
-      </motion.div>
-    </AnimatePresence>
+    </motion.div>
   );
 }
 

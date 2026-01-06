@@ -178,7 +178,7 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
                 opacity: isInactive ? 0.25 : 1,
                 scale: 1,
                 strokeOpacity: isInactive ? 0.3 : 1,
-                strokeWidth: isSelected ? 3 : isHovered ? 2.5 : 1.5
+                strokeWidth: isSelected ? 2.2 : isHovered ? 1.8 : 1.1
               }}
               transition={{ duration: 0.2, ease: "easeOut" }}
               d={district.d}

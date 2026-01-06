@@ -248,7 +248,7 @@ export function IndiaMap({
                   d={pathString}
                   fill={fill}
                   stroke="var(--map-border-color)"
-                  strokeWidth={(isHovered || isSelected ? 1.5 : 0.75) / transform.k}
+                  strokeWidth={(isHovered || isSelected ? 1.1 : 0.6) / transform.k}
                   style={{ cursor: interactive && stateCode ? "pointer" : "default", willChange: "fill" }}
                   onMouseEnter={() => stateCode && setHoveredState(stateCode)}
                   onMouseLeave={() => setHoveredState(null)}

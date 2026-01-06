@@ -42,7 +42,7 @@ export default function StatePage({ params }: PageProps) {
     return null;
   };
 
-  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(getInitialDistrictFromHash);
+  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
   const [isPageReady, setIsPageReady] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const initialHashProcessed = useRef(false);
@@ -367,21 +367,21 @@ export default function StatePage({ params }: PageProps) {
             </div>
 
             <div className="min-h-[200px] transition-all duration-200">
-              <AnimatePresence mode="wait">
-            {selectedDistrict && (
-              <DistrictInfoCard
+              <AnimatePresence mode="wait" initial={false}>
+                {selectedDistrict && (
+                  <DistrictInfoCard
                     key={selectedDistrict}
-                district={selectedDistrictInfo}
-                districtName={selectedDistrict}
+                    district={selectedDistrictInfo}
+                    districtName={selectedDistrict}
                     onClose={() => {
                       setSelectedDistrict(null);
                       setHasScrolled(false);
-                    if (window.location.hash) {
+                      if (window.location.hash) {
                         window.history.replaceState(null, "", window.location.pathname);
                       }
                     }}
-              />
-            )}
+                  />
+                )}
               </AnimatePresence>
             </div>
           </div>
