@@ -1,6 +1,7 @@
 import type { State, Country } from "@/types";
 
 // 2026 projected data from Census, RBI, NITI Aayog
+// HDI data source: UNDP HDI (2023) - Latest official state-wise Human Development Index
 // 28 States + 8 Union Territories
 // City tiers: Tier 1 = metros, Tier 2 = regional centers, Tier 3 = smaller cities
 
@@ -18,7 +19,7 @@ export const states: State[] = [
     literacyRate: 72.6,
     sexRatio: 1045,
     gdp: 1589000,
-    hdi: 0.650,
+    hdi: 0.681,
     cities: [
       { id: "VIJ", name: "Vijayawada", stateId: "AP", population: 1240000, area: 61, isCapital: false, isMetro: false, tier: 2 },
       { id: "AMR", name: "Amaravati", stateId: "AP", population: 125000, area: 217, isCapital: true, isMetro: false, tier: 3 },
@@ -36,7 +37,7 @@ export const states: State[] = [
     literacyRate: 84.2,
     sexRatio: 1011,
     gdp: 48000,
-    hdi: 0.660,
+    hdi: 0.722,
     cities: [
       { id: "ITN", name: "Itanagar", stateId: "AR", population: 60000, area: 25, isCapital: true, isMetro: false, tier: 3 },
       { id: "NHG", name: "Naharlagun", stateId: "AR", population: 35000, area: 10, isCapital: false, isMetro: false, tier: 3 },
@@ -54,7 +55,7 @@ export const states: State[] = [
     literacyRate: 87.0,
     sexRatio: 1012,
     gdp: 640000,
-    hdi: 0.650,
+    hdi: 0.655,
     cities: [
       { id: "GHY", name: "Guwahati", stateId: "AS", population: 1150000, area: 328, isCapital: false, isMetro: true, tier: 2 },
       { id: "DSP", name: "Dispur", stateId: "AS", population: 28000, area: 5, isCapital: true, isMetro: false, tier: 3 },
@@ -73,7 +74,7 @@ export const states: State[] = [
     literacyRate: 74.3,
     sexRatio: 918,
     gdp: 975000,
-    hdi: 0.620,
+    hdi: 0.617,
     cities: [
     ],
   },
@@ -89,7 +90,7 @@ export const states: State[] = [
     literacyRate: 78.5,
     sexRatio: 1015,
     gdp: 560000,
-    hdi: 0.630,
+    hdi: 0.665,
     cities: [
       { id: "BHP", name: "Bhilai", stateId: "CG", population: 745000, area: 53, isCapital: false, isMetro: false, tier: 2 },
     ],
@@ -106,7 +107,7 @@ export const states: State[] = [
     literacyRate: 93.6,
     sexRatio: 1027,
     gdp: 130000,
-    hdi: 0.780,
+    hdi: 0.801,
     cities: [
       { id: "PNJ", name: "Panaji", stateId: "GA", population: 132000, area: 36, isCapital: true, isMetro: false, tier: 3 },
       { id: "MAR", name: "Margao", stateId: "GA", population: 108000, area: 13, isCapital: false, isMetro: false, tier: 3 },
@@ -125,7 +126,7 @@ export const states: State[] = [
     literacyRate: 84.6,
     sexRatio: 965,
     gdp: 2790000,
-    hdi: 0.690,
+    hdi: 0.685,
     cities: [
     ],
   },
@@ -141,7 +142,7 @@ export const states: State[] = [
     literacyRate: 84.8,
     sexRatio: 926,
     gdp: 1250000,
-    hdi: 0.730,
+    hdi: 0.737,
     cities: [
 
     ],
@@ -158,7 +159,7 @@ export const states: State[] = [
     literacyRate: 86.6,
     sexRatio: 993,
     gdp: 230000,
-    hdi: 0.730,
+    hdi: 0.757,
     cities: [
       { id: "DRM", name: "Dharamshala", stateId: "HP", population: 62000, area: 29, isCapital: false, isMetro: false, tier: 3 },
     ],
@@ -175,7 +176,7 @@ export const states: State[] = [
     literacyRate: 76.7,
     sexRatio: 1050,
     gdp: 500000,
-    hdi: 0.610,
+    hdi: 0.639,
     cities: [
       { id: "JMD", name: "Jamshedpur", stateId: "JH", population: 750000, area: 64, isCapital: false, isMetro: false, tier: 2 },
     ],
@@ -192,7 +193,7 @@ export const states: State[] = [
     literacyRate: 80.5,
     sexRatio: 1034,
     gdp: 2880000,
-    hdi: 0.700,
+    hdi: 0.713,
     cities: [
       { id: "BLR", name: "Bengaluru", stateId: "KA", population: 9800000, area: 709, isCapital: true, isMetro: true, tier: 1 },
       { id: "HUB", name: "Hubballi-Dharwad", stateId: "KA", population: 1120000, area: 202, isCapital: false, isMetro: false, tier: 2 },
@@ -211,7 +212,7 @@ export const states: State[] = [
     literacyRate: 95.3,
     sexRatio: 1121,
     gdp: 1300000,
-    hdi: 0.785,
+    hdi: 0.799,
     cities: [
       { id: "KOC", name: "Kochi", stateId: "KL", population: 780000, area: 94, isCapital: false, isMetro: true, tier: 1.5 },
     ],
@@ -228,7 +229,7 @@ export const states: State[] = [
     literacyRate: 75.2,
     sexRatio: 970,
     gdp: 1522000,
-    hdi: 0.620,
+    hdi: 0.651,
     cities: [
     ],
   },
@@ -244,7 +245,7 @@ export const states: State[] = [
     literacyRate: 86.0,
     sexRatio: 966,
     gdp: 4530000,
-    hdi: 0.710,
+    hdi: 0.736,
     cities: [
       { id: "MUM", name: "Mumbai", stateId: "MH", population: 13200000, area: 603, isCapital: true, isMetro: true, tier: 1 },
     ],
@@ -261,7 +262,7 @@ export const states: State[] = [
     literacyRate: 92.0,
     sexRatio: 1066,
     gdp: 45000,
-    hdi: 0.710,
+    hdi: 0.725,
     cities: [
       { id: "IMP", name: "Imphal", stateId: "MN", population: 280000, area: 34, isCapital: true, isMetro: false, tier: 2 },
     ],
@@ -278,7 +279,7 @@ export const states: State[] = [
     literacyRate: 81.0,
     sexRatio: 1039,
     gdp: 50000,
-    hdi: 0.670,
+    hdi: 0.690,
     cities: [
       { id: "SHL", name: "Shillong", stateId: "ML", population: 180000, area: 64, isCapital: true, isMetro: false, tier: 3 },
       { id: "TUR", name: "Tura", stateId: "ML", population: 85000, area: 20, isCapital: false, isMetro: false, tier: 3 },
@@ -296,7 +297,7 @@ export const states: State[] = [
     literacyRate: 98.2,
     sexRatio: 1018,
     gdp: 32000,
-    hdi: 0.740,
+    hdi: 0.751,
     cities: [
     ],
   },
@@ -312,7 +313,7 @@ export const states: State[] = [
     literacyRate: 82.5,
     sexRatio: 976,
     gdp: 40000,
-    hdi: 0.700,
+    hdi: 0.720,
     cities: [
     ],
   },
@@ -328,7 +329,7 @@ export const states: State[] = [
     literacyRate: 79.0,
     sexRatio: 1063,
     gdp: 900000,
-    hdi: 0.630,
+    hdi: 0.649,
     cities: [
       { id: "BBR", name: "Bhubaneswar", stateId: "OR", population: 1020000, area: 135, isCapital: true, isMetro: true, tier: 2.5 },
       { id: "RRK", name: "Rourkela", stateId: "OR", population: 325000, area: 200, isCapital: false, isMetro: false, tier: 2 },
@@ -347,7 +348,7 @@ export const states: State[] = [
     literacyRate: 81.0,
     sexRatio: 938,
     gdp: 820000,
-    hdi: 0.740,
+    hdi: 0.738,
     cities: [
     ],
   },
@@ -363,7 +364,7 @@ export const states: State[] = [
     literacyRate: 75.8,
     sexRatio: 1009,
     gdp: 1780000,
-    hdi: 0.650,
+    hdi: 0.692,
     cities: [
     ],
   },
@@ -379,7 +380,7 @@ export const states: State[] = [
     literacyRate: 88.0,
     sexRatio: 1008,
     gdp: 48000,
-    hdi: 0.745,
+    hdi: 0.753,
     cities: [
       { id: "GTK", name: "Gangtok", stateId: "SK", population: 120000, area: 19, isCapital: true, isMetro: false, tier: 3 },
       { id: "NMC", name: "Namchi", stateId: "SK", population: 15000, area: 5, isCapital: false, isMetro: false, tier: 3 },
@@ -397,7 +398,7 @@ export const states: State[] = [
     literacyRate: 85.0,
     sexRatio: 1088,
     gdp: 3118000,
-    hdi: 0.740,
+    hdi: 0.732,
     cities: [
     ],
   },
@@ -413,7 +414,7 @@ export const states: State[] = [
     literacyRate: 76.9,
     sexRatio: 1049,
     gdp: 1650000,
-    hdi: 0.700,
+    hdi: 0.699,
     cities: [
       { id: "WRG", name: "Warangal", stateId: "TG", population: 820000, area: 55, isCapital: false, isMetro: false, tier: 2 },
     ],
@@ -430,7 +431,7 @@ export const states: State[] = [
     literacyRate: 93.7,
     sexRatio: 1011,
     gdp: 72000,
-    hdi: 0.690,
+    hdi: 0.664,
     cities: [
       { id: "AGT", name: "Agartala", stateId: "TR", population: 520000, area: 76, isCapital: true, isMetro: false, tier: 2 },
       { id: "DHM", name: "Dharmanagar", stateId: "TR", population: 42000, area: 8, isCapital: false, isMetro: false, tier: 3 },
@@ -448,7 +449,7 @@ export const states: State[] = [
     literacyRate: 78.2,
     sexRatio: 1017,
     gdp: 3080000,
-    hdi: 0.630,
+    hdi: 0.650,
     cities: [
       { id: "KAN", name: "Kanpur", stateId: "UP", population: 3100000, area: 403, isCapital: false, isMetro: true, tier: 2 },
 
@@ -466,7 +467,7 @@ export const states: State[] = [
     literacyRate: 87.6,
     sexRatio: 984,
     gdp: 420000,
-    hdi: 0.720,
+    hdi: 0.722,
     cities: [
       { id: "RSK", name: "Rishikesh", stateId: "UK", population: 125000, area: 11, isCapital: false, isMetro: false, tier: 3 },
       { id: "HLD", name: "Haldwani", stateId: "UK", population: 188000, area: 14, isCapital: false, isMetro: false, tier: 3 },
@@ -484,7 +485,7 @@ export const states: State[] = [
     literacyRate: 83.8,
     sexRatio: 1049,
     gdp: 1880000,
-    hdi: 0.670,
+    hdi: 0.674,
     cities: [
       { id: "ASN", name: "Asansol", stateId: "WB", population: 650000, area: 127, isCapital: false, isMetro: false, tier: 2 },
       { id: "SIL", name: "Siliguri", stateId: "WB", population: 620000, area: 42, isCapital: false, isMetro: false, tier: 2 },
@@ -505,7 +506,7 @@ export const states: State[] = [
     literacyRate: 91.1,
     sexRatio: 914,
     gdp: 14000,
-    hdi: 0.760,
+    hdi: 0.746,
     cities: [
       { id: "PBL", name: "Port Blair", stateId: "AN", population: 125000, area: 18, isCapital: true, isMetro: false, tier: 3 },
     ],
@@ -522,7 +523,7 @@ export const states: State[] = [
     literacyRate: 93.7,
     sexRatio: 938,
     gdp: 65000,
-    hdi: 0.810,
+    hdi: 0.793,
     cities: [
     ],
   },
@@ -538,7 +539,7 @@ export const states: State[] = [
     literacyRate: 81.0,
     sexRatio: 817,
     gdp: 18000,
-    hdi: 0.710,
+    hdi: 0.713,
     cities: [
       { id: "SLV", name: "Silvassa", stateId: "DD", population: 105000, area: 25, isCapital: false, isMetro: false, tier: 3 },
     ],
@@ -555,7 +556,7 @@ export const states: State[] = [
     literacyRate: 86.9,
     sexRatio: 913,
     gdp: 1300000,
-    hdi: 0.770,
+    hdi: 0.777,
     cities: [
     ],
   },
@@ -571,7 +572,7 @@ export const states: State[] = [
     literacyRate: 77.0,
     sexRatio: 976,
     gdp: 300000,
-    hdi: 0.710,
+    hdi: 0.760,
     cities: [
     ],
   },
@@ -603,7 +604,7 @@ export const states: State[] = [
     literacyRate: 97.3,
     sexRatio: 1051,
     gdp: 3000,
-    hdi: 0.790,
+    hdi: 0.751,
     cities: [
       { id: "KVT", name: "Kavaratti", stateId: "LD", population: 12000, area: 4, isCapital: true, isMetro: false, tier: 3 },
     ],
@@ -620,7 +621,7 @@ export const states: State[] = [
     literacyRate: 92.7,
     sexRatio: 1112,
     gdp: 55000,
-    hdi: 0.770,
+    hdi: 0.782,
     cities: [
     ],
   },

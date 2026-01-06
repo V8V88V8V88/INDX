@@ -118,7 +118,7 @@ export default function Home() {
           <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} />
           <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} />
           <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} />
-          <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index" delay={0.25} />
+          <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} />
         </section>
 
         {/* Map Section */}

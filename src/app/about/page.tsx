@@ -165,6 +165,22 @@ export default function AboutPage() {
               </a>
               <p className="text-text-muted mt-0.5">GeoJSON boundaries and district data</p>
             </div>
+            <div>
+              <a
+                href="https://en.wikipedia.org/wiki/List_of_Indian_states_and_union_territories_by_Human_Development_Index"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
+              >
+                UNDP HDI Data (2023)
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+              <p className="text-text-muted mt-0.5">State-wise Human Development Index (HDI) 2023 data from UNDP Human Development Report</p>
+            </div>
           </div>
         </motion.section>
 
