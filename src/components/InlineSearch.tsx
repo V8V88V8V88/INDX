@@ -76,7 +76,6 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
     const searchTerm = query.toLowerCase().trim();
     if (!searchTerm || searchTerm.length < 2) return;
 
-    // Find states that are most relevant to the query: name, code, or city name match.
     const candidateStates = states.filter((state) => {
       if (state.name.toLowerCase().includes(searchTerm)) return true;
       if (state.code.toLowerCase() === searchTerm) return true;
@@ -84,9 +83,6 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
     });
 
     let topCandidates = candidateStates.slice(0, 6);
-
-    // Fallback: if nothing matched (e.g., district names not yet fetched), optimistically load a small
-    // batch of uncached states so district search can still find matches like "Agra".
     if (topCandidates.length === 0 && searchTerm.length >= 3) {
       const uncached = states.filter(
         (s) => !districtsCache.has(s.id) && !loadingStatesRef.current.has(s.id)

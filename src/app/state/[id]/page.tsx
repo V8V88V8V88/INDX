@@ -221,47 +221,43 @@ export default function StatePage({ params }: PageProps) {
   const hdiRank = states.filter((s) => s.hdi > state.hdi).length + 1;
 
   const majorAreasByPopulation = useMemo(() => {
-    if (!districts || districts.length === 0) {
-      return [] as {
-        name: string;
-        value: number;
-        displayValue: string;
-        highlight: boolean;
-      }[];
+    if (districts && districts.length > 0) {
+      const districtData = [...districts]
+        .sort((a, b) => b.population - a.population)
+        .slice(0, 5)
+        .map((district) => {
+          const matchedCity = state.cities.find(
+            (c) =>
+              normalizeDistrictName(c.name) === normalizeDistrictName(district.name) ||
+              normalizeDistrictName(c.name) === normalizeDistrictName(district.headquarters || "")
+          );
+
+          return {
+            name: district.name,
+            value: district.population,
+            displayValue: formatPopulation(district.population),
+            highlight: !!(matchedCity?.isCapital || district.isCapital),
+          };
+        });
+
+      if (districtData.length > 0) {
+        return districtData;
+      }
     }
 
-    const areas = districts
-      .map((d) => {
-        const matchedCity = state.cities.find(
-          (c) =>
-            normalizeDistrictName(c.name) === normalizeDistrictName(d.name) ||
-            normalizeDistrictName(c.name) === normalizeDistrictName(d.headquarters || "")
-        );
-
-        return { district: d, city: matchedCity };
-      })
-      .filter(({ district, city }) => isMajorArea(district, city));
-
-    if (areas.length === 0) {
-      return [...state.cities].sort((a, b) => b.population - a.population).slice(0, 6).map((city) => ({
-        name: city.name,
-        value: city.population,
-        displayValue: formatPopulation(city.population),
-        highlight: city.isCapital,
-      }));
+    if (state.cities && state.cities.length > 0) {
+      return [...state.cities]
+        .sort((a, b) => b.population - a.population)
+        .slice(0, 5)
+        .map((city) => ({
+          name: city.name,
+          value: city.population,
+          displayValue: formatPopulation(city.population),
+          highlight: city.isCapital || false,
+        }));
     }
 
-    return areas
-      .sort((a, b) => b.district.population - a.district.population)
-      .slice(0, 6)
-      .map(({ district, city }) => {
-        return {
-          name: district.name,
-          value: district.population,
-          displayValue: formatPopulation(district.population),
-          highlight: !!(city?.isCapital || district.isCapital),
-        };
-      });
+    return [];
   }, [districts, state.cities, formatPopulation]);
 
   return (
@@ -479,27 +475,34 @@ export default function StatePage({ params }: PageProps) {
                 <p className="text-xs text-text-muted"></p>
               </div>
               <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">Major Cities</p>
+                <p className="text-xs font-medium text-text-muted">Total Districts</p>
                 <p className="text-2xl font-bold text-text-primary">
-                  {state.cities.length}
+                  {districts?.length || 0}
                 </p>
-                <p className="text-xs text-text-muted">tracked</p>
+                <p className="text-xs text-text-muted">districts</p>
               </div>
               <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">Tier 1 Cities</p>
+                <p className="text-xs font-medium text-text-muted">Major Districts</p>
                 <p className="text-2xl font-bold text-text-primary">
-                  {state.cities.filter((c) => c.tier === 1).length}
+                  {districts?.filter((d) => {
+                    const matchedCity = state.cities.find(
+                      (c) =>
+                        normalizeDistrictName(c.name) === normalizeDistrictName(d.name) ||
+                        normalizeDistrictName(c.name) === normalizeDistrictName(d.headquarters || "")
+                    );
+                    return isMajorArea(d, matchedCity);
+                  }).length || 0}
                 </p>
                 <p className="text-xs text-text-muted">metros</p>
               </div>
               <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">Urban Pop.</p>
+                <p className="text-xs font-medium text-text-muted">District Pop.</p>
                 <p className="text-2xl font-bold text-text-primary">
                   {formatPopulation(
-                    state.cities.reduce((sum, c) => sum + c.population, 0)
+                    districts?.reduce((sum, d) => sum + (d.population || 0), 0) || 0
                   )}
                 </p>
-                <p className="text-xs text-text-muted">in tracked cities</p>
+                <p className="text-xs text-text-muted">total districts</p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs font-medium text-text-muted">Per Capita GDP</p>

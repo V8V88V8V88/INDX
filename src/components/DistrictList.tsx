@@ -252,30 +252,27 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
             : "border-border-light bg-bg-secondary/40"
         }`}
     >
-      <div className="mb-4 flex items-center justify-between">
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-2">
-            <h4 className="text-xl font-bold text-text-primary">{item.name}</h4>
-            {isCapital && (
-              <span className="rounded bg-accent-primary px-2 py-0.5 text-xs font-bold text-white shadow-sm">
-                Capital
-              </span>
-            )}
-            {isMetro && (
-              <span className="rounded bg-accent-secondary px-2 py-0.5 text-xs font-bold text-white shadow-sm">
-                Metro
-              </span>
-            )}
-          </div>
-          {item.headquarters && !item.isCity && (
-            <span className="text-sm font-medium text-text-tertiary">HQ: {item.headquarters}</span>
+      <div className="mb-4 flex flex-col gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <h4 className="text-xl font-bold text-text-primary">{item.name}</h4>
+          {isCapital && (
+            <span className="rounded bg-accent-primary px-2 py-0.5 text-xs font-bold text-white shadow-sm whitespace-nowrap">
+              Capital
+            </span>
+          )}
+          {isMetro && (
+            <span className="rounded bg-accent-secondary px-2 py-0.5 text-xs font-bold text-white shadow-sm whitespace-nowrap">
+              Metro
+            </span>
+          )}
+          {(city?.tier || item.tier) && (
+            <span className="rounded-lg bg-bg-tertiary border border-border-light px-2.5 py-1 text-xs font-semibold text-text-secondary whitespace-nowrap">
+              Tier {city?.tier || item.tier}
+            </span>
           )}
         </div>
-
-        {(city?.tier || item.tier) && (
-          <span className="rounded-lg bg-bg-tertiary border border-border-light px-2.5 py-1 text-xs font-semibold text-text-secondary">
-            Tier {city?.tier || item.tier}
-          </span>
+        {item.headquarters && !item.isCity && (
+          <span className="text-sm font-medium text-text-tertiary">HQ: {item.headquarters}</span>
         )}
       </div>
 

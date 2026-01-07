@@ -135,7 +135,6 @@ export function IndiaMap({
   }, []);
 
   const colorScale = useMemo(() => {
-    // Get all state values with their IDs for ranking
     const stateValues = states
       .map((s) => ({
         id: s.id,
@@ -147,16 +146,13 @@ export function IndiaMap({
       return () => "var(--accent-primary)";
     }
 
-    // Sort by value (descending) so highest value = top rank
     stateValues.sort((a, b) => b.value - a.value);
 
-    // Create rank map: stateId -> rank (0 = top/highest, length-1 = bottom/lowest)
     const rankMap = new Map<string, number>();
     stateValues.forEach((item, index) => {
       rankMap.set(item.id, index);
     });
 
-    // Use more steps so neighboring states differ more clearly
     let colors = ["var(--choro-0)", "var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
 
     if (colorByMetric === "sexRatio") {
@@ -173,7 +169,6 @@ export function IndiaMap({
       const rank = rankMap.get(stateId);
       if (rank == null) return "var(--accent-primary)";
 
-      // Map rank to color index (top rank = darkest color, so reverse the index)
       const t = rank / (stateValues.length - 1);
       const idx = Math.min(Math.floor(t * colors.length), colors.length - 1);
       return colors[colors.length - 1 - idx];

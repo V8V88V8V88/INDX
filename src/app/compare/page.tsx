@@ -425,50 +425,94 @@ export default function ComparePage() {
               </div>
             </div>
 
-            {/* Top Cities Comparison - Only show if both are states */}
+            {/* Top Districts Comparison - Only show if both are states */}
             {leftItem.type === "state" && rightItem.type === "state" && leftItem.state && rightItem.state && (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="card p-6">
                   <h3 className="mb-4 text-sm font-semibold text-text-primary">
-                    Top Cities - {leftItem.state.name}
+                    Top Districts - {leftItem.state.name}
                   </h3>
                   <div className="space-y-3">
-                    {[...leftItem.state.cities]
-                      .sort((a, b) => b.population - a.population)
-                      .slice(0, 5)
-                      .map((city) => (
-                        <div key={city.id} className="flex items-center justify-between py-2 border-b border-border-light/50 last:border-0">
-                          <div>
-                            <p className="text-sm font-medium text-text-primary">{city.name}</p>
-                            <p className="text-xs text-text-muted">{city.tier === 1 ? "Metro" : `Tier ${city.tier}`}</p>
+                    {leftDistricts && leftDistricts.length > 0 ? (
+                      [...leftDistricts]
+                        .sort((a, b) => {
+                          const tierA = a.tier || 999;
+                          const tierB = b.tier || 999;
+                          if (tierA !== tierB) return tierA - tierB;
+                          
+                          const metroA = a.isMetro ? 0 : 1;
+                          const metroB = b.isMetro ? 0 : 1;
+                          if (metroA !== metroB) return metroA - metroB;
+                          
+                          const capitalA = a.isCapital ? 0 : 1;
+                          const capitalB = b.isCapital ? 0 : 1;
+                          if (capitalA !== capitalB) return capitalA - capitalB;
+                          
+                          if (a.literacyRate !== b.literacyRate) return b.literacyRate - a.literacyRate;
+                          
+                          return b.population - a.population;
+                        })
+                        .slice(0, 5)
+                        .map((district) => (
+                          <div key={district.id || district.name} className="flex items-center justify-between py-2 border-b border-border-light/50 last:border-0">
+                            <div>
+                              <p className="text-sm font-medium text-text-primary">{district.name}</p>
+                              <p className="text-xs text-text-muted">
+                                {district.tier === 1 ? "Metro" : district.tier ? `Tier ${district.tier}` : ""}
+                              </p>
+                            </div>
+                            <p className="text-sm font-mono text-text-secondary">
+                              {formatPopulation(district.population)}
+                            </p>
                           </div>
-                          <p className="text-sm font-mono text-text-secondary">
-                            {formatPopulation(city.population)}
-                          </p>
-                        </div>
-                      ))}
+                        ))
+                    ) : (
+                      <p className="text-sm text-text-muted">No district data available</p>
+                    )}
                   </div>
                 </div>
 
                 <div className="card p-6">
                   <h3 className="mb-4 text-sm font-semibold text-text-primary">
-                    Top Cities - {rightItem.state.name}
+                    Top Districts - {rightItem.state.name}
                   </h3>
                   <div className="space-y-3">
-                    {[...rightItem.state.cities]
-                      .sort((a, b) => b.population - a.population)
-                      .slice(0, 5)
-                      .map((city) => (
-                        <div key={city.id} className="flex items-center justify-between py-2 border-b border-border-light/50 last:border-0">
-                          <div>
-                            <p className="text-sm font-medium text-text-primary">{city.name}</p>
-                            <p className="text-xs text-text-muted">{city.tier === 1 ? "Metro" : `Tier ${city.tier}`}</p>
+                    {rightDistricts && rightDistricts.length > 0 ? (
+                      [...rightDistricts]
+                        .sort((a, b) => {
+                          const tierA = a.tier || 999;
+                          const tierB = b.tier || 999;
+                          if (tierA !== tierB) return tierA - tierB;
+                          
+                          const metroA = a.isMetro ? 0 : 1;
+                          const metroB = b.isMetro ? 0 : 1;
+                          if (metroA !== metroB) return metroA - metroB;
+                          
+                          const capitalA = a.isCapital ? 0 : 1;
+                          const capitalB = b.isCapital ? 0 : 1;
+                          if (capitalA !== capitalB) return capitalA - capitalB;
+                          
+                          if (a.literacyRate !== b.literacyRate) return b.literacyRate - a.literacyRate;
+                          
+                          return b.population - a.population;
+                        })
+                        .slice(0, 5)
+                        .map((district) => (
+                          <div key={district.id || district.name} className="flex items-center justify-between py-2 border-b border-border-light/50 last:border-0">
+                            <div>
+                              <p className="text-sm font-medium text-text-primary">{district.name}</p>
+                              <p className="text-xs text-text-muted">
+                                {district.tier === 1 ? "Metro" : district.tier ? `Tier ${district.tier}` : ""}
+                              </p>
+                            </div>
+                            <p className="text-sm font-mono text-text-secondary">
+                              {formatPopulation(district.population)}
+                            </p>
                           </div>
-                          <p className="text-sm font-mono text-text-secondary">
-                            {formatPopulation(city.population)}
-                          </p>
-                        </div>
-                      ))}
+                        ))
+                    ) : (
+                      <p className="text-sm text-text-muted">No district data available</p>
+                    )}
                   </div>
                 </div>
               </div>

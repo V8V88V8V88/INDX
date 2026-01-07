@@ -113,9 +113,14 @@ function createTimeoutSignal(ms: number): AbortSignal {
   return controller.signal;
 }
 
+const stateCodeToFileName: Record<string, string> = {
+  "TG": "ts",
+};
+
 export async function fetchDistrictsFromAPI(stateCode: string): Promise<District[]> {
   try {
-    const response = await fetch(`/data/districts/${stateCode.toLowerCase()}.json`, {
+    const fileName = stateCodeToFileName[stateCode] || stateCode.toLowerCase();
+    const response = await fetch(`/data/districts/${fileName}.json`, {
       signal: createTimeoutSignal(5000),
     });
     
