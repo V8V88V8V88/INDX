@@ -59,9 +59,8 @@
   --accent-secondary: #2dd4bf;
   --accent-muted: #134e4a;
   --accent-dark: #0f766e;
-  /* Use a more subtle color for general map-related borders in dark mode */
   --map-border: var(--border-light);
-  --map-border-color: #d6d3d1;
+  --map-border-color: #ffffff;
 
   --choro-0: color-mix(in srgb, var(--accent-primary) 10%, var(--bg-card));
   --choro-1: color-mix(in srgb, var(--accent-primary) 20%, var(--bg-card));
