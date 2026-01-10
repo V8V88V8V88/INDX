@@ -17,15 +17,21 @@ interface DistrictListProps {
   onDistrictSelect?: (districtName: string) => void;
 }
 
-// Central definition of what counts as a "major city" (district-level) for this view.
-// Keep this strict so only truly significant, urban, livable economic centers show up automatically.
-// Criteria (any state):
-// - Known metro: explicit metro flag on city/district OR tier 1
-// - OR very large & urban & relatively high literacy:
-//   - population >= 30 lakh
-//   - density >= 1,200 / km²
-//   - literacy >= 75%
-function isMajorArea(d: District, city?: City) {
+// Priority levels for determining "major" status
+// Higher priority = more important / always included
+const PRIORITY_METRO = 4;      // Explicit metro flag
+const PRIORITY_TIER1 = 3;      // Tier 1 cities
+const PRIORITY_TIER2 = 2;      // Tier 2 cities  
+const PRIORITY_SIGNIFICANT = 1; // Population/density based
+const PRIORITY_NONE = 0;       // Not a major area
+
+// Maximum number of "major cities" to show per state
+// This keeps the view focused on truly significant areas
+const MAX_MAJOR_CITIES = 8;
+
+// Calculate the priority level for a district/city
+// Higher priority = more likely to be shown as "major"
+function getMajorPriority(d: District, city?: City): number {
   const pop = city?.population ?? d.population;
   const tier = city?.tier ?? d.tier;
   const isMetro = !!(city?.isMetro || d.isMetro);
@@ -34,13 +40,45 @@ function isMajorArea(d: District, city?: City) {
     (city && city.area > 0 ? Math.round(city.population / city.area) : 0);
   const literacy = d.literacyRate || 0;
 
-  // Always include explicit metros / tier-1 cities
-  if (isMetro || tier === 1) return true;
+  // Priority based on tier/metro status
+  if (isMetro) return PRIORITY_METRO;
+  if (tier === 1) return PRIORITY_TIER1;
+  if (tier === 2) return PRIORITY_TIER2;
 
-  const bigUrban = pop >= 3_000_000 && density >= 1200;
-  const goodQuality = literacy >= 75;
+  // For districts without tier classification, check if significant urban center
+  // Relaxed criteria for state-level relevance
+  const significantUrban = pop >= 1_500_000 && density >= 600 && literacy >= 70;
+  if (significantUrban) return PRIORITY_SIGNIFICANT;
 
-  return bigUrban && goodQuality;
+  return PRIORITY_NONE;
+}
+
+// Calculate a "significance score" for ranking districts
+// Used to pick the top N when too many qualify
+function getSignificanceScore(d: District, city?: City): number {
+  const pop = city?.population ?? d.population;
+  const tier = city?.tier ?? d.tier;
+  const isMetro = !!(city?.isMetro || d.isMetro);
+  const density = d.density || 0;
+  const literacy = d.literacyRate || 0;
+
+  // Base score from tier/metro (heavily weighted)
+  let score = 0;
+  if (isMetro) score += 10000;
+  if (tier === 1) score += 5000;
+  else if (tier === 2) score += 2000;
+  else if (tier === 3) score += 500;
+
+  // Add population factor (normalized, max ~2000 for 20M+ pop)
+  score += Math.min(pop / 10000, 2000);
+
+  // Add density factor (normalized, max 500)
+  score += Math.min(density / 2, 500);
+
+  // Add literacy factor (max 100)
+  score += literacy;
+
+  return score;
 }
 
 export function DistrictList({ stateCode, stateName, cities = [], selectedDistrict, onDistrictSelect }: DistrictListProps) {
@@ -51,27 +89,63 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   const items = useMemo(() => {
     const districtList = districts || [];
 
-    const cityNames = new Set(cities.map((c) => c.name.toLowerCase()));
-
-    const markedDistricts = districtList.map((d) => {
+    // First pass: calculate priority and score for each district
+    const scoredDistricts = districtList.map((d) => {
       const matchedCity = cities.find(
         (c) =>
           c.name.toLowerCase() === d.name.toLowerCase() ||
           c.name.toLowerCase() === d.headquarters?.toLowerCase()
       );
 
-      const isMajor = isMajorArea(d, matchedCity);
+      const priority = getMajorPriority(d, matchedCity);
+      const score = getSignificanceScore(d, matchedCity);
+
+      return {
+        ...d,
+        cityData: matchedCity,
+        isCity: false,
+        _priority: priority,
+        _score: score,
+      };
+    });
+
+    // Count total qualifying districts to determine if we need to cap
+    const allMajorCount = scoredDistricts.filter(d => d._priority > PRIORITY_NONE).length;
+
+    // Determine the cutoff: we want at most MAX_MAJOR_CITIES
+    // Strategy:
+    // - If we have <= MAX_MAJOR_CITIES qualifying, show all
+    // - If we have more, pick the top ones by score
+    let majorCutoffScore = 0;
+    if (allMajorCount > MAX_MAJOR_CITIES) {
+      // Sort by score descending and find the cutoff
+      const qualifyingDistricts = scoredDistricts
+        .filter(d => d._priority > PRIORITY_NONE)
+        .sort((a, b) => b._score - a._score);
+
+      // The cutoff score is the score of the Nth item (0-indexed: N-1)
+      majorCutoffScore = qualifyingDistricts[MAX_MAJOR_CITIES - 1]?._score || 0;
+    }
+
+    // Second pass: mark as major based on adaptive criteria
+    const markedDistricts = scoredDistricts.map((d) => {
+      let isMajor = false;
+
+      if (allMajorCount <= MAX_MAJOR_CITIES) {
+        // Few qualifying districts: include all that have any priority
+        isMajor = d._priority > PRIORITY_NONE;
+      } else {
+        // Many qualifying districts: only include top scorers
+        isMajor = d._priority > PRIORITY_NONE && d._score >= majorCutoffScore;
+      }
 
       return {
         ...d,
         hasCity: isMajor,
-        cityData: matchedCity,
-        isCity: false,
         isMajor,
       };
     });
 
-    // We now work purely at district level: no standalone city rows, to avoid confusion/duplicates.
     return markedDistricts;
   }, [districts, cities]);
 
@@ -246,10 +320,10 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
       transition={{ duration: 0.2, delay: Math.min(delay, 0.3) }}
       onClick={handleClick}
       className={`rounded-xl border p-5 transition-all hover:shadow-md hover:bg-bg-secondary cursor-pointer ${isSelected
-          ? "border-accent-primary bg-accent-muted/30 shadow-md ring-2 ring-accent-primary/20"
-          : item.hasCity
-            ? "border-accent-primary/20 bg-bg-secondary/60"
-            : "border-border-light bg-bg-secondary/40"
+        ? "border-accent-primary bg-accent-muted/30 shadow-md ring-2 ring-accent-primary/20"
+        : item.hasCity
+          ? "border-accent-primary/20 bg-bg-secondary/60"
+          : "border-border-light bg-bg-secondary/40"
         }`}
     >
       <div className="mb-4 flex flex-col gap-2">
