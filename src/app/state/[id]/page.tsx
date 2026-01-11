@@ -28,7 +28,7 @@ export default function StatePage({ params }: PageProps) {
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
     : { duration: 0.45, ease: "easeOut", type: "tween" };
-  
+
   const getInitialDistrictFromHash = (): string | null => {
     if (typeof window === "undefined") return null;
     const hash = window.location.hash.slice(1);
@@ -85,10 +85,7 @@ export default function StatePage({ params }: PageProps) {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsPageReady(true);
-    }, 100);
-    return () => clearTimeout(timer);
+    setIsPageReady(true);
   }, []);
 
   useEffect(() => {
@@ -97,7 +94,7 @@ export default function StatePage({ params }: PageProps) {
 
       if (!hash) {
         if (!isInitial) {
-        setSelectedDistrict(null);
+          setSelectedDistrict(null);
         }
         return;
       }
@@ -125,7 +122,7 @@ export default function StatePage({ params }: PageProps) {
               normalizedHash.includes(normalizedDistrict);
           });
           setSelectedDistrict(match ? match.name : districtName);
-          } else {
+        } else {
           if (!selectedDistrict || selectedDistrict !== districtName) {
             setSelectedDistrict(districtName);
           }
@@ -145,7 +142,7 @@ export default function StatePage({ params }: PageProps) {
       setHasScrolled(false); // Reset scroll flag on hash change
       lastHashRef.current = window.location.hash;
     };
-    
+
     const checkHashChange = () => {
       const currentHash = window.location.hash;
       if (currentHash !== lastHashRef.current) {
@@ -153,8 +150,9 @@ export default function StatePage({ params }: PageProps) {
         handleHashChange();
       }
     };
-    
-    const hashCheckInterval = setInterval(checkHashChange, 150);
+
+    // Increased interval to reduce main thread overhead
+    const hashCheckInterval = setInterval(checkHashChange, 500);
     window.addEventListener("hashchange", handleHashChange);
 
     return () => {
@@ -172,13 +170,13 @@ export default function StatePage({ params }: PageProps) {
     const scrollToMap = () => {
       const mapElement = document.getElementById("state-map");
       if (mapElement) {
-        const isFromSpotlight = document.referrer && 
+        const isFromSpotlight = document.referrer &&
           document.referrer.includes(window.location.origin) &&
           !document.referrer.includes(window.location.pathname);
-        
-        mapElement.scrollIntoView({ 
-          behavior: isFromSpotlight ? "auto" : "smooth", 
-          block: "center" 
+
+        mapElement.scrollIntoView({
+          behavior: isFromSpotlight ? "auto" : "smooth",
+          block: "center"
         });
         setHasScrolled(true);
       }
@@ -338,27 +336,27 @@ export default function StatePage({ params }: PageProps) {
                 title="Population"
                 value={formatPopulation(state.population)}
                 subtitle={`#${populationRank} in India`}
-                delay={0.1}
+                delay={0.05}
               />
               <MetricCard
                 title="GDP"
                 value={formatCurrency(state.gdp * 10000000)}
                 unit=""
                 subtitle={`#${gdpRank} in India`}
-                delay={0.15}
+                delay={0.08}
               />
               <MetricCard
                 title="Literacy Rate"
                 value={state.literacyRate}
                 unit="%"
                 subtitle={`#${literacyRank} in India`}
-                delay={0.2}
+                delay={0.1}
               />
               <MetricCard
                 title="HDI"
                 value={state.hdi.toFixed(3)}
                 subtitle={`#${hdiRank} in India`}
-                delay={0.25}
+                delay={0.12}
               />
             </div>
 
@@ -387,7 +385,7 @@ export default function StatePage({ params }: PageProps) {
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.2 }}
+              transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
               className="flex flex-col items-center justify-center"
               style={{ overflow: "visible" }}
             >
@@ -409,7 +407,7 @@ export default function StatePage({ params }: PageProps) {
           <StatComparison
             title="vs National Average"
             stateName={state.name}
-            delay={0.3}
+            delay={0.15}
             items={[
               {
                 label: "Literacy Rate",
@@ -443,17 +441,17 @@ export default function StatePage({ params }: PageProps) {
 
           <BarChart
             title="Cities by Population"
-            delay={0.35}
+            delay={0.18}
             items={majorAreasByPopulation}
           />
         </section>
 
         {/* Additional Metrics */}
         <section className="mb-10">
-          <motion.div 
+          <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.35 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.2 }}
             className="card p-6"
           >
             <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-text-muted">
@@ -541,7 +539,7 @@ export default function StatePage({ params }: PageProps) {
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.4 }}
+          transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.2 }}
         >
           <Link
             href="/"
