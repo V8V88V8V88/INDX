@@ -36,7 +36,7 @@ export default function Home() {
 
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
-    : { duration: 0.45, ease: "easeOut", type: "tween" };
+    : { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
 
   // Synchronize map and ranking metrics
   const handleMapMetricChange = (metric: MetricKey) => {
@@ -127,10 +127,10 @@ export default function Home() {
 
         {/* Summary Cards */}
         <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.05} trigger={isPageReady} />
-          <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.08} trigger={isPageReady} />
-          <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.1} trigger={isPageReady} />
-          <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.12} trigger={isPageReady} />
+          <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} trigger={isPageReady} />
+          <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} trigger={isPageReady} />
+          <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} trigger={isPageReady} />
+          <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
         </section>
 
         {/* Map Section */}

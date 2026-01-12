@@ -33,7 +33,7 @@ export function MetricCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.4, delay }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
       className={`card p-5 ${className}`}
     >
       <div className="flex items-start justify-between">

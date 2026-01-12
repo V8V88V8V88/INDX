@@ -23,7 +23,7 @@ export function BarChart({ title, items, delay = 0, trigger = true }: BarChartPr
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.45, ease: "easeOut", type: "tween", delay }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
       className="card p-5"
     >
       <h3 className="mb-5 text-sm font-medium uppercase tracking-wider text-text-muted">
@@ -42,7 +42,7 @@ export function BarChart({ title, items, delay = 0, trigger = true }: BarChartPr
               <motion.div
                 initial={{ width: 0 }}
                 animate={trigger ? { width: `${(item.value / max) * 100}%` } : { width: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut", type: "tween", delay: delay + i * 0.05 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: delay + 0.2 + i * 0.1 }}
                 className={`h-full rounded-full ${item.highlight ? "bg-accent-primary" : "bg-accent-primary/50"}`}
               />
             </div>

@@ -23,7 +23,7 @@ export function StatComparison({ title, stateName, items, delay = 0, trigger = t
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.4, delay }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
       className="card p-6"
     >
       <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-text-muted">{title}</h3>

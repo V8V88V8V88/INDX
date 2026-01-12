@@ -27,7 +27,7 @@ export default function StatePage({ params }: PageProps) {
   const prefersReducedMotion = useReducedMotion();
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
-    : { duration: 0.45, ease: "easeOut", type: "tween" };
+    : { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
 
   const getInitialDistrictFromHash = (): string | null => {
     if (typeof window === "undefined") return null;
@@ -347,7 +347,7 @@ export default function StatePage({ params }: PageProps) {
                 title="Population"
                 value={formatPopulation(state.population)}
                 subtitle={`#${populationRank} in India`}
-                delay={0.05}
+                delay={0.1}
                 trigger={isPageReady}
               />
               <MetricCard
@@ -355,7 +355,7 @@ export default function StatePage({ params }: PageProps) {
                 value={formatCurrency(state.gdp * 10000000)}
                 unit=""
                 subtitle={`#${gdpRank} in India`}
-                delay={0.08}
+                delay={0.15}
                 trigger={isPageReady}
               />
               <MetricCard
@@ -363,14 +363,14 @@ export default function StatePage({ params }: PageProps) {
                 value={state.literacyRate}
                 unit="%"
                 subtitle={`#${literacyRank} in India`}
-                delay={0.1}
+                delay={0.2}
                 trigger={isPageReady}
               />
               <MetricCard
                 title="HDI"
                 value={state.hdi.toFixed(3)}
                 subtitle={`#${hdiRank} in India`}
-                delay={0.12}
+                delay={0.25}
                 trigger={isPageReady}
               />
             </div>
