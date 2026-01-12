@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Transition } from "framer-motion";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Header, MetricCard } from "@/components";
+import { Header, MetricCard, PageLoader } from "@/components";
 import { BarChart } from "@/components/BarChart";
 import { StatComparison } from "@/components/StatComparison";
 import { DistrictList } from "@/components/DistrictList";
@@ -85,7 +85,14 @@ export default function StatePage({ params }: PageProps) {
   };
 
   useEffect(() => {
-    setIsPageReady(true);
+    // Smart Pre-load:
+    // We delay the "ready" state slightly to allowing heavy components (Map, Charts)
+    // to hydrate and render their initial frame BEHIND the loader.
+    // This ensures that when the loader fades out, the UI is fully painted and 60fps smooth.
+    const timer = setTimeout(() => {
+      setIsPageReady(true);
+    }, 800);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -260,6 +267,10 @@ export default function StatePage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-bg-primary">
+      <AnimatePresence>
+        {!isPageReady && <PageLoader />}
+      </AnimatePresence>
+
       <Header
         breadcrumbs={[{ label: state.name, href: `/state/${state.id}` }]}
       />
@@ -268,7 +279,7 @@ export default function StatePage({ params }: PageProps) {
         {/* Hero Section */}
         <motion.section
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={smooth}
           className="mb-8"
         >
@@ -337,6 +348,7 @@ export default function StatePage({ params }: PageProps) {
                 value={formatPopulation(state.population)}
                 subtitle={`#${populationRank} in India`}
                 delay={0.05}
+                trigger={isPageReady}
               />
               <MetricCard
                 title="GDP"
@@ -344,6 +356,7 @@ export default function StatePage({ params }: PageProps) {
                 unit=""
                 subtitle={`#${gdpRank} in India`}
                 delay={0.08}
+                trigger={isPageReady}
               />
               <MetricCard
                 title="Literacy Rate"
@@ -351,12 +364,14 @@ export default function StatePage({ params }: PageProps) {
                 unit="%"
                 subtitle={`#${literacyRank} in India`}
                 delay={0.1}
+                trigger={isPageReady}
               />
               <MetricCard
                 title="HDI"
                 value={state.hdi.toFixed(3)}
                 subtitle={`#${hdiRank} in India`}
                 delay={0.12}
+                trigger={isPageReady}
               />
             </div>
 
@@ -384,7 +399,7 @@ export default function StatePage({ params }: PageProps) {
           <div id="state-map" className="-mt-4">
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
+              animate={isPageReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.97 }}
               transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
               className="flex flex-col items-center justify-center"
               style={{ overflow: "visible" }}
@@ -408,6 +423,7 @@ export default function StatePage({ params }: PageProps) {
             title="vs National Average"
             stateName={state.name}
             delay={0.15}
+            trigger={isPageReady}
             items={[
               {
                 label: "Literacy Rate",
@@ -442,6 +458,7 @@ export default function StatePage({ params }: PageProps) {
           <BarChart
             title="Cities by Population"
             delay={0.18}
+            trigger={isPageReady}
             items={majorAreasByPopulation}
           />
         </section>
@@ -450,7 +467,7 @@ export default function StatePage({ params }: PageProps) {
         <section className="mb-10">
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.2 }}
             className="card p-6"
           >
@@ -538,7 +555,7 @@ export default function StatePage({ params }: PageProps) {
         {/* Back Navigation */}
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={isPageReady ? { opacity: 1 } : { opacity: 0 }}
           transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.2 }}
         >
           <Link

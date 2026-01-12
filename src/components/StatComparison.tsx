@@ -15,13 +15,14 @@ interface StatComparisonProps {
   stateName: string;
   items: ComparisonItem[];
   delay?: number;
+  trigger?: boolean;
 }
 
-export function StatComparison({ title, stateName, items, delay = 0 }: StatComparisonProps) {
+export function StatComparison({ title, stateName, items, delay = 0, trigger = true }: StatComparisonProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.4, delay }}
       className="card p-6"
     >
@@ -34,8 +35,8 @@ export function StatComparison({ title, stateName, items, delay = 0 }: StatCompa
         </div>
 
         {items.map((item, index) => (
-          <div 
-            key={item.label} 
+          <div
+            key={item.label}
             className={`grid grid-cols-3 gap-4 items-center py-2 ${index !== items.length - 1 ? 'border-b border-border-light/50' : ''}`}
           >
             <div className="text-sm font-medium text-text-secondary">{item.label}</div>

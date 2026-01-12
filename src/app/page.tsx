@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useState, useMemo, useEffect } from "react";
+import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
 import Link from "next/link";
-import { Header, MetricCard, IndiaMap, MetricSelector } from "@/components";
+import { Header, MetricCard, IndiaMap, MetricSelector, PageLoader } from "@/components";
 import { states, india } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import type { State } from "@/types";
@@ -30,6 +30,7 @@ export default function Home() {
   const [rankingMetric, setRankingMetric] = useState<MetricKey>("population");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const [showAllRegions, setShowAllRegions] = useState(false);
+  const [isPageReady, setIsPageReady] = useState(false);
   const { formatPopulation, formatCurrency, formatDensity, formatArea } = useFormat();
   const prefersReducedMotion = useReducedMotion();
 
@@ -42,6 +43,14 @@ export default function Home() {
     setMapMetric(metric);
     setRankingMetric(metric);
   };
+
+  useEffect(() => {
+    // Smart Pre-load strategy: match the smoothness of state page
+    const timer = setTimeout(() => {
+      setIsPageReady(true);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleRankingMetricChange = (metric: MetricKey) => {
     setRankingMetric(metric);
@@ -92,13 +101,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-bg-primary">
+      <AnimatePresence>
+        {!isPageReady && <PageLoader />}
+      </AnimatePresence>
       <Header />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
         {/* Hero */}
         <motion.section
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={smooth}
           className="mb-12"
         >
@@ -115,10 +127,10 @@ export default function Home() {
 
         {/* Summary Cards */}
         <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.05} />
-          <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.08} />
-          <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.1} />
-          <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.12} />
+          <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.05} trigger={isPageReady} />
+          <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.08} trigger={isPageReady} />
+          <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.1} trigger={isPageReady} />
+          <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.12} trigger={isPageReady} />
         </section>
 
         {/* Map Section */}
@@ -133,7 +145,7 @@ export default function Home() {
 
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.985 }}
-            animate={{ opacity: 1, scale: 1 }}
+            animate={isPageReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.985 }}
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
             className="card overflow-hidden p-6"
           >
@@ -218,7 +230,7 @@ export default function Home() {
           <motion.div
             key={rankingMetric}
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }} // Only animate when ready
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, duration: 0.35 }}
             className="card p-6"
           >

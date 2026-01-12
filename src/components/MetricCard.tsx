@@ -12,6 +12,7 @@ interface MetricCardProps {
   icon?: ReactNode;
   delay?: number;
   className?: string;
+  trigger?: boolean;
 }
 
 export function MetricCard({
@@ -23,6 +24,7 @@ export function MetricCard({
   icon,
   delay = 0,
   className = "",
+  trigger = true,
 }: MetricCardProps) {
   const trendColor = trend?.direction === "up" ? "text-emerald-600" : trend?.direction === "down" ? "text-rose-500" : "text-text-muted";
   const trendIcon = trend?.direction === "up" ? "↑" : trend?.direction === "down" ? "↓" : "→";
@@ -30,7 +32,7 @@ export function MetricCard({
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.4, delay }}
       className={`card p-5 ${className}`}
     >

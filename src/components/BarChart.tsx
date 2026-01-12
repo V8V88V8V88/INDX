@@ -13,15 +13,16 @@ interface BarChartProps {
   title: string;
   items: BarChartItem[];
   delay?: number;
+  trigger?: boolean;
 }
 
-export function BarChart({ title, items, delay = 0 }: BarChartProps) {
+export function BarChart({ title, items, delay = 0, trigger = true }: BarChartProps) {
   const max = Math.max(...items.map((i) => i.value));
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={trigger ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.45, ease: "easeOut", type: "tween", delay }}
       className="card p-5"
     >
@@ -40,7 +41,7 @@ export function BarChart({ title, items, delay = 0 }: BarChartProps) {
             <div className="h-2 overflow-hidden rounded-full bg-bg-tertiary">
               <motion.div
                 initial={{ width: 0 }}
-                animate={{ width: `${(item.value / max) * 100}%` }}
+                animate={trigger ? { width: `${(item.value / max) * 100}%` } : { width: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut", type: "tween", delay: delay + i * 0.05 }}
                 className={`h-full rounded-full ${item.highlight ? "bg-accent-primary" : "bg-accent-primary/50"}`}
               />

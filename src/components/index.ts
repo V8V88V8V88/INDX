@@ -11,4 +11,6 @@ export { ThemeToggle } from "./ThemeToggle";
 export { DistrictList } from "./DistrictList";
 export { DistrictInfoCard } from "./DistrictInfoCard";
 export { Spotlight } from "./Spotlight";
+export { PageLoader } from "./PageLoader";
+
 
