@@ -305,8 +305,9 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3, delay: idx * 0.01 }}
                 d={district.d}
-                stroke={isSelected ? "var(--accent-primary)" : hasActiveDistrict && !isSelected ? "rgba(255,255,255,0.1)" : "var(--map-border-color)"}
+                stroke={isSelected ? "var(--accent-primary)" : "var(--map-border-color)"}
                 strokeWidth={isSelected ? 2.5 : isHovered ? 2 : hasActiveDistrict && !isSelected ? 0.5 : 1}
+                strokeOpacity={hasActiveDistrict && !isSelected ? 0.3 : 1}
                 fill={
                   isSelected
                     ? "var(--accent-primary)"
