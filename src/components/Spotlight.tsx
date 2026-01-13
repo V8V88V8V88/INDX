@@ -209,7 +209,14 @@ export function Spotlight() {
     setQuery("");
     setSelectedIndex(0);
     
+    // If the path has a hash and we're navigating to the same page, update hash directly
+    if (result.path.includes("#") && window.location.pathname === result.path.split("#")[0]) {
+      window.location.hash = result.path.split("#")[1];
+      // Trigger hashchange event manually for same-page navigation
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    } else {
     router.push(result.path);
+    }
   };
 
   return (

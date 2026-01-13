@@ -663,7 +663,8 @@ export function formatNumber(num: number): string {
   return num.toLocaleString("en-IN");
 }
 
-export function formatPopulation(pop: number): string {
+export function formatPopulation(pop: number | undefined | null): string {
+  if (pop === undefined || pop === null) return "N/A";
   if (pop >= 10000000) return (pop / 10000000).toFixed(1) + " Cr";
   if (pop >= 100000) return (pop / 100000).toFixed(1) + " L";
   return pop.toLocaleString("en-IN");

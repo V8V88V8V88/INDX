@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import * as d3 from "d3";
+import { useSubDistrictGeoData, filterSubDistrictsByDistrict } from "@/hooks/useSubDistrictGeoData";
 import type { State } from "@/types";
 
 interface StateMapProps {
@@ -11,6 +12,8 @@ interface StateMapProps {
   selectedDistrict?: string | null;
   onDistrictSelect?: (district: string | null) => void;
   onDistrictClick?: (district: string) => void;
+  onCityClick?: (city: any) => void;
+  onSubDistrictClick?: (subDistrict: { name: string; district: string }) => void;
 }
 
 interface DistrictFeature {
@@ -28,10 +31,11 @@ interface DistrictGeoData {
   features: DistrictFeature[];
 }
 
-export function StateMap({ stateCode, state, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick }: StateMapProps) {
+export function StateMap({ stateCode, state, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onCityClick, onSubDistrictClick }: StateMapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [geoData, setGeoData] = useState<DistrictGeoData | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
+  const [hoveredSubDistrict, setHoveredSubDistrict] = useState<string | null>(null);
   const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -94,13 +98,47 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     return geoName;
   };
 
+  // Normalize district names for comparison (same as page component)
+  const normalizeDistrictName = (name: string): string => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ");
+  };
+
+  // Memoize the normalized selected district name for performance
+  const normalizedSelectedDistrict = useMemo(() => {
+    return selectedDistrict ? normalizeDistrictName(selectedDistrict) : null;
+  }, [selectedDistrict]);
+  
+  // Check if a district is selected (with normalized comparison)
+  const isDistrictSelected = (districtName: string): boolean => {
+    if (!selectedDistrict || !normalizedSelectedDistrict) return false;
+    
+    // Direct match first (fastest)
+    if (selectedDistrict === districtName) return true;
+    
+    // Normalized comparison
+    const normalizedDistrict = normalizeDistrictName(districtName);
+    
+    // Exact normalized match
+    if (normalizedSelectedDistrict === normalizedDistrict) return true;
+    
+    // STRICT: Only exact match - NO substring matching
+    // This prevents "Agra" from matching "Prayagraj" or "Rampur" from matching "Balrampur"
+    return false;
+  };
+
+  // Load sub-district geo data for rendering tehsil/taluk boundaries
+  const { data: subDistrictGeoData } = useSubDistrictGeoData(stateCode);
+
   const mapData = useMemo(() => {
     if (!geoData || !geoData.features?.length) {
-      return { paths: [], viewBox: "0 0 700 600" };
+      return { paths: [], viewBox: "0 0 900 800", projection: null };
     }
 
-    const width = 700;
-    const height = 600;
+    const width = 900;
+    const height = 800;
     const padding = 20;
 
     const featureCollection = {
@@ -120,11 +158,96 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
 
     const paths = geoData.features.map((feature) => ({
       d: pathGenerator(feature as unknown as d3.GeoPermissibleObjects) || "",
+      centroid: pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects),
       name: normalizeGeoDistrictName(feature.properties.district || "Unknown", stateCode),
+      originalId: feature.properties.dt_code || "",
     }));
 
-    return { paths, viewBox: `0 0 ${width} ${height}` };
+    return { paths, viewBox: `0 0 ${width} ${height}`, projection };
   }, [geoData, stateCode]);
+
+  // Compute OVERLAY tehsil paths using the district map projection
+  const overlaySubDistrictData = useMemo(() => {
+    if (!subDistrictGeoData || !selectedDistrict || !mapData.projection) {
+      return { paths: [], hasData: false };
+    }
+
+    // Find the EXACT GeoJSON district name that matches selectedDistrict
+    // selectedDistrict might be from API, so we need to find the corresponding GeoJSON district name
+    // STRICT: Only exact normalized match - no substring matching
+    let geoJsonDistrictName = selectedDistrict.toLowerCase().trim();
+    
+    // Try to find matching district name from the state GeoJSON using EXACT match only
+    if (geoData && geoData.features) {
+      const normalizedSelected = normalizeDistrictName(selectedDistrict);
+      console.log('[StateMap] Looking for GeoJSON match for:', selectedDistrict, 'normalized:', normalizedSelected);
+      
+      // Find EXACT match only - no substring, no includes()
+      const matchingGeoFeature = geoData.features.find(feature => {
+        const geoDistrictName = normalizeGeoDistrictName(feature.properties.district || "", stateCode);
+        const normalizedGeo = normalizeDistrictName(geoDistrictName);
+        const isExactMatch = normalizedGeo === normalizedSelected;
+        if (isExactMatch) {
+          console.log('[StateMap] Exact match found:', geoDistrictName, 'normalized:', normalizedGeo);
+        }
+        return isExactMatch;
+      });
+      
+      if (matchingGeoFeature) {
+        // Use the exact GeoJSON district name for filtering
+        geoJsonDistrictName = (matchingGeoFeature.properties.district || "").toLowerCase().trim();
+        console.log('[StateMap] Using GeoJSON name for filter:', geoJsonDistrictName);
+      } else {
+        console.log('[StateMap] No exact GeoJSON match found for:', selectedDistrict, 'normalized:', normalizedSelected);
+        console.log('[StateMap] Available GeoJSON districts:', geoData.features.slice(0, 5).map(f => ({
+          original: f.properties.district,
+          normalized: normalizeDistrictName(normalizeGeoDistrictName(f.properties.district || "", stateCode))
+        })));
+      }
+    }
+    
+    console.log('[StateMap overlaySubDistrictData] Final filter name:', geoJsonDistrictName);
+    const filteredFeatures = filterSubDistrictsByDistrict(subDistrictGeoData, geoJsonDistrictName);
+
+    if (filteredFeatures.length === 0) {
+      return { paths: [], hasData: false };
+    }
+
+    // Use the SAME projection as the district map
+    const pathGenerator = d3.geoPath().projection(mapData.projection);
+
+    const paths = filteredFeatures
+      .map((feature, idx) => {
+        // Ensure feature has valid geometry
+        if (!feature.geometry || (feature.geometry.type !== "Polygon" && feature.geometry.type !== "MultiPolygon")) {
+          return null;
+        }
+
+        const pathString = pathGenerator(feature as unknown as d3.GeoPermissibleObjects);
+        const centroid = pathGenerator.centroid(feature as unknown as d3.GeoPermissibleObjects);
+        
+        // Only include paths that have valid geometry
+        if (!pathString || pathString.length === 0 || pathString === "M0,0" || pathString === "MNaN,NaNLNaN,NaN") {
+          return null;
+        }
+        
+        // Check if centroid is valid
+        if (!centroid || !isFinite(centroid[0]) || !isFinite(centroid[1])) {
+          return null;
+        }
+        
+        return {
+          d: pathString,
+          centroid,
+      name: feature.properties.sdtname || "Unknown",
+      district: feature.properties.dtname || "",
+      id: feature.id || idx,
+        };
+      })
+      .filter((path): path is NonNullable<typeof path> => path !== null);
+
+    return { paths, hasData: paths.length > 0 };
+  }, [subDistrictGeoData, selectedDistrict, mapData.projection, geoData, stateCode]);
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -148,71 +271,169 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
 
   return (
     <div className="relative w-full" style={{ overflow: "visible" }}>
-      <svg
-        ref={svgRef}
-        viewBox={mapData.viewBox}
-        className="w-full h-auto drop-shadow-xl"
-        style={{ maxHeight: "700px" }}
-        preserveAspectRatio="xMidYMid meet"
-        onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
-      >
-        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="2" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-        <filter id="selectedGlow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="4" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-        {mapData.paths.map((district, i) => {
-          const isHovered = hoveredDistrict === district.name;
-          const isSelected = selectedDistrict === district.name;
-          const hasActiveDistrict = hoveredDistrict || selectedDistrict;
-          const isInactive = hasActiveDistrict && !isHovered && !isSelected;
+      {/* Show State-Level District Map */}
+        <svg
+          ref={svgRef}
+          viewBox={mapData.viewBox}
+          className="w-full h-auto drop-shadow-xl"
+          style={{ maxHeight: "900px" }}
+          preserveAspectRatio="xMidYMid meet"
+          onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
+        >
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <filter id="selectedGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
 
-          return (
-            <motion.path
-              key={`${district.name}-${selectedDistrict || 'none'}-${i}`}
-              initial={false}
-              animate={{
-                opacity: isInactive ? 0.25 : 1,
-                scale: 1,
-                strokeOpacity: isInactive ? 0.3 : 1,
-                strokeWidth: isSelected ? 2.2 : isHovered ? 1.8 : 1.1
-              }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              d={district.d}
-              stroke="var(--map-border-color)"
-              className={`cursor-pointer transition-all duration-200`}
-              style={{
-                filter: isSelected ? "url(#selectedGlow)" : isHovered ? "url(#glow)" : "none",
-                fill: isSelected
-                  ? "var(--accent-secondary)"
-                  : isHovered
-                    ? "var(--accent-secondary)"
-                    : "var(--accent-primary)",
-                fillOpacity: isSelected || isHovered
-                  ? 0.7
-                  : hasActiveDistrict
-                    ? 0.15
-                    : 0.6
-              }}
-              onMouseEnter={() => setHoveredDistrict(district.name)}
-              onMouseLeave={() => setHoveredDistrict(null)}
-              onClick={() => {
-                const newSelection = district.name === selectedDistrict ? null : district.name;
-                setSelectedDistrict(newSelection);
-                if (newSelection && onDistrictClick) {
-                  onDistrictClick(newSelection);
+          {mapData.paths.map((district, idx) => {
+            // Use normalized comparison to check if this district is selected
+            const isSelected = isDistrictSelected(district.name);
+            const hasActiveDistrict = selectedDistrict !== null;
+            // Only show hover effect if district is NOT selected
+            const isHovered = !isSelected && hoveredDistrict === district.name;
+            
+            // Force re-render when selectedDistrict changes by using it in the key
+            const pathKey = `${district.name}-${selectedDistrict || 'none'}`;
+
+            return (
+              <motion.path
+                key={pathKey}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: idx * 0.01 }}
+                d={district.d}
+                stroke={isSelected ? "var(--accent-primary)" : hasActiveDistrict && !isSelected ? "rgba(255,255,255,0.1)" : "var(--map-border-color)"}
+                strokeWidth={isSelected ? 2.5 : isHovered ? 2 : hasActiveDistrict && !isSelected ? 0.5 : 1}
+                fill={
+                  isSelected
+                    ? "var(--accent-primary)"
+                    : isHovered
+                      ? "var(--accent-secondary)"
+                      : "var(--accent-primary)"
                 }
-              }}
-            />
-          );
-        })}
-      </svg>
+                style={{
+                  filter: isSelected
+                    ? "url(#selectedGlow)"
+                    : isHovered
+                      ? "url(#glow)"
+                      : "none",
+                  fillOpacity: isSelected
+                    ? 0.6  // Selected district: normal opacity
+                    : isHovered
+                    ? 0.7
+                    : hasActiveDistrict
+                        ? 0.2  // Other districts when one is selected: washed out
+                        : 0.6   // Normal state: normal opacity
+                }}
+                onMouseEnter={() => {
+                  // Only show district hover if this district is NOT selected
+                  if (!isSelected) {
+                    setHoveredDistrict(district.name);
+                  }
+                }}
+                onMouseLeave={() => {
+                  // Only clear hover if we're not hovering over selected district
+                  if (!isSelected) {
+                    setHoveredDistrict(null);
+                  }
+                }}
+                onClick={() => {
+                  // Use normalized comparison to check if already selected
+                  const currentlySelected = isDistrictSelected(district.name);
+                  
+                  if (currentlySelected) {
+                    // Deselect
+                    if (onDistrictSelect) {
+                      onDistrictSelect(null);
+                    } else {
+                      setSelectedDistrict(null);
+                    }
+                  } else {
+                    // Select - call the callback first so it can normalize the name
+                    if (onDistrictClick) {
+                      onDistrictClick(district.name);
+                    } else {
+                      setSelectedDistrict(district.name);
+                    }
+                  }
+                }}
+              />
+            );
+          })}
 
-      {/* Floating Tooltip */}
-      {hoveredName && (
+          {/* Overlay tehsils when district is selected - thinner boundaries than districts */}
+          {selectedDistrict && overlaySubDistrictData.hasData && overlaySubDistrictData.paths.map((subDistrict, idx) => {
+            const isHovered = hoveredSubDistrict === subDistrict.name;
+
+            return (
+              <motion.path
+                key={`overlay-sd-${subDistrict.id}-${idx}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: idx * 0.01, duration: 0.2 }}
+                d={subDistrict.d}
+                stroke="var(--map-border-color)"
+                strokeWidth={isHovered ? 1.2 : 0.75}
+                strokeOpacity={isHovered ? 0.9 : 0.6}
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                fill="none"
+                className="cursor-pointer transition-all duration-150"
+                style={{
+                  filter: isHovered ? "url(#glow)" : "none"
+                }}
+                onMouseEnter={() => setHoveredSubDistrict(subDistrict.name)}
+                onMouseLeave={() => setHoveredSubDistrict(null)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onSubDistrictClick) {
+                    onSubDistrictClick({ name: subDistrict.name, district: subDistrict.district });
+                  }
+                }}
+              />
+            );
+          })}
+
+          {/* Overlay tehsils when district is selected - just boundaries, no fill */}
+          {selectedDistrict && overlaySubDistrictData.hasData && overlaySubDistrictData.paths.map((subDistrict, idx) => {
+            const isHovered = hoveredSubDistrict === subDistrict.name;
+
+            return (
+              <motion.path
+                key={`overlay-sd-${subDistrict.id}-${idx}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: idx * 0.01, duration: 0.2 }}
+                d={subDistrict.d}
+                stroke="var(--map-border-color)"
+                strokeWidth={isHovered ? 2 : 1.5}
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                fill="none"
+                fillOpacity={0}
+                className="cursor-pointer transition-all duration-150"
+                style={{
+                  filter: isHovered ? "url(#glow)" : "none"
+                }}
+                onMouseEnter={() => setHoveredSubDistrict(subDistrict.name)}
+                onMouseLeave={() => setHoveredSubDistrict(null)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onSubDistrictClick) {
+                    onSubDistrictClick({ name: subDistrict.name, district: subDistrict.district });
+                  }
+                }}
+              />
+            );
+          })}
+        </svg>
+
+      {/* Floating Tooltip for Districts - Only show for non-selected districts */}
+      {hoveredName && !hoveredSubDistrict && !isDistrictSelected(hoveredName) && (
         <div
           className="pointer-events-none fixed z-50 rounded-lg bg-bg-card px-3 py-2 text-sm font-semibold text-text-primary shadow-lg ring-1 ring-border-light backdrop-blur-md"
           style={{
@@ -221,9 +442,21 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
           }}
         >
           {hoveredName}
-          {selectedDistrict !== hoveredName && (
-            <span className="ml-2 text-xs text-text-muted">(click for details)</span>
-          )}
+          <span className="ml-2 text-xs text-text-muted">(click to see tehsils)</span>
+        </div>
+      )}
+
+      {/* Floating Tooltip for Sub-Districts */}
+      {hoveredSubDistrict && (
+        <div
+          className="pointer-events-none fixed z-50 rounded-lg bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-md"
+          style={{
+            left: mousePos.x + 12,
+            top: mousePos.y - 12,
+          }}
+        >
+          <span className="text-[10px] uppercase tracking-wider opacity-70 block">Tehsil</span>
+          {hoveredSubDistrict}
         </div>
       )}
 

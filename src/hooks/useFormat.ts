@@ -17,7 +17,8 @@ export function useFormat() {
         return val.toLocaleString("en-US");
     };
 
-    const formatPopulation = (val: number): string => {
+    const formatPopulation = (val: number | undefined | null): string => {
+        if (val === undefined || val === null) return "N/A";
         if (settings.numberFormat === "indian") {
             return formatPopulationIN(val);
         }
