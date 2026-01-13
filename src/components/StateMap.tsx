@@ -290,11 +290,10 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
           </filter>
 
           {mapData.paths.map((district, idx) => {
+            const isHovered = hoveredDistrict === district.name;
             // Use normalized comparison to check if this district is selected
             const isSelected = isDistrictSelected(district.name);
             const hasActiveDistrict = selectedDistrict !== null;
-            // Only show hover effect if district is NOT selected
-            const isHovered = !isSelected && hoveredDistrict === district.name;
             
             // Force re-render when selectedDistrict changes by using it in the key
             const pathKey = `${district.name}-${selectedDistrict || 'none'}`;
@@ -329,18 +328,8 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
                         ? 0.2  // Other districts when one is selected: washed out
                         : 0.6   // Normal state: normal opacity
                 }}
-                onMouseEnter={() => {
-                  // Only show district hover if this district is NOT selected
-                  if (!isSelected) {
-                    setHoveredDistrict(district.name);
-                  }
-                }}
-                onMouseLeave={() => {
-                  // Only clear hover if we're not hovering over selected district
-                  if (!isSelected) {
-                    setHoveredDistrict(null);
-                  }
-                }}
+                onMouseEnter={() => setHoveredDistrict(district.name)}
+                onMouseLeave={() => setHoveredDistrict(null)}
                 onClick={() => {
                   // Use normalized comparison to check if already selected
                   const currentlySelected = isDistrictSelected(district.name);
@@ -432,8 +421,8 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
           })}
         </svg>
 
-      {/* Floating Tooltip for Districts - Only show for non-selected districts */}
-      {hoveredName && !hoveredSubDistrict && !isDistrictSelected(hoveredName) && (
+      {/* Floating Tooltip for Districts */}
+      {hoveredName && !hoveredSubDistrict && (
         <div
           className="pointer-events-none fixed z-50 rounded-lg bg-bg-card px-3 py-2 text-sm font-semibold text-text-primary shadow-lg ring-1 ring-border-light backdrop-blur-md"
           style={{
@@ -442,7 +431,9 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
           }}
         >
           {hoveredName}
-          <span className="ml-2 text-xs text-text-muted">(click to see tehsils)</span>
+          {selectedDistrict !== hoveredName && (
+            <span className="ml-2 text-xs text-text-muted">(click to see tehsils)</span>
+          )}
         </div>
       )}
 
