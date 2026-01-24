@@ -322,12 +322,12 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
                       ? "url(#glow)"
                       : "none",
                   fillOpacity: isSelected
-                    ? 0.6  // Selected district: normal opacity
+                    ? 1
                     : isHovered
-                    ? 0.7
+                    ? 1
                     : hasActiveDistrict
-                        ? 0.2  // Other districts when one is selected: washed out
-                        : 0.6   // Normal state: normal opacity
+                        ? 0.2
+                        : 1
                 }}
                 onMouseEnter={() => setHoveredDistrict(district.name)}
                 onMouseLeave={() => setHoveredDistrict(null)}
