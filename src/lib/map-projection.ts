@@ -4,7 +4,7 @@ export const VIEWBOX = { x: -80, y: -20, w: 700, h: 720 };
 export const VIEWBOX_STR = "-80 -20 700 720";
 
 export function indiaProjection() {
-  return d3.geoMercator().center([82, 22]).scale(1150).translate([300, 340]);
+  return d3.geoMercator().center([82, 22]).scale(900).translate([300, 340]);
 }
 
 export const stateNameToCode: Record<string, string> = {

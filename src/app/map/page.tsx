@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import * as d3 from "d3";
-import { PageLoader } from "@/components";
+import { Header, PageLoader } from "@/components";
 import { VIEWBOX, VIEWBOX_STR, indiaProjection, stateNameToCode } from "@/lib/map-projection";
 
 interface GeoFeature {
@@ -20,8 +20,8 @@ interface GeoCollection {
 const LOD_DEBOUNCE_MS = 180;
 const LOADER_MIN_MS = 500;
 
-const DENSE_LABEL_STATES = new Set<string>(["DL", "CH"]);
-const DENSE_LABEL_ZOOM = 12;
+const NO_DISTRICT_LABEL_STATES = new Set<string>(["DL", "CH", "PY", "DD", "LD", "AN"]);
+const DISTRICT_LABEL_ZOOM = 4.1;
 
 const MAP_LOADER_CSS = `
 @keyframes map-loader-pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
@@ -321,21 +321,22 @@ export default function MapPage() {
   }, [visibleStateCodes, districtGeo, pathGen]);
 
   const visibleStateLabels = useMemo(() => {
-    if (k > 2.5) return [];
     const b = labelBounds;
-    return statePaths.filter((s) => {
+    const inView = statePaths.filter((s) => {
       const [cx, cy] = s.labelPos;
       return cx >= b.minX && cx <= b.maxX && cy >= b.minY && cy <= b.maxY;
     });
+    if (k <= 2.5) return inView;
+    return inView.filter((s) => s.stateCode && NO_DISTRICT_LABEL_STATES.has(s.stateCode));
   }, [statePaths, labelBounds, k]);
 
   const visibleDistrictLabels = useMemo(() => {
-    if (!showDistricts || k < 2) return [];
+    if (!showDistricts || k < DISTRICT_LABEL_ZOOM) return [];
     const b = labelBounds;
     const inView = districtPaths.filter((d) => {
       const [cx, cy] = d.labelPos;
       if (cx < b.minX || cx > b.maxX || cy < b.minY || cy > b.maxY) return false;
-      if (DENSE_LABEL_STATES.has(d.stateCode) && k <= DENSE_LABEL_ZOOM) return false;
+      if (NO_DISTRICT_LABEL_STATES.has(d.stateCode)) return false;
       return true;
     });
     const cx = b.centerX;
@@ -352,7 +353,7 @@ export default function MapPage() {
     return inView.slice(0, 40);
   }, [showDistricts, districtPaths, labelBounds, k]);
 
-  const stateLabelFontSize = Math.max(12, 14 / k);
+  const stateLabelFontSize = Math.max(2, Math.min(14, 14 / k));
   const districtLabelFontSize = Math.max(2.5, 3.5 / k);
 
   const strokeWidth = (base: number) => Math.max(0.3, base / k);
@@ -363,37 +364,8 @@ export default function MapPage() {
   const gTransform = `translate(${transformRef.current.x},${transformRef.current.y}) scale(${transformRef.current.k})`;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-bg-primary">
-      <header className="flex shrink-0 items-center justify-between gap-4 border-b border-border-light bg-bg-card px-4 py-3">
-        <div className="flex items-center gap-3">
-          <Link
-            href="/"
-            className="flex h-10 items-center gap-2 rounded-lg border border-border-light bg-bg-secondary px-3 text-sm font-medium text-text-secondary transition-colors hover:bg-bg-tertiary"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            Back
-          </Link>
-          <span className="text-sm text-text-muted">Zoom in to see districts</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="rounded bg-bg-secondary px-2 py-1 font-mono text-xs text-text-muted">
-            {Math.round(k * 100)}%
-          </span>
-          <button
-            type="button"
-            onClick={() => setShowLabels(!showLabels)}
-            className={`flex h-10 items-center gap-1.5 rounded-lg border px-3 text-xs font-medium transition-colors ${
-              showLabels
-                ? "border-accent-primary bg-accent-primary text-white"
-                : "border-border-light bg-bg-card text-text-secondary hover:bg-bg-secondary"
-            }`}
-          >
-            Labels
-          </button>
-        </div>
-      </header>
+    <div className="flex h-screen flex-col overflow-hidden bg-bg-primary">
+      <Header breadcrumbs={[{ label: "Map", href: "/map" }]} />
 
       <main className="relative min-h-0 flex-1">
         {loadingDistricts && (
@@ -499,42 +471,78 @@ export default function MapPage() {
           </g>
         </svg>
 
-        <div className="absolute bottom-4 right-4 flex flex-col items-end gap-2">
-          {hasZoomed && (
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="pointer-events-auto absolute left-4 top-4 z-10 flex items-center gap-2">
+            <Link
+              href="/"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm transition-colors hover:bg-bg-secondary"
+              title="Back to India"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </Link>
+            {k < 2 && (
+              <span className="rounded-full bg-bg-card/90 px-3 py-1.5 text-xs text-text-muted backdrop-blur-sm">
+                Zoom in to see districts
+              </span>
+            )}
+          </div>
+          <div className="pointer-events-auto absolute right-4 top-4 z-10 flex items-center gap-2">
+            <span className="rounded-full bg-bg-card/90 px-2.5 py-1.5 font-mono text-xs text-text-muted backdrop-blur-sm">
+              {Math.round(k * 100)}%
+            </span>
             <button
               type="button"
-              onClick={resetZoom}
-              className="flex h-10 items-center gap-1.5 rounded-lg border border-border-light bg-bg-card px-3 text-xs font-medium text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
-              title="Reset"
+              onClick={() => setShowLabels(!showLabels)}
+              className={`flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur-sm transition-colors ${
+                showLabels
+                  ? "border-accent-primary bg-accent-primary text-white"
+                  : "border-border-light bg-bg-card/90 text-text-secondary hover:bg-bg-secondary"
+              }`}
+              title="Toggle labels"
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                <path d="M3 3v5h5" />
-              </svg>
-              Reset
-            </button>
-          )}
-          <div className="flex flex-col overflow-hidden rounded-lg border border-border-light bg-bg-card shadow-md">
-            <button
-              type="button"
-              onClick={zoomIn}
-              className="flex h-10 w-10 items-center justify-center border-b border-border-light text-text-secondary transition-colors hover:bg-bg-secondary"
-              title="Zoom in"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 5v14M5 12h14" />
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A1.994 1.994 0 0 1 3 12V7a4 4 0 0 1 4-4z" />
               </svg>
             </button>
-            <button
-              type="button"
-              onClick={zoomOut}
-              className="flex h-10 w-10 items-center justify-center text-text-secondary transition-colors hover:bg-bg-secondary"
-              title="Zoom out"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14" />
-              </svg>
-            </button>
+          </div>
+          <div className="pointer-events-auto absolute bottom-4 right-4 z-10 flex flex-col items-end gap-2">
+            {hasZoomed && (
+              <button
+                type="button"
+                onClick={resetZoom}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm transition-colors hover:bg-bg-secondary"
+                title="Reset zoom"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" />
+                </svg>
+              </button>
+            )}
+            <div className="flex flex-col overflow-hidden rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={zoomIn}
+                className="flex h-9 w-9 items-center justify-center border-b border-border-light text-text-secondary transition-colors hover:bg-bg-secondary"
+                title="Zoom in"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={zoomOut}
+                className="flex h-9 w-9 items-center justify-center text-text-secondary transition-colors hover:bg-bg-secondary"
+                title="Zoom out"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
