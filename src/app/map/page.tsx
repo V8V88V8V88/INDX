@@ -3,11 +3,12 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import * as d3 from "d3";
+import { PageLoader } from "@/components";
 import { VIEWBOX, VIEWBOX_STR, indiaProjection, stateNameToCode } from "@/lib/map-projection";
 
 interface GeoFeature {
   type: string;
-  properties: { ST_NM?: string; district?: string; dtname?: string; sdtname?: string };
+  properties: { ST_NM?: string; district?: string };
   geometry: unknown;
 }
 
@@ -17,6 +18,21 @@ interface GeoCollection {
 }
 
 const LOD_DEBOUNCE_MS = 180;
+const LOADER_MIN_MS = 500;
+
+const DENSE_LABEL_STATES = new Set<string>(["DL", "CH"]);
+const DENSE_LABEL_ZOOM = 12;
+
+const MAP_LOADER_CSS = `
+@keyframes map-loader-pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes map-loader-ripple { 0% { transform: scale(1); opacity: 0.8; border-width: 2px; } 100% { transform: scale(4); opacity: 0; border-width: 0; } }
+@keyframes map-loader-ripple-lg { 0% { transform: scale(1); opacity: 0.6; border-width: 2px; } 100% { transform: scale(6); opacity: 0; border-width: 0; } }
+@keyframes map-loader-text { 0% { opacity: 0.4; } 50% { opacity: 0.9; } 100% { opacity: 0.4; } }
+.map-loader-pulse { animation: map-loader-pulse 1.2s ease-in-out infinite; will-change: transform, opacity; }
+.map-loader-ripple { animation: map-loader-ripple 1.2s ease-out infinite; will-change: transform, opacity; }
+.map-loader-ripple-lg { animation: map-loader-ripple-lg 1.2s ease-out infinite; animation-delay: 0.2s; will-change: transform, opacity; }
+.map-loader-text { animation: map-loader-text 1.2s ease-in-out infinite; }
+`;
 
 function applyTransform(g: SVGGElement | null, t: d3.ZoomTransform) {
   if (!g) return;
@@ -29,13 +45,15 @@ export default function MapPage() {
   const [indiaGeo, setIndiaGeo] = useState<GeoCollection | null>(null);
   const [lod, setLod] = useState({ k: 1, x: 0, y: 0 });
   const [districtGeo, setDistrictGeo] = useState<Record<string, GeoCollection>>({});
-  const [tehsilGeo, setTehsilGeo] = useState<GeoCollection | null>(null);
+  const [loadingDistricts, setLoadingDistricts] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
   const [hovered, setHovered] = useState<{ type: "state"; name: string } | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const transformRef = useRef<d3.ZoomTransform>(d3.zoomIdentity);
   const requestedStates = useRef<Set<string>>(new Set());
+  const districtFetchInFlight = useRef(0);
+  const loaderDistrictsShownAt = useRef(0);
   const lodDebounce = useRef<ReturnType<typeof setTimeout> | null>(null);
   const skipNextZoom = useRef(false);
 
@@ -59,8 +77,25 @@ export default function MapPage() {
     };
   }, [k, tx, ty]);
 
+  const labelBounds = useMemo(() => {
+    const minX = (VIEWBOX.x - tx) / k;
+    const minY = (VIEWBOX.y - ty) / k;
+    const maxX = (VIEWBOX.x + VIEWBOX.w - tx) / k;
+    const maxY = (VIEWBOX.y + VIEWBOX.h - ty) / k;
+    const pad = 0.2;
+    const w = maxX - minX;
+    const h = maxY - minY;
+    return {
+      minX: minX - w * pad,
+      minY: minY - h * pad,
+      maxX: maxX + w * pad,
+      maxY: maxY + h * pad,
+      centerX: (minX + maxX) / 2,
+      centerY: (minY + maxY) / 2,
+    };
+  }, [k, tx, ty]);
+
   const showDistricts = k >= 2;
-  const showTehsils = k >= 6;
 
   useEffect(() => {
     fetch("/india-states.json")
@@ -77,12 +112,18 @@ export default function MapPage() {
       const pathString = pathGen(f as unknown as d3.GeoPermissibleObjects) ?? "";
       const centroid = pathGen.centroid(f as unknown as d3.GeoPermissibleObjects);
       const b = pathGen.bounds(f as unknown as d3.GeoPermissibleObjects);
+      const bbox = { minX: b[0][0], minY: b[0][1], maxX: b[1][0], maxY: b[1][1] };
+      const labelPos: [number, number] = [
+        (bbox.minX + bbox.maxX) / 2,
+        (bbox.minY + bbox.maxY) / 2,
+      ];
       return {
         stateCode,
         stateName: name,
         pathString,
         centroid,
-        bbox: { minX: b[0][0], minY: b[0][1], maxX: b[1][0], maxY: b[1][1] },
+        bbox,
+        labelPos,
       };
     });
   }, [indiaGeo, pathGen]);
@@ -115,26 +156,38 @@ export default function MapPage() {
   }, [statePaths, visibleBounds]);
 
   useEffect(() => {
-    if (!showDistricts || visibleStateCodes.length === 0) return;
-    visibleStateCodes.forEach((code) => {
-      if (requestedStates.current.has(code)) return;
+    if (!showDistricts || visibleStateCodes.length === 0) {
+      if (districtFetchInFlight.current === 0) setLoadingDistricts(false);
+      return;
+    }
+    const toLoad = visibleStateCodes.filter((c) => !requestedStates.current.has(c));
+    if (toLoad.length === 0) {
+      if (districtFetchInFlight.current === 0) setLoadingDistricts(false);
+      return;
+    }
+    districtFetchInFlight.current += toLoad.length;
+    loaderDistrictsShownAt.current = Date.now();
+    setLoadingDistricts(true);
+    toLoad.forEach((code) => {
       requestedStates.current.add(code);
       fetch(`/geo/states/${code}.json`)
         .then((r) => (r.ok ? r.json() : null))
         .then((data) => {
           if (data) setDistrictGeo((prev) => ({ ...prev, [code]: data }));
         })
-        .catch(() => {});
+        .catch(() => {})
+        .finally(() => {
+          districtFetchInFlight.current = Math.max(0, districtFetchInFlight.current - 1);
+          if (districtFetchInFlight.current > 0) {
+            setLoadingDistricts(true);
+            return;
+          }
+          const remain = Math.max(0, LOADER_MIN_MS - (Date.now() - loaderDistrictsShownAt.current));
+          if (remain > 0) setTimeout(() => setLoadingDistricts(false), remain);
+          else setLoadingDistricts(false);
+        });
     });
   }, [showDistricts, visibleStateCodes]);
-
-  useEffect(() => {
-    if (!showTehsils || !visibleStateCodes.includes("UP") || tehsilGeo) return;
-    fetch("/geo/subdistricts/UP.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => data && setTehsilGeo(data))
-      .catch(() => {});
-  }, [showTehsils, visibleStateCodes, tehsilGeo]);
 
   useEffect(() => {
     if (!svgRef.current || !gRef.current || !indiaGeo) return;
@@ -240,7 +293,13 @@ export default function MapPage() {
   const zoomOut = useCallback(() => zoomTowardCenter(1 / 1.5), [zoomTowardCenter]);
 
   const districtPaths = useMemo(() => {
-    const out: { stateCode: string; name: string; pathString: string; centroid: [number, number] }[] = [];
+    const out: {
+      stateCode: string;
+      name: string;
+      pathString: string;
+      centroid: [number, number];
+      labelPos: [number, number];
+    }[] = [];
     visibleStateCodes.forEach((code) => {
       const col = districtGeo[code];
       if (!col?.features?.length) return;
@@ -248,35 +307,58 @@ export default function MapPage() {
         const name = f.properties.district ?? "";
         const d = pathGen(f as unknown as d3.GeoPermissibleObjects);
         const c = pathGen.centroid(f as unknown as d3.GeoPermissibleObjects);
-        if (d) out.push({ stateCode: code, name, pathString: d, centroid: c });
+        const b = pathGen.bounds(f as unknown as d3.GeoPermissibleObjects);
+        if (d) {
+          const labelPos: [number, number] = [
+            (b[0][0] + b[1][0]) / 2,
+            (b[0][1] + b[1][1]) / 2,
+          ];
+          out.push({ stateCode: code, name, pathString: d, centroid: c, labelPos });
+        }
       });
     });
     return out;
   }, [visibleStateCodes, districtGeo, pathGen]);
 
-  const tehsilPaths = useMemo(() => {
-    if (!tehsilGeo?.features?.length || !showTehsils || !visibleStateCodes.includes("UP")) return [];
-    return tehsilGeo.features
-      .map((f) => {
-        const name = f.properties.sdtname ?? f.properties.dtname ?? "";
-        const d = pathGen(f as unknown as d3.GeoPermissibleObjects);
-        const c = pathGen.centroid(f as unknown as d3.GeoPermissibleObjects);
-        if (!d) return null;
-        return { name, pathString: d, centroid: c };
-      })
-      .filter((x): x is NonNullable<typeof x> => !!x);
-  }, [tehsilGeo, pathGen, showTehsils, visibleStateCodes]);
+  const visibleStateLabels = useMemo(() => {
+    if (k > 2.5) return [];
+    const b = labelBounds;
+    return statePaths.filter((s) => {
+      const [cx, cy] = s.labelPos;
+      return cx >= b.minX && cx <= b.maxX && cy >= b.minY && cy <= b.maxY;
+    });
+  }, [statePaths, labelBounds, k]);
+
+  const visibleDistrictLabels = useMemo(() => {
+    if (!showDistricts || k < 2) return [];
+    const b = labelBounds;
+    const inView = districtPaths.filter((d) => {
+      const [cx, cy] = d.labelPos;
+      if (cx < b.minX || cx > b.maxX || cy < b.minY || cy > b.maxY) return false;
+      if (DENSE_LABEL_STATES.has(d.stateCode) && k <= DENSE_LABEL_ZOOM) return false;
+      return true;
+    });
+    const cx = b.centerX;
+    const cy = b.centerY;
+    inView.sort((a, b) => {
+      const dxa = a.labelPos[0] - cx;
+      const dya = a.labelPos[1] - cy;
+      const dxb = b.labelPos[0] - cx;
+      const dyb = b.labelPos[1] - cy;
+      const da = dxa * dxa + dya * dya;
+      const db = dxb * dxb + dyb * dyb;
+      return da - db;
+    });
+    return inView.slice(0, 40);
+  }, [showDistricts, districtPaths, labelBounds, k]);
+
+  const stateLabelFontSize = Math.max(12, 14 / k);
+  const districtLabelFontSize = Math.max(2.5, 3.5 / k);
 
   const strokeWidth = (base: number) => Math.max(0.3, base / k);
   const hasZoomed = tx !== 0 || ty !== 0 || k !== 1;
 
-  if (!indiaGeo) {
-    return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg-primary">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-accent-primary border-t-transparent" />
-      </div>
-    );
-  }
+  if (!indiaGeo) return <PageLoader />;
 
   const gTransform = `translate(${transformRef.current.x},${transformRef.current.y}) scale(${transformRef.current.k})`;
 
@@ -293,7 +375,7 @@ export default function MapPage() {
             </svg>
             Back
           </Link>
-          <span className="text-sm text-text-muted">Zoom in: districts → tehsils (UP)</span>
+          <span className="text-sm text-text-muted">Zoom in to see districts</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="rounded bg-bg-secondary px-2 py-1 font-mono text-xs text-text-muted">
@@ -314,6 +396,26 @@ export default function MapPage() {
       </header>
 
       <main className="relative min-h-0 flex-1">
+        {loadingDistricts && (
+          <>
+            <style>{MAP_LOADER_CSS}</style>
+            <div
+              className="absolute inset-0 z-20 flex items-center justify-center bg-bg-primary/85 backdrop-blur-sm pointer-events-none"
+              aria-hidden
+            >
+              <div className="flex flex-col items-center gap-6">
+                <div className="relative flex items-center justify-center">
+                  <div className="map-loader-pulse relative z-10 h-4 w-4 rounded-full bg-accent-primary shadow-[0_0_20px_var(--accent-primary)]" />
+                  <div className="map-loader-ripple absolute h-4 w-4 rounded-full border-2 border-accent-primary/50" />
+                  <div className="map-loader-ripple-lg absolute h-4 w-4 rounded-full border-2 border-accent-primary/30" />
+                </div>
+                <p className="map-loader-text text-sm font-medium tracking-wide text-accent-primary">
+                  Loading districts…
+                </p>
+              </div>
+            </div>
+          </>
+        )}
         <svg
           ref={svgRef}
           viewBox={VIEWBOX_STR}
@@ -350,91 +452,54 @@ export default function MapPage() {
                 />
               ))}
 
-            {showTehsils &&
-              visibleStateCodes.includes("UP") &&
-              tehsilPaths.map((t, i) => (
-                <path
-                  key={`t-${i}`}
-                  d={t.pathString}
-                  fill="none"
-                  stroke="var(--text-primary)"
-                  strokeWidth={strokeWidth(0.35)}
-                  strokeOpacity={0.35}
-                  className="pointer-events-none"
-                />
-              ))}
-
             {showLabels && (
               <g className="labels pointer-events-none">
-                {k <= 2.5 &&
-                  statePaths.map((s, i) => {
-                    if (!s.centroid[0] || !s.centroid[1]) return null;
-                    const fs = Math.max(3, 7 / k);
-                    return (
-                      <text
-                        key={`l-${i}`}
-                        x={s.centroid[0]}
-                        y={s.centroid[1]}
-                        textAnchor="middle"
-                        dominantBaseline="central"
-                        fill="var(--text-primary)"
-                        stroke="var(--bg-card)"
-                        strokeWidth={1.2}
-                        strokeOpacity={0.9}
-                        style={{ fontSize: fs, fontWeight: 500, paintOrder: "stroke fill" }}
-                      >
-                        {s.stateName}
-                      </text>
-                    );
-                  })}
-                {showDistricts &&
-                  k > 5 &&
-                  districtPaths.slice(0, 35).map((d, i) => {
-                    const fs = Math.max(2.5, 5 / k);
-                    return (
-                      <text
-                        key={`ld-${i}`}
-                        x={d.centroid[0]}
-                        y={d.centroid[1]}
-                        textAnchor="middle"
-                        dominantBaseline="central"
-                        fill="var(--text-secondary)"
-                        stroke="var(--bg-card)"
-                        strokeWidth={1}
-                        strokeOpacity={0.85}
-                        style={{ fontSize: fs, fontWeight: 500, paintOrder: "stroke fill" }}
-                      >
-                        {d.name}
-                      </text>
-                    );
-                  })}
-                {showTehsils &&
-                  k > 10 &&
-                  tehsilPaths.slice(0, 45).map((t, i) => {
-                    const fs = Math.max(2, 3.5 / k);
-                    return (
-                      <text
-                        key={`lt-${i}`}
-                        x={t.centroid[0]}
-                        y={t.centroid[1]}
-                        textAnchor="middle"
-                        dominantBaseline="central"
-                        fill="var(--text-tertiary)"
-                        stroke="var(--bg-card)"
-                        strokeWidth={0.8}
-                        strokeOpacity={0.8}
-                        style={{ fontSize: fs, fontWeight: 400, paintOrder: "stroke fill" }}
-                      >
-                        {t.name}
-                      </text>
-                    );
-                  })}
+                {visibleStateLabels.map((s, i) => (
+                  <text
+                    key={`l-${s.stateCode}-${i}`}
+                    x={s.labelPos[0]}
+                    y={s.labelPos[1]}
+                    textAnchor="middle"
+                    dominantBaseline="central"
+                    fill="var(--text-primary)"
+                    stroke="var(--bg-card)"
+                    strokeWidth={2}
+                    strokeOpacity={0.9}
+                    style={{
+                      fontSize: stateLabelFontSize,
+                      fontWeight: 500,
+                      paintOrder: "stroke fill",
+                    }}
+                  >
+                    {s.stateName}
+                  </text>
+                ))}
+                {visibleDistrictLabels.map((d, i) => (
+                  <text
+                    key={`ld-${d.stateCode}-${d.name}-${i}`}
+                    x={d.labelPos[0]}
+                    y={d.labelPos[1]}
+                    textAnchor="middle"
+                    dominantBaseline="central"
+                    fill="var(--text-primary)"
+                    stroke="var(--bg-card)"
+                    strokeWidth={1.5}
+                    strokeOpacity={0.85}
+                    style={{
+                      fontSize: districtLabelFontSize,
+                      fontWeight: 500,
+                      paintOrder: "stroke fill",
+                    }}
+                  >
+                    {d.name}
+                  </text>
+                ))}
               </g>
             )}
           </g>
         </svg>
 
-        <div className="absolute bottom-4 right-4 flex flex-col gap-2">
+        <div className="absolute bottom-4 right-4 flex flex-col items-end gap-2">
           {hasZoomed && (
             <button
               type="button"
