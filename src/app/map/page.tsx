@@ -9,6 +9,7 @@ import { stateNameToCode } from "@/lib/map-projection";
 import type { MapMetric } from "@/lib/map-view";
 
 const INDIA_CENTER: [number, number] = [82, 22];
+const INDIA_BOUNDS: [[number, number], [number, number]] = [[68, 6], [98, 38]];
 const DEFAULT_ZOOM = 4;
 const DISTRICT_MIN_ZOOM = 5.5;
 const DISTRICT_LABELS_MIN_ZOOM = 6.5;
@@ -26,16 +27,54 @@ function isDark() {
   return document.documentElement.classList.contains("dark");
 }
 
+function resolveCSS(cssValue: string): string {
+  const el = document.createElement("span");
+  el.style.display = "none";
+  el.style.color = cssValue;
+  document.body.appendChild(el);
+  const raw = getComputedStyle(el).color;
+  el.remove();
+
+  const srgb = raw.match(/^color\(srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+  if (srgb) {
+    const toHex = (v: string) => Math.round(parseFloat(v) * 255).toString(16).padStart(2, "0");
+    return `#${toHex(srgb[1])}${toHex(srgb[2])}${toHex(srgb[3])}`;
+  }
+
+  const rgb = raw.match(/rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)/);
+  if (rgb) {
+    const toHex = (v: string) => Math.round(parseFloat(v)).toString(16).padStart(2, "0");
+    return `#${toHex(rgb[1])}${toHex(rgb[2])}${toHex(rgb[3])}`;
+  }
+
+  return raw;
+}
+
 function tc() {
-  const s = getComputedStyle(document.documentElement);
-  const v = (n: string) => s.getPropertyValue(n).trim();
   return {
-    bg: v("--bg-primary"),
-    card: v("--bg-card"),
-    text: v("--text-primary"),
-    border: v("--map-border-color"),
-    choro: Array.from({ length: 10 }, (_, i) => v(`--choro-${i}`)),
+    bg: resolveCSS("var(--bg-primary)"),
+    card: resolveCSS("var(--bg-card)"),
+    text: resolveCSS("var(--text-primary)"),
+    border: resolveCSS("var(--map-border-color)"),
+    choro: Array.from({ length: 10 }, (_, i) => resolveCSS(`var(--choro-${i})`)),
   };
+}
+
+function mainlandCentroid(geom: any): [number, number] {
+  let ring: number[][];
+  if (geom.type === "Polygon") {
+    ring = geom.coordinates[0];
+  } else if (geom.type === "MultiPolygon") {
+    ring = geom.coordinates[0][0];
+    for (const poly of geom.coordinates) {
+      if (poly[0].length > ring.length) ring = poly[0];
+    }
+  } else {
+    return INDIA_CENTER;
+  }
+  let sx = 0, sy = 0;
+  for (const c of ring) { sx += c[0]; sy += c[1]; }
+  return [sx / ring.length, sy / ring.length];
 }
 
 function choroplethExpr(metric: MapMetric, choro: string[]): unknown[] {
@@ -73,9 +112,10 @@ function parseParams() {
   const z = parseFloat(p.get("z") || "");
   const m = p.get("m") as MapMetric | null;
   const labels = p.get("labels");
+  const hasPosition = isFinite(lng) && isFinite(lat) && isFinite(z) && z > 4.3;
   return {
-    center: (isFinite(lng) && isFinite(lat) ? [lng, lat] : INDIA_CENTER) as [number, number],
-    zoom: isFinite(z) ? Math.max(3, Math.min(14, z)) : DEFAULT_ZOOM,
+    center: hasPosition ? ([lng, lat] as [number, number]) : null,
+    zoom: hasPosition ? Math.max(3, Math.min(14, z)) : null,
     metric: (m && VALID_METRICS.includes(m) ? m : "population") as MapMetric,
     showLabels: labels !== "0",
   };
@@ -87,6 +127,7 @@ export default function MapPage() {
   const loadedRef = useRef(new Set<string>());
   const metricRef = useRef<MapMetric>("population");
   const labelsRef = useRef(true);
+  const baseZoomRef = useRef(DEFAULT_ZOOM);
 
   const [ready, setReady] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
@@ -111,19 +152,14 @@ export default function MapPage() {
 
       const c = tc();
       const dark = isDark();
-      const p = init ?? {
-        center: INDIA_CENTER,
-        zoom: DEFAULT_ZOOM,
-        metric: "population" as MapMetric,
-        showLabels: true,
-      };
+      const p = init ?? { center: null, zoom: null, metric: "population" as MapMetric, showLabels: true };
 
       setMetric(p.metric);
       setShowLabels(p.showLabels);
       labelsRef.current = p.showLabels;
       metricRef.current = p.metric;
 
-      const map = new maplibregl.Map({
+      const mapOpts: maplibregl.MapOptions = {
         container: containerRef.current!,
         style: {
           version: 8 as const,
@@ -151,21 +187,41 @@ export default function MapPage() {
             },
           ],
         },
-        center: p.center,
-        zoom: p.zoom,
         minZoom: 3,
         maxZoom: 14,
-        maxBounds: [[55, 2], [105, 42]],
         attributionControl: false,
-      });
+      };
 
+      if (p.center && p.zoom) {
+        mapOpts.center = p.center;
+        mapOpts.zoom = p.zoom;
+      } else {
+        mapOpts.bounds = INDIA_BOUNDS;
+        mapOpts.fitBoundsOptions = { padding: 30 };
+      }
+
+      const map = new maplibregl.Map(mapOpts);
       mapRef.current = map;
 
-      map.on("load", () => {
+      map.on("load", async () => {
         if (dead) return;
         map.resize();
+        baseZoomRef.current = map.getZoom();
 
-        map.addSource("states", { type: "geojson", data: "/india-states.json" });
+        const res = await fetch("/india-states.json");
+        const geo = await res.json();
+
+        map.addSource("states", { type: "geojson", data: geo });
+
+        const labelPoints = {
+          type: "FeatureCollection" as const,
+          features: (geo.features as any[]).map((f: any) => ({
+            type: "Feature" as const,
+            properties: { ST_NM: f.properties.ST_NM },
+            geometry: { type: "Point" as const, coordinates: mainlandCentroid(f.geometry) },
+          })),
+        };
+        map.addSource("state-centroids", { type: "geojson", data: labelPoints });
 
         map.addLayer({
           id: "state-fill",
@@ -188,7 +244,7 @@ export default function MapPage() {
         map.addLayer({
           id: "state-labels",
           type: "symbol",
-          source: "states",
+          source: "state-centroids",
           layout: {
             "text-field": ["get", "ST_NM"],
             "text-size": ["interpolate", ["linear"], ["zoom"], 3, 9, 5, 11, 7, 14],
@@ -247,6 +303,7 @@ export default function MapPage() {
 
   function tryLoadDistricts(map: maplibregl.Map) {
     if (map.getZoom() < DISTRICT_MIN_ZOOM) return;
+    if (!map.getSource("states")) return;
     const rendered = map.queryRenderedFeatures(undefined, { layers: ["state-fill"] });
     const need = new Set<string>();
     for (const f of rendered) {
@@ -285,11 +342,22 @@ export default function MapPage() {
           );
 
           if (!SKIP_DISTRICT_LABELS.has(code)) {
+            const districtLabelPoints = {
+              type: "FeatureCollection" as const,
+              features: (data.features as any[]).map((f: any) => ({
+                type: "Feature" as const,
+                properties: f.properties,
+                geometry: { type: "Point" as const, coordinates: mainlandCentroid(f.geometry) },
+              })),
+            };
+            const labelSrc = `dl-${code}`;
+            m.addSource(labelSrc, { type: "geojson", data: districtLabelPoints });
+
             m.addLayer(
               {
                 id: `d-label-${code}`,
                 type: "symbol",
-                source: src,
+                source: labelSrc,
                 layout: {
                   "text-field": ["get", "district"],
                   "text-size": ["interpolate", ["linear"], ["zoom"], 6, 9, 9, 12, 12, 14],
@@ -397,14 +465,14 @@ export default function MapPage() {
   }, []);
 
   const resetView = useCallback(() => {
-    mapRef.current?.flyTo({ center: INDIA_CENTER, zoom: DEFAULT_ZOOM, duration: 500 });
+    mapRef.current?.fitBounds(INDIA_BOUNDS, { padding: 30, duration: 500 });
   }, []);
 
   const doZoomIn = useCallback(() => mapRef.current?.zoomIn({ duration: 200 }), []);
   const doZoomOut = useCallback(() => mapRef.current?.zoomOut({ duration: 200 }), []);
 
-  const pct = Math.round(Math.pow(2, zoom - DEFAULT_ZOOM) * 100);
-  const hasZoomed = Math.abs(zoom - DEFAULT_ZOOM) > 0.1;
+  const pct = Math.round(Math.pow(2, zoom - baseZoomRef.current) * 100);
+  const hasZoomed = Math.abs(zoom - baseZoomRef.current) > 0.1;
 
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-bg-primary">
