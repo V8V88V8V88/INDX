@@ -6,7 +6,7 @@ import Link from "next/link";
 import * as d3 from "d3";
 import { states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
-import type { State } from "@/types";
+import { createStateMetricColorScale, type MapMetric } from "@/lib/map-view";
 
 const stateNameToCode: Record<string, string> = {
   "Andhra Pradesh": "AP",
@@ -50,7 +50,7 @@ const stateNameToCode: Record<string, string> = {
 interface IndiaMapProps {
   selectedState?: string | null;
   onStateSelect?: (stateId: string | null) => void;
-  colorByMetric?: keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area">;
+  colorByMetric?: MapMetric;
   interactive?: boolean;
 }
 
@@ -119,59 +119,41 @@ export function IndiaMap({
   const resetZoom = useCallback(() => {
     if (!svgRef.current || !zoomRef.current) return;
     const svg = d3.select(svgRef.current);
+    const applyZoomTransform = zoomRef.current.transform as (
+      selection: d3.Transition<SVGSVGElement, unknown, null, undefined>,
+      transform: d3.ZoomTransform
+    ) => void;
     svg.transition()
       .duration(300)
-      .call(zoomRef.current.transform as any, d3.zoomIdentity)
+      .call(applyZoomTransform, d3.zoomIdentity)
       .on("end", () => setTransform({ k: 1, x: 0, y: 0 }));
   }, []);
 
-  const colorScale = useMemo(() => {
-    const stateValues = states
-      .map((s) => ({
-        id: s.id,
-        value: s[colorByMetric],
-      }))
-      .filter((item) => item.value != null) as { id: string; value: number }[];
-
-    if (stateValues.length === 0) {
-      return () => "var(--accent-primary)";
-    }
-
-    stateValues.sort((a, b) => b.value - a.value);
-
-    const rankMap = new Map<string, number>();
-    stateValues.forEach((item, index) => {
-      rankMap.set(item.id, index);
-    });
-
-    let colors = ["var(--choro-0)", "var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
-
-    if (colorByMetric === "sexRatio") {
-      colors = ["var(--choro-1)", "var(--choro-2)", "var(--choro-4)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
-    } else if (colorByMetric === "area") {
-      colors = ["var(--choro-0)", "var(--choro-1)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
-    } else if (colorByMetric === "hdi" || colorByMetric === "literacyRate") {
-      colors = ["var(--choro-1)", "var(--choro-2)", "var(--choro-3)", "var(--choro-5)", "var(--choro-6)", "var(--choro-8)", "var(--choro-9)"];
-    }
-
-    return (value: number | undefined, stateId?: string) => {
-      if (value == null || !stateId) return "var(--accent-primary)";
-
-      const rank = rankMap.get(stateId);
-      if (rank == null) return "var(--accent-primary)";
-
-      const t = rank / (stateValues.length - 1);
-      const idx = Math.min(Math.floor(t * colors.length), colors.length - 1);
-      return colors[colors.length - 1 - idx];
-    };
-  }, [colorByMetric]);
+  const colorScale = useMemo(() => createStateMetricColorScale(colorByMetric), [colorByMetric]);
 
   const getStateData = useCallback((code: string) => states.find((s) => s.id === code), []);
-  const getStateCode = useCallback((name: string) => stateNameToCode[name] || null, []);
 
   const projection = useMemo(() => {
     return d3.geoMercator().center([82, 22]).scale(1150).translate([300, 340]);
   }, []);
+
+  const fullscreenHref = useMemo(() => {
+    const viewCX = 270;
+    const viewCY = 340;
+    const projX = (viewCX - transform.x) / transform.k;
+    const projY = (viewCY - transform.y) / transform.k;
+    const center = projection.invert!([projX, projY]);
+
+    const params = new URLSearchParams();
+    if (center && isFinite(center[0]) && isFinite(center[1])) {
+      params.set("lng", center[0].toFixed(4));
+      params.set("lat", center[1].toFixed(4));
+    }
+    params.set("z", Math.max(3, Math.min(14, 4 + Math.log2(transform.k))).toFixed(2));
+    params.set("m", colorByMetric);
+    params.set("labels", showLabels ? "1" : "0");
+    return `/map?${params.toString()}`;
+  }, [transform, showLabels, colorByMetric, projection]);
 
   const pathGenerator = useMemo(() => d3.geoPath().projection(projection), [projection]);
 
@@ -280,7 +262,7 @@ export function IndiaMap({
 
             if (!centroid[0] || !centroid[1] || !stateData) return null;
 
-            let labelX = centroid[0];
+            const labelX = centroid[0];
             let labelY = centroid[1];
             const fontSize = Math.max(isTinyUT ? 8 : 10, (isTinyUT ? 10 : 12) / transform.k);
 
@@ -420,7 +402,7 @@ export function IndiaMap({
           Labels
         </button>
         <Link
-          href="/map"
+          href={fullscreenHref}
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-border-light bg-bg-card text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
           title="Fullscreen map (zoom to districts & tehsils)"
         >

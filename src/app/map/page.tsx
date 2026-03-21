@@ -1,500 +1,449 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import Link from "next/link";
-import * as d3 from "d3";
-import { Header, PageLoader } from "@/components";
-import { VIEWBOX, VIEWBOX_STR, indiaProjection, stateNameToCode } from "@/lib/map-projection";
+import "maplibre-gl/dist/maplibre-gl.css";
+import { Header } from "@/components";
+import { states as allStates } from "@/data/india";
+import { stateNameToCode } from "@/lib/map-projection";
+import type { MapMetric } from "@/lib/map-view";
 
-interface GeoFeature {
-  type: string;
-  properties: { ST_NM?: string; district?: string };
-  geometry: unknown;
+const INDIA_CENTER: [number, number] = [82, 22];
+const DEFAULT_ZOOM = 4;
+const DISTRICT_MIN_ZOOM = 5.5;
+const DISTRICT_LABELS_MIN_ZOOM = 6.5;
+const STATE_LABELS_MAX_ZOOM = 7;
+const SKIP_DISTRICT_LABELS = new Set(["DL", "CH", "PY", "DD", "LD", "AN"]);
+const VALID_METRICS: MapMetric[] = [
+  "population", "gdp", "literacyRate", "hdi", "density", "sexRatio", "area",
+];
+
+const codeToName = Object.fromEntries(
+  Object.entries(stateNameToCode).map(([name, code]) => [code, name]),
+);
+
+function isDark() {
+  return document.documentElement.classList.contains("dark");
 }
 
-interface GeoCollection {
-  type: string;
-  features: GeoFeature[];
+function tc() {
+  const s = getComputedStyle(document.documentElement);
+  const v = (n: string) => s.getPropertyValue(n).trim();
+  return {
+    bg: v("--bg-primary"),
+    card: v("--bg-card"),
+    text: v("--text-primary"),
+    border: v("--map-border-color"),
+    choro: Array.from({ length: 10 }, (_, i) => v(`--choro-${i}`)),
+  };
 }
 
-const LOD_DEBOUNCE_MS = 180;
-const LOADER_MIN_MS = 500;
+function choroplethExpr(metric: MapMetric, choro: string[]): unknown[] {
+  const ranked = allStates
+    .map((st) => ({ id: st.id, val: st[metric] as number }))
+    .filter((st) => st.val != null)
+    .sort((a, b) => b.val - a.val);
 
-const NO_DISTRICT_LABEL_STATES = new Set<string>(["DL", "CH", "PY", "DD", "LD", "AN"]);
-const DISTRICT_LABEL_ZOOM = 4.1;
+  let idx: number[];
+  if (metric === "sexRatio") idx = [1, 2, 4, 5, 7, 8, 9];
+  else if (metric === "area") idx = [0, 1, 2, 4, 6, 7, 8, 9];
+  else if (metric === "hdi" || metric === "literacyRate") idx = [1, 2, 3, 5, 6, 8, 9];
+  else idx = [0, 1, 3, 5, 7, 8, 9];
 
-const MAP_LOADER_CSS = `
-@keyframes map-loader-pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
-@keyframes map-loader-ripple { 0% { transform: scale(1); opacity: 0.8; border-width: 2px; } 100% { transform: scale(4); opacity: 0; border-width: 0; } }
-@keyframes map-loader-ripple-lg { 0% { transform: scale(1); opacity: 0.6; border-width: 2px; } 100% { transform: scale(6); opacity: 0; border-width: 0; } }
-@keyframes map-loader-text { 0% { opacity: 0.4; } 50% { opacity: 0.9; } 100% { opacity: 0.4; } }
-.map-loader-pulse { animation: map-loader-pulse 1.2s ease-in-out infinite; will-change: transform, opacity; }
-.map-loader-ripple { animation: map-loader-ripple 1.2s ease-out infinite; will-change: transform, opacity; }
-.map-loader-ripple-lg { animation: map-loader-ripple-lg 1.2s ease-out infinite; animation-delay: 0.2s; will-change: transform, opacity; }
-.map-loader-text { animation: map-loader-text 1.2s ease-in-out infinite; }
-`;
+  const pal = idx.map((i) => choro[i]);
+  const expr: unknown[] = ["match", ["get", "ST_NM"]];
 
-function applyTransform(g: SVGGElement | null, t: d3.ZoomTransform) {
-  if (!g) return;
-  g.setAttribute("transform", `translate(${t.x},${t.y}) scale(${t.k})`);
+  ranked.forEach((item, rank) => {
+    const name = codeToName[item.id];
+    if (!name) return;
+    const t = rank / Math.max(ranked.length - 1, 1);
+    const ci = Math.min(Math.floor(t * pal.length), pal.length - 1);
+    expr.push(name, pal[pal.length - 1 - ci]);
+  });
+
+  expr.push(choro[5]);
+  return expr;
+}
+
+function parseParams() {
+  if (typeof window === "undefined") return null;
+  const p = new URLSearchParams(window.location.search);
+  const lng = parseFloat(p.get("lng") || "");
+  const lat = parseFloat(p.get("lat") || "");
+  const z = parseFloat(p.get("z") || "");
+  const m = p.get("m") as MapMetric | null;
+  const labels = p.get("labels");
+  return {
+    center: (isFinite(lng) && isFinite(lat) ? [lng, lat] : INDIA_CENTER) as [number, number],
+    zoom: isFinite(z) ? Math.max(3, Math.min(14, z)) : DEFAULT_ZOOM,
+    metric: (m && VALID_METRICS.includes(m) ? m : "population") as MapMetric,
+    showLabels: labels !== "0",
+  };
 }
 
 export default function MapPage() {
-  const svgRef = useRef<SVGSVGElement>(null);
-  const gRef = useRef<SVGGElement>(null);
-  const [indiaGeo, setIndiaGeo] = useState<GeoCollection | null>(null);
-  const [lod, setLod] = useState({ k: 1, x: 0, y: 0 });
-  const [districtGeo, setDistrictGeo] = useState<Record<string, GeoCollection>>({});
-  const [loadingDistricts, setLoadingDistricts] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const loadedRef = useRef(new Set<string>());
+  const metricRef = useRef<MapMetric>("population");
+  const labelsRef = useRef(true);
+
+  const [ready, setReady] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
-  const [hovered, setHovered] = useState<{ type: "state"; name: string } | null>(null);
+  const [metric, setMetric] = useState<MapMetric>("population");
+  const [basemap, setBasemap] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
-  const transformRef = useRef<d3.ZoomTransform>(d3.zoomIdentity);
-  const requestedStates = useRef<Set<string>>(new Set());
-  const districtFetchInFlight = useRef(0);
-  const loaderDistrictsShownAt = useRef(0);
-  const lodDebounce = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const skipNextZoom = useRef(false);
+  const [zoom, setZoom] = useState(DEFAULT_ZOOM);
 
-  const projection = useMemo(() => indiaProjection(), []);
-  const pathGen = useMemo(() => d3.geoPath().projection(projection), [projection]);
+  metricRef.current = metric;
+  labelsRef.current = showLabels;
 
-  const { k, x: tx, y: ty } = lod;
-  const visibleBounds = useMemo(() => {
-    const m = 0.4;
-    const minX = (VIEWBOX.x - tx) / k;
-    const minY = (VIEWBOX.y - ty) / k;
-    const maxX = (VIEWBOX.x + VIEWBOX.w - tx) / k;
-    const maxY = (VIEWBOX.y + VIEWBOX.h - ty) / k;
-    const padX = (maxX - minX) * m;
-    const padY = (maxY - minY) * m;
-    return {
-      minX: minX - padX,
-      minY: minY - padY,
-      maxX: maxX + padX,
-      maxY: maxY + padY,
-    };
-  }, [k, tx, ty]);
+  const init = useMemo(parseParams, []);
 
-  const labelBounds = useMemo(() => {
-    const minX = (VIEWBOX.x - tx) / k;
-    const minY = (VIEWBOX.y - ty) / k;
-    const maxX = (VIEWBOX.x + VIEWBOX.w - tx) / k;
-    const maxY = (VIEWBOX.y + VIEWBOX.h - ty) / k;
-    const pad = 0.2;
-    const w = maxX - minX;
-    const h = maxY - minY;
-    return {
-      minX: minX - w * pad,
-      minY: minY - h * pad,
-      maxX: maxX + w * pad,
-      maxY: maxY + h * pad,
-      centerX: (minX + maxX) / 2,
-      centerY: (minY + maxY) / 2,
-    };
-  }, [k, tx, ty]);
-
-  const showDistricts = k >= 2;
-
+  // ---- map creation ----
   useEffect(() => {
-    fetch("/india-states.json")
-      .then((r) => r.json())
-      .then(setIndiaGeo)
-      .catch(console.error);
-  }, []);
+    if (!containerRef.current) return;
+    let dead = false;
 
-  const statePaths = useMemo(() => {
-    if (!indiaGeo?.features?.length) return [];
-    return indiaGeo.features.map((f) => {
-      const name = f.properties.ST_NM ?? "";
-      const stateCode = stateNameToCode[name] ?? null;
-      const pathString = pathGen(f as unknown as d3.GeoPermissibleObjects) ?? "";
-      const centroid = pathGen.centroid(f as unknown as d3.GeoPermissibleObjects);
-      const b = pathGen.bounds(f as unknown as d3.GeoPermissibleObjects);
-      const bbox = { minX: b[0][0], minY: b[0][1], maxX: b[1][0], maxY: b[1][1] };
-      const labelPos: [number, number] = [
-        (bbox.minX + bbox.maxX) / 2,
-        (bbox.minY + bbox.maxY) / 2,
-      ];
-      return {
-        stateCode,
-        stateName: name,
-        pathString,
-        centroid,
-        bbox,
-        labelPos,
+    import("maplibre-gl").then(({ default: maplibregl }) => {
+      if (dead || !containerRef.current) return;
+
+      const c = tc();
+      const dark = isDark();
+      const p = init ?? {
+        center: INDIA_CENTER,
+        zoom: DEFAULT_ZOOM,
+        metric: "population" as MapMetric,
+        showLabels: true,
       };
+
+      setMetric(p.metric);
+      setShowLabels(p.showLabels);
+      labelsRef.current = p.showLabels;
+      metricRef.current = p.metric;
+
+      const map = new maplibregl.Map({
+        container: containerRef.current!,
+        style: {
+          version: 8 as const,
+          glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+          sources: {
+            carto: {
+              type: "raster",
+              tiles: [
+                dark
+                  ? "https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png"
+                  : "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png",
+              ],
+              tileSize: 256,
+              attribution: "CARTO, OpenStreetMap",
+            },
+          },
+          layers: [
+            { id: "bg", type: "background", paint: { "background-color": c.bg } },
+            {
+              id: "basemap",
+              type: "raster",
+              source: "carto",
+              layout: { visibility: "none" },
+              paint: { "raster-opacity": 0.45 },
+            },
+          ],
+        },
+        center: p.center,
+        zoom: p.zoom,
+        minZoom: 3,
+        maxZoom: 14,
+        maxBounds: [[55, 2], [105, 42]],
+        attributionControl: false,
+      });
+
+      mapRef.current = map;
+
+      map.on("load", () => {
+        if (dead) return;
+        map.resize();
+
+        map.addSource("states", { type: "geojson", data: "/india-states.json" });
+
+        map.addLayer({
+          id: "state-fill",
+          type: "fill",
+          source: "states",
+          paint: { "fill-color": choroplethExpr(p.metric, c.choro) as any },
+        });
+
+        map.addLayer({
+          id: "state-line",
+          type: "line",
+          source: "states",
+          paint: {
+            "line-color": c.border,
+            "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.5, 6, 1, 10, 2],
+            "line-opacity": 0.7,
+          },
+        });
+
+        map.addLayer({
+          id: "state-labels",
+          type: "symbol",
+          source: "states",
+          layout: {
+            "text-field": ["get", "ST_NM"],
+            "text-size": ["interpolate", ["linear"], ["zoom"], 3, 9, 5, 11, 7, 14],
+            "text-font": ["Open Sans Semibold"],
+            "text-allow-overlap": false,
+            "text-padding": 4,
+            visibility: p.showLabels ? "visible" : "none",
+          },
+          paint: {
+            "text-color": c.text,
+            "text-halo-color": c.card,
+            "text-halo-width": 1.5,
+            "text-halo-blur": 0.5,
+          },
+          maxzoom: STATE_LABELS_MAX_ZOOM,
+        });
+
+        setReady(true);
+        setZoom(map.getZoom());
+        tryLoadDistricts(map);
+      });
+
+      map.on("zoomend", () => {
+        setZoom(map.getZoom());
+        tryLoadDistricts(map);
+      });
+      map.on("moveend", () => tryLoadDistricts(map));
+
+      map.on("mousemove", (e) => {
+        const fs = map.queryRenderedFeatures(e.point);
+        for (const f of fs) {
+          if (f.layer.id.startsWith("d-fill-")) {
+            setHovered(f.properties?.district || null);
+            setMousePos({ x: e.originalEvent.clientX, y: e.originalEvent.clientY });
+            map.getCanvas().style.cursor = "pointer";
+            return;
+          }
+          if (f.layer.id === "state-fill") {
+            setHovered(f.properties?.ST_NM || null);
+            setMousePos({ x: e.originalEvent.clientX, y: e.originalEvent.clientY });
+            map.getCanvas().style.cursor = "pointer";
+            return;
+          }
+        }
+        setHovered(null);
+        map.getCanvas().style.cursor = "";
+      });
     });
-  }, [indiaGeo, pathGen]);
 
-  const indiaBounds = useMemo(() => {
-    if (!statePaths.length) return null;
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-    for (const s of statePaths) {
-      minX = Math.min(minX, s.bbox.minX);
-      minY = Math.min(minY, s.bbox.minY);
-      maxX = Math.max(maxX, s.bbox.maxX);
-      maxY = Math.max(maxY, s.bbox.maxY);
-    }
-    return { minX, minY, maxX, maxY };
-  }, [statePaths]);
+    return () => {
+      dead = true;
+      mapRef.current?.remove();
+      mapRef.current = null;
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const visibleStateCodes = useMemo(() => {
-    return statePaths
-      .filter((s) => {
-        const b = s.bbox;
-        return (
-          b.minX <= visibleBounds.maxX &&
-          b.maxX >= visibleBounds.minX &&
-          b.minY <= visibleBounds.maxY &&
-          b.maxY >= visibleBounds.minY
-        );
-      })
-      .map((s) => s.stateCode)
-      .filter((c): c is string => !!c);
-  }, [statePaths, visibleBounds]);
+  function tryLoadDistricts(map: maplibregl.Map) {
+    if (map.getZoom() < DISTRICT_MIN_ZOOM) return;
+    const rendered = map.queryRenderedFeatures(undefined, { layers: ["state-fill"] });
+    const need = new Set<string>();
+    for (const f of rendered) {
+      const code = stateNameToCode[f.properties?.ST_NM];
+      if (code && !loadedRef.current.has(code)) need.add(code);
+    }
 
-  useEffect(() => {
-    if (!showDistricts || visibleStateCodes.length === 0) {
-      if (districtFetchInFlight.current === 0) setLoadingDistricts(false);
-      return;
-    }
-    const toLoad = visibleStateCodes.filter((c) => !requestedStates.current.has(c));
-    if (toLoad.length === 0) {
-      if (districtFetchInFlight.current === 0) setLoadingDistricts(false);
-      return;
-    }
-    districtFetchInFlight.current += toLoad.length;
-    loaderDistrictsShownAt.current = Date.now();
-    setLoadingDistricts(true);
-    toLoad.forEach((code) => {
-      requestedStates.current.add(code);
+    need.forEach((code) => {
+      loadedRef.current.add(code);
       fetch(`/geo/states/${code}.json`)
         .then((r) => (r.ok ? r.json() : null))
         .then((data) => {
-          if (data) setDistrictGeo((prev) => ({ ...prev, [code]: data }));
-        })
-        .catch(() => {})
-        .finally(() => {
-          districtFetchInFlight.current = Math.max(0, districtFetchInFlight.current - 1);
-          if (districtFetchInFlight.current > 0) {
-            setLoadingDistricts(true);
-            return;
+          if (!data || !mapRef.current) return;
+          const m = mapRef.current;
+          const c = tc();
+          const src = `d-${code}`;
+
+          m.addSource(src, { type: "geojson", data });
+
+          m.addLayer(
+            { id: `d-fill-${code}`, type: "fill", source: src, paint: { "fill-color": "#000", "fill-opacity": 0.01 } },
+            "state-line",
+          );
+          m.addLayer(
+            {
+              id: `d-line-${code}`,
+              type: "line",
+              source: src,
+              paint: {
+                "line-color": c.text,
+                "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.3, 8, 0.7, 12, 1],
+                "line-opacity": 0.35,
+              },
+            },
+            "state-line",
+          );
+
+          if (!SKIP_DISTRICT_LABELS.has(code)) {
+            m.addLayer(
+              {
+                id: `d-label-${code}`,
+                type: "symbol",
+                source: src,
+                layout: {
+                  "text-field": ["get", "district"],
+                  "text-size": ["interpolate", ["linear"], ["zoom"], 6, 9, 9, 12, 12, 14],
+                  "text-font": ["Open Sans Semibold"],
+                  "text-allow-overlap": false,
+                  "text-optional": true,
+                  "text-padding": 6,
+                  visibility: labelsRef.current ? "visible" : "none",
+                },
+                paint: {
+                  "text-color": c.text,
+                  "text-halo-color": c.card,
+                  "text-halo-width": 1.2,
+                  "text-halo-blur": 0.3,
+                },
+                minzoom: DISTRICT_LABELS_MIN_ZOOM,
+              },
+              "state-labels",
+            );
           }
-          const remain = Math.max(0, LOADER_MIN_MS - (Date.now() - loaderDistrictsShownAt.current));
-          if (remain > 0) setTimeout(() => setLoadingDistricts(false), remain);
-          else setLoadingDistricts(false);
-        });
+        })
+        .catch(() => {});
     });
-  }, [showDistricts, visibleStateCodes]);
+  }
 
+  // ---- theme reactivity ----
   useEffect(() => {
-    if (!svgRef.current || !gRef.current || !indiaGeo) return;
+    const m = mapRef.current;
+    if (!m || !ready) return;
 
-    const scheduleLod = () => {
-      if (lodDebounce.current) clearTimeout(lodDebounce.current);
-      lodDebounce.current = setTimeout(() => {
-        lodDebounce.current = null;
-        const t = transformRef.current;
-        setLod({ k: t.k, x: t.x, y: t.y });
-      }, LOD_DEBOUNCE_MS);
-    };
+    const update = () => {
+      const c = tc();
+      const dark = isDark();
 
-    const clampTransform = (t: d3.ZoomTransform): d3.ZoomTransform => {
-      if (!indiaBounds) return t;
-      const k = t.k;
-      const margin = 20;
-      const minTx = VIEWBOX.x - k * indiaBounds.maxX + margin;
-      const maxTx = VIEWBOX.x + VIEWBOX.w - k * indiaBounds.minX - margin;
-      const minTy = VIEWBOX.y - k * indiaBounds.maxY + margin;
-      const maxTy = VIEWBOX.y + VIEWBOX.h - k * indiaBounds.minY - margin;
-      let tx = Math.max(minTx, Math.min(maxTx, t.x));
-      let ty = Math.max(minTy, Math.min(maxTy, t.y));
-      if (tx !== t.x || ty !== t.y) return d3.zoomIdentity.translate(tx, ty).scale(k);
-      return t;
-    };
+      if (m.getLayer("bg")) m.setPaintProperty("bg", "background-color", c.bg);
+      if (m.getLayer("state-fill"))
+        m.setPaintProperty("state-fill", "fill-color", choroplethExpr(metricRef.current, c.choro) as any);
+      if (m.getLayer("state-line")) m.setPaintProperty("state-line", "line-color", c.border);
+      if (m.getLayer("state-labels")) {
+        m.setPaintProperty("state-labels", "text-color", c.text);
+        m.setPaintProperty("state-labels", "text-halo-color", c.card);
+      }
 
-    const zoom = d3
-      .zoom<SVGSVGElement, unknown>()
-      .scaleExtent([0.5, 32])
-      .filter((ev) => !(ev as MouseEvent).ctrlKey && (ev.type === "wheel" || (ev as MouseEvent).button === 0))
-      .wheelDelta((ev) => {
-        const d = (ev as WheelEvent).deltaY;
-        if ((ev as WheelEvent).deltaMode === 1) return -d * 0.5;
-        if ((ev as WheelEvent).deltaMode === 2) return -d * 2;
-        return -d * 0.002;
-      })
-      .on("zoom", (ev) => {
-        if (skipNextZoom.current) {
-          skipNextZoom.current = false;
-          transformRef.current = ev.transform;
-          applyTransform(gRef.current, ev.transform);
-          scheduleLod();
-          return;
+      loadedRef.current.forEach((code) => {
+        if (m.getLayer(`d-line-${code}`)) m.setPaintProperty(`d-line-${code}`, "line-color", c.text);
+        if (m.getLayer(`d-label-${code}`)) {
+          m.setPaintProperty(`d-label-${code}`, "text-color", c.text);
+          m.setPaintProperty(`d-label-${code}`, "text-halo-color", c.card);
         }
-        let t = clampTransform(ev.transform);
-        if (t !== ev.transform) {
-          skipNextZoom.current = true;
-          d3.select(svgRef.current!).call(zoom.transform as (s: d3.Selection<SVGSVGElement, unknown, null, undefined>, t: d3.ZoomTransform) => void, t);
-          return;
-        }
-        transformRef.current = t;
-        applyTransform(gRef.current, t);
-        scheduleLod();
       });
 
-    zoomRef.current = zoom;
-    const node = svgRef.current;
-    d3.select(node).call(zoom);
-    applyTransform(gRef.current, d3.zoomIdentity);
-
-    const onWheel = (e: WheelEvent) => e.preventDefault();
-    node.addEventListener("wheel", onWheel, { passive: false });
-
-    return () => {
-      node.removeEventListener("wheel", onWheel);
-      d3.select(node).on(".zoom", null);
-      if (lodDebounce.current) clearTimeout(lodDebounce.current);
+      try {
+        const wasVis = m.getLayoutProperty("basemap", "visibility") === "visible";
+        m.removeLayer("basemap");
+        m.removeSource("carto");
+        m.addSource("carto", {
+          type: "raster",
+          tiles: [
+            dark
+              ? "https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png"
+              : "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png",
+          ],
+          tileSize: 256,
+        });
+        m.addLayer(
+          {
+            id: "basemap",
+            type: "raster",
+            source: "carto",
+            layout: { visibility: wasVis ? "visible" : "none" },
+            paint: { "raster-opacity": 0.45 },
+          },
+          "state-fill",
+        );
+      } catch {}
     };
-  }, [indiaGeo, indiaBounds]);
 
-  const centerX = VIEWBOX.x + VIEWBOX.w / 2;
-  const centerY = VIEWBOX.y + VIEWBOX.h / 2;
+    const obs = new MutationObserver(update);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => obs.disconnect();
+  }, [ready]);
 
-  const runZoom = useCallback((next: d3.ZoomTransform) => {
-    if (!svgRef.current || !zoomRef.current) return;
-    d3.select(svgRef.current).call(
-      zoomRef.current.transform as (s: d3.Selection<SVGSVGElement, unknown, null, undefined>, t: d3.ZoomTransform) => void,
-      next
-    );
-    transformRef.current = next;
-    applyTransform(gRef.current, next);
-    setLod({ k: next.k, x: next.x, y: next.y });
+  // ---- controls ----
+  const toggleLabels = useCallback(() => {
+    setShowLabels((prev) => {
+      const next = !prev;
+      const m = mapRef.current;
+      if (!m) return next;
+      const vis = next ? "visible" : ("none" as const);
+      if (m.getLayer("state-labels")) m.setLayoutProperty("state-labels", "visibility", vis);
+      loadedRef.current.forEach((code) => {
+        if (m.getLayer(`d-label-${code}`)) m.setLayoutProperty(`d-label-${code}`, "visibility", vis);
+      });
+      return next;
+    });
   }, []);
 
-  const resetZoom = useCallback(() => {
-    runZoom(d3.zoomIdentity);
-  }, [runZoom]);
-
-  const zoomTowardCenter = useCallback(
-    (factor: number) => {
-      if (!svgRef.current) return;
-      const z = transformRef.current;
-      const k2 = Math.min(32, Math.max(0.5, z.k * factor));
-      const x2 = z.x + centerX * (z.k - k2);
-      const y2 = z.y + centerY * (z.k - k2);
-      runZoom(d3.zoomIdentity.scale(k2).translate(x2, y2));
-    },
-    [runZoom, centerX, centerY]
-  );
-
-  const zoomIn = useCallback(() => zoomTowardCenter(1.5), [zoomTowardCenter]);
-  const zoomOut = useCallback(() => zoomTowardCenter(1 / 1.5), [zoomTowardCenter]);
-
-  const districtPaths = useMemo(() => {
-    const out: {
-      stateCode: string;
-      name: string;
-      pathString: string;
-      centroid: [number, number];
-      labelPos: [number, number];
-    }[] = [];
-    visibleStateCodes.forEach((code) => {
-      const col = districtGeo[code];
-      if (!col?.features?.length) return;
-      col.features.forEach((f) => {
-        const name = f.properties.district ?? "";
-        const d = pathGen(f as unknown as d3.GeoPermissibleObjects);
-        const c = pathGen.centroid(f as unknown as d3.GeoPermissibleObjects);
-        const b = pathGen.bounds(f as unknown as d3.GeoPermissibleObjects);
-        if (d) {
-          const labelPos: [number, number] = [
-            (b[0][0] + b[1][0]) / 2,
-            (b[0][1] + b[1][1]) / 2,
-          ];
-          out.push({ stateCode: code, name, pathString: d, centroid: c, labelPos });
-        }
-      });
+  const toggleBasemap = useCallback(() => {
+    setBasemap((prev) => {
+      const next = !prev;
+      const m = mapRef.current;
+      if (m?.getLayer("basemap")) m.setLayoutProperty("basemap", "visibility", next ? "visible" : "none");
+      return next;
     });
-    return out;
-  }, [visibleStateCodes, districtGeo, pathGen]);
+  }, []);
 
-  const visibleStateLabels = useMemo(() => {
-    const b = labelBounds;
-    const inView = statePaths.filter((s) => {
-      const [cx, cy] = s.labelPos;
-      return cx >= b.minX && cx <= b.maxX && cy >= b.minY && cy <= b.maxY;
-    });
-    if (k <= 2.5) return inView;
-    return inView.filter((s) => s.stateCode && NO_DISTRICT_LABEL_STATES.has(s.stateCode));
-  }, [statePaths, labelBounds, k]);
+  const resetView = useCallback(() => {
+    mapRef.current?.flyTo({ center: INDIA_CENTER, zoom: DEFAULT_ZOOM, duration: 500 });
+  }, []);
 
-  const visibleDistrictLabels = useMemo(() => {
-    if (!showDistricts || k < DISTRICT_LABEL_ZOOM) return [];
-    const b = labelBounds;
-    const inView = districtPaths.filter((d) => {
-      const [cx, cy] = d.labelPos;
-      if (cx < b.minX || cx > b.maxX || cy < b.minY || cy > b.maxY) return false;
-      if (NO_DISTRICT_LABEL_STATES.has(d.stateCode)) return false;
-      return true;
-    });
-    const cx = b.centerX;
-    const cy = b.centerY;
-    inView.sort((a, b) => {
-      const dxa = a.labelPos[0] - cx;
-      const dya = a.labelPos[1] - cy;
-      const dxb = b.labelPos[0] - cx;
-      const dyb = b.labelPos[1] - cy;
-      const da = dxa * dxa + dya * dya;
-      const db = dxb * dxb + dyb * dyb;
-      return da - db;
-    });
-    return inView.slice(0, 40);
-  }, [showDistricts, districtPaths, labelBounds, k]);
+  const doZoomIn = useCallback(() => mapRef.current?.zoomIn({ duration: 200 }), []);
+  const doZoomOut = useCallback(() => mapRef.current?.zoomOut({ duration: 200 }), []);
 
-  const stateLabelFontSize = Math.max(2, Math.min(14, 14 / k));
-  const districtLabelFontSize = Math.max(2.5, 3.5 / k);
-
-  const strokeWidth = (base: number) => Math.max(0.3, base / k);
-  const hasZoomed = tx !== 0 || ty !== 0 || k !== 1;
-
-  if (!indiaGeo) return <PageLoader />;
-
-  const gTransform = `translate(${transformRef.current.x},${transformRef.current.y}) scale(${transformRef.current.k})`;
+  const pct = Math.round(Math.pow(2, zoom - DEFAULT_ZOOM) * 100);
+  const hasZoomed = Math.abs(zoom - DEFAULT_ZOOM) > 0.1;
 
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-bg-primary">
       <Header breadcrumbs={[{ label: "Map", href: "/map" }]} />
 
       <main className="relative min-h-0 flex-1">
-        {loadingDistricts && (
-          <>
-            <style>{MAP_LOADER_CSS}</style>
-            <div
-              className="absolute inset-0 z-20 flex items-center justify-center bg-bg-primary/85 backdrop-blur-sm pointer-events-none"
-              aria-hidden
-            >
-              <div className="flex flex-col items-center gap-6">
-                <div className="relative flex items-center justify-center">
-                  <div className="map-loader-pulse relative z-10 h-4 w-4 rounded-full bg-accent-primary shadow-[0_0_20px_var(--accent-primary)]" />
-                  <div className="map-loader-ripple absolute h-4 w-4 rounded-full border-2 border-accent-primary/50" />
-                  <div className="map-loader-ripple-lg absolute h-4 w-4 rounded-full border-2 border-accent-primary/30" />
-                </div>
-                <p className="map-loader-text text-sm font-medium tracking-wide text-accent-primary">
-                  Loading districts…
-                </p>
-              </div>
-            </div>
-          </>
+        <div ref={containerRef} className="h-full w-full" />
+
+        {!ready && (
+          <div className="absolute inset-0 z-30 flex items-center justify-center bg-bg-primary">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-primary border-t-transparent" />
+          </div>
         )}
-        <svg
-          ref={svgRef}
-          viewBox={VIEWBOX_STR}
-          className="h-full w-full touch-none cursor-grab active:cursor-grabbing"
-          preserveAspectRatio="xMidYMid meet"
-          style={{ touchAction: "none" }}
-          onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
-        >
-          <g ref={gRef} transform={gTransform} style={{ willChange: "transform" }}>
-            <g className="states">
-              {statePaths.map((s, i) => (
-                <path
-                  key={`s-${i}`}
-                  d={s.pathString}
-                  fill="var(--accent-primary)"
-                  stroke="var(--map-border-color)"
-                  strokeWidth={strokeWidth(0.6)}
-                  onMouseEnter={() => setHovered({ type: "state", name: s.stateName })}
-                  onMouseLeave={() => setHovered((h) => (h?.type === "state" ? null : h))}
-                />
-              ))}
-            </g>
-
-            {showDistricts &&
-              districtPaths.map((d, i) => (
-                <path
-                  key={`d-${d.stateCode}-${i}`}
-                  d={d.pathString}
-                  fill="none"
-                  stroke="var(--text-primary)"
-                  strokeWidth={strokeWidth(0.5)}
-                  strokeOpacity={0.4}
-                  className="pointer-events-none"
-                />
-              ))}
-
-            {showLabels && (
-              <g className="labels pointer-events-none">
-                {visibleStateLabels.map((s, i) => (
-                  <text
-                    key={`l-${s.stateCode}-${i}`}
-                    x={s.labelPos[0]}
-                    y={s.labelPos[1]}
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fill="var(--text-primary)"
-                    stroke="var(--bg-card)"
-                    strokeWidth={2}
-                    strokeOpacity={0.9}
-                    style={{
-                      fontSize: stateLabelFontSize,
-                      fontWeight: 500,
-                      paintOrder: "stroke fill",
-                    }}
-                  >
-                    {s.stateName}
-                  </text>
-                ))}
-                {visibleDistrictLabels.map((d, i) => (
-                  <text
-                    key={`ld-${d.stateCode}-${d.name}-${i}`}
-                    x={d.labelPos[0]}
-                    y={d.labelPos[1]}
-                    textAnchor="middle"
-                    dominantBaseline="central"
-                    fill="var(--text-primary)"
-                    stroke="var(--bg-card)"
-                    strokeWidth={1.5}
-                    strokeOpacity={0.85}
-                    style={{
-                      fontSize: districtLabelFontSize,
-                      fontWeight: 500,
-                      paintOrder: "stroke fill",
-                    }}
-                  >
-                    {d.name}
-                  </text>
-                ))}
-              </g>
-            )}
-          </g>
-        </svg>
 
         <div className="pointer-events-none absolute inset-0" aria-hidden>
           <div className="pointer-events-auto absolute left-4 top-4 z-10 flex items-center gap-2">
             <Link
               href="/"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm transition-colors hover:bg-bg-secondary"
-              title="Back to India"
+              title="Back"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
             </Link>
-            {k < 2 && (
+            {zoom < DISTRICT_MIN_ZOOM && (
               <span className="rounded-full bg-bg-card/90 px-3 py-1.5 text-xs text-text-muted backdrop-blur-sm">
                 Zoom in to see districts
               </span>
             )}
           </div>
+
           <div className="pointer-events-auto absolute right-4 top-4 z-10 flex items-center gap-2">
             <span className="rounded-full bg-bg-card/90 px-2.5 py-1.5 font-mono text-xs text-text-muted backdrop-blur-sm">
-              {Math.round(k * 100)}%
+              {pct}%
             </span>
             <button
               type="button"
-              onClick={() => setShowLabels(!showLabels)}
+              onClick={toggleLabels}
               className={`flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur-sm transition-colors ${
                 showLabels
                   ? "border-accent-primary bg-accent-primary text-white"
@@ -507,13 +456,32 @@ export default function MapPage() {
               </svg>
             </button>
           </div>
+
+          <div className="pointer-events-auto absolute bottom-4 left-4 z-10">
+            <button
+              type="button"
+              onClick={toggleBasemap}
+              className={`flex h-9 items-center gap-1.5 rounded-full border px-3 text-xs font-medium backdrop-blur-sm transition-colors ${
+                basemap
+                  ? "border-accent-primary bg-accent-primary text-white"
+                  : "border-border-light bg-bg-card/90 text-text-secondary hover:bg-bg-secondary"
+              }`}
+              title="Toggle basemap"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </button>
+          </div>
+
           <div className="pointer-events-auto absolute bottom-4 right-4 z-10 flex flex-col items-end gap-2">
             {hasZoomed && (
               <button
                 type="button"
-                onClick={resetZoom}
+                onClick={resetView}
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm transition-colors hover:bg-bg-secondary"
-                title="Reset zoom"
+                title="Reset"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
@@ -524,7 +492,7 @@ export default function MapPage() {
             <div className="flex flex-col overflow-hidden rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm">
               <button
                 type="button"
-                onClick={zoomIn}
+                onClick={doZoomIn}
                 className="flex h-9 w-9 items-center justify-center border-b border-border-light text-text-secondary transition-colors hover:bg-bg-secondary"
                 title="Zoom in"
               >
@@ -534,7 +502,7 @@ export default function MapPage() {
               </button>
               <button
                 type="button"
-                onClick={zoomOut}
+                onClick={doZoomOut}
                 className="flex h-9 w-9 items-center justify-center text-text-secondary transition-colors hover:bg-bg-secondary"
                 title="Zoom out"
               >
@@ -551,7 +519,7 @@ export default function MapPage() {
             className="pointer-events-none fixed z-50 rounded-md bg-text-primary px-2 py-1 text-xs font-medium text-bg-primary shadow-lg"
             style={{ left: mousePos.x + 12, top: mousePos.y - 8 }}
           >
-            {hovered.name}
+            {hovered}
           </div>
         )}
       </main>
