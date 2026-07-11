@@ -19,13 +19,13 @@ interface MetricSelectorProps {
 
 export function MetricSelector({ selected, onSelect }: MetricSelectorProps) {
   return (
-    <div className="flex flex-wrap gap-2 rounded-xl bg-bg-secondary p-1.5">
+    <div className="flex flex-wrap items-center gap-2 rounded-full border border-border-light bg-bg-secondary p-1.5">
       {metrics.map((m) => (
         <button
           key={m.key}
           onClick={() => onSelect(m.key)}
-          className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all ${selected === m.key
-            ? "bg-bg-card text-text-primary shadow-sm"
+          className={`relative rounded-full border border-transparent px-4 py-2 text-sm font-medium transition-all ${selected === m.key
+            ? "bg-accent-primary text-white shadow-sm"
             : "text-text-muted hover:text-text-secondary"
             }`}
         >

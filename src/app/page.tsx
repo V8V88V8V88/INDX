@@ -178,21 +178,7 @@ export default function Home() {
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-headline text-text-primary">Rankings</h2>
             <div className="flex flex-wrap items-center gap-4">
-              {/* Metric Pills */}
-              <div className="flex flex-wrap gap-2 rounded-xl bg-bg-secondary p-1.5">
-                {rankingMetrics.map((m) => (
-                  <button
-                    key={m.key}
-                    onClick={() => handleRankingMetricChange(m.key)}
-                    className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all ${rankingMetric === m.key
-                      ? "bg-bg-card text-text-primary shadow-sm"
-                      : "text-text-muted hover:text-text-secondary"
-                      }`}
-                  >
-                    {m.label}
-                  </button>
-                ))}
-              </div>
+              <MetricSelector selected={rankingMetric} onSelect={handleRankingMetricChange} />
               {/* Sort Order */}
               <div className="flex items-center gap-1">
                 <button
