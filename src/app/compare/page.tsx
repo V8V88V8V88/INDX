@@ -198,7 +198,7 @@ export default function ComparePage() {
                           districtId: leftItem.district!.id,
                           isCapital: !!leftItem.district!.isCapital,
                           isMetro: !!leftItem.district!.isMetro || leftItem.district!.tier === 1,
-                          tier: (leftItem.district!.tier || 3) as any,
+                          tier: (leftItem.district!.tier || 3) as City["tier"],
                         }}
                         stateName={leftState.name}
                       />
@@ -266,7 +266,7 @@ export default function ComparePage() {
                           districtId: rightItem.district!.id,
                           isCapital: !!rightItem.district!.isCapital,
                           isMetro: !!rightItem.district!.isMetro || rightItem.district!.tier === 1,
-                          tier: (rightItem.district!.tier || 3) as any,
+                          tier: (rightItem.district!.tier || 3) as City["tier"],
                         }}
                         stateName={rightState.name}
                       />

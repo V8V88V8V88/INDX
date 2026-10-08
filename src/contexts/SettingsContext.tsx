@@ -1,7 +1,13 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { getSettings, updateSetting, type Settings } from "@/lib/settings";
+import React, { createContext, useContext, useEffect, useSyncExternalStore } from "react";
+import {
+    getServerSettings,
+    getSettings,
+    subscribeSettings,
+    updateSetting,
+    type Settings,
+} from "@/lib/settings";
 import { applyTheme } from "@/lib/theme";
 
 interface SettingsContextType {
@@ -12,36 +18,16 @@ interface SettingsContextType {
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
-    const [settings, setSettings] = useState<Settings>(() => {
-        return getSettings();
-    });
+    // Server and hydration render use the defaults, then the stored settings
+    // are picked up, so the first client render never mismatches the HTML.
+    const settings = useSyncExternalStore(subscribeSettings, getSettings, getServerSettings);
 
     useEffect(() => {
-        const current = getSettings();
-        setSettings(current);
-        applyTheme(current.accentColor);
-    }, []);
-
-    const handleUpdateSetting = <K extends keyof Settings>(
-        key: K,
-        value: Settings[K]
-    ) => {
-        const updated = updateSetting(key, value);
-        setSettings(updated);
-
-        if (key === "accentColor") {
-            applyTheme(value as string);
-        }
-    };
-
+        applyTheme(settings.accentColor);
+    }, [settings.accentColor]);
 
     return (
-        <SettingsContext.Provider
-            value={{
-                settings,
-                updateSetting: handleUpdateSetting,
-            }}
-        >
+        <SettingsContext.Provider value={{ settings, updateSetting }}>
             {children}
         </SettingsContext.Provider>
     );

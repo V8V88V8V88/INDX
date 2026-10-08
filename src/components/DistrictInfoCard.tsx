@@ -11,7 +11,7 @@ interface DistrictInfoCardProps {
 }
 
 export function DistrictInfoCard({ district, districtName, onClose }: DistrictInfoCardProps) {
-  const { formatPopulation, formatArea } = useFormat();
+  const { formatPopulation, formatArea, formatDensity } = useFormat();
 
   if (!districtName) return null;
 
@@ -68,14 +68,12 @@ export function DistrictInfoCard({ district, districtName, onClose }: DistrictIn
             <p className="text-lg font-bold text-text-primary">
               {formatArea(district.area)}
             </p>
-            <p className="text-[10px] text-text-tertiary mt-0.5">km²</p>
           </div>
           <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
             <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Density</p>
             <p className="text-base font-bold text-text-primary">
-              {district.density.toLocaleString("en-IN")}
+              {formatDensity(district.density)}
             </p>
-            <p className="text-[10px] text-text-tertiary mt-0.5">per km²</p>
           </div>
 
           <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">

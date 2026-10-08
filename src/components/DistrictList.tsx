@@ -294,7 +294,7 @@ interface ItemWithCity extends District {
 
 function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCity; delay: number; isSelected?: boolean; onSelect?: () => void }) {
   const city = item.cityData;
-  const { formatPopulation, formatDensity } = useFormat();
+  const { formatPopulation, formatDensity, formatArea } = useFormat();
 
   const isCapital = city?.isCapital || item.isCapital;
   const isMetro =
@@ -319,6 +319,15 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2, delay: Math.min(delay, 0.3) }}
       onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-pressed={!!isSelected}
       className={`rounded-xl border p-5 transition-all hover:shadow-md hover:bg-bg-secondary cursor-pointer ${isSelected
         ? "border-accent-primary bg-accent-muted/30 shadow-md ring-2 ring-accent-primary/20"
         : item.hasCity
@@ -376,7 +385,7 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
         {item.isCity && city && (
           <div>
             <span className="block text-xs font-medium text-text-secondary uppercase tracking-wide">Area</span>
-            <span className="text-lg font-semibold text-text-primary mt-0.5">{city.area} km²</span>
+            <span className="text-lg font-semibold text-text-primary mt-0.5">{formatArea(city.area)}</span>
           </div>
         )}
       </div>

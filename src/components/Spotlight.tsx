@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useQueries } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { states } from "@/data/india";
-import type { District } from "@/types";
 import { fetchDistrictsFromAPI } from "@/lib/api";
 
 interface SearchResult {
@@ -22,38 +22,38 @@ export function Spotlight() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [districtsCache, setDistrictsCache] = useState<Map<string, District[]>>(new Map());
+  // Districts are only fetched once the palette has been opened, and share the
+  // React Query cache with useDistricts instead of refetching all states on every page load.
+  const [hasOpened, setHasOpened] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    openSpotlightFn = () => setIsOpen(true);
+    openSpotlightFn = () => {
+      setIsOpen(true);
+      setHasOpened(true);
+    };
     return () => {
       openSpotlightFn = null;
     };
   }, []);
 
-  useEffect(() => {
-    const fetchAllDistricts = async () => {
-      const cache = new Map<string, District[]>();
-      await Promise.all(
-        states.map(async (state) => {
-          try {
-            const districts = await fetchDistrictsFromAPI(state.id);
-                  cache.set(state.id, districts);
-                } catch (error) {
-                }
-        })
-      );
-      setDistrictsCache(cache);
-    };
-    fetchAllDistricts();
-  }, []);
+  const districtsByState = useQueries({
+    queries: states.map((state) => ({
+      queryKey: ["districts", state.id],
+      queryFn: () => fetchDistrictsFromAPI(state.id),
+      enabled: hasOpened,
+      staleTime: 5 * 60 * 1000,
+    })),
+    combine: (queryResults) =>
+      new Map(states.map((state, i) => [state.id, queryResults[i]?.data ?? []])),
+  });
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setIsOpen(true);
+        setHasOpened(true);
       }
       if (e.key === "Escape") {
         setIsOpen(false);
@@ -98,7 +98,7 @@ export function Spotlight() {
       });
 
       // Search districts within state
-      const districts = districtsCache.get(state.id) || [];
+      const districts = districtsByState.get(state.id) ?? [];
       districts.forEach((district) => {
         if (district.name.toLowerCase().includes(searchTerm)) {
           matches.push({
@@ -118,50 +118,40 @@ export function Spotlight() {
       if (a.type !== b.type) return typeOrder[a.type] - typeOrder[b.type];
       return a.name.localeCompare(b.name);
     });
-  }, [query, districtsCache]);
+  }, [query, districtsByState]);
 
-  useEffect(() => {
+  const activeIndex = Math.min(selectedIndex, Math.max(results.length - 1, 0));
+
+  const changeQuery = (value: string) => {
+    setQuery(value);
     setSelectedIndex(0);
-  }, [results]);
-
-  useEffect(() => {
-    if (!query.trim()) {
-      setSelectedIndex(0);
-    }
-  }, [query]);
-
-  useEffect(() => {
-    if (!isOpen || results.length === 0) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        setSelectedIndex((prev) => (prev + 1) % results.length);
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setSelectedIndex((prev) => (prev - 1 + results.length) % results.length);
-      } else if (e.key === "Enter" && results[selectedIndex]) {
-        e.preventDefault();
-        handleSelect(results[selectedIndex]);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, results, selectedIndex]);
+  };
 
   const handleSelect = (result: SearchResult) => {
     setIsOpen(false);
     setQuery("");
     setSelectedIndex(0);
     
-    // If the path has a hash and we're navigating to the same page, update hash directly
-    if (result.path.includes("#") && window.location.pathname === result.path.split("#")[0]) {
-      window.location.hash = result.path.split("#")[1];
-      // Trigger hashchange event manually for same-page navigation
-      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    // Same page: just change the hash (the browser fires hashchange itself)
+    const [pathname, hash] = result.path.split("#");
+    if (hash && window.location.pathname === pathname) {
+      window.location.hash = hash;
     } else {
-    router.push(result.path);
+      router.push(result.path);
+    }
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (results.length === 0) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((activeIndex + 1) % results.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((activeIndex - 1 + results.length) % results.length);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      handleSelect(results[activeIndex]);
     }
   };
 
@@ -185,6 +175,9 @@ export function Spotlight() {
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
             transition={{ duration: 0.15 }}
             className="fixed left-1/2 top-20 z-50 w-full max-w-2xl -translate-x-1/2"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search"
           >
             <div className="mx-4 rounded-xl border border-border-light bg-bg-card shadow-xl overflow-hidden">
               {/* Search Input */}
@@ -199,6 +192,7 @@ export function Spotlight() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="text-text-muted flex-shrink-0"
+                  aria-hidden="true"
                 >
                   <circle cx="11" cy="11" r="8" />
                   <path d="m21 21-4.35-4.35" />
@@ -206,14 +200,21 @@ export function Spotlight() {
                 <input
                   type="text"
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={(e) => changeQuery(e.target.value)}
+                  onKeyDown={handleInputKeyDown}
                   placeholder="Search states, cities, or districts..."
+                  aria-label="Search states, cities, or districts"
+                  role="combobox"
+                  aria-expanded={results.length > 0}
+                  aria-controls="spotlight-results"
+                  aria-autocomplete="list"
+                  aria-activedescendant={results.length > 0 ? `spotlight-option-${activeIndex}` : undefined}
                   className="flex-1 bg-transparent text-base text-text-primary placeholder:text-text-muted focus:outline-none"
                   autoFocus
                 />
                 {query && (
                   <button
-                    onClick={() => setQuery("")}
+                    onClick={() => changeQuery("")}
                     className="flex-shrink-0 rounded-full p-1 text-text-muted hover:bg-bg-secondary transition-colors"
                     aria-label="Clear search"
                   >
@@ -236,13 +237,17 @@ export function Spotlight() {
                   </div>
                 ) : (
                     <>
-                      <div className="py-1">
+                      <div className="py-1" id="spotlight-results" role="listbox" aria-label="Search results">
                     {results.map((result, index) => (
                       <button
                         key={`${result.type}-${result.id}`}
+                        id={`spotlight-option-${index}`}
+                        role="option"
+                        aria-selected={index === activeIndex}
+                        tabIndex={-1}
                         onClick={() => handleSelect(result)}
                             className={`w-full px-4 py-2.5 text-left transition-colors ${
-                          index === selectedIndex
+                          index === activeIndex
                                 ? "bg-accent-primary/10"
                                 : "hover:bg-bg-secondary"
                         }`}
@@ -301,7 +306,7 @@ export function Spotlight() {
                               </div>
                             )}
                               <div className="flex-1 min-w-0">
-                                <div className={`font-medium truncate ${index === selectedIndex ? "text-accent-primary" : "text-text-primary"}`}>
+                                <div className={`font-medium truncate ${index === activeIndex ? "text-accent-primary" : "text-text-primary"}`}>
                                   {result.name}
                                 </div>
                                 {result.stateName && (

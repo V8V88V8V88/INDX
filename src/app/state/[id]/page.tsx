@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useMemo, useEffect, useRef } from "react";
+import { use, useState, useMemo, useEffect, useRef, useSyncExternalStore } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Transition } from "framer-motion";
 import Link from "next/link";
@@ -14,10 +14,110 @@ import { DistrictInfoCard } from "@/components/DistrictInfoCard";
 import { getStateById, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
-import type { City, District } from "@/types";
+import type { City, District, State } from "@/types";
 
 interface PageProps {
   params: Promise<{ id: string }>;
+}
+
+const capitalToDistrictMap: Record<string, string> = {
+  "Itanagar": "Papum Pare",
+};
+
+function normalizeDistrictName(name: string): string {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, " ")
+    .replace(/[’'".,()/]/g, "")
+    .replace(/&/g, "and");
+}
+
+// Exact normalized match first; otherwise, when either name has several words,
+// all words of the shorter name must appear in the longer one (e.g. "Kheri" -> "Lakhimpur Kheri").
+// Never a plain substring match, so "Rampur" can't select "Balrampur".
+function findDistrictByName(list: District[], name: string): District | null {
+  const target = normalizeDistrictName(name);
+  const exact = list.find((d) => normalizeDistrictName(d.name) === target);
+  if (exact) return exact;
+
+  const targetWords = target.split(/\s+/).filter((w) => w.length > 0);
+  return list.find((d) => {
+    const districtWords = normalizeDistrictName(d.name).split(/\s+/).filter((w) => w.length > 0);
+    if (targetWords.length > 1 || districtWords.length > 1) {
+      const shorter = targetWords.length <= districtWords.length ? targetWords : districtWords;
+      const longer = targetWords.length > districtWords.length ? targetWords : districtWords;
+      return shorter.every((word) => longer.includes(word));
+    }
+    return false;
+  }) ?? null;
+}
+
+// Keep this in sync with DistrictList's definition so that "major" places
+// are derived from shared parameters instead of duplicated data.
+function isMajorArea(d: District, city?: City) {
+  const pop = d.population;
+  const tier = city?.tier ?? d.tier;
+  const isMetro = !!(city?.isMetro || d.isMetro);
+  const density = d.density;
+  const literacy = d.literacyRate || 0;
+
+  if (isMetro || tier === 1) return true;
+
+  const bigUrban = pop >= 3_000_000 && density >= 1200;
+  const goodQuality = literacy >= 75;
+
+  return bigUrban && goodQuality;
+}
+
+function findCapitalDistrict(state: State, districts: District[] | undefined): string {
+  const capital = state.capital;
+  const mapped = capitalToDistrictMap[capital];
+  if (!districts || districts.length === 0) return mapped ?? capital;
+
+  const normalizedCapital = normalizeDistrictName(capital);
+  const match =
+    districts.find((d) => normalizeDistrictName(d.name) === normalizedCapital) ??
+    districts.find((d) => normalizeDistrictName(d.headquarters || "") === normalizedCapital) ??
+    (mapped ? districts.find((d) => normalizeDistrictName(d.name) === normalizeDistrictName(mapped)) : undefined);
+  return match?.name ?? capital;
+}
+
+// The URL hash (#district-<name> or #city-<id>) is the single source of truth for the
+// selected district: map clicks, the district list, the capital link and Spotlight all
+// set it, and the back button restores the previous selection.
+function subscribeHash(onChange: () => void) {
+  window.addEventListener("hashchange", onChange);
+  return () => window.removeEventListener("hashchange", onChange);
+}
+const getHash = () => window.location.hash;
+const getServerHash = () => "";
+
+function setHash(hash: string | null) {
+  if (hash) {
+    if (window.location.hash !== hash) window.location.hash = hash;
+  } else if (window.location.hash) {
+    window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
+    // replaceState doesn't fire hashchange on its own
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
+  }
+}
+
+function selectionFromHash(hash: string, state: State, districts: District[] | undefined): string | null {
+  if (hash.startsWith("#city-")) {
+    return state.cities.find((c) => c.id === hash.slice("#city-".length))?.name ?? null;
+  }
+  if (hash.startsWith("#district-")) {
+    let name: string;
+    try {
+      name = decodeURIComponent(hash.slice("#district-".length));
+    } catch {
+      return null;
+    }
+    if (!name) return null;
+    return (districts && findDistrictByName(districts, name)?.name) || name;
+  }
+  return null;
 }
 
 export default function StatePage({ params }: PageProps) {
@@ -29,67 +129,17 @@ export default function StatePage({ params }: PageProps) {
     ? { duration: 0 }
     : { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
 
-  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
   const [isPageReady, setIsPageReady] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const initialHashProcessed = useRef(false);
-  const lastHashRef = useRef<string>(typeof window !== "undefined" ? window.location.hash : "");
-  const isManualSelection = useRef(false);
+  const hash = useSyncExternalStore(subscribeHash, getHash, getServerHash);
+  // Hash we set ourselves for a selection that shouldn't scroll the page
+  const skipScrollHashRef = useRef<string | null>(null);
+  const lastScrolledHashRef = useRef<string | null>(null);
 
   if (!state) {
     notFound();
   }
 
   const { data: districts } = useDistricts(state.id);
-
-  const capitalToDistrictMap: Record<string, string> = {
-    "Itanagar": "Papum Pare",
-  };
-
-  const normalizeDistrictName = (name: string): string => {
-    return name
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, " ")
-      .replace(/[’'".,()/]/g, "")
-      .replace(/&/g, "and");
-  };
-
-  // Exact normalized match first; otherwise, when either name has several words,
-  // all words of the shorter name must appear in the longer one (e.g. "Kheri" -> "Lakhimpur Kheri").
-  const findDistrictByName = (list: District[], name: string): District | null => {
-    const target = normalizeDistrictName(name);
-    const exact = list.find((d) => normalizeDistrictName(d.name) === target);
-    if (exact) return exact;
-
-    const targetWords = target.split(/\s+/).filter((w) => w.length > 0);
-    return list.find((d) => {
-      const districtWords = normalizeDistrictName(d.name).split(/\s+/).filter((w) => w.length > 0);
-      if (targetWords.length > 1 || districtWords.length > 1) {
-        const shorter = targetWords.length <= districtWords.length ? targetWords : districtWords;
-        const longer = targetWords.length > districtWords.length ? targetWords : districtWords;
-        return shorter.every((word) => longer.includes(word));
-      }
-      return false;
-    }) ?? null;
-  };
-
-  // Keep this in sync with DistrictList's definition so that "major" places
-  // are derived from shared parameters instead of duplicated data.
-  const isMajorArea = (d: District, city?: City) => {
-    const pop = d.population;
-    const tier = city?.tier ?? d.tier;
-    const isMetro = !!(city?.isMetro || d.isMetro);
-    const density = d.density;
-    const literacy = d.literacyRate || 0;
-
-    if (isMetro || tier === 1) return true;
-
-    const bigUrban = pop >= 3_000_000 && density >= 1200;
-    const goodQuality = literacy >= 75;
-
-    return bigUrban && goodQuality;
-  };
 
   useEffect(() => {
     // Smart Pre-load:
@@ -102,108 +152,38 @@ export default function StatePage({ params }: PageProps) {
     return () => clearTimeout(timer);
   }, []);
 
+  const selectedDistrict = useMemo(
+    () => selectionFromHash(hash, state, districts),
+    [hash, state, districts],
+  );
+
+  const selectDistrict = (name: string | null, { scroll = false } = {}) => {
+    const next = name ? `#district-${encodeURIComponent(name)}` : null;
+    if (next && !scroll && next !== window.location.hash) skipScrollHashRef.current = next;
+    setHash(next);
+  };
+
+  // Bring the map into view when a district/city arrives via the URL
+  // (page load, Spotlight, back/forward), but not for clicks on the page itself.
   useEffect(() => {
-    const processHash = (isInitial = false) => {
-      // Skip hash processing if this is a manual selection (to avoid conflicts)
-      if (isManualSelection.current) {
-        isManualSelection.current = false;
-        return;
-      }
-      
-      const hash = window.location.hash.slice(1);
-
-      if (!hash) {
-        if (!isInitial) {
-          setSelectedDistrict(null);
-        }
-        return;
-      }
-
-      if (hash.startsWith("city-")) {
-        const cityId = hash.replace("city-", "");
-        const city = state.cities.find((c) => c.id === cityId);
-        if (city) {
-          setSelectedDistrict(city.name);
-        }
-      }
-      else if (hash.startsWith("district-")) {
-        const districtName = decodeURIComponent(hash.replace("district-", ""));
-        if (districts && districts.length > 0) {
-          const normalizedHash = normalizeDistrictName(districtName);
-          const match = districts.find((d) => {
-            const normalizedDistrict = normalizeDistrictName(d.name);
-            return normalizedDistrict === normalizedHash ||
-              normalizedDistrict.includes(normalizedHash) ||
-              normalizedHash.includes(normalizedDistrict);
-          });
-          setSelectedDistrict(match ? match.name : districtName);
-        } else {
-          if (!selectedDistrict || selectedDistrict !== districtName) {
-            setSelectedDistrict(districtName);
-          }
-        }
-      }
-    };
-    if (!initialHashProcessed.current) {
-      processHash(true);
-      initialHashProcessed.current = true;
-    } else {
-      processHash(false);
+    if (!hash) {
+      lastScrolledHashRef.current = null;
+      return;
+    }
+    if (!isPageReady || hash === lastScrolledHashRef.current) return;
+    if (!hash.startsWith("#city-") && !hash.startsWith("#district-")) return;
+    if (skipScrollHashRef.current === hash) {
+      skipScrollHashRef.current = null;
+      lastScrolledHashRef.current = hash;
+      return;
     }
 
-    const handleHashChange = () => {
-      initialHashProcessed.current = false;
-      processHash(false);
-      setHasScrolled(false); // Reset scroll flag on hash change
-      lastHashRef.current = window.location.hash;
-    };
-
-    const checkHashChange = () => {
-      const currentHash = window.location.hash;
-      if (currentHash !== lastHashRef.current) {
-        lastHashRef.current = currentHash;
-        handleHashChange();
-      }
-    };
-
-    // Increased interval to reduce main thread overhead
-    const hashCheckInterval = setInterval(checkHashChange, 500);
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-      clearInterval(hashCheckInterval);
-    };
-  }, [state.cities, districts, state.id]);
-
-  useEffect(() => {
-    if (!selectedDistrict || !window.location.hash || !isPageReady || hasScrolled) return;
-
-    const hash = window.location.hash.slice(1);
-    if (!hash.startsWith("city-") && !hash.startsWith("district-")) return;
-
-    const scrollToMap = () => {
-      const mapElement = document.getElementById("state-map");
-      if (mapElement) {
-        const isFromSpotlight = document.referrer &&
-          document.referrer.includes(window.location.origin) &&
-          !document.referrer.includes(window.location.pathname);
-
-        mapElement.scrollIntoView({
-          behavior: isFromSpotlight ? "auto" : "smooth",
-          block: "center"
-        });
-        setHasScrolled(true);
-      }
-    };
     const timer = setTimeout(() => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(scrollToMap);
-      });
+      lastScrolledHashRef.current = hash;
+      document.getElementById("state-map")?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 200);
-
     return () => clearTimeout(timer);
-  }, [selectedDistrict, isPageReady, hasScrolled]);
+  }, [hash, isPageReady]);
 
   const selectedDistrictInfo = useMemo(() => {
     if (!selectedDistrict || !districts || districts.length === 0) return null;
@@ -291,37 +271,7 @@ export default function StatePage({ params }: PageProps) {
           <p className="max-w-2xl text-lg text-text-tertiary">
             Capital:{" "}
             <button
-              onClick={() => {
-                const capital = state.capital;
-                if (districts && districts.length > 0) {
-                  const normalizedCapital = normalizeDistrictName(capital);
-                  let districtMatch = districts.find((d) => {
-                    const normalizedDistrict = normalizeDistrictName(d.name);
-                    return normalizedDistrict === normalizedCapital;
-                  });
-                  if (!districtMatch) {
-                    districtMatch = districts.find((d) => {
-                      const normalizedHq = normalizeDistrictName(d.headquarters || "");
-                      return normalizedHq === normalizedCapital;
-                    });
-                  }
-                  if (!districtMatch && capitalToDistrictMap[capital]) {
-                    const mappedDistrictName = capitalToDistrictMap[capital];
-                    districtMatch = districts.find((d) => {
-                      return normalizeDistrictName(d.name) === normalizeDistrictName(mappedDistrictName);
-                    });
-                  }
-                  if (districtMatch) {
-                    setSelectedDistrict(districtMatch.name);
-                  } else {
-                    setSelectedDistrict(capital);
-                  }
-                } else if (capitalToDistrictMap[capital]) {
-                  setSelectedDistrict(capitalToDistrictMap[capital]);
-                } else {
-                  setSelectedDistrict(capital);
-                }
-              }}
+              onClick={() => selectDistrict(findCapitalDistrict(state, districts))}
               className="text-text-secondary hover:text-accent-primary hover:underline transition-colors cursor-pointer"
             >
               {state.capital}
@@ -378,13 +328,7 @@ export default function StatePage({ params }: PageProps) {
                     key={selectedDistrict}
                     district={selectedDistrictInfo}
                     districtName={selectedDistrict}
-                    onClose={() => {
-                      setSelectedDistrict(null);
-                      setHasScrolled(false);
-                      if (window.location.hash) {
-                        window.history.replaceState(null, "", window.location.pathname);
-                      }
-                    }}
+                    onClose={() => selectDistrict(null)}
                   />
                 )}
               </AnimatePresence>
@@ -404,32 +348,11 @@ export default function StatePage({ params }: PageProps) {
                 <StateMap
                   stateCode={state.id}
                   selectedDistrict={selectedDistrict}
-                  onDistrictSelect={(d) => {
-                    setSelectedDistrict(d);
-                  }}
-                  onDistrictClick={(d) => {
-                    // Normalize the district name from map click to match API district names (like spotlight does)
-                    // STRICT: Only exact matches - no substring matching to prevent "Agra" matching "Prayagraj"
-                    const normalizedName = (districts && findDistrictByName(districts, d)?.name) || d;
-                    
-                    // Mark as manual selection to prevent hash handler from interfering
-                    isManualSelection.current = true;
-                    
-                    // Set the district first (synchronously)
-                    setSelectedDistrict(normalizedName);
-                    
-                    // Update URL hash after a small delay to avoid conflicts
-                    setTimeout(() => {
-                      const hash = `#district-${encodeURIComponent(normalizedName)}`;
-                      if (window.location.hash !== hash) {
-                        window.location.hash = hash;
-                      }
-                      // Reset flag after hash update
-                      setTimeout(() => {
-                        isManualSelection.current = false;
-                      }, 100);
-                    }, 0);
-                  }}
+                  onDistrictSelect={(d) => selectDistrict(d)}
+                  onDistrictClick={(d) =>
+                    // Map GeoJSON names onto the API's district names
+                    selectDistrict((districts && findDistrictByName(districts, d)?.name) || d)
+                  }
                 />
               </div>
             </motion.div>
@@ -499,7 +422,6 @@ export default function StatePage({ params }: PageProps) {
                 <p className="text-2xl font-bold text-text-primary">
                   {formatArea(state.area)}
                 </p>
-                <p className="text-xs text-text-muted">sq km</p>
               </div>
               <div className="space-y-2">
                 <p className="text-xs font-medium text-text-muted">Density</p>
@@ -567,7 +489,7 @@ export default function StatePage({ params }: PageProps) {
             stateName={state.name}
             cities={state.cities}
             selectedDistrict={selectedDistrict}
-            onDistrictSelect={setSelectedDistrict}
+            onDistrictSelect={(d) => selectDistrict(d)}
           />
         </section>
 

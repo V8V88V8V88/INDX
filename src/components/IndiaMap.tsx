@@ -36,35 +36,53 @@ export function IndiaMap({
   const svgRef = useRef<SVGSVGElement>(null);
   const gRef = useRef<SVGGElement>(null);
   const [geoData, setGeoData] = useState<GeoData | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const [hoveredState, setHoveredState] = useState<string | null>(null);
   const [transform, setTransform] = useState({ k: 1, x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [showLabels, setShowLabels] = useState(true);
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const rafRef = useRef<number | null>(null);
+  const latestMouseRef = useRef({ x: 0, y: 0 });
   const { formatPopulation, formatDensity, formatCurrency, formatArea } = useFormat();
 
   useEffect(() => {
+    let cancelled = false;
     fetch("/india-states.json")
-      .then((res) => res.json())
-      .then((data) => setGeoData(data))
-      .catch(console.error);
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        if (!cancelled) setGeoData(data);
+      })
+      .catch((err) => {
+        console.error("Failed to load India map", err);
+        if (!cancelled) setLoadError(true);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
     if (!svgRef.current) return;
 
     let zoomRafId: number | null = null;
+    // Keep the newest transform and apply it once per frame; using the first event of
+    // a frame would leave React's transform behind d3's after a fast wheel/pinch.
+    let latestTransform = { k: 1, x: 0, y: 0 };
     const zoom = d3.zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.5, 8])
       .wheelDelta((event) => {
         return -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 0.002) * 3;
       })
       .on("zoom", (event) => {
+        latestTransform = { k: event.transform.k, x: event.transform.x, y: event.transform.y };
         if (zoomRafId) return;
         zoomRafId = requestAnimationFrame(() => {
-          setTransform({ k: event.transform.k, x: event.transform.x, y: event.transform.y });
           zoomRafId = null;
+          setTransform(latestTransform);
         });
       });
 
@@ -134,6 +152,14 @@ export function IndiaMap({
 
   const hoveredData = hoveredState ? states.find((s) => s.id === hoveredState) : null;
 
+  if (loadError) {
+    return (
+      <div className="flex h-[600px] items-center justify-center" role="alert">
+        <div className="text-text-muted">Couldn&apos;t load the map. Please refresh to try again.</div>
+      </div>
+    );
+  }
+
   if (!geoData) {
     return (
       <div className="flex h-[600px] items-center justify-center">
@@ -155,10 +181,11 @@ export function IndiaMap({
           willChange: "transform"
         }}
         onMouseMove={(e) => {
+          latestMouseRef.current = { x: e.clientX, y: e.clientY };
           if (rafRef.current) return;
           rafRef.current = requestAnimationFrame(() => {
-            setMousePos({ x: e.clientX, y: e.clientY });
             rafRef.current = null;
+            setMousePos(latestMouseRef.current);
           });
         }}
       >
@@ -210,7 +237,7 @@ export function IndiaMap({
 
             if (interactive && stateData) {
               return (
-                <Link key={`link-${i}`} href={`/state/${stateCode}`}>
+                <Link key={`link-${i}`} href={`/state/${stateCode}`} aria-label={stateData.name}>
                   {pathContent}
                 </Link>
               );
@@ -355,6 +382,7 @@ export function IndiaMap({
           onClick={() => setShowLabels(!showLabels)}
           className={`flex h-10 items-center gap-1.5 rounded-lg border border-border-light px-3 text-xs font-medium shadow-md transition-colors ${showLabels ? 'bg-accent-primary text-white' : 'bg-bg-card text-text-secondary hover:bg-bg-secondary'}`}
           title={showLabels ? "Hide labels" : "Show labels"}
+          aria-pressed={showLabels}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M4 7V4h16v3" />
@@ -367,6 +395,7 @@ export function IndiaMap({
           href={fullscreenHref}
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-border-light bg-bg-card text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
           title="Fullscreen map (zoom to districts & tehsils)"
+          aria-label="Open fullscreen map"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />

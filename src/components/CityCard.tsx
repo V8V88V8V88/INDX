@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { City } from "@/types";
-import { formatPopulation } from "@/data/india";
+import { useFormat } from "@/hooks/useFormat";
 
 interface CityCardProps {
   city: City;
@@ -20,6 +20,7 @@ const tierStyles: Record<1 | 1.5 | 2 | 2.5 | 3 | 4, string> = {
 };
 
 export function CityCard({ city, stateName, delay = 0 }: CityCardProps) {
+  const { formatPopulation, formatArea, formatDensity } = useFormat();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -57,12 +58,12 @@ export function CityCard({ city, stateName, delay = 0 }: CityCardProps) {
         </div>
         <div>
           <p className="text-xs text-text-muted">Area</p>
-          <p className="font-medium text-text-secondary">{city.area} km²</p>
+          <p className="font-medium text-text-secondary">{formatArea(city.area)}</p>
         </div>
         <div>
           <p className="text-xs text-text-muted">Density</p>
           <p className="font-medium text-text-secondary">
-            {Math.round(city.population / city.area).toLocaleString()}/km²
+            {formatDensity(Math.round(city.population / city.area))}
           </p>
         </div>
       </div>

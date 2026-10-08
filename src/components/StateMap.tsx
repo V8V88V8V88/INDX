@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useId, useRef } from "react";
 import { motion } from "framer-motion";
 import * as d3 from "d3";
 import { useSubDistrictGeoData, filterSubDistrictsByDistrict } from "@/hooks/useSubDistrictGeoData";
@@ -29,11 +29,25 @@ interface DistrictGeoData {
 }
 
 export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick }: StateMapProps) {
-  const [geoData, setGeoData] = useState<DistrictGeoData | null>(null);
+  const [loaded, setLoaded] = useState<{ code: string; data: DistrictGeoData | null } | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [hoveredSubDistrict, setHoveredSubDistrict] = useState<string | null>(null);
   const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [prevStateCode, setPrevStateCode] = useState(stateCode);
+
+  // Derived from which state the loaded data belongs to, so switching states shows
+  // the spinner instead of the previous state's map.
+  const loading = loaded?.code !== stateCode;
+  const geoData = loading ? null : loaded.data;
+
+  // Clear our own hover/selection when the state changes (adjusting state during render).
+  // A controlled selection is owned by the parent.
+  if (stateCode !== prevStateCode) {
+    setPrevStateCode(stateCode);
+    setHoveredDistrict(null);
+    setHoveredSubDistrict(null);
+    setInternalSelectedDistrict(null);
+  }
 
   const selectedDistrict = externalSelectedDistrict !== undefined ? externalSelectedDistrict : internalSelectedDistrict;
   const setSelectedDistrict = onDistrictSelect || setInternalSelectedDistrict;
@@ -46,26 +60,15 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
         return res.json();
       })
       .then((data) => {
-        if (!cancelled) {
-          setGeoData(data);
-          setLoading(false);
-        }
+        if (!cancelled) setLoaded({ code: stateCode, data });
       })
       .catch(() => {
-        if (!cancelled) {
-          setGeoData(null);
-          setLoading(false);
-        }
+        if (!cancelled) setLoaded({ code: stateCode, data: null });
       });
     return () => {
       cancelled = true;
     };
   }, [stateCode]);
-
-  useEffect(() => {
-    setSelectedDistrict(null);
-    setHoveredDistrict(null);
-  }, [stateCode, setSelectedDistrict]);
 
   // Handle ESC key to unselect district
   useEffect(() => {
@@ -233,6 +236,34 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   }, [subDistrictGeoData, selectedDistrict, mapData.projection, geoData, stateCode]);
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const mouseRafRef = useRef<number | null>(null);
+  const latestMouseRef = useRef({ x: 0, y: 0 });
+  // Unique per instance: the compare page renders two maps
+  const filterId = useId();
+
+  useEffect(() => () => {
+    if (mouseRafRef.current) cancelAnimationFrame(mouseRafRef.current);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    latestMouseRef.current = { x: e.clientX, y: e.clientY };
+    if (mouseRafRef.current) return;
+    mouseRafRef.current = requestAnimationFrame(() => {
+      mouseRafRef.current = null;
+      setMousePos(latestMouseRef.current);
+    });
+  };
+
+  const toggleDistrict = (name: string) => {
+    if (isDistrictSelected(name)) {
+      setSelectedDistrict(null);
+    } else if (onDistrictClick) {
+      // Let the parent normalize the GeoJSON name to its own district names
+      onDistrictClick(name);
+    } else {
+      setSelectedDistrict(name);
+    }
+  };
 
   if (loading) {
     return (
@@ -258,13 +289,15 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
           className="w-full h-auto drop-shadow-xl"
           style={{ maxHeight: "900px" }}
           preserveAspectRatio="xMidYMid meet"
-          onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
+          onMouseMove={handleMouseMove}
+          role="group"
+          aria-label="District map"
         >
-          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <filter id={`${filterId}-glow`} x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="2" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
-          <filter id="selectedGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <filter id={`${filterId}-selected-glow`} x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="4" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
@@ -274,13 +307,14 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
             // Use normalized comparison to check if this district is selected
             const isSelected = isDistrictSelected(district.name);
             const hasActiveDistrict = selectedDistrict !== null;
-            
-            // Force re-render when selectedDistrict changes by using it in the key
-            const pathKey = `${district.name}-${selectedDistrict || 'none'}`;
 
             return (
               <motion.path
-                key={pathKey}
+                key={district.name}
+                role="button"
+                tabIndex={0}
+                aria-label={district.name}
+                aria-pressed={isSelected}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3, delay: idx * 0.01 }}
@@ -297,9 +331,9 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
                 }
                 style={{
                   filter: isSelected
-                    ? "url(#selectedGlow)"
+                    ? `url(#${filterId}-selected-glow)`
                     : isHovered
-                      ? "url(#glow)"
+                      ? `url(#${filterId}-glow)`
                       : "none",
                   fillOpacity: isSelected
                     ? 1
@@ -311,24 +345,11 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
                 }}
                 onMouseEnter={() => setHoveredDistrict(district.name)}
                 onMouseLeave={() => setHoveredDistrict(null)}
-                onClick={() => {
-                  // Use normalized comparison to check if already selected
-                  const currentlySelected = isDistrictSelected(district.name);
-                  
-                  if (currentlySelected) {
-                    // Deselect
-                    if (onDistrictSelect) {
-                      onDistrictSelect(null);
-                    } else {
-                      setSelectedDistrict(null);
-                    }
-                  } else {
-                    // Select - call the callback first so it can normalize the name
-                    if (onDistrictClick) {
-                      onDistrictClick(district.name);
-                    } else {
-                      setSelectedDistrict(district.name);
-                    }
+                onClick={() => toggleDistrict(district.name)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    toggleDistrict(district.name);
                   }
                 }}
               />
@@ -354,7 +375,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
                 fillOpacity={0}
                 className="cursor-pointer transition-all duration-150"
                 style={{
-                  filter: isHovered ? "url(#glow)" : "none"
+                  filter: isHovered ? `url(#${filterId}-glow)` : "none"
                 }}
                 onMouseEnter={() => setHoveredSubDistrict(subDistrict.name)}
                 onMouseLeave={() => setHoveredSubDistrict(null)}

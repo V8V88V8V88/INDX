@@ -33,7 +33,7 @@ async function fetchSubDistrictGeoData(stateCode: string): Promise<SubDistrictGe
         const res = await fetch(`/geo/subdistricts/${stateCode}.json`);
         if (!res.ok) return null;
         return await res.json();
-    } catch (e) {
+    } catch {
         console.log(`No sub-district data for ${stateCode}`);
         return null;
     }

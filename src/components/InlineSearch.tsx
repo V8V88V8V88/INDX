@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, useId } from "react";
+import { useQueries } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { states } from "@/data/india";
 import type { State, District } from "@/types";
@@ -27,69 +28,47 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
-  const [districtsCache, setDistrictsCache] = useState<Map<string, District[]>>(new Map());
-  const loadingStatesRef = useRef<Set<string>>(new Set());
+  const [prevSelectedState, setPrevSelectedState] = useState(selectedState);
   const containerRef = useRef<HTMLDivElement>(null);
+  const listboxId = useId();
 
-  // Lazy-load districts only for states that are likely relevant to the current query,
-  // instead of fetching all states on initial page load.
-  useEffect(() => {
-    const searchTerm = query.toLowerCase().trim();
-    if (!searchTerm || searchTerm.length < 2) return;
+  // Mirror an externally selected state into the input (adjusting state during render
+  // instead of in an effect)
+  if (selectedState !== prevSelectedState) {
+    setPrevSelectedState(selectedState);
+    if (selectedState) setQuery(selectedState.name);
+  }
 
-    const candidateStates = states.filter((state) => {
-      if (state.name.toLowerCase().includes(searchTerm)) return true;
-      if (state.code.toLowerCase() === searchTerm) return true;
-      return state.cities.some((city) => city.name.toLowerCase().includes(searchTerm));
-    });
+  // Lazy-load districts only for states that are likely relevant to the current query.
+  // Data lives in the shared React Query cache, so it stays available once fetched.
+  const searchTerm = query.toLowerCase().trim();
+  const wantedStateIds = useMemo(() => {
+    if (searchTerm.length < 2) return new Set<string>();
+    const candidates = states.filter(
+      (state) =>
+        state.name.toLowerCase().includes(searchTerm) ||
+        state.code.toLowerCase() === searchTerm ||
+        state.cities.some((city) => city.name.toLowerCase().includes(searchTerm)),
+    );
+    if (candidates.length > 0) return new Set(candidates.slice(0, 6).map((s) => s.id));
+    // Nothing obvious: search every state's districts (the files are small)
+    return searchTerm.length >= 3 ? new Set(states.map((s) => s.id)) : new Set<string>();
+  }, [searchTerm]);
 
-    let topCandidates = candidateStates.slice(0, 6);
-    if (topCandidates.length === 0 && searchTerm.length >= 3) {
-      const uncached = states.filter(
-        (s) => !districtsCache.has(s.id) && !loadingStatesRef.current.has(s.id)
-      );
-      topCandidates = uncached.slice(0, 10);
-    }
-
-    if (topCandidates.length === 0) return;
-
-    const toFetch = topCandidates
-      .map((s) => s.id)
-      .filter(
-        (id) =>
-          !districtsCache.has(id) && !loadingStatesRef.current.has(id),
-      );
-
-    if (toFetch.length === 0) return;
-
-    toFetch.forEach((id) => loadingStatesRef.current.add(id));
-
-    (async () => {
-      const updates = new Map(districtsCache);
-      for (const stateId of toFetch) {
-        try {
-          const districts = await fetchDistrictsFromAPI(stateId);
-          updates.set(stateId, districts);
-        } catch {
-          // ignore individual fetch errors, we can try again on a future query
-        } finally {
-          loadingStatesRef.current.delete(stateId);
-        }
-      }
-      setDistrictsCache(updates);
-    })();
-  }, [query, districtsCache]);
-
-  useEffect(() => {
-    if (selectedState) {
-      setQuery(selectedState.name);
-    }
-  }, [selectedState]);
+  const districtsCache = useQueries({
+    queries: states.map((state) => ({
+      queryKey: ["districts", state.id],
+      queryFn: () => fetchDistrictsFromAPI(state.id),
+      enabled: wantedStateIds.has(state.id),
+      staleTime: 5 * 60 * 1000,
+    })),
+    combine: (queryResults) =>
+      new Map<string, District[]>(states.map((state, i) => [state.id, queryResults[i]?.data ?? []])),
+  });
 
   const results = useMemo<SearchResult[]>(() => {
-    if (!query.trim()) return [];
+    if (!searchTerm) return [];
 
-    const searchTerm = query.toLowerCase().trim();
     const matches: SearchResult[] = [];
 
 
@@ -148,17 +127,14 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
       if (exactMatchB && !exactMatchA) return 1;
       return a.name.localeCompare(b.name);
     });
-  }, [query, districtsCache]);
+  }, [searchTerm, districtsCache]);
 
-  useEffect(() => {
+  const activeIndex = Math.min(selectedIndex, Math.max(results.length - 1, 0));
+
+  const changeQuery = (value: string) => {
+    setQuery(value);
     setSelectedIndex(0);
-  }, [results]);
-
-  useEffect(() => {
-    if (!query.trim()) {
-      setSelectedIndex(0);
-    }
-  }, [query]);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -171,31 +147,31 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    if (!isFocused || results.length === 0) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        setSelectedIndex((prev) => (prev + 1) % results.length);
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setSelectedIndex((prev) => (prev - 1 + results.length) % results.length);
-      } else if (e.key === "Enter" && results[selectedIndex]) {
-        e.preventDefault();
-        handleSelect(results[selectedIndex]);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isFocused, results, selectedIndex]);
 
   const handleSelect = (result: SearchResult) => {
     setQuery(result.name);
     setIsFocused(false);
     setSelectedIndex(0);
     onSelect(result);
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") {
+      setIsFocused(false);
+      return;
+    }
+    if (results.length === 0) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setIsFocused(true);
+      setSelectedIndex((activeIndex + 1) % results.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((activeIndex - 1 + results.length) % results.length);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      handleSelect(results[activeIndex]);
+    }
   };
 
   return (
@@ -212,6 +188,7 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
             strokeLinecap="round"
             strokeLinejoin="round"
             className="text-text-muted flex-shrink-0"
+            aria-hidden="true"
           >
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
@@ -219,15 +196,22 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
           <input
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => changeQuery(e.target.value)}
             onFocus={() => setIsFocused(true)}
+            onKeyDown={handleInputKeyDown}
             placeholder={placeholder}
+            aria-label={placeholder}
+            role="combobox"
+            aria-expanded={isFocused && results.length > 0}
+            aria-controls={listboxId}
+            aria-autocomplete="list"
+            aria-activedescendant={isFocused && results.length > 0 ? `${listboxId}-${activeIndex}` : undefined}
             className="flex-1 bg-transparent text-base text-text-primary placeholder:text-text-muted focus:outline-none"
           />
           {query && (
             <button
               onClick={() => {
-                setQuery("");
+                changeQuery("");
                 onSelect({ type: "state", id: "", name: "", state: undefined });
               }}
               className="flex-shrink-0 rounded-full p-1 text-text-muted hover:bg-bg-secondary transition-colors"
@@ -255,12 +239,16 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
               </div>
             ) : (
               <>
-                <div className="max-h-96 overflow-y-auto py-1">
+                <div className="max-h-96 overflow-y-auto py-1" id={listboxId} role="listbox">
                   {results.map((result, index) => (
                     <button
                       key={`${result.type}-${result.id}`}
+                      id={`${listboxId}-${index}`}
+                      role="option"
+                      aria-selected={index === activeIndex}
+                      tabIndex={-1}
                       onClick={() => handleSelect(result)}
-                      className={`w-full px-4 py-2.5 text-left transition-colors ${index === selectedIndex
+                      className={`w-full px-4 py-2.5 text-left transition-colors ${index === activeIndex
                           ? "bg-accent-primary/10"
                           : "hover:bg-bg-secondary"
                         }`}
@@ -302,7 +290,7 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
                           </div>
                         )}
                         <div className="flex-1 min-w-0">
-                          <div className={`font-medium truncate ${index === selectedIndex ? "text-accent-primary" : "text-text-primary"}`}>
+                          <div className={`font-medium truncate ${index === activeIndex ? "text-accent-primary" : "text-text-primary"}`}>
                             {result.name}
                           </div>
                           {result.stateName && (

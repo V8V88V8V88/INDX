@@ -111,21 +111,16 @@ const stateCodeToFileName: Record<string, string> = {
 };
 
 export async function fetchDistrictsFromAPI(stateCode: string): Promise<District[]> {
-  try {
-    const fileName = stateCodeToFileName[stateCode] || stateCode.toLowerCase();
-    const response = await fetch(`/data/districts/${fileName}.json`, {
-      signal: AbortSignal.timeout(5000),
-    });
-    
-    if (response.ok) {
-      const districts = (await response.json()) as District[];
-      const uniqueDistricts = dedupeDistricts(districts);
-      return markCapitalAndMetro(stateCode, uniqueDistricts);
-    }
-  } catch (error) {
-    console.warn(`Failed to fetch districts for ${stateCode}:`, error);
+  const fileName = stateCodeToFileName[stateCode] || stateCode.toLowerCase();
+  const response = await fetch(`/data/districts/${fileName}.json`, {
+    signal: AbortSignal.timeout(5000),
+  });
+
+  // Throw instead of returning [] so React Query can retry and doesn't cache a failure as "no districts"
+  if (!response.ok) {
+    throw new Error(`Failed to fetch districts for ${stateCode}: HTTP ${response.status}`);
   }
 
-  return [];
+  const districts = (await response.json()) as District[];
+  return markCapitalAndMetro(stateCode, dedupeDistricts(districts));
 }
-

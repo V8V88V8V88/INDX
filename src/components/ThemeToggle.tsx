@@ -1,19 +1,29 @@
 "use client";
 
-import { useState, useSyncExternalStore, useCallback, useEffect } from "react";
+import { useSyncExternalStore, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 
 function getTheme(): "light" | "dark" {
   if (typeof window === "undefined") return "light";
-  const stored = localStorage.getItem("theme");
+  let stored: string | null = null;
+  try {
+    stored = localStorage.getItem("theme");
+  } catch {}
   if (stored === "dark" || stored === "light") return stored;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 function subscribe(callback: () => void) {
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
   window.addEventListener("storage", callback);
-  return () => window.removeEventListener("storage", callback);
+  media.addEventListener("change", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    media.removeEventListener("change", callback);
+  };
 }
+
+const noopSubscribe = () => () => {};
 
 function getSnapshot() {
   return getTheme();
@@ -24,12 +34,9 @@ function getServerSnapshot(): "light" | "dark" {
 }
 
 export function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
+  // false during SSR and hydration, true afterwards
+  const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -37,7 +44,9 @@ export function ThemeToggle() {
 
   const toggle = useCallback(() => {
     const next = theme === "light" ? "dark" : "light";
-    localStorage.setItem("theme", next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch {}
     document.documentElement.classList.toggle("dark", next === "dark");
     window.dispatchEvent(new Event("storage"));
   }, [theme]);
