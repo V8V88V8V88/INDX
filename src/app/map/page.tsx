@@ -4,9 +4,14 @@ import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Header } from "@/components";
-import { states as allStates } from "@/data/india";
 import { stateNameToCode } from "@/lib/map-projection";
-import type { MapMetric } from "@/lib/map-view";
+import {
+  colorIndexForRank,
+  getMetricPaletteIndices,
+  isMapMetric,
+  rankStatesByMetric,
+  type MapMetric,
+} from "@/lib/map-view";
 
 const INDIA_CENTER: [number, number] = [82, 22];
 const INDIA_BOUNDS: [[number, number], [number, number]] = [[68, 6], [98, 38]];
@@ -15,9 +20,6 @@ const DISTRICT_MIN_ZOOM = 5.5;
 const DISTRICT_LABELS_MIN_ZOOM = 6.5;
 const STATE_LABELS_MAX_ZOOM = 7;
 const SKIP_DISTRICT_LABELS = new Set(["DL", "CH", "PY", "DD", "LD", "AN"]);
-const VALID_METRICS: MapMetric[] = [
-  "population", "gdp", "literacyRate", "hdi", "density", "sexRatio", "area",
-];
 
 const codeToName = Object.fromEntries(
   Object.entries(stateNameToCode).map(([name, code]) => [code, name]),
@@ -78,26 +80,14 @@ function mainlandCentroid(geom: any): [number, number] {
 }
 
 function choroplethExpr(metric: MapMetric, choro: string[]): unknown[] {
-  const ranked = allStates
-    .map((st) => ({ id: st.id, val: st[metric] as number }))
-    .filter((st) => st.val != null)
-    .sort((a, b) => b.val - a.val);
-
-  let idx: number[];
-  if (metric === "sexRatio") idx = [1, 2, 4, 5, 7, 8, 9];
-  else if (metric === "area") idx = [0, 1, 2, 4, 6, 7, 8, 9];
-  else if (metric === "hdi" || metric === "literacyRate") idx = [1, 2, 3, 5, 6, 8, 9];
-  else idx = [0, 1, 3, 5, 7, 8, 9];
-
-  const pal = idx.map((i) => choro[i]);
+  const ranked = rankStatesByMetric(metric);
+  const pal = getMetricPaletteIndices(metric).map((i) => choro[i]);
   const expr: unknown[] = ["match", ["get", "ST_NM"]];
 
-  ranked.forEach((item, rank) => {
-    const name = codeToName[item.id];
+  ranked.forEach((id, rank) => {
+    const name = codeToName[id];
     if (!name) return;
-    const t = rank / Math.max(ranked.length - 1, 1);
-    const ci = Math.min(Math.floor(t * pal.length), pal.length - 1);
-    expr.push(name, pal[pal.length - 1 - ci]);
+    expr.push(name, pal[colorIndexForRank(rank, ranked.length, pal.length)]);
   });
 
   expr.push(choro[5]);
@@ -110,13 +100,13 @@ function parseParams() {
   const lng = parseFloat(p.get("lng") || "");
   const lat = parseFloat(p.get("lat") || "");
   const z = parseFloat(p.get("z") || "");
-  const m = p.get("m") as MapMetric | null;
+  const m = p.get("m");
   const labels = p.get("labels");
   const hasPosition = isFinite(lng) && isFinite(lat) && isFinite(z) && z > 4.3;
   return {
     center: hasPosition ? ([lng, lat] as [number, number]) : null,
     zoom: hasPosition ? Math.max(3, Math.min(14, z)) : null,
-    metric: (m && VALID_METRICS.includes(m) ? m : "population") as MapMetric,
+    metric: isMapMetric(m) ? m : "population",
     showLabels: labels !== "0",
   };
 }
@@ -131,13 +121,11 @@ export default function MapPage() {
 
   const [ready, setReady] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
-  const [metric, setMetric] = useState<MapMetric>("population");
   const [basemap, setBasemap] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(DEFAULT_ZOOM);
 
-  metricRef.current = metric;
   labelsRef.current = showLabels;
 
   const init = useMemo(parseParams, []);
@@ -154,7 +142,6 @@ export default function MapPage() {
       const dark = isDark();
       const p = init ?? { center: null, zoom: null, metric: "population" as MapMetric, showLabels: true };
 
-      setMetric(p.metric);
       setShowLabels(p.showLabels);
       labelsRef.current = p.showLabels;
       metricRef.current = p.metric;

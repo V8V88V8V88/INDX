@@ -1,18 +1,15 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import * as d3 from "d3";
 import { useSubDistrictGeoData, filterSubDistrictsByDistrict } from "@/hooks/useSubDistrictGeoData";
-import type { State } from "@/types";
 
 interface StateMapProps {
   stateCode: string;
-  state: State;
   selectedDistrict?: string | null;
   onDistrictSelect?: (district: string | null) => void;
   onDistrictClick?: (district: string) => void;
-  onCityClick?: (city: any) => void;
   onSubDistrictClick?: (subDistrict: { name: string; district: string }) => void;
 }
 
@@ -31,8 +28,7 @@ interface DistrictGeoData {
   features: DistrictFeature[];
 }
 
-export function StateMap({ stateCode, state, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onCityClick, onSubDistrictClick }: StateMapProps) {
-  const svgRef = useRef<SVGSVGElement>(null);
+export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick }: StateMapProps) {
   const [geoData, setGeoData] = useState<DistrictGeoData | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [hoveredSubDistrict, setHoveredSubDistrict] = useState<string | null>(null);
@@ -180,33 +176,20 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     // Try to find matching district name from the state GeoJSON using EXACT match only
     if (geoData && geoData.features) {
       const normalizedSelected = normalizeDistrictName(selectedDistrict);
-      console.log('[StateMap] Looking for GeoJSON match for:', selectedDistrict, 'normalized:', normalizedSelected);
       
       // Find EXACT match only - no substring, no includes()
       const matchingGeoFeature = geoData.features.find(feature => {
         const geoDistrictName = normalizeGeoDistrictName(feature.properties.district || "", stateCode);
         const normalizedGeo = normalizeDistrictName(geoDistrictName);
-        const isExactMatch = normalizedGeo === normalizedSelected;
-        if (isExactMatch) {
-          console.log('[StateMap] Exact match found:', geoDistrictName, 'normalized:', normalizedGeo);
-        }
-        return isExactMatch;
+        return normalizedGeo === normalizedSelected;
       });
       
       if (matchingGeoFeature) {
         // Use the exact GeoJSON district name for filtering
         geoJsonDistrictName = (matchingGeoFeature.properties.district || "").toLowerCase().trim();
-        console.log('[StateMap] Using GeoJSON name for filter:', geoJsonDistrictName);
-      } else {
-        console.log('[StateMap] No exact GeoJSON match found for:', selectedDistrict, 'normalized:', normalizedSelected);
-        console.log('[StateMap] Available GeoJSON districts:', geoData.features.slice(0, 5).map(f => ({
-          original: f.properties.district,
-          normalized: normalizeDistrictName(normalizeGeoDistrictName(f.properties.district || "", stateCode))
-        })));
       }
     }
     
-    console.log('[StateMap overlaySubDistrictData] Final filter name:', geoJsonDistrictName);
     const filteredFeatures = filterSubDistrictsByDistrict(subDistrictGeoData, geoJsonDistrictName);
 
     if (filteredFeatures.length === 0) {
@@ -267,13 +250,10 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
     );
   }
 
-  const hoveredName = hoveredDistrict;
-
   return (
     <div className="relative w-full" style={{ overflow: "visible" }}>
       {/* Show State-Level District Map */}
         <svg
-          ref={svgRef}
           viewBox={mapData.viewBox}
           className="w-full h-auto drop-shadow-xl"
           style={{ maxHeight: "900px" }}
@@ -355,39 +335,6 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
             );
           })}
 
-          {/* Overlay tehsils when district is selected - thinner boundaries than districts */}
-          {selectedDistrict && overlaySubDistrictData.hasData && overlaySubDistrictData.paths.map((subDistrict, idx) => {
-            const isHovered = hoveredSubDistrict === subDistrict.name;
-
-            return (
-              <motion.path
-                key={`overlay-sd-${subDistrict.id}-${idx}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: idx * 0.01, duration: 0.2 }}
-                d={subDistrict.d}
-                stroke="var(--map-border-color)"
-                strokeWidth={isHovered ? 1.2 : 0.75}
-                strokeOpacity={isHovered ? 0.9 : 0.6}
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                fill="none"
-                className="cursor-pointer transition-all duration-150"
-                style={{
-                  filter: isHovered ? "url(#glow)" : "none"
-                }}
-                onMouseEnter={() => setHoveredSubDistrict(subDistrict.name)}
-                onMouseLeave={() => setHoveredSubDistrict(null)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (onSubDistrictClick) {
-                    onSubDistrictClick({ name: subDistrict.name, district: subDistrict.district });
-                  }
-                }}
-              />
-            );
-          })}
-
           {/* Overlay tehsils when district is selected - just boundaries, no fill */}
           {selectedDistrict && overlaySubDistrictData.hasData && overlaySubDistrictData.paths.map((subDistrict, idx) => {
             const isHovered = hoveredSubDistrict === subDistrict.name;
@@ -423,7 +370,7 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
         </svg>
 
       {/* Floating Tooltip for Districts */}
-      {hoveredName && !hoveredSubDistrict && (
+      {hoveredDistrict && !hoveredSubDistrict && (
         <div
           className="pointer-events-none fixed z-50 rounded-lg bg-bg-card px-3 py-2 text-sm font-semibold text-text-primary shadow-lg ring-1 ring-border-light backdrop-blur-md"
           style={{
@@ -431,8 +378,8 @@ export function StateMap({ stateCode, state, selectedDistrict: externalSelectedD
             top: mousePos.y - 12,
           }}
         >
-          {hoveredName}
-          {selectedDistrict !== hoveredName && (
+          {hoveredDistrict}
+          {selectedDistrict !== hoveredDistrict && (
             <span className="ml-2 text-xs text-text-muted">(click to see tehsils)</span>
           )}
         </div>

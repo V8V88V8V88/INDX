@@ -1,12 +1,3 @@
-import * as d3 from "d3";
-
-export const VIEWBOX = { x: -80, y: -20, w: 700, h: 720 };
-export const VIEWBOX_STR = "-80 -20 700 720";
-
-export function indiaProjection() {
-  return d3.geoMercator().center([82, 22]).scale(900).translate([300, 340]);
-}
-
 export const stateNameToCode: Record<string, string> = {
   "Andhra Pradesh": "AP",
   "Arunachal Pradesh": "AR",
@@ -45,5 +36,3 @@ export const stateNameToCode: Record<string, string> = {
   Lakshadweep: "LD",
   "Dadra and Nagar Haveli and Daman and Diu": "DD",
 };
-
-export const TEHSIL_STATES = ["UP"];

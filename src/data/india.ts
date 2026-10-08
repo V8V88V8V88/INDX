@@ -640,21 +640,6 @@ export function getStateById(id: string): State | undefined {
   return states.find((s) => s.id === id);
 }
 
-export function getCityById(stateId: string, cityId: string) {
-  const state = getStateById(stateId);
-  return state?.cities.find((c) => c.id === cityId);
-}
-
-export function getTopStatesByMetric(
-  metric: keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density">,
-  limit = 10,
-  ascending = false
-): State[] {
-  return [...states]
-    .sort((a, b) => (ascending ? a[metric] - b[metric] : b[metric] - a[metric]))
-    .slice(0, limit);
-}
-
 export function formatNumber(num: number): string {
   if (num >= 1000000000000) return (num / 1000000000000).toFixed(2) + " Lakh Cr";
   if (num >= 10000000) return (num / 10000000).toFixed(2) + " Cr";

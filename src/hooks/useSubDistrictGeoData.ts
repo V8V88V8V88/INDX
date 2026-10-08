@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import * as d3 from "d3";
 
 interface SubDistrictFeature {
     type: "Feature";
@@ -103,19 +102,12 @@ export function filterSubDistrictsByDistrict(
     const normalizedDistrict = districtName.toLowerCase().trim();
     // Try mapped name first, then fallback to original
     const searchName = getSubDistrictName(normalizedDistrict);
-    
-    console.log('[filterSubDistrictsByDistrict] Filtering for:', normalizedDistrict, '-> searching as:', searchName);
-    
-    // Get all unique dtnames for debugging
-    const allDtnames = new Set(geoData.features.map(f => (f.properties.dtname || "").toLowerCase().trim()));
-    const dtnameArray = Array.from(allDtnames);
-    console.log('[filterSubDistrictsByDistrict] Available dtnames (first 20):', dtnameArray.slice(0, 20));
 
     // Check if this district has specific tehsil filtering (for carved-out districts)
     const tehsilFilter = DISTRICT_TEHSIL_FILTER[normalizedDistrict];
     
     // STRICT: Only exact string match - no closest match, no substring, no word boundary matching
-    const results = geoData.features.filter(feature => {
+    return geoData.features.filter(feature => {
         const dtname = (feature.properties.dtname || "").toLowerCase().trim();
         const sdtname = (feature.properties.sdtname || "").toLowerCase().trim();
         
@@ -123,50 +115,18 @@ export function filterSubDistrictsByDistrict(
         const correctDistrict = TEHSIL_TO_DISTRICT_MAP[sdtname];
         if (correctDistrict) {
             // This tehsil belongs to a specific district - only include if it matches
-            if (correctDistrict === normalizedDistrict) {
-                console.log('[filterSubDistrictsByDistrict] MATCH (corrected assignment):', sdtname, 'belongs to', normalizedDistrict);
-                return true;
-            } else {
-                // This tehsil belongs to a different district - exclude it
-                return false;
-            }
+            return correctDistrict === normalizedDistrict;
         }
         
         // If there's a tehsil filter, search across ALL districts for those specific tehsils
         // This handles cases where tehsils are incorrectly assigned to other districts in GeoJSON
         if (tehsilFilter && tehsilFilter.length > 0) {
-            const tehsilMatches = tehsilFilter.some(allowedTehsil => 
+            return tehsilFilter.some(allowedTehsil =>
                 sdtname === allowedTehsil.toLowerCase().trim()
             );
-            if (tehsilMatches) {
-                console.log('[filterSubDistrictsByDistrict] MATCH (filtered tehsil):', sdtname, 'found in district:', dtname);
-                return true;
-            }
-            return false;
         }
         
         // No tehsil filter - check if district name matches
-        let districtMatches = false;
-        if (dtname === searchName) {
-            districtMatches = true;
-        } else if (dtname === normalizedDistrict) {
-            districtMatches = true;
-        }
-        
-        if (!districtMatches) {
-            return false;
-        }
-        
-        // District matches and no tehsil filter - include this tehsil
-        console.log('[filterSubDistrictsByDistrict] MATCH:', dtname, 'tehsil:', sdtname);
-        return true;
+        return dtname === searchName || dtname === normalizedDistrict;
     });
-    
-    console.log('[filterSubDistrictsByDistrict] Found', results.length, 'matches');
-    if (results.length > 0) {
-        const uniqueDtnames = new Set(results.map(f => f.properties.dtname));
-        console.log('[filterSubDistrictsByDistrict] Result dtnames:', Array.from(uniqueDtnames));
-    }
-    
-    return results;
 }

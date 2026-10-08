@@ -1,26 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { District, City } from "@/types";
+import type { District } from "@/types";
 import { useFormat } from "@/hooks/useFormat";
 
 interface DistrictInfoCardProps {
   district: District | null;
-  selectedCity?: City | null;
   districtName: string | null;
   onClose: () => void;
 }
 
-export function DistrictInfoCard({ district, selectedCity, districtName, onClose }: DistrictInfoCardProps) {
+export function DistrictInfoCard({ district, districtName, onClose }: DistrictInfoCardProps) {
   const { formatPopulation, formatArea } = useFormat();
 
-  if (!districtName && !selectedCity) return null;
+  if (!districtName) return null;
 
-  // Determine mode
-  const mode = selectedCity ? "city" : "district";
-  const title = selectedCity ? selectedCity.name : (district?.name || districtName);
-  const isCap = selectedCity ? selectedCity.isCapital : district?.isCapital;
-  const isMetro = selectedCity ? selectedCity.isMetro : district?.isMetro;
+  const title = district?.name || districtName;
+  const isCap = district?.isCapital;
+  const isMetro = district?.isMetro;
 
   return (
     <motion.div
@@ -58,74 +55,56 @@ export function DistrictInfoCard({ district, selectedCity, districtName, onClose
         </button>
       </div>
 
-      {(selectedCity || district) ? (
+      {district ? (
         <div className="grid grid-cols-2 gap-2">
           <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
             <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Population</p>
             <p className="text-lg font-bold text-text-primary">
-              {formatPopulation(selectedCity ? selectedCity.population : district!.population)}
+              {formatPopulation(district.population)}
             </p>
           </div>
           <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
             <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Area</p>
             <p className="text-lg font-bold text-text-primary">
-              {formatArea(selectedCity ? selectedCity.area : district!.area)}
+              {formatArea(district.area)}
             </p>
             <p className="text-[10px] text-text-tertiary mt-0.5">km²</p>
           </div>
           <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
             <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Density</p>
             <p className="text-base font-bold text-text-primary">
-              {selectedCity
-                ? Math.round(selectedCity.population / (selectedCity.area || 1)).toLocaleString("en-IN")
-                : district!.density.toLocaleString("en-IN")
-              }
+              {district.density.toLocaleString("en-IN")}
             </p>
             <p className="text-[10px] text-text-tertiary mt-0.5">per km²</p>
           </div>
 
-          {/* Extended District Stats (Only show for Districts) */}
-          {!selectedCity && district && (
-            <>
-              <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
-                <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Literacy</p>
-                <p className="text-base font-bold text-text-primary">
-                  {district.literacyRate}%
-                </p>
-              </div>
-              {district.sexRatio > 0 && (
-                <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
-                  <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Sex Ratio</p>
-                  <p className="text-base font-bold text-text-primary">
-                    {district.sexRatio}
-                  </p>
-                </div>
-              )}
-              {district.headquarters && (
-                <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
-                  <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Headquarters</p>
-                  <p className="text-sm font-semibold text-text-primary">
-                    {district.headquarters}
-                  </p>
-                </div>
-              )}
-              {district.tier && (
-                <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
-                  <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Tier</p>
-                  <p className="text-base font-bold text-text-primary">
-                    Tier {district.tier}
-                  </p>
-                </div>
-              )}
-            </>
+          <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
+            <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Literacy</p>
+            <p className="text-base font-bold text-text-primary">
+              {district.literacyRate}%
+            </p>
+          </div>
+          {district.sexRatio > 0 && (
+            <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
+              <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Sex Ratio</p>
+              <p className="text-base font-bold text-text-primary">
+                {district.sexRatio}
+              </p>
+            </div>
           )}
-
-          {/* City Specific Stats */}
-          {selectedCity && (
+          {district.headquarters && (
+            <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
+              <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Headquarters</p>
+              <p className="text-sm font-semibold text-text-primary">
+                {district.headquarters}
+              </p>
+            </div>
+          )}
+          {district.tier && (
             <div className="rounded-lg bg-accent-primary/15 p-3 border border-border-light/50">
               <p className="text-[10px] font-medium uppercase tracking-wider text-text-muted mb-1">Tier</p>
               <p className="text-base font-bold text-text-primary">
-                Tier {selectedCity.tier}
+                Tier {district.tier}
               </p>
             </div>
           )}
