@@ -1,0 +1,267 @@
+{{Short description|none}}<!-- None is correct - please see [[WP:SDNONE]] -->
+{{Use dmy dates|date=May 2024}}
+
+[[Uttar Pradesh]], the most populous state in [[India]], has 75 districts. These districts, most of which have populations above 1.2 million, are grouped into 18 divisions for administrative convenience.
+
+The Maha Kumbh area of [[Prayagraj]] had been declared as the 76th district of the state by the Uttar Pradesh Government as of 2 December 2024. It was a temporary district and now merged with original.<ref name="abplive-02Dec24">{{Cite web |date=2 December 2024 |title=Uttar Pradesh Declares Prayagraj's Maha Kumbh Area As New District. Check Details |url=https://news.abplive.com/cities/uttar-pradesh-declares-prayagraj-maha-kumbh-area-as-new-district-check-details-1735034 }}</ref>
+
+==District administration==
+The [[District Magistrate]] (DM), an [[Indian Administrative Service]] (IAS) officer, is the head of district administration and performs multiple key roles: as [[District magistrate|Collector]] (for land revenue administration), District Magistrate (for maintenance of law and order), and District Election Officer (for conducting elections). The District Magistrate chairs various district-level committees and coordinates the activities of different departments within the district.<ref>{{cite web
+ |title=Uttar Pradesh Revenue Code, 2006 (U.P. Act No. 8 of 2012)
+ |url=https://bor.up.nic.in/pdf/Proposed_Amendment_English.pdf
+ |publisher=Board of Revenue, Government of Uttar Pradesh
+ |access-date=3 January 2026
+ |language=en
+}}</ref> The DM is supported by  [[Additional district magistrate (India)|Additional District Magistrates]] (ADMs) and [[Sub-divisional magistrate|Sub Divisional Magistrates]] (SDMs) for administrative duties.<ref>{{Cite web |title=Administrative Setup {{!}} District Shamli, Government of Uttar Pradesh {{!}} India |url=https://shamli.nic.in/administrative-setup/ |access-date=2025-10-16 |language=en-US}}</ref> A district is divided into [[Subdivision in India|sub-divisions]] headed by Sub-Divisional Magistrates (SDMs), further into [[tehsil]]s under [[tehsildar]]s, and into [[Revenue Village|villages]] for land revenue administration. Revenue Inspectors and [[Village accountant|Lekhpals]] assist the tehsildar in revenue related duties.<ref>{{cite web
+ |title=Uttar Pradesh Revenue Code, 2006 (U.P. Act No. 8 of 2012)
+ |url=https://bor.up.nic.in/pdf/Proposed_Amendment_English.pdf
+ |publisher=Board of Revenue, Government of Uttar Pradesh
+ |access-date=3 January 2026
+ |language=en
+}}</ref>
+
+Other Key officers supporting district administration include:
+* Senior Superintendent of Police (SSP) or [[Superintendent of police (India)|Superintendent of Police]] (SP) – an [[Indian Police Service]] (IPS) officer in charge of police administration and law enforcement.
+* Divisional Forest Officer (DFO) – an [[Indian Forest Service]] (IFS) officer managing forests and wildlife.
+* [[Chief Development Officer (India)|Chief Development Officer]] (CDO) – an IAS officer responsible for development programs. The CDO is assisted by [[Block development officer|Block Development Officers]] (BDOs) at the block level.
+* Other District Level Officers includes various district heads of sectoral/development departments, eg:- Regional Transport Officer, Chief Medical Officer, District Social Welfare Officer, District Panchayati Raj Officer, District Social Welfare Officer, District Supply Officer, District Labour Officer, District Employment Officer, District Agriculture Officer, Chief Fire Officer, Chief Veterinary Officer, Superintendent/Executive Engineer of PWD, etc.
+
+==List of districts==
+[[File:List of districts of Uttar Pradesh (2012).svg|thumb|Districts of Uttar Pradesh|400x400px]]
+
+{{static row numbers}}{{sort under}}{{Table alignment}}{{row hover highlight}}
+{|class="wikitable sortable static-row-numbers static-row-header-text   style="width:98%; text-align border:1px solid black;"
+! Code <ref>{{cite web |url=https://www.mail.nic.in/docs/MailService_e-mail_address_Policy_WithCodes.pdf |title       = NIC Policy on format of e-mail Address: Appendix (2): Districts Abbreviations as per ISO 3166-2 |pages       = 5–10 |publisher   = [[Ministry of Communications and Information Technology (India)|Ministry of Communications and Information Technology]], Government of India |date        = 18 August 2004 |access-date  = 30 January 2022 |url-status     = dead |archive-url  = https://web.archive.org/web/20080911133331/https://www.mail.nic.in/docs/MailService_e-mail_address_Policy_WithCodes.pdf |archive-date = 11 September 2008}}</ref>
+! District <ref name=updistp>{{cite web|url=http://india.gov.in/knowindia/districts/andhra1.php?stateid=UP |title=Districts : Uttar Pradesh |publisher=Government of India portal |access-date=30 January 2009 |url-status=dead |archive-url=https://web.archive.org/web/20120510202421/http://india.gov.in/knowindia/districts/andhra1.php?stateid=UP |archive-date=10 May 2012 }}</ref>
+! Headquarters
+! Formed{{Efn|All the pre-existing districts at the time of Independence are set to the Independence Day.}}
+! Population <ref name=":0">{{Cite web |date=2011 |title=Table A-01 Population by District and Sub-District: India |url=https://censusindia.gov.in/nada/index.php/catalog/42526/download/46152/A-1_NO_OF_VILLAGES_TOWNS_HOUSEHOLDS_POPULATION_AND_AREA.xlsx |website=2011 Indian census |publisher=[[Registrar General and Census Commissioner of India]]}}</ref>
+! Area<ref name=":0" />
+! Density (/km<sup>2</sup>)<ref name=":0" />
+! Map
+|-
+| AG|| [[Agra district|Agra]]|| [[Agra]]|| 15 August 1947|| 4,418,797|| <!--{{km2 to mi2|4027|abbr=on|precision=0}}-->4,041|| <!--{{Pop density km2 to mi2|897|abbr=on|precision=0}}-->1093||[[File:India Uttar Pradesh districts 2012 Agra.svg|150px|center]]
+|-
+| AL|| [[Aligarh district|Aligarh]]|| [[Aligarh]]|| 15 August 1947|| 3,673,889|| 3,788|| 1007 || [[File:India Uttar Pradesh districts 2012 Aligarh.svg|150px|center]]
+|-
+| AN|| [[Ambedkar Nagar district|Ambedkar Nagar]]|| [[Akbarpur, Ambedkar Nagar|Akbarpur]]||29 September 1995 || 2,397,888|| 2,350|| 1020 || [[File:India Uttar Pradesh districts 2012 Ambedkar Nagar.svg|150px|center]]
+|-
+| AM|| [[Amethi district|Amethi]]|| [[Gauriganj]]|| 1 July 2010 || 2,050,133|| 2,329.11 || 773 || [[File:India Uttar Pradesh districts 2012 Amethi.svg|150px|center]]
+|-
+| AR|| [[Amroha district|Amroha]]|| [[Amroha]]|| 24 April 1997 || 1,840,221|| 2,249|| 818 || [[File:India Uttar Pradesh districts 2012 Amroha.svg|150px|center]]
+|-
+| AU|| [[Auraiya district|Auraiya]]|| [[Auraiya]]|| 17 September 1997 || 1,379,545|| 2,016|| 684 || [[File:India Uttar Pradesh districts 2012 Auraiya.svg|150px|center]]
+|-
+| AY|| [[Ayodhya district|Ayodhya]]|| [[Ayodhya]]|| 15 August 1947|| 2,470,996|| 2,522|| 1056 || [[File:India Uttar Pradesh districts 2012 Faizabad.svg|150px|center]]
+|-
+| AZ|| [[Azamgarh district|Azamgarh]]|| [[Azamgarh]]|| 15 August 1947|| 4,613,913|| 4,054|| 1138 || [[File:India Uttar Pradesh districts 2012 Azamgarh.svg|150px|center]]
+|-
+| BD|| [[Budaun district|Budaun]]|| [[Budaun]]|| 15 August 1947|| 3,127,621|| 4,234|| 739 || [[File:India Uttar Pradesh districts 2012 Badaun.svg|150px|center]]
+|-
+| BG|| [[Bagpat district|Bagpat]]|| [[Baghpat]]|| 17 September 1997 || 1,303,048|| 1,321|| 986 || [[File:India_Uttar_Pradesh_districts_2012_Baghpat.svg|150px|center]]
+|-
+| BH|| [[Bahraich district|Bahraich]]|| [[Bahraich]]|| 15 August 1947|| 3,487,731|| 2,981|| 1170 || [[File:India Uttar Pradesh districts 2012 Bahraich.svg|150px|center]]
+|-
+| BL|| [[Ballia district|Ballia]]|| [[Ballia]]|| 15 August 1947|| 3,239,774|| 3,349|| 967 || [[File:India Uttar Pradesh districts 2012 Ballia.svg|150px|center]]
+|-
+| BP|| [[Balrampur district, Uttar Pradesh|Balrampur]]|| [[Balrampur]]|| 22 May 1997 || 2,148,665|| 4,408|| 487 || [[File:India Uttar Pradesh districts 2012 Balrampur.svg|150px|center]]
+|-
+| BN|| [[Banda district, India|Banda]]|| [[Banda, Uttar Pradesh|Banda]]|| 15 August 1947|| 1,799,410|| 4,402|| 409 || [[File:India Uttar Pradesh districts 2012 Banda.svg|150px|center]]
+|-
+| BB|| [[Barabanki district|Barabanki]]|| [[Barabanki city|Barabanki]]|| 15 August 1947|| 3,260,699|| 4,120|| 791 || [[File:India Uttar Pradesh districts 2012 Barabanki.svg|150px|center]]
+|-
+| BR|| [[Bareilly district|Bareilly]]|| [[Bareilly]]|| 15 August 1947|| 4,448,359|| 2,688|| 1655 || [[File:India Uttar Pradesh districts 2012 Bareilly.svg|150px|center]]
+|-
+| BS|| [[Basti district|Basti]]|| [[Basti, Uttar Pradesh|Basti]]|| 15 August 1947|| 2,464,464|| 4,561|| 540 || [[File:India Uttar Pradesh districts 2012 Basti.svg|150px|center]]
+|-
+| BH|| [[Bhadohi district|Bhadohi]]|| [[Bhadohi]]|| 30 June 1994 || 1,715,183|| 1,646|| 1042 || [[File:India Uttar Pradesh districts 2012 Sant Ravidas Nagar.svg|150px|center]]
+|-
+| BI|| [[Bijnor district|Bijnor]] || [[Bijnor]] || 15 August 1947|| 3,682,713|| 4,262|| 864 || [[File:India Uttar Pradesh districts 2012 Bijnor.svg|150px|center]]
+|-
+| BU|| [[Bulandshahr district|Bulandshahr]]|| [[Bulandshahr]]|| 15 August 1947|| 3,499,171|| 4,441|| 776 || [[File:India Uttar Pradesh districts 2012 Bulandshahr.svg|150px|center]]
+|-
+| CD|| [[Chandauli district|Chandauli]]|| [[Chandauli]]|| 22 May 1997|| 1,952,756|| 2,541|| 768 || [[File:India Uttar Pradesh districts 2012 Chandauli.svg|150px|center]]
+|-
+| CT|| [[Chitrakoot district|Chitrakoot]]|| [[Chitrakoot Dham (Karwi)|Chitrakoot]]|| 6 May 1997 || 991,730|| 3,216|| 308 || [[File:India Uttar Pradesh districts 2012 Chitrakoot.svg|150px|center]]
+|-
+| DE|| [[Deoria district|Deoria]]|| [[Deoria, Uttar Pradesh|Deoria]]|| 15 August 1947|| 3,100,946|| 2,540|| 1221 || [[File:India Uttar Pradesh districts 2012 Deoria.svg|150px|center]]
+|-
+| ET|| [[Etah district|Etah]]|| [[Etah]]|| 15 August 1947|| 1,774,480|| 2,431|| 730 ||[[File:India Uttar Pradesh districts 2012 Etah.svg|150px|center]]
+|-
+| EW|| [[Etawah district|Etawah]]|| [[Etawah]]|| 15 August 1947|| 1,581,810|| 2,311|| 684 || [[File:India Uttar Pradesh districts 2012 Etawah.svg|150px|center]]
+|-
+| FR|| [[Farrukhabad district|Farrukhabad]]|| [[Fatehgarh]]|| 15 August 1947|| 1,885,204|| 2,181|| 864 || [[File:India Uttar Pradesh districts 2012 Farrukhabad.svg|150px|center]]
+|-
+| FT|| [[Fatehpur district|Fatehpur]]|| [[Fatehpur, Fatehpur|Fatehpur]]|| 15 August 1947|| 2,632,733|| 4,152|| 634 || [[File:India Uttar Pradesh districts 2012 Fatehpur.svg|150px|center]]
+|-
+| FI|| [[Firozabad district|Firozabad]]|| [[Firozabad]]|| 5 February 1989 || 2,498,156|| 2,407|| 1038 || [[File:India Uttar Pradesh districts 2012 Firozabad.svg|150px|center]]
+|-
+| GB|| [[Gautam Buddha Nagar]]|| [[New Okhla Industrial Development Authority|Greater Noida]]|| 6 September 1997|| 1,648,115|| 720|| 2288 || [[File:India Uttar Pradesh districts 2012 Gautam Buddha Nagar.svg|150px|center]]
+|-
+| GZ|| [[Ghaziabad district, India|Ghaziabad]]|| [[Ghaziabad, India|Ghaziabad]]|| 14 November 1976 || 3,343,334|| 1,179|| 2836 || [[File:India Uttar Pradesh districts 2012 Ghaziabad.svg|150px|center]]
+|- style="background:#f4f9ff;
+| GP|| [[Ghazipur district|Ghazipur]]|| [[Ghazipur]]|| 15 August 1947|| 3,620,268|| 3,377|| 1072 || [[File:India Uttar Pradesh districts 2012 Ghazipur.svg|150px|center]]
+|-
+| GN|| [[Gonda district|Gonda]]|| [[Gonda district|Gonda]]|| 15 August 1947|| 3,433,919|| 4,003|| 858 || [[File:India Uttar Pradesh districts 2012 Gonda.svg|150px|center]]
+|-
+| GR|| [[Gorakhpur district|Gorakhpur]]|| [[Gorakhpur]]|| 15 August 1947|| 4,440,895|| 3,321|| 1337 || [[File:India Uttar Pradesh districts 2012 Gorakhpur.svg|150px|center]]
+|-
+| HM|| [[Hamirpur District, Uttar Pradesh|Hamirpur]]|| [[Hamirpur, Uttar Pradesh|Hamirpur]]|| 15 August 1947|| 1,104,285|| 4,021|| 275 || [[File:India Uttar Pradesh districts 2012 Hamirpur.svg|150px|center]]
+|-
+| HA|| [[Hapur district|Hapur]]|| [[Hapur]]|| 28 September 2011 || 1,338,311|| 649|| 2061|| [[File:India Uttar Pradesh districts 2012 Hapur.svg|150px|center]]
+|- style="background:#f4f9ff;
+| HR|| [[Hardoi district|Hardoi]]|| [[Hardoi]]|| 15 August 1947|| 4,092,845|| 5,986|| 684 || [[File:India Uttar Pradesh districts 2012 Hardoi.svg|150px|center]]
+|-
+| HT|| [[Hathras district|Hathras]]|| [[Hathras]]|| 3 May 1997 || 1,564,708|| 1,840|| 850 || [[File:India Uttar Pradesh districts 2012 Hathras.svg|150px|center]]
+|-
+| JL|| [[Jalaun district|Jalaun]]|| [[Orai]]|| 15 August 1947|| 1,689,974|| 4,565|| 370 || [[File:India_Uttar_Pradesh_districts_2012_Jalaun.svg|150px|center]]
+|-
+| JU|| [[Jaunpur district|Jaunpur]]|| [[Jaunpur, Uttar Pradesh|Jaunpur]]|| 15 August 1947|| 4,494,204|| 4,038|| 1113 || [[File:India Uttar Pradesh districts 2012 Jaunpur.svg|150px|center]]
+|-
+| JH|| [[Jhansi district|Jhansi]]|| [[Jhansi]]|| 15 August 1947|| 1,998,603|| 5,024|| 398 || [[File:India Uttar Pradesh districts 2012 Jhansi.svg|150px|center]]
+|-
+| KJ|| [[Kannauj district|Kannauj]]|| [[Kannauj]]|| 18 September 1997|| 1,656,616|| 2,093|| 792 || [[File:India Uttar Pradesh districts 2012 Kannauj.svg|150px|center]]
+|-
+| KD|| [[Kanpur Dehat]]|| [[Akbarpur, Kanpur Dehat|Akbarpur]]|| 23 April 1981 || 1,796,184|| 3,021|| 595 || [[File:India Uttar Pradesh districts 2012 Kanpur Dehat.svg|150px|center]]
+|-
+| KN|| [[Kanpur Nagar district|Kanpur Nagar]]|| [[Kanpur]]|| 15 August 1947|| 4,581,268|| 3,155|| 1452 || [[File:India Uttar Pradesh districts 2012 Kanpur Nagar.svg|150px|center]]
+|-
+| KG|| [[Kasganj district|Kasganj]]|| [[Kasganj]]|| 15 April 2008 || 1,436,719|| 1,955|| 735 || [[File:India Uttar Pradesh districts 2012 Kasganj.svg|150px|center]]
+|-
+| KS|| [[Kaushambi district|Kaushambi]]|| [[Manjhanpur]]|| 4 April 1997 || 1,599,596|| 1,779|| 899 || [[File:India Uttar Pradesh districts 2012 Kaushambi.svg|150px|center]]
+|-
+| KU|| [[Kushinagar district|Kushinagar]]|| [[Padarauna]]|| 13 May 1994 || 4,021,243|| 2,905|| 1200 || [[File:India Uttar Pradesh districts 2012 Kushinagar.svg|150px|center]]
+|-
+| LK|| [[Lakhimpur Kheri]]|| [[Kheri]]|| 15 August 1947|| 3,564,544|| 7,680|| 520 || [[File:India Uttar Pradesh districts 2012 Lakhimpur Kheri.svg|150px|center]]
+|-
+| LA|| [[Lalitpur District, Uttar Pradesh|Lalitpur]]|| [[Lalitpur, India|Lalitpur]]|| 1 March 1974 || 1,221,592|| 5,039|| 242 || [[File:India Uttar Pradesh districts 2012 Lalitpur.svg|150px|center]]
+|-
+| LU|| [[Lucknow district|Lucknow]]|| [[Lucknow]]|| 15 August 1947|| 4,589,838|| 2,528|| 1816 || [[File:India Uttar Pradesh districts 2012 Lucknow.svg|150px|center]]
+|-
+| MG|| [[Maharajganj district|Maharajganj]]|| [[Mahrajganj, Uttar Pradesh|Maharajganj]]|| 2 October 1989 || 2,684,703|| 2,952|| 909 || [[File:India Uttar Pradesh districts 2012 Maharajganj.svg|150px|center]]
+|-
+| MH|| [[Mahoba district|Mahoba]]|| [[Mahoba]]|| 11 February 1995 || 875,958|| 3,144|| 279 || [[File:India Uttar Pradesh districts 2012 Mahoba.svg|150px|center]]
+|-
+| MP|| [[Mainpuri district|Mainpuri]]|| [[Mainpuri]]|| 15 August 1947|| 1,868,529|| 2,760|| 677 || [[File:India Uttar Pradesh districts 2012 Mainpuri.svg|150px|center]]
+|-
+| MT|| [[Mathura district|Mathura]]||[[Mathura]]|| 15 August 1947|| 2,547,184|| 3,340|| 763 || [[File:India Uttar Pradesh districts 2012 Mathura.svg|150px|center]]
+|-
+| MB|| [[Mau district|Mau]]|| [[Mau, Uttar Pradesh|Mau]]|| 19 November 1988 || 2,205,968|| 1,713|| 1288 || [[File:India Uttar Pradesh districts 2012 Mau.svg|150px|center]]
+|-
+| ME|| [[Meerut district|Meerut]]|| [[Meerut]]|| 15 August 1947|| 3,443,689|| 2,559|| 1346 || [[File:India Uttar Pradesh districts 2012 Meerut.svg|150px|center]]
+|-
+| MI|| [[Mirzapur district|Mirzapur]]|| [[Mirzapur]]|| 15 August 1947|| 2,496,970|| 4,405|| 567 || [[File:India Uttar Pradesh districts 2012 Mirzapur.svg|150px|center]]
+|-
+| MO|| [[Moradabad district|Moradabad]]|| [[Moradabad]]|| 15 August 1947|| 3,126,507|| 2,233|| 1400 || [[File:India Uttar Pradesh districts 2012 Moradabad.svg|150px|center]]
+|-
+| MU|| [[Muzaffarnagar district|Muzaffarnagar]]|| [[Muzaffarnagar]]|| 15 August 1947|| 2,869,934|| 2,742|| 1047 || [[File:India Uttar Pradesh districts 2012 Muzaffarnagar.svg|159px|center]]
+|-
+| PI|| [[Pilibhit district|Pilibhit]]|| [[Pilibhit]]|| 15 August 1947|| 2,031,007|| 3,686|| 551 || [[File:India Uttar Pradesh districts 2012 Pilibhit.svg|150px|center]]
+|-
+| PR|| [[Pratapgarh district, Uttar Pradesh|Pratapgarh]]|| [[Pratapgarh district, Uttar Pradesh|Pratapgarh]]|| 15 August 1947|| 3,209,141|| 3,717|| 863 || [[File:India Uttar Pradesh districts 2012 Pratapgarh.svg|150px|center]]
+|-
+| PY|| [[Prayagraj district|Prayagraj]]|| [[Prayagraj]]|| 15 August 1947|| 5,954,391|| 5,482|| 1086 || [[File:India Uttar Pradesh districts 2012 Allahabad.svg|150px|center]]
+|-
+| RB|| [[Rae Bareli district|Rae Bareli]]|| [[Rae Bareli]]|| 15 August 1947|| 2,903,507|| 3,937|| 737 || [[File:India Uttar Pradesh districts 2012 Raebareli.svg|150px|center]]
+|-
+| RA|| [[Rampur district|Rampur]]|| [[Rampur, Uttar Pradesh|Rampur]]|| 1 December 1949|| 2,335,819|| 2,367|| 987 || [[File:India Uttar Pradesh districts 2012 Rampur.svg|150px|center]]
+|-
+| SA|| [[Saharanpur district|Saharanpur]]|| [[Saharanpur]]|| 15 August 1947|| 3,466,382|| 3,689|| 940 || [[File:India Uttar Pradesh districts 2012 Saharanpur.svg|150px|center]]
+|-
+| SK|| [[Sant Kabir Nagar district|Sant Kabir Nagar]]|| [[Khalilabad, India|Khalilabad]]|| 5 September 1997 || 2,199,774|| 2,390|| 920 || [[File:India Uttar Pradesh districts 2012 Sant Kabir Nagar.svg|150px|center]]
+|-
+| SM|| [[Sambhal district|Sambhal]] || [[Bahjoi]] || 3 May 2011 || 1,578,213|| 1,015 || 1555 || [[File:India Uttar Pradesh districts 2012 Sambhal.svg|150px|center]]
+|-
+| SJ|| [[Shahjahanpur district|Shahjahanpur]]|| [[Shahjahanpur]]|| 15 August 1947|| 3,006,538|| 4,388|| 685 || [[File:India Uttar Pradesh districts 2012 Shahjahanpur.svg|150px|center]]
+|-
+| SH|| [[Shamli district|Shamli]]|| [[Shamli]]|| 3 May 2011 || 1,273,578|| 1,266|| 1006 || [[File:India Uttar Pradesh districts 2012 Shamli.svg|150px|center]]
+|-
+| SV|| [[Shravasti district|Shravasti]]|| [[Bhinga]]|| 22 May 1997 || 1,117,361|| 1,640|| 681 || [[File:India Uttar Pradesh districts 2012 Shravasti.svg|150px|center]]
+|-
+| SN|| [[Siddharthnagar district|Siddharthnagar]]|| [[Siddharthnagar]]|| 29 December 1988 || 2,559,297|| 2,895|| 884 || [[File:India Uttar Pradesh districts 2012 Siddharthnagar.svg|150px|center]]
+|-
+| SI|| [[Sitapur district|Sitapur]]|| [[Sitapur]]|| 15 August 1947|| 4,483,992|| 5,743|| 781 || [[File:India Uttar Pradesh districts 2012 Sitapur.svg|150px|center]]
+|-
+| SO|| [[Sonbhadra]]|| [[Robertsganj]]|| 4 March 1989 || 1,862,559|| 6,905|| 270 || [[File:India Uttar Pradesh districts 2012 Sonbhadra.svg|150px|center]]
+|-
+| SU|| [[Sultanpur district|Sultanpur]]|| [[Sultanpur, Uttar Pradesh|Sultanpur]]|| 15 August 1947|| 2,249,036|| 2,457|| 915 || [[File:India Uttar Pradesh districts 2012 Sultanpur.svg|150px|center]]
+|-
+| UN|| [[Unnao district|Unnao]]|| [[Unnao]]|| 15 August 1947|| 3,108,367|| 4,558|| 682 || [[File:India Uttar Pradesh districts 2012 Unnao.svg|150px|center]]
+|-
+| VA|| [[Varanasi district|Varanasi]]||[[Varanasi]]|| 15 August 1947|| 3,676,841|| 1,535|| 2395 || [[File:India Uttar Pradesh districts 2012 Varanasi.svg|150px|center]]
+|-
+|}
+{{Notelist}}
+
+== Proposals for new districts ==
+{{anchor|Proposed|Demand}}
+Demands for the creation of new administrative districts in Uttar Pradesh frequently arise due to the state's massive population density, expansive geographical area, and the strategic need for localized international border management along Nepal. In late 2025, political announcements highlighted the ongoing administrative reorganization with the proposed creation of a 76th district, Kalyan Singh Nagar.<ref name="News18UP2025">{{cite news |title=Yogi Adityanath announces 76th District: Kalyan Singh Nagar |work=News18 |date=28 October 2025}}</ref> Alongside such official state-level considerations, several local sub-divisions maintain active regional demands for district status.
+
+{| class="wikitable" style="width:100%; border-collapse:collapse;"
+|+ List of Proposed Districts in Uttar Pradesh Grouped by Region and Current District
+|-
+! style="background-color:#E6F2FF; width:25%;" | Proposed District
+! style="background-color:#E6F2FF; width:35%;" | Expected Area of Jurisdiction
+! style="background-color:#E6F2FF; width:40%;" | Rationale / Status
+
+|-
+! colspan="3" style="background-color:#D5E8F5; text-align:center; font-size:110%;" | Rohilkhand Region (Proposed from [[Bareilly district|Bareilly]])
+|-
+| '''[[Baheri]]'''
+| Northern tracts of Bareilly district, bordering [[Uttarakhand]] and [[Nepal]].
+| Proposed to manage international and interstate border administration and decentralize governance, as it is located 50 km north of Bareilly city.
+|-
+| '''[[Aonla, Uttar Pradesh|Aonla]]'''
+| Southwestern blocks of Bareilly district.
+| Backed by state cabinet ministers and local representatives to establish a separate administrative headquarters approximately 40 km from Bareilly to improve public service delivery.<ref name="ABPAonla">{{Cite web |last=मिश्रा |first=अनूप |date=2022-04-03 |title=उत्तर प्रदेश में जल्द बनेगा एक नया जिला? राज्य के कैबिनेट मंत्री ने दी ये बड़ी जानकारी |url=https://www.abplive.com/states/up-uk/aonla-will-be-made-new-district-in-uttar-pradesh-mla-and-cabinet-minister-dharampal-singh-says-ann-2094481 |access-date=2022-06-21 |website=ABP Live |language=hi}}</ref>
+
+|-
+! colspan="3" style="background-color:#D5E8F5; text-align:center; font-size:110%;" | Terai Region (Proposed from [[Lakhimpur Kheri district|Lakhimpur Kheri]])
+|-
+| '''[[Gola Gokarannath]]'''
+| Northern blocks of Lakhimpur Kheri district along the [[India–Nepal border]].
+| Demanded by local residents to split Lakhimpur Kheri—currently the largest district in the state by geographical area—thereby reducing travel distances to the district headquarters.
+
+|-
+! colspan="3" style="background-color:#D5E8F5; text-align:center; font-size:110%;" | Terai Region (Proposed from [[Bahraich district|Bahraich]])
+|-
+| '''[[Nanpara]]'''
+| Northern border blocks of Bahraich district.
+| Proposed to establish a dedicated administrative and security presence along the sensitive India-Nepal border zone.
+
+|-
+! colspan="3" style="background-color:#D5E8F5; text-align:center; font-size:110%;" | Purvanchal Region (Proposed from [[Gorakhpur district|Gorakhpur]] and [[Maharajganj district|Maharajganj]])
+|-
+| '''[[Pharenda]]''' <small>(Anand Nagar)</small>
+| Comprising three tehsils carved from the border areas of Gorakhpur and Maharajganj districts.
+| Proposed to consolidate cross-district sub-divisions into a single border district to improve regional infrastructure and governance along the Nepal border.<ref name="IndiaPharenda">{{Cite news |title=UP New District Plan: Farenda may be 76th district combining 3 tehsils of Gorakhpur and Maharajganj |url=https://www.india.com/hindi-news/uttar-pradesh/up-new-district-plan-farenda-may-be-76th-district-combining-3-tehsils-of-gorakhpur-and-maharajganj-7251011/ |work=India.com |date=August 2025 |language=hi}}</ref>
+
+|-
+! colspan="3" style="background-color:#D5E8F5; text-align:center; font-size:110%;" | Purvanchal Region (Proposed from [[Jaunpur district|Jaunpur]])
+|-
+| '''[[Shahganj]]'''
+| Northern blocks of Jaunpur district.
+| Demanded to decentralize administration in the southeastern Purvanchal region, bringing civic resources closer to local populations situated 35 km north of Jaunpur city.
+|}
+
+== References ==
+{{Reflist}}
+
+==See also==
+* [[Divisions of Uttar Pradesh]]
+* [[List of RTO districts in India#UP—Uttar Pradesh|List of RTO districts in Uttar Pradesh]]
+* [[List of urban local bodies in Uttar Pradesh]]
+
+==References==
+{{Reflist}}
+
+{{Districts of Uttar Pradesh}}
+{{Districts of India}}
+{{Uttar Pradesh topics}}
+
+{{Uttar Pradesh}}
+
+{{DEFAULTSORT:Districts of Uttar Pradesh}}
+[[Category:Districts of Uttar Pradesh| ]]
+[[Category:Uttar Pradesh-related lists]]
+[[Category:Lists of districts in India|Uttar Pradesh]]

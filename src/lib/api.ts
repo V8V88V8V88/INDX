@@ -62,27 +62,19 @@ function markCapitalAndMetro(stateCode: string, districts: District[]): District
   const state = getStateById(stateCode);
   if (!state) return districts;
 
-  const normalizedCapital = normalizeName(state.capital);
+  // The capital's district is named explicitly: matching on headquarters wrongly
+  // flagged e.g. Bengaluru Rural (HQ Bengaluru), and missed capitals such as Amaravati (Guntur)
+  const capitalDistrict = normalizeName(state.capitalDistrict);
   const metroCityNames = new Set(
     state.cities
       .filter((c) => c.isMetro)
       .map((c) => normalizeName(c.name))
   );
-  const capitalCityNames = new Set(
-    state.cities
-      .filter((c) => c.isCapital)
-      .map((c) => normalizeName(c.name))
-  );
-
   return districts.map((d) => {
     const name = normalizeName(d.name);
     const hq = normalizeName(d.headquarters);
 
-    const isCapital =
-      !!d.isCapital ||
-      (!!normalizedCapital && (name === normalizedCapital || hq === normalizedCapital)) ||
-      capitalCityNames.has(name) ||
-      capitalCityNames.has(hq);
+    const isCapital = !!d.isCapital || (!!capitalDistrict && name === capitalDistrict);
 
     const isMetro =
       !!d.isMetro ||
@@ -90,7 +82,7 @@ function markCapitalAndMetro(stateCode: string, districts: District[]): District
       metroCityNames.has(hq) ||
       // Treat districts that are themselves the capital in key metros as metro areas
       // e.g. New Delhi district within the National Capital Region is a metro
-      (state.code === "DL" && !!normalizedCapital && (name === normalizedCapital || hq === normalizedCapital)) ||
+      (state.code === "DL" && isCapital) ||
       // Districts marked as Tier 1 are effectively metro regions
       d.tier === 1;
 

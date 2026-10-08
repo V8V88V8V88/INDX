@@ -3,23 +3,24 @@
     "id": "LA-LEH",
     "name": "Leh",
     "stateId": "LA",
-    "population": 133487,
+    "population": 145346,
     "area": 45110,
     "density": 3,
     "literacyRate": 77.2,
-    "sexRatio": 690,
+    "sexRatio": 676,
     "headquarters": "Leh",
-    "tier": 3
+    "tier": 3,
+    "isCapital": true
   },
   {
     "id": "LA-KRG",
     "name": "Kargil",
     "stateId": "LA",
-    "population": 140802,
+    "population": 159654,
     "area": 14036,
-    "density": 10,
+    "density": 11,
     "literacyRate": 74.5,
-    "sexRatio": 815,
+    "sexRatio": 917,
     "headquarters": "Kargil",
     "tier": 4
   }

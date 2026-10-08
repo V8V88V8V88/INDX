@@ -3,23 +3,24 @@
     "id": "GA-NTH",
     "name": "North Goa",
     "stateId": "GA",
-    "population": 817761,
+    "population": 894566,
     "area": 1736,
-    "density": 471,
+    "density": 515,
     "literacyRate": 89.6,
-    "sexRatio": 963,
+    "sexRatio": 976,
     "headquarters": "Panaji",
-    "tier": 3
+    "tier": 3,
+    "isCapital": true
   },
   {
     "id": "GA-STH",
     "name": "South Goa",
     "stateId": "GA",
-    "population": 639962,
+    "population": 703434,
     "area": 1966,
-    "density": 326,
+    "density": 358,
     "literacyRate": 88.3,
-    "sexRatio": 986,
+    "sexRatio": 1002,
     "headquarters": "Margao",
     "tier": 4
   }

@@ -20,10 +20,6 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-const capitalToDistrictMap: Record<string, string> = {
-  "Itanagar": "Papum Pare",
-};
-
 function normalizeDistrictName(name: string): string {
   return name
     .toLowerCase()
@@ -71,16 +67,8 @@ function isMajorArea(d: District, city?: City) {
 }
 
 function findCapitalDistrict(state: State, districts: District[] | undefined): string {
-  const capital = state.capital;
-  const mapped = capitalToDistrictMap[capital];
-  if (!districts || districts.length === 0) return mapped ?? capital;
-
-  const normalizedCapital = normalizeDistrictName(capital);
-  const match =
-    districts.find((d) => normalizeDistrictName(d.name) === normalizedCapital) ??
-    districts.find((d) => normalizeDistrictName(d.headquarters || "") === normalizedCapital) ??
-    (mapped ? districts.find((d) => normalizeDistrictName(d.name) === normalizeDistrictName(mapped)) : undefined);
-  return match?.name ?? capital;
+  if (!state.capitalDistrict) return state.capital;
+  return (districts && findDistrictByName(districts, state.capitalDistrict)?.name) || state.capitalDistrict;
 }
 
 // The URL hash (#district-<name> or #city-<id>) is the single source of truth for the
@@ -290,14 +278,14 @@ export default function StatePage({ params }: PageProps) {
             {/* Key Metrics Grid */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <MetricCard
-                title="Population"
+                title="Population (2026)"
                 value={formatPopulation(state.population)}
                 subtitle={`#${populationRank} in India`}
                 delay={0.1}
                 trigger={isPageReady}
               />
               <MetricCard
-                title="GDP"
+                title={state.gdpYear ? `GSDP (${state.gdpYear})` : "GSDP"}
                 value={formatCurrency(state.gdp * 10000000)}
                 unit=""
                 subtitle={`#${gdpRank} in India`}

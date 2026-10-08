@@ -121,6 +121,11 @@ export function DistrictInfoCard({ district, districtName, onClose }: DistrictIn
         </div>
       )}
 
+      {district && (
+        <p className="mt-3 text-[10px] text-text-muted">
+          Population &amp; sex ratio: 2026 projection · Literacy: Census 2011
+        </p>
+      )}
     </motion.div>
   );
 }

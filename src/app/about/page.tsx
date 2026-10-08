@@ -4,6 +4,52 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { Header } from "@/components";
 
+
+// India has no census after 2011 (Census 2027 results are pending), so population
+// figures are the official projections for 2026.
+const SOURCES = [
+  {
+    name: "RGI / MoHFW Population Projections 2011–2036",
+    href: "https://censusindia.gov.in",
+    description: "State population and sex ratio, 2026 (Technical Group on Population Projections)",
+  },
+  {
+    name: "IIPS District-level Population Projections",
+    href: "https://www.iipsindia.ac.in/sites/default/files/FULL_REPORT_WITH_FINAL_TABLES.pdf",
+    description: "District population and sex ratio, 2026, split to today's districts using 2011 census shares",
+  },
+  {
+    name: "MoSPI PLFS 2023-24",
+    href: "https://mospi.gov.in",
+    description: "State literacy rate (age 7+)",
+  },
+  {
+    name: "Census of India 2011",
+    href: "https://censusindia.gov.in",
+    description: "District literacy rates and areas (latest available at district level)",
+  },
+  {
+    name: "MoSPI State Domestic Product",
+    href: "https://mospi.gov.in",
+    description: "GSDP at current prices, FY 2024-25 where available",
+  },
+  {
+    name: "UNDP / Global Data Lab",
+    href: "https://globaldatalab.org/shdi/",
+    description: "Subnational Human Development Index, 2023",
+  },
+  {
+    name: "Wikipedia",
+    href: "https://www.wikipedia.org",
+    description: "2011 census figures on current district boundaries, compiled MoSPI GSDP tables",
+  },
+  {
+    name: "India Maps Data",
+    href: "https://github.com/udit-001/india-maps-data",
+    description: "GeoJSON boundaries and district data",
+  },
+];
+
 export default function AboutPage() {
   const techStack = [
     { name: "Next.js", version: "16.1.1" },
@@ -85,102 +131,24 @@ export default function AboutPage() {
         >
           <h2 className="mb-4 text-lg font-semibold text-text-primary">Sources</h2>
           <div className="space-y-3 text-sm text-text-tertiary">
-            <div>
-              <a
-                href="https://censusindia.gov.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
-              >
-                Census of India 2011
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-              </a>
-              <p className="text-text-muted mt-0.5">Official population census data</p>
-            </div>
-            <div>
-              <a
-                href="https://www.rbi.org.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
-              >
-                RBI Estimates
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-              </a>
-              <p className="text-text-muted mt-0.5">Economic and GDP projections</p>
-            </div>
-            <div>
-              <a
-                href="https://www.niti.gov.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
-              >
-                NITI Aayog Projections
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-              </a>
-              <p className="text-text-muted mt-0.5">2026 projected demographic data</p>
-            </div>
-            <div>
-              <a
-                href="https://www.wikipedia.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
-              >
-                Wikipedia
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-              </a>
-              <p className="text-text-muted mt-0.5">Geographic and statistical information</p>
-            </div>
-            <div>
-              <a
-                href="https://github.com/udit-001/india-maps-data"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
-              >
-                India Maps Data
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-              </a>
-              <p className="text-text-muted mt-0.5">GeoJSON boundaries and district data</p>
-            </div>
-            <div>
-              <a
-                href="https://en.wikipedia.org/wiki/List_of_Indian_states_and_union_territories_by_Human_Development_Index"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
-              >
-                UNDP HDI Data (2023)
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-              </a>
-              <p className="text-text-muted mt-0.5">State-wise Human Development Index (HDI) 2023 data from UNDP Human Development Report</p>
-            </div>
+            {SOURCES.map((source) => (
+              <div key={source.name}>
+                <a
+                  href={source.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
+                >
+                  {source.name}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
+                <p className="text-text-muted mt-0.5">{source.description}</p>
+              </div>
+            ))}
           </div>
         </motion.section>
 

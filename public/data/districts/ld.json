@@ -3,12 +3,13 @@
     "id": "LD-LKS",
     "name": "Lakshadweep",
     "stateId": "LD",
-    "population": 64473,
+    "population": 70000,
     "area": 32,
-    "density": 2015,
+    "density": 2188,
     "literacyRate": 92.3,
-    "sexRatio": 946,
+    "sexRatio": 944,
     "headquarters": "Kavaratti",
-    "tier": 4
+    "tier": 4,
+    "isCapital": true
   }
 ]
