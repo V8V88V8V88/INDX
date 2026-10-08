@@ -106,13 +106,6 @@ function markCapitalAndMetro(stateCode: string, districts: District[]): District
   });
 }
 
-function createTimeoutSignal(ms: number): AbortSignal {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), ms);
-  controller.signal.addEventListener('abort', () => clearTimeout(timeout));
-  return controller.signal;
-}
-
 const stateCodeToFileName: Record<string, string> = {
   "TG": "ts",
 };
@@ -121,7 +114,7 @@ export async function fetchDistrictsFromAPI(stateCode: string): Promise<District
   try {
     const fileName = stateCodeToFileName[stateCode] || stateCode.toLowerCase();
     const response = await fetch(`/data/districts/${fileName}.json`, {
-      signal: createTimeoutSignal(5000),
+      signal: AbortSignal.timeout(5000),
     });
     
     if (response.ok) {
@@ -136,10 +129,3 @@ export async function fetchDistrictsFromAPI(stateCode: string): Promise<District
   return [];
 }
 
-export const dataSources = {
-  census: {
-    name: "Census of India 2011",
-    url: "https://censusindia.gov.in",
-    description: "Official population census data",
-  },
-};

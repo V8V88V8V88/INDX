@@ -22,18 +22,11 @@ export function useFormat() {
         if (settings.numberFormat === "indian") {
             return formatPopulationIN(val);
         }
-        // International Format
-        if (val >= 1000000000) return (val / 1000000000).toFixed(2) + " B";
-        if (val >= 1000000) return (val / 1000000).toFixed(2) + " M";
-        if (val >= 1000) return (val / 1000).toFixed(1) + " K";
-        return val.toLocaleString("en-US");
+        return formatNumber(val);
     };
 
     const formatCurrency = (valInINR: number): string => {
         if (settings.currency === "INR") {
-            if (settings.numberFormat === "indian") {
-                return "₹" + formatNumberIN(valInINR);
-            }
             return "₹" + formatNumber(valInINR);
         }
 

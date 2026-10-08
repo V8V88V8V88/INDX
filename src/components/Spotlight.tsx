@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { states } from "@/data/india";
-import type { State, District } from "@/types";
+import type { District } from "@/types";
 import { fetchDistrictsFromAPI } from "@/lib/api";
 
 interface SearchResult {
@@ -17,46 +17,6 @@ interface SearchResult {
 }
 
 let openSpotlightFn: (() => void) | null = null;
-
-// State code shortcuts (e.g., "up" -> "Uttar Pradesh")
-const stateCodeMap: Record<string, string> = {
-  "up": "Uttar Pradesh",
-  "mp": "Madhya Pradesh",
-  "ap": "Andhra Pradesh",
-  "tn": "Tamil Nadu",
-  "mh": "Maharashtra",
-  "br": "Bihar",
-  "wb": "West Bengal",
-  "gj": "Gujarat",
-  "ka": "Karnataka",
-  "or": "Odisha",
-  "rj": "Rajasthan",
-  "tg": "Telangana",
-  "as": "Assam",
-  "jh": "Jharkhand",
-  "cg": "Chhattisgarh",
-  "kl": "Kerala",
-  "pb": "Punjab",
-  "hr": "Haryana",
-  "uk": "Uttarakhand",
-  "hp": "Himachal Pradesh",
-  "tr": "Tripura",
-  "mn": "Manipur",
-  "ml": "Meghalaya",
-  "mz": "Mizoram",
-  "nl": "Nagaland",
-  "ar": "Arunachal Pradesh",
-  "sk": "Sikkim",
-  "go": "Goa",
-  "dl": "Delhi",
-  "jk": "Jammu & Kashmir",
-  "la": "Ladakh",
-  "an": "Andaman and Nicobar Islands",
-  "ld": "Lakshadweep",
-  "py": "Puducherry",
-  "ch": "Chandigarh",
-  "dd": "Dadra and Nagar Haveli and Daman and Diu",
-};
 
 export function Spotlight() {
   const [isOpen, setIsOpen] = useState(false);
@@ -113,22 +73,8 @@ export function Spotlight() {
     const searchTerm = query.toLowerCase().trim();
     const matches: SearchResult[] = [];
 
-    const stateCodeMatch = stateCodeMap[searchTerm];
-    if (stateCodeMatch) {
-      const state = states.find((s) => s.name === stateCodeMatch);
-      if (state) {
-        matches.push({
-          type: "state",
-          id: state.id,
-          name: state.name,
-          path: `/state/${state.id}`,
-        });
-      }
-    }
 
     states.forEach((state) => {
-      if (stateCodeMatch && state.name === stateCodeMatch) return;
-
       if (state.name.toLowerCase().includes(searchTerm) || state.code.toLowerCase() === searchTerm) {
         matches.push({
           type: "state",

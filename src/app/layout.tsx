@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],
 };
 
-import { ThemeInitializer } from "@/components/ThemeInitializer";
 import { SettingsProvider } from "@/contexts/SettingsContext";
 import { Spotlight } from "@/components/Spotlight";
 
@@ -35,7 +34,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased">
-        <ThemeInitializer />
         <SettingsProvider>
           <QueryProvider>
             {children}

@@ -29,21 +29,7 @@ export default function StatePage({ params }: PageProps) {
     ? { duration: 0 }
     : { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
 
-  const getInitialDistrictFromHash = (): string | null => {
-    if (typeof window === "undefined") return null;
-    const hash = window.location.hash.slice(1);
-    if (hash.startsWith("district-")) {
-      return decodeURIComponent(hash.replace("district-", ""));
-    }
-    if (hash.startsWith("city-")) {
-      const cityId = hash.replace("city-", "");
-      return cityId;
-    }
-    return null;
-  };
-
   const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
-  const [selectedCity, setSelectedCity] = useState<City | null>(null);
   const [isPageReady, setIsPageReady] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const initialHashProcessed = useRef(false);
@@ -67,6 +53,25 @@ export default function StatePage({ params }: PageProps) {
       .replace(/\s+/g, " ")
       .replace(/[’'".,()/]/g, "")
       .replace(/&/g, "and");
+  };
+
+  // Exact normalized match first; otherwise, when either name has several words,
+  // all words of the shorter name must appear in the longer one (e.g. "Kheri" -> "Lakhimpur Kheri").
+  const findDistrictByName = (list: District[], name: string): District | null => {
+    const target = normalizeDistrictName(name);
+    const exact = list.find((d) => normalizeDistrictName(d.name) === target);
+    if (exact) return exact;
+
+    const targetWords = target.split(/\s+/).filter((w) => w.length > 0);
+    return list.find((d) => {
+      const districtWords = normalizeDistrictName(d.name).split(/\s+/).filter((w) => w.length > 0);
+      if (targetWords.length > 1 || districtWords.length > 1) {
+        const shorter = targetWords.length <= districtWords.length ? targetWords : districtWords;
+        const longer = targetWords.length > districtWords.length ? targetWords : districtWords;
+        return shorter.every((word) => longer.includes(word));
+      }
+      return false;
+    }) ?? null;
   };
 
   // Keep this in sync with DistrictList's definition so that "major" places
@@ -119,11 +124,6 @@ export default function StatePage({ params }: PageProps) {
         const city = state.cities.find((c) => c.id === cityId);
         if (city) {
           setSelectedDistrict(city.name);
-        } else if (selectedDistrict === cityId) {
-          const foundCity = state.cities.find((c) => c.id === cityId);
-          if (foundCity) {
-            setSelectedDistrict(foundCity.name);
-          }
         }
       }
       else if (hash.startsWith("district-")) {
@@ -208,30 +208,7 @@ export default function StatePage({ params }: PageProps) {
   const selectedDistrictInfo = useMemo(() => {
     if (!selectedDistrict || !districts || districts.length === 0) return null;
 
-    // STRICT: Only exact matches first - no substring matching
-    let match = districts.find(
-      (d) => normalizeDistrictName(d.name) === normalizeDistrictName(selectedDistrict)
-    );
-
-    // If no exact match, only allow multi-word matching (like "Lakhimpur Kheri" matching "Kheri")
-    // But NOT substring matching for single words (prevents "Agra" matching "Prayagraj")
-    if (!match) {
-      const selectedWords = normalizeDistrictName(selectedDistrict).split(/\s+/).filter(w => w.length > 0);
-      match = districts.find((d) => {
-        const districtName = normalizeDistrictName(d.name);
-        const districtWords = districtName.split(/\s+/).filter(w => w.length > 0);
-        
-        // Only match if all words from shorter name exist in longer name (multi-word cases)
-        if (selectedWords.length > 1 || districtWords.length > 1) {
-          const shorter = selectedWords.length <= districtWords.length ? selectedWords : districtWords;
-          const longer = selectedWords.length > districtWords.length ? selectedWords : districtWords;
-          return shorter.every(word => longer.includes(word));
-        }
-        return false;
-      });
-    }
-
-    return match || null;
+    return findDistrictByName(districts, selectedDistrict);
   }, [selectedDistrict, districts]);
 
   const nationalAvgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
@@ -400,11 +377,9 @@ export default function StatePage({ params }: PageProps) {
                   <DistrictInfoCard
                     key={selectedDistrict}
                     district={selectedDistrictInfo}
-                    selectedCity={selectedCity}
                     districtName={selectedDistrict}
                     onClose={() => {
                       setSelectedDistrict(null);
-                      setSelectedCity(null);
                       setHasScrolled(false);
                       if (window.location.hash) {
                         window.history.replaceState(null, "", window.location.pathname);
@@ -428,52 +403,20 @@ export default function StatePage({ params }: PageProps) {
               <div className="w-full" style={{ minHeight: "650px", overflow: "visible" }}>
                 <StateMap
                   stateCode={state.id}
-                  state={state}
                   selectedDistrict={selectedDistrict}
                   onDistrictSelect={(d) => {
                     setSelectedDistrict(d);
-                    setSelectedCity(null);
                   }}
                   onDistrictClick={(d) => {
                     // Normalize the district name from map click to match API district names (like spotlight does)
                     // STRICT: Only exact matches - no substring matching to prevent "Agra" matching "Prayagraj"
-                    let normalizedName = d;
-                    if (districts && districts.length > 0) {
-                      const normalizedGeoName = normalizeDistrictName(d);
-                      // First try exact match
-                      let match = districts.find((district) => {
-                        const normalizedDistrict = normalizeDistrictName(district.name);
-                        return normalizedDistrict === normalizedGeoName;
-                      });
-                      
-                      // If no exact match, only allow if one is a complete word in the other (multi-word names)
-                      if (!match) {
-                        const geoWords = normalizedGeoName.split(/\s+/).filter(w => w.length > 0);
-                        match = districts.find((district) => {
-                          const normalizedDistrict = normalizeDistrictName(district.name);
-                          const districtWords = normalizedDistrict.split(/\s+/).filter(w => w.length > 0);
-                          
-                          // Only match if all words from shorter name exist in longer name (for multi-word cases like "Lakhimpur Kheri")
-                          if (geoWords.length > 1 || districtWords.length > 1) {
-                            const shorter = geoWords.length <= districtWords.length ? geoWords : districtWords;
-                            const longer = geoWords.length > districtWords.length ? geoWords : districtWords;
-                            return shorter.every(word => longer.includes(word));
-                          }
-                          return false;
-                        });
-                      }
-                      
-                      normalizedName = match ? match.name : d;
-                    }
-                    
-                    console.log('Manual click - GeoJSON name:', d, 'Normalized name:', normalizedName);
+                    const normalizedName = (districts && findDistrictByName(districts, d)?.name) || d;
                     
                     // Mark as manual selection to prevent hash handler from interfering
                     isManualSelection.current = true;
                     
                     // Set the district first (synchronously)
                     setSelectedDistrict(normalizedName);
-                    setSelectedCity(null);
                     
                     // Update URL hash after a small delay to avoid conflicts
                     setTimeout(() => {
@@ -486,9 +429,6 @@ export default function StatePage({ params }: PageProps) {
                         isManualSelection.current = false;
                       }, 100);
                     }, 0);
-                  }}
-                  onCityClick={(city) => {
-                    setSelectedCity(city);
                   }}
                 />
               </div>

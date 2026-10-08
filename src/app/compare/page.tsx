@@ -6,7 +6,7 @@ import { Header } from "@/components";
 import { InlineSearch } from "@/components/InlineSearch";
 import { StateMap } from "@/components/StateMap";
 import { CityCard } from "@/components/CityCard";
-import { getStateById, states } from "@/data/india";
+import { getStateById } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
 import type { State, City } from "@/types";
@@ -162,7 +162,6 @@ export default function ComparePage() {
                     <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
                       <StateMap
                         stateCode={leftItem.state.id}
-                        state={leftItem.state}
                         selectedDistrict={null}
                         onDistrictSelect={() => { }}
                         onDistrictClick={() => { }}
@@ -184,7 +183,6 @@ export default function ComparePage() {
                     <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
                       <StateMap
                         stateCode={leftState.id}
-                        state={leftState}
                         selectedDistrict={leftItem.type === "city" ? leftItem.city!.name : leftItem.district!.name}
                         onDistrictSelect={() => { }}
                         onDistrictClick={() => { }}
@@ -232,7 +230,6 @@ export default function ComparePage() {
                     <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
                       <StateMap
                         stateCode={rightItem.state.id}
-                        state={rightItem.state}
                         selectedDistrict={null}
                         onDistrictSelect={() => { }}
                         onDistrictClick={() => { }}
@@ -254,7 +251,6 @@ export default function ComparePage() {
                     <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
                       <StateMap
                         stateCode={rightState.id}
-                        state={rightState}
                         selectedDistrict={rightItem.type === "city" ? rightItem.city!.name : rightItem.district!.name}
                         onDistrictSelect={() => { }}
                         onDistrictClick={() => { }}
