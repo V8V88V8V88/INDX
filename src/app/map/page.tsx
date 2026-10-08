@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import Link from "next/link";
+import type * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Header } from "@/components";
 import { stateNameToCode } from "@/lib/map-projection";
@@ -135,7 +136,7 @@ export default function MapPage() {
     if (!containerRef.current) return;
     let dead = false;
 
-    import("maplibre-gl").then(({ default: maplibregl }) => {
+    import("maplibre-gl").then((maplibre) => {
       if (dead || !containerRef.current) return;
 
       const c = tc();
@@ -187,7 +188,7 @@ export default function MapPage() {
         mapOpts.fitBoundsOptions = { padding: 30 };
       }
 
-      const map = new maplibregl.Map(mapOpts);
+      const map = new maplibre.Map(mapOpts);
       mapRef.current = map;
 
       map.on("load", async () => {
