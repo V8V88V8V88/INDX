@@ -21,7 +21,7 @@ const DISTRICT_MIN_ZOOM = 5.5;
 const DISTRICT_LABELS_MIN_ZOOM = 6.5;
 const STATE_LABELS_MAX_ZOOM = 7;
 const SKIP_DISTRICT_LABELS = new Set(["DL", "CH", "PY", "DD", "LD", "AN"]);
-// OpenFreeMap's public glyph server (the MapLibre demo server isn't meant for production use)
+const MAP_WORKER_URL = "/maplibre-gl-worker.mjs";
 const GLYPHS_URL = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
 const LABEL_FONT = "Noto Sans Regular";
 const LABEL_FONT_BOLD = "Noto Sans Bold";
@@ -223,7 +223,6 @@ export default function MapPage() {
     const metric: MapMetric = initial.metric;
     let lastDark = isDark();
 
-    // Fetch district boundaries for states in view once zoomed in far enough
     const loadVisibleDistricts = () => {
       if (!map || map.getZoom() < DISTRICT_MIN_ZOOM || !map.getSource("states")) return;
       const need = new Set<string>();
@@ -245,7 +244,6 @@ export default function MapPage() {
             addDistrictLayers(m, code, data, labelsRef.current);
           })
           .catch(() => {
-            // Allow a retry on the next pan/zoom instead of never loading this state
             loadedRef.current.delete(code);
           });
       });
@@ -277,7 +275,6 @@ export default function MapPage() {
           },
           minZoom: 3,
           maxZoom: 14,
-          // Shows the CARTO/OSM credit whenever the basemap layer is visible
           attributionControl: { compact: true },
         };
 
@@ -289,6 +286,7 @@ export default function MapPage() {
           mapOpts.fitBoundsOptions = { padding: 30 };
         }
 
+        maplibre.setWorkerUrl(MAP_WORKER_URL);
         map = new maplibre.Map(mapOpts);
         mapRef.current = map;
         const m = map;
@@ -357,18 +355,16 @@ export default function MapPage() {
 
           setReady(true);
           setZoom(m.getZoom());
-          loadVisibleDistricts();
+          m.once("idle", loadVisibleDistricts);
         });
 
         m.on("zoomend", () => setZoom(m.getZoom()));
-        // moveend also fires after every zoom
         m.on("moveend", loadVisibleDistricts);
 
         m.on("mousemove", (e) => {
           const point = e.point;
           const { clientX, clientY } = e.originalEvent;
           if (hoverRaf) cancelAnimationFrame(hoverRaf);
-          // Query once per frame rather than on every mouse event
           hoverRaf = requestAnimationFrame(() => {
             hoverRaf = null;
             if (dead || !m.getLayer("state-fill")) return;
@@ -382,7 +378,6 @@ export default function MapPage() {
         });
         m.on("mouseout", () => setHovered(null));
 
-        // Follow light/dark and accent color changes
         const restyle = () => {
           if (!m.getLayer("state-fill")) return;
           const colors = tc();
@@ -402,7 +397,6 @@ export default function MapPage() {
             }
           });
 
-          // Raster tiles can't be recolored, so swap the basemap source only when dark mode flips
           if (dark !== lastDark) {
             lastDark = dark;
             const visibility = m.getLayoutProperty("basemap", "visibility");

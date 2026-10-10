@@ -34,7 +34,6 @@ function getServerSnapshot(): "light" | "dark" {
 }
 
 export function ThemeToggle() {
-  // false during SSR and hydration, true afterwards
   const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 

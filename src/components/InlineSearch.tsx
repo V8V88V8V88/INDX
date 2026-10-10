@@ -32,15 +32,11 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
   const containerRef = useRef<HTMLDivElement>(null);
   const listboxId = useId();
 
-  // Mirror an externally selected state into the input (adjusting state during render
-  // instead of in an effect)
   if (selectedState !== prevSelectedState) {
     setPrevSelectedState(selectedState);
     if (selectedState) setQuery(selectedState.name);
   }
 
-  // Lazy-load districts only for states that are likely relevant to the current query.
-  // Data lives in the shared React Query cache, so it stays available once fetched.
   const searchTerm = query.toLowerCase().trim();
   const wantedStateIds = useMemo(() => {
     if (searchTerm.length < 2) return new Set<string>();
@@ -51,7 +47,6 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
         state.cities.some((city) => city.name.toLowerCase().includes(searchTerm)),
     );
     if (candidates.length > 0) return new Set(candidates.slice(0, 6).map((s) => s.id));
-    // Nothing obvious: search every state's districts (the files are small)
     return searchTerm.length >= 3 ? new Set(states.map((s) => s.id)) : new Set<string>();
   }, [searchTerm]);
 
@@ -70,7 +65,6 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
     if (!searchTerm) return [];
 
     const matches: SearchResult[] = [];
-
 
     states.forEach((state) => {
       if (state.name.toLowerCase().includes(searchTerm) || state.code.toLowerCase() === searchTerm) {
@@ -146,7 +140,6 @@ export function InlineSearch({ placeholder = "Search states, cities, or district
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
 
   const handleSelect = (result: SearchResult) => {
     setQuery(result.name);

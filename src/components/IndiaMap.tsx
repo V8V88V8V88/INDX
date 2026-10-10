@@ -69,8 +69,6 @@ export function IndiaMap({
     if (!svgRef.current) return;
 
     let zoomRafId: number | null = null;
-    // Keep the newest transform and apply it once per frame; using the first event of
-    // a frame would leave React's transform behind d3's after a fast wheel/pinch.
     let latestTransform = { k: 1, x: 0, y: 0 };
     const zoom = d3.zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.5, 8])

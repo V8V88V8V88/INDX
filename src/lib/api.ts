@@ -62,8 +62,6 @@ function markCapitalAndMetro(stateCode: string, districts: District[]): District
   const state = getStateById(stateCode);
   if (!state) return districts;
 
-  // The capital's district is named explicitly: matching on headquarters wrongly
-  // flagged e.g. Bengaluru Rural (HQ Bengaluru), and missed capitals such as Amaravati (Guntur)
   const capitalDistrict = normalizeName(state.capitalDistrict);
   const metroCityNames = new Set(
     state.cities
@@ -108,7 +106,6 @@ export async function fetchDistrictsFromAPI(stateCode: string): Promise<District
     signal: AbortSignal.timeout(5000),
   });
 
-  // Throw instead of returning [] so React Query can retry and doesn't cache a failure as "no districts"
   if (!response.ok) {
     throw new Error(`Failed to fetch districts for ${stateCode}: HTTP ${response.status}`);
   }

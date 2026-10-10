@@ -29,9 +29,6 @@ function normalizeDistrictName(name: string): string {
     .replace(/&/g, "and");
 }
 
-// Exact normalized match first; otherwise, when either name has several words,
-// all words of the shorter name must appear in the longer one (e.g. "Kheri" -> "Lakhimpur Kheri").
-// Never a plain substring match, so "Rampur" can't select "Balrampur".
 function findDistrictByName(list: District[], name: string): District | null {
   const target = normalizeDistrictName(name);
   const exact = list.find((d) => normalizeDistrictName(d.name) === target);
@@ -71,9 +68,6 @@ function findCapitalDistrict(state: State, districts: District[] | undefined): s
   return (districts && findDistrictByName(districts, state.capitalDistrict)?.name) || state.capitalDistrict;
 }
 
-// The URL hash (#district-<name> or #city-<id>) is the single source of truth for the
-// selected district: map clicks, the district list, the capital link and Spotlight all
-// set it, and the back button restores the previous selection.
 function subscribeHash(onChange: () => void) {
   window.addEventListener("hashchange", onChange);
   return () => window.removeEventListener("hashchange", onChange);
@@ -86,7 +80,6 @@ function setHash(hash: string | null) {
     if (window.location.hash !== hash) window.location.hash = hash;
   } else if (window.location.hash) {
     window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
-    // replaceState doesn't fire hashchange on its own
     window.dispatchEvent(new HashChangeEvent("hashchange"));
   }
 }
@@ -119,7 +112,6 @@ export default function StatePage({ params }: PageProps) {
 
   const [isPageReady, setIsPageReady] = useState(false);
   const hash = useSyncExternalStore(subscribeHash, getHash, getServerHash);
-  // Hash we set ourselves for a selection that shouldn't scroll the page
   const skipScrollHashRef = useRef<string | null>(null);
   const lastScrolledHashRef = useRef<string | null>(null);
 
@@ -151,8 +143,6 @@ export default function StatePage({ params }: PageProps) {
     setHash(next);
   };
 
-  // Bring the map into view when a district/city arrives via the URL
-  // (page load, Spotlight, back/forward), but not for clicks on the page itself.
   useEffect(() => {
     if (!hash) {
       lastScrolledHashRef.current = null;
@@ -338,7 +328,6 @@ export default function StatePage({ params }: PageProps) {
                   selectedDistrict={selectedDistrict}
                   onDistrictSelect={(d) => selectDistrict(d)}
                   onDistrictClick={(d) =>
-                    // Map GeoJSON names onto the API's district names
                     selectDistrict((districts && findDistrictByName(districts, d)?.name) || d)
                   }
                 />

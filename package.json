@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "bun run copy:map-worker && next dev",
+    "build": "bun run copy:map-worker && next build",
+    "copy:map-worker": "cp node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs public/maplibre-gl-worker.mjs",
     "start": "next start",
     "lint": "eslint",
     "check:districts": "bun scripts/check-district-anomalies.ts",

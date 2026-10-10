@@ -22,8 +22,6 @@ export function Spotlight() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
-  // Districts are only fetched once the palette has been opened, and share the
-  // React Query cache with useDistricts instead of refetching all states on every page load.
   const [hasOpened, setHasOpened] = useState(false);
   const router = useRouter();
 
@@ -72,7 +70,6 @@ export function Spotlight() {
 
     const searchTerm = query.toLowerCase().trim();
     const matches: SearchResult[] = [];
-
 
     states.forEach((state) => {
       if (state.name.toLowerCase().includes(searchTerm) || state.code.toLowerCase() === searchTerm) {
@@ -132,7 +129,6 @@ export function Spotlight() {
     setQuery("");
     setSelectedIndex(0);
     
-    // Same page: just change the hash (the browser fires hashchange itself)
     const [pathname, hash] = result.path.split("#");
     if (hash && window.location.pathname === pathname) {
       window.location.hash = hash;

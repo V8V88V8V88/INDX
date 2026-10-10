@@ -1,26 +1,4 @@
 #!/usr/bin/env python3
-"""
-Rebuilds the district files (public/data/districts/*.json) and the state-level
-population / sex ratio / GSDP figures in src/data/india.ts from downloaded source
-files. No API keys or network access: everything comes from scripts/data/sources.
-
-Sources (see scripts/data/README.md):
-  - IIPS "Projection of district-level annual population by quinquennial age-group
-    and sex from 2012 to 2031 in India" (Dhar, 2022), Table 8. District totals are
-    controlled to the RGI/MoHFW Technical Group state projections. Parsed into
-    sources/iips-district-projections-2011-2031.json (2011 census boundaries).
-  - Wikipedia district tables (2011 census figures on current boundaries) for
-    AP, TG and UP, used to split 2011 districts into today's districts.
-  - Wikipedia "List of Indian states and union territories by GDP" (MoSPI GSDP,
-    current prices, ₹ billion).
-  - sources/legacy-districts: the previous district files, used for 2011 literacy,
-    headquarters, tiers, census areas and the 2011 size of carved-out districts.
-
-District set = the districts drawn in public/geo/states/<STATE>.json, so every
-shape on the map has data and every record has a shape.
-
-Usage: python3 scripts/data/build_data.py [--check]
-"""
 import json, math, os, re, sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -30,20 +8,12 @@ GEO_DIR = os.path.join(ROOT, "public", "geo", "states")
 INDIA_TS = os.path.join(ROOT, "src", "data", "india.ts")
 
 FILE_NAME = {"TG": "ts"}
-# Districts outside Indian administration (shown on the map, no data)
 EXCLUDED = {"JK": {"Mirpur", "Muzaffarabad"}}
-# A district projection whose sex ratio moves more than this vs 2011 is treated as
-# an extrapolation artifact (IIPS used exponential growth for some small UTs).
 MAX_SR_DRIFT = 0.15
-
 
 def norm(s):
     return re.sub(r"[^a-z]", "", (s or "").lower().replace("&", "and"))
 
-
-# ---------------------------------------------------------------------------
-# Wikipedia wikitext table parsing
-# ---------------------------------------------------------------------------
 def _strip_templates(s):
     out, depth, i = [], 0, 0
     while i < len(s):
@@ -56,7 +26,6 @@ def _strip_templates(s):
         i += 1
     return "".join(out)
 
-
 def _clean(s):
     s = re.sub(r"<ref[^>]*/>", "", s)
     s = re.sub(r"<ref[^>]*>.*?</ref>", "", s, flags=re.S)
@@ -68,7 +37,6 @@ def _clean(s):
     s = re.sub(r"<[^>]+>", " ", s).replace("'''", "").replace("''", "").replace("&nbsp;", " ")
     return re.sub(r"\s+", " ", s).strip()
 
-
 def _cell(c):
     depth = 0
     for i, ch in enumerate(c):
@@ -78,7 +46,6 @@ def _cell(c):
             if re.search(r"(style|rowspan|colspan|align|class|scope|width)\s*=", c[:i]):
                 return c[i + 1:]
     return c
-
 
 def wiki_tables(text):
     for m in re.finditer(r"^\{\|.*?^\|\}", text, flags=re.S | re.M):
@@ -100,11 +67,9 @@ def wiki_tables(text):
                 cur[-1] += " " + _clean(line)
         yield hdr, rows
 
-
 def _num(s):
     m = re.search(r"\d+(?:\.\d+)?", (s or "").replace(",", "").replace(" ", "").replace("|", ""))
     return float(m.group(0)) if m else None
-
 
 def wiki_districts(state):
     """{name: {pop, area, hq, literacy, sexRatio}} from the biggest district table."""
@@ -130,26 +95,9 @@ def wiki_districts(state):
         if len(out) > len(best): best = out
     return best
 
-
-# ---------------------------------------------------------------------------
-# Per-state configuration
-#
-# alias:   IIPS (2011) district name -> map district name, for 1:1 renames
-# groups:  2011 districts that were split. members map each of today's districts
-#          to its 2011 population on current boundaries:
-#            None          remainder (parent total minus the other members)
-#            int           explicit figure
-#            "legacy:Name" population from the previous district file
-#            "wiki:Name"   population from the state's Wikipedia table
-#          The parent's 2026 projection is shared out in proportion to these.
-# whole:   like a group covering the entire state (AP, TG, DL)
-# legacy:  map district name -> name used in the previous district file
-# ---------------------------------------------------------------------------
 CONFIG = {
     "AN": {"legacy": {"Nicobars": "Nicobar"}},
     "AP": {
-        # 26 districts on the map; Markapuram (2025) is folded back into Prakasam and
-        # Polavaram (2025) into Alluri Sitharama Raju, matching the map boundaries.
         "whole": {
             "Alluri Sitharama Raju": ["wiki:Alluri Sitharama Raju", "wiki:Polavaram"],
             "Anakapalli": "wiki:Anakapalli", "Anantapuramu": "wiki:Ananthapuramu",
@@ -164,7 +112,6 @@ CONFIG = {
             "Visakhapatnam": "wiki:Visakhapatnam", "Vizianagaram": "wiki:Vizianagaram",
             "West Godavari": "wiki:West Godavari", "YSR": "wiki:YSR Kadapa",
         },
-        # 2011 literacy of the old district each new one was mostly carved from
         "literacyFrom": {
             "Alluri Sitharama Raju": "Visakhapatnam", "Anakapalli": "Visakhapatnam",
             "Anantapuramu": "Anantapur", "Annamayya": "Kadapa", "Bapatla": "Guntur",
@@ -184,9 +131,6 @@ CONFIG = {
         "alias": {"Dibang Valley": "Upper Dibang Valley"},
         "legacy": {"Upper Dibang Valley": "Dibang Valley", "Pakke Kessang": "Pakke-Kessang"},
         "groups": [
-            # 2011 figures on current boundaries from each district's Wikipedia article; the
-            # previous file had round guesses here (e.g. Siang 32,000, Lepa Rada 25,000).
-            # The six Siang districts below add up exactly to the 2011 West + East Siang total.
             {"parents": ["Lohit"], "members": {"Lohit": None, "Namsai": 95950}},
             {"parents": ["Tirap"], "members": {"Tirap": None, "Longding": 56953}},
             {"parents": ["Kurung Kumey"], "members": {"Kurung Kumey": None, "Kra Daadi": 46123}},
@@ -215,7 +159,6 @@ CONFIG = {
         "legacy": {"Bametara": "Bemetara", "Dakshin Bastar Dantewada": "Dantewada",
                    "Kabeerdham": "Kabirdham", "Uttar Bastar Kanker": "Kanker", "Janjgir Champa": "Janjgir-Champa"},
         "groups": [
-            # Baloda Bazar on its pre-2022 boundary (2011: 1,305,343)
             {"parents": ["Raipur"], "members": {"Raipur": None, "Gariaband": "legacy:Gariaband", "Baloda Bazar": 1305343}},
             {"parents": ["Durg"], "members": {"Durg": None, "Balod": "legacy:Balod", "Bametara": "legacy:Bemetara"}},
             {"parents": ["Bilaspur"], "members": {"Bilaspur": None, "Mungeli": "legacy:Mungeli"}},
@@ -227,8 +170,6 @@ CONFIG = {
         "hq": {"Baloda Bazar": "Baloda Bazar"},
     },
     "DL": {
-        # Delhi was redrawn into 11 districts in 2012; share the 2026 total by the
-        # previous file's relative district sizes.
         "whole": {g: f"legacy:{l}" for g, l in {
             "Central": "Central Delhi", "East": "East Delhi", "New Delhi": "New Delhi",
             "North": "North Delhi", "North East": "North East Delhi", "North West": "North West Delhi",
@@ -268,14 +209,12 @@ CONFIG = {
         "legacy": {"Punch": "Poonch", "Shopiyan": "Shopian"},
     },
     "KA": {
-        # Vijayanagara (2021) is drawn as part of Ballari on the map
         "alias": {"Bangalore": "Bengaluru Urban", "Bangalore Rural": "Bengaluru Rural", "Belgaum": "Belagavi",
                   "Bagalkot": "Bagalkote", "Bijapur": "Vijayapura", "Bellary": "Ballari", "Shimoga": "Shivamogga",
                   "Chikmagalur": "Chikkamagaluru", "Tumkur": "Tumakuru", "Mysore": "Mysuru",
                   "Chamarajanagar": "Chamarajanagara", "Gulbarga": "Kalaburagi"},
         "legacy": {"Bagalkote": "Bagalkot", "Chamarajanagara": "Chamarajanagar",
                    "Chikkaballapura": "Chikkaballapur", "Davanagere": "Davangere"},
-        # Bidar was missing from the previous file (2011 census: 5,448 km², literacy 70.5%)
         "manual": {"Bidar": {"area": 5448, "literacyRate": 70.5}},
         "hq": {"Bidar": "Bidar"},
     },
@@ -283,7 +222,6 @@ CONFIG = {
     "MH": {
         "alias": {"Buldana": "Buldhana", "Gondiya": "Gondia", "Raigarh": "Raigad", "Ahmadnagar": "Ahmednagar", "Bid": "Beed"},
         "groups": [
-            # The map draws Mumbai City + Mumbai Suburban as one district
             {"parents": ["Mumbai", "Mumbai Suburban"], "members": {"Mumbai": None}},
             {"parents": ["Thane"], "members": {"Thane": None, "Palghar": "legacy:Palghar"}},
         ],
@@ -316,11 +254,9 @@ CONFIG = {
         ],
         "literacyFrom": {"Niwari": "Tikamgarh"},
         "hq": {"Niwari": "Niwari", "Sheopur": "Sheopur"},
-        # Sheopur was missing from the previous file (2011 census: 6,585 km², literacy 57.4%)
         "manual": {"Sheopur": {"area": 6585, "literacyRate": 57.4}},
     },
     "MZ": {
-        # Saitual (2019) is drawn as part of Aizawl/Champhai on the map
         "groups": [
             {"parents": ["Lunglei"], "members": {"Lunglei": None, "Hnahthial": "legacy:Hnahthial"}},
             {"parents": ["Champhai"], "members": {"Champhai": None, "Khawzawl": "legacy:Khawzawl"}},
@@ -341,7 +277,6 @@ CONFIG = {
             {"parents": ["Gurdaspur"], "members": {"Gurdaspur": None, "Pathankot": "legacy:Pathankot"}},
         ],
         "hq": {"Faridkot": "Faridkot"},
-        # Faridkot was missing from the previous file (2011 census: 1,469 km², literacy 69.6%)
         "manual": {"Faridkot": {"area": 1469, "literacyRate": 69.6}},
     },
     "RJ": {"alias": {"Jhunjhunun": "Jhunjhunu", "Dhaulpur": "Dholpur", "Jalor": "Jalore", "Chittaurgarh": "Chittorgarh"},
@@ -349,7 +284,6 @@ CONFIG = {
     "SK": {"alias": {"North District": "North Sikkim", "West District": "West Sikkim",
                      "South District": "South Sikkim", "East District": "East Sikkim"}},
     "TG": {
-        # Map uses the pre-2021 names Warangal Urban (now Hanumakonda) and Warangal Rural (now Warangal)
         "whole": {
             "Adilabad": "wiki:Adilabad", "Komaram Bheem": "wiki:Kumuram Bheem Asifabad",
             "Mancherial": "wiki:Mancherial", "Nirmal": "wiki:Nirmal", "Nizamabad": "wiki:Nizamabad",
@@ -370,7 +304,6 @@ CONFIG = {
         "tier": {"Hyderabad": 1, "Medchal Malkajgiri": 1, "Ranga Reddy": 1, "Warangal Urban": 2},
     },
     "TN": {
-        # Mayiladuthurai (2020) is drawn as part of Nagapattinam on the map
         "alias": {"The Nilgiris": "Nilgiris", "Kanniyakumari": "Kanyakumari"},
         "legacy": {"Kancheepuram": "Kanchipuram", "Nilgiris": "The Nilgiris", "Thiruvallur": "Tiruvallur",
                    "Thiruvarur": "Tiruvarur", "Thoothukkudi": "Thoothukudi"},
@@ -397,10 +330,8 @@ CONFIG = {
                   "Allahabad": "Prayagraj", "Faizabad": "Ayodhya", "Mahrajganj": "Maharajganj",
                   "Sant Ravidas Nagar (Bhadohi)": "Bhadohi", "Kanshiram Nagar": "Kasganj"},
         "legacy": {"Rae Bareli": "Raebareli", "Shrawasti": "Shravasti", "Siddharthnagar": "Siddharth Nagar"},
-        # Wikipedia's UP table sums exactly to the 2011 census total, so use it for every split
         "groups": [
             {"parents": ["Moradabad", "Budaun"], "members": {
-                # Wikipedia's Sambhal row predates Gunnaur moving in from Budaun; take it as the remainder
                 "Moradabad": "wiki:Moradabad", "Sambhal": None, "Budaun": "wiki:Budaun"}},
             {"parents": ["Ghaziabad"], "members": {"Ghaziabad": "wiki:Ghaziabad", "Hapur": "wiki:Hapur"}},
             {"parents": ["Muzaffarnagar"], "members": {"Muzaffarnagar": "wiki:Muzaffarnagar", "Shamli": "wiki:Shamli"}},
@@ -422,7 +353,6 @@ CONFIG = {
     },
 }
 
-# District containing each state's capital (map names)
 CAPITAL_DISTRICT = {
     "AP": "Guntur", "AR": "Papum Pare", "AS": "Kamrup Metropolitan", "BR": "Patna", "CG": "Raipur",
     "GA": "North Goa", "GJ": "Gandhinagar", "HP": "Shimla", "JH": "Ranchi", "KA": "Bengaluru Urban",
@@ -431,11 +361,8 @@ CAPITAL_DISTRICT = {
     "SK": "East Sikkim", "TN": "Chennai", "TG": "Hyderabad", "TR": "West Tripura", "UP": "Lucknow",
     "UK": "Dehradun", "WB": "Kolkata", "AN": "South Andaman", "CH": "Chandigarh", "DD": "Daman",
     "DL": "New Delhi", "JK": "Srinagar", "LA": "Leh", "LD": "Lakshadweep", "PY": "Puducherry",
-    # HR and PB: the capital (Chandigarh) is a separate UT
 }
 
-
-# ---------------------------------------------------------------------------
 def ring_area(ring):
     """Approximate spherical area (km²) of a lon/lat ring."""
     R = 6371.0088
@@ -445,11 +372,9 @@ def ring_area(ring):
         a += math.radians(l2 - l1) * (2 + math.sin(math.radians(p1)) + math.sin(math.radians(p2)))
     return abs(a * R * R / 2)
 
-
 def geom_area(g):
     polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
     return sum(ring_area(p[0]) - sum(ring_area(h) for h in p[1:]) for p in polys)
-
 
 def load_states():
     """Read id, area and population blocks from india.ts (via bun, which can import TS)."""
@@ -458,7 +383,6 @@ def load_states():
         ["bun", "-e", 'import {states} from "./src/data/india.ts"; console.log(JSON.stringify(states))'],
         cwd=ROOT)
     return {s["id"]: s for s in json.loads(out)}
-
 
 def main(check_only=False):
     states = load_states()
@@ -478,7 +402,7 @@ def main(check_only=False):
             name = f["properties"].get("district")
             geo_area[name] = geo_area.get(name, 0) + geom_area(f["geometry"])
         targets = [n for n in sorted(geo_area) if n not in EXCLUDED.get(st, set())]
-        if st == "CH":  # the CH map is split into sectors; it's one district
+        if st == "CH":
             targets, geo_area = ["Chandigarh"], {"Chandigarh": 1.0}
         wiki = wiki_districts(st) if os.path.exists(os.path.join(SRC, "wikipedia", f"districts-{st}.wikitext")) else {}
 
@@ -501,7 +425,6 @@ def main(check_only=False):
             if not d: problems.append(f"{st}: no legacy row '{ref}'"); return 0
             return d["population"]
 
-        # ---- assemble groups -------------------------------------------------
         groups = []
         used = set()
         if "whole" in cfg:
@@ -520,7 +443,6 @@ def main(check_only=False):
             if not t: problems.append(f"{st}: IIPS district '{name}' has no map district"); continue
             groups.append({"parents": [name], "members": {t: None}})
 
-        # ---- populations ----------------------------------------------------
         recs = {}
         for g in groups:
             ps = [rows[p] for p in g["parents"] if p in rows]
@@ -565,7 +487,6 @@ def main(check_only=False):
         missing = [t for t in targets if t not in recs]
         if missing: problems.append(f"{st}: map districts without data: {missing}")
 
-        # ---- areas: keep census areas for unchanged districts, share the rest by map area
         split_targets = {t for g in groups if len(g["members"]) > 1 or len(g["parents"]) > 1 for t in g["members"]}
         fixed = {}
         for t in recs:
@@ -598,7 +519,6 @@ def main(check_only=False):
             for r in recs.values():
                 r["area"] = round(r["area"] * state["area"] / area_sum)
 
-        # ---- literacy, HQ, tier, id ------------------------------------------
         lit_from = cfg.get("literacyFrom", {})
         out = []
         used_ids = set()
@@ -632,7 +552,6 @@ def main(check_only=False):
                 did, k = base, 2
                 while did in used_ids: did, k = f"{base}{k}", k + 1
             used_ids.add(did)
-            # Delhi's map names are bare compass points ("Central"); StateMap shows them as "Central Delhi"
             display = f"{t} Delhi" if st == "DL" and t not in ("New Delhi", "Shahdara") else t
             rec = {
                 "id": did, "name": display, "stateId": st,
@@ -680,7 +599,6 @@ def main(check_only=False):
     write_india_ts(state_out)
     print("wrote", len(state_out), "district files and updated src/data/india.ts")
 
-
 def parse_gsdp():
     text = open(os.path.join(SRC, "wikipedia", "state-gdp.wikitext")).read()
     hdr, rows = next(wiki_tables(text))
@@ -700,7 +618,6 @@ def parse_gsdp():
         out[names[r[1]]] = {"y2324": val(r[2]), "y2425": val(r[3]), "y2526": val(r[4]) if len(r) > 4 else None}
     return out
 
-
 def write_india_ts(state_out):
     src = open(INDIA_TS).read()
     for st, s in state_out.items():
@@ -719,7 +636,6 @@ def write_india_ts(state_out):
             new = re.sub(r'(\n    capital: "[^"]*",)', r'\1' + f'\n    capitalDistrict: "{s["capitalDistrict"]}",', new, count=1)
         src = src.replace(block, new)
     open(INDIA_TS, "w").write(src)
-
 
 if __name__ == "__main__":
     main(check_only="--check" in sys.argv)

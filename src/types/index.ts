@@ -25,7 +25,6 @@ export interface State {
   name: string;
   code: string;
   capital: string;
-  /** Map name of the district containing the capital (absent when the capital is in another state/UT) */
   capitalDistrict?: string;
   region: "North" | "South" | "East" | "West" | "Central" | "Northeast";
   population: number;
@@ -33,8 +32,8 @@ export interface State {
   density: number; // per sq km
   literacyRate: number; // %
   sexRatio: number; // females per 1000 males
-  gdp: number; // GSDP, crores INR, current prices
-  gdpYear?: string; // financial year of `gdp`, e.g. "2024-25"
+  gdp: number; // crores INR
+  gdpYear?: string;
   hdi: number; // 0-1
   cities: City[];
   districts?: District[];

@@ -20,8 +20,6 @@ export const defaultSettings: Settings = {
 
 const listeners = new Set<() => void>();
 
-// Snapshot is cached by the raw stored string so useSyncExternalStore
-// gets a stable object between reads.
 let cachedRaw: string | null = null;
 let cachedSettings: Settings = defaultSettings;
 
@@ -54,7 +52,6 @@ export function getServerSettings(): Settings {
 
 export function subscribeSettings(listener: () => void): () => void {
   listeners.add(listener);
-  // Keep other tabs in sync
   const onStorage = (e: StorageEvent) => {
     if (e.key === SETTINGS_KEY) listener();
   };

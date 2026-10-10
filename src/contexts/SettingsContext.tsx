@@ -18,8 +18,6 @@ interface SettingsContextType {
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
-    // Server and hydration render use the defaults, then the stored settings
-    // are picked up, so the first client render never mismatches the HTML.
     const settings = useSyncExternalStore(subscribeSettings, getSettings, getServerSettings);
 
     useEffect(() => {

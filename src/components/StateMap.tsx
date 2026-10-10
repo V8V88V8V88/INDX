@@ -35,13 +35,9 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
   const [prevStateCode, setPrevStateCode] = useState(stateCode);
 
-  // Derived from which state the loaded data belongs to, so switching states shows
-  // the spinner instead of the previous state's map.
   const loading = loaded?.code !== stateCode;
   const geoData = loading ? null : loaded.data;
 
-  // Clear our own hover/selection when the state changes (adjusting state during render).
-  // A controlled selection is owned by the parent.
   if (stateCode !== prevStateCode) {
     setPrevStateCode(stateCode);
     setHoveredDistrict(null);
@@ -238,7 +234,6 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const mouseRafRef = useRef<number | null>(null);
   const latestMouseRef = useRef({ x: 0, y: 0 });
-  // Unique per instance: the compare page renders two maps
   const filterId = useId();
 
   useEffect(() => () => {
@@ -258,7 +253,6 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
     if (isDistrictSelected(name)) {
       setSelectedDistrict(null);
     } else if (onDistrictClick) {
-      // Let the parent normalize the GeoJSON name to its own district names
       onDistrictClick(name);
     } else {
       setSelectedDistrict(name);

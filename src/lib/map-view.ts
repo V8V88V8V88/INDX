@@ -12,7 +12,6 @@ export function isMapMetric(value: unknown): value is MapMetric {
     value === "area";
 }
 
-/** Indices into the --choro-0..9 ramp used for each metric, lightest to darkest. */
 export function getMetricPaletteIndices(metric: MapMetric): number[] {
   if (metric === "sexRatio") return [1, 2, 4, 5, 7, 8, 9];
   if (metric === "area") return [0, 1, 2, 4, 6, 7, 8, 9];
@@ -20,7 +19,6 @@ export function getMetricPaletteIndices(metric: MapMetric): number[] {
   return [0, 1, 3, 5, 7, 8, 9];
 }
 
-/** State ids that have a value for `metric`, sorted highest first. */
 export function rankStatesByMetric(metric: MapMetric): string[] {
   return states
     .filter((state) => state[metric] != null)
@@ -28,7 +26,6 @@ export function rankStatesByMetric(metric: MapMetric): string[] {
     .map((state) => state.id);
 }
 
-/** Palette index for a state's rank: rank 0 (highest) gets the darkest color. */
 export function colorIndexForRank(rank: number, total: number, paletteSize: number): number {
   const ratio = rank / Math.max(total - 1, 1);
   const bucket = Math.min(Math.floor(ratio * paletteSize), paletteSize - 1);

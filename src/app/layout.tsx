@@ -28,8 +28,6 @@ export const metadata: Metadata = {
 import { SettingsProvider } from "@/contexts/SettingsContext";
 import { Spotlight } from "@/components/Spotlight";
 
-// Applies the stored dark mode and accent color before first paint, so the page
-// doesn't flash the default theme until React hydrates.
 const themeBootScript = `(function(){try{
 var d=document.documentElement,t=localStorage.getItem("theme");
 if(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))d.classList.add("dark");

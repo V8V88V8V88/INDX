@@ -4,9 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { Header } from "@/components";
 
-
-// India has no census after 2011 (Census 2027 results are pending), so population
-// figures are the official projections for 2026.
 const SOURCES = [
   {
     name: "RGI / MoHFW Population Projections 2011–2036",
