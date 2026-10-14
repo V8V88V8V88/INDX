@@ -18,7 +18,7 @@ const INDIA_CENTER: [number, number] = [82, 22];
 const INDIA_BOUNDS: [[number, number], [number, number]] = [[68, 6], [98, 38]];
 const DEFAULT_ZOOM = 4;
 const DISTRICT_MIN_ZOOM = 5.5;
-const DISTRICT_LABELS_MIN_ZOOM = 6.5;
+const DISTRICT_LABELS_MIN_ZOOM = 6.0;
 const STATE_LABELS_MAX_ZOOM = 7;
 const SKIP_DISTRICT_LABELS = new Set(["DL", "CH", "PY", "DD", "LD", "AN"]);
 const MAP_WORKER_URL = "/maplibre-gl-worker.mjs";
@@ -60,12 +60,16 @@ function resolveCSS(cssValue: string): string {
 }
 
 function tc() {
+  const dark = isDark();
   return {
     bg: resolveCSS("var(--bg-primary)"),
     card: resolveCSS("var(--bg-card)"),
     text: resolveCSS("var(--text-primary)"),
     border: resolveCSS("var(--map-border-color)"),
     choro: Array.from({ length: 10 }, (_, i) => resolveCSS(`var(--choro-${i})`)),
+    labelText: dark ? "#ffffff" : "#09090b",
+    labelHalo: dark ? "#000000" : "#ffffff",
+    districtHalo: dark ? "rgba(0, 0, 0, 0.6)" : "rgba(255, 255, 255, 0.85)",
   };
 }
 
@@ -137,18 +141,18 @@ function addDistrictLayers(m: maplibregl.Map, code: string, data: GeoJSON.Featur
       source: labelSrc,
       layout: {
         "text-field": ["get", "district"],
-        "text-size": ["interpolate", ["linear"], ["zoom"], 6, 9, 9, 12, 12, 14],
-        "text-font": [LABEL_FONT],
+        "text-size": ["interpolate", ["linear"], ["zoom"], 6, 11, 8, 13, 10, 15, 12, 17],
+        "text-font": [LABEL_FONT_BOLD],
         "text-allow-overlap": false,
         "text-optional": true,
-        "text-padding": 6,
+        "text-padding": 5,
         visibility: showLabels ? "visible" : "none",
       },
       paint: {
-        "text-color": c.text,
-        "text-halo-color": c.card,
-        "text-halo-width": 1.2,
-        "text-halo-blur": 0.3,
+        "text-color": c.labelText,
+        "text-halo-color": c.districtHalo,
+        "text-halo-width": 1.6,
+        "text-halo-blur": 0.6,
       },
       minzoom: DISTRICT_LABELS_MIN_ZOOM,
     },
@@ -345,9 +349,9 @@ export default function MapPage() {
               visibility: labelsRef.current ? "visible" : "none",
             },
             paint: {
-              "text-color": c.text,
-              "text-halo-color": c.card,
-              "text-halo-width": 1.5,
+              "text-color": c.labelText,
+              "text-halo-color": c.labelHalo,
+              "text-halo-width": 2.2,
               "text-halo-blur": 0.5,
             },
             maxzoom: STATE_LABELS_MAX_ZOOM,
@@ -386,14 +390,14 @@ export default function MapPage() {
           m.setPaintProperty("bg", "background-color", colors.bg);
           m.setPaintProperty("state-fill", "fill-color", choroplethExpr(metric, colors.choro));
           m.setPaintProperty("state-line", "line-color", colors.border);
-          m.setPaintProperty("state-labels", "text-color", colors.text);
-          m.setPaintProperty("state-labels", "text-halo-color", colors.card);
+          m.setPaintProperty("state-labels", "text-color", colors.labelText);
+          m.setPaintProperty("state-labels", "text-halo-color", colors.labelHalo);
 
           loadedRef.current.forEach((code) => {
             if (m.getLayer(`d-line-${code}`)) m.setPaintProperty(`d-line-${code}`, "line-color", colors.text);
             if (m.getLayer(`d-label-${code}`)) {
-              m.setPaintProperty(`d-label-${code}`, "text-color", colors.text);
-              m.setPaintProperty(`d-label-${code}`, "text-halo-color", colors.card);
+              m.setPaintProperty(`d-label-${code}`, "text-color", colors.labelText);
+              m.setPaintProperty(`d-label-${code}`, "text-halo-color", colors.districtHalo);
             }
           });
 
