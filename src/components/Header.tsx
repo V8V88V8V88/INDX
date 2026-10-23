@@ -15,6 +15,7 @@ interface BreadcrumbItem {
 
 interface HeaderProps {
   breadcrumbs?: BreadcrumbItem[];
+  overlay?: boolean;
 }
 
 const navLinks = [
@@ -22,7 +23,7 @@ const navLinks = [
   { href: "/compare", label: "Compare" },
 ];
 
-export function Header({ breadcrumbs }: HeaderProps) {
+export function Header({ breadcrumbs, overlay }: HeaderProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,12 +35,12 @@ export function Header({ breadcrumbs }: HeaderProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className={cn("top-0 z-50 w-full", overlay ? "fixed" : "sticky")}>
       <div
         aria-hidden="true"
         className={cn(
           "pointer-events-none absolute inset-x-0 top-0 -z-10 h-20 bg-gradient-to-b from-bg-primary/90 via-bg-primary/60 to-transparent backdrop-blur-md transition-opacity duration-300 [mask-image:linear-gradient(to_bottom,black_45%,transparent)]",
-          scrolled ? "opacity-100" : "opacity-0",
+          scrolled || overlay ? "opacity-100" : "opacity-0",
         )}
       />
       <div className="relative mx-auto flex h-12 max-w-7xl items-center justify-between px-6">
