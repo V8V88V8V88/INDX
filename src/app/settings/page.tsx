@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { Header } from "@/components";
+import { BackLink, SegmentedControl } from "@/components/ui";
 import { useSettings } from "@/contexts/SettingsContext";
 import { THEMES } from "@/lib/theme";
+
+const panelClass = "rounded-xl bg-bg-secondary p-4";
 
 export default function SettingsPage() {
   const { settings, updateSetting } = useSettings();
@@ -34,14 +36,12 @@ export default function SettingsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="card p-5"
+          className="card p-6"
         >
-          <h2 className="mb-3 text-lg font-semibold text-text-primary">Appearance</h2>
+          <h2 className="mb-4 text-lg font-semibold text-text-primary">Appearance</h2>
 
-          <div className="space-y-6">
-
-            {/* Accent Color */}
-            <div className="rounded-lg bg-bg-secondary p-3">
+          <div className="space-y-4">
+            <div className={panelClass}>
               <h3 className="mb-3 text-sm font-medium text-text-primary">Accent Color</h3>
               <div className="flex flex-wrap items-center gap-3">
                 {THEMES.map((theme) => {
@@ -67,97 +67,57 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            {/* Units & Formats */}
             <div className="grid gap-4 sm:grid-cols-2">
-
-              {/* Distance */}
-              <div className="rounded-lg bg-bg-secondary p-3">
+              <div className={panelClass}>
                 <h3 className="mb-3 text-sm font-medium text-text-primary">Distance Unit</h3>
-                <div className="flex rounded-md bg-bg-tertiary p-1">
-                  {(["km", "miles"] as const).map((unit) => (
-                    <button
-                      key={unit}
-                      onClick={() => updateSetting("distanceUnit", unit)}
-                      className={`flex-1 rounded py-1.5 text-sm font-medium transition-all ${settings.distanceUnit === unit
-                          ? "bg-bg-primary text-text-primary shadow-sm"
-                          : "text-text-muted hover:text-text-secondary"
-                        }`}
-                    >
-                      {unit === "km" ? "Kilometers" : "Miles"}
-                    </button>
-                  ))}
-                </div>
+                <SegmentedControl
+                  label="Distance unit"
+                  size="sm"
+                  fullWidth
+                  value={settings.distanceUnit}
+                  onChange={(unit) => updateSetting("distanceUnit", unit)}
+                  options={[
+                    { value: "km", label: "Kilometers" },
+                    { value: "miles", label: "Miles" },
+                  ]}
+                />
               </div>
 
-              {/* Number Format */}
-              <div className="rounded-lg bg-bg-secondary p-3">
+              <div className={panelClass}>
                 <h3 className="mb-3 text-sm font-medium text-text-primary">Number System</h3>
-                <div className="flex rounded-md bg-bg-tertiary p-1">
-                  {(["indian", "international"] as const).map((format) => (
-                    <button
-                      key={format}
-                      onClick={() => updateSetting("numberFormat", format)}
-                      className={`flex-1 rounded py-1.5 text-sm font-medium transition-all ${settings.numberFormat === format
-                          ? "bg-bg-primary text-text-primary shadow-sm"
-                          : "text-text-muted hover:text-text-secondary"
-                        }`}
-                    >
-                      {format === "indian" ? "Lakh / Crore" : "Million / Billion"}
-                    </button>
-                  ))}
-                </div>
+                <SegmentedControl
+                  label="Number system"
+                  size="sm"
+                  fullWidth
+                  value={settings.numberFormat}
+                  onChange={(format) => updateSetting("numberFormat", format)}
+                  options={[
+                    { value: "indian", label: "Lakh / Crore" },
+                    { value: "international", label: "Million / Billion" },
+                  ]}
+                />
               </div>
 
-              {/* Currency */}
-              <div className="rounded-lg bg-bg-secondary p-3">
+              <div className={panelClass}>
                 <h3 className="mb-3 text-sm font-medium text-text-primary">Currency</h3>
-                <div className="flex rounded-md bg-bg-tertiary p-1">
-                  {(["INR", "USD"] as const).map((curr) => (
-                    <button
-                      key={curr}
-                      onClick={() => updateSetting("currency", curr)}
-                      className={`flex-1 rounded py-1.5 text-sm font-medium transition-all ${settings.currency === curr
-                          ? "bg-bg-primary text-text-primary shadow-sm"
-                          : "text-text-muted hover:text-text-secondary"
-                        }`}
-                    >
-                      {curr === "INR" ? "Rupee (₹)" : "Dollar ($)"}
-                    </button>
-                  ))}
-                </div>
+                <SegmentedControl
+                  label="Currency"
+                  size="sm"
+                  fullWidth
+                  value={settings.currency}
+                  onChange={(curr) => updateSetting("currency", curr)}
+                  options={[
+                    { value: "INR", label: "Rupee (₹)" },
+                    { value: "USD", label: "Dollar ($)" },
+                  ]}
+                />
               </div>
             </div>
-
           </div>
         </motion.section>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="mt-8"
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-lg border border-border-light px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-bg-secondary"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 12L6 8L10 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            Back to Home
-          </Link>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-8">
+          <BackLink />
         </motion.div>
       </main>
     </div>

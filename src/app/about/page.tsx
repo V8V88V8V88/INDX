@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Link from "next/link";
 import { Header } from "@/components";
+import { BackLink, Badge, Icon } from "@/components/ui";
 
 const SOURCES = [
   {
@@ -84,20 +84,21 @@ export default function AboutPage() {
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: prefersReducedMotion ? 0 : 0.4, delay: prefersReducedMotion ? 0 : 0.1 }}
-          className="card mb-6 p-4"
+          className="card mb-6 p-6"
         >
-          <h2 className="mb-3 text-base font-semibold text-text-primary">Tech Stack</h2>
+          <h2 className="mb-4 text-lg font-semibold text-text-primary">Tech Stack</h2>
           <div className="flex flex-wrap gap-2">
             {techStack.map((tech, index) => (
-                <motion.span
-                  key={tech.name}
-                  initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: prefersReducedMotion ? 0 : 0.2, delay: prefersReducedMotion ? 0 : 0.1 + index * 0.03 }}
-                  className="inline-flex items-center gap-1.5 rounded-md bg-bg-secondary px-2.5 py-1 text-xs"
-                >
-                <span className="font-medium text-text-primary">{tech.name}</span>
-                <span className="text-text-muted">v{tech.version}</span>
+              <motion.span
+                key={tech.name}
+                initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.2, delay: prefersReducedMotion ? 0 : 0.1 + index * 0.03 }}
+              >
+                <Badge>
+                  <span className="font-medium text-text-primary">{tech.name}</span>
+                  <span className="text-text-muted">v{tech.version}</span>
+                </Badge>
               </motion.span>
             ))}
           </div>
@@ -108,7 +109,7 @@ export default function AboutPage() {
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: prefersReducedMotion ? 0 : 0.4, delay: prefersReducedMotion ? 0 : 0.2 }}
-          className="card mb-6 p-5"
+          className="card mb-6 p-6"
         >
           <h2 className="mb-4 text-lg font-semibold text-text-primary">Why did I build this site?</h2>
           <div className="space-y-3 text-text-tertiary">
@@ -124,7 +125,7 @@ export default function AboutPage() {
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: prefersReducedMotion ? 0 : 0.4, delay: prefersReducedMotion ? 0 : 0.3 }}
-          className="card p-5"
+          className="card p-6"
         >
           <h2 className="mb-4 text-lg font-semibold text-text-primary">Sources</h2>
           <div className="space-y-3 text-sm text-text-tertiary">
@@ -137,11 +138,7 @@ export default function AboutPage() {
                   className="font-medium text-text-primary hover:text-accent-primary transition-colors inline-flex items-center gap-1"
                 >
                   {source.name}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
+                  <Icon name="external" size={14} />
                 </a>
                 <p className="text-text-muted mt-0.5">{source.description}</p>
               </div>
@@ -155,27 +152,7 @@ export default function AboutPage() {
           transition={{ delay: prefersReducedMotion ? 0 : 0.3 }}
           className="mt-8"
         >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-lg border border-border-light px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-bg-secondary"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 12L6 8L10 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            Back to Home
-          </Link>
+          <BackLink />
         </motion.div>
       </main>
     </div>

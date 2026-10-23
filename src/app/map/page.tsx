@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import type * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Header } from "@/components";
+import { Button, CursorTooltip, Icon, LinkButton, Spinner } from "@/components/ui";
 import { stateNameToCode } from "@/lib/map-projection";
 
 const INDIA_CENTER: [number, number] = [82, 22];
@@ -245,6 +245,9 @@ function centroidPoints(geo: GeoJSON.FeatureCollection, pickProps: (props: GeoJS
     })),
   };
 }
+
+const pillClass = "rounded-full border border-border-light bg-bg-card/90 px-3 py-1.5 text-xs text-text-muted backdrop-blur-sm";
+const zoomButtonClass = "flex h-9 w-9 items-center justify-center text-text-secondary transition-colors hover:bg-bg-secondary hover:text-text-primary";
 
 export default function MapPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -583,121 +586,55 @@ export default function MapPage() {
             <p className="text-text-muted">Couldn&apos;t load the map. Please refresh to try again.</p>
           </div>
         ) : !ready && (
-          <div className="absolute inset-0 z-30 flex items-center justify-center bg-bg-primary" role="status" aria-label="Loading map">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-primary border-t-transparent" />
+          <div className="absolute inset-0 z-30 flex items-center justify-center bg-bg-primary">
+            <Spinner label="Loading map" />
           </div>
         )}
 
         <div className="pointer-events-none absolute inset-0">
           <div className="pointer-events-auto absolute left-4 top-4 z-10 flex items-center gap-2">
-            <Link
-              href="/"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm transition-colors hover:bg-bg-secondary"
-              title="Back"
-              aria-label="Back to home"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-            </Link>
+            <LinkButton href="/" variant="overlay" iconOnly title="Back" aria-label="Back to home">
+              <Icon name="arrow-left" />
+            </LinkButton>
             {zoom < DISTRICT_MIN_ZOOM && (
-              <span className="rounded-full bg-bg-card/90 px-3 py-1.5 text-xs text-text-muted backdrop-blur-sm">
-                Zoom in to see districts
-              </span>
+              <span className={pillClass}>Zoom in to see districts</span>
             )}
           </div>
 
           <div className="pointer-events-auto absolute right-4 top-4 z-10 flex items-center gap-2">
-            <span className="rounded-full bg-bg-card/90 px-2.5 py-1.5 font-mono text-xs text-text-muted backdrop-blur-sm">
-              {pct}%
-            </span>
-            <button
-              type="button"
-              onClick={toggleLabels}
-              className={`flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur-sm transition-colors ${
-                showLabels
-                  ? "border-accent-primary bg-accent-primary text-white"
-                  : "border-border-light bg-bg-card/90 text-text-secondary hover:bg-bg-secondary"
-              }`}
-              title="Toggle labels"
-              aria-label="Show labels"
-              aria-pressed={showLabels}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A1.994 1.994 0 0 1 3 12V7a4 4 0 0 1 4-4z" />
-              </svg>
-            </button>
+            <span className={`${pillClass} font-mono`}>{pct}%</span>
+            <Button variant="overlay" iconOnly pressed={showLabels} onClick={toggleLabels} title="Toggle labels" aria-label="Show labels">
+              <Icon name="tag" />
+            </Button>
           </div>
 
           <div className="pointer-events-auto absolute bottom-4 left-4 z-10">
-            <button
-              type="button"
-              onClick={toggleBasemap}
-              className={`flex h-9 items-center gap-1.5 rounded-full border px-3 text-xs font-medium backdrop-blur-sm transition-colors ${
-                basemap
-                  ? "border-accent-primary bg-accent-primary text-white"
-                  : "border-border-light bg-bg-card/90 text-text-secondary hover:bg-bg-secondary"
-              }`}
-              title="Toggle basemap"
-              aria-label="Show basemap"
-              aria-pressed={basemap}
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
-            </button>
+            <Button variant="overlay" iconOnly pressed={basemap} onClick={toggleBasemap} title="Toggle basemap" aria-label="Show basemap">
+              <Icon name="globe" />
+            </Button>
           </div>
 
           <div className="pointer-events-auto absolute bottom-10 right-4 z-10 flex flex-col items-end gap-2">
             {hasZoomed && (
-              <button
-                type="button"
-                onClick={resetView}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm transition-colors hover:bg-bg-secondary"
-                title="Reset"
-                aria-label="Reset view"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                  <path d="M3 3v5h5" />
-                </svg>
-              </button>
+              <Button variant="overlay" iconOnly onClick={resetView} title="Reset" aria-label="Reset view">
+                <Icon name="reset" size={14} />
+              </Button>
             )}
             <div className="flex flex-col overflow-hidden rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm">
-              <button
-                type="button"
-                onClick={doZoomIn}
-                className="flex h-9 w-9 items-center justify-center border-b border-border-light text-text-secondary transition-colors hover:bg-bg-secondary"
-                title="Zoom in"
-                aria-label="Zoom in"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M12 5v14M5 12h14" />
-                </svg>
+              <button type="button" onClick={doZoomIn} className={`${zoomButtonClass} border-b border-border-light`} title="Zoom in" aria-label="Zoom in">
+                <Icon name="plus" />
               </button>
-              <button
-                type="button"
-                onClick={doZoomOut}
-                className="flex h-9 w-9 items-center justify-center text-text-secondary transition-colors hover:bg-bg-secondary"
-                title="Zoom out"
-                aria-label="Zoom out"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <path d="M5 12h14" />
-                </svg>
+              <button type="button" onClick={doZoomOut} className={zoomButtonClass} title="Zoom out" aria-label="Zoom out">
+                <Icon name="minus" />
               </button>
             </div>
           </div>
         </div>
 
         {hovered && (
-          <div
-            className="pointer-events-none fixed z-50 rounded-md bg-text-primary px-2 py-1 text-xs font-medium text-bg-primary shadow-lg"
-            style={{ left: hovered.x + 12, top: hovered.y - 8 }}
-          >
+          <CursorTooltip x={hovered.x} y={hovered.y}>
             {hovered.name}
-          </div>
+          </CursorTooltip>
         )}
       </main>
     </div>

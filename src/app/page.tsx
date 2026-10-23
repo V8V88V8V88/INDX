@@ -4,128 +4,76 @@ import { useState, useMemo, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
 import Link from "next/link";
-import { Header, MetricCard, IndiaMap, MetricSelector, PageLoader } from "@/components";
+import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader } from "@/components";
+import { Badge, Button, Card, CardTitle, Icon, SectionHeader, SegmentedControl, Stat } from "@/components/ui";
 import { states, india } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
-import type { State } from "@/types";
+import { useMetricFormatter } from "@/hooks/useMetricFormatter";
+import { getMetricPaletteIndices } from "@/lib/map-view";
+import { getMetric } from "@/lib/metrics";
+import type { MetricKey } from "@/types";
 
-type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area">;
 type SortOrder = "desc" | "asc" | "alpha";
 
-function getColorScale(metric: MetricKey): string[] {
-  if (metric === "sexRatio") {
-    return ["var(--choro-1)", "var(--choro-2)", "var(--choro-4)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
-  } else if (metric === "area") {
-    return ["var(--choro-0)", "var(--choro-1)", "var(--choro-2)", "var(--choro-4)", "var(--choro-6)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
-  } else if (metric === "hdi" || metric === "literacyRate") {
-    return ["var(--choro-1)", "var(--choro-2)", "var(--choro-3)", "var(--choro-5)", "var(--choro-6)", "var(--choro-8)", "var(--choro-9)"];
-  } else if (metric === "density" || metric === "population" || metric === "gdp") {
-    return ["var(--choro-0)", "var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
-  }
-  return ["var(--choro-0)", "var(--choro-1)", "var(--choro-3)", "var(--choro-5)", "var(--choro-7)", "var(--choro-8)", "var(--choro-9)"];
-}
+const sortOptions = [
+  { value: "desc", label: <Icon name="arrow-down" size={14} />, title: "Highest first" },
+  { value: "asc", label: <Icon name="arrow-up" size={14} />, title: "Lowest first" },
+  { value: "alpha", label: "A–Z", title: "Alphabetical" },
+] as const;
+
+const totalStates = 28;
+const totalUTs = 8;
+const totalCities = states.reduce((sum, s) => sum + s.cities.length, 0);
+const avgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
+const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
 
 export default function Home() {
-  const [mapMetric, setMapMetric] = useState<MetricKey>("population");
-  const [rankingMetric, setRankingMetric] = useState<MetricKey>("population");
+  const [metric, setMetric] = useState<MetricKey>("population");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const [showAllRegions, setShowAllRegions] = useState(false);
   const [isPageReady, setIsPageReady] = useState(false);
-  const { formatPopulation, formatCurrency, formatDensity, formatArea } = useFormat();
+  const { formatPopulation } = useFormat();
+  const formatMetric = useMetricFormatter();
   const prefersReducedMotion = useReducedMotion();
+  const metricInfo = getMetric(metric);
 
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
     : { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
 
-  // Synchronize map and ranking metrics
-  const handleMapMetricChange = (metric: MetricKey) => {
-    setMapMetric(metric);
-    setRankingMetric(metric);
-  };
-
   useEffect(() => {
-    // Smart Pre-load strategy: match the smoothness of state page
-    const timer = setTimeout(() => {
-      setIsPageReady(true);
-    }, 800);
+    const timer = setTimeout(() => setIsPageReady(true), 800);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleRankingMetricChange = (metric: MetricKey) => {
-    setRankingMetric(metric);
-    setMapMetric(metric);
-  };
-
-  const rankingMetrics: { key: MetricKey; label: string; format: (s: State) => string }[] = useMemo(() => [
-    { key: "population", label: "Population", format: (s) => formatPopulation(s.population) },
-    { key: "gdp", label: "GDP", format: (s) => formatCurrency(s.gdp * 10000000) },
-    { key: "literacyRate", label: "Literacy", format: (s) => s.literacyRate + "%" },
-    { key: "hdi", label: "HDI", format: (s) => s.hdi.toFixed(3) },
-    { key: "density", label: "Density", format: (s) => formatDensity(s.density) },
-    { key: "sexRatio", label: "Sex Ratio", format: (s) => s.sexRatio.toString() },
-    { key: "area", label: "Area", format: (s) => formatArea(s.area) },
-  ], [formatPopulation, formatCurrency, formatDensity, formatArea]);
-
-  const totalStates = 28;
-  const totalUTs = 8;
-  const totalCities = states.reduce((sum, s) => sum + s.cities.length, 0);
-  const avgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
-  const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
-
-  const currentRankingConfig = rankingMetrics.find((m) => m.key === rankingMetric)!;
-
   const rankedStates = useMemo(() => {
     const sorted = [...states];
-    if (sortOrder === "alpha") {
-      return sorted.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sortOrder === "asc") {
-      return sorted.sort((a, b) => {
-        const aVal = a[rankingMetric] ?? 0;
-        const bVal = b[rankingMetric] ?? 0;
-        return aVal - bVal;
-      });
-    } else {
-      return sorted.sort((a, b) => {
-        const aVal = a[rankingMetric] ?? 0;
-        const bVal = b[rankingMetric] ?? 0;
-        return bVal - aVal;
-      });
-    }
-  }, [rankingMetric, sortOrder]);
+    if (sortOrder === "alpha") return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    const dir = sortOrder === "asc" ? 1 : -1;
+    return sorted.sort((a, b) => dir * ((a[metric] ?? 0) - (b[metric] ?? 0)));
+  }, [metric, sortOrder]);
 
-  const maxValue = Math.max(...states.map((s) => {
-    const val = s[rankingMetric];
-    return val ?? 0;
-  }), 1);
+  const maxValue = Math.max(...states.map((s) => s[metric] ?? 0), 1);
 
   return (
     <div className="min-h-screen bg-bg-primary">
-      <AnimatePresence>
-        {!isPageReady && <PageLoader />}
-      </AnimatePresence>
+      <AnimatePresence>{!isPageReady && <PageLoader />}</AnimatePresence>
       <Header />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
-        {/* Hero */}
         <motion.section
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={smooth}
           className="mb-12"
         >
-          <div className="mb-2 flex items-center gap-3">
-            <span className="rounded-full bg-accent-primary px-3 py-1 text-xs font-semibold text-white">
-              2026 Data
-            </span>
-          </div>
+          <Badge variant="accent" className="mb-3">2026 Data</Badge>
           <h1 className="text-display mb-4 text-text-primary">India</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
             Geographic and statistical data visualization. Explore {totalStates} states, {totalUTs} union territories and 733 districts with comprehensive demographic and economic indicators.
           </p>
         </motion.section>
 
-        {/* Summary Cards */}
         <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} trigger={isPageReady} />
           <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} trigger={isPageReady} />
@@ -133,15 +81,12 @@ export default function Home() {
           <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
         </section>
 
-        {/* Map Section */}
         <section className="mb-12">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 className="text-headline text-text-primary">Interactive Map</h2>
-              <p className="text-text-tertiary">Click any state to explore details</p>
-            </div>
-            <MetricSelector selected={mapMetric} onSelect={handleMapMetricChange} />
-          </div>
+          <SectionHeader
+            title="Interactive Map"
+            description="Click any state to explore details"
+            actions={<MetricSelector selected={metric} onSelect={setMetric} />}
+          />
 
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.985 }}
@@ -149,159 +94,92 @@ export default function Home() {
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
             className="card overflow-hidden p-6"
           >
-            <IndiaMap colorByMetric={mapMetric} interactive />
+            <IndiaMap colorByMetric={metric} interactive />
 
-            {/* Legend */}
-            <div className="mt-6 flex items-center justify-center gap-2">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
               <span className="text-xs text-text-muted">Low</span>
-              <div className="flex">
-                {getColorScale(mapMetric).map((color, i) => (
-                  <div key={i} className="h-3 w-8" style={{ backgroundColor: color }} />
+              <div className="flex overflow-hidden rounded-full">
+                {getMetricPaletteIndices(metric).map((i) => (
+                  <div key={i} className="h-3 w-8" style={{ backgroundColor: `var(--choro-${i})` }} />
                 ))}
               </div>
               <span className="text-xs text-text-muted">High</span>
-              <span className="ml-4 text-xs font-medium text-text-tertiary">
-                {mapMetric === "population" && "Population"}
-                {mapMetric === "gdp" && "GDP"}
-                {mapMetric === "literacyRate" && "Literacy Rate"}
-                {mapMetric === "hdi" && "HDI"}
-                {mapMetric === "density" && "Density"}
-                {mapMetric === "sexRatio" && "Sex Ratio"}
-                {mapMetric === "area" && "Area"}
-              </span>
+              <span className="ml-4 text-xs font-medium text-text-tertiary">{metricInfo.longLabel}</span>
             </div>
           </motion.div>
         </section>
 
-        {/* Rankings Section */}
         <section className="mb-12">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-headline text-text-primary">Rankings</h2>
-            <div className="flex flex-wrap items-center gap-4">
-              <MetricSelector selected={rankingMetric} onSelect={handleRankingMetricChange} />
-              {/* Sort Order */}
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => setSortOrder("desc")}
-                  title="Highest first"
-                  className={`rounded-lg p-2 transition-colors ${sortOrder === "desc" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
-                    }`}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 5v14M5 12l7 7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setSortOrder("asc")}
-                  title="Lowest first"
-                  className={`rounded-lg p-2 transition-colors ${sortOrder === "asc" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
-                    }`}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 19V5M5 12l7-7 7 7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setSortOrder("alpha")}
-                  title="Alphabetical"
-                  className={`rounded-lg px-2 py-1 text-xs font-bold transition-colors ${sortOrder === "alpha" ? "bg-accent-primary text-white" : "text-text-muted hover:bg-bg-secondary"
-                    }`}
-                >
-                  A-Z
-                </button>
-              </div>
-            </div>
-          </div>
+          <SectionHeader
+            title="Rankings"
+            actions={
+              <>
+                <MetricSelector selected={metric} onSelect={setMetric} />
+                <SegmentedControl label="Sort order" options={sortOptions} value={sortOrder} onChange={setSortOrder} />
+              </>
+            }
+          />
 
-          <motion.div
-            key={rankingMetric}
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-            animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }} // Only animate when ready
-            transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, duration: 0.35 }}
-            className="card p-6"
-          >
+          <Card key={metric} trigger={isPageReady}>
             <div className="mb-4 flex items-center justify-between">
-              <span className="text-sm font-medium uppercase tracking-wider text-text-muted">
-                All States & UTs {sortOrder === "alpha" ? "(A-Z)" : `by ${currentRankingConfig.label}`}
-              </span>
+              <CardTitle>All States & UTs {sortOrder === "alpha" ? "(A–Z)" : `by ${metricInfo.label}`}</CardTitle>
               <span className="text-xs text-text-muted">{rankedStates.length} regions</span>
             </div>
-            <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 space-y-4">
+            <div className="columns-1 gap-4 space-y-3 sm:columns-2 xl:columns-3">
               {rankedStates.map((state, i) => (
                 <Link
                   key={state.id}
                   href={`/state/${state.id}`}
-                  className="group relative block break-inside-avoid rounded-xl border border-border-light bg-bg-secondary/30 p-3 hover:bg-bg-secondary overflow-hidden transition-colors"
+                  className="group relative block break-inside-avoid overflow-hidden rounded-full border border-border-light bg-bg-secondary/40 px-4 py-2.5 transition-colors hover:border-border-medium"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="w-6 text-right text-sm font-semibold text-text-muted">{i + 1}</span>
-                      <span className="text-sm font-medium text-text-primary group-hover:text-accent-primary transition-colors">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${((state[metric] ?? 0) / maxValue) * 100}%` }}
+                    transition={{ duration: 0.4, delay: Math.min(i * 0.02, 0.5) }}
+                    className="absolute inset-y-0 left-0 bg-accent-primary/15 transition-colors group-hover:bg-accent-primary/25"
+                    aria-hidden="true"
+                  />
+                  <div className="relative flex items-center justify-between gap-3">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <span className="w-6 shrink-0 text-right text-sm font-semibold tabular-nums text-text-muted">{i + 1}</span>
+                      <span className="truncate text-sm font-medium text-text-primary" title={state.name}>
                         {state.name}
                       </span>
                     </div>
-                    <span className="font-mono text-xs text-text-secondary">{currentRankingConfig.format(state)}</span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bg-tertiary">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${((state[rankingMetric] ?? 0) / maxValue) * 100}%` }}
-                      transition={{ duration: 0.4, delay: Math.min(i * 0.02, 0.5) }}
-                      className="h-full bg-accent-primary/60"
-                    />
+                    <span className="shrink-0 whitespace-nowrap font-mono text-xs text-text-secondary">
+                      {formatMetric(metric, state[metric])}
+                    </span>
                   </div>
                 </Link>
               ))}
             </div>
-          </motion.div>
+          </Card>
         </section>
 
-        {/* All States Grid */}
-        <section className="mb-12">
-          <div className="mb-3">
-            <h2 className="text-headline text-text-primary">All States & UTs</h2>
-            <p className="text-sm text-text-muted">{totalStates} regions</p>
-          </div>
-
-          {!showAllRegions && (
-            <div className="mb-4">
-              <button
-                type="button"
-                onClick={() => setShowAllRegions(true)}
-                className="rounded-lg border border-border-light bg-bg-secondary px-4 py-2 text-sm font-medium text-text-secondary hover:bg-bg-tertiary transition-colors"
-              >
-                Show all states & union territories
-              </button>
-            </div>
-          )}
+        <section>
+          <SectionHeader
+            title="All States & UTs"
+            description={`${states.length} regions`}
+            actions={
+              !showAllRegions && (
+                <Button onClick={() => setShowAllRegions(true)}>Show all states & union territories</Button>
+              )
+            }
+          />
 
           {showAllRegions && (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {states.map((state) => (
-                <Link
-                  key={state.id}
-                  href={`/state/${state.id}`}
-                  className="card card-interactive p-5 transition-transform hover:-translate-y-1"
-                >
+                <Link key={state.id} href={`/state/${state.id}`} className="card card-interactive p-5">
                   <div className="mb-3 flex items-center justify-between">
-                    <span className="rounded-md bg-bg-secondary px-2 py-1 text-xs font-medium text-text-muted">
-                      {state.region}
-                    </span>
+                    <Badge>{state.region}</Badge>
                     <span className="font-mono text-xs text-text-muted">{state.code}</span>
                   </div>
-
                   <h3 className="mb-1 text-lg font-semibold text-text-primary">{state.name}</h3>
                   <p className="mb-4 text-sm text-text-tertiary">Capital: {state.capital}</p>
-
                   <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <p className="text-xs text-text-muted">Population</p>
-                      <p className="font-medium text-text-secondary">{formatPopulation(state.population)}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-text-muted">Literacy</p>
-                      <p className="font-medium text-text-secondary">{state.literacyRate}%</p>
-                    </div>
+                    <Stat size="sm" label="Population" value={formatPopulation(state.population)} />
+                    <Stat size="sm" label="Literacy" value={`${state.literacyRate}%`} />
                   </div>
                 </Link>
               ))}
@@ -309,39 +187,7 @@ export default function Home() {
           )}
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-border-light py-8">
-          <div className="flex flex-col gap-4">
-            <p className="text-sm text-text-muted text-center">Maps, data, and everything in between</p>
-            <div className="flex flex-col sm:flex-row items-center sm:items-start sm:justify-between gap-4 text-center sm:text-left">
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                <p className="text-sm text-text-muted">© 2026 INDX</p>
-                <span className="text-text-muted">|</span>
-                <Link href="/about" className="text-sm text-accent-primary hover:opacity-80 transition-colors">
-                  About
-                </Link>
-                <span className="text-text-muted">|</span>
-                <a
-                  href="https://github.com/v8V88V8V88/INDX"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm text-accent-primary hover:opacity-80 transition-colors"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="inline-block">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                  Source
-                </a>
-              </div>
-              <p className="text-sm text-text-muted">
-                Made with <span className="text-accent-primary">❤️</span> by{" "}
-                <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
-                  Vaibhav Pratap Singh
-                </a>
-              </p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </div>
   );

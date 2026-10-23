@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, useId, useRef } from "react";
 import { motion } from "framer-motion";
 import * as d3 from "d3";
 import { useSubDistrictGeoData, filterSubDistrictsByDistrict } from "@/hooks/useSubDistrictGeoData";
+import { CursorTooltip, Spinner } from "./ui";
 
 interface StateMapProps {
   stateCode: string;
@@ -261,15 +262,15 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
 
   if (loading) {
     return (
-      <div className="flex h-[600px] w-full items-center justify-center rounded-xl bg-bg-secondary/50">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-primary border-t-transparent" />
+      <div className="flex h-[600px] w-full items-center justify-center rounded-2xl bg-bg-secondary/50">
+        <Spinner label="Loading map" />
       </div>
     );
   }
 
   if (!geoData || mapData.paths.length === 0) {
     return (
-      <div className="flex h-[600px] w-full items-center justify-center rounded-xl bg-bg-secondary/50 text-text-muted">
+      <div className="flex h-[600px] w-full items-center justify-center rounded-2xl bg-bg-secondary/50 text-text-muted">
         District boundaries not available
       </div>
     );
@@ -384,36 +385,19 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
           })}
         </svg>
 
-      {/* Floating Tooltip for Districts */}
       {hoveredDistrict && !hoveredSubDistrict && (
-        <div
-          className="pointer-events-none fixed z-50 rounded-lg bg-bg-card px-3 py-2 text-sm font-semibold text-text-primary shadow-lg ring-1 ring-border-light backdrop-blur-md"
-          style={{
-            left: mousePos.x + 12,
-            top: mousePos.y - 12,
-          }}
-        >
+        <CursorTooltip x={mousePos.x} y={mousePos.y}>
           {hoveredDistrict}
-          {selectedDistrict !== hoveredDistrict && (
-            <span className="ml-2 text-xs text-text-muted">(click to see tehsils)</span>
-          )}
-        </div>
+          {selectedDistrict !== hoveredDistrict && <span className="ml-2 opacity-60">click to see tehsils</span>}
+        </CursorTooltip>
       )}
 
-      {/* Floating Tooltip for Sub-Districts */}
       {hoveredSubDistrict && (
-        <div
-          className="pointer-events-none fixed z-50 rounded-lg bg-accent-primary px-3 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-md"
-          style={{
-            left: mousePos.x + 12,
-            top: mousePos.y - 12,
-          }}
-        >
-          <span className="text-[10px] uppercase tracking-wider opacity-70 block">Tehsil</span>
+        <CursorTooltip x={mousePos.x} y={mousePos.y}>
+          <span className="block text-[10px] uppercase tracking-wider opacity-60">Tehsil</span>
           {hoveredSubDistrict}
-        </div>
+        </CursorTooltip>
       )}
-
     </div>
   );
 }

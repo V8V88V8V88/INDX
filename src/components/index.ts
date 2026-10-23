@@ -1,13 +1,16 @@
 export { Header } from "./Header";
+export { Footer } from "./Footer";
 export { MetricCard } from "./MetricCard";
 export { IndiaMap } from "./IndiaMap";
+export { StateMap } from "./StateMap";
 export { MetricSelector } from "./MetricSelector";
 export { BarChart } from "./BarChart";
+export { ComparisonTable, type ComparisonRow } from "./ComparisonTable";
 export { CityCard } from "./CityCard";
-export { StatComparison } from "./StatComparison";
+export { PlaceBadges } from "./PlaceBadges";
 export { ThemeToggle } from "./ThemeToggle";
 export { DistrictList } from "./DistrictList";
 export { DistrictInfoCard } from "./DistrictInfoCard";
+export { InlineSearch } from "./InlineSearch";
 export { Spotlight } from "./Spotlight";
 export { PageLoader } from "./PageLoader";
-

@@ -1,72 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { City } from "@/types";
 import { useFormat } from "@/hooks/useFormat";
+import { PlaceBadges } from "./PlaceBadges";
+import { Card, Stat } from "./ui";
 
 interface CityCardProps {
   city: City;
   stateName: string;
-  delay?: number;
 }
 
-const tierStyles: Record<1 | 1.5 | 2 | 2.5 | 3 | 4, string> = {
-  1: "bg-accent-primary text-white",
-  1.5: "bg-accent-primary/80 text-white",
-  2: "bg-accent-secondary/20 text-accent-secondary border border-accent-secondary/30",
-  2.5: "bg-accent-secondary/15 text-accent-secondary border border-accent-secondary/20",
-  3: "bg-bg-tertiary text-text-secondary border border-border-light",
-  4: "bg-bg-secondary text-text-muted border border-border-light/50",
-};
-
-export function CityCard({ city, stateName, delay = 0 }: CityCardProps) {
+export function CityCard({ city, stateName }: CityCardProps) {
   const { formatPopulation, formatArea, formatDensity } = useFormat();
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay }}
-      whileHover={{ y: -2 }}
-      className="card card-interactive p-5"
-    >
-      <div className="mb-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className={`rounded-md px-2 py-1 text-xs font-medium ${tierStyles[city.tier]}`}>
-            Tier {city.tier}
-          </span>
-          {city.isCapital && (
-            <span className="rounded-md bg-amber-100 px-2 py-1 text-xs font-medium text-amber-700">
-              Capital
-            </span>
-          )}
-          {city.isMetro && !city.isCapital && (
-            <span className="rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-600">
-              Metro
-            </span>
-          )}
-        </div>
-        <span className="font-mono text-xs text-text-muted">{city.id}</span>
-      </div>
-
-      <h3 className="mb-1 text-lg font-semibold text-text-primary">{city.name}</h3>
+    <Card className="p-5">
+      <PlaceBadges isCapital={city.isCapital} isMetro={city.isMetro} tier={city.tier} />
+      <h3 className="mt-3 text-lg font-semibold text-text-primary">{city.name}</h3>
       <p className="mb-4 text-sm text-text-tertiary">{stateName}</p>
-
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <p className="text-xs text-text-muted">Population</p>
-          <p className="font-medium text-text-secondary">{formatPopulation(city.population)}</p>
-        </div>
-        <div>
-          <p className="text-xs text-text-muted">Area</p>
-          <p className="font-medium text-text-secondary">{formatArea(city.area)}</p>
-        </div>
-        <div>
-          <p className="text-xs text-text-muted">Density</p>
-          <p className="font-medium text-text-secondary">
-            {formatDensity(Math.round(city.population / city.area))}
-          </p>
-        </div>
+      <div className="grid grid-cols-3 gap-3">
+        <Stat size="sm" label="Population" value={formatPopulation(city.population)} />
+        <Stat size="sm" label="Area" value={formatArea(city.area)} />
+        <Stat size="sm" label="Density" value={formatDensity(Math.round(city.population / city.area))} />
       </div>
-    </motion.div>
+    </Card>
   );
 }

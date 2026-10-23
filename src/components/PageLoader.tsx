@@ -60,7 +60,7 @@ export function PageLoader() {
             <div className="flex flex-col items-center gap-8">
                 <div className="relative flex items-center justify-center">
                     {/* Core */}
-                    <div className="animate-pulse-core relative z-10 h-3 w-3 rounded-full bg-accent-primary shadow-[0_0_15px_rgba(var(--accent-primary-rgb),0.5)]" />
+                    <div className="animate-pulse-core relative z-10 h-3 w-3 rounded-full bg-accent-primary shadow-[0_0_15px_color-mix(in_srgb,var(--accent-primary)_50%,transparent)]" />
 
                     {/* Inner Ripple */}
                     <div className="animate-ripple absolute h-3 w-3 rounded-full border border-accent-primary/50" />

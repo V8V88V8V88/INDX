@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { Header } from "@/components";
+import { Icon, LinkButton } from "@/components/ui";
 
 export default function NotFound() {
   return (
@@ -23,27 +23,10 @@ export default function NotFound() {
             The page you&apos;re looking for doesn&apos;t exist or the state/city data 
             is not available yet.
           </p>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-lg bg-accent-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-primary/90"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 12L6 8L10 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+          <LinkButton href="/" variant="primary">
+            <Icon name="arrow-left" />
             Back to India
-          </Link>
+          </LinkButton>
         </motion.div>
       </main>
     </div>

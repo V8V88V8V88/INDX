@@ -3,14 +3,19 @@
 import { use, useState, useMemo, useEffect, useRef, useSyncExternalStore } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Transition } from "framer-motion";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Header, MetricCard, PageLoader } from "@/components";
-import { BarChart } from "@/components/BarChart";
-import { StatComparison } from "@/components/StatComparison";
-import { DistrictList } from "@/components/DistrictList";
-import { StateMap } from "@/components/StateMap";
-import { DistrictInfoCard } from "@/components/DistrictInfoCard";
+import {
+  BarChart,
+  ComparisonTable,
+  DistrictInfoCard,
+  DistrictList,
+  Footer,
+  Header,
+  MetricCard,
+  PageLoader,
+  StateMap,
+} from "@/components";
+import { BackLink, Badge, Card, CardTitle, SectionHeader, Stat } from "@/components/ui";
 import { getStateById, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
@@ -219,6 +224,16 @@ export default function StatePage({ params }: PageProps) {
     return [];
   }, [districts, state.cities, formatPopulation]);
 
+  const majorDistrictCount =
+    districts?.filter((d) => {
+      const matchedCity = state.cities.find(
+        (c) =>
+          normalizeDistrictName(c.name) === normalizeDistrictName(d.name) ||
+          normalizeDistrictName(c.name) === normalizeDistrictName(d.headquarters || ""),
+      );
+      return isMajorArea(d, matchedCity);
+    }).length || 0;
+
   return (
     <div className="min-h-screen bg-bg-primary">
       <AnimatePresence>
@@ -237,20 +252,16 @@ export default function StatePage({ params }: PageProps) {
           transition={smooth}
           className="mb-8"
         >
-          <div className="mb-3 flex flex-wrap items-center gap-3">
-            <span className="rounded-full bg-accent-primary px-3 py-1 text-xs font-semibold text-white">
-              {state.region} India
-            </span>
-            <span className="rounded-full bg-bg-tertiary border border-accent-primary/40 dark:border-accent-primary/60 px-3 py-1 text-xs font-medium text-accent-primary dark:text-accent-secondary">
-              {state.code}
-            </span>
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            <Badge variant="accent">{state.region} India</Badge>
+            <Badge variant="outline">{state.code}</Badge>
           </div>
           <h1 className="text-display mb-3 text-text-primary">{state.name}</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
             Capital:{" "}
             <button
               onClick={() => selectDistrict(findCapitalDistrict(state, districts))}
-              className="text-text-secondary hover:text-accent-primary hover:underline transition-colors cursor-pointer"
+              className="text-text-secondary transition-colors hover:text-accent-primary hover:underline"
             >
               {state.capital}
             </button>
@@ -338,38 +349,30 @@ export default function StatePage({ params }: PageProps) {
 
         {/* Comparison and Charts Row */}
         <section className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <StatComparison
+          <ComparisonTable
             title="vs National Average"
-            stateName={state.name}
+            columns={[state.name, "National Avg"]}
             delay={0.15}
             trigger={isPageReady}
-            items={[
+            rows={[
               {
                 label: "Literacy Rate",
-                stateValue: state.literacyRate.toFixed(1),
-                nationalValue: nationalAvgLiteracy.toFixed(1),
-                unit: "%",
-                higher: state.literacyRate > nationalAvgLiteracy ? "state" : "national",
+                values: [`${state.literacyRate.toFixed(1)}%`, `${nationalAvgLiteracy.toFixed(1)}%`],
+                winner: state.literacyRate > nationalAvgLiteracy ? 0 : 1,
               },
               {
                 label: "HDI",
-                stateValue: state.hdi.toFixed(3),
-                nationalValue: nationalAvgHDI.toFixed(3),
-                higher: state.hdi > nationalAvgHDI ? "state" : "national",
+                values: [state.hdi.toFixed(3), nationalAvgHDI.toFixed(3)],
+                winner: state.hdi > nationalAvgHDI ? 0 : 1,
               },
               {
                 label: "Density",
-                stateValue: formatDensity(state.density),
-                nationalValue: formatDensity(Math.round(nationalAvgDensity)),
-                unit: "",
-                higher: null,
+                values: [formatDensity(state.density), formatDensity(Math.round(nationalAvgDensity))],
               },
               {
                 label: "GDP",
-                stateValue: formatCurrency(state.gdp * 10000000),
-                nationalValue: formatCurrency(Math.round(nationalAvgGDP) * 10000000),
-                unit: "",
-                higher: state.gdp > nationalAvgGDP ? "state" : "national",
+                values: [formatCurrency(state.gdp * 10000000), formatCurrency(Math.round(nationalAvgGDP) * 10000000)],
+                winner: state.gdp > nationalAvgGDP ? 0 : 1,
               },
             ]}
           />
@@ -382,85 +385,36 @@ export default function StatePage({ params }: PageProps) {
           />
         </section>
 
-        {/* Additional Metrics */}
         <section className="mb-10">
-          <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-            animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.2 }}
-            className="card p-6"
-          >
-            <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-text-muted">
-              Geographic & Demographic Data
-            </h3>
+          <Card delay={0.2} trigger={isPageReady}>
+            <CardTitle className="mb-6">Geographic & Demographic Data</CardTitle>
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
-              <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">Total Area</p>
-                <p className="text-2xl font-bold text-text-primary">
-                  {formatArea(state.area)}
-                </p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">Density</p>
-                <p className="text-2xl font-bold text-text-primary">
-                  {formatDensity(state.density)}
-                </p>
-                <p className="text-xs text-text-muted"></p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">Total Districts</p>
-                <p className="text-2xl font-bold text-text-primary">
-                  {districts?.length || 0}
-                </p>
-                <p className="text-xs text-text-muted">districts</p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">Major Districts</p>
-                <p className="text-2xl font-bold text-text-primary">
-                  {districts?.filter((d) => {
-                    const matchedCity = state.cities.find(
-                      (c) =>
-                        normalizeDistrictName(c.name) === normalizeDistrictName(d.name) ||
-                        normalizeDistrictName(c.name) === normalizeDistrictName(d.headquarters || "")
-                    );
-                    return isMajorArea(d, matchedCity);
-                  }).length || 0}
-                </p>
-                <p className="text-xs text-text-muted">metros</p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">District Pop.</p>
-                <p className="text-2xl font-bold text-text-primary">
-                  {formatPopulation(
-                    districts?.reduce((sum, d) => sum + (d.population || 0), 0) || 0
-                  )}
-                </p>
-                <p className="text-xs text-text-muted">total districts</p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-xs font-medium text-text-muted">Per Capita GDP</p>
-                <p className="text-2xl font-bold text-text-primary">
-                  {formatCurrency(Math.round((state.gdp * 10000000) / state.population))}
-                </p>
-                <p className="text-xs text-text-muted">approx</p>
-              </div>
+              <Stat size="lg" label="Total Area" value={formatArea(state.area)} />
+              <Stat size="lg" label="Density" value={formatDensity(state.density)} />
+              <Stat size="lg" label="Total Districts" value={districts?.length || 0} hint="districts" />
+              <Stat size="lg" label="Major Districts" value={majorDistrictCount} hint="metros" />
+              <Stat
+                size="lg"
+                label="District Pop."
+                value={formatPopulation(districts?.reduce((sum, d) => sum + (d.population || 0), 0) || 0)}
+                hint="total districts"
+              />
+              <Stat
+                size="lg"
+                label="Per Capita GDP"
+                value={formatCurrency(Math.round((state.gdp * 10000000) / state.population))}
+                hint="approx"
+              />
             </div>
-          </motion.div>
+          </Card>
         </section>
 
-        {/* Districts & Cities Section */}
         <section className="mb-12" data-districts-section>
-          <div className="mb-6 flex items-center justify-between">
-            <div>
-              <h2 className="text-headline text-text-primary">Districts</h2>
-              <p className="text-text-tertiary">
-                Administrative divisions of {state.name}
-              </p>
-            </div>
-            <div className="flex gap-2 text-xs text-text-muted">
-              <span>{state.cities.length} major cities</span>
-            </div>
-          </div>
+          <SectionHeader
+            title="Districts"
+            description={`Administrative divisions of ${state.name}`}
+            actions={<span className="text-xs text-text-muted">{state.cities.length} major cities</span>}
+          />
           <DistrictList
             stateCode={state.id}
             stateName={state.name}
@@ -470,56 +424,8 @@ export default function StatePage({ params }: PageProps) {
           />
         </section>
 
-        {/* Back Navigation */}
-        <motion.div
-          initial={prefersReducedMotion ? false : { opacity: 0 }}
-          animate={isPageReady ? { opacity: 1 } : { opacity: 0 }}
-          transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.2 }}
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-lg border border-border-light px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-bg-secondary"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 12L6 8L10 4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            Back to India
-          </Link>
-        </motion.div>
-
-        {/* Footer */}
-        <footer className="mt-12 border-t border-border-light py-8">
-          <div className="flex flex-col items-center gap-4">
-            <p className="text-sm text-text-muted text-center">
-              Maps, data, and everything in between
-            </p>
-            <div className="flex items-center gap-2">
-              <p className="text-sm text-text-muted">© 2026 INDX</p>
-              <span className="text-text-muted">|</span>
-              <Link href="/about" className="text-sm text-accent-primary hover:opacity-80 transition-colors">
-                About
-              </Link>
-            </div>
-            <p className="text-sm text-text-muted text-center">
-              Made with <span className="text-accent-primary">❤️</span> by{" "}
-              <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className="text-accent-primary hover:underline">
-                Vaibhav Pratap Singh
-              </a>
-            </p>
-          </div>
-        </footer>
+        <BackLink />
+        <Footer />
       </main>
     </div>
   );

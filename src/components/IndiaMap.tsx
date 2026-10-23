@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import * as d3 from "d3";
 import { states } from "@/data/india";
-import { useFormat } from "@/hooks/useFormat";
 import { createStateMetricColorScale, type MapMetric } from "@/lib/map-view";
 import { stateNameToCode } from "@/lib/map-projection";
+import { getMetric } from "@/lib/metrics";
+import { useMetricFormatter } from "@/hooks/useMetricFormatter";
+import { Button, CursorTooltip, Icon, LinkButton, Spinner } from "./ui";
 
 interface IndiaMapProps {
   selectedState?: string | null;
@@ -44,7 +46,7 @@ export function IndiaMap({
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const rafRef = useRef<number | null>(null);
   const latestMouseRef = useRef({ x: 0, y: 0 });
-  const { formatPopulation, formatDensity, formatCurrency, formatArea } = useFormat();
+  const formatMetric = useMetricFormatter();
 
   useEffect(() => {
     let cancelled = false;
@@ -161,7 +163,7 @@ export function IndiaMap({
   if (!geoData) {
     return (
       <div className="flex h-[600px] items-center justify-center">
-        <div className="text-text-muted">Loading map...</div>
+        <Spinner label="Loading map" />
       </div>
     );
   }
@@ -318,26 +320,15 @@ export function IndiaMap({
         }, 0) / states.length;
         const stateValue = hoveredData[colorByMetric] ?? 0;
 
-        const formatValue = (value: number) => {
-          if (colorByMetric === "population") return formatPopulation(value);
-          if (colorByMetric === "density") return formatDensity(value);
-          if (colorByMetric === "gdp") return formatCurrency(value * 10000000);
-          if (colorByMetric === "literacyRate" || colorByMetric === "hdi") return value.toFixed(colorByMetric === "hdi" ? 3 : 1) + (colorByMetric === "literacyRate" ? "%" : "");
-          if (colorByMetric === "sexRatio") return value.toString();
-          if (colorByMetric === "area") return formatArea(value);
-          return value.toString();
-        };
-
-        const metricLabel = colorByMetric === "literacyRate" ? "Literacy Rate" :
-          colorByMetric === "sexRatio" ? "Sex Ratio" :
-            colorByMetric.toUpperCase();
+        const formatValue = (value: number) => formatMetric(colorByMetric, value);
+        const metricLabel = getMetric(colorByMetric).longLabel;
 
         return (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="absolute bottom-4 left-4 z-10 rounded-xl border border-border-light bg-bg-card p-4 shadow-lg"
+            className="absolute bottom-4 left-4 z-10 rounded-2xl border border-border-light bg-bg-card p-4 shadow-lg"
           >
             <h3 className="text-lg font-semibold text-text-primary">{hoveredData.name}</h3>
             <p className="mb-3 text-sm text-text-tertiary">
@@ -361,64 +352,45 @@ export function IndiaMap({
         );
       })()}
 
-      {/* zoom controls */}
       <div className="absolute bottom-4 right-4 z-10 flex gap-2">
         {transform.k !== 1 && (
-          <button
-            onClick={resetZoom}
-            className="flex h-10 items-center gap-1.5 rounded-lg border border-border-light bg-bg-card px-3 text-xs font-medium text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
-            title="Reset zoom"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-              <path d="M3 3v5h5" />
-            </svg>
+          <Button variant="overlay" size="sm" onClick={resetZoom} title="Reset zoom">
+            <Icon name="reset" size={14} />
             Reset
-          </button>
+          </Button>
         )}
-        <button
+        <Button
+          variant="overlay"
+          size="sm"
+          pressed={showLabels}
           onClick={() => setShowLabels(!showLabels)}
-          className={`flex h-10 items-center gap-1.5 rounded-lg border border-border-light px-3 text-xs font-medium shadow-md transition-colors ${showLabels ? 'bg-accent-primary text-white' : 'bg-bg-card text-text-secondary hover:bg-bg-secondary'}`}
           title={showLabels ? "Hide labels" : "Show labels"}
-          aria-pressed={showLabels}
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M4 7V4h16v3" />
-            <path d="M9 20h6" />
-            <path d="M12 4v16" />
-          </svg>
+          <Icon name="text" size={14} />
           Labels
-        </button>
-        <Link
+        </Button>
+        <LinkButton
           href={fullscreenHref}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border-light bg-bg-card text-text-secondary shadow-md transition-colors hover:bg-bg-secondary"
+          variant="overlay"
+          size="sm"
+          iconOnly
           title="Fullscreen map (zoom to districts & tehsils)"
           aria-label="Open fullscreen map"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-          </svg>
-        </Link>
+          <Icon name="expand" />
+        </LinkButton>
       </div>
 
-      {/* zoom level indicator */}
       {transform.k !== 1 && (
-        <div className="absolute top-4 right-4 z-10 rounded-lg bg-bg-card/90 px-2 py-1 text-xs font-mono text-text-muted border border-border-light">
+        <div className="absolute right-4 top-4 z-10 rounded-full border border-border-light bg-bg-card/90 px-2.5 py-1 font-mono text-xs text-text-muted backdrop-blur-sm">
           {Math.round(transform.k * 100)}%
         </div>
       )}
 
-      {/* instant hover label */}
       {hoveredState && (
-        <div
-          className="pointer-events-none fixed z-50 rounded-md bg-text-primary px-2 py-1 text-xs font-medium text-bg-primary shadow-lg"
-          style={{
-            left: mousePos.x + 12,
-            top: mousePos.y - 8,
-          }}
-        >
+        <CursorTooltip x={mousePos.x} y={mousePos.y}>
           {getStateData(hoveredState)?.name || hoveredState}
-        </div>
+        </CursorTooltip>
       )}
     </>
   );

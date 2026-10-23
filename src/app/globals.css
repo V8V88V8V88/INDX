@@ -116,81 +116,39 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 
-/* typography */
-.text-display {
-  font-size: 3.5rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
+@layer components {
+  /* typography */
+  .text-display {
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
 
-.text-headline {
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-}
+  .text-headline {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
 
-.text-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
-}
+  /* cards */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s, background-color 0.2s;
+  }
 
-.text-body {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.6;
-}
+  .card:hover {
+    box-shadow: var(--shadow-md);
+  }
 
-.text-caption {
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--text-tertiary);
-}
-
-.text-mono {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-/* cards */
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s, transform 0.2s, background-color 0.2s;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-md);
-}
-
-.card-interactive:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* map */
-.map-state {
-  fill: var(--choro-1);
-  stroke: var(--bg-card);
-  stroke-width: 1;
-  transition: fill 0.2s, stroke-width 0.2s;
-  cursor: pointer;
-}
-
-.map-state:hover {
-  fill: var(--accent-secondary);
-  stroke-width: 2;
-}
-
-.map-state.active {
-  fill: var(--accent-primary);
+  .card-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 /* scrollbar */

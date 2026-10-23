@@ -2,100 +2,207 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Header } from "@/components";
-import { InlineSearch } from "@/components/InlineSearch";
-import { StateMap } from "@/components/StateMap";
-import { CityCard } from "@/components/CityCard";
-import { getStateById } from "@/data/india";
-import { useFormat } from "@/hooks/useFormat";
+import {
+  CityCard,
+  ComparisonTable,
+  Header,
+  InlineSearch,
+  StateMap,
+  type ComparisonRow,
+} from "@/components";
+import { Badge, Card, CardTitle } from "@/components/ui";
 import { useDistricts } from "@/hooks/useDistricts";
-import type { State, City } from "@/types";
+import { useFormat } from "@/hooks/useFormat";
+import type { SearchResult } from "@/hooks/useSearch";
+import type { City, District, State } from "@/types";
 
-interface SearchResult {
-  type: "state" | "city" | "district";
-  id: string;
-  name: string;
-  stateName?: string;
-  stateId?: string;
-  state?: State;
-  city?: City;
-  district?: import("@/types").District;
+type CompareItem =
+  | { type: "state"; state: State }
+  | { type: "city"; state: State; city: City }
+  | { type: "district"; state: State; district: District };
+
+type PlaceItem = Exclude<CompareItem, { type: "state" }>;
+
+function toCompareItem(result: SearchResult): CompareItem {
+  if (result.type === "city" && result.city) return { type: "city", state: result.state, city: result.city };
+  if (result.type === "district" && result.district) return { type: "district", state: result.state, district: result.district };
+  return { type: "state", state: result.state };
 }
 
-type CompareItem = {
-  type: "state" | "city" | "district";
-  state?: State;
-  city?: City;
-  district?: import("@/types").District;
-  districtState?: State;
-};
+function itemName(item: CompareItem) {
+  if (item.type === "city") return item.city.name;
+  if (item.type === "district") return item.district.name;
+  return item.state.name;
+}
+
+function itemFigures(item: CompareItem) {
+  if (item.type === "city") {
+    const { population, area } = item.city;
+    return { population, area, density: Math.round(population / area) };
+  }
+  const { population, area, density } = item.type === "district" ? item.district : item.state;
+  return { population, area, density };
+}
+
+function placeAsCity(item: PlaceItem): City {
+  if (item.type === "city") return item.city;
+  const d = item.district;
+  return {
+    id: d.id || d.name,
+    name: d.name,
+    stateId: d.stateId,
+    districtId: d.id,
+    population: d.population,
+    area: d.area,
+    isCapital: !!d.isCapital,
+    isMetro: !!d.isMetro || d.tier === 1,
+    tier: (d.tier || 3) as City["tier"],
+  };
+}
+
+function rankDistricts(districts: District[]) {
+  return [...districts].sort((a, b) => {
+    const tierDiff = (a.tier || 999) - (b.tier || 999);
+    if (tierDiff) return tierDiff;
+    if (!!a.isMetro !== !!b.isMetro) return a.isMetro ? -1 : 1;
+    if (!!a.isCapital !== !!b.isCapital) return a.isCapital ? -1 : 1;
+    if (a.literacyRate !== b.literacyRate) return b.literacyRate - a.literacyRate;
+    return b.population - a.population;
+  });
+}
+
+function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" | "right" }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: side === "left" ? -20 : 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="space-y-4"
+    >
+      {item ? (
+        <>
+          <div className="flex flex-wrap items-center gap-3">
+            <h2 className="text-2xl font-bold text-text-primary">{itemName(item)}</h2>
+            <Badge variant={item.type === "state" ? "accent" : "outline"}>{item.state.code}</Badge>
+          </div>
+          <div className="card min-h-[500px] p-4">
+            <StateMap
+              stateCode={item.state.id}
+              selectedDistrict={item.type === "state" ? null : itemName(item)}
+              onDistrictSelect={() => {}}
+              onDistrictClick={() => {}}
+            />
+          </div>
+          {item.type !== "state" && <CityCard city={placeAsCity(item)} stateName={item.state.name} />}
+        </>
+      ) : (
+        <div className="card flex min-h-[500px] items-center justify-center p-4">
+          <p className="text-text-muted">Select a state, city, or district</p>
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
+function TopDistricts({ state }: { state: State }) {
+  const { data: districts } = useDistricts(state.id);
+  const { formatPopulation } = useFormat();
+  const top = districts ? rankDistricts(districts).slice(0, 5) : [];
+
+  return (
+    <Card>
+      <CardTitle className="mb-4">Top Districts · {state.name}</CardTitle>
+      {top.length > 0 ? (
+        <ul>
+          {top.map((district) => (
+            <li
+              key={district.id || district.name}
+              className="flex items-center justify-between border-b border-border-light/50 py-3 last:border-0"
+            >
+              <div>
+                <p className="text-sm font-medium text-text-primary">{district.name}</p>
+                {district.tier && <p className="text-xs text-text-muted">Tier {district.tier}</p>}
+              </div>
+              <p className="font-mono text-sm text-text-secondary">{formatPopulation(district.population)}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-sm text-text-muted">No district data available</p>
+      )}
+    </Card>
+  );
+}
+
+function useComparisonRows(left: CompareItem, right: CompareItem): ComparisonRow[] {
+  const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
+  const pair = <T,>(fn: (item: CompareItem) => T): [T, T] => [fn(left), fn(right)];
+
+  const rows: ComparisonRow[] = [
+    { label: "Population", values: pair((i) => formatPopulation(itemFigures(i).population)) },
+    { label: "Area", values: pair((i) => formatArea(itemFigures(i).area)) },
+    { label: "Density", values: pair((i) => formatDensity(itemFigures(i).density)) },
+  ];
+
+  if (left.type === "state" && right.type === "state") {
+    const s = (fn: (state: State) => string): [string, string] => [fn(left.state), fn(right.state)];
+    rows.push(
+      { label: "Literacy Rate", values: s((x) => `${x.literacyRate.toFixed(1)}%`) },
+      { label: "HDI", values: s((x) => x.hdi.toFixed(3)) },
+      { label: "Sex Ratio", values: s((x) => x.sexRatio.toString()) },
+      { label: "GDP", values: s((x) => formatCurrency(x.gdp * 10000000)) },
+      { label: "Capital", values: s((x) => x.capital) },
+      { label: "Region", values: s((x) => x.region) },
+      { label: "Major Cities", values: s((x) => x.cities.length.toString()) },
+    );
+  } else if (left.type !== "state" && right.type !== "state") {
+    const p = (fn: (place: City, item: PlaceItem) => string): [string, string] => [
+      fn(placeAsCity(left), left),
+      fn(placeAsCity(right), right),
+    ];
+    rows.push(
+      { label: "Tier", values: p((c) => `Tier ${c.tier}`) },
+      { label: "Metro", values: p((c) => (c.isMetro || c.tier === 1 ? "Yes" : "No")) },
+      { label: "Capital", values: p((c) => (c.isCapital ? "Yes" : "No")) },
+      { label: "State", values: p((_, i) => i.state.name) },
+      { label: "Sex Ratio", values: p((_, i) => (i.type === "district" && i.district.sexRatio ? i.district.sexRatio.toString() : "N/A")) },
+      { label: "Literacy", values: p((_, i) => (i.type === "district" ? `${i.district.literacyRate}%` : "N/A")) },
+    );
+  }
+
+  return rows;
+}
+
+function Comparison({ left, right }: { left: CompareItem; right: CompareItem }) {
+  const rows = useComparisonRows(left, right);
+
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
+      className="space-y-6"
+    >
+      <h2 className="text-headline text-text-primary">Comparison</h2>
+      <ComparisonTable title="Basic Statistics" columns={[itemName(left), itemName(right)]} rows={rows} />
+      {left.type === "state" && right.type === "state" && (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <TopDistricts state={left.state} />
+          <TopDistricts state={right.state} />
+        </div>
+      )}
+    </motion.section>
+  );
+}
 
 export default function ComparePage() {
-  const [leftItem, setLeftItem] = useState<CompareItem | null>(null);
-  const [rightItem, setRightItem] = useState<CompareItem | null>(null);
-  const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
+  const [left, setLeft] = useState<CompareItem | null>(null);
+  const [right, setRight] = useState<CompareItem | null>(null);
 
-  const leftState = leftItem?.type === "state" ? leftItem.state : (leftItem?.type === "city" && leftItem.city ? getStateById(leftItem.city.stateId) : (leftItem?.type === "district" ? leftItem.districtState : null));
-  const rightState = rightItem?.type === "state" ? rightItem.state : (rightItem?.type === "city" && rightItem.city ? getStateById(rightItem.city.stateId) : (rightItem?.type === "district" ? rightItem.districtState : null));
-
-  const { data: leftDistricts } = useDistricts(leftState?.id || "");
-  const { data: rightDistricts } = useDistricts(rightState?.id || "");
-
-  const leftName =
-    (leftItem?.type === "state" && leftItem.state?.name) ||
-    (leftItem?.type === "city" && leftItem.city?.name) ||
-    (leftItem?.type === "district" && leftItem.district?.name) ||
-    "";
-
-  const rightName =
-    (rightItem?.type === "state" && rightItem.state?.name) ||
-    (rightItem?.type === "city" && rightItem.city?.name) ||
-    (rightItem?.type === "district" && rightItem.district?.name) ||
-    "";
-
-  const handleLeftSelect = (result: SearchResult) => {
-    if (result.type === "state" && result.state) {
-      setLeftItem({ type: "state", state: result.state });
-    } else if (result.type === "city" && result.city) {
-      const state = result.state || (result.stateId ? getStateById(result.stateId) : null);
-      if (state) {
-        setLeftItem({ type: "city", city: result.city, state }); // Keeping state in leftItem context might be better managed by just deriving it, but existing logic used implicit derived state var. Wait, existing logic set state in setLeftItem? No, CompareItem doesn't have state prop for city type in my new definition? Ah, existing definition didn't have state in CompareItem for city type, but `setLeftItem` line 47 in original code had `state` property!
-        // The original CompareItem type: type: "state" | "city"; state?: State; city?: City; 
-        // So passing state is valid.
-      }
-    } else if (result.type === "district" && result.district) {
-      const state = result.state || (result.stateId ? getStateById(result.stateId) : null);
-      if (state) {
-        setLeftItem({ type: "district", district: result.district, districtState: state });
-      }
-    } else if (result.stateId) {
-      const state = getStateById(result.stateId);
-      if (state) {
-        setLeftItem({ type: "state", state });
-      }
-    }
-  };
-
-  const handleRightSelect = (result: SearchResult) => {
-    if (result.type === "state" && result.state) {
-      setRightItem({ type: "state", state: result.state });
-    } else if (result.type === "city" && result.city) {
-      const state = result.state || (result.stateId ? getStateById(result.stateId) : null);
-      if (state) {
-        setRightItem({ type: "city", city: result.city, state }); // Using state property on CompareItem
-      }
-    } else if (result.type === "district" && result.district) {
-      const state = result.state || (result.stateId ? getStateById(result.stateId) : null);
-      if (state) {
-        setRightItem({ type: "district", district: result.district, districtState: state });
-      }
-    } else if (result.stateId) {
-      const state = getStateById(result.stateId);
-      if (state) {
-        setRightItem({ type: "state", state });
-      }
-    }
-  };
+  const slots = [
+    { label: "Item 1", placeholder: "Search for first state, city, or district...", set: setLeft },
+    { label: "Item 2", placeholder: "Search for second state, city, or district...", set: setRight },
+  ];
 
   return (
     <div className="min-h-screen bg-bg-primary">
@@ -110,413 +217,33 @@ export default function ComparePage() {
         >
           <h1 className="text-display mb-3 text-text-primary">Compare</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
-            Select two states or cities to compare their geographic, demographic, and economic data side by side.
+            Select two states, cities, or districts to compare their geographic, demographic, and economic data side by side.
           </p>
         </motion.section>
 
-        {/* Search Section */}
-        <section className="mb-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4">
-              <label className="block text-sm font-semibold text-text-secondary">
-                Item 1
-              </label>
+        <section className="mb-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+          {slots.map((slot) => (
+            <div key={slot.label} className="space-y-3">
+              <p className="text-sm font-semibold text-text-secondary">{slot.label}</p>
               <InlineSearch
-                placeholder="Search for first state or city..."
-                onSelect={handleLeftSelect}
-                selectedState={leftState || undefined}
+                placeholder={slot.placeholder}
+                onSelect={(result) => slot.set(toCompareItem(result))}
+                onClear={() => slot.set(null)}
               />
             </div>
-
-            <div className="space-y-4">
-              <label className="block text-sm font-semibold text-text-secondary">
-                Item 2
-              </label>
-              <InlineSearch
-                placeholder="Search for second state or city..."
-                onSelect={handleRightSelect}
-                selectedState={rightState || undefined}
-              />
-            </div>
-          </div>
+          ))}
         </section>
 
-        {/* Maps/Info Section */}
-        {(leftItem || rightItem) && (
-          <section className="mb-10">
-            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="space-y-4"
-              >
-                {leftItem?.type === "state" && leftItem.state ? (
-                  <>
-                    <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-2xl font-bold text-text-primary">{leftItem.state.name}</h2>
-                      <span className="rounded-full bg-accent-primary px-3 py-1 text-xs font-semibold text-white">
-                        {leftItem.state.code}
-                      </span>
-                    </div>
-                    <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
-                      <StateMap
-                        stateCode={leftItem.state.id}
-                        selectedDistrict={null}
-                        onDistrictSelect={() => { }}
-                        onDistrictClick={() => { }}
-                      />
-                    </div>
-                  </>
-                ) : (leftItem?.type === "city" && leftItem.city && leftState) || (leftItem?.type === "district" && leftItem.district && leftState) ? (
-                  <>
-                    <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-2xl font-bold text-text-primary">
-                        {leftItem.type === "city" ? leftItem.city!.name : leftItem.district!.name}
-                      </h2>
-                      <span className="rounded-full bg-accent-secondary px-3 py-1 text-xs font-semibold text-white">
-                        {leftItem.type === "city"
-                          ? (leftItem.city!.tier === 1 ? "Metro" : `Tier ${leftItem.city!.tier}`)
-                          : `Tier ${leftItem.district!.tier || 3}`}
-                      </span>
-                    </div>
-                    <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
-                      <StateMap
-                        stateCode={leftState.id}
-                        selectedDistrict={leftItem.type === "city" ? leftItem.city!.name : leftItem.district!.name}
-                        onDistrictSelect={() => { }}
-                        onDistrictClick={() => { }}
-                      />
-                    </div>
-                    {leftItem.type === "city" ? (
-                      <CityCard city={leftItem.city!} stateName={leftState.name} />
-                    ) : (
-                      <CityCard
-                        city={{
-                          ...leftItem.district!,
-                          id: leftItem.district!.id || leftItem.district!.name,
-                          districtId: leftItem.district!.id,
-                          isCapital: !!leftItem.district!.isCapital,
-                          isMetro: !!leftItem.district!.isMetro || leftItem.district!.tier === 1,
-                          tier: (leftItem.district!.tier || 3) as City["tier"],
-                        }}
-                        stateName={leftState.name}
-                      />
-                    )}
-                  </>
-                ) : (
-                  <div className="card p-4 flex items-center justify-center" style={{ minHeight: "500px" }}>
-                    <p className="text-text-muted">Select a state, city, or district</p>
-                  </div>
-                )}
-              </motion.div>
-
-              <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-border-light -translate-x-1/2" />
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="space-y-4"
-              >
-                {rightItem?.type === "state" && rightItem.state ? (
-                  <>
-                    <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-2xl font-bold text-text-primary">{rightItem.state.name}</h2>
-                      <span className="rounded-full bg-accent-primary px-3 py-1 text-xs font-semibold text-white">
-                        {rightItem.state.code}
-                      </span>
-                    </div>
-                    <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
-                      <StateMap
-                        stateCode={rightItem.state.id}
-                        selectedDistrict={null}
-                        onDistrictSelect={() => { }}
-                        onDistrictClick={() => { }}
-                      />
-                    </div>
-                  </>
-                ) : (rightItem?.type === "city" && rightItem.city && rightState) || (rightItem?.type === "district" && rightItem.district && rightState) ? (
-                  <>
-                    <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-2xl font-bold text-text-primary">
-                        {rightItem.type === "city" ? rightItem.city!.name : rightItem.district!.name}
-                      </h2>
-                      <span className="rounded-full bg-accent-secondary px-3 py-1 text-xs font-semibold text-white">
-                        {rightItem.type === "city"
-                          ? (rightItem.city!.tier === 1 ? "Metro" : `Tier ${rightItem.city!.tier}`)
-                          : `Tier ${rightItem.district!.tier || 3}`}
-                      </span>
-                    </div>
-                    <div className="card p-4" style={{ minHeight: "500px", overflow: "visible" }}>
-                      <StateMap
-                        stateCode={rightState.id}
-                        selectedDistrict={rightItem.type === "city" ? rightItem.city!.name : rightItem.district!.name}
-                        onDistrictSelect={() => { }}
-                        onDistrictClick={() => { }}
-                      />
-                    </div>
-                    {rightItem.type === "city" ? (
-                      <CityCard city={rightItem.city!} stateName={rightState.name} />
-                    ) : (
-                      <CityCard
-                        city={{
-                          ...rightItem.district!,
-                          id: rightItem.district!.id || rightItem.district!.name,
-                          districtId: rightItem.district!.id,
-                          isCapital: !!rightItem.district!.isCapital,
-                          isMetro: !!rightItem.district!.isMetro || rightItem.district!.tier === 1,
-                          tier: (rightItem.district!.tier || 3) as City["tier"],
-                        }}
-                        stateName={rightState.name}
-                      />
-                    )}
-                  </>
-                ) : (
-                  <div className="card p-4 flex items-center justify-center" style={{ minHeight: "500px" }}>
-                    <p className="text-text-muted">Select a state, city, or district</p>
-                  </div>
-                )}
-              </motion.div>
-            </div>
+        {(left || right) && (
+          <section className="relative mb-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <CompareColumn item={left} side="left" />
+            <div className="absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 bg-border-light lg:block" />
+            <CompareColumn item={right} side="right" />
           </section>
         )}
 
-        {/* Comparison Data Section */}
-        {leftItem && rightItem && (
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="space-y-6"
-          >
-            <h2 className="text-2xl font-bold text-text-primary">Comparison</h2>
-
-            {/* Basic Stats */}
-            <div className="card p-6">
-              <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-text-muted">
-                Basic Statistics
-              </h3>
-              <div className="space-y-5">
-                <div className="grid grid-cols-3 gap-4 border-b border-border-light pb-4">
-                  <div className="text-xs font-semibold text-text-muted">Metric</div>
-                  <div className="text-center text-xs font-semibold text-accent-primary">
-                    {leftName || "—"}
-                  </div>
-                  <div className="text-center text-xs font-semibold text-accent-primary">
-                    {rightName || "—"}
-                  </div>
-                </div>
-
-                {(() => {
-                  const leftIsState = leftItem.type === "state";
-                  const rightIsState = rightItem.type === "state";
-                  const leftStateData = leftIsState ? leftItem.state : leftState;
-                  const rightStateData = rightIsState ? rightItem.state : rightState;
-
-                  const commonMetrics = [
-                    {
-                      label: "Population",
-                      left: leftIsState
-                        ? formatPopulation(leftItem.state!.population)
-                        : (leftItem.type === "city" ? formatPopulation(leftItem.city!.population) : formatPopulation(leftItem.district!.population)),
-                      right: rightIsState
-                        ? formatPopulation(rightItem.state!.population)
-                        : (rightItem.type === "city" ? formatPopulation(rightItem.city!.population) : formatPopulation(rightItem.district!.population))
-                    },
-                    {
-                      label: "Area",
-                      left: leftIsState
-                        ? formatArea(leftItem.state!.area)
-                        : (leftItem.type === "city" ? formatArea(leftItem.city!.area) : formatArea(leftItem.district!.area)),
-                      right: rightIsState
-                        ? formatArea(rightItem.state!.area)
-                        : (rightItem.type === "city" ? formatArea(rightItem.city!.area) : formatArea(rightItem.district!.area))
-                    },
-                    {
-                      label: "Density",
-                      left: leftIsState
-                        ? formatDensity(leftItem.state!.density)
-                        : (leftItem.type === "city"
-                          ? formatDensity(Math.round(leftItem.city!.population / leftItem.city!.area))
-                          : formatDensity(leftItem.district!.density)),
-                      right: rightIsState
-                        ? formatDensity(rightItem.state!.density)
-                        : (rightItem.type === "city"
-                          ? formatDensity(Math.round(rightItem.city!.population / rightItem.city!.area))
-                          : formatDensity(rightItem.district!.density))
-                    },
-                  ];
-
-                  const stateOnlyMetrics = leftIsState && rightIsState ? [
-                    { label: "Literacy Rate", left: `${leftItem.state!.literacyRate.toFixed(1)}%`, right: `${rightItem.state!.literacyRate.toFixed(1)}%` },
-                    { label: "HDI", left: leftItem.state!.hdi.toFixed(3), right: rightItem.state!.hdi.toFixed(3) },
-                    { label: "Sex Ratio", left: leftItem.state!.sexRatio.toString(), right: rightItem.state!.sexRatio.toString() },
-                    { label: "GDP", left: formatCurrency(leftItem.state!.gdp * 10000000), right: formatCurrency(rightItem.state!.gdp * 10000000) },
-                    { label: "Capital", left: leftItem.state!.capital, right: rightItem.state!.capital },
-                    { label: "Region", left: leftItem.state!.region, right: rightItem.state!.region },
-                    { label: "Major Cities", left: leftItem.state!.cities.length.toString(), right: rightItem.state!.cities.length.toString() },
-                  ] : [];
-
-                  const cityOnlyMetrics = (!leftIsState && !rightIsState) ? [
-                    {
-                      label: "Tier",
-                      left: leftItem.type === "city"
-                        ? (leftItem.city!.tier === 1 ? "Metro" : `Tier ${leftItem.city!.tier}`)
-                        : (leftItem.district!.tier === 1 ? "Metro" : `Tier ${leftItem.district!.tier || 3}`),
-                      right: rightItem.type === "city"
-                        ? (rightItem.city!.tier === 1 ? "Metro" : `Tier ${rightItem.city!.tier}`)
-                        : (rightItem.district!.tier === 1 ? "Metro" : `Tier ${rightItem.district!.tier || 3}`)
-                    },
-                    {
-                      label: "Metro",
-                    left: leftItem.type === "city"
-                      ? (leftItem.city!.isMetro || leftItem.city!.tier === 1 ? "Yes" : "No")
-                      : (leftItem.district!.isMetro || leftItem.district!.tier === 1 ? "Yes" : "No"),
-                    right: rightItem.type === "city"
-                      ? (rightItem.city!.isMetro || rightItem.city!.tier === 1 ? "Yes" : "No")
-                      : (rightItem.district!.isMetro || rightItem.district!.tier === 1 ? "Yes" : "No")
-                    },
-                    {
-                      label: "Capital",
-                    left: leftItem.type === "city"
-                      ? (leftItem.city!.isCapital ? "Yes" : "No")
-                      : (leftItem.district!.isCapital ? "Yes" : "No"),
-                    right: rightItem.type === "city"
-                      ? (rightItem.city!.isCapital ? "Yes" : "No")
-                      : (rightItem.district!.isCapital ? "Yes" : "No")
-                    },
-                    {
-                      label: "State",
-                      left: leftStateData?.name || "",
-                      right: rightStateData?.name || ""
-                    },
-                    {
-                      label: "Sex Ratio",
-                      left: leftItem.type === "district" ? (leftItem.district!.sexRatio || "N/A") : "N/A",
-                      right: rightItem.type === "district" ? (rightItem.district!.sexRatio || "N/A") : "N/A"
-                    },
-                    {
-                      label: "Literacy",
-                      left: leftItem.type === "district" ? `${leftItem.district!.literacyRate}%` : "N/A",
-                      right: rightItem.type === "district" ? `${rightItem.district!.literacyRate}%` : "N/A"
-                    }
-                  ] : [];
-
-                  return [...commonMetrics, ...stateOnlyMetrics, ...cityOnlyMetrics].map((item, index, arr) => (
-                    <div
-                      key={item.label}
-                      className={`grid grid-cols-3 gap-4 items-center py-2 ${index !== arr.length - 1 ? 'border-b border-border-light/50' : ''}`}
-                    >
-                      <div className="text-sm font-medium text-text-secondary">{item.label}</div>
-                      <div className="text-center font-mono text-base text-text-primary">
-                        {item.left}
-                      </div>
-                      <div className="text-center font-mono text-base text-text-primary">
-                        {item.right}
-                      </div>
-                    </div>
-                  ));
-                })()}
-              </div>
-            </div>
-
-            {/* Top Districts Comparison - Only show if both are states */}
-            {leftItem.type === "state" && rightItem.type === "state" && leftItem.state && rightItem.state && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="card p-6">
-                  <h3 className="mb-4 text-sm font-semibold text-text-primary">
-                    Top Districts - {leftItem.state.name}
-                  </h3>
-                  <div className="space-y-3">
-                    {leftDistricts && leftDistricts.length > 0 ? (
-                      [...leftDistricts]
-                        .sort((a, b) => {
-                          const tierA = a.tier || 999;
-                          const tierB = b.tier || 999;
-                          if (tierA !== tierB) return tierA - tierB;
-                          
-                          const metroA = a.isMetro ? 0 : 1;
-                          const metroB = b.isMetro ? 0 : 1;
-                          if (metroA !== metroB) return metroA - metroB;
-                          
-                          const capitalA = a.isCapital ? 0 : 1;
-                          const capitalB = b.isCapital ? 0 : 1;
-                          if (capitalA !== capitalB) return capitalA - capitalB;
-                          
-                          if (a.literacyRate !== b.literacyRate) return b.literacyRate - a.literacyRate;
-                          
-                          return b.population - a.population;
-                        })
-                        .slice(0, 5)
-                        .map((district) => (
-                          <div key={district.id || district.name} className="flex items-center justify-between py-2 border-b border-border-light/50 last:border-0">
-                            <div>
-                              <p className="text-sm font-medium text-text-primary">{district.name}</p>
-                              <p className="text-xs text-text-muted">
-                                {district.tier === 1 ? "Metro" : district.tier ? `Tier ${district.tier}` : ""}
-                              </p>
-                            </div>
-                            <p className="text-sm font-mono text-text-secondary">
-                              {formatPopulation(district.population)}
-                            </p>
-                          </div>
-                        ))
-                    ) : (
-                      <p className="text-sm text-text-muted">No district data available</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="card p-6">
-                  <h3 className="mb-4 text-sm font-semibold text-text-primary">
-                    Top Districts - {rightItem.state.name}
-                  </h3>
-                  <div className="space-y-3">
-                    {rightDistricts && rightDistricts.length > 0 ? (
-                      [...rightDistricts]
-                        .sort((a, b) => {
-                          const tierA = a.tier || 999;
-                          const tierB = b.tier || 999;
-                          if (tierA !== tierB) return tierA - tierB;
-                          
-                          const metroA = a.isMetro ? 0 : 1;
-                          const metroB = b.isMetro ? 0 : 1;
-                          if (metroA !== metroB) return metroA - metroB;
-                          
-                          const capitalA = a.isCapital ? 0 : 1;
-                          const capitalB = b.isCapital ? 0 : 1;
-                          if (capitalA !== capitalB) return capitalA - capitalB;
-                          
-                          if (a.literacyRate !== b.literacyRate) return b.literacyRate - a.literacyRate;
-                          
-                          return b.population - a.population;
-                        })
-                        .slice(0, 5)
-                        .map((district) => (
-                          <div key={district.id || district.name} className="flex items-center justify-between py-2 border-b border-border-light/50 last:border-0">
-                            <div>
-                              <p className="text-sm font-medium text-text-primary">{district.name}</p>
-                              <p className="text-xs text-text-muted">
-                                {district.tier === 1 ? "Metro" : district.tier ? `Tier ${district.tier}` : ""}
-                              </p>
-                            </div>
-                            <p className="text-sm font-mono text-text-secondary">
-                              {formatPopulation(district.population)}
-                            </p>
-                          </div>
-                        ))
-                    ) : (
-                      <p className="text-sm text-text-muted">No district data available</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
-          </motion.section>
-        )}
+        {left && right && <Comparison left={left} right={right} />}
       </main>
     </div>
   );
 }
-

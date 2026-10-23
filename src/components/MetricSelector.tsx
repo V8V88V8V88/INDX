@@ -1,16 +1,10 @@
 "use client";
 
+import { METRICS } from "@/lib/metrics";
 import type { MetricKey } from "@/types";
+import { SegmentedControl } from "./ui";
 
-const metrics: { key: MetricKey; label: string }[] = [
-  { key: "population", label: "Population" },
-  { key: "gdp", label: "GDP" },
-  { key: "literacyRate", label: "Literacy" },
-  { key: "hdi", label: "HDI" },
-  { key: "density", label: "Density" },
-  { key: "sexRatio", label: "Sex Ratio" },
-  { key: "area", label: "Area" },
-];
+const options = METRICS.map((m) => ({ value: m.key, label: m.label }));
 
 interface MetricSelectorProps {
   selected: MetricKey;
@@ -18,20 +12,5 @@ interface MetricSelectorProps {
 }
 
 export function MetricSelector({ selected, onSelect }: MetricSelectorProps) {
-  return (
-    <div className="flex flex-wrap items-center gap-2 rounded-full border border-border-light bg-bg-secondary p-1.5">
-      {metrics.map((m) => (
-        <button
-          key={m.key}
-          onClick={() => onSelect(m.key)}
-          className={`relative rounded-full border border-transparent px-4 py-2 text-sm font-medium transition-all ${selected === m.key
-            ? "bg-accent-primary text-white shadow-sm"
-            : "text-text-muted hover:text-text-secondary"
-            }`}
-        >
-          {m.label}
-        </button>
-      ))}
-    </div>
-  );
+  return <SegmentedControl label="Metric" options={options} value={selected} onChange={onSelect} />;
 }
