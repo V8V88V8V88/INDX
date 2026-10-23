@@ -18,13 +18,11 @@ export function Header({ breadcrumbs }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border-light bg-bg-card/80 backdrop-blur-md">
       <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-primary">
-            <span className="text-sm font-bold text-white">IX</span>
-          </div>
-            <span className="text-lg font-semibold tracking-tight text-text-primary">
+        <Link href="/" className="flex items-baseline gap-1.5">
+          <span className="text-xl font-bold tracking-tighter text-text-primary">
             INDX
           </span>
+          <span className="h-2 w-2 rounded-[2px] bg-accent-primary" aria-hidden="true" />
         </Link>
 
         {breadcrumbs && breadcrumbs.length > 0 && (

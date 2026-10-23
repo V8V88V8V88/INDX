@@ -1,53 +1,53 @@
+<div align="center">
+
+<img src="public/logo.svg" alt="INDX" width="96">
+
 # INDX
 
-Interactive maps and data for India's states, districts, and cities. Compare stats, check rankings, and search across all 28 states, 8 union territories and 733 districts.
+**India, mapped and indexed.**
 
-## What it does
+Explore every state, union territory and district of India on an interactive map, with the numbers behind each one.
 
-Browse India's data through maps and statistics. You can:
+[![Live](https://img.shields.io/badge/Live-ind--x.vercel.app-000000?style=plastic&logo=vercel&logoColor=white)](https://ind-x.vercel.app)
 
-- View color-coded maps of India and each state
-- See district and city details
-- Compare states with national averages
-- Search for states, cities, or districts
-- Check rankings by population, GDP, literacy, and more
+[![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=plastic&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React_19-20232A?style=plastic&logo=react&logoColor=61DAFB)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=plastic&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![MapLibre](https://img.shields.io/badge/MapLibre-396CB2?style=plastic&logo=maplibre&logoColor=white)](https://maplibre.org)
+[![D3](https://img.shields.io/badge/D3.js-F9A03C?style=plastic&logo=d3dotjs&logoColor=white)](https://d3js.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=plastic&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Bun](https://img.shields.io/badge/Bun-000000?style=plastic&logo=bun&logoColor=white)](https://bun.sh)
 
-Includes data on population, GDP, literacy rates, HDI, density, sex ratio, and area for all states and union territories.
+[![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue?style=plastic)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/V8V88V8V88/INDX?style=plastic)](https://github.com/V8V88V8V88/INDX/stargazers)
 
-## Tech Stack
+</div>
 
-Next.js 16, React 19, TypeScript. Maps use D3.js, styling with Tailwind CSS, animations with Framer Motion. Data fetching via TanStack Query. Package manager is Bun.
+## What you can do
 
-## Installation
+| | |
+| --- | --- |
+| **Map** | Color-coded map of India by any metric, down to district level |
+| **States** | Each state's districts, cities and key numbers |
+| **Compare** | Put states side by side, or against the national average |
+| **Rankings** | Sort by population, GDP, literacy, HDI, density, sex ratio or area |
+| **Search** | Jump to any state, district or city |
+
+Covers all 28 states, 8 union territories and 733 districts.
+
+## Data
+
+India hasn't had a census since 2011, so population figures are official 2026 projections (RGI/MoHFW, with IIPS district projections). GDP comes from MoSPI, literacy from PLFS 2023-24. Sources and method are in [`scripts/data/README.md`](scripts/data/README.md).
+
+## Run locally
 
 ```bash
-# Install dependencies
 bun install
-```
-
-## Development
-
-```bash
-# Start development server
 bun run dev
 ```
 
-The application will be available at `http://localhost:3000`.
-
-## Build
-
-```bash
-# Create production build
-bun run build
-
-# Start production server
-bun start
-```
+Open http://localhost:3000. For a production build, run `bun run build` and then `bun start`.
 
 ## License
 
-This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](LICENSE) file for details.
-
-## Author
-
-Built by [Vaibhav Pratap Singh](https://v8v88v8v88.com/)
+[AGPL-3.0](LICENSE) · Built by [Vaibhav Pratap Singh](https://v8v88v8v88.com/)
