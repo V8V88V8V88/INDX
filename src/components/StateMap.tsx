@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, useId, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import * as d3 from "d3";
 import { useSubDistrictGeoData, filterSubDistrictsByDistrict } from "@/hooks/useSubDistrictGeoData";
+import { EDGE_FADE_STYLE } from "@/lib/map-projection";
 import { Button, CursorTooltip, Icon, Spinner } from "./ui";
 
 interface StateMapProps {
@@ -28,9 +29,6 @@ interface DistrictGeoData {
   type: string;
   features: DistrictFeature[];
 }
-
-const EDGE_FADE =
-  "linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent)";
 
 interface LabelSource {
   name: string;
@@ -395,7 +393,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
           animate={{ viewBox: zoomedViewBox }}
           transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="block h-auto max-h-[460px] w-full drop-shadow-xl lg:max-h-[760px]"
-          style={isZoomedIn ? { maskImage: EDGE_FADE, WebkitMaskImage: EDGE_FADE, maskComposite: "intersect", WebkitMaskComposite: "source-in" } : undefined}
+          style={isZoomedIn ? EDGE_FADE_STYLE : undefined}
           preserveAspectRatio="xMidYMid meet"
           onMouseMove={handleMouseMove}
           role="group"

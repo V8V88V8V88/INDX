@@ -14,7 +14,6 @@ const DEFAULT_ZOOM = 4;
 const DISTRICT_MIN_ZOOM = 5.5;
 const DISTRICT_LABELS_MIN_ZOOM = 6.0;
 const STATE_LABELS_MAX_ZOOM = 7;
-const ZOOM_HINT_MS = 4000;
 const HOVER_OPACITY = ["case", ["boolean", ["feature-state", "hover"], false], 1, 0];
 const SHORT_STATE_LABELS: Record<string, string> = {
   "Dadra and Nagar Haveli and Daman and Diu": "DNH & DD",
@@ -266,7 +265,6 @@ function centroidPoints(geo: GeoJSON.FeatureCollection, pickProps: (props: GeoJS
   };
 }
 
-const pillClass = "rounded-full border border-border-light bg-bg-card/90 px-3 py-1.5 text-xs text-text-muted backdrop-blur-sm";
 const zoomButtonClass = "flex h-9 w-9 items-center justify-center text-text-secondary transition-colors hover:bg-bg-secondary hover:text-text-primary";
 
 export default function MapPage() {
@@ -285,14 +283,6 @@ export default function MapPage() {
   const [hovered, setHovered] = useState<{ name: string; x: number; y: number } | null>(null);
   const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [baseZoom, setBaseZoom] = useState(DEFAULT_ZOOM);
-  const [zoomHint, setZoomHint] = useState(false);
-
-  useEffect(() => {
-    if (!ready) return;
-    setZoomHint(true);
-    const t = setTimeout(() => setZoomHint(false), ZOOM_HINT_MS);
-    return () => clearTimeout(t);
-  }, [ready]);
 
   // ---- map creation ----
   useEffect(() => {
@@ -685,12 +675,6 @@ export default function MapPage() {
             <LinkButton href="/" variant="overlay" iconOnly title="Back" aria-label="Back to home">
               <Icon name="arrow-left" />
             </LinkButton>
-            <span
-              className={`${pillClass} transition-opacity duration-500 ${zoomHint && zoom < DISTRICT_MIN_ZOOM ? "opacity-100" : "opacity-0"}`}
-              aria-hidden={!zoomHint}
-            >
-              Zoom in to see districts
-            </span>
           </div>
 
           <div className="pointer-events-auto absolute right-4 top-4 z-10 flex flex-col items-end gap-2">

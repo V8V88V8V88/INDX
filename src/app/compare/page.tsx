@@ -14,7 +14,7 @@ import {
 import { Badge, Card, CardTitle } from "@/components/ui";
 import { useDistricts } from "@/hooks/useDistricts";
 import { useFormat } from "@/hooks/useFormat";
-import type { SearchResult } from "@/hooks/useSearch";
+import type { PlaceResult } from "@/hooks/useSearch";
 import type { City, District, State } from "@/types";
 
 type CompareItem =
@@ -24,7 +24,7 @@ type CompareItem =
 
 type PlaceItem = Exclude<CompareItem, { type: "state" }>;
 
-function toCompareItem(result: SearchResult): CompareItem {
+function toCompareItem(result: PlaceResult): CompareItem {
   if (result.type === "city" && result.city) return { type: "city", state: result.state, city: result.city };
   if (result.type === "district" && result.district) return { type: "district", state: result.state, district: result.district };
   return { type: "state", state: result.state };
@@ -228,7 +228,7 @@ export default function ComparePage() {
               <p className="text-sm font-semibold text-text-secondary">{slot.label}</p>
               <InlineSearch
                 placeholder={slot.placeholder}
-                onSelect={(result) => slot.set(toCompareItem(result))}
+                onSelect={(result) => result.type !== "page" && slot.set(toCompareItem(result))}
                 onClear={() => slot.set(null)}
               />
             </div>

@@ -6,7 +6,7 @@ import Link from "next/link";
 import * as d3 from "d3";
 import { states } from "@/data/india";
 import { createStateMetricColorScale, type MapMetric } from "@/lib/map-view";
-import { stateNameToCode } from "@/lib/map-projection";
+import { EDGE_FADE_STYLE, stateNameToCode } from "@/lib/map-projection";
 import { getMetric } from "@/lib/metrics";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
 import { Button, CursorTooltip, Icon, LinkButton, Spinner } from "./ui";
@@ -168,15 +168,16 @@ export function IndiaMap({
     );
   }
 
+  const isTransformed = transform.k !== 1 || transform.x !== 0 || transform.y !== 0;
+
   const mapContent = (
     <>
       <svg
         ref={svgRef}
-        viewBox="-80 -20 700 720"
-        className="w-full h-auto touch-none"
+        viewBox="0 -20 630 690"
+        className="h-auto max-h-[560px] min-h-[380px] w-full touch-none lg:max-h-[720px]"
         style={{
-          minHeight: "380px",
-          maxHeight: "520px",
+          ...(isTransformed ? EDGE_FADE_STYLE : {}),
           cursor: "grab",
           willChange: "transform"
         }}
@@ -352,22 +353,22 @@ export function IndiaMap({
         );
       })()}
 
-      <div className="absolute bottom-4 right-4 z-10 flex gap-2">
-        {transform.k !== 1 && (
-          <Button variant="overlay" size="sm" onClick={resetZoom} title="Reset zoom">
+      <div className="absolute right-0 top-0 z-10 flex gap-2">
+        {isTransformed && (
+          <Button variant="overlay" size="sm" iconOnly onClick={resetZoom} title="Reset zoom" aria-label="Reset zoom">
             <Icon name="reset" size={14} />
-            Reset
           </Button>
         )}
         <Button
           variant="overlay"
           size="sm"
+          iconOnly
           pressed={showLabels}
           onClick={() => setShowLabels(!showLabels)}
           title={showLabels ? "Hide labels" : "Show labels"}
+          aria-label="Show state names"
         >
-          <Icon name="text" size={14} />
-          Labels
+          <Icon name="tag" size={14} />
         </Button>
         <LinkButton
           href={fullscreenHref}
@@ -377,15 +378,9 @@ export function IndiaMap({
           title="Fullscreen map (zoom to districts & tehsils)"
           aria-label="Open fullscreen map"
         >
-          <Icon name="expand" />
+          <Icon name="expand" size={14} />
         </LinkButton>
       </div>
-
-      {transform.k !== 1 && (
-        <div className="absolute right-4 top-4 z-10 rounded-full border border-border-light bg-bg-card/90 px-2.5 py-1 font-mono text-xs text-text-muted backdrop-blur-sm">
-          {Math.round(transform.k * 100)}%
-        </div>
-      )}
 
       {hoveredState && (
         <CursorTooltip x={mousePos.x} y={mousePos.y}>

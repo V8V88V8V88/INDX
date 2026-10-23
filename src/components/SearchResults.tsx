@@ -5,7 +5,8 @@ import type { SearchResult } from "@/hooks/useSearch";
 import { cn } from "@/lib/cn";
 import { Icon, Kbd } from "./ui";
 
-const typeLabel = { state: "State", city: "City", district: "District" };
+const typeLabel = { page: "Page", state: "State", city: "City", district: "District" };
+const typeIcon = { page: "globe", state: "state", city: "city", district: "district" } as const;
 
 interface SearchInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
   value: string;
@@ -99,7 +100,7 @@ export function SearchResults({ query, results, activeIndex, listboxId, onSelect
               )}
             >
               <Icon
-                name={result.type}
+                name={typeIcon[result.type]}
                 size={18}
                 className={cn("shrink-0", active ? "text-accent-primary" : "text-text-muted")}
               />
@@ -107,7 +108,7 @@ export function SearchResults({ query, results, activeIndex, listboxId, onSelect
                 <span className={cn("block truncate font-medium", active ? "text-accent-primary" : "text-text-primary")}>
                   {result.name}
                 </span>
-                {result.type !== "state" && (
+                {result.state && result.type !== "state" && (
                   <span className="mt-0.5 block truncate text-xs text-text-muted">{result.state.name}</span>
                 )}
               </span>

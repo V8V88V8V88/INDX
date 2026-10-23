@@ -58,38 +58,34 @@ export default function Home() {
       <Header />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
-        <motion.section
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={smooth}
-          className="mb-8"
-        >
-          <Badge variant="accent" className="mb-3">2026 Data</Badge>
-          <h1 className="text-display mb-4 text-text-primary">India</h1>
-          <p className="max-w-2xl text-lg text-text-tertiary">
-            Everything about India, plotted on one map. Explore, compare and rank any place in the country.
-          </p>
-        </motion.section>
-
         <section className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:content-start lg:gap-3">
-            <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} trigger={isPageReady} />
-            <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} trigger={isPageReady} />
-            <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} trigger={isPageReady} />
-            <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
+          <div>
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+              animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={smooth}
+              className="mb-6"
+            >
+              <Badge variant="accent" className="mb-3">2026 Data</Badge>
+              <h1 className="text-display mb-4 text-text-primary">India</h1>
+              <p className="text-lg text-text-tertiary">
+                Everything about India, plotted on one map. Explore, compare and rank any place in the country.
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:gap-3">
+              <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} trigger={isPageReady} />
+              <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} trigger={isPageReady} />
+              <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} trigger={isPageReady} />
+              <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
+            </div>
           </div>
 
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.985 }}
             animate={isPageReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.985 }}
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
-            className="min-w-0 lg:col-span-2"
+            className="min-w-0 lg:col-span-2 lg:self-center"
           >
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="text-sm text-text-tertiary">Click any state to explore details</p>
-              <MetricSelector selected={metric} onSelect={setMetric} />
-            </div>
-
             <IndiaMap colorByMetric={metric} interactive />
 
             <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
