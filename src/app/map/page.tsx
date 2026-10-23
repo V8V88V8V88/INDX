@@ -654,10 +654,10 @@ export default function MapPage() {
   const hasZoomed = Math.abs(zoom - baseZoom) > 0.1;
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-bg-primary">
-      <Header breadcrumbs={[{ label: "Map", href: "/map" }]} />
+    <div className="relative h-screen overflow-hidden bg-bg-primary">
+      <Header overlay breadcrumbs={[{ label: "Map", href: "/map" }]} />
 
-      <main className="relative min-h-0 flex-1">
+      <main className="relative h-full">
         <div ref={containerRef} className="h-full w-full" role="region" aria-label="Map of India by state and district" />
         <div
           className="pointer-events-none absolute inset-0 shadow-[inset_0_0_160px_40px_var(--map-vignette)]"
@@ -676,7 +676,7 @@ export default function MapPage() {
 
         <div className="pointer-events-none absolute inset-0">
 
-          <div className="pointer-events-auto absolute right-4 top-4 z-10 flex flex-col items-end gap-2">
+          <div className="pointer-events-auto absolute right-4 top-16 z-10 flex flex-col items-end gap-2">
             <Button variant="overlay" iconOnly pressed={showLabels} onClick={toggleLabels} title="Toggle labels" aria-label="Show labels">
               <Icon name="tag" />
             </Button>
