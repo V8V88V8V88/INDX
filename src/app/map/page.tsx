@@ -6,13 +6,6 @@ import type * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Header } from "@/components";
 import { stateNameToCode } from "@/lib/map-projection";
-import {
-  colorIndexForRank,
-  getMetricPaletteIndices,
-  isMapMetric,
-  rankStatesByMetric,
-  type MapMetric,
-} from "@/lib/map-view";
 
 const INDIA_CENTER: [number, number] = [82, 22];
 const INDIA_BOUNDS: [[number, number], [number, number]] = [[68, 6], [98, 38]];
@@ -23,14 +16,9 @@ const STATE_LABELS_MAX_ZOOM = 7;
 const SKIP_DISTRICT_LABELS = new Set(["DL", "CH", "PY", "DD", "LD", "AN"]);
 const MAP_WORKER_URL = "/maplibre-gl-worker.mjs";
 const GLYPHS_URL = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
-const LABEL_FONT = "Noto Sans Regular";
 const LABEL_FONT_BOLD = "Noto Sans Bold";
 const BASEMAP_ATTRIBUTION =
   '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
-
-const codeToName = Object.fromEntries(
-  Object.entries(stateNameToCode).map(([name, code]) => [code, name]),
-);
 
 function isDark() {
   return document.documentElement.classList.contains("dark");
@@ -63,17 +51,79 @@ function tc() {
   const dark = isDark();
   return {
     bg: resolveCSS("var(--bg-primary)"),
-    card: resolveCSS("var(--bg-card)"),
     text: resolveCSS("var(--text-primary)"),
     border: resolveCSS("var(--map-border-color)"),
-    choro: Array.from({ length: 10 }, (_, i) => resolveCSS(`var(--choro-${i})`)),
     labelText: dark ? "#ffffff" : "#09090b",
     labelHalo: dark ? "#000000" : "#ffffff",
     districtHalo: dark ? "rgba(0, 0, 0, 0.6)" : "rgba(255, 255, 255, 0.85)",
+    accent: resolveCSS("var(--accent-primary)"),
+    choro: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => resolveCSS(`var(--choro-${i})`)),
   };
 }
 
-type FillColor = NonNullable<Extract<maplibregl.AddLayerObject, { type: "fill" }>["paint"]>["fill-color"];
+const STATE_ELEVATION: Record<string, number> = {
+  LA: 4500, // Ladakh
+  SK: 3200, // Sikkim
+  HP: 2800, // Himachal Pradesh
+  UK: 2500, // Uttarakhand
+  AR: 2200, // Arunachal Pradesh
+  JK: 2100, // Jammu & Kashmir
+  ML: 1400, // Meghalaya
+  NL: 1300, // Nagaland
+  MN: 1100, // Manipur
+  MZ: 1000, // Mizoram
+  KL: 850,  // Kerala (Anamudi / Western Ghats)
+  KA: 700,  // Karnataka (Western Ghats & Deccan Plateau)
+  TN: 650,  // Tamil Nadu (Nilgiris)
+  MH: 600,  // Maharashtra (Sahyadris & Deccan Plateau)
+  MP: 550,  // Madhya Pradesh (Vindhyas, Satpura, Malwa)
+  CG: 480,  // Chhattisgarh (Bastar Plateau, Maikal)
+  JH: 450,  // Jharkhand (Chota Nagpur Plateau)
+  TG: 430,  // Telangana (Telangana Plateau)
+  TR: 380,  // Tripura (Jampui Hills)
+  OR: 350,  // Odisha (Eastern Ghats)
+  AP: 320,  // Andhra Pradesh
+  CH: 320,  // Chandigarh (Shivaliks)
+  RJ: 300,  // Rajasthan (Aravalli & Thar)
+  AS: 250,  // Assam (Valley & Karbi Hills)
+  HR: 230,  // Haryana (Plains)
+  PB: 220,  // Punjab (Plains)
+  DL: 215,  // Delhi (Ridge & Yamuna)
+  GA: 180,  // Goa (Konkan coast & slope)
+  UP: 140,  // Uttar Pradesh (Gangetic plain)
+  BR: 100,  // Bihar (Gangetic plain)
+  AN: 100,  // Andaman & Nicobar (Islands)
+  WB: 80,   // West Bengal (Delta & plains)
+  GJ: 75,   // Gujarat (Coastal & Kathiawar)
+  PY: 15,   // Puducherry (Coastal)
+  DD: 10,   // Daman & Diu (Coastal)
+  LD: 5,    // Lakshadweep (Atolls)
+};
+
+const codeToName = Object.fromEntries(
+  Object.entries(stateNameToCode).map(([name, code]) => [code, name]),
+);
+
+function terrainElevationExpr(choro: string[]): unknown[] {
+  const sorted = Object.entries(STATE_ELEVATION).sort((a, b) => b[1] - a[1]);
+  const total = sorted.length;
+  const expr: unknown[] = ["match", ["get", "ST_NM"]];
+
+  // Use vibrant, fully-saturated palette stops (indices 3 to 8) to keep colors rich and eliminate dull gray
+  const vibrant = [choro[3], choro[4], choro[5], choro[6], choro[7], choro[8]];
+
+  sorted.forEach(([code], rank) => {
+    const name = codeToName[code];
+    if (!name) return;
+    const ratio = rank / Math.max(total - 1, 1);
+    const bucket = Math.min(Math.floor(ratio * vibrant.length), vibrant.length - 1);
+    const colorIdx = vibrant.length - 1 - bucket;
+    expr.push(name, vibrant[colorIdx]);
+  });
+
+  expr.push(vibrant[2]);
+  return expr;
+}
 
 function mainlandCentroid(geom: GeoJSON.Geometry | null): [number, number] {
   let ring: GeoJSON.Position[];
@@ -90,21 +140,6 @@ function mainlandCentroid(geom: GeoJSON.Geometry | null): [number, number] {
   let sx = 0, sy = 0;
   for (const c of ring) { sx += c[0]; sy += c[1]; }
   return [sx / ring.length, sy / ring.length];
-}
-
-function choroplethExpr(metric: MapMetric, choro: string[]): FillColor {
-  const ranked = rankStatesByMetric(metric);
-  const pal = getMetricPaletteIndices(metric).map((i) => choro[i]);
-  const expr: unknown[] = ["match", ["get", "ST_NM"]];
-
-  ranked.forEach((id, rank) => {
-    const name = codeToName[id];
-    if (!name) return;
-    expr.push(name, pal[colorIndexForRank(rank, ranked.length, pal.length)]);
-  });
-
-  expr.push(choro[5]);
-  return expr as unknown as FillColor;
 }
 
 function addDistrictLayers(m: maplibregl.Map, code: string, data: GeoJSON.FeatureCollection, showLabels: boolean) {
@@ -165,12 +200,10 @@ function readInitialView() {
   const lng = parseFloat(p.get("lng") || "");
   const lat = parseFloat(p.get("lat") || "");
   const z = parseFloat(p.get("z") || "");
-  const m = p.get("m");
   const hasPosition = isFinite(lng) && isFinite(lat) && isFinite(z) && z > 4.3;
   return {
     center: hasPosition ? ([lng, lat] as [number, number]) : null,
     zoom: hasPosition ? Math.max(3, Math.min(14, z)) : null,
-    metric: isMapMetric(m) ? m : "population",
     showLabels: p.get("labels") !== "0",
   };
 }
@@ -185,6 +218,20 @@ function basemapSource(dark: boolean): maplibregl.RasterSourceSpecification {
     ],
     tileSize: 256,
     attribution: BASEMAP_ATTRIBUTION,
+  };
+}
+
+function hillshadeSource(dark: boolean): maplibregl.RasterSourceSpecification {
+  return {
+    type: "raster",
+    tiles: [
+      dark
+        ? "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade_Dark/MapServer/tile/{z}/{y}/{x}"
+        : "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}",
+    ],
+    tileSize: 256,
+    maxzoom: 16,
+    attribution: "Esri, USGS, NGA, NASA, CGIAR",
   };
 }
 
@@ -224,7 +271,6 @@ export default function MapPage() {
 
     const initial = readInitialView();
     labelsRef.current = initial.showLabels;
-    const metric: MapMetric = initial.metric;
     let lastDark = isDark();
 
     const loadVisibleDistricts = () => {
@@ -265,7 +311,10 @@ export default function MapPage() {
           style: {
             version: 8,
             glyphs: GLYPHS_URL,
-            sources: { carto: basemapSource(lastDark) },
+            sources: {
+              carto: basemapSource(lastDark),
+              hillshade: hillshadeSource(lastDark),
+            },
             layers: [
               { id: "bg", type: "background", paint: { "background-color": c.bg } },
               {
@@ -301,30 +350,64 @@ export default function MapPage() {
           setBaseZoom(m.getZoom());
 
           let geo: GeoJSON.FeatureCollection;
+          let maskGeo: GeoJSON.FeatureCollection;
           try {
-            const res = await fetch("/india-states.json");
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            geo = await res.json();
+            const [statesRes, maskRes] = await Promise.all([
+              fetch("/india-states.json"),
+              fetch("/india-mask.json"),
+            ]);
+            if (!statesRes.ok || !maskRes.ok) throw new Error("Failed to load map data");
+            geo = await statesRes.json();
+            maskGeo = await maskRes.json();
           } catch (err) {
-            console.error("Failed to load state boundaries", err);
+            console.error("Failed to load map data", err);
             if (!dead) setLoadError(true);
             return;
           }
           if (dead) return;
 
           m.addSource("states", { type: "geojson", data: geo });
+          m.addSource("india-mask", { type: "geojson", data: maskGeo });
           m.addSource("state-centroids", {
             type: "geojson",
             data: centroidPoints(geo, (props) => ({ ST_NM: props?.ST_NM })),
           });
 
+          // 1. Dynamic elevation fill for each state (solid base in active theme accent)
           m.addLayer({
             id: "state-fill",
             type: "fill",
             source: "states",
-            paint: { "fill-color": choroplethExpr(metric, c.choro) },
+            paint: {
+              "fill-color": terrainElevationExpr(c.choro) as any,
+              "fill-opacity": 1.0,
+            },
           });
 
+          // 2. Real physical hillshade relief draped over the elevation-colored land
+          m.addLayer({
+            id: "hillshade",
+            type: "raster",
+            source: "hillshade",
+            paint: {
+              "raster-opacity": lastDark ? 0.05 : 0.07,
+              "raster-contrast": 0.60,
+              "raster-brightness-max": 0.85,
+            },
+          });
+
+          // 3. Country mask: completely covers outside countries/oceans with background color
+          m.addLayer({
+            id: "country-mask",
+            type: "fill",
+            source: "india-mask",
+            paint: {
+              "fill-color": c.bg,
+              "fill-opacity": 1.0,
+            },
+          });
+
+          // 4. State boundary line
           m.addLayer({
             id: "state-line",
             type: "line",
@@ -388,7 +471,14 @@ export default function MapPage() {
           const dark = isDark();
 
           m.setPaintProperty("bg", "background-color", colors.bg);
-          m.setPaintProperty("state-fill", "fill-color", choroplethExpr(metric, colors.choro));
+          m.setPaintProperty("state-fill", "fill-color", terrainElevationExpr(colors.choro) as any);
+          m.setPaintProperty("state-fill", "fill-opacity", 1.0);
+          if (m.getLayer("hillshade")) {
+            m.setPaintProperty("hillshade", "raster-opacity", dark ? 0.05 : 0.07);
+          }
+          if (m.getLayer("country-mask")) {
+            m.setPaintProperty("country-mask", "fill-color", colors.bg);
+          }
           m.setPaintProperty("state-line", "line-color", colors.border);
           m.setPaintProperty("state-labels", "text-color", colors.labelText);
           m.setPaintProperty("state-labels", "text-halo-color", colors.labelHalo);
@@ -411,6 +501,25 @@ export default function MapPage() {
               { id: "basemap", type: "raster", source: "carto", layout: { visibility }, paint: { "raster-opacity": 0.45 } },
               "state-fill",
             );
+
+            if (m.getLayer("hillshade")) {
+              m.removeLayer("hillshade");
+              m.removeSource("hillshade");
+              m.addSource("hillshade", hillshadeSource(dark));
+              m.addLayer(
+                {
+                  id: "hillshade",
+                  type: "raster",
+                  source: "hillshade",
+                  paint: {
+                    "raster-opacity": dark ? 0.05 : 0.07,
+                    "raster-contrast": 0.60,
+                    "raster-brightness-max": 0.85,
+                  },
+                },
+                "country-mask",
+              );
+            }
           }
         };
         themeObserver = new MutationObserver(restyle);
