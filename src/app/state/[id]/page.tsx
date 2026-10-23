@@ -15,7 +15,7 @@ import {
   PageLoader,
   StateMap,
 } from "@/components";
-import { Badge, SectionHeader } from "@/components/ui";
+import { SectionHeader } from "@/components/ui";
 import { getStateById, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
@@ -225,10 +225,9 @@ export default function StatePage({ params }: PageProps) {
           transition={smooth}
           className="mb-8"
         >
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <Badge variant="accent">{state.region} India</Badge>
-            <Badge variant="outline">{state.code}</Badge>
-          </div>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">
+            {state.region} India · {state.code}
+          </p>
           <h1 className="text-display mb-3 text-text-primary">{state.name}</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
             Capital:{" "}

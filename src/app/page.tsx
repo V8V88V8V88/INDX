@@ -5,7 +5,7 @@ import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
 import Link from "next/link";
 import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader } from "@/components";
-import { Badge, Card, CardTitle, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
+import { Card, CardTitle, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
 import { states, india } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
@@ -66,7 +66,7 @@ export default function Home() {
               transition={smooth}
               className="mb-6"
             >
-              <Badge variant="accent" className="mb-3">2026 Data</Badge>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">2026 Data</p>
               <h1 className="text-display mb-4 text-text-primary">India</h1>
               <p className="text-lg text-text-tertiary">
                 Everything about India, plotted on one map. Explore, compare and rank any place in the country.
