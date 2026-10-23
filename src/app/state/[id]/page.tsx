@@ -425,8 +425,8 @@ export default function StatePage({ params }: PageProps) {
         </section>
 
         <BackLink />
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }

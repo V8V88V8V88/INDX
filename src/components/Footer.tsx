@@ -1,20 +1,23 @@
 import Link from "next/link";
-import { GitHubIcon } from "./ui";
+import { GitHubIcon, Wordmark } from "./ui";
 
-const linkClass = "text-accent-primary transition-opacity hover:opacity-80";
+const linkClass = "text-text-secondary transition-colors hover:text-text-primary";
 
 export function Footer() {
   return (
-    <footer className="mt-12 border-t border-border-light py-8 text-sm text-text-muted">
-      <p className="mb-4 text-center">Maps, data, and everything in between</p>
-      <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          <span>© 2026 INDX</span>
-          <span aria-hidden="true">·</span>
+    <footer className="mx-auto mt-16 max-w-7xl px-6">
+      <div className="border-t border-border-light pt-6">
+      <div className="flex flex-col-reverse items-center gap-4 text-sm text-text-muted sm:flex-row sm:justify-between">
+        <p>
+          © 2026 INDX · Made by{" "}
+          <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className={linkClass}>
+            Vaibhav Pratap Singh
+          </a>
+        </p>
+        <nav aria-label="Footer" className="flex items-center gap-5">
           <Link href="/about" className={linkClass}>
             About
           </Link>
-          <span aria-hidden="true">·</span>
           <a
             href="https://github.com/v8V88V8V88/INDX"
             target="_blank"
@@ -24,13 +27,10 @@ export function Footer() {
             <GitHubIcon />
             Source
           </a>
-        </div>
-        <p>
-          Made with <span className="text-accent-primary">❤️</span> by{" "}
-          <a href="https://v8v88v8v88.com/" target="_blank" rel="noopener noreferrer" className={linkClass}>
-            Vaibhav Pratap Singh
-          </a>
-        </p>
+        </nav>
+      </div>
+      <Wordmark variant="outline" className="mt-10 w-full select-none text-text-muted/60" />
+      <div className="h-8" />
       </div>
     </footer>
   );

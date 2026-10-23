@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   CityCard,
   ComparisonTable,
+  Footer,
   Header,
   InlineSearch,
   StateMap,
@@ -244,6 +245,7 @@ export default function ComparePage() {
 
         {left && right && <Comparison left={left} right={right} />}
       </main>
+      <Footer />
     </div>
   );
 }

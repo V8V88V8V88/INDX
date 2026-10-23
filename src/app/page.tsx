@@ -21,8 +21,6 @@ const sortOptions = [
   { value: "alpha", label: "A–Z", title: "Alphabetical" },
 ] as const;
 
-const totalStates = 28;
-const totalUTs = 8;
 const totalCities = states.reduce((sum, s) => sum + s.cities.length, 0);
 const avgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
 const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
@@ -70,7 +68,7 @@ export default function Home() {
           <Badge variant="accent" className="mb-3">2026 Data</Badge>
           <h1 className="text-display mb-4 text-text-primary">India</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
-            Geographic and statistical data visualization. Explore {totalStates} states, {totalUTs} union territories and 733 districts with comprehensive demographic and economic indicators.
+            Everything about India, plotted on one map. Explore, compare and rank any place in the country.
           </p>
         </motion.section>
 
@@ -186,9 +184,8 @@ export default function Home() {
             </div>
           )}
         </section>
-
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }

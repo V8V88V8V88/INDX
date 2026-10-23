@@ -1,0 +1,40 @@
+import { cn } from "@/lib/cn";
+
+const LETTERS = "M305 0V1490H0V0ZM473 1490V0H813L1284 754Q1328 827 1375 914Q1422 1002 1471 1119Q1463 1009 1457 898Q1452 788 1452 715V0H1764V1490H1423L995 806Q954 739 919 676Q884 613 847 542Q811 470 765 377Q773 512 779 626Q785 739 785 805V1490ZM2455 1490H1931V0H2460Q2684 0 2846 90Q3007 179 3094 346Q3181 512 3181 744Q3181 977 3094 1144Q3007 1311 2844 1400Q2681 1490 2455 1490ZM2236 1227H2440Q2655 1227 2766 1111Q2877 995 2877 744Q2877 494 2767 378Q2656 263 2442 263H2236ZM3224 1490 3759 728 3272 0H3626L3789 250Q3841 330 3872 392Q3903 455 3932 516Q3962 456 3994 393Q4026 330 4078 250L4244 0H4590L4107 719L4634 1490H4272L4065 1178Q4013 1099 3985 1049Q3958 999 3929 944Q3900 998 3872 1048Q3844 1099 3791 1178L3577 1490Z";
+
+interface WordmarkProps {
+  variant?: "solid" | "outline";
+  className?: string;
+  dotClassName?: string;
+}
+
+export function Wordmark({ variant = "solid", className, dotClassName }: WordmarkProps) {
+  const outline = variant === "outline";
+
+  return (
+    <svg
+      viewBox="0 0 5904 1490"
+      role="img"
+      aria-label="INDX"
+      className={cn("block overflow-visible", className)}
+    >
+      <path
+        d={LETTERS}
+        fill={outline ? "none" : "currentColor"}
+        stroke={outline ? "currentColor" : "none"}
+        strokeWidth={1}
+        vectorEffect="non-scaling-stroke"
+      />
+      <rect
+        x={5085}
+        y={671}
+        width={819}
+        height={819}
+        rx={410}
+        className={cn(outline ? "fill-none stroke-accent-primary" : "fill-accent-primary", dotClassName)}
+        strokeWidth={1}
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  );
+}

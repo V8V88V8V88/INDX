@@ -25,7 +25,7 @@ export function Header({ breadcrumbs }: HeaderProps) {
       <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-6">
         <Link href="/" className="flex items-baseline gap-1.5">
           <span className="text-xl font-bold tracking-tighter text-text-primary">INDX</span>
-          <span className="h-2 w-2 rounded-[2px] bg-accent-primary" aria-hidden="true" />
+          <span className="h-2 w-2 rounded-full bg-accent-primary" aria-hidden="true" />
         </Link>
 
         {breadcrumbs && breadcrumbs.length > 0 && (

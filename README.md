@@ -1,8 +1,9 @@
 <div align="center">
 
-<img src="public/logo.svg" alt="INDX" width="96">
-
-# INDX
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/logo-dark.svg">
+  <img src="public/logo-light.svg" alt="INDX" width="260">
+</picture>
 
 **India, mapped and indexed.**
 

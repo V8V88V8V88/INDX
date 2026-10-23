@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Header } from "@/components";
+import { Footer, Header } from "@/components";
 import { BackLink, SegmentedControl } from "@/components/ui";
 import { useSettings } from "@/contexts/SettingsContext";
 import { THEMES } from "@/lib/theme";
@@ -120,6 +120,7 @@ export default function SettingsPage() {
           <BackLink />
         </motion.div>
       </main>
+      <Footer />
     </div>
   );
 }
