@@ -204,7 +204,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
 
   if (isLoading) {
     return (
-      <div className="card p-6">
+      <div>
         <div className="mb-4 flex items-center justify-between">
           <div className="h-4 w-32 rounded-full bg-bg-secondary animate-pulse" />
           <div className="h-3 w-20 rounded-full bg-bg-secondary animate-pulse" />
@@ -236,7 +236,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
 
   if (error) {
     return (
-      <div className="card p-6">
+      <div>
         <div className="flex flex-col gap-2">
           <p className="font-medium text-text-primary">Error loading district data</p>
           <p className="text-sm text-text-muted">
@@ -252,7 +252,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
 
   if (items.length === 0) {
     return (
-      <div className="card p-6">
+      <div>
         <p className="text-text-muted">Data for {stateName} coming soon.</p>
       </div>
     );
@@ -261,7 +261,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   const cityCount = items.filter((i) => i.hasCity).length;
 
   return (
-    <div className="card p-6">
+    <div>
       <div className="mb-5 flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <SegmentedControl

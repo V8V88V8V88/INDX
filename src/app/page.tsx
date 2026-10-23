@@ -112,7 +112,7 @@ export default function Home() {
             }
           />
 
-          <Card key={metric} trigger={isPageReady}>
+          <Card plain key={metric} trigger={isPageReady}>
             <div className="mb-4 flex items-center justify-between">
               <CardTitle>All States & UTs {sortOrder === "alpha" ? "(A–Z)" : `by ${metricInfo.label}`}</CardTitle>
               <span className="text-xs text-text-muted">{rankedStates.length} regions</span>

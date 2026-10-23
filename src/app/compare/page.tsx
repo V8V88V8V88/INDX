@@ -2,16 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  CityCard,
-  ComparisonTable,
-  Footer,
-  Header,
-  InlineSearch,
-  StateMap,
-  type ComparisonRow,
-} from "@/components";
-import { Badge, Card, CardTitle } from "@/components/ui";
+import type { ReactNode } from "react";
+import { Footer, Header, InlineSearch, StateMap } from "@/components";
+import { cn } from "@/lib/cn";
 import { useDistricts } from "@/hooks/useDistricts";
 import { useFormat } from "@/hooks/useFormat";
 import type { PlaceResult } from "@/hooks/useSearch";
@@ -23,6 +16,14 @@ type CompareItem =
   | { type: "district"; state: State; district: District };
 
 type PlaceItem = Exclude<CompareItem, { type: "state" }>;
+
+interface CompareRow {
+  label: string;
+  values: [ReactNode, ReactNode];
+  raw?: [number, number];
+  block?: boolean;
+  higherIsBetter?: boolean;
+}
 
 function toCompareItem(result: PlaceResult): CompareItem {
   if (result.type === "city" && result.city) return { type: "city", state: result.state, city: result.city };
@@ -82,11 +83,7 @@ function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" 
     >
       {item ? (
         <>
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="text-2xl font-bold text-text-primary">{itemName(item)}</h2>
-            <Badge variant={item.type === "state" ? "accent" : "outline"}>{item.state.code}</Badge>
-          </div>
-          <div className="card min-h-[500px] p-4">
+          <div>
             <StateMap
               stateCode={item.state.id}
               selectedDistrict={item.type === "state" ? null : itemName(item)}
@@ -94,10 +91,9 @@ function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" 
               onDistrictClick={() => {}}
             />
           </div>
-          {item.type !== "state" && <CityCard city={placeAsCity(item)} stateName={item.state.name} />}
         </>
       ) : (
-        <div className="card flex min-h-[500px] items-center justify-center p-4">
+        <div className="flex min-h-[320px] items-center justify-center rounded-2xl border border-dashed border-border-light">
           <p className="text-text-muted">Select a state, city, or district</p>
         </div>
       )}
@@ -105,73 +101,160 @@ function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" 
   );
 }
 
-function TopDistricts({ state }: { state: State }) {
+function TopDistricts({ state, align }: { state: State; align: "left" | "right" }) {
   const { data: districts } = useDistricts(state.id);
   const { formatPopulation } = useFormat();
   const top = districts ? rankDistricts(districts).slice(0, 5) : [];
 
+  if (top.length === 0) return <p className="text-sm text-text-muted">No district data</p>;
+
   return (
-    <Card>
-      <CardTitle className="mb-4">Top Districts · {state.name}</CardTitle>
-      {top.length > 0 ? (
-        <ul>
-          {top.map((district) => (
-            <li
-              key={district.id || district.name}
-              className="flex items-center justify-between border-b border-border-light/50 py-3 last:border-0"
-            >
-              <div>
-                <p className="text-sm font-medium text-text-primary">{district.name}</p>
-                {district.tier && <p className="text-xs text-text-muted">Tier {district.tier}</p>}
-              </div>
-              <p className="font-mono text-sm text-text-secondary">{formatPopulation(district.population)}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-sm text-text-muted">No district data available</p>
-      )}
-    </Card>
+    <ul className="space-y-1.5">
+      {top.map((district) => (
+        <li
+          key={district.id || district.name}
+          className={cn("flex items-baseline gap-2", align === "left" && "flex-row-reverse")}
+        >
+          <span className="truncate text-sm font-medium text-text-primary">{district.name}</span>
+          <span className="shrink-0 text-xs tabular-nums text-text-muted">{formatPopulation(district.population)}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-function useComparisonRows(left: CompareItem, right: CompareItem): ComparisonRow[] {
+function useComparisonRows(left: CompareItem, right: CompareItem): CompareRow[] {
   const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
   const pair = <T,>(fn: (item: CompareItem) => T): [T, T] => [fn(left), fn(right)];
+  const figures = pair(itemFigures);
+  const numeric = (
+    label: string,
+    raw: [number, number],
+    format: (value: number) => string,
+    higherIsBetter?: boolean,
+  ): CompareRow => ({ label, raw, values: [format(raw[0]), format(raw[1])], higherIsBetter });
 
-  const rows: ComparisonRow[] = [
-    { label: "Population", values: pair((i) => formatPopulation(itemFigures(i).population)) },
-    { label: "Area", values: pair((i) => formatArea(itemFigures(i).area)) },
-    { label: "Density", values: pair((i) => formatDensity(itemFigures(i).density)) },
+  const rows: CompareRow[] = [
+    numeric("Population", [figures[0].population, figures[1].population], formatPopulation),
+    numeric("Area", [figures[0].area, figures[1].area], formatArea),
+    numeric("Density", [figures[0].density, figures[1].density], formatDensity),
   ];
 
   if (left.type === "state" && right.type === "state") {
-    const s = (fn: (state: State) => string): [string, string] => [fn(left.state), fn(right.state)];
+    const s = (fn: (state: State) => number): [number, number] => [fn(left.state), fn(right.state)];
     rows.push(
-      { label: "Literacy Rate", values: s((x) => `${x.literacyRate.toFixed(1)}%`) },
-      { label: "HDI", values: s((x) => x.hdi.toFixed(3)) },
-      { label: "Sex Ratio", values: s((x) => x.sexRatio.toString()) },
-      { label: "GDP", values: s((x) => formatCurrency(x.gdp * 10000000)) },
-      { label: "Capital", values: s((x) => x.capital) },
-      { label: "Region", values: s((x) => x.region) },
-      { label: "Major Cities", values: s((x) => x.cities.length.toString()) },
+      numeric("Literacy", s((x) => x.literacyRate), (v) => `${v.toFixed(1)}%`, true),
+      numeric("HDI", s((x) => x.hdi), (v) => v.toFixed(3), true),
+      numeric("Sex Ratio", s((x) => x.sexRatio), (v) => v.toString(), true),
+      numeric("GSDP", s((x) => x.gdp), (v) => formatCurrency(v * 10000000), true),
+      numeric("GSDP / person", s((x) => (x.gdp * 10000000) / x.population), (v) => formatCurrency(Math.round(v)), true),
+      { label: "Capital", values: [left.state.capital, right.state.capital] },
+      { label: "Region", values: [left.state.region, right.state.region] },
+      {
+        label: "Top Districts",
+        block: true,
+        values: [<TopDistricts key="l" state={left.state} align="left" />, <TopDistricts key="r" state={right.state} align="right" />],
+      },
     );
   } else if (left.type !== "state" && right.type !== "state") {
-    const p = (fn: (place: City, item: PlaceItem) => string): [string, string] => [
+    const p = (fn: (place: City, item: PlaceItem) => ReactNode): [ReactNode, ReactNode] => [
       fn(placeAsCity(left), left),
       fn(placeAsCity(right), right),
     ];
+    const districtValue = (item: PlaceItem, fn: (d: District) => number) =>
+      item.type === "district" ? fn(item.district) : null;
+    const literacy: [number | null, number | null] = [
+      districtValue(left, (d) => d.literacyRate),
+      districtValue(right, (d) => d.literacyRate),
+    ];
+    const sexRatio: [number | null, number | null] = [
+      districtValue(left, (d) => d.sexRatio),
+      districtValue(right, (d) => d.sexRatio),
+    ];
+
+    if (literacy[0] && literacy[1]) rows.push(numeric("Literacy", [literacy[0], literacy[1]], (v) => `${v}%`, true));
+    if (sexRatio[0] && sexRatio[1]) rows.push(numeric("Sex Ratio", [sexRatio[0], sexRatio[1]], (v) => v.toString(), true));
     rows.push(
       { label: "Tier", values: p((c) => `Tier ${c.tier}`) },
       { label: "Metro", values: p((c) => (c.isMetro || c.tier === 1 ? "Yes" : "No")) },
       { label: "Capital", values: p((c) => (c.isCapital ? "Yes" : "No")) },
       { label: "State", values: p((_, i) => i.state.name) },
-      { label: "Sex Ratio", values: p((_, i) => (i.type === "district" && i.district.sexRatio ? i.district.sexRatio.toString() : "N/A")) },
-      { label: "Literacy", values: p((_, i) => (i.type === "district" ? `${i.district.literacyRate}%` : "N/A")) },
     );
   }
 
   return rows;
+}
+
+function CompareBar({ share, align, strong }: { share: number; align: "left" | "right"; strong: boolean }) {
+  return (
+    <div className={cn("flex h-1.5 overflow-hidden rounded-full bg-bg-tertiary", align === "left" && "justify-end")}>
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: `${share * 100}%` }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={cn("h-full rounded-full", strong ? "bg-accent-primary" : "bg-text-muted/50")}
+      />
+    </div>
+  );
+}
+
+function HeadToHead({ left, right, rows }: { left: string; right: string; rows: CompareRow[] }) {
+  return (
+    <div>
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-border-light px-1 pb-4">
+        <p className="truncate text-right font-semibold text-text-primary">{left}</p>
+        <span className="text-xs font-medium uppercase tracking-wider text-text-muted">vs</span>
+        <p className="truncate font-semibold text-text-primary">{right}</p>
+      </div>
+
+      <div className="divide-y divide-border-light/60">
+        {rows.map((row) => {
+          const max = row.raw ? Math.max(row.raw[0], row.raw[1]) : 0;
+          const winner =
+            row.raw && row.higherIsBetter !== undefined && row.raw[0] !== row.raw[1]
+              ? (row.raw[0] > row.raw[1]) === row.higherIsBetter
+                ? 0
+                : 1
+              : null;
+
+          return (
+            <div key={row.label} className="px-1 py-3.5">
+              <div className="grid grid-cols-[1fr_7rem_1fr] items-baseline gap-3 sm:grid-cols-[1fr_9rem_1fr]">
+                {row.values.map((value, i) =>
+                  row.block ? (
+                    <div key={i} className={cn("min-w-0 self-start", i === 0 ? "order-1" : "order-3")}>
+                      {value}
+                    </div>
+                  ) : (
+                    <p
+                      key={i}
+                      className={cn(
+                        "truncate text-base font-semibold tabular-nums sm:text-lg",
+                        i === 0 ? "order-1 text-right" : "order-3",
+                        winner === i ? "text-accent-primary" : "text-text-primary",
+                      )}
+                    >
+                      {value}
+                    </p>
+                  ),
+                )}
+                <p className={cn("order-2 text-center text-xs font-medium uppercase tracking-wide text-text-muted", row.block && "self-start pt-0.5")}>
+                  {row.label}
+                </p>
+              </div>
+              {row.raw && max > 0 && (
+                <div className="mt-2 grid grid-cols-[1fr_7rem_1fr] gap-3 sm:grid-cols-[1fr_9rem_1fr]">
+                  <CompareBar share={row.raw[0] / max} align="left" strong={winner === null ? row.raw[0] >= row.raw[1] : winner === 0} />
+                  <span />
+                  <CompareBar share={row.raw[1] / max} align="right" strong={winner === null ? row.raw[1] >= row.raw[0] : winner === 1} />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 function Comparison({ left, right }: { left: CompareItem; right: CompareItem }) {
@@ -182,16 +265,8 @@ function Comparison({ left, right }: { left: CompareItem; right: CompareItem }) 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.4 }}
-      className="space-y-6"
     >
-      <h2 className="text-headline text-text-primary">Comparison</h2>
-      <ComparisonTable title="Basic Statistics" columns={[itemName(left), itemName(right)]} rows={rows} />
-      {left.type === "state" && right.type === "state" && (
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <TopDistricts state={left.state} />
-          <TopDistricts state={right.state} />
-        </div>
-      )}
+      <HeadToHead left={itemName(left)} right={itemName(right)} rows={rows} />
     </motion.section>
   );
 }
@@ -236,9 +311,8 @@ export default function ComparePage() {
         </section>
 
         {(left || right) && (
-          <section className="relative mb-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <section className="mb-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
             <CompareColumn item={left} side="left" />
-            <div className="absolute bottom-0 left-1/2 top-0 hidden w-px -translate-x-1/2 bg-border-light lg:block" />
             <CompareColumn item={right} side="right" />
           </section>
         )}

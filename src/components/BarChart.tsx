@@ -22,7 +22,7 @@ export function BarChart({ title, items, delay = 0, trigger = true }: BarChartPr
   const max = Math.max(...items.map((i) => i.value), 1);
 
   return (
-    <Card delay={delay} trigger={trigger}>
+    <Card plain delay={delay} trigger={trigger}>
       <CardTitle className="mb-5">{title}</CardTitle>
       <div className="space-y-4">
         {items.map((item, i) => (

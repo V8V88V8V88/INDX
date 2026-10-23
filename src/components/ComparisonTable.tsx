@@ -20,7 +20,7 @@ interface ComparisonTableProps {
 
 export function ComparisonTable({ title, columns, rows, delay = 0, trigger = true }: ComparisonTableProps) {
   return (
-    <Card delay={delay} trigger={trigger}>
+    <Card plain delay={delay} trigger={trigger}>
       <CardTitle className="mb-6">{title}</CardTitle>
       <table className="w-full table-fixed text-left">
         <thead>

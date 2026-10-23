@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import type * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Header } from "@/components";
-import { Button, CursorTooltip, Icon, LinkButton, Spinner } from "@/components/ui";
+import { Button, CursorTooltip, Icon, Spinner } from "@/components/ui";
 import { stateNameToCode } from "@/lib/map-projection";
 
 const INDIA_CENTER: [number, number] = [82, 22];
@@ -659,6 +659,10 @@ export default function MapPage() {
 
       <main className="relative min-h-0 flex-1">
         <div ref={containerRef} className="h-full w-full" role="region" aria-label="Map of India by state and district" />
+        <div
+          className="pointer-events-none absolute inset-0 shadow-[inset_0_0_160px_40px_var(--map-vignette)]"
+          aria-hidden="true"
+        />
 
         {loadError ? (
           <div className="absolute inset-0 z-30 flex items-center justify-center bg-bg-primary" role="alert">
@@ -671,11 +675,6 @@ export default function MapPage() {
         )}
 
         <div className="pointer-events-none absolute inset-0">
-          <div className="pointer-events-auto absolute left-4 top-4 z-10 flex items-center gap-2">
-            <LinkButton href="/" variant="overlay" iconOnly title="Back" aria-label="Back to home">
-              <Icon name="arrow-left" />
-            </LinkButton>
-          </div>
 
           <div className="pointer-events-auto absolute right-4 top-4 z-10 flex flex-col items-end gap-2">
             <Button variant="overlay" iconOnly pressed={showLabels} onClick={toggleLabels} title="Toggle labels" aria-label="Show labels">
