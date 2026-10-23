@@ -14,6 +14,7 @@ interface SegmentedControlProps<T extends string> {
   label: string;
   size?: "sm" | "md";
   fullWidth?: boolean;
+  scrollable?: boolean;
   className?: string;
 }
 
@@ -29,6 +30,7 @@ export function SegmentedControl<T extends string>({
   label,
   size = "md",
   fullWidth,
+  scrollable,
   className,
 }: SegmentedControlProps<T>) {
   return (
@@ -36,8 +38,11 @@ export function SegmentedControl<T extends string>({
       role="group"
       aria-label={label}
       className={cn(
-        "flex-wrap items-center gap-1 rounded-full border border-border-light bg-bg-secondary p-1",
+        "items-center gap-1 rounded-full border border-border-light bg-bg-secondary p-1",
         fullWidth ? "flex w-full" : "inline-flex",
+        scrollable
+          ? "max-w-full flex-nowrap overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          : "flex-wrap",
         className,
       )}
     >
@@ -52,9 +57,10 @@ export function SegmentedControl<T extends string>({
             aria-label={option.title}
             aria-pressed={selected}
             className={cn(
-              "inline-flex items-center justify-center rounded-full font-medium transition-colors",
+              "inline-flex items-center justify-center whitespace-nowrap rounded-full font-medium transition-colors",
               sizes[size],
               fullWidth && "flex-1",
+              scrollable && "shrink-0",
               selected ? "bg-accent-primary text-white shadow-sm" : "text-text-muted hover:text-text-primary",
             )}
           >

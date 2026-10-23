@@ -18,6 +18,10 @@
   --accent-dark: #115e59;
   --map-border: var(--accent-dark);
   --map-border-color: #000000;
+  --map-district-fill: var(--accent-primary);
+  --map-district-fill-active: color-mix(in srgb, var(--accent-primary) 70%, #000000);
+  --map-district-line: #ffffff;
+  --map-outline: color-mix(in srgb, var(--accent-primary) 50%, #000000);
 
   /* choropleth scale - dynamically based on accent-primary */
   --choro-0: color-mix(in srgb, var(--accent-primary) 5%, var(--bg-card));
@@ -61,6 +65,10 @@
   --accent-dark: #0f766e;
   --map-border: var(--border-light);
   --map-border-color: #ffffff;
+  --map-district-fill: color-mix(in srgb, var(--accent-primary) 75%, var(--bg-primary));
+  --map-district-fill-active: var(--accent-primary);
+  --map-district-line: #ffffff;
+  --map-outline: color-mix(in srgb, var(--accent-primary) 70%, #ffffff);
 
   --choro-0: color-mix(in srgb, var(--accent-primary) 10%, var(--bg-card));
   --choro-1: color-mix(in srgb, var(--accent-primary) 20%, var(--bg-card));
@@ -180,4 +188,19 @@ body {
 ::selection {
   background: var(--accent-muted);
   color: var(--text-primary);
+}
+.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact,
+.maplibregl-ctrl.maplibregl-ctrl-attrib.maplibregl-compact-show {
+  background: color-mix(in srgb, var(--bg-card) 90%, transparent);
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(4px);
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--text-tertiary);
+}
+
+.dark .maplibregl-ctrl-attrib-button {
+  filter: invert(1);
 }

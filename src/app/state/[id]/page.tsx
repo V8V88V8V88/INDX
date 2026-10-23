@@ -15,11 +15,11 @@ import {
   PageLoader,
   StateMap,
 } from "@/components";
-import { BackLink, Badge, Card, CardTitle, SectionHeader, Stat } from "@/components/ui";
+import { Badge, SectionHeader } from "@/components/ui";
 import { getStateById, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
-import type { City, District, State } from "@/types";
+import type { District, State } from "@/types";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -49,23 +49,6 @@ function findDistrictByName(list: District[], name: string): District | null {
     }
     return false;
   }) ?? null;
-}
-
-// Keep this in sync with DistrictList's definition so that "major" places
-// are derived from shared parameters instead of duplicated data.
-function isMajorArea(d: District, city?: City) {
-  const pop = d.population;
-  const tier = city?.tier ?? d.tier;
-  const isMetro = !!(city?.isMetro || d.isMetro);
-  const density = d.density;
-  const literacy = d.literacyRate || 0;
-
-  if (isMetro || tier === 1) return true;
-
-  const bigUrban = pop >= 3_000_000 && density >= 1200;
-  const goodQuality = literacy >= 75;
-
-  return bigUrban && goodQuality;
 }
 
 function findCapitalDistrict(state: State, districts: District[] | undefined): string {
@@ -163,7 +146,7 @@ export default function StatePage({ params }: PageProps) {
 
     const timer = setTimeout(() => {
       lastScrolledHashRef.current = hash;
-      document.getElementById("state-map")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      document.getElementById("state-map")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, 200);
     return () => clearTimeout(timer);
   }, [hash, isPageReady]);
@@ -224,16 +207,6 @@ export default function StatePage({ params }: PageProps) {
     return [];
   }, [districts, state.cities, formatPopulation]);
 
-  const majorDistrictCount =
-    districts?.filter((d) => {
-      const matchedCity = state.cities.find(
-        (c) =>
-          normalizeDistrictName(c.name) === normalizeDistrictName(d.name) ||
-          normalizeDistrictName(c.name) === normalizeDistrictName(d.headquarters || ""),
-      );
-      return isMajorArea(d, matchedCity);
-    }).length || 0;
-
   return (
     <div className="min-h-screen bg-bg-primary">
       <AnimatePresence>
@@ -266,18 +239,16 @@ export default function StatePage({ params }: PageProps) {
               {state.capital}
             </button>
             {" · "}
-            {state.cities.length} major cities tracked
-            {" · "}
             {formatArea(state.area)} area
           </p>
         </motion.section>
 
         {/* Metrics & Map Grid */}
-        <div className="mb-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="mb-10 grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
           {/* Left Column: Metrics */}
-          <div className="flex flex-col gap-4">
+          <div className="contents lg:flex lg:flex-col lg:gap-4">
             {/* Key Metrics Grid */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="order-1 grid grid-cols-2 gap-3 sm:gap-4 lg:order-none lg:grid-cols-1 lg:gap-3">
               <MetricCard
                 title="Population (2026)"
                 value={formatPopulation(state.population)}
@@ -289,7 +260,7 @@ export default function StatePage({ params }: PageProps) {
                 title={state.gdpYear ? `GSDP (${state.gdpYear})` : "GSDP"}
                 value={formatCurrency(state.gdp * 10000000)}
                 unit=""
-                subtitle={`#${gdpRank} in India`}
+                subtitle={`#${gdpRank} in India · ${formatCurrency(Math.round((state.gdp * 10000000) / state.population))} per person`}
                 delay={0.15}
                 trigger={isPageReady}
               />
@@ -310,7 +281,7 @@ export default function StatePage({ params }: PageProps) {
               />
             </div>
 
-            <div className="min-h-[200px] transition-all duration-200">
+            <div className="order-3 lg:order-none">
               <AnimatePresence mode="wait" initial={false}>
                 {selectedDistrict && (
                   <DistrictInfoCard
@@ -325,7 +296,7 @@ export default function StatePage({ params }: PageProps) {
           </div>
 
           {/* Right Column: Map - Now takes full column */}
-          <div id="state-map" className="-mt-4">
+          <div id="state-map" className="order-2 -mt-4 lg:order-none lg:col-span-2">
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.97 }}
               animate={isPageReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.97 }}
@@ -333,7 +304,7 @@ export default function StatePage({ params }: PageProps) {
               className="flex flex-col items-center justify-center"
               style={{ overflow: "visible" }}
             >
-              <div className="w-full" style={{ minHeight: "650px", overflow: "visible" }}>
+              <div className="w-full" style={{ overflow: "visible" }}>
                 <StateMap
                   stateCode={state.id}
                   selectedDistrict={selectedDistrict}
@@ -385,35 +356,11 @@ export default function StatePage({ params }: PageProps) {
           />
         </section>
 
-        <section className="mb-10">
-          <Card delay={0.2} trigger={isPageReady}>
-            <CardTitle className="mb-6">Geographic & Demographic Data</CardTitle>
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
-              <Stat size="lg" label="Total Area" value={formatArea(state.area)} />
-              <Stat size="lg" label="Density" value={formatDensity(state.density)} />
-              <Stat size="lg" label="Total Districts" value={districts?.length || 0} hint="districts" />
-              <Stat size="lg" label="Major Districts" value={majorDistrictCount} hint="metros" />
-              <Stat
-                size="lg"
-                label="District Pop."
-                value={formatPopulation(districts?.reduce((sum, d) => sum + (d.population || 0), 0) || 0)}
-                hint="total districts"
-              />
-              <Stat
-                size="lg"
-                label="Per Capita GDP"
-                value={formatCurrency(Math.round((state.gdp * 10000000) / state.population))}
-                hint="approx"
-              />
-            </div>
-          </Card>
-        </section>
 
         <section className="mb-12" data-districts-section>
           <SectionHeader
             title="Districts"
             description={`Administrative divisions of ${state.name}`}
-            actions={<span className="text-xs text-text-muted">{state.cities.length} major cities</span>}
           />
           <DistrictList
             stateCode={state.id}
@@ -424,7 +371,6 @@ export default function StatePage({ params }: PageProps) {
           />
         </section>
 
-        <BackLink />
       </main>
       <Footer />
     </div>

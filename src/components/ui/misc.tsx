@@ -42,7 +42,7 @@ export function SectionHeader({ title, description, actions }: SectionHeaderProp
         <h2 className="text-headline text-text-primary">{title}</h2>
         {description && <p className="mt-1 text-text-tertiary">{description}</p>}
       </div>
-      {actions && <div className="flex flex-wrap items-center gap-3">{actions}</div>}
+      {actions && <div className="flex min-w-0 flex-wrap items-center gap-3">{actions}</div>}
     </div>
   );
 }

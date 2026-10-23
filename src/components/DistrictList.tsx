@@ -7,17 +7,28 @@ import { useFormat } from "@/hooks/useFormat";
 import { cn } from "@/lib/cn";
 import type { City, District } from "@/types";
 import { PlaceBadges } from "./PlaceBadges";
-import { SegmentedControl, Stat } from "./ui";
+import { Button, Icon, SegmentedControl, Stat } from "./ui";
 
 type FilterType = "all" | "cities";
-type SortType = "population" | "name" | "literacy" | "density";
+type SortType = "population" | "area" | "density" | "literacy" | "sexRatio" | "name";
+type TierFilter = "all" | "1" | "2" | "3" | "4";
 
 const sortOptions = [
-  { value: "population", label: "Pop", title: "Sort by population" },
-  { value: "literacy", label: "Lit%", title: "Sort by literacy" },
-  { value: "density", label: "Den", title: "Sort by density" },
+  { value: "population", label: "Population", title: "Sort by population" },
+  { value: "area", label: "Area", title: "Sort by area" },
+  { value: "density", label: "Density", title: "Sort by density" },
+  { value: "literacy", label: "Literacy", title: "Sort by literacy" },
+  { value: "sexRatio", label: "Sex Ratio", title: "Sort by sex ratio" },
   { value: "name", label: "A–Z", title: "Sort alphabetically" },
 ] as const;
+
+const sortValue: Record<Exclude<SortType, "name">, (d: District) => number> = {
+  population: (d) => d.population,
+  area: (d) => d.area,
+  density: (d) => d.density,
+  literacy: (d) => d.literacyRate,
+  sexRatio: (d) => d.sexRatio,
+};
 
 interface DistrictListProps {
   stateCode: string;
@@ -94,6 +105,9 @@ function getSignificanceScore(d: District, city?: City): number {
 export function DistrictList({ stateCode, stateName, cities = [], selectedDistrict, onDistrictSelect }: DistrictListProps) {
   const [filter, setFilter] = useState<FilterType>("all");
   const [sortBy, setSortBy] = useState<SortType>("population");
+  const [ascending, setAscending] = useState(false);
+  const [tier, setTier] = useState<TierFilter>("all");
+  const [query, setQuery] = useState("");
   const { data: districts, isLoading, error } = useDistricts(stateCode);
 
   const items = useMemo(() => {
@@ -159,22 +173,34 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   }, [districts, cities]);
 
   const filteredAndSorted = useMemo(() => {
-    const result = filter === "cities" ? items.filter((item) => item.isMajor) : items;
+    const q = query.trim().toLowerCase();
+    const result = items.filter(
+      (item) =>
+        (filter === "all" || item.isMajor) &&
+        (tier === "all" || String(item.tier) === tier) &&
+        (!q || item.name.toLowerCase().includes(q) || item.headquarters?.toLowerCase().includes(q)),
+    );
 
-    return [...result].sort((a, b) => {
-      switch (sortBy) {
-        case "name":
-          return a.name.localeCompare(b.name);
-        case "literacy":
-          return b.literacyRate - a.literacyRate;
-        case "density":
-          return b.density - a.density;
-        case "population":
-        default:
-          return b.population - a.population;
-      }
-    });
-  }, [items, filter, sortBy]);
+    const direction = ascending ? 1 : -1;
+    return [...result].sort((a, b) =>
+      sortBy === "name"
+        ? -direction * a.name.localeCompare(b.name)
+        : direction * (sortValue[sortBy](a) - sortValue[sortBy](b)),
+    );
+  }, [items, filter, tier, query, sortBy, ascending]);
+
+  const tierOptions = useMemo(() => {
+    const tiers = [...new Set(items.map((i) => i.tier).filter((t): t is number => !!t))].sort();
+    return [
+      { value: "all" as TierFilter, label: "All tiers" },
+      ...tiers.map((t) => ({ value: String(t) as TierFilter, label: `Tier ${t}` })),
+    ];
+  }, [items]);
+
+  const changeSort = (next: SortType) => {
+    setSortBy(next);
+    setAscending(next === "name");
+  };
 
   if (isLoading) {
     return (
@@ -236,21 +262,54 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
 
   return (
     <div className="card p-6">
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <SegmentedControl
-          label="Filter districts"
-          size="sm"
-          value={filter}
-          onChange={setFilter}
-          options={[
-            { value: "all", label: `All (${items.length})` },
-            { value: "cities", label: `Major Cities (${cityCount})` },
-          ]}
-        />
-        <SegmentedControl label="Sort districts" size="sm" value={sortBy} onChange={setSortBy} options={sortOptions} />
+      <div className="mb-5 flex flex-col gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <SegmentedControl
+            label="Filter districts"
+            size="sm"
+            value={filter}
+            onChange={setFilter}
+            options={[
+              { value: "all", label: `All (${items.length})` },
+              { value: "cities", label: `Major Cities (${cityCount})` },
+            ]}
+          />
+          <label className="flex h-9 w-full items-center gap-2 rounded-full border border-border-light bg-bg-secondary px-3 sm:w-64">
+            <Icon name="search" size={14} className="shrink-0 text-text-muted" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search districts"
+              aria-label="Search districts"
+              className="min-w-0 flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-muted focus:outline-none"
+            />
+          </label>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {tierOptions.length > 2 && (
+            <SegmentedControl label="Filter by tier" size="sm" value={tier} onChange={setTier} options={tierOptions} scrollable />
+          )}
+          <div className="flex min-w-0 max-w-full items-center gap-2">
+            <SegmentedControl label="Sort districts" size="sm" value={sortBy} onChange={changeSort} options={sortOptions} scrollable />
+            <Button
+              size="sm"
+              iconOnly
+              onClick={() => setAscending((a) => !a)}
+              title={ascending ? "Ascending" : "Descending"}
+              aria-label={ascending ? "Sort descending" : "Sort ascending"}
+            >
+              <Icon name={ascending ? "arrow-up" : "arrow-down"} size={14} />
+            </Button>
+          </div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+      {filteredAndSorted.length === 0 && (
+        <p className="py-8 text-center text-sm text-text-muted">No districts match these filters.</p>
+      )}
+
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {filteredAndSorted.map((item, i) => (
           <DistrictItem
             key={item.id}
@@ -277,6 +336,9 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
 
   const isCapital = city?.isCapital || item.isCapital;
   const isMetro = city?.isMetro || item.isMetro || city?.tier === 1 || item.tier === 1;
+  const [densityValue, densityUnit] = formatDensity(item.density).split("/");
+  const showHeadquarters =
+    !!item.headquarters && !item.name.toLowerCase().includes(item.headquarters.toLowerCase());
 
   const handleClick = () => {
     if (!onSelect) return;
@@ -300,25 +362,41 @@ function DistrictItem({ item, delay, isSelected, onSelect }: { item: ItemWithCit
       tabIndex={0}
       aria-pressed={!!isSelected}
       className={cn(
-        "cursor-pointer rounded-2xl border p-5 transition-colors hover:border-border-medium hover:bg-bg-secondary",
+        "cursor-pointer rounded-xl border p-4 transition-colors",
         isSelected
-          ? "border-accent-primary bg-accent-primary/10 ring-2 ring-accent-primary/20"
-          : item.hasCity
-            ? "border-accent-primary/30 bg-bg-secondary/60"
-            : "border-border-light bg-bg-secondary/40",
+          ? "border-accent-primary bg-accent-primary/10"
+          : "border-[color-mix(in_srgb,var(--border-light)_35%,var(--border-medium))] bg-bg-secondary/70 hover:border-text-muted hover:bg-bg-secondary",
       )}
     >
-      <h4 className="text-xl font-bold text-text-primary">{item.name}</h4>
-      {item.headquarters && <p className="mt-1 text-sm text-text-tertiary">HQ: {item.headquarters}</p>}
-      <div className="mt-3">
-        <PlaceBadges isCapital={isCapital} isMetro={isMetro} tier={city?.tier || item.tier} />
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h4 className="flex items-center gap-2 text-base font-semibold text-text-primary sm:text-lg">
+            <span className="truncate">{item.name}</span>
+            {item.hasCity && (
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary" title="Major city" aria-label="Major city" />
+            )}
+          </h4>
+          {showHeadquarters && <p className="truncate text-xs text-text-muted">HQ: {item.headquarters}</p>}
+        </div>
+        <div className="shrink-0 pt-0.5">
+          <PlaceBadges isCapital={isCapital} isMetro={isMetro} tier={city?.tier || item.tier} />
+        </div>
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
-        <Stat label="Population" value={formatPopulation(item.population)} />
-        {item.literacyRate > 0 && <Stat label="Literacy" value={`${item.literacyRate}%`} />}
-        <Stat label="Density" value={formatDensity(item.density)} />
-        {item.sexRatio > 0 && <Stat label="Sex Ratio" value={item.sexRatio} />}
+      <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 xl:grid-cols-[1fr_1fr_1.35fr_1fr]">
+        <Stat size="sm" label="Pop." value={formatPopulation(item.population)} />
+        {item.literacyRate > 0 && <Stat size="sm" label="Literacy" value={`${item.literacyRate}%`} />}
+        <Stat
+          size="sm"
+          label="Density"
+          value={
+            <>
+              {densityValue}
+              <span className="text-xs font-normal text-text-muted">/{densityUnit}</span>
+            </>
+          }
+        />
+        {item.sexRatio > 0 && <Stat size="sm" label="Sex Ratio" value={item.sexRatio} />}
       </div>
     </motion.div>
   );
