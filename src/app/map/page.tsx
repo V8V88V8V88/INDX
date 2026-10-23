@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import type * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Header } from "@/components";
-import { Button, CursorTooltip, Icon, LinkButton, Spinner } from "@/components/ui";
+import { Button, CursorTooltip, Icon, Spinner } from "@/components/ui";
 import { stateNameToCode } from "@/lib/map-projection";
 
 const INDIA_CENTER: [number, number] = [82, 22];
@@ -13,12 +14,17 @@ const DEFAULT_ZOOM = 4;
 const DISTRICT_MIN_ZOOM = 5.5;
 const DISTRICT_LABELS_MIN_ZOOM = 6.0;
 const STATE_LABELS_MAX_ZOOM = 7;
+const HOVER_OPACITY = ["case", ["boolean", ["feature-state", "hover"], false], 1, 0];
+const SHORT_STATE_LABELS: Record<string, string> = {
+  "Dadra and Nagar Haveli and Daman and Diu": "DNH & DD",
+  "Andaman & Nicobar": "A & N Islands",
+};
 const SKIP_DISTRICT_LABELS = new Set(["DL", "CH", "PY", "DD", "LD", "AN"]);
 const MAP_WORKER_URL = "/maplibre-gl-worker.mjs";
 const GLYPHS_URL = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
 const LABEL_FONT_BOLD = "Noto Sans Bold";
 const BASEMAP_ATTRIBUTION =
-  '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>';
+  'Esri, HERE, Garmin, © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
 
 function isDark() {
   return document.documentElement.classList.contains("dark");
@@ -51,13 +57,18 @@ function tc() {
   const dark = isDark();
   return {
     bg: resolveCSS("var(--bg-primary)"),
-    text: resolveCSS("var(--text-primary)"),
-    border: resolveCSS("var(--map-border-color)"),
+    border: resolveCSS("var(--map-district-line)"),
+    outline: resolveCSS("var(--map-outline)"),
     labelText: dark ? "#ffffff" : "#09090b",
-    labelHalo: dark ? "#000000" : "#ffffff",
     districtHalo: dark ? "rgba(0, 0, 0, 0.6)" : "rgba(255, 255, 255, 0.85)",
     accent: resolveCSS("var(--accent-primary)"),
-    choro: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => resolveCSS(`var(--choro-${i})`)),
+    terrain: [
+      "color-mix(in srgb, var(--accent-primary) 40%, #000000)",
+      "color-mix(in srgb, var(--accent-primary) 62%, #000000)",
+      "color-mix(in srgb, var(--accent-primary) 82%, #000000)",
+      "var(--accent-primary)",
+      "color-mix(in srgb, var(--accent-primary) 85%, #ffffff)",
+    ].map(resolveCSS),
   };
 }
 
@@ -104,25 +115,17 @@ const codeToName = Object.fromEntries(
   Object.entries(stateNameToCode).map(([name, code]) => [code, name]),
 );
 
-function terrainElevationExpr(choro: string[]): unknown[] {
-  const sorted = Object.entries(STATE_ELEVATION).sort((a, b) => b[1] - a[1]);
-  const total = sorted.length;
-  const expr: unknown[] = ["match", ["get", "ST_NM"]];
+const TERRAIN_STOPS = [50, 250, 700, 1800, 4500];
 
-  // Use vibrant, fully-saturated palette stops (indices 3 to 8) to keep colors rich and eliminate dull gray
-  const vibrant = [choro[3], choro[4], choro[5], choro[6], choro[7], choro[8]];
-
-  sorted.forEach(([code], rank) => {
+function terrainElevationExpr(colors: string[]): unknown[] {
+  const elevation: unknown[] = ["match", ["get", "ST_NM"]];
+  for (const [code, metres] of Object.entries(STATE_ELEVATION)) {
     const name = codeToName[code];
-    if (!name) return;
-    const ratio = rank / Math.max(total - 1, 1);
-    const bucket = Math.min(Math.floor(ratio * vibrant.length), vibrant.length - 1);
-    const colorIdx = vibrant.length - 1 - bucket;
-    expr.push(name, vibrant[colorIdx]);
-  });
+    if (name) elevation.push(name, metres);
+  }
+  elevation.push(200);
 
-  expr.push(vibrant[2]);
-  return expr;
+  return ["interpolate", ["linear"], elevation, ...TERRAIN_STOPS.flatMap((stop, i) => [stop, colors[i]])];
 }
 
 function mainlandCentroid(geom: GeoJSON.Geometry | null): [number, number] {
@@ -146,7 +149,7 @@ function addDistrictLayers(m: maplibregl.Map, code: string, data: GeoJSON.Featur
   const c = tc();
   const src = `d-${code}`;
 
-  m.addSource(src, { type: "geojson", data });
+  m.addSource(src, { type: "geojson", data, promoteId: "district" });
   m.addLayer(
     { id: `d-fill-${code}`, type: "fill", source: src, paint: { "fill-color": "#000", "fill-opacity": 0.01 } },
     "state-line",
@@ -157,12 +160,27 @@ function addDistrictLayers(m: maplibregl.Map, code: string, data: GeoJSON.Featur
       type: "line",
       source: src,
       paint: {
-        "line-color": c.text,
-        "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.3, 8, 0.7, 12, 1],
-        "line-opacity": 0.35,
+        "line-color": c.border,
+        "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.3, 8, 0.6, 12, 1],
+        "line-opacity": 0.3,
       },
+      layout: { "line-join": "round" },
     },
     "state-line",
+  );
+  m.addLayer(
+    {
+      id: `d-hover-${code}`,
+      type: "line",
+      source: src,
+      layout: { "line-join": "round" },
+      paint: {
+        "line-color": c.border,
+        "line-width": ["interpolate", ["linear"], ["zoom"], 5, 1.5, 8, 2.2, 12, 3],
+        "line-opacity": HOVER_OPACITY as any,
+      },
+    },
+    "state-labels",
   );
 
   if (SKIP_DISTRICT_LABELS.has(code)) return;
@@ -186,8 +204,8 @@ function addDistrictLayers(m: maplibregl.Map, code: string, data: GeoJSON.Featur
       paint: {
         "text-color": c.labelText,
         "text-halo-color": c.districtHalo,
-        "text-halo-width": 1.6,
-        "text-halo-blur": 0.6,
+        "text-halo-width": 1.3,
+        "text-halo-blur": 0.8,
       },
       minzoom: DISTRICT_LABELS_MIN_ZOOM,
     },
@@ -213,10 +231,11 @@ function basemapSource(dark: boolean): maplibregl.RasterSourceSpecification {
     type: "raster",
     tiles: [
       dark
-        ? "https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png"
-        : "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png",
+        ? "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+        : "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
     ],
     tileSize: 256,
+    maxzoom: 16,
     attribution: BASEMAP_ATTRIBUTION,
   };
 }
@@ -246,10 +265,12 @@ function centroidPoints(geo: GeoJSON.FeatureCollection, pickProps: (props: GeoJS
   };
 }
 
-const pillClass = "rounded-full border border-border-light bg-bg-card/90 px-3 py-1.5 text-xs text-text-muted backdrop-blur-sm";
 const zoomButtonClass = "flex h-9 w-9 items-center justify-center text-text-secondary transition-colors hover:bg-bg-secondary hover:text-text-primary";
 
 export default function MapPage() {
+  const router = useRouter();
+  const routerRef = useRef(router);
+  routerRef.current = router;
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const loadedRef = useRef(new Set<string>());
@@ -271,6 +292,14 @@ export default function MapPage() {
     const loaded = loadedRef.current;
     let hoverRaf: number | null = null;
     let themeObserver: MutationObserver | null = null;
+    let hoverTarget: { source: string; id: string | number } | null = null;
+
+    const setHoverTarget = (next: typeof hoverTarget) => {
+      if (!map || (next?.source === hoverTarget?.source && next?.id === hoverTarget?.id)) return;
+      if (hoverTarget && map.getSource(hoverTarget.source)) map.setFeatureState(hoverTarget, { hover: false });
+      if (next) map.setFeatureState(next, { hover: true });
+      hoverTarget = next;
+    };
 
     const initial = readInitialView();
     labelsRef.current = initial.showLabels;
@@ -331,7 +360,7 @@ export default function MapPage() {
           },
           minZoom: 3,
           maxZoom: 14,
-          attributionControl: { compact: true },
+          attributionControl: false,
         };
 
         if (initial.center && initial.zoom) {
@@ -346,6 +375,7 @@ export default function MapPage() {
         map = new maplibre.Map(mapOpts);
         mapRef.current = map;
         const m = map;
+        m.addControl(new maplibre.AttributionControl({ compact: true }), "bottom-left");
 
         m.on("load", async () => {
           if (dead) return;
@@ -369,7 +399,7 @@ export default function MapPage() {
           }
           if (dead) return;
 
-          m.addSource("states", { type: "geojson", data: geo });
+          m.addSource("states", { type: "geojson", data: geo, promoteId: "ST_NM" });
           m.addSource("india-mask", { type: "geojson", data: maskGeo });
           m.addSource("state-centroids", {
             type: "geojson",
@@ -382,7 +412,7 @@ export default function MapPage() {
             type: "fill",
             source: "states",
             paint: {
-              "fill-color": terrainElevationExpr(c.choro) as any,
+              "fill-color": terrainElevationExpr(c.terrain) as any,
               "fill-opacity": 1.0,
             },
           });
@@ -415,10 +445,35 @@ export default function MapPage() {
             id: "state-line",
             type: "line",
             source: "states",
+            layout: { "line-join": "round", "line-cap": "round" },
             paint: {
               "line-color": c.border,
-              "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.5, 6, 1, 10, 2],
-              "line-opacity": 0.7,
+              "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.5, 6, 1, 10, 1.8],
+              "line-opacity": 0.6,
+            },
+          });
+
+          m.addLayer({
+            id: "country-outline",
+            type: "line",
+            source: "india-mask",
+            layout: { "line-join": "round" },
+            paint: {
+              "line-color": c.outline,
+              "line-width": ["interpolate", ["linear"], ["zoom"], 3, 1.5, 6, 2.5, 10, 3.5],
+              "line-opacity": 0.75,
+            },
+          });
+
+          m.addLayer({
+            id: "state-hover",
+            type: "line",
+            source: "states",
+            layout: { "line-join": "round" },
+            paint: {
+              "line-color": c.border,
+              "line-width": ["interpolate", ["linear"], ["zoom"], 3, 1.5, 6, 2.2, 10, 3],
+              "line-opacity": HOVER_OPACITY as any,
             },
           });
 
@@ -427,18 +482,20 @@ export default function MapPage() {
             type: "symbol",
             source: "state-centroids",
             layout: {
-              "text-field": ["get", "ST_NM"],
-              "text-size": ["interpolate", ["linear"], ["zoom"], 3, 9, 5, 11, 7, 14],
+              "text-field": ["match", ["get", "ST_NM"], ...Object.entries(SHORT_STATE_LABELS).flat(), ["get", "ST_NM"]] as any,
+              "text-size": ["interpolate", ["linear"], ["zoom"], 3, 8.5, 5, 10.5, 7, 13],
               "text-font": [LABEL_FONT_BOLD],
+              "text-letter-spacing": 0.02,
+              "text-max-width": 10,
               "text-allow-overlap": false,
               "text-padding": 4,
               visibility: labelsRef.current ? "visible" : "none",
             },
             paint: {
               "text-color": c.labelText,
-              "text-halo-color": c.labelHalo,
-              "text-halo-width": 2.2,
-              "text-halo-blur": 0.5,
+              "text-halo-color": c.districtHalo,
+              "text-halo-width": 1.4,
+              "text-halo-blur": 0.8,
             },
             maxzoom: STATE_LABELS_MAX_ZOOM,
           });
@@ -462,11 +519,30 @@ export default function MapPage() {
             const district = features.find((f) => f.layer.id.startsWith("d-fill-"));
             const st = features.find((f) => f.layer.id === "state-fill");
             const name: string | null = district?.properties?.district || st?.properties?.ST_NM || null;
+            const target = district ?? st;
+            setHoverTarget(target?.id != null ? { source: target.source, id: target.id } : null);
             m.getCanvas().style.cursor = name ? "pointer" : "";
             setHovered(name ? { name, x: clientX, y: clientY } : null);
           });
         });
-        m.on("mouseout", () => setHovered(null));
+        m.on("mouseout", () => {
+          setHoverTarget(null);
+          setHovered(null);
+        });
+
+        m.on("click", (e) => {
+          if (!m.getLayer("state-fill")) return;
+          const features = m.queryRenderedFeatures(e.point);
+          const district = features.find((f) => f.layer.id.startsWith("d-fill-"));
+          const name: string | undefined = district?.properties?.district;
+          if (district && name) {
+            const code = district.layer.id.slice("d-fill-".length);
+            routerRef.current.push(`/state/${code}#district-${encodeURIComponent(name)}`);
+            return;
+          }
+          const code = stateNameToCode[features.find((f) => f.layer.id === "state-fill")?.properties?.ST_NM];
+          if (code) routerRef.current.push(`/state/${code}`);
+        });
 
         const restyle = () => {
           if (!m.getLayer("state-fill")) return;
@@ -474,7 +550,7 @@ export default function MapPage() {
           const dark = isDark();
 
           m.setPaintProperty("bg", "background-color", colors.bg);
-          m.setPaintProperty("state-fill", "fill-color", terrainElevationExpr(colors.choro) as any);
+          m.setPaintProperty("state-fill", "fill-color", terrainElevationExpr(colors.terrain) as any);
           m.setPaintProperty("state-fill", "fill-opacity", 1.0);
           if (m.getLayer("hillshade")) {
             m.setPaintProperty("hillshade", "raster-opacity", dark ? 0.05 : 0.07);
@@ -483,11 +559,14 @@ export default function MapPage() {
             m.setPaintProperty("country-mask", "fill-color", colors.bg);
           }
           m.setPaintProperty("state-line", "line-color", colors.border);
+          m.setPaintProperty("state-hover", "line-color", colors.border);
+          m.setPaintProperty("country-outline", "line-color", colors.outline);
           m.setPaintProperty("state-labels", "text-color", colors.labelText);
-          m.setPaintProperty("state-labels", "text-halo-color", colors.labelHalo);
+          m.setPaintProperty("state-labels", "text-halo-color", colors.districtHalo);
 
           loadedRef.current.forEach((code) => {
-            if (m.getLayer(`d-line-${code}`)) m.setPaintProperty(`d-line-${code}`, "line-color", colors.text);
+            if (m.getLayer(`d-line-${code}`)) m.setPaintProperty(`d-line-${code}`, "line-color", colors.border);
+            if (m.getLayer(`d-hover-${code}`)) m.setPaintProperty(`d-hover-${code}`, "line-color", colors.border);
             if (m.getLayer(`d-label-${code}`)) {
               m.setPaintProperty(`d-label-${code}`, "text-color", colors.labelText);
               m.setPaintProperty(`d-label-${code}`, "text-halo-color", colors.districtHalo);
@@ -562,6 +641,7 @@ export default function MapPage() {
     setBasemap(next);
     const m = mapRef.current;
     if (m?.getLayer("basemap")) m.setLayoutProperty("basemap", "visibility", next ? "visible" : "none");
+    if (m?.getLayer("country-mask")) m.setPaintProperty("country-mask", "fill-opacity", next ? 0.25 : 1);
   };
 
   const resetView = () => {
@@ -571,7 +651,6 @@ export default function MapPage() {
   const doZoomIn = () => mapRef.current?.zoomIn({ duration: 200 });
   const doZoomOut = () => mapRef.current?.zoomOut({ duration: 200 });
 
-  const pct = Math.round(Math.pow(2, zoom - baseZoom) * 100);
   const hasZoomed = Math.abs(zoom - baseZoom) > 0.1;
 
   return (
@@ -580,6 +659,10 @@ export default function MapPage() {
 
       <main className="relative min-h-0 flex-1">
         <div ref={containerRef} className="h-full w-full" role="region" aria-label="Map of India by state and district" />
+        <div
+          className="pointer-events-none absolute inset-0 shadow-[inset_0_0_160px_40px_var(--map-vignette)]"
+          aria-hidden="true"
+        />
 
         {loadError ? (
           <div className="absolute inset-0 z-30 flex items-center justify-center bg-bg-primary" role="alert">
@@ -592,29 +675,17 @@ export default function MapPage() {
         )}
 
         <div className="pointer-events-none absolute inset-0">
-          <div className="pointer-events-auto absolute left-4 top-4 z-10 flex items-center gap-2">
-            <LinkButton href="/" variant="overlay" iconOnly title="Back" aria-label="Back to home">
-              <Icon name="arrow-left" />
-            </LinkButton>
-            {zoom < DISTRICT_MIN_ZOOM && (
-              <span className={pillClass}>Zoom in to see districts</span>
-            )}
-          </div>
 
-          <div className="pointer-events-auto absolute right-4 top-4 z-10 flex items-center gap-2">
-            <span className={`${pillClass} font-mono`}>{pct}%</span>
+          <div className="pointer-events-auto absolute right-4 top-4 z-10 flex flex-col items-end gap-2">
             <Button variant="overlay" iconOnly pressed={showLabels} onClick={toggleLabels} title="Toggle labels" aria-label="Show labels">
               <Icon name="tag" />
             </Button>
-          </div>
-
-          <div className="pointer-events-auto absolute bottom-4 left-4 z-10">
             <Button variant="overlay" iconOnly pressed={basemap} onClick={toggleBasemap} title="Toggle basemap" aria-label="Show basemap">
               <Icon name="globe" />
             </Button>
           </div>
 
-          <div className="pointer-events-auto absolute bottom-10 right-4 z-10 flex flex-col items-end gap-2">
+          <div className="pointer-events-auto absolute bottom-4 right-4 z-10 flex flex-col items-end gap-2">
             {hasZoomed && (
               <Button variant="overlay" iconOnly onClick={resetView} title="Reset" aria-label="Reset view">
                 <Icon name="reset" size={14} />

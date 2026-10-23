@@ -12,5 +12,5 @@ interface MetricSelectorProps {
 }
 
 export function MetricSelector({ selected, onSelect }: MetricSelectorProps) {
-  return <SegmentedControl label="Metric" options={options} value={selected} onChange={onSelect} />;
+  return <SegmentedControl label="Metric" options={options} value={selected} onChange={onSelect} scrollable />;
 }

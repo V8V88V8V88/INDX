@@ -10,7 +10,8 @@ export function useFormat() {
         if (settings.numberFormat === "indian") {
             return formatNumberIN(val);
         }
-        // International Format (K, M, B)
+        // International Format (K, M, B, T)
+        if (val >= 1000000000000) return (val / 1000000000000).toFixed(2) + " T";
         if (val >= 1000000000) return (val / 1000000000).toFixed(2) + " B";
         if (val >= 1000000) return (val / 1000000).toFixed(2) + " M";
         if (val >= 1000) return (val / 1000).toFixed(1) + " K";

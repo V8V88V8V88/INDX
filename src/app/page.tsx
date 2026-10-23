@@ -5,7 +5,7 @@ import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
 import Link from "next/link";
 import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader } from "@/components";
-import { Badge, Button, Card, CardTitle, Icon, SectionHeader, SegmentedControl, Stat } from "@/components/ui";
+import { Card, CardTitle, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
 import { states, india } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
@@ -28,7 +28,6 @@ const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
 export default function Home() {
   const [metric, setMetric] = useState<MetricKey>("population");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
-  const [showAllRegions, setShowAllRegions] = useState(false);
   const [isPageReady, setIsPageReady] = useState(false);
   const { formatPopulation } = useFormat();
   const formatMetric = useMetricFormatter();
@@ -59,42 +58,37 @@ export default function Home() {
       <Header />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
-        <motion.section
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={smooth}
-          className="mb-12"
-        >
-          <Badge variant="accent" className="mb-3">2026 Data</Badge>
-          <h1 className="text-display mb-4 text-text-primary">India</h1>
-          <p className="max-w-2xl text-lg text-text-tertiary">
-            Everything about India, plotted on one map. Explore, compare and rank any place in the country.
-          </p>
-        </motion.section>
-
-        <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} trigger={isPageReady} />
-          <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} trigger={isPageReady} />
-          <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} trigger={isPageReady} />
-          <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
-        </section>
-
-        <section className="mb-12">
-          <SectionHeader
-            title="Interactive Map"
-            description="Click any state to explore details"
-            actions={<MetricSelector selected={metric} onSelect={setMetric} />}
-          />
+        <section className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+          <div>
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+              animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={smooth}
+              className="mb-6"
+            >
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">2026 Data</p>
+              <h1 className="text-display mb-4 text-text-primary">India</h1>
+              <p className="text-lg text-text-tertiary">
+                Everything about India, plotted on one map. Explore, compare and rank any place in the country.
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:gap-3">
+              <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} trigger={isPageReady} />
+              <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} trigger={isPageReady} />
+              <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} trigger={isPageReady} />
+              <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
+            </div>
+          </div>
 
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.985 }}
             animate={isPageReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.985 }}
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
-            className="card overflow-hidden p-6"
+            className="min-w-0 lg:col-span-2 lg:self-center"
           >
             <IndiaMap colorByMetric={metric} interactive />
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
               <span className="text-xs text-text-muted">Low</span>
               <div className="flex overflow-hidden rounded-full">
                 {getMetricPaletteIndices(metric).map((i) => (
@@ -118,7 +112,7 @@ export default function Home() {
             }
           />
 
-          <Card key={metric} trigger={isPageReady}>
+          <Card plain key={metric} trigger={isPageReady}>
             <div className="mb-4 flex items-center justify-between">
               <CardTitle>All States & UTs {sortOrder === "alpha" ? "(A–Z)" : `by ${metricInfo.label}`}</CardTitle>
               <span className="text-xs text-text-muted">{rankedStates.length} regions</span>
@@ -154,36 +148,6 @@ export default function Home() {
           </Card>
         </section>
 
-        <section>
-          <SectionHeader
-            title="All States & UTs"
-            description={`${states.length} regions`}
-            actions={
-              !showAllRegions && (
-                <Button onClick={() => setShowAllRegions(true)}>Show all states & union territories</Button>
-              )
-            }
-          />
-
-          {showAllRegions && (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {states.map((state) => (
-                <Link key={state.id} href={`/state/${state.id}`} className="card card-interactive p-5">
-                  <div className="mb-3 flex items-center justify-between">
-                    <Badge>{state.region}</Badge>
-                    <span className="font-mono text-xs text-text-muted">{state.code}</span>
-                  </div>
-                  <h3 className="mb-1 text-lg font-semibold text-text-primary">{state.name}</h3>
-                  <p className="mb-4 text-sm text-text-tertiary">Capital: {state.capital}</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    <Stat size="sm" label="Population" value={formatPopulation(state.population)} />
-                    <Stat size="sm" label="Literacy" value={`${state.literacyRate}%`} />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
-        </section>
       </main>
       <Footer />
     </div>

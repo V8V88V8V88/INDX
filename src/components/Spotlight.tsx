@@ -15,7 +15,7 @@ export function openSpotlight() {
 
 export function Spotlight() {
   const [isOpen, setIsOpen] = useState(false);
-  const { query, setQuery, results, activeIndex, handleKeyDown } = useSearch();
+  const { query, setQuery, results, activeIndex, handleKeyDown } = useSearch({ includePages: true });
   const router = useRouter();
   const listboxId = useId();
 

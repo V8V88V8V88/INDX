@@ -6,10 +6,10 @@ import { states } from "@/data/india";
 import { fetchDistrictsFromAPI } from "@/lib/api";
 import type { City, District, State } from "@/types";
 
-export type SearchResultType = "state" | "city" | "district";
+export type SearchResultType = "page" | "state" | "city" | "district";
 
-export interface SearchResult {
-  type: SearchResultType;
+export interface PlaceResult {
+  type: Exclude<SearchResultType, "page">;
   id: string;
   name: string;
   state: State;
@@ -18,7 +18,19 @@ export interface SearchResult {
   path: string;
 }
 
-const typeOrder: Record<SearchResultType, number> = { state: 0, city: 1, district: 2 };
+export interface PageResult {
+  type: "page";
+  id: string;
+  name: string;
+  state?: undefined;
+  path: string;
+}
+
+export type SearchResult = PlaceResult | PageResult;
+
+const typeOrder: Record<SearchResultType, number> = { page: 0, state: 1, city: 2, district: 3 };
+
+const pages = [{ id: "map", name: "India Map", keywords: ["india map", "map", "full map"], path: "/map" }];
 
 function useDistrictsFor(term: string) {
   const wantedStateIds = useMemo(() => {
@@ -45,7 +57,7 @@ function useDistrictsFor(term: string) {
   });
 }
 
-export function useSearch() {
+export function useSearch({ includePages = false } = {}) {
   const [query, setQueryState] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const term = query.toLowerCase().trim();
@@ -53,7 +65,11 @@ export function useSearch() {
 
   const results = useMemo<SearchResult[]>(() => {
     if (!term) return [];
-    const matches: SearchResult[] = [];
+    const matches: SearchResult[] = includePages
+      ? pages
+          .filter((page) => page.keywords.some((k) => k.includes(term) || term.includes(k)))
+          .map((page): PageResult => ({ type: "page", id: page.id, name: page.name, path: page.path }))
+      : [];
 
     for (const state of states) {
       if (state.name.toLowerCase().includes(term) || state.code.toLowerCase() === term) {
@@ -92,7 +108,7 @@ export function useSearch() {
       if (a.type !== b.type) return typeOrder[a.type] - typeOrder[b.type];
       return a.name.localeCompare(b.name);
     });
-  }, [term, districtsByState]);
+  }, [term, districtsByState, includePages]);
 
   const activeIndex = Math.min(selectedIndex, Math.max(results.length - 1, 0));
 

@@ -36,3 +36,13 @@ export const stateNameToCode: Record<string, string> = {
   Lakshadweep: "LD",
   "Dadra and Nagar Haveli and Daman and Diu": "DD",
 };
+
+const EDGE_FADE =
+  "linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent)";
+
+export const EDGE_FADE_STYLE = {
+  maskImage: EDGE_FADE,
+  WebkitMaskImage: EDGE_FADE,
+  maskComposite: "intersect",
+  WebkitMaskComposite: "source-in",
+} as const;

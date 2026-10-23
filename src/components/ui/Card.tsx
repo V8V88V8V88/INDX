@@ -9,9 +9,10 @@ interface CardProps {
   className?: string;
   delay?: number;
   trigger?: boolean;
+  plain?: boolean;
 }
 
-export function Card({ children, className, delay = 0, trigger = true }: CardProps) {
+export function Card({ children, className, delay = 0, trigger = true, plain }: CardProps) {
   const reduceMotion = useReducedMotion();
   const hidden = { opacity: 0, y: 20 };
 
@@ -20,7 +21,7 @@ export function Card({ children, className, delay = 0, trigger = true }: CardPro
       initial={reduceMotion ? false : hidden}
       animate={trigger ? { opacity: 1, y: 0 } : hidden}
       transition={reduceMotion ? { duration: 0 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
-      className={cn("card p-6", className)}
+      className={cn(!plain && "card p-6", className)}
     >
       {children}
     </motion.div>
