@@ -4,14 +4,14 @@ import { useState, useMemo, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
 import Link from "next/link";
-import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader } from "@/components";
-import { Card, CardTitle, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
-import { states, india } from "@/data/india";
+import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader, SourcesInfo } from "@/components";
+import { Card, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
+import { DISTRICT_COUNT, india, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
 import { getMetricPaletteIndices } from "@/lib/map-view";
 import { getMetric } from "@/lib/metrics";
-import type { MetricKey } from "@/types";
+import type { MetricKey, State } from "@/types";
 
 type SortOrder = "desc" | "asc" | "alpha";
 
@@ -21,13 +21,18 @@ const sortOptions = [
   { value: "alpha", label: "A–Z", title: "Alphabetical" },
 ] as const;
 
-const totalCities = states.reduce((sum, s) => sum + s.cities.length, 0);
-const avgLiteracy = states.reduce((sum, s) => sum + s.literacyRate, 0) / states.length;
-const avgHDI = states.reduce((sum, s) => sum + s.hdi, 0) / states.length;
+type RegionFilter = "all" | State["region"];
+
+const regionOptions: { value: RegionFilter; label: string }[] = [
+  { value: "all", label: "All regions" },
+  ...(["North", "South", "East", "West", "Central", "Northeast"] as const).map((r) => ({ value: r, label: r })),
+];
 
 export default function Home() {
   const [metric, setMetric] = useState<MetricKey>("population");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
+  const [region, setRegion] = useState<RegionFilter>("all");
+  const [hoveredState, setHoveredState] = useState<string | null>(null);
   const [isPageReady, setIsPageReady] = useState(false);
   const { formatPopulation } = useFormat();
   const formatMetric = useMetricFormatter();
@@ -74,9 +79,9 @@ export default function Home() {
             </motion.div>
             <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:gap-3">
               <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} trigger={isPageReady} />
-              <MetricCard title="States & UTs" value="28 & 8" subtitle={`${totalCities} cities tracked`} delay={0.15} trigger={isPageReady} />
-              <MetricCard title="Avg Literacy Rate" value={avgLiteracy.toFixed(1)} unit="%" subtitle="Across all states" delay={0.2} trigger={isPageReady} />
-              <MetricCard title="Avg HDI" value={avgHDI.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
+              <MetricCard title="States & UTs" value="28 & 8" subtitle={`${DISTRICT_COUNT} districts`} delay={0.15} trigger={isPageReady} />
+              <MetricCard title="Literacy Rate" value={nationalStats.literacyRate.toFixed(1)} unit="%" subtitle="PLFS 2023-24" delay={0.2} trigger={isPageReady} />
+              <MetricCard title="HDI" value={nationalStats.hdi.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
             </div>
           </div>
 
@@ -86,7 +91,7 @@ export default function Home() {
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
             className="min-w-0 lg:col-span-2 lg:self-center"
           >
-            <IndiaMap colorByMetric={metric} interactive />
+            <IndiaMap colorByMetric={metric} selectedState={hoveredState} interactive />
 
             <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
               <span className="text-xs text-text-muted">Low</span>
@@ -112,23 +117,28 @@ export default function Home() {
             }
           />
 
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <SegmentedControl label="Filter by region" size="sm" options={regionOptions} value={region} onChange={setRegion} scrollable />
+            <SourcesInfo className="shrink-0">
+              Population: 2026 projections (RGI) · GDP: MoSPI · Literacy: PLFS 2023-24 · HDI: UNDP 2023 ·
+            </SourcesInfo>
+          </div>
+
           <Card plain key={metric} trigger={isPageReady}>
-            <div className="mb-4 flex items-center justify-between">
-              <CardTitle>All States & UTs {sortOrder === "alpha" ? "(A–Z)" : `by ${metricInfo.label}`}</CardTitle>
-              <span className="text-xs text-text-muted">{rankedStates.length} regions</span>
-            </div>
             <div className="columns-1 gap-4 space-y-3 sm:columns-2 xl:columns-3">
-              {rankedStates.map((state, i) => (
+              {rankedStates.map((state, i) => region !== "all" && state.region !== region ? null : (
                 <Link
                   key={state.id}
                   href={`/state/${state.id}`}
+                  onMouseEnter={() => setHoveredState(state.id)}
+                  onMouseLeave={() => setHoveredState(null)}
                   className="group relative block break-inside-avoid overflow-hidden rounded-full border border-border-light bg-bg-secondary/40 px-4 py-2.5 transition-colors hover:border-border-medium"
                 >
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${((state[metric] ?? 0) / maxValue) * 100}%` }}
                     transition={{ duration: 0.4, delay: Math.min(i * 0.02, 0.5) }}
-                    className="absolute inset-y-0 left-0 bg-accent-primary/15 transition-colors group-hover:bg-accent-primary/25"
+                    className="absolute inset-y-0 left-0 bg-accent-primary/15 transition-colors [mask-image:linear-gradient(to_right,black_85%,transparent)] group-hover:bg-accent-primary/25"
                     aria-hidden="true"
                   />
                   <div className="relative flex items-center justify-between gap-3">

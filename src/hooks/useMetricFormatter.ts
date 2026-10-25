@@ -14,6 +14,8 @@ export function useMetricFormatter() {
           return formatPopulation(value);
         case "gdp":
           return formatCurrency(value * 10000000);
+        case "gdpPerCapita":
+          return formatCurrency(value);
         case "literacyRate":
           return `${value.toFixed(1)}%`;
         case "hdi":

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import type { District } from "@/types";
 import { useFormat } from "@/hooks/useFormat";
+import { cn } from "@/lib/cn";
 import { PlaceBadges } from "./PlaceBadges";
 import { Button, Icon, Stat } from "./ui";
 
@@ -10,11 +11,12 @@ interface DistrictInfoCardProps {
   district: District | null;
   districtName: string;
   onClose: () => void;
+  className?: string;
 }
 
 const statClass = "px-3 py-2.5";
 
-export function DistrictInfoCard({ district, districtName, onClose }: DistrictInfoCardProps) {
+export function DistrictInfoCard({ district, districtName, onClose, className }: DistrictInfoCardProps) {
   const { formatPopulation, formatArea, formatDensity } = useFormat();
 
   return (
@@ -23,7 +25,7 @@ export function DistrictInfoCard({ district, districtName, onClose }: DistrictIn
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="card overflow-hidden"
+      className={cn("card overflow-hidden", className)}
     >
       <div className="flex items-center justify-between gap-3 border-b border-border-light py-2 pl-4 pr-2">
         <div className="flex min-w-0 items-center gap-2">

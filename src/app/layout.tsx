@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "INDX — India, mapped and indexed",
+  title: "INDX - India, mapped and indexed",
   description: "Explore every state, union territory and district of India on an interactive map, with the numbers behind each one.",
   keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],
 };

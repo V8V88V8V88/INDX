@@ -375,7 +375,7 @@ export function IndiaMap({
           variant="overlay"
           size="sm"
           iconOnly
-          title="Fullscreen map (zoom to districts & tehsils)"
+          title="Fullscreen map (zoom to districts & sub-districts)"
           aria-label="Open fullscreen map"
         >
           <Icon name="expand" size={14} />

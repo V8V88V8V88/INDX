@@ -3,7 +3,7 @@ import type { State, Country } from "@/types";
 // 28 States + 8 Union Territories
 // City tiers: Tier 1 = metros, Tier 2 = regional centers, Tier 3 = smaller cities
 
-export const states: State[] = [
+const stateData: Omit<State, "gdpPerCapita">[] = [
   // === STATES (28) ===
   {
     id: "AP",
@@ -690,12 +690,35 @@ export const states: State[] = [
   },
 ];
 
+export const states: State[] = stateData.map((s) => ({
+  ...s,
+  gdpPerCapita: Math.round((s.gdp * 10000000) / s.population),
+}));
+
+export const DISTRICT_COUNT = 744;
+
+const totalPopulation = states.reduce((sum, s) => sum + s.population, 0);
+const totalArea = states.reduce((sum, s) => sum + s.area, 0);
+const totalGdp = states.reduce((sum, s) => sum + s.gdp, 0);
+const populationWeighted = (key: "literacyRate" | "hdi") =>
+  states.reduce((sum, s) => sum + s[key] * s.population, 0) / totalPopulation;
+
+export const nationalStats = {
+  population: totalPopulation,
+  area: totalArea,
+  density: Math.round(totalPopulation / totalArea),
+  gdp: totalGdp,
+  gdpPerCapita: Math.round((totalGdp * 10000000) / totalPopulation),
+  literacyRate: populationWeighted("literacyRate"),
+  hdi: populationWeighted("hdi"),
+};
+
 export const india: Country = {
   id: "IN",
   name: "India",
   code: "IN",
-  population: states.reduce((sum, s) => sum + s.population, 0),
-  area: states.reduce((sum, s) => sum + s.area, 0),
+  population: totalPopulation,
+  area: totalArea,
   states,
 };
 

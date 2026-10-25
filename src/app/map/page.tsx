@@ -6,7 +6,10 @@ import type * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Header } from "@/components";
 import { Button, CursorTooltip, Icon, Spinner } from "@/components/ui";
+import { states } from "@/data/india";
 import { stateNameToCode } from "@/lib/map-projection";
+import { createStateMetricColorScale, isMapMetric, type MapMetric } from "@/lib/map-view";
+import { METRICS } from "@/lib/metrics";
 
 const INDIA_CENTER: [number, number] = [82, 22];
 const INDIA_BOUNDS: [[number, number], [number, number]] = [[68, 6], [98, 38]];
@@ -223,6 +226,7 @@ function readInitialView() {
     center: hasPosition ? ([lng, lat] as [number, number]) : null,
     zoom: hasPosition ? Math.max(3, Math.min(14, z)) : null,
     showLabels: p.get("labels") !== "0",
+    fill: (isMapMetric(p.get("m")) ? p.get("m") : "terrain") as FillMode,
   };
 }
 
@@ -240,18 +244,52 @@ function basemapSource(dark: boolean): maplibregl.RasterSourceSpecification {
   };
 }
 
+function hillshadePaint(dark: boolean) {
+  return {
+    "raster-opacity": dark ? 0.3 : 0.07,
+    "raster-contrast": 0.6,
+    "raster-brightness-max": 0.85,
+  };
+}
+
+function hillshadeTiles(dark: boolean) {
+  return [
+    dark
+      ? "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade_Dark/MapServer/tile/{z}/{y}/{x}"
+      : "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}",
+  ];
+}
+
 function hillshadeSource(dark: boolean): maplibregl.RasterSourceSpecification {
   return {
     type: "raster",
-    tiles: [
-      dark
-        ? "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade_Dark/MapServer/tile/{z}/{y}/{x}"
-        : "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}",
-    ],
+    tiles: hillshadeTiles(dark),
     tileSize: 256,
     maxzoom: 16,
     attribution: "Esri, USGS, NGA, NASA, CGIAR",
   };
+}
+
+type FillMode = MapMetric | "terrain";
+
+const fillOptions: { value: FillMode; label: string }[] = [
+  { value: "terrain", label: "Terrain" },
+  ...METRICS.map((m) => ({ value: m.key, label: m.label })),
+];
+
+function stateFillExpr(mode: FillMode, terrain: string[]): unknown[] {
+  if (mode === "terrain") return terrainElevationExpr(terrain);
+  const scale = createStateMetricColorScale(mode);
+  const expr: unknown[] = ["match", ["get", "ST_NM"]];
+  const seen = new Set<string>();
+  for (const state of states) {
+    const name = codeToName[state.id];
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    expr.push(name, resolveCSS(scale(state[mode], state.id)));
+  }
+  expr.push(resolveCSS("var(--accent-primary)"));
+  return expr;
 }
 
 function centroidPoints(geo: GeoJSON.FeatureCollection, pickProps: (props: GeoJSON.GeoJsonProperties) => GeoJSON.GeoJsonProperties): GeoJSON.FeatureCollection<GeoJSON.Point> {
@@ -275,6 +313,9 @@ export default function MapPage() {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const loadedRef = useRef(new Set<string>());
   const labelsRef = useRef(true);
+  const fillRef = useRef<FillMode>("terrain");
+  const [fill, setFill] = useState<FillMode>("terrain");
+  const [fillOpen, setFillOpen] = useState(false);
 
   const [ready, setReady] = useState(false);
   const [loadError, setLoadError] = useState(false);
@@ -303,6 +344,8 @@ export default function MapPage() {
 
     const initial = readInitialView();
     labelsRef.current = initial.showLabels;
+    fillRef.current = initial.fill;
+    setFill(initial.fill);
     let lastDark = isDark();
 
     const loadVisibleDistricts = () => {
@@ -412,7 +455,7 @@ export default function MapPage() {
             type: "fill",
             source: "states",
             paint: {
-              "fill-color": terrainElevationExpr(c.terrain) as any,
+              "fill-color": stateFillExpr(fillRef.current, c.terrain) as any,
               "fill-opacity": 1.0,
             },
           });
@@ -422,11 +465,8 @@ export default function MapPage() {
             id: "hillshade",
             type: "raster",
             source: "hillshade",
-            paint: {
-              "raster-opacity": lastDark ? 0.05 : 0.07,
-              "raster-contrast": 0.60,
-              "raster-brightness-max": 0.85,
-            },
+            layout: { visibility: fillRef.current === "terrain" ? "visible" : "none" },
+            paint: hillshadePaint(lastDark),
           });
 
           // 3. Country mask: completely covers outside countries/oceans with background color
@@ -550,10 +590,12 @@ export default function MapPage() {
           const dark = isDark();
 
           m.setPaintProperty("bg", "background-color", colors.bg);
-          m.setPaintProperty("state-fill", "fill-color", terrainElevationExpr(colors.terrain) as any);
+          m.setPaintProperty("state-fill", "fill-color", stateFillExpr(fillRef.current, colors.terrain) as any);
           m.setPaintProperty("state-fill", "fill-opacity", 1.0);
           if (m.getLayer("hillshade")) {
-            m.setPaintProperty("hillshade", "raster-opacity", dark ? 0.05 : 0.07);
+            for (const [key, value] of Object.entries(hillshadePaint(dark))) {
+              m.setPaintProperty("hillshade", key as "raster-opacity", value);
+            }
           }
           if (m.getLayer("country-mask")) {
             m.setPaintProperty("country-mask", "fill-color", colors.bg);
@@ -575,6 +617,7 @@ export default function MapPage() {
 
           if (dark !== lastDark) {
             lastDark = dark;
+            (m.getSource("hillshade") as maplibregl.RasterTileSource | undefined)?.setTiles(hillshadeTiles(dark));
             const visibility = m.getLayoutProperty("basemap", "visibility");
             m.removeLayer("basemap");
             m.removeSource("carto");
@@ -584,24 +627,6 @@ export default function MapPage() {
               "state-fill",
             );
 
-            if (m.getLayer("hillshade")) {
-              m.removeLayer("hillshade");
-              m.removeSource("hillshade");
-              m.addSource("hillshade", hillshadeSource(dark));
-              m.addLayer(
-                {
-                  id: "hillshade",
-                  type: "raster",
-                  source: "hillshade",
-                  paint: {
-                    "raster-opacity": dark ? 0.05 : 0.07,
-                    "raster-contrast": 0.60,
-                    "raster-brightness-max": 0.85,
-                  },
-                },
-                "country-mask",
-              );
-            }
           }
         };
         themeObserver = new MutationObserver(restyle);
@@ -644,6 +669,19 @@ export default function MapPage() {
     if (m?.getLayer("country-mask")) m.setPaintProperty("country-mask", "fill-opacity", next ? 0.25 : 1);
   };
 
+  const chooseFill = (next: FillMode) => {
+    setFillOpen(false);
+    setFill(next);
+    fillRef.current = next;
+    const m = mapRef.current;
+    if (m?.getLayer("state-fill")) m.setPaintProperty("state-fill", "fill-color", stateFillExpr(next, tc().terrain) as any);
+    if (m?.getLayer("hillshade")) m.setLayoutProperty("hillshade", "visibility", next === "terrain" ? "visible" : "none");
+    const url = new URL(window.location.href);
+    if (next === "terrain") url.searchParams.delete("m");
+    else url.searchParams.set("m", next);
+    window.history.replaceState(window.history.state, "", url);
+  };
+
   const resetView = () => {
     mapRef.current?.fitBounds(INDIA_BOUNDS, { padding: 30, duration: 500 });
   };
@@ -683,6 +721,46 @@ export default function MapPage() {
             <Button variant="overlay" iconOnly pressed={basemap} onClick={toggleBasemap} title="Toggle basemap" aria-label="Show basemap">
               <Icon name="globe" />
             </Button>
+            <div className="relative">
+              <Button
+                variant="overlay"
+                iconOnly
+                pressed={fillOpen}
+                onClick={() => setFillOpen((open) => !open)}
+                title="Color map by"
+                aria-label="Color map by"
+                aria-expanded={fillOpen}
+              >
+                <Icon name="layers" />
+              </Button>
+              {fillOpen && (
+                <>
+                  <div className="fixed inset-0" onClick={() => setFillOpen(false)} aria-hidden="true" />
+                  <div
+                    role="menu"
+                    aria-label="Color map by"
+                    className="absolute right-full top-0 mr-2 w-40 overflow-hidden rounded-2xl border border-border-light bg-bg-card/95 p-1 shadow-lg backdrop-blur-md"
+                  >
+                    {fillOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        role="menuitemradio"
+                        aria-checked={fill === option.value}
+                        onClick={() => chooseFill(option.value)}
+                        className={`block w-full rounded-xl px-3 py-1.5 text-left text-sm transition-colors ${
+                          fill === option.value
+                            ? "bg-accent-primary text-white"
+                            : "text-text-secondary hover:bg-bg-secondary hover:text-text-primary"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
 
           <div className="pointer-events-auto absolute bottom-4 right-4 z-10 flex flex-col items-end gap-2">
