@@ -13,6 +13,7 @@ interface StateMapProps {
   onDistrictSelect?: (district: string | null) => void;
   onDistrictClick?: (district: string) => void;
   onSubDistrictClick?: (subDistrict: { name: string; district: string }) => void;
+  districtFill?: (districtName: string) => string | undefined;
 }
 
 interface DistrictFeature {
@@ -117,7 +118,7 @@ function rewindForD3<T extends GeoJSON.Feature<GeoJSON.Polygon | GeoJSON.MultiPo
   };
 }
 
-export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick }: StateMapProps) {
+export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick, districtFill }: StateMapProps) {
   const [loaded, setLoaded] = useState<{ code: string; data: DistrictGeoData | null } | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [showLabels, setShowLabels] = useState(
@@ -451,7 +452,9 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
                 strokeLinejoin="round"
                 vectorEffect="non-scaling-stroke"
                 style={{
-                  fill: isSelected || isHovered ? "var(--map-district-fill-active)" : "var(--map-district-fill)",
+                  fill: isSelected || isHovered
+                    ? "var(--map-district-fill-active)"
+                    : districtFill?.(district.name) ?? "var(--map-district-fill)",
                   filter: isSelected
                     ? `url(#${filterId}-selected-glow)`
                     : isHovered

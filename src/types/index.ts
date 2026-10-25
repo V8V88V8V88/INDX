@@ -34,12 +34,13 @@ export interface State {
   sexRatio: number; // females per 1000 males
   gdp: number; // crores INR
   gdpYear?: string;
+  gdpPerCapita: number; // INR per person
   hdi: number; // 0-1
   cities: City[];
   districts?: District[];
 }
 
-export type MetricKey = keyof Pick<State, "population" | "gdp" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area">;
+export type MetricKey = keyof Pick<State, "population" | "gdp" | "gdpPerCapita" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area">;
 
 export interface City {
   id: string;

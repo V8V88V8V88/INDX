@@ -1,10 +1,11 @@
 import { states } from "@/data/india";
 
-export type MapMetric = "population" | "gdp" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area";
+export type MapMetric = "population" | "gdp" | "gdpPerCapita" | "literacyRate" | "hdi" | "density" | "sexRatio" | "area";
 
 export function isMapMetric(value: unknown): value is MapMetric {
   return value === "population" ||
     value === "gdp" ||
+    value === "gdpPerCapita" ||
     value === "literacyRate" ||
     value === "hdi" ||
     value === "density" ||

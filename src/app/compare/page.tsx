@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { Footer, Header, InlineSearch, StateMap } from "@/components";
 import { cn } from "@/lib/cn";
 import { useDistricts } from "@/hooks/useDistricts";
 import { useFormat } from "@/hooks/useFormat";
+import { getStateById } from "@/data/india";
 import type { PlaceResult } from "@/hooks/useSearch";
 import type { City, District, State } from "@/types";
 
@@ -274,6 +275,11 @@ function Comparison({ left, right }: { left: CompareItem; right: CompareItem }) 
 export default function ComparePage() {
   const [left, setLeft] = useState<CompareItem | null>(null);
   const [right, setRight] = useState<CompareItem | null>(null);
+
+  useEffect(() => {
+    const state = getStateById(new URLSearchParams(window.location.search).get("a") ?? "");
+    if (state) setLeft({ type: "state", state });
+  }, []);
 
   const slots = [
     { label: "Item 1", placeholder: "Search for first state, city, or district...", set: setLeft },

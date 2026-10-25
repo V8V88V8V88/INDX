@@ -10,7 +10,7 @@ import { PlaceBadges } from "./PlaceBadges";
 import { Button, Icon, SegmentedControl, Stat } from "./ui";
 
 type FilterType = "all" | "cities" | "1" | "2" | "3" | "4";
-type SortType = "population" | "area" | "density" | "literacy" | "sexRatio" | "name";
+export type SortType = "population" | "area" | "density" | "literacy" | "sexRatio" | "name";
 
 const sortOptions = [
   { value: "population", label: "Population", title: "Sort by population" },
@@ -35,6 +35,7 @@ interface DistrictListProps {
   cities?: City[];
   selectedDistrict?: string | null;
   onDistrictSelect?: (districtName: string) => void;
+  onSortChange?: (sortBy: SortType) => void;
 }
 
 // Priority levels for determining "major" status
@@ -101,7 +102,7 @@ function getSignificanceScore(d: District, city?: City): number {
   return score;
 }
 
-export function DistrictList({ stateCode, stateName, cities = [], selectedDistrict, onDistrictSelect }: DistrictListProps) {
+export function DistrictList({ stateCode, stateName, cities = [], selectedDistrict, onDistrictSelect, onSortChange }: DistrictListProps) {
   const [filter, setFilter] = useState<FilterType>("all");
   const [sortBy, setSortBy] = useState<SortType>("population");
   const [ascending, setAscending] = useState(false);
@@ -210,6 +211,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   const changeSort = (next: SortType) => {
     setSortBy(next);
     setAscending(next === "name");
+    onSortChange?.(next);
   };
 
   if (isLoading) {
@@ -324,6 +326,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
             item={item}
             delay={i * 0.015}
             rank={ranks?.get(item.id)}
+            sortBy={sortBy}
             fill={0.04 + (0.96 * Math.max(fillMetric(item) - fillMin, 0)) / fillRange}
             isSelected={selectedDistrict?.toLowerCase() === item.name.toLowerCase()}
             onSelect={() => onDistrictSelect?.(item.name)}
@@ -340,9 +343,9 @@ interface ItemWithCity extends District {
   isMajor?: boolean;
 }
 
-function DistrictItem({ item, delay, rank, fill, isSelected, onSelect }: { item: ItemWithCity; delay: number; rank?: number; fill: number; isSelected?: boolean; onSelect?: () => void }) {
+function DistrictItem({ item, delay, rank, sortBy, fill, isSelected, onSelect }: { item: ItemWithCity; delay: number; rank?: number; sortBy: SortType; fill: number; isSelected?: boolean; onSelect?: () => void }) {
   const city = item.cityData;
-  const { formatPopulation, formatDensity } = useFormat();
+  const { formatPopulation, formatDensity, formatArea } = useFormat();
 
   const isCapital = city?.isCapital || item.isCapital;
   const isMetro = city?.isMetro || item.isMetro || city?.tier === 1 || item.tier === 1;
@@ -382,7 +385,7 @@ function DistrictItem({ item, delay, rank, fill, isSelected, onSelect }: { item:
         initial={{ width: 0 }}
         animate={{ width: `${Math.max(fill, 0) * 100}%` }}
         transition={{ duration: 0.4, delay: Math.min(delay, 0.3) }}
-        className="absolute inset-y-0 left-0 bg-accent-primary/15 transition-colors [mask-image:linear-gradient(to_right,black_85%,transparent)] group-hover:bg-accent-primary/20"
+        className="absolute inset-y-0 left-0 bg-accent-primary/22 transition-colors [mask-image:linear-gradient(to_right,black_85%,transparent)] group-hover:bg-accent-primary/30"
         aria-hidden="true"
       />
       <div className="relative flex items-start justify-between gap-3">
@@ -414,7 +417,11 @@ function DistrictItem({ item, delay, rank, fill, isSelected, onSelect }: { item:
             </>
           }
         />
-        {item.sexRatio > 0 && <Stat size="sm" label="Sex Ratio" value={item.sexRatio} />}
+        {sortBy === "area" ? (
+          <Stat size="sm" label="Area" value={formatArea(item.area)} />
+        ) : (
+          item.sexRatio > 0 && <Stat size="sm" label="Sex Ratio" value={item.sexRatio} />
+        )}
       </div>
     </motion.div>
   );

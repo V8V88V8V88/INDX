@@ -635,6 +635,8 @@ def write_india_ts(state_out):
         if s["capitalDistrict"]:
             new = re.sub(r'(\n    capital: "[^"]*",)', r'\1' + f'\n    capitalDistrict: "{s["capitalDistrict"]}",', new, count=1)
         src = src.replace(block, new)
+    total = sum(len(s["districts"]) for s in state_out.values())
+    src = re.sub(r"export const DISTRICT_COUNT = \d+;", f"export const DISTRICT_COUNT = {total};", src)
     open(INDIA_TS, "w").write(src)
 
 if __name__ == "__main__":
