@@ -5,7 +5,7 @@ import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
 import Link from "next/link";
 import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader } from "@/components";
-import { Card, CardTitle, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
+import { Card, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
 import { states, india } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
@@ -113,10 +113,6 @@ export default function Home() {
           />
 
           <Card plain key={metric} trigger={isPageReady}>
-            <div className="mb-4 flex items-center justify-between">
-              <CardTitle>All States & UTs {sortOrder === "alpha" ? "(A–Z)" : `by ${metricInfo.label}`}</CardTitle>
-              <span className="text-xs text-text-muted">{rankedStates.length} regions</span>
-            </div>
             <div className="columns-1 gap-4 space-y-3 sm:columns-2 xl:columns-3">
               {rankedStates.map((state, i) => (
                 <Link

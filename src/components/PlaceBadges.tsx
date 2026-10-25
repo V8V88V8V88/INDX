@@ -12,7 +12,7 @@ export function PlaceBadges({ isCapital, isMetro, tier }: PlaceBadgesProps) {
   return (
     <div className="flex flex-wrap items-center gap-1.5">
       {isCapital && <Badge variant="accent">Capital</Badge>}
-      {isMetro && <Badge variant="soft">Metro</Badge>}
+      {isMetro && <Badge variant="accent">Metro</Badge>}
       {tier && <Badge>Tier {tier}</Badge>}
     </div>
   );

@@ -120,7 +120,9 @@ function rewindForD3<T extends GeoJSON.Feature<GeoJSON.Polygon | GeoJSON.MultiPo
 export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick }: StateMapProps) {
   const [loaded, setLoaded] = useState<{ code: string; data: DistrictGeoData | null } | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
-  const [showLabels, setShowLabels] = useState(true);
+  const [showLabels, setShowLabels] = useState(
+    () => typeof window === "undefined" || window.matchMedia("(min-width: 640px)").matches
+  );
   const [hoveredSubDistrict, setHoveredSubDistrict] = useState<string | null>(null);
   const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
   const [prevStateCode, setPrevStateCode] = useState(stateCode);
@@ -392,7 +394,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
           initial={false}
           animate={{ viewBox: zoomedViewBox }}
           transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="block h-auto max-h-[460px] w-full drop-shadow-xl lg:max-h-[760px]"
+          className="block h-auto max-h-[70vh] w-full drop-shadow-xl sm:max-h-[460px] lg:max-h-[760px]"
           style={isZoomedIn ? EDGE_FADE_STYLE : undefined}
           preserveAspectRatio="xMidYMid meet"
           onMouseMove={handleMouseMove}
@@ -443,9 +445,9 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3, delay: idx * 0.01 }}
                 d={district.d}
-                stroke="var(--map-district-line)"
+                stroke={hasActiveDistrict && !isSelected && !isHovered ? "var(--map-district-line-muted)" : "var(--map-district-line)"}
                 strokeWidth={isSelected ? 2 : isHovered ? 1.5 : hasActiveDistrict ? 0.4 : 0.6}
-                strokeOpacity={isSelected || isHovered ? 1 : hasActiveDistrict ? 0.25 : 0.6}
+                strokeOpacity={isSelected || isHovered ? 1 : hasActiveDistrict ? "var(--map-district-line-muted-opacity)" : 0.6}
                 strokeLinejoin="round"
                 vectorEffect="non-scaling-stroke"
                 style={{
@@ -545,7 +547,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
           onClick={() => setSelectedDistrict(null)}
           title="Back to full map"
           aria-label="Zoom out to full map"
-          className="absolute left-0 top-0"
+          className="absolute left-4 top-0 sm:left-0"
         >
           <Icon name="arrow-left" size={14} />
         </Button>
@@ -559,7 +561,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
         onClick={() => setShowLabels((v) => !v)}
         title="Toggle district names"
         aria-label="Show district names"
-        className="absolute right-0 top-0"
+        className="absolute right-4 top-0 sm:right-0"
       >
         <Icon name="tag" size={14} />
       </Button>
@@ -572,7 +574,6 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
 
       {hoveredSubDistrict && (
         <CursorTooltip x={mousePos.x} y={mousePos.y}>
-          <span className="block text-[10px] uppercase tracking-wider opacity-60">Tehsil</span>
           {hoveredSubDistrict}
         </CursorTooltip>
       )}

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
-import { Card, CardTitle } from "./ui";
+import { Card, CardTitle, Icon } from "./ui";
 
 export interface ComparisonRow {
   label: string;
@@ -11,7 +11,7 @@ export interface ComparisonRow {
 }
 
 interface ComparisonTableProps {
-  title: string;
+  title?: string;
   columns: [string, string];
   rows: ComparisonRow[];
   delay?: number;
@@ -21,39 +21,30 @@ interface ComparisonTableProps {
 export function ComparisonTable({ title, columns, rows, delay = 0, trigger = true }: ComparisonTableProps) {
   return (
     <Card plain delay={delay} trigger={trigger}>
-      <CardTitle className="mb-6">{title}</CardTitle>
-      <table className="w-full table-fixed text-left">
-        <thead>
-          <tr className="border-b border-border-light text-xs font-semibold">
-            <th scope="col" className="pb-4 text-text-muted">Metric</th>
-            {columns.map((column) => (
-              <th key={column} scope="col" className="truncate pb-4 text-center text-accent-primary">
-                {column}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.label} className="border-b border-border-light/50 last:border-0">
-              <th scope="row" className="py-3.5 pr-2 text-sm font-medium text-text-secondary">
-                {row.label}
-              </th>
-              {row.values.map((value, i) => (
-                <td
-                  key={i}
-                  className={cn(
-                    "py-3.5 text-center font-mono text-base",
-                    row.winner === i ? "font-bold text-accent-primary" : "text-text-primary",
-                  )}
-                >
-                  {value}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {title && <CardTitle className="mb-6">{title}</CardTitle>}
+      <dl className="grid grid-cols-2 gap-y-6 border-y border-border-light py-6 lg:grid-cols-4 lg:gap-y-0">
+        {rows.map((row, i) => (
+          <div
+            key={row.label}
+            className={cn("min-w-0 px-4 sm:px-6", "border-border-light", i % 2 === 0 ? "pl-0 sm:pl-0" : "border-l", i === 2 && "lg:border-l lg:pl-6")}
+          >
+            <dt className="text-xs font-medium uppercase tracking-wide text-text-muted">{row.label}</dt>
+            <dd className="mt-2 flex items-center gap-1.5 truncate font-mono text-lg text-text-primary sm:text-xl">
+              {row.values[0]}
+              {row.winner != null && (
+                <Icon
+                  name={row.winner === 0 ? "arrow-up" : "arrow-down"}
+                  size={14}
+                  className={cn("shrink-0", row.winner === 0 ? "text-accent-primary" : "text-text-muted")}
+                />
+              )}
+            </dd>
+            <dd className="mt-1 truncate text-xs text-text-muted">
+              {columns[1]} {row.values[1]}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </Card>
   );
 }

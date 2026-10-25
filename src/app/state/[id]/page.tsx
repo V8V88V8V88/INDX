@@ -5,7 +5,6 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Transition } from "framer-motion";
 import { notFound } from "next/navigation";
 import {
-  BarChart,
   ComparisonTable,
   DistrictInfoCard,
   DistrictList,
@@ -167,45 +166,6 @@ export default function StatePage({ params }: PageProps) {
   const literacyRank = states.filter((s) => s.literacyRate > state.literacyRate).length + 1;
   const hdiRank = states.filter((s) => s.hdi > state.hdi).length + 1;
 
-  const majorAreasByPopulation = useMemo(() => {
-    if (districts && districts.length > 0) {
-      const districtData = [...districts]
-        .sort((a, b) => b.population - a.population)
-        .slice(0, 5)
-        .map((district) => {
-          const matchedCity = state.cities.find(
-            (c) =>
-              normalizeDistrictName(c.name) === normalizeDistrictName(district.name) ||
-              normalizeDistrictName(c.name) === normalizeDistrictName(district.headquarters || "")
-          );
-
-          return {
-            name: district.name,
-            value: district.population,
-            displayValue: formatPopulation(district.population),
-            highlight: !!(matchedCity?.isCapital || district.isCapital),
-          };
-        });
-
-      if (districtData.length > 0) {
-        return districtData;
-      }
-    }
-
-    if (state.cities && state.cities.length > 0) {
-      return [...state.cities]
-        .sort((a, b) => b.population - a.population)
-        .slice(0, 5)
-        .map((city) => ({
-          name: city.name,
-          value: city.population,
-          displayValue: formatPopulation(city.population),
-          highlight: city.isCapital || false,
-        }));
-    }
-
-    return [];
-  }, [districts, state.cities, formatPopulation]);
 
   return (
     <div className="min-h-screen bg-bg-primary">
@@ -217,19 +177,19 @@ export default function StatePage({ params }: PageProps) {
         breadcrumbs={[{ label: state.name, href: `/state/${state.id}` }]}
       />
 
-      <main className="mx-auto max-w-7xl px-6 py-8">
+      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
         {/* Hero Section */}
         <motion.section
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={smooth}
-          className="mb-8"
+          className="mb-4 sm:mb-8"
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">
+          <p className="mb-2 sm:mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">
             {state.region} India · {state.code}
           </p>
-          <h1 className="text-display mb-3 text-text-primary">{state.name}</h1>
-          <p className="max-w-2xl text-lg text-text-tertiary">
+          <h1 className="text-display mb-2 sm:mb-3 text-text-primary">{state.name}</h1>
+          <p className="max-w-2xl text-base sm:text-lg text-text-tertiary">
             Capital:{" "}
             <button
               onClick={() => selectDistrict(findCapitalDistrict(state, districts))}
@@ -247,7 +207,7 @@ export default function StatePage({ params }: PageProps) {
           {/* Left Column: Metrics */}
           <div className="contents lg:flex lg:flex-col lg:gap-4">
             {/* Key Metrics Grid */}
-            <div className="order-1 grid grid-cols-2 gap-3 sm:gap-4 lg:order-none lg:grid-cols-1 lg:gap-3">
+            <div className="order-2 grid grid-cols-2 gap-3 sm:gap-4 lg:order-none lg:grid-cols-1 lg:gap-3">
               <MetricCard
                 title="Population (2026)"
                 value={formatPopulation(state.population)}
@@ -279,23 +239,10 @@ export default function StatePage({ params }: PageProps) {
                 trigger={isPageReady}
               />
             </div>
-
-            <div className="order-3 lg:order-none">
-              <AnimatePresence mode="wait" initial={false}>
-                {selectedDistrict && (
-                  <DistrictInfoCard
-                    key={selectedDistrict}
-                    district={selectedDistrictInfo}
-                    districtName={selectedDistrict}
-                    onClose={() => selectDistrict(null)}
-                  />
-                )}
-              </AnimatePresence>
-            </div>
           </div>
 
           {/* Right Column: Map - Now takes full column */}
-          <div id="state-map" className="order-2 -mt-4 lg:order-none lg:col-span-2">
+          <div id="state-map" className="relative order-1 -mx-4 sm:mx-0 lg:order-none lg:col-span-2 lg:-mt-32">
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.97 }}
               animate={isPageReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.97 }}
@@ -314,14 +261,26 @@ export default function StatePage({ params }: PageProps) {
                 />
               </div>
             </motion.div>
+
+            <div className="mx-4 mt-3 sm:mx-0 lg:absolute lg:inset-x-0 lg:bottom-6 lg:z-10 lg:mx-auto lg:mt-0 lg:w-full lg:max-w-md">
+              <AnimatePresence mode="wait" initial={false}>
+                {selectedDistrict && (
+                  <DistrictInfoCard
+                    key={selectedDistrict}
+                    district={selectedDistrictInfo}
+                    districtName={selectedDistrict}
+                    onClose={() => selectDistrict(null)}
+                    className="lg:bg-bg-card/85 lg:shadow-lg lg:backdrop-blur-md"
+                  />
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
 
-        {/* Comparison and Charts Row */}
-        <section className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <section className="mb-10">
           <ComparisonTable
-            title="vs National Average"
-            columns={[state.name, "National Avg"]}
+            columns={[state.name, "India avg"]}
             delay={0.15}
             trigger={isPageReady}
             rows={[
@@ -345,13 +304,6 @@ export default function StatePage({ params }: PageProps) {
                 winner: state.gdp > nationalAvgGDP ? 0 : 1,
               },
             ]}
-          />
-
-          <BarChart
-            title="Cities by Population"
-            delay={0.18}
-            trigger={isPageReady}
-            items={majorAreasByPopulation}
           />
         </section>
 
