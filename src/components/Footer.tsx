@@ -5,7 +5,7 @@ const linkClass = "text-text-secondary transition-colors hover:text-text-primary
 
 export function Footer() {
   return (
-    <footer className="mx-auto mt-16 max-w-7xl px-6">
+    <footer className="mx-auto mt-10 max-w-7xl px-6">
       <div className="border-t border-border-light pt-6">
       <div className="flex flex-col-reverse items-center gap-4 text-sm text-text-muted sm:flex-row sm:justify-between">
         <p>
@@ -29,7 +29,11 @@ export function Footer() {
           </a>
         </nav>
       </div>
-      <Wordmark variant="outline" className="mt-10 w-full select-none text-text-muted/60" />
+      <Wordmark
+        variant="outline"
+        className="mx-auto mt-12 w-full max-w-2xl select-none text-text-muted/60 [mask-image:linear-gradient(to_bottom,black_45%,transparent)]"
+        dotClassName="stroke-accent-primary/70"
+      />
       <div className="h-8" />
       </div>
     </footer>

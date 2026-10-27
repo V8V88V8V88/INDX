@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { Footer, Header, InlineSearch, StateMap } from "@/components";
 import { cn } from "@/lib/cn";
+import { EASE_OUT, reveal } from "@/lib/motion";
 import { useDistricts } from "@/hooks/useDistricts";
 import { useFormat } from "@/hooks/useFormat";
 import { getStateById } from "@/data/india";
@@ -75,13 +76,9 @@ function rankDistricts(districts: District[]) {
 }
 
 function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" | "right" }) {
+  const reduceMotion = useReducedMotion();
   return (
-    <motion.div
-      initial={{ opacity: 0, x: side === "left" ? -20 : 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="space-y-4"
-    >
+    <motion.div {...reveal(reduceMotion, 0.08, { x: side === "left" ? -20 : 20 })} className="space-y-4">
       {item ? (
         <>
           <div>
@@ -187,12 +184,13 @@ function useComparisonRows(left: CompareItem, right: CompareItem): CompareRow[] 
 }
 
 function CompareBar({ share, align, strong }: { share: number; align: "left" | "right"; strong: boolean }) {
+  const reduceMotion = useReducedMotion();
   return (
     <div className={cn("flex h-1.5 overflow-hidden rounded-full bg-bg-tertiary", align === "left" && "justify-end")}>
       <motion.div
-        initial={{ width: 0 }}
+        initial={reduceMotion ? false : { width: 0 }}
         animate={{ width: `${share * 100}%` }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={reduceMotion ? { duration: 0 } : { duration: 0.6, ease: EASE_OUT }}
         className={cn("h-full rounded-full", strong ? "bg-accent-primary" : "bg-text-muted/50")}
       />
     </div>
@@ -260,19 +258,17 @@ function HeadToHead({ left, right, rows }: { left: string; right: string; rows: 
 
 function Comparison({ left, right }: { left: CompareItem; right: CompareItem }) {
   const rows = useComparisonRows(left, right);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.4 }}
-    >
+    <motion.section {...reveal(reduceMotion, 0.16)}>
       <HeadToHead left={itemName(left)} right={itemName(right)} rows={rows} />
     </motion.section>
   );
 }
 
 export default function ComparePage() {
+  const reduceMotion = useReducedMotion();
   const [left, setLeft] = useState<CompareItem | null>(null);
   const [right, setRight] = useState<CompareItem | null>(null);
 
@@ -291,12 +287,7 @@ export default function ComparePage() {
       <Header breadcrumbs={[{ label: "Compare", href: "/compare" }]} />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
+        <motion.section {...reveal(reduceMotion)} className="mb-8">
           <h1 className="text-display mb-3 text-text-primary">Compare</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">
             Select two states, cities, or districts to compare their geographic, demographic, and economic data side by side.

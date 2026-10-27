@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { Footer, Header } from "@/components";
 import { CardTitle, Icon } from "@/components/ui";
+import { reveal } from "@/lib/motion";
 
 const SOURCES = [
   {
@@ -53,9 +54,7 @@ function Section({ title, children, index }: { title: string; children: ReactNod
 
   return (
     <motion.section
-      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : 0.08 * index }}
+      {...reveal(reduceMotion, 0.08 * index)}
       className="border-t border-border-light py-10"
     >
       <CardTitle className="mb-5">{title}</CardTitle>

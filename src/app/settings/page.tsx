@@ -1,15 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useReducedMotion, motion } from "framer-motion";
 import { Footer, Header } from "@/components";
 import { BackLink, SegmentedControl } from "@/components/ui";
 import { useSettings } from "@/contexts/SettingsContext";
+import { reveal } from "@/lib/motion";
 import { THEMES } from "@/lib/theme";
 
 const panelClass = "rounded-xl bg-bg-secondary p-4";
 
 export default function SettingsPage() {
   const { settings, updateSetting } = useSettings();
+  const reduceMotion = useReducedMotion();
 
   const handleColorChange = (colorId: string) => {
     updateSetting("accentColor", colorId);
@@ -20,24 +22,14 @@ export default function SettingsPage() {
       <Header breadcrumbs={[{ label: "Settings", href: "/settings" }]} />
 
       <main className="mx-auto max-w-4xl px-6 py-8">
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="mb-8"
-        >
+        <motion.section {...reveal(reduceMotion)} className="mb-8">
           <h1 className="text-headline mb-2 text-text-primary">Settings</h1>
           <p className="text-text-tertiary">
             Configure visual preferences and application behavior
           </p>
         </motion.section>
 
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="card p-6"
-        >
+        <motion.section {...reveal(reduceMotion, 0.08)} className="card p-6">
           <h2 className="mb-4 text-lg font-semibold text-text-primary">Appearance</h2>
 
           <div className="space-y-4">
@@ -55,12 +47,7 @@ export default function SettingsPage() {
                         }`}
                       style={{ backgroundColor: theme.colors.secondary }}
                     >
-                      {isSelected && (
-                        <motion.div
-                          layoutId="check"
-                          className="h-3.5 w-3.5 rounded-full border-[1.5px] border-white bg-transparent"
-                        />
-                      )}
+                      {isSelected && <span className="h-3.5 w-3.5 rounded-full border-[1.5px] border-white" />}
                     </button>
                   );
                 })}
@@ -116,7 +103,7 @@ export default function SettingsPage() {
           </div>
         </motion.section>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-8">
+        <motion.div {...reveal(reduceMotion, 0.16)} className="mt-8">
           <BackLink />
         </motion.div>
       </main>
