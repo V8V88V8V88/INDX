@@ -384,7 +384,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   const zoomed = selectedPath ? zoomBox(mapData.box, selectedPath.bounds) : mapData.box;
   const zoomedViewBox = zoomed.join(" ");
   const isZoomedIn = zoomed[2] < mapData.box[2] * 0.95;
-  const labelSize = zoomed[2] / 68;
+  const labelSize = Math.max(zoomed[2], zoomed[3]) / 68;
   const labels = showLabels ? placeLabels(mapData.paths, labelSize) : [];
 
   return (
