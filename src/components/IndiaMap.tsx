@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import * as d3 from "d3";
 import { states } from "@/data/india";
@@ -43,6 +43,7 @@ export function IndiaMap({
   const [transform, setTransform] = useState({ k: 1, x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [showLabels, setShowLabels] = useState(true);
+  const [showZoomHint, setShowZoomHint] = useState(false);
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const rafRef = useRef<number | null>(null);
   const latestMouseRef = useRef({ x: 0, y: 0 });
@@ -72,10 +73,18 @@ export function IndiaMap({
 
     let zoomRafId: number | null = null;
     let latestTransform = { k: 1, x: 0, y: 0 };
+    let hintTimer: ReturnType<typeof setTimeout> | null = null;
     const zoom = d3.zoom<SVGSVGElement, unknown>()
-      .scaleExtent([0.5, 8])
+      .scaleExtent([1, 8])
+      .translateExtent([[0, -20], [630, 670]])
+      .filter((event) => {
+        if (event.type === "wheel") return event.ctrlKey || event.metaKey;
+        if (event.type === "touchstart") return event.touches.length >= 2;
+        return !event.ctrlKey && !event.button;
+      })
       .wheelDelta((event) => {
-        return -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 0.002) * 3;
+        const delta = -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 0.002) * 10;
+        return Math.max(-0.6, Math.min(0.6, delta));
       })
       .on("zoom", (event) => {
         latestTransform = { k: event.transform.k, x: event.transform.x, y: event.transform.y };
@@ -90,9 +99,30 @@ export function IndiaMap({
     const svgNode = svgRef.current;
     d3.select(svgNode).call(zoom);
 
+    let lastWheelAt = 0;
+    let wheelGestures = 0;
+    let hintShown = false;
+    const onWheel = (event: WheelEvent) => {
+      if (event.ctrlKey || event.metaKey || hintShown) return;
+      if (event.timeStamp - lastWheelAt > 400) wheelGestures++;
+      lastWheelAt = event.timeStamp;
+      if (wheelGestures < 2) return;
+      hintShown = true;
+      setShowZoomHint(true);
+      hintTimer = setTimeout(() => setShowZoomHint(false), 900);
+    };
+    const onLeave = () => {
+      wheelGestures = 0;
+    };
+    svgNode.addEventListener("wheel", onWheel, { passive: true });
+    svgNode.addEventListener("mouseleave", onLeave);
+
     return () => {
       d3.select(svgNode).on(".zoom", null);
+      svgNode.removeEventListener("wheel", onWheel);
+      svgNode.removeEventListener("mouseleave", onLeave);
       if (zoomRafId) cancelAnimationFrame(zoomRafId);
+      if (hintTimer) clearTimeout(hintTimer);
     };
   }, [geoData]);
 
@@ -175,7 +205,7 @@ export function IndiaMap({
       <svg
         ref={svgRef}
         viewBox="0 -20 630 690"
-        className="h-auto max-h-[560px] min-h-[380px] w-full touch-none lg:max-h-[720px]"
+        className="h-auto max-h-[560px] min-h-[380px] w-full touch-pan-y lg:max-h-[720px]"
         style={{
           ...(isTransformed ? EDGE_FADE_STYLE : {}),
           cursor: "grab",
@@ -312,6 +342,22 @@ export function IndiaMap({
           })}
         </g>
       </svg>
+
+      <AnimatePresence>
+        {showZoomHint && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="pointer-events-none absolute inset-x-0 bottom-2 z-20 flex justify-center"
+          >
+            <div className="rounded-full bg-bg-card/80 px-2.5 py-1 text-xs text-text-tertiary backdrop-blur-sm">
+              Pinch or Ctrl + scroll to zoom
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* tooltip */}
       {hoveredData && (() => {
