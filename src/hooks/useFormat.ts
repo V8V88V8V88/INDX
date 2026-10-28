@@ -1,10 +1,13 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { useSettings } from "@/contexts/SettingsContext";
+import { FY_AVERAGE_INR_PER_USD, getServerUsdRate, getUsdRate, subscribeUsdRate } from "@/lib/fx";
 import { formatNumber as formatNumberIN, formatPopulation as formatPopulationIN } from "@/data/india";
 
 export function useFormat() {
     const { settings } = useSettings();
+    const usdRate = useSyncExternalStore(subscribeUsdRate, getUsdRate, getServerUsdRate);
 
     const formatNumber = (val: number): string => {
         if (settings.numberFormat === "indian") {
@@ -26,13 +29,13 @@ export function useFormat() {
         return formatNumber(val);
     };
 
-    const formatCurrency = (valInINR: number): string => {
+    const formatCurrency = (valInINR: number, fiscalYear?: string): string => {
         if (settings.currency === "INR") {
             return "₹" + formatNumber(valInINR);
         }
 
-        // Convert to USD (Approx ₹84 = $1)
-        const valInUSD = valInINR / 84;
+        const rate = (fiscalYear && FY_AVERAGE_INR_PER_USD[fiscalYear]) || usdRate.inrPerUsd;
+        const valInUSD = valInINR / rate;
 
         // Apply formatting to USD value
         if (valInUSD >= 1000000000) return "$" + (valInUSD / 1000000000).toFixed(2) + " B";
@@ -76,6 +79,7 @@ export function useFormat() {
         formatCurrency,
         formatDistance,
         formatDensity,
-        formatArea
+        formatArea,
+        usdRate
     };
 }

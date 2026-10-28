@@ -225,9 +225,9 @@ export function StatePage({ id }: { id: string }) {
               />
               <MetricCard
                 title={state.gdpYear ? `GSDP (${state.gdpYear})` : "GSDP"}
-                value={formatCurrency(state.gdp * 10000000)}
+                value={formatCurrency(state.gdp * 10000000, state.gdpYear)}
                 unit=""
-                subtitle={`#${gdpRank} in India · ${formatCurrency(state.gdpPerCapita)} per person`}
+                subtitle={`#${gdpRank} in India · ${formatCurrency(state.gdpPerCapita, state.gdpYear)} per person`}
                 delay={0.15}
                 trigger={isPageReady}
               />
@@ -327,7 +327,7 @@ export function StatePage({ id }: { id: string }) {
               },
               {
                 label: "GDP per Person",
-                values: [formatCurrency(state.gdpPerCapita), formatCurrency(nationalStats.gdpPerCapita)],
+                values: [formatCurrency(state.gdpPerCapita, state.gdpYear), formatCurrency(nationalStats.gdpPerCapita, nationalStats.gdpYear)],
                 winner: state.gdpPerCapita > nationalStats.gdpPerCapita ? 0 : 1,
               },
             ]}

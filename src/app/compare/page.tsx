@@ -140,12 +140,18 @@ function useComparisonRows(left: CompareItem, right: CompareItem): CompareRow[] 
 
   if (left.type === "state" && right.type === "state") {
     const s = (fn: (state: State) => number): [number, number] => [fn(left.state), fn(right.state)];
+    const money = (label: string, fn: (state: State) => number): CompareRow => ({
+      label,
+      raw: s(fn),
+      values: [formatCurrency(fn(left.state), left.state.gdpYear), formatCurrency(fn(right.state), right.state.gdpYear)],
+      higherIsBetter: true,
+    });
     rows.push(
       numeric("Literacy", s((x) => x.literacyRate), (v) => `${v.toFixed(1)}%`, true),
       numeric("HDI", s((x) => x.hdi), (v) => v.toFixed(3), true),
       numeric("Sex Ratio", s((x) => x.sexRatio), (v) => v.toString(), true),
-      numeric("GSDP", s((x) => x.gdp), (v) => formatCurrency(v * 10000000), true),
-      numeric("GSDP / person", s((x) => (x.gdp * 10000000) / x.population), (v) => formatCurrency(Math.round(v)), true),
+      money("GSDP", (x) => x.gdp * 10000000),
+      money("GSDP / person", (x) => Math.round((x.gdp * 10000000) / x.population)),
       { label: "Capital", values: [left.state.capital, right.state.capital] },
       { label: "Region", values: [left.state.region, right.state.region] },
       {

@@ -700,6 +700,10 @@ export const DISTRICT_COUNT = 744;
 const totalPopulation = states.reduce((sum, s) => sum + s.population, 0);
 const totalArea = states.reduce((sum, s) => sum + s.area, 0);
 const totalGdp = states.reduce((sum, s) => sum + s.gdp, 0);
+const gdpYearCounts = states.reduce<Record<string, number>>((counts, s) => {
+  if (s.gdpYear) counts[s.gdpYear] = (counts[s.gdpYear] ?? 0) + 1;
+  return counts;
+}, {});
 const populationWeighted = (key: "literacyRate" | "hdi") =>
   states.reduce((sum, s) => sum + s[key] * s.population, 0) / totalPopulation;
 
@@ -709,6 +713,7 @@ export const nationalStats = {
   density: Math.round(totalPopulation / totalArea),
   gdp: totalGdp,
   gdpPerCapita: Math.round((totalGdp * 10000000) / totalPopulation),
+  gdpYear: Object.entries(gdpYearCounts).sort((a, b) => b[1] - a[1])[0]?.[0],
   literacyRate: populationWeighted("literacyRate"),
   hdi: populationWeighted("hdi"),
 };
