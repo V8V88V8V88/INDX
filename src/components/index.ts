@@ -8,7 +8,7 @@ export { BarChart } from "./BarChart";
 export { ComparisonTable, type ComparisonRow } from "./ComparisonTable";
 export { CityCard } from "./CityCard";
 export { PlaceBadges } from "./PlaceBadges";
-export { ThemeToggle } from "./ThemeToggle";
+export { ThemeToggle, setThemePreference, useThemePreference, type ThemePreference } from "./ThemeToggle";
 export { DistrictList } from "./DistrictList";
 export { DistrictInfoCard } from "./DistrictInfoCard";
 export { InlineSearch } from "./InlineSearch";

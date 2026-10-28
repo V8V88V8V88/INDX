@@ -5,6 +5,7 @@ import {
     getServerSettings,
     getSettings,
     subscribeSettings,
+    resetSettings,
     updateSetting,
     type Settings,
 } from "@/lib/settings";
@@ -13,6 +14,7 @@ import { applyTheme } from "@/lib/theme";
 interface SettingsContextType {
     settings: Settings;
     updateSetting: <K extends keyof Settings>(key: K, value: Settings[K]) => void;
+    resetSettings: () => void;
 }
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
@@ -25,7 +27,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     }, [settings.accentColor]);
 
     return (
-        <SettingsContext.Provider value={{ settings, updateSetting }}>
+        <SettingsContext.Provider value={{ settings, updateSetting, resetSettings }}>
             {children}
         </SettingsContext.Provider>
     );

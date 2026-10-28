@@ -3,13 +3,19 @@
 import { useSyncExternalStore, useCallback, useEffect } from "react";
 import { Button, Icon } from "./ui";
 
-function getTheme(): "light" | "dark" {
-  if (typeof window === "undefined") return "light";
+export type ThemePreference = "system" | "light" | "dark";
+
+function getPreference(): ThemePreference {
+  if (typeof window === "undefined") return "system";
   let stored: string | null = null;
   try {
     stored = localStorage.getItem("theme");
   } catch {}
-  if (stored === "dark" || stored === "light") return stored;
+  return stored === "dark" || stored === "light" ? stored : "system";
+}
+
+function resolve(preference: ThemePreference): "light" | "dark" {
+  if (preference !== "system") return preference;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
@@ -26,11 +32,24 @@ function subscribe(callback: () => void) {
 const noopSubscribe = () => () => {};
 
 function getSnapshot() {
-  return getTheme();
+  return resolve(getPreference());
 }
 
 function getServerSnapshot(): "light" | "dark" {
   return "light";
+}
+
+export function setThemePreference(preference: ThemePreference) {
+  try {
+    if (preference === "system") localStorage.removeItem("theme");
+    else localStorage.setItem("theme", preference);
+  } catch {}
+  document.documentElement.classList.toggle("dark", resolve(preference) === "dark");
+  window.dispatchEvent(new Event("storage"));
+}
+
+export function useThemePreference(): ThemePreference {
+  return useSyncExternalStore(subscribe, getPreference, () => "system");
 }
 
 export function ThemeToggle() {
@@ -42,12 +61,7 @@ export function ThemeToggle() {
   }, [theme]);
 
   const toggle = useCallback(() => {
-    const next = theme === "light" ? "dark" : "light";
-    try {
-      localStorage.setItem("theme", next);
-    } catch {}
-    document.documentElement.classList.toggle("dark", next === "dark");
-    window.dispatchEvent(new Event("storage"));
+    setThemePreference(theme === "light" ? "dark" : "light");
   }, [theme]);
 
   if (!mounted) return <div className="h-8 w-8" />;

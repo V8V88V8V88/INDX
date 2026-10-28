@@ -71,3 +71,12 @@ export function updateSetting<K extends keyof Settings>(key: K, value: Settings[
   }
   listeners.forEach((listener) => listener());
 }
+
+export function resetSettings(): void {
+  try {
+    localStorage.removeItem(SETTINGS_KEY);
+  } catch {
+    // Storage failed, ignore
+  }
+  listeners.forEach((listener) => listener());
+}
