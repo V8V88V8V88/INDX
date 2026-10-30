@@ -1,0 +1,16 @@
+name: Feature idea
+description: Suggest something new for INDX
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: What you'd like to see and who it helps
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Data sources
+      description: If it needs new data, where would it come from?

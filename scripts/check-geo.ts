@@ -7,8 +7,8 @@ const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
 let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
 
-data.features.forEach((f: any, i: number) => {
-    let coords = [];
+data.features.forEach((f: GeoJSON.Feature, i: number) => {
+    let coords: GeoJSON.Position[] = [];
     if (f.geometry.type === "Polygon") {
         coords = f.geometry.coordinates[0];
     } else if (f.geometry.type === "MultiPolygon") {
@@ -16,7 +16,7 @@ data.features.forEach((f: any, i: number) => {
     }
 
     // Check bounds
-    coords.forEach((pt: any) => {
+    coords.forEach((pt) => {
         const [x, y] = pt;
         if (x < minX) minX = x;
         if (x > maxX) maxX = x;
@@ -35,7 +35,7 @@ data.features.forEach((f: any, i: number) => {
     // If area < 0, it's CCW (Counter-Clockwise)
     // Note: GeoJSON spec says exterior rings should be CCW.
 
-    console.log(`Feature ${i} (${f.properties.district}): Area Sign=${Math.sign(area)} (${area > 0 ? 'CW' : 'CCW'})`);
+    console.log(`Feature ${i} (${f.properties?.district}): Area Sign=${Math.sign(area)} (${area > 0 ? 'CW' : 'CCW'})`);
 });
 
 console.log(`Overall Bounds: [${minX}, ${minY}] to [${maxX}, ${maxY}]`);

@@ -17,7 +17,7 @@ const DEFAULT_ZOOM = 4;
 const DISTRICT_MIN_ZOOM = 5.5;
 const DISTRICT_LABELS_MIN_ZOOM = 6.0;
 const STATE_LABELS_MAX_ZOOM = 7;
-const HOVER_OPACITY = ["case", ["boolean", ["feature-state", "hover"], false], 1, 0];
+const HOVER_OPACITY: maplibregl.ExpressionSpecification = ["case", ["boolean", ["feature-state", "hover"], false], 1, 0];
 const SHORT_STATE_LABELS: Record<string, string> = {
   "Dadra and Nagar Haveli and Daman and Diu": "DNH & DD",
   "Andaman & Nicobar": "A & N Islands",
@@ -120,7 +120,7 @@ const codeToName = Object.fromEntries(
 
 const TERRAIN_STOPS = [50, 250, 700, 1800, 4500];
 
-function terrainElevationExpr(colors: string[]): unknown[] {
+function terrainElevationExpr(colors: string[]): maplibregl.ExpressionSpecification {
   const elevation: unknown[] = ["match", ["get", "ST_NM"]];
   for (const [code, metres] of Object.entries(STATE_ELEVATION)) {
     const name = codeToName[code];
@@ -128,7 +128,7 @@ function terrainElevationExpr(colors: string[]): unknown[] {
   }
   elevation.push(200);
 
-  return ["interpolate", ["linear"], elevation, ...TERRAIN_STOPS.flatMap((stop, i) => [stop, colors[i]])];
+  return ["interpolate", ["linear"], elevation, ...TERRAIN_STOPS.flatMap((stop, i) => [stop, colors[i]])] as maplibregl.ExpressionSpecification;
 }
 
 function mainlandCentroid(geom: GeoJSON.Geometry | null): [number, number] {
@@ -180,7 +180,7 @@ function addDistrictLayers(m: maplibregl.Map, code: string, data: GeoJSON.Featur
       paint: {
         "line-color": c.border,
         "line-width": ["interpolate", ["linear"], ["zoom"], 5, 1.5, 8, 2.2, 12, 3],
-        "line-opacity": HOVER_OPACITY as any,
+        "line-opacity": HOVER_OPACITY,
       },
     },
     "state-labels",
@@ -277,7 +277,7 @@ const fillOptions: { value: FillMode; label: string }[] = [
   ...METRICS.map((m) => ({ value: m.key, label: m.label })),
 ];
 
-function stateFillExpr(mode: FillMode, terrain: string[]): unknown[] {
+function stateFillExpr(mode: FillMode, terrain: string[]): maplibregl.ExpressionSpecification {
   if (mode === "terrain") return terrainElevationExpr(terrain);
   const scale = createStateMetricColorScale(mode);
   const expr: unknown[] = ["match", ["get", "ST_NM"]];
@@ -289,7 +289,7 @@ function stateFillExpr(mode: FillMode, terrain: string[]): unknown[] {
     expr.push(name, resolveCSS(scale(state[mode], state.id)));
   }
   expr.push(resolveCSS("var(--accent-primary)"));
-  return expr;
+  return expr as maplibregl.ExpressionSpecification;
 }
 
 function centroidPoints(geo: GeoJSON.FeatureCollection, pickProps: (props: GeoJSON.GeoJsonProperties) => GeoJSON.GeoJsonProperties): GeoJSON.FeatureCollection<GeoJSON.Point> {
@@ -308,7 +308,6 @@ const zoomButtonClass = "flex h-9 w-9 items-center justify-center text-text-seco
 export default function MapPage() {
   const router = useRouter();
   const routerRef = useRef(router);
-  routerRef.current = router;
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const loadedRef = useRef(new Set<string>());
@@ -324,6 +323,10 @@ export default function MapPage() {
   const [hovered, setHovered] = useState<{ name: string; x: number; y: number } | null>(null);
   const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [baseZoom, setBaseZoom] = useState(DEFAULT_ZOOM);
+
+  useEffect(() => {
+    routerRef.current = router;
+  }, [router]);
 
   // ---- map creation ----
   useEffect(() => {
@@ -455,7 +458,7 @@ export default function MapPage() {
             type: "fill",
             source: "states",
             paint: {
-              "fill-color": stateFillExpr(fillRef.current, c.terrain) as any,
+              "fill-color": stateFillExpr(fillRef.current, c.terrain),
               "fill-opacity": 1.0,
             },
           });
@@ -513,7 +516,7 @@ export default function MapPage() {
             paint: {
               "line-color": c.border,
               "line-width": ["interpolate", ["linear"], ["zoom"], 3, 1.5, 6, 2.2, 10, 3],
-              "line-opacity": HOVER_OPACITY as any,
+              "line-opacity": HOVER_OPACITY,
             },
           });
 
@@ -522,7 +525,7 @@ export default function MapPage() {
             type: "symbol",
             source: "state-centroids",
             layout: {
-              "text-field": ["match", ["get", "ST_NM"], ...Object.entries(SHORT_STATE_LABELS).flat(), ["get", "ST_NM"]] as any,
+              "text-field": ["match", ["get", "ST_NM"], ...Object.entries(SHORT_STATE_LABELS).flat(), ["get", "ST_NM"]] as unknown as maplibregl.ExpressionSpecification,
               "text-size": ["interpolate", ["linear"], ["zoom"], 3, 8.5, 5, 10.5, 7, 13],
               "text-font": [LABEL_FONT_BOLD],
               "text-letter-spacing": 0.02,
@@ -590,7 +593,7 @@ export default function MapPage() {
           const dark = isDark();
 
           m.setPaintProperty("bg", "background-color", colors.bg);
-          m.setPaintProperty("state-fill", "fill-color", stateFillExpr(fillRef.current, colors.terrain) as any);
+          m.setPaintProperty("state-fill", "fill-color", stateFillExpr(fillRef.current, colors.terrain));
           m.setPaintProperty("state-fill", "fill-opacity", 1.0);
           if (m.getLayer("hillshade")) {
             for (const [key, value] of Object.entries(hillshadePaint(dark))) {
@@ -674,7 +677,7 @@ export default function MapPage() {
     setFill(next);
     fillRef.current = next;
     const m = mapRef.current;
-    if (m?.getLayer("state-fill")) m.setPaintProperty("state-fill", "fill-color", stateFillExpr(next, tc().terrain) as any);
+    if (m?.getLayer("state-fill")) m.setPaintProperty("state-fill", "fill-color", stateFillExpr(next, tc().terrain));
     if (m?.getLayer("hillshade")) m.setLayoutProperty("hillshade", "visibility", next === "terrain" ? "visible" : "none");
     const url = new URL(window.location.href);
     if (next === "terrain") url.searchParams.delete("m");

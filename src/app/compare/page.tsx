@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { Footer, Header, InlineSearch, StateMap } from "@/components";
@@ -273,15 +273,17 @@ function Comparison({ left, right }: { left: CompareItem; right: CompareItem }) 
   );
 }
 
+const subscribeNothing = () => () => {};
+const getInitialStateId = () => new URLSearchParams(window.location.search).get("a") ?? "";
+const getServerInitialStateId = () => "";
+
 export default function ComparePage() {
   const reduceMotion = useReducedMotion();
-  const [left, setLeft] = useState<CompareItem | null>(null);
+  const initialStateId = useSyncExternalStore(subscribeNothing, getInitialStateId, getServerInitialStateId);
+  const [pickedLeft, setLeft] = useState<CompareItem | null | undefined>(undefined);
   const [right, setRight] = useState<CompareItem | null>(null);
-
-  useEffect(() => {
-    const state = getStateById(new URLSearchParams(window.location.search).get("a") ?? "");
-    if (state) setLeft({ type: "state", state });
-  }, []);
+  const initialState = getStateById(initialStateId);
+  const left = pickedLeft !== undefined ? pickedLeft : initialState ? { type: "state" as const, state: initialState } : null;
 
   const slots = [
     { label: "Item 1", placeholder: "Search for first state, city, or district...", set: setLeft },

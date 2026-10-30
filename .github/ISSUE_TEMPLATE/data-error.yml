@@ -1,0 +1,31 @@
+name: Data error
+description: A number, name or boundary on INDX is wrong
+labels: ["data"]
+body:
+  - type: input
+    id: place
+    attributes:
+      label: Place
+      description: The state, district or city
+      placeholder: Lucknow, Uttar Pradesh
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Link to the page where you saw it
+      placeholder: https://ind-x.vercel.app/state/UP#district-Lucknow
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What's wrong
+      description: The value INDX shows and the value you think is right
+      placeholder: Literacy shows 77.3%, but ...
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: Where the correct value comes from (link, report name and year)

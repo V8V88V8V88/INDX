@@ -8,15 +8,17 @@
     "copy:map-worker": "cp node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs public/maplibre-gl-worker.mjs",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "check:districts": "bun scripts/check-district-anomalies.ts",
-    "build:data": "python3 scripts/data/build_data.py"
+    "build:data": "python3 scripts/data/build_data.py",
+    "check:data": "python3 scripts/data/build_data.py --check"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.105.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "d3": "^7.9.0",
-    "framer-motion": "^14.6.0",
+    "framer-motion": "^14.8.0",
     "maplibre-gl": "^6.16.0",
     "next": "16.4.3",
     "react": "19.3.1",
@@ -25,13 +27,14 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "@types/d3": "^7.4.3",
-    "@types/node": "^26.6.5",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@typescript/native": "npm:typescript@~7.0.2",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^10.13.0",
     "eslint-config-next": "16.4.3",
     "tailwindcss": "^4.3.3",
-    "typescript": "~7.0.2"
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
   }
 }
