@@ -87,7 +87,7 @@ export function HomePage() {
               <MetricCard title={t("totalPopulation")} value={formatPopulation(india.population)} subtitle={t("estimate", { year: 2026 })} delay={0.1} trigger={isPageReady} />
               <MetricCard title={t("statesAndUts")} value={t("statesAndUtsValue", { states: 28, uts: 8 })} subtitle={t("districtCount", { count: DISTRICT_COUNT })} delay={0.15} trigger={isPageReady} />
               <MetricCard title={tMetrics("literacyRate.long")} value={nationalStats.literacyRate.toFixed(1)} unit="%" subtitle="PLFS 2023-24" delay={0.2} trigger={isPageReady} />
-              <MetricCard title={tMetrics("hdi.short")} value={nationalStats.hdi.toFixed(3)} subtitle={t("hdiSubtitle")} delay={0.25} trigger={isPageReady} />
+              <MetricCard title={tMetrics("hdi.short")} value={nationalStats.hdi.toFixed(3)} subtitle={METRIC_SOURCES.hdi} delay={0.25} trigger={isPageReady} />
             </div>
           </div>
 
