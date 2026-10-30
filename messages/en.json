@@ -367,5 +367,13 @@
     "title": "Page Not Found",
     "description": "The page you're looking for doesn't exist or the state/city data is not available yet.",
     "back": "Back to India"
+  },
+  "Embed": {
+    "button": "Embed this map",
+    "hint": "Paste this code into any web page to show this map there.",
+    "copy": "Copy code",
+    "copied": "Copied",
+    "open": "Open in INDX",
+    "frameTitle": "{place} by {metric}, from INDX"
   }
 }

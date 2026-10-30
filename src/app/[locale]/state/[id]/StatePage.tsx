@@ -10,6 +10,7 @@ import {
   ComparisonTable,
   DistrictInfoCard,
   DistrictList,
+  EmbedButton,
   Footer,
   Header,
   MetricCard,
@@ -23,35 +24,10 @@ import { getStateById, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
-import { colorIndexForRank, getMetricPaletteIndices, type MapMetric } from "@/lib/map-view";
+import { districtFillFor, findDistrictByName, type DistrictMetric } from "@/lib/districts";
+import { getMetricPaletteIndices } from "@/lib/map-view";
 import { DISTRICT_SOURCES, METRIC_SOURCES } from "@/lib/metrics";
 import type { District, State } from "@/types";
-
-function normalizeDistrictName(name: string): string {
-  return name
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, " ")
-    .replace(/[’'".,()/]/g, "")
-    .replace(/&/g, "and");
-}
-
-function findDistrictByName(list: District[], name: string): District | null {
-  const target = normalizeDistrictName(name);
-  const exact = list.find((d) => normalizeDistrictName(d.name) === target);
-  if (exact) return exact;
-
-  const targetWords = target.split(/\s+/).filter((w) => w.length > 0);
-  return list.find((d) => {
-    const districtWords = normalizeDistrictName(d.name).split(/\s+/).filter((w) => w.length > 0);
-    if (targetWords.length > 1 || districtWords.length > 1) {
-      const shorter = targetWords.length <= districtWords.length ? targetWords : districtWords;
-      const longer = targetWords.length > districtWords.length ? targetWords : districtWords;
-      return shorter.every((word) => longer.includes(word));
-    }
-    return false;
-  }) ?? null;
-}
 
 function findCapitalDistrict(state: State, districts: District[] | undefined): string {
   if (!state.capitalDistrict) return state.capital;
@@ -98,6 +74,7 @@ export function StatePage({ id }: { id: string }) {
   const tCommon = useTranslations("Common");
   const tMetrics = useTranslations("Metrics");
   const tRegions = useTranslations("Regions");
+  const tEmbed = useTranslations("Embed");
   const { stateName, capitalName, placeName } = usePlaceNames();
   const prefersReducedMotion = useReducedMotion();
   const smooth: Transition = prefersReducedMotion
@@ -164,18 +141,12 @@ export function StatePage({ id }: { id: string }) {
     return findDistrictByName(districts, selectedDistrict);
   }, [selectedDistrict, districts]);
 
-  const mapMetric: MapMetric | null = mapSort === "name" ? null : mapSort === "literacy" ? "literacyRate" : mapSort;
+  const mapMetric: DistrictMetric | null = mapSort === "name" ? null : mapSort === "literacy" ? "literacyRate" : mapSort;
 
-  const districtFill = useMemo(() => {
-    if (!mapMetric || !districts?.length) return undefined;
-    const ranked = districts.filter((d) => d[mapMetric] > 0).sort((a, b) => b[mapMetric] - a[mapMetric]);
-    const palette = getMetricPaletteIndices(mapMetric).map((i) => `var(--choro-${i})`);
-    const colors = new Map(ranked.map((d, i) => [d.name, palette[colorIndexForRank(i, ranked.length, palette.length)]]));
-    return (name: string) => {
-      const district = findDistrictByName(districts, name);
-      return district ? colors.get(district.name) : undefined;
-    };
-  }, [districts, mapMetric]);
+  const districtFill = useMemo(
+    () => (mapMetric && districts?.length ? districtFillFor(districts, mapMetric) : undefined),
+    [districts, mapMetric],
+  );
 
   const populationRank = states.filter((s) => s.population > state.population).length + 1;
   const gdpRank = states.filter((s) => s.gdp > state.gdp).length + 1;
@@ -260,10 +231,18 @@ export function StatePage({ id }: { id: string }) {
               />
             </div>
 
-            <LinkButton href={`/compare?a=${state.id}`} size="sm" className="order-2 justify-self-center lg:order-none lg:self-center">
-              <Icon name="plus" size={14} />
-              {tCommon("compare")}
-            </LinkButton>
+            <div className="order-2 flex items-center gap-2 justify-self-center lg:order-none lg:self-center">
+              <LinkButton href={`/compare?a=${state.id}`} size="sm">
+                <Icon name="plus" size={14} />
+                {tCommon("compare")}
+              </LinkButton>
+              <EmbedButton
+                path={`/embed/state/${state.id}`}
+                query={{ m: mapMetric ?? "population" }}
+                title={tEmbed("frameTitle", { place: stateName(state.id, state.name), metric: tMetrics(`${mapMetric ?? "population"}.long`) })}
+                align="left"
+              />
+            </div>
           </div>
 
           {/* Right Column: Map - Now takes full column */}

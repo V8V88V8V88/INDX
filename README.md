@@ -50,6 +50,8 @@ All of it is free to reuse. Every table has a CSV download, and there's a read-o
 
 GSDP is in crore rupees, area in km², sex ratio in females per 1,000 males.
 
+To put a map on your own site, use the embed button on the home or state map, or point an iframe at `/embed/map?m=literacyRate` or `/embed/state/UP?m=density`.
+
 ## Languages
 
 The site is available in English, Hindi, Bengali, Marathi, Telugu, Tamil, Gujarati, Kannada, Malayalam, Odia and Punjabi. Translations are machine-assisted, so corrections from native speakers are very welcome; see [CONTRIBUTING.md](CONTRIBUTING.md#translations).

@@ -6,7 +6,7 @@ import type { Transition } from "framer-motion";
 import { EASE_OUT, FADE_DURATION } from "@/lib/motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { DownloadCsv, Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader, SourcesInfo } from "@/components";
+import { DownloadCsv, EmbedButton, Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader, SourcesInfo } from "@/components";
 import { Card, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
 import { DISTRICT_COUNT, india, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
@@ -25,6 +25,7 @@ export default function Home() {
   const tCommon = useTranslations("Common");
   const tMetrics = useTranslations("Metrics");
   const tRegions = useTranslations("Regions");
+  const tEmbed = useTranslations("Embed");
   const { stateName } = usePlaceNames();
 
   const sortOptions = [
@@ -97,7 +98,18 @@ export default function Home() {
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
             className="min-w-0 lg:col-span-2 lg:self-center"
           >
-            <IndiaMap colorByMetric={metric} selectedState={hoveredState} interactive />
+            <IndiaMap
+              colorByMetric={metric}
+              selectedState={hoveredState}
+              interactive
+              extraControls={
+                <EmbedButton
+                  path="/embed/map"
+                  query={{ m: metric }}
+                  title={tEmbed("frameTitle", { place: tCommon("india"), metric: tMetrics(`${metric}.long`) })}
+                />
+              }
+            />
 
             <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
               <span className="text-xs text-text-muted">{tCommon("low")}</span>

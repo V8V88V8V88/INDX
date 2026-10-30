@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect, useRef } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import * as d3 from "d3";
@@ -17,6 +17,8 @@ interface IndiaMapProps {
   onStateSelect?: (stateId: string | null) => void;
   colorByMetric?: MapMetric;
   interactive?: boolean;
+  embedded?: boolean;
+  extraControls?: ReactNode;
 }
 
 interface GeoFeature {
@@ -35,6 +37,8 @@ export function IndiaMap({
   onStateSelect,
   colorByMetric = "population",
   interactive = true,
+  embedded = false,
+  extraControls,
 }: IndiaMapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const gRef = useRef<SVGGElement>(null);
@@ -422,16 +426,19 @@ export function IndiaMap({
         >
           <Icon name="tag" size={14} />
         </Button>
-        <LinkButton
-          href={fullscreenHref}
-          variant="overlay"
-          size="sm"
-          iconOnly
-          title={t("fullscreen")}
-          aria-label={t("openFullscreen")}
-        >
-          <Icon name="expand" size={14} />
-        </LinkButton>
+        {extraControls}
+        {!embedded && (
+          <LinkButton
+            href={fullscreenHref}
+            variant="overlay"
+            size="sm"
+            iconOnly
+            title={t("fullscreen")}
+            aria-label={t("openFullscreen")}
+          >
+            <Icon name="expand" size={14} />
+          </LinkButton>
+        )}
       </div>
 
       {hoveredState && (
