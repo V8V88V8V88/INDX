@@ -21,7 +21,7 @@ const malayalam = Noto_Sans_Malayalam({ variable: "--font-script", subsets: ["ma
 const oriya = Noto_Sans_Oriya({ variable: "--font-script", subsets: ["oriya"], display: "swap", preload: false });
 const gurmukhi = Noto_Sans_Gurmukhi({ variable: "--font-script", subsets: ["gurmukhi"], display: "swap", preload: false });
 
-export const scriptFonts: Partial<Record<Locale | (string & {}), { variable: string }>> = {
+export const scriptFonts: Partial<Record<Locale, { variable: string }>> = {
   hi: devanagari,
   bn: bengali,
   mr: devanagari,

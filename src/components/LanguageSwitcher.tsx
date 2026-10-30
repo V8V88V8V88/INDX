@@ -2,16 +2,17 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { getPathname, usePathname } from "@/i18n/navigation";
 import { LOCALES, type Locale } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
 import { Button, Icon } from "./ui";
 
 export function useChangeLocale() {
-  const router = useRouter();
   const pathname = usePathname();
-  return (locale: Locale) =>
-    router.replace(`${pathname}${window.location.search}${window.location.hash}`, { locale, scroll: false });
+  return (locale: Locale) => {
+    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; samesite=lax`;
+    window.location.assign(getPathname({ href: pathname, locale }) + window.location.search + window.location.hash);
+  };
 }
 
 export function LanguageSwitcher() {
