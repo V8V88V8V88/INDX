@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, useSyncExternalStore } from "react";
+import { useMemo, useEffect, useRef, useSyncExternalStore } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Transition } from "framer-motion";
 import { EASE_OUT, FADE_DURATION } from "@/lib/motion";
@@ -18,13 +18,14 @@ import {
   SourcesInfo,
   StateMap,
 } from "@/components";
-import type { SortType } from "@/components/DistrictList";
+import { isSortType, type SortType } from "@/components/DistrictList";
 import { Icon, LinkButton, SectionHeader } from "@/components/ui";
 import { getStateById, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
 import { useStateGeo } from "@/hooks/useGeo";
 import { useSlowLoader } from "@/hooks/useSlowLoader";
+import { useUrlParam } from "@/hooks/useUrlParam";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { districtFillFor, findDistrictByName, type DistrictMetric } from "@/lib/districts";
 import { getMetricPaletteIndices } from "@/lib/map-view";
@@ -83,7 +84,7 @@ export function StatePage({ id }: { id: string }) {
     ? { duration: 0 }
     : { duration: FADE_DURATION, ease: EASE_OUT };
 
-  const [mapSort, setMapSort] = useState<SortType>("population");
+  const [mapSort, setMapSort] = useUrlParam<SortType>("sort", "population", isSortType);
   const hash = useSyncExternalStore(subscribeHash, getHash, getServerHash);
   const skipScrollHashRef = useRef<string | null>(null);
   const lastScrolledHashRef = useRef<string | null>(null);
@@ -337,6 +338,7 @@ export function StatePage({ id }: { id: string }) {
             cities={state.cities}
             selectedDistrict={selectedDistrict}
             onDistrictSelect={(d) => selectDistrict(d)}
+            sortBy={mapSort}
             onSortChange={setMapSort}
           />
         </section>

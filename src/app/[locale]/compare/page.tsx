@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
@@ -10,6 +9,7 @@ import { EASE_OUT, reveal } from "@/lib/motion";
 import { useDistricts } from "@/hooks/useDistricts";
 import { useFormat } from "@/hooks/useFormat";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
+import { useUrlParam } from "@/hooks/useUrlParam";
 import { getStateById } from "@/data/india";
 import type { PlaceResult } from "@/hooks/useSearch";
 import type { City, District, State } from "@/types";
@@ -295,22 +295,41 @@ function Comparison({ left, right }: { left: CompareItem; right: CompareItem }) 
   );
 }
 
-const subscribeNothing = () => () => {};
-const getInitialStateId = () => new URLSearchParams(window.location.search).get("a") ?? "";
-const getServerInitialStateId = () => "";
+function toRef(item: CompareItem): string {
+  if (item.type === "city") return `${item.state.id}/city/${item.city.id}`;
+  if (item.type === "district") return `${item.state.id}/district/${item.district.name}`;
+  return item.state.id;
+}
+
+function useCompareItem(ref: string): CompareItem | null {
+  const [stateId = "", kind, ...rest] = ref.split("/");
+  const key = rest.join("/");
+  const state = getStateById(stateId);
+  const { data: districts } = useDistricts(state && kind === "district" ? state.id : "");
+  if (!state) return null;
+  if (kind === "city") {
+    const city = state.cities.find((c) => c.id === key);
+    return city ? { type: "city", state, city } : null;
+  }
+  if (kind === "district") {
+    const district = districts?.find((d) => d.name === key);
+    return district ? { type: "district", state, district } : null;
+  }
+  return kind ? null : { type: "state", state };
+}
 
 export default function ComparePage() {
   const reduceMotion = useReducedMotion();
-  const initialStateId = useSyncExternalStore(subscribeNothing, getInitialStateId, getServerInitialStateId);
-  const [pickedLeft, setLeft] = useState<CompareItem | null | undefined>(undefined);
-  const [right, setRight] = useState<CompareItem | null>(null);
-  const initialState = getStateById(initialStateId);
-  const left = pickedLeft !== undefined ? pickedLeft : initialState ? { type: "state" as const, state: initialState } : null;
+  const [leftRef, setLeftRef] = useUrlParam<string>("a", "");
+  const [rightRef, setRightRef] = useUrlParam<string>("b", "");
+  const left = useCompareItem(leftRef);
+  const right = useCompareItem(rightRef);
+  const itemLabel = useItemLabel();
 
   const t = useTranslations("Compare");
   const slots = [
-    { label: t("item1"), placeholder: t("placeholder1"), set: setLeft },
-    { label: t("item2"), placeholder: t("placeholder2"), set: setRight },
+    { id: "a", label: t("item1"), placeholder: t("placeholder1"), item: left, set: setLeftRef },
+    { id: "b", label: t("item2"), placeholder: t("placeholder2"), item: right, set: setRightRef },
   ];
 
   return (
@@ -324,16 +343,21 @@ export default function ComparePage() {
         </motion.section>
 
         <section className="mb-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
-          {slots.map((slot) => (
-            <div key={slot.label} className="space-y-3">
-              <p className="text-sm font-semibold text-text-secondary">{slot.label}</p>
-              <InlineSearch
-                placeholder={slot.placeholder}
-                onSelect={(result) => result.type !== "page" && slot.set(toCompareItem(result))}
-                onClear={() => slot.set(null)}
-              />
-            </div>
-          ))}
+          {slots.map((slot) => {
+            const label = slot.item ? itemLabel(slot.item) : "";
+            return (
+              <div key={slot.id} className="space-y-3">
+                <p className="text-sm font-semibold text-text-secondary">{slot.label}</p>
+                <InlineSearch
+                  key={label}
+                  defaultValue={label}
+                  placeholder={slot.placeholder}
+                  onSelect={(result) => result.type !== "page" && slot.set(toRef(toCompareItem(result)))}
+                  onClear={() => slot.set("")}
+                />
+              </div>
+            );
+          })}
         </section>
 
         {(left || right) && (

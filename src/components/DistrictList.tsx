@@ -15,6 +15,10 @@ import { Button, Icon, SegmentedControl, Stat } from "./ui";
 type FilterType = "all" | "cities" | "1" | "2" | "3" | "4";
 export type SortType = "population" | "area" | "density" | "literacy" | "sexRatio" | "name";
 
+export function isSortType(value: string): value is SortType {
+  return ["population", "area", "density", "literacy", "sexRatio", "name"].includes(value);
+}
+
 const sortMetric = {
   population: "population",
   area: "area",
@@ -37,6 +41,7 @@ interface DistrictListProps {
   cities?: City[];
   selectedDistrict?: string | null;
   onDistrictSelect?: (districtName: string) => void;
+  sortBy?: SortType;
   onSortChange?: (sortBy: SortType) => void;
 }
 
@@ -104,10 +109,17 @@ function getSignificanceScore(d: District, city?: City): number {
   return score;
 }
 
-export function DistrictList({ stateCode, stateName, cities = [], selectedDistrict, onDistrictSelect, onSortChange }: DistrictListProps) {
+export function DistrictList({ stateCode, stateName, cities = [], selectedDistrict, onDistrictSelect, sortBy: controlledSort, onSortChange }: DistrictListProps) {
   const [filter, setFilter] = useState<FilterType>("all");
-  const [sortBy, setSortBy] = useState<SortType>("population");
-  const [ascending, setAscending] = useState(false);
+  const [internalSort, setSortBy] = useState<SortType>("population");
+  const sortBy = controlledSort ?? internalSort;
+  const [ascending, setAscending] = useState(sortBy === "name");
+  const [prevSort, setPrevSort] = useState(sortBy);
+
+  if (sortBy !== prevSort) {
+    setPrevSort(sortBy);
+    setAscending(sortBy === "name");
+  }
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const { data: districts, isLoading, error } = useDistricts(stateCode);
@@ -227,7 +239,6 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
 
   const changeSort = (next: SortType) => {
     setSortBy(next);
-    setAscending(next === "name");
     onSortChange?.(next);
   };
 

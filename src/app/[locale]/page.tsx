@@ -14,7 +14,8 @@ import { useIndiaGeo } from "@/hooks/useGeo";
 import { useSlowLoader } from "@/hooks/useSlowLoader";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
-import { getMetricPaletteIndices } from "@/lib/map-view";
+import { useUrlParam } from "@/hooks/useUrlParam";
+import { getMetricPaletteIndices, isMapMetric } from "@/lib/map-view";
 import { METRIC_SOURCES, REGIONS } from "@/lib/metrics";
 import type { MetricKey, State } from "@/types";
 
@@ -41,9 +42,9 @@ export default function Home() {
     ...REGIONS.map((r) => ({ value: r, label: tRegions(r) })),
   ];
 
-  const [metric, setMetric] = useState<MetricKey>("population");
-  const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
-  const [region, setRegion] = useState<RegionFilter>("all");
+  const [metric, setMetric] = useUrlParam<MetricKey>("m", "population", isMapMetric);
+  const [sortOrder, setSortOrder] = useUrlParam<SortOrder>("sort", "desc", (v) => v === "asc" || v === "alpha");
+  const [region, setRegion] = useUrlParam<RegionFilter>("region", "all", (v) => (REGIONS as readonly string[]).includes(v));
   const [hoveredState, setHoveredState] = useState<string | null>(null);
   const isPageReady = !useIndiaGeo().isPending;
   const showLoader = useSlowLoader(isPageReady);

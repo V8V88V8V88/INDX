@@ -9,10 +9,11 @@ interface InlineSearchProps {
   placeholder?: string;
   onSelect: (result: SearchResult) => void;
   onClear?: () => void;
+  defaultValue?: string;
 }
 
-export function InlineSearch({ placeholder, onSelect, onClear }: InlineSearchProps) {
-  const { query, setQuery, results, activeIndex, handleKeyDown } = useSearch();
+export function InlineSearch({ placeholder, onSelect, onClear, defaultValue }: InlineSearchProps) {
+  const { query, setQuery, results, activeIndex, handleKeyDown } = useSearch({ initialQuery: defaultValue });
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const listboxId = useId();
