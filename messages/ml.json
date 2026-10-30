@@ -380,5 +380,18 @@
     "copied": "പകർത്തി",
     "open": "INDX-ൽ തുറക്കുക",
     "frameTitle": "{metric} അനുസരിച്ച് {place}, INDX-ൽ നിന്ന്"
+  },
+  "District": {
+    "eyebrow": "ജില്ല · {state}",
+    "title": "{name}, {state}",
+    "description": "{state} സംസ്ഥാനത്തെ {name} ജില്ലയുടെ ജനസംഖ്യ, വിസ്തീർണം, സാക്ഷരത, സ്ത്രീ-പുരുഷ അനുപാതം, സംസ്ഥാനത്തും ഇന്ത്യയിലും അതിന്റെ റാങ്ക്.",
+    "rankState": "{state}-ൽ {total}-ൽ #{rank}",
+    "rankIndia": "ഇന്ത്യയിൽ {total}-ൽ #{rank}",
+    "compareTitle": "താരതമ്യത്തിൽ എങ്ങനെ",
+    "neighbours": "അയൽ ജില്ലകൾ",
+    "allDistricts": "{state}-ലെ എല്ലാ ജില്ലകളും",
+    "openPage": "ജില്ലാ പേജ് തുറക്കുക",
+    "district": "ജില്ല",
+    "noNeighbours": "ഈ സംസ്ഥാനത്ത് അയൽ ജില്ലകളില്ല."
   }
 }

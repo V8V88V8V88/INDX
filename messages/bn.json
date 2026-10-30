@@ -380,5 +380,18 @@
     "copied": "কপি হয়েছে",
     "open": "INDX-এ খুলুন",
     "frameTitle": "{metric} অনুযায়ী {place}, INDX থেকে"
+  },
+  "District": {
+    "eyebrow": "জেলা · {state}",
+    "title": "{name}, {state}",
+    "description": "{state}-এর {name} জেলার জনসংখ্যা, আয়তন, সাক্ষরতা ও লিঙ্গ অনুপাত, এবং রাজ্যে ও ভারতে এর স্থান।",
+    "rankState": "{state}-এ {total}টির মধ্যে #{rank}",
+    "rankIndia": "ভারতে {total}টির মধ্যে #{rank}",
+    "compareTitle": "তুলনায় কেমন",
+    "neighbours": "প্রতিবেশী জেলা",
+    "allDistricts": "{state}-এর সব জেলা",
+    "openPage": "জেলার পেজ খুলুন",
+    "district": "জেলা",
+    "noNeighbours": "এই রাজ্যে কোনো প্রতিবেশী জেলা নেই।"
   }
 }

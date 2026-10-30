@@ -380,5 +380,18 @@
     "copied": "కాపీ అయింది",
     "open": "INDXలో తెరవండి",
     "frameTitle": "{metric} ప్రకారం {place}, INDX నుండి"
+  },
+  "District": {
+    "eyebrow": "జిల్లా · {state}",
+    "title": "{name}, {state}",
+    "description": "{state}లోని {name} జిల్లా జనాభా, విస్తీర్ణం, అక్షరాస్యత, లింగ నిష్పత్తి, రాష్ట్రంలో మరియు భారతదేశంలో దాని ర్యాంక్.",
+    "rankState": "{state}లో {total}లో #{rank}",
+    "rankIndia": "భారతదేశంలో {total}లో #{rank}",
+    "compareTitle": "పోలికలో ఎలా ఉంది",
+    "neighbours": "పొరుగు జిల్లాలు",
+    "allDistricts": "{state}లోని అన్ని జిల్లాలు",
+    "openPage": "జిల్లా పేజీ తెరవండి",
+    "district": "జిల్లా",
+    "noNeighbours": "ఈ రాష్ట్రంలో పొరుగు జిల్లాలు లేవు."
   }
 }

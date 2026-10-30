@@ -380,5 +380,18 @@
     "copied": "ਕਾਪੀ ਹੋ ਗਿਆ",
     "open": "INDX ਵਿੱਚ ਖੋਲ੍ਹੋ",
     "frameTitle": "{metric} ਅਨੁਸਾਰ {place}, INDX ਤੋਂ"
+  },
+  "District": {
+    "eyebrow": "ਜ਼ਿਲ੍ਹਾ · {state}",
+    "title": "{name}, {state}",
+    "description": "{state} ਦੇ {name} ਜ਼ਿਲ੍ਹੇ ਦੀ ਆਬਾਦੀ, ਖੇਤਰਫਲ, ਸਾਖਰਤਾ ਅਤੇ ਲਿੰਗ ਅਨੁਪਾਤ, ਅਤੇ ਰਾਜ ਤੇ ਭਾਰਤ ਵਿੱਚ ਇਸਦਾ ਦਰਜਾ।",
+    "rankState": "{state} ਵਿੱਚ {total} ਵਿੱਚੋਂ #{rank}",
+    "rankIndia": "ਭਾਰਤ ਵਿੱਚ {total} ਵਿੱਚੋਂ #{rank}",
+    "compareTitle": "ਤੁਲਨਾ ਵਿੱਚ ਕਿਵੇਂ ਹੈ",
+    "neighbours": "ਗੁਆਂਢੀ ਜ਼ਿਲ੍ਹੇ",
+    "allDistricts": "{state} ਦੇ ਸਾਰੇ ਜ਼ਿਲ੍ਹੇ",
+    "openPage": "ਜ਼ਿਲ੍ਹੇ ਦਾ ਪੰਨਾ ਖੋਲ੍ਹੋ",
+    "district": "ਜ਼ਿਲ੍ਹਾ",
+    "noNeighbours": "ਇਸ ਰਾਜ ਵਿੱਚ ਕੋਈ ਗੁਆਂਢੀ ਜ਼ਿਲ੍ਹਾ ਨਹੀਂ ਹੈ।"
   }
 }

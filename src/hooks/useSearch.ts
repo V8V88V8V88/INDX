@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { states } from "@/data/india";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { fetchDistrictsFromAPI } from "@/lib/api";
+import { districtPath } from "@/lib/districts";
 import type { City, District, State } from "@/types";
 
 export type SearchResultType = "page" | "state" | "city" | "district";
@@ -113,7 +114,7 @@ export function useSearch({ includePages = false, initialQuery = "" } = {}) {
             stateName: localState,
             state,
             district,
-            path: `/state/${state.id}#district-${encodeURIComponent(district.name)}`,
+            path: districtPath(state.id, district.name),
           });
         }
       }

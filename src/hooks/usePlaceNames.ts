@@ -3,19 +3,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations, type Messages } from "next-intl";
 import { routing } from "@/i18n/routing";
+import { placeNameKey } from "@/lib/place-names";
 
 type NameTable = Record<string, Record<string, string>>;
 type StateKey = keyof Messages["States"];
-
-export function placeNameKey(name: string): string {
-  return name
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, "and")
-    .replace(/[’'".,()/–-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
 
 async function fetchNames(locale: string): Promise<NameTable> {
   const response = await fetch(`/data/names/${locale}.json`);

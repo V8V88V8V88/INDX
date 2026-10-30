@@ -380,5 +380,18 @@
     "copied": "ನಕಲಿಸಲಾಗಿದೆ",
     "open": "INDX ನಲ್ಲಿ ತೆರೆಯಿರಿ",
     "frameTitle": "{metric} ಪ್ರಕಾರ {place}, INDX ನಿಂದ"
+  },
+  "District": {
+    "eyebrow": "ಜಿಲ್ಲೆ · {state}",
+    "title": "{name}, {state}",
+    "description": "{state} ರಾಜ್ಯದ {name} ಜಿಲ್ಲೆಯ ಜನಸಂಖ್ಯೆ, ವಿಸ್ತೀರ್ಣ, ಸಾಕ್ಷರತೆ ಮತ್ತು ಲಿಂಗ ಅನುಪಾತ, ಮತ್ತು ರಾಜ್ಯ ಹಾಗೂ ಭಾರತದಲ್ಲಿ ಅದರ ಶ್ರೇಣಿ.",
+    "rankState": "{state} ನಲ್ಲಿ {total} ರಲ್ಲಿ #{rank}",
+    "rankIndia": "ಭಾರತದಲ್ಲಿ {total} ರಲ್ಲಿ #{rank}",
+    "compareTitle": "ಹೋಲಿಕೆಯಲ್ಲಿ ಹೇಗಿದೆ",
+    "neighbours": "ನೆರೆಯ ಜಿಲ್ಲೆಗಳು",
+    "allDistricts": "{state} ರಾಜ್ಯದ ಎಲ್ಲಾ ಜಿಲ್ಲೆಗಳು",
+    "openPage": "ಜಿಲ್ಲೆಯ ಪುಟ ತೆರೆಯಿರಿ",
+    "district": "ಜಿಲ್ಲೆ",
+    "noNeighbours": "ಈ ರಾಜ್ಯದಲ್ಲಿ ನೆರೆಯ ಜಿಲ್ಲೆಗಳಿಲ್ಲ."
   }
 }

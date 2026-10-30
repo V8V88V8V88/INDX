@@ -30,6 +30,7 @@ Explore every state, union territory and district of India on an interactive map
 | --- | --- |
 | **Map** | Color-coded map of India by any metric, down to district level |
 | **States** | Each state's districts, cities and key numbers |
+| **Districts** | A page for every district: its numbers, how it ranks in the state and in India, and its neighbours |
 | **Compare** | Put states side by side, or against the national average |
 | **Rankings** | Sort by population, GDP, literacy, HDI, density, sex ratio or area |
 | **Search** | Jump to any state, district or city, in English or your own language |

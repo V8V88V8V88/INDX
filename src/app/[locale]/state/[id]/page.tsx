@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { getStateById, states } from "@/data/india";
+import { getStateById } from "@/data/india";
 import { pageMetadata } from "@/i18n/metadata";
 import type { Locale } from "@/i18n/routing";
 import { StatePage } from "./StatePage";
 
 type Props = PageProps<"/[locale]/state/[id]">;
-
-export function generateStaticParams() {
-  return states.map((state) => ({ id: state.id }));
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id, locale } = await params;

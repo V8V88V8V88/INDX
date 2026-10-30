@@ -380,5 +380,18 @@
     "copied": "कॉपी झाले",
     "open": "INDX मध्ये उघडा",
     "frameTitle": "{metric} नुसार {place}, INDX कडून"
+  },
+  "District": {
+    "eyebrow": "जिल्हा · {state}",
+    "title": "{name}, {state}",
+    "description": "{state} मधील {name} जिल्ह्याची लोकसंख्या, क्षेत्रफळ, साक्षरता आणि लिंग गुणोत्तर, आणि राज्यात व भारतात त्याचा क्रमांक.",
+    "rankState": "{state} मध्ये {total} पैकी #{rank}",
+    "rankIndia": "भारतात {total} पैकी #{rank}",
+    "compareTitle": "तुलनेत कसा आहे",
+    "neighbours": "शेजारचे जिल्हे",
+    "allDistricts": "{state} चे सर्व जिल्हे",
+    "openPage": "जिल्ह्याचे पेज उघडा",
+    "district": "जिल्हा",
+    "noNeighbours": "या राज्यात शेजारचा जिल्हा नाही."
   }
 }

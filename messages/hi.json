@@ -380,5 +380,18 @@
     "copied": "कॉपी हो गया",
     "open": "INDX में खोलें",
     "frameTitle": "{metric} के अनुसार {place}, INDX से"
+  },
+  "District": {
+    "eyebrow": "ज़िला · {state}",
+    "title": "{name}, {state}",
+    "description": "{state} के {name} ज़िले की जनसंख्या, क्षेत्रफल, साक्षरता और लिंगानुपात, और राज्य व भारत में इसकी रैंक।",
+    "rankState": "{state} में {total} में से #{rank}",
+    "rankIndia": "भारत में {total} में से #{rank}",
+    "compareTitle": "तुलना में कैसा है",
+    "neighbours": "पड़ोसी ज़िले",
+    "allDistricts": "{state} के सभी ज़िले",
+    "openPage": "ज़िले का पेज खोलें",
+    "district": "ज़िला",
+    "noNeighbours": "इस राज्य में कोई पड़ोसी ज़िला नहीं है।"
   }
 }

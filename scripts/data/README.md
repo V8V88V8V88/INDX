@@ -62,3 +62,14 @@ bun run build:names -- --fetch   # refresh the snapshot from Wikidata first (nee
 - `sources/name-overrides.json` fixes wrong or outdated labels, per language, state and English name.
   Add corrections there rather than editing the generated files.
 - Places with no label in a language fall back to English.
+
+## Neighbouring districts
+
+`build_neighbours.ts` writes `src/data/neighbours.json`, the districts that share a border with each district
+in the same state, worked out from shared boundary points in `public/geo/states/<STATE>.json`.
+
+```sh
+bun run build:neighbours
+```
+
+Run it again whenever district boundaries or names change. `bun run check:data` fails if it is out of date.

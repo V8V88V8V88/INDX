@@ -380,5 +380,18 @@
     "copied": "நகலெடுக்கப்பட்டது",
     "open": "INDX இல் திற",
     "frameTitle": "{metric} அடிப்படையில் {place}, INDX இலிருந்து"
+  },
+  "District": {
+    "eyebrow": "மாவட்டம் · {state}",
+    "title": "{name}, {state}",
+    "description": "{state} மாநிலத்தின் {name} மாவட்டத்தின் மக்கள்தொகை, பரப்பளவு, எழுத்தறிவு, பாலின விகிதம், மாநிலத்திலும் இந்தியாவிலும் அதன் தரவரிசை.",
+    "rankState": "{state} இல் {total} இல் #{rank}",
+    "rankIndia": "இந்தியாவில் {total} இல் #{rank}",
+    "compareTitle": "ஒப்பீட்டில் எப்படி",
+    "neighbours": "அண்டை மாவட்டங்கள்",
+    "allDistricts": "{state} இன் அனைத்து மாவட்டங்களும்",
+    "openPage": "மாவட்டப் பக்கத்தைத் திற",
+    "district": "மாவட்டம்",
+    "noNeighbours": "இந்த மாநிலத்தில் அண்டை மாவட்டங்கள் இல்லை."
   }
 }

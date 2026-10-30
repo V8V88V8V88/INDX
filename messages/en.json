@@ -380,5 +380,18 @@
     "copied": "Copied",
     "open": "Open in INDX",
     "frameTitle": "{place} by {metric}, from INDX"
+  },
+  "District": {
+    "eyebrow": "District · {state}",
+    "title": "{name}, {state}",
+    "description": "Population, area, literacy and sex ratio of {name} district in {state}, and how it ranks in the state and in India.",
+    "rankState": "#{rank} of {total} in {state}",
+    "rankIndia": "#{rank} of {total} in India",
+    "compareTitle": "How it compares",
+    "neighbours": "Neighbouring districts",
+    "allDistricts": "All districts of {state}",
+    "openPage": "Open district page",
+    "district": "District",
+    "noNeighbours": "No neighbouring districts in this state."
   }
 }

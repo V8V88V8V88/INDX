@@ -380,5 +380,18 @@
     "copied": "કૉપિ થયું",
     "open": "INDXમાં ખોલો",
     "frameTitle": "{metric} પ્રમાણે {place}, INDX તરફથી"
+  },
+  "District": {
+    "eyebrow": "જિલ્લો · {state}",
+    "title": "{name}, {state}",
+    "description": "{state}ના {name} જિલ્લાની વસ્તી, ક્ષેત્રફળ, સાક્ષરતા અને જાતિ પ્રમાણ, અને રાજ્ય તથા ભારતમાં તેનો ક્રમ.",
+    "rankState": "{state}માં {total}માંથી #{rank}",
+    "rankIndia": "ભારતમાં {total}માંથી #{rank}",
+    "compareTitle": "સરખામણીમાં કેવો છે",
+    "neighbours": "પડોશી જિલ્લા",
+    "allDistricts": "{state}ના બધા જિલ્લા",
+    "openPage": "જિલ્લાનું પેજ ખોલો",
+    "district": "જિલ્લો",
+    "noNeighbours": "આ રાજ્યમાં કોઈ પડોશી જિલ્લો નથી."
   }
 }

@@ -380,5 +380,18 @@
     "copied": "କପି ହେଲା",
     "open": "INDXରେ ଖୋଲନ୍ତୁ",
     "frameTitle": "{metric} ଅନୁସାରେ {place}, INDXରୁ"
+  },
+  "District": {
+    "eyebrow": "ଜିଲ୍ଲା · {state}",
+    "title": "{name}, {state}",
+    "description": "{state}ର {name} ଜିଲ୍ଲାର ଜନସଂଖ୍ୟା, କ୍ଷେତ୍ରଫଳ, ସାକ୍ଷରତା ଓ ଲିଙ୍ଗ ଅନୁପାତ, ଏବଂ ରାଜ୍ୟ ଓ ଭାରତରେ ଏହାର ମାନ୍ୟତା।",
+    "rankState": "{state}ରେ {total}ରୁ #{rank}",
+    "rankIndia": "ଭାରତରେ {total}ରୁ #{rank}",
+    "compareTitle": "ତୁଳନାରେ କିପରି",
+    "neighbours": "ପଡ଼ୋଶୀ ଜିଲ୍ଲା",
+    "allDistricts": "{state}ର ସମସ୍ତ ଜିଲ୍ଲା",
+    "openPage": "ଜିଲ୍ଲା ପେଜ ଖୋଲନ୍ତୁ",
+    "district": "ଜିଲ୍ଲା",
+    "noNeighbours": "ଏହି ରାଜ୍ୟରେ କୌଣସି ପଡ଼ୋଶୀ ଜିଲ୍ଲା ନାହିଁ।"
   }
 }
