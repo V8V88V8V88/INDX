@@ -20,6 +20,7 @@ const SOURCES = [
   { id: "hdi", name: "UNDP / Global Data Lab", href: "https://globaldatalab.org/shdi/" },
   { id: "wikipedia", name: "Wikipedia", href: "https://www.wikipedia.org" },
   { id: "boundaries", name: "India Maps Data", href: "https://github.com/udit-001/india-maps-data" },
+  { id: "names", name: "Wikidata", href: "https://www.wikidata.org" },
 ] as const;
 
 function Section({ title, children, index }: { title: string; children: ReactNode; index: number }) {

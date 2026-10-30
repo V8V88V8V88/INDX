@@ -16,8 +16,50 @@ function flatten(messages: Messages, prefix = ""): Map<string, string> {
   return out;
 }
 
+function argumentNames(message: string): Set<string> {
+  const names = new Set<string>();
+  let i = 0;
+
+  const parseMessage = (): void => {
+    while (i < message.length && message[i] !== "}") {
+      if (message[i] === "{") {
+        i++;
+        parseArgument();
+      } else i++;
+    }
+  };
+
+  const parseArgument = () => {
+    const end = message.slice(i).search(/[,}]/);
+    names.add(message.slice(i, i + end).trim());
+    i += end;
+    if (message[i] === "}") {
+      i++;
+      return;
+    }
+    const type = message.slice(i + 1).match(/^\s*(\w+)\s*/);
+    i += 1 + (type?.[0].length ?? 0);
+    if (type?.[1] !== "plural" && type?.[1] !== "select" && type?.[1] !== "selectordinal") {
+      i = message.indexOf("}", i) + 1;
+      return;
+    }
+    i = message.indexOf(",", i) + 1;
+    while (i < message.length && message[i] !== "}") {
+      if (message[i] === "{") {
+        i++;
+        parseMessage();
+        i++;
+      } else i++;
+    }
+    i++;
+  };
+
+  parseMessage();
+  return names;
+}
+
 function placeholders(message: string): string {
-  return [...new Set([...message.matchAll(/\{\s*(\w+)\s*[,}]/g)].map((m) => m[1]))].sort().join(",");
+  return [...argumentNames(message)].sort().join(",");
 }
 
 async function load(locale: string) {

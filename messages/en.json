@@ -350,7 +350,8 @@
       "gsdp": "GSDP at current prices, FY 2024-25 where available",
       "hdi": "Subnational Human Development Index, 2023",
       "wikipedia": "2011 census figures on current district boundaries and compiled GSDP tables",
-      "boundaries": "State and district boundaries"
+      "boundaries": "State and district boundaries",
+      "names": "District and city names in Indian languages"
     }
   },
   "NotFound": {

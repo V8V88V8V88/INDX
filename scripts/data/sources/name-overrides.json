@@ -1,0 +1,38 @@
+{
+  "hi": {
+    "AP": {
+      "NTR": "एनटीआर",
+      "Parvathipuram Manyam": "पार्वतीपुरम मन्यम",
+      "Nandyal": "नंद्याल",
+      "Kakinada": "काकीनाडा",
+      "Prakasam": "प्रकाशम",
+      "YSR": "वाईएसआर कडप्पा"
+    },
+    "AR": { "Kamle": "कामले", "Upper Dibang Valley": "ऊपरी दिबांग घाटी" },
+    "AS": { "Darrang": "दरंग", "Hailakandi": "हैलाकांदी", "Dima Hasao": "दीमा हसाओ", "Morigaon": "मोरीगांव" },
+    "CG": { "Balrampur": "बलरामपुर", "Kabeerdham": "कबीरधाम" },
+    "HR": { "Gurugram": "गुरुग्राम", "Nuh": "नूंह", "Palwal": "पलवल" },
+    "KA": {
+      "Shivamogga": "शिवमोग्गा",
+      "Vijayapura": "विजयपुरा",
+      "Belagavi": "बेलगावी",
+      "Kalaburagi": "कलबुर्गी",
+      "Raichur": "रायचूर",
+      "Ramanagara": "रामनगर"
+    },
+    "MH": { "Mumbai": "मुंबई", "Aurangabad": "औरंगाबाद", "Osmanabad": "उस्मानाबाद", "Ahmednagar": "अहमदनगर", "Jalgaon": "जलगाँव" },
+    "MP": { "Dhar": "धार", "Hoshangabad": "होशंगाबाद" },
+    "NL": { "Kiphire": "किफिरे" },
+    "PB": { "Sri Muktsar Sahib": "श्री मुक्तसर साहिब" },
+    "PY": { "Mahe": "माहे" },
+    "SK": { "North Sikkim": "उत्तर सिक्किम", "South Sikkim": "दक्षिण सिक्किम", "West Sikkim": "पश्चिम सिक्किम" },
+    "TG": {
+      "Warangal Urban": "वारंगल शहरी",
+      "Warangal Rural": "वारंगल ग्रामीण",
+      "Jayashankar Bhupalapally": "जयशंकर भूपालपल्ली"
+    },
+    "TN": { "Karur": "करूर" },
+    "UK": { "Chamoli": "चमोली" },
+    "UP": { "Kanpur Nagar": "कानपुर नगर", "Amethi": "अमेठी", "Pilibhit": "पीलीभीत" }
+  }
+}

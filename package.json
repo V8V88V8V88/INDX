@@ -11,7 +11,8 @@
     "typecheck": "next typegen && tsc --noEmit",
     "check:districts": "bun scripts/check-district-anomalies.ts",
     "build:data": "python3 scripts/data/build_data.py",
-    "check:data": "python3 scripts/data/build_data.py --check",
+    "build:names": "python3 scripts/data/build_names.py",
+    "check:data": "python3 scripts/data/build_data.py --check && python3 scripts/data/build_names.py --check",
     "check:i18n": "bun scripts/check-i18n.ts"
   },
   "dependencies": {

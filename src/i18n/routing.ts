@@ -2,6 +2,7 @@ import { defineRouting } from "next-intl/routing";
 
 export const LOCALES = [
   { code: "en", name: "English" },
+  { code: "hi", name: "हिन्दी" },
 ] as const;
 
 export type Locale = (typeof LOCALES)[number]["code"];
