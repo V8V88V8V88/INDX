@@ -46,7 +46,8 @@
     "footer": "ફૂટર",
     "source": "સોર્સ કોડ",
     "madeBy": "બનાવનાર",
-    "skipToContent": "મુખ્ય સામગ્રી પર જાઓ"
+    "skipToContent": "મુખ્ય સામગ્રી પર જાઓ",
+    "menu": "મેનૂ"
   },
   "Metrics": {
     "label": "માપદંડ",
@@ -192,7 +193,6 @@
     "statesAndUts": "રાજ્યો અને કેન્દ્રશાસિત પ્રદેશો",
     "statesAndUtsValue": "{states} અને {uts}",
     "districtCount": "{count} જિલ્લા",
-    "hdiSubtitle": "માનવ વિકાસ સૂચકાંક · UNDP 2023",
     "rankings": "ક્રમાંક",
     "sortOrder": "ક્રમ",
     "highestFirst": "સૌથી વધુ પહેલા",
@@ -358,7 +358,8 @@
       "hdi": "પેટા-રાષ્ટ્રીય માનવ વિકાસ સૂચકાંક, 2023",
       "wikipedia": "આજની જિલ્લા સરહદો પર 2011ની વસ્તી ગણતરીના આંકડા અને GSDP કોષ્ટકો",
       "boundaries": "રાજ્યો અને જિલ્લાની સરહદો",
-      "names": "ભારતીય ભાષાઓમાં જિલ્લા અને શહેરોના નામ"
+      "names": "ભારતીય ભાષાઓમાં જિલ્લા અને શહેરોના નામ",
+      "odop": "એક જિલ્લો એક ઉત્પાદન યાદી, આવૃત્તિ 33 (31 ડિસેમ્બર 2025)"
     },
     "openDataTitle": "ખુલ્લો ડેટા",
     "openDataIntro": "INDX પરનો બધો ડેટા મફતમાં વાપરી શકાય છે. તેને CSV તરીકે ડાઉનલોડ કરો અથવા નીચેના JSON APIમાંથી લો, અને પ્રકાશિત કરતી વખતે INDX અને મૂળ સ્રોતોને શ્રેય આપો.",
@@ -380,5 +381,36 @@
     "copied": "કૉપિ થયું",
     "open": "INDXમાં ખોલો",
     "frameTitle": "{metric} પ્રમાણે {place}, INDX તરફથી"
+  },
+  "District": {
+    "eyebrow": "જિલ્લો · {state}",
+    "title": "{name}, {state}",
+    "description": "{state}ના {name} જિલ્લાની વસ્તી, ક્ષેત્રફળ, સાક્ષરતા અને જાતિ પ્રમાણ, અને રાજ્ય તથા ભારતમાં તેનો ક્રમ.",
+    "neighbours": "પડોશી જિલ્લા",
+    "allDistricts": "{state}ના બધા જિલ્લા",
+    "openPage": "જિલ્લાનું પેજ ખોલો",
+    "district": "જિલ્લો",
+    "noNeighbours": "આ રાજ્યમાં કોઈ પડોશી જિલ્લો નથી."
+  },
+  "Odop": {
+    "title": "એક જિલ્લો એક ઉત્પાદન",
+    "none": "આ જિલ્લા માટે હજુ કોઈ ODOP ઉત્પાદન સૂચિબદ્ધ નથી.",
+    "categories": {
+      "Primary": "મુખ્ય",
+      "Secondary": "બીજું",
+      "Tertiary": "ત્રીજું",
+      "Others": "આ માટે પણ જાણીતું"
+    },
+    "sectors": {
+      "Agriculture": "ખેતી",
+      "Food Processing": "ખાદ્ય પ્રક્રિયા",
+      "Handicraft": "હસ્તકલા",
+      "Handloom": "હાથશાળ",
+      "Textile": "કાપડ",
+      "Manufacturing": "ઉત્પાદન",
+      "Marine": "દરિયાઈ",
+      "Dairy": "ડેરી",
+      "Others": "અન્ય"
+    }
   }
 }

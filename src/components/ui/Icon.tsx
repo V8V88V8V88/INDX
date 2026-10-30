@@ -26,6 +26,7 @@ export type IconName =
   | "download"
   | "code"
   | "check"
+  | "menu"
   | "info";
 
 const paths: Record<IconName, ReactNode> = {
@@ -102,6 +103,7 @@ const paths: Record<IconName, ReactNode> = {
     </>
   ),
   check: <path d="M20 6 9 17l-5-5" />,
+  menu: <path d="M4 7h16M4 12h16M4 17h16" />,
   code: (
     <>
       <path d="m16 18 6-6-6-6" />

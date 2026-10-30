@@ -44,3 +44,15 @@ export function districtFillFor(districts: District[], metric: DistrictMetric) {
     return district ? colors.get(district.name) : undefined;
   };
 }
+
+export function districtSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function districtPath(stateId: string, name: string): string {
+  return `/state/${stateId}/${districtSlug(name)}`;
+}

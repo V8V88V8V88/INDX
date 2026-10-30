@@ -12,7 +12,9 @@
     "check:districts": "bun scripts/check-district-anomalies.ts",
     "build:data": "python3 scripts/data/build_data.py",
     "build:names": "python3 scripts/data/build_names.py",
-    "check:data": "python3 scripts/data/build_data.py --check && python3 scripts/data/build_names.py --check",
+    "build:neighbours": "bun scripts/data/build_neighbours.ts",
+    "build:odop": "python3 scripts/data/build_odop.py",
+    "check:data": "python3 scripts/data/build_data.py --check && python3 scripts/data/build_names.py --check && bun scripts/data/build_neighbours.ts --check && python3 scripts/data/build_odop.py --check",
     "check:i18n": "bun scripts/check-i18n.ts"
   },
   "dependencies": {

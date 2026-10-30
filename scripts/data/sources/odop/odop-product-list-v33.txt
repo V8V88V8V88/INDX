@@ -1,0 +1,1301 @@
+                                            V33 - ODOP Product List - 31st December, 2025
+
+                                                              Category Wise Product Summary                          Sector Wise Product Summary
+                                   Primary                                                        773        Agriculture                      412
+                                   Secondary                                                      320        Food Processing                  124
+                                   Tertiary                                                       103        Handicraft                       235
+                                   Others                                                          47        Handloom                         109
+                                   Total                                                      1243           Textile                          105
+                                                                                                             Manufacturing                    193
+                                                           Product List Awaiting For (04 Districts)          Marine                               32
+                                   Madhya Pradesh                                                  3         Dairy                                7
+                                   Nagaland                                                        1         Others                               26
+                                                                                                             Grand Total                     1243
+                                                                                                             Total Districts Covered          773
+
+
+
+S. No.           State/ UT                      District                                     Product                     Category            Sector
+  1      Andaman & Nicobar Islands Nicobars                            Coconut & Coconut based products      Primary                    Agriculture
+  2      Andaman & Nicobar Islands North and Middle Andaman            Fisheries/Marine products             Primary                    Marine
+  3      Andaman & Nicobar Islands South Andamans                      Marine Products                       Primary                    Marine
+  4      Andhra Pradesh            Alluri Sitarama Raju                Coffee (Araku)                        Primary                    Agriculture
+  5      Andhra Pradesh            Alluri Sitarama Raju                Bamboo Craft                          Secondary                  Handicraft
+  6      Andhra Pradesh            Alluri Sitarama Raju                Rock Bee Honey                        Tertiary                   Food Processing
+  7      Andhra Pradesh            Anakapalli                          Etikoppaka Lacquerware/ Wooden Toys   Primary                    Handicraft
+  8      Andhra Pradesh            Anakapalli                          Palm Leaf                             Secondary                  Agriculture
+  9      Andhra Pradesh            Anakapalli                          Payakaraopet Silk Sarees              Tertiary                   Handloom
+ 10      Andhra Pradesh            Ananthpuram (Anantapur)             Cotton/Jean Pants                     Primary                    Textile
+ 11      Andhra Pradesh            Ananthpuram (Anantapur)             Dharmavaram Silk Sarees               Secondary                  Handloom
+ 12      Andhra Pradesh            Annamayya (Rayachoty)               Cotton / Jean Pants                   Primary                    Textile
+ 13      Andhra Pradesh            Annamayya (Rayachoty)               Red Sander & Wood Carvings            Secondary                  Handicraft
+ 14      Andhra Pradesh            Annamayya (Rayachoty)               Raja Rani Dolls                       Tertiary                   Handicraft
+ 15      Andhra Pradesh            Annamayya (Rayachoty)               Applique Work                         Others                     Handloom
+16   Andhra Pradesh   Annamayya (Rayachoty)      Mandanapalle Silk Sarees                              Others      Handloom
+17   Andhra Pradesh   Bapatla                    Granite Cutting and Polishing                         Primary     Manufacturing
+18   Andhra Pradesh   Bapatla                    Cotton Bags                                           Secondary   Handicraft
+19   Andhra Pradesh   Bapatla                    Chirala Silk Sarees                                   Tertiary    Handloom
+20   Andhra Pradesh   Chittoor                   Venkatagiri Sarees                                    Primary     Handloom
+21   Andhra Pradesh   Chittoor                   Mango Pulp                                            Secondary   Food Processing
+22   Andhra Pradesh   Chittoor                   The Glass Beads                                       Tertiary    Manufacturing
+23   Andhra Pradesh   Chittoor                   Kollangantu Tie & Dye Check Lungies                   Others      Textile
+24   Andhra Pradesh   Chittoor                   Teracotta                                             Others      Handicraft
+25   Andhra Pradesh   Dr BR Ambedkar Konaseema   Natural banana fibres                                 Others      Manufacturing
+26   Andhra Pradesh   Dr BR Ambedkar Konaseema   Bandaru Lanka Sarees                                  Others      Handloom
+27   Andhra Pradesh   Dr BR Ambedkar Konaseema   Angara Sarees                                         Others      Handloom
+28   Andhra Pradesh   Dr BR Ambedkar Konaseema   Coconut & Coir                                        Primary     Handicraft
+29   Andhra Pradesh   Dr BR Ambedkar Konaseema   Shrimp                                                Secondary   Marine
+30   Andhra Pradesh   Dr BR Ambedkar Konaseema   Oil & Natural Gas                                     Tertiary    Others
+31   Andhra Pradesh   Dr BR Ambedkar Konaseema   Pasalapudi Sarees                                     Others      Handloom
+                                                 Fruit Based Food Products (Pickles, Mango Jelly, Fruit
+32   Andhra Pradesh   East Godavari                                                                     Primary    Food Processing
+                                                 Pulp, Cashew nuts, Lemon extracts)
+33   Andhra Pradesh   East Godavari              Ratnam pens                                           Secondary   Manufacturing
+34   Andhra Pradesh   East Godavari              White Wood Birds                                      Tertiary    Handicraft
+35   Andhra Pradesh   East Godavari              Pulagurta Clothing Shirting & Sarees                  Others      Textile
+36   Andhra Pradesh   East Godavari              Muramunda Cotton Shirting & Sarees                    Others      Textile
+37   Andhra Pradesh   East Godavari              Veeravaram Silk Sarees                                Others      Handloom
+38   Andhra Pradesh   East Godavari              Dulla Sarees                                          Others      Handloom
+39   Andhra Pradesh   Eluru                      Gold Jewellery                                        Primary     Handicraft
+40   Andhra Pradesh   Eluru                      Hand Knotted Carpet weaving                           Secondary   Handicraft
+41   Andhra Pradesh   Eluru                      Walking Sticks                                        Tertiary    Handicraft
+42   Andhra Pradesh   Eluru                      Nuziveedu veena                                       Others      Handicraft
+43   Andhra Pradesh   Eluru                      Eluru Cotton Sarees                                   Others      Handloom
+44   Andhra Pradesh   Guntur                     Chillies                                              Primary     Agriculture
+45   Andhra Pradesh   Guntur                     Bronze Casting                                        Secondary   Manufacturing
+46   Andhra Pradesh   Guntur                     Mangalagiri Sarees and Fabric                         Tertiary    Handloom
+47   Andhra Pradesh   Kakinada                   Uppada Jamdani Sarees                                 Primary     Handloom
+48   Andhra Pradesh   Kakinada                       Peddapuram Silk Dhotis, Upper and shirtings   Secondary   Textile
+49   Andhra Pradesh   Kakinada                       Kalamkari Block Printing                      Tertiary    Handloom
+50   Andhra Pradesh   Kakinada                       Cashew Kernel                                 Others      Agriculture
+51   Andhra Pradesh   Krishna                        Machilipatnam Kalamkari                       Primary     Handloom
+52   Andhra Pradesh   Krishna                        Kalamkari Block Printing                      Secondary   Handloom
+53   Andhra Pradesh   Krishna                        Pedana kalamkari Fabrics                      Tertiary    Textile
+54   Andhra Pradesh   Krishna                        Bandar / Polavaram Sarees                     Others      Handloom
+55   Andhra Pradesh   Krishna                        Gold Jewellery                                Others      Handicraft
+56   Andhra Pradesh   Kurnool                        Stone carved products                         Primary     Handicraft
+57   Andhra Pradesh   Kurnool                        Kodumuru Gadwal Sarees                        Secondary   Handloom
+58   Andhra Pradesh   Kurnool                        Yemmiganuru Bedsheets                         Tertiary    Textile
+59   Andhra Pradesh   Nandyal                        Allagadda Stone Carving                       Tertiary    Handicraft
+60   Andhra Pradesh   Nandyala                       Banganapalli Mangoes                          Primary     Food Processing
+61   Andhra Pradesh   Nandyala                       Nandivargam plain towels & plain lungis       Secondary   Textile
+62   Andhra Pradesh   NTR (Vijaywada)                Kondapalli Toys                               Primary     Handicraft
+63   Andhra Pradesh   NTR (Vijaywada)                Bandar type Resham (Art Silk) Sarees          Secondary   Handloom
+64   Andhra Pradesh   Palnadu (Narasaraopeta)        Durgi Stone Carving                           Primary     Handicraft
+65   Andhra Pradesh   Palnadu (Narasaraopeta)        Sattenapalli Bedsheets                        Secondary   Textile
+66   Andhra Pradesh   Palnadu (Narasaraopeta)        Leather Puppets                               Tertiary    Handicraft
+67   Andhra Pradesh   Palnadu (Narasaraopeta)        Spice Products                                Others      Agriculture
+68   Andhra Pradesh   Parvathipuram Manyam           Bobilli Veena                                 Primary     Handicraft
+69   Andhra Pradesh   Parvathipuram Manyam           Bobilli Sarees                                Secondary   Handloom
+70   Andhra Pradesh   Parvathipuram Manyam           Severa Adivasi Paintings                      Tertiary    Handicraft
+71   Andhra Pradesh   Parvathipuram Manyam           Rice                                          Others      Agriculture
+72   Andhra Pradesh   Prakasam                       Granite (Black Galaxy)                        Primary     Manufacturing
+73   Andhra Pradesh   Prakasam                       Ethamukkala Check Lungis                      Secondary   Textile
+74   Andhra Pradesh   SPSR Nellore                   Udayagiri Wooden Cutlery                      Primary     Handicraft
+75   Andhra Pradesh   SPSR Nellore                   Patturu Cotton Silk Sarees                    Secondary   Handloom
+76   Andhra Pradesh   Sri Sathya Sai (Puttaparthi)   Silk Sarees                                   Primary     Handloom
+77   Andhra Pradesh   Sri Sathya Sai (Puttaparthi)   Leather Puppets                               Secondary   Handicraft
+78   Andhra Pradesh   Sri Sathya Sai (Puttaparthi)   Dharmavaram Silk Sarees                       Tertiary    Handloom
+79   Andhra Pradesh   Srikakulam                     Ponduru Cotton Sarees                         Primary     Textile
+80   Andhra Pradesh   Srikakulam                     Budithi Brassware                             Secondary   Handicraft
+81    Andhra Pradesh      Srikakulam               Ponduru Dhoti & Shirtings                      Others      Textile
+82    Andhra Pradesh      Srikakulam               Jute Works                                     Others      Handicraft
+83    Andhra Pradesh      Srikakulam               Cashew Kernels                                 Tertiary    Agriculture
+84    Andhra Pradesh      Tirupati                 Srikalahasti Kalamkari Fabrics/ Handicrafts    Primary     Handloom
+85    Andhra Pradesh      Tirupati                 Venkatagiri Cotton Sarees                      Secondary   Handloom
+86    Andhra Pradesh      Tirupati                 Pen kalamkari                                  Tertiary    Handloom
+87    Andhra Pradesh      Tirupati                 Wood Carvings                                  Others      Handicraft
+88    Andhra Pradesh      Tirupati                 Lord Venkateswara Swamy Photo                  Others      Handicraft
+89    Andhra Pradesh      Tirupati                 Chennuru Silk Sarees                           Others      Handloom
+90    Andhra Pradesh      Visakhapatnam            Seafood Cluster                                Primary     Marine
+91    Andhra Pradesh      Visakhapatnam            Basket Weaving                                 Secondary   Handicraft
+92    Andhra Pradesh      Vizianagaram             Mango Jelly                                    Primary     Food Processing
+93    Andhra Pradesh      Vizianagaram             Bobilli Veena                                  Secondary   Handicraft
+94    Andhra Pradesh      Vizianagaram             Design Bedsheets                               Tertiary    Textile
+95    Andhra Pradesh      West Godavari District   Processed Prawn & Shrimp                       Primary     Marine
+96    Andhra Pradesh      West Godavari District   Veemavaram Light Weight Sarees                 Secondary   Handloom
+97    Andhra Pradesh      West Godavari District   Crochet Lace                                   Tertiary    Handloom
+98    Andhra Pradesh      West Godavari District   Narspur Crochet Laces                          Others      Handloom
+99    Andhra Pradesh      YSR Kadapa               Vonipenta Brass                                Secondary   Handicraft
+100   Andhra Pradesh      YSR Kadapa               Madhavaram Sarees                              Tertiary    Handloom
+101   Andhra Pradesh      YSR Kadapa               Prodattur Raw (Kora) Silk Shirting             Others      Textile
+102   Andhra Pradesh      YSR Kadapa               Barytes & Barium Compounds                     Primary     Others
+103   Arunachal Pradesh   Anjaw                    Large Cardamom                                 Primary     Agriculture
+104   Arunachal Pradesh   Bichom                   Large Cardamom                                 Primary     Agriculture
+105   Arunachal Pradesh   Changlang                Traditional Handloom and Handicraft Products   Primary     Handicraft
+106   Arunachal Pradesh   Dibang Valley            Kiwi                                           Primary     Agriculture
+107   Arunachal Pradesh   East Kameng              Orange                                         Primary     Agriculture
+108   Arunachal Pradesh   East Siang               Textile and Traditional Handloom Products      Primary     Textile
+109   Arunachal Pradesh   Kamle                    Organic Green Tea                              Primary     Agriculture
+110   Arunachal Pradesh   Keyi Panyor              Sweet Chestnut                                 Primary     Agriculture
+111   Arunachal Pradesh   Kra Daadi                Large Cardamom                                 Primary     Agriculture
+112   Arunachal Pradesh   Kurung Kumey             Large Cardamom                                 Primary     Agriculture
+113   Arunachal Pradesh   Leparada                 Finger Millet                                  Primary     Agriculture
+114   Arunachal Pradesh   Lohit                 Mustard Seed                                 Primary     Agriculture
+115   Arunachal Pradesh   Longding              Foxtail Millet                               Primary     Agriculture
+116   Arunachal Pradesh   Lower Dibang Valley   Traditional Textiles and Handloom Products   Primary     Textile
+117   Arunachal Pradesh   Lower Siang           Areca Nut                                    Primary     Agriculture
+118   Arunachal Pradesh   Lower Subansiri       Kiwi                                         Primary     Agriculture
+119   Arunachal Pradesh   Namsai                Khampti Rice (Khau Tai)                      Primary     Agriculture
+120   Arunachal Pradesh   Pakke Kessang         Jua and Lahi Rice                            Primary     Agriculture
+121   Arunachal Pradesh   Papum Pare            Turmeric                                     Primary     Agriculture
+122   Arunachal Pradesh   Shi Yomi              Kiwi                                         Primary     Agriculture
+123   Arunachal Pradesh   Siang                 Ginger                                       Primary     Agriculture
+124   Arunachal Pradesh   Tawang                Monpa Hand Bags                              Primary     Handicraft
+125   Arunachal Pradesh   Tirap                 Pickle                                       Primary     Food Processing
+126   Arunachal Pradesh   Upper Siang           Cane & Bamboo Products                       Primary     Handicraft
+127   Arunachal Pradesh   Upper Subansiri       Finger Millet                                Primary     Agriculture
+128   Arunachal Pradesh   West Kameng           Kidney Beans                                 Primary     Agriculture
+129   Arunachal Pradesh   West Siang            Pineapple                                    Primary     Agriculture
+130   Assam               Bajali                Rice                                         Primary     Agriculture
+131   Assam               Baksa                 Honey                                        Primary     Agriculture
+132   Assam               Barpeta               Bell Metal Products                          Primary     Handicraft
+133   Assam               Barpeta               Rice                                         Secondary   Agriculture
+134   Assam               Biswanath             Tea                                          Primary     Agriculture
+135   Assam               Bongaigaon            Maize                                        Primary     Agriculture
+136   Assam               Cachar                Scented and Glutonious Rice                  Primary     Agriculture
+137   Assam               Charaideo             Aromatic Rice                                Primary     Agriculture
+138   Assam               Chirang               Lemon                                        Primary     Agriculture
+139   Assam               Darrang               Vegetables                                   Primary     Agriculture
+140   Assam               Dhemaji               Red Rice                                     Primary     Agriculture
+141   Assam               Dhubri                Chilly                                       Primary     Agriculture
+142   Assam               Dibrugarh             Organic Tea                                  Primary     Agriculture
+143   Assam               Dima Hasao            Ginger                                       Primary     Agriculture
+144   Assam               Goalpara              Banana                                       Primary     Agriculture
+145   Assam               Golaghat              Agarwood & Its Derivatives                   Primary     Manufacturing
+146   Assam               Golaghat              Orthodox tea                                 Secondary   Agriculture
+147   Assam   Hailakandi                 Arecanut                                         Primary     Agriculture
+148   Assam   Hojai                      Jaggery                                          Primary     Food Processing
+149   Assam   Jorhat                     Bhoot Jholokia                                   Primary     Agriculture
+                                         Home Furnishing made of Eri , Muga & Assam
+150   Assam   Kamrup (M)                                                                  Primary     Handicraft
+                                         Silk,etc.
+151   Assam   Kamrup (R)                 Banana                                           Primary     Agriculture
+152   Assam   Karbi Anglong              Ginger                                           Primary     Agriculture
+153   Assam   Karimganj                  Plates and Bowls made of Arecanut Leaf Sheath    Primary     Manufacturing
+154   Assam   Karimganj                  Cane & Bamboo Furniture & Decorative Items       Secondary   Handicraft
+155   Assam   Kokrajhar                  Mushroom                                         Primary     Agriculture
+156   Assam   Lakhimpur                  Handloom Products of Silk & Cotton               Primary     Handloom
+157   Assam   Lakhimpur                  Processed Pork                                   Secondary   Food Processing
+158   Assam   Majuli                     Mustard Seeds                                    Primary     Agriculture
+159   Assam   Morigaon                   Maize                                            Primary     Agriculture
+160   Assam   Nagaon                     Pearl                                            Primary     Handicraft
+161   Assam   Nagaon                     Fruits and vegetables                            Secondary   Agriculture
+162   Assam   Nalbari                    Rice & Rice Products                             Primary     Agriculture
+163   Assam   Sivasagar                  Rice & Rice Products                             Primary     Agriculture
+164   Assam   Sonitpur                   Parboiled Rice, Steam Rice & all Rice products   Primary     Agriculture
+165   Assam   South Salamara-Mankachar   Processed cashew nuts                            Primary     Food Processing
+166   Assam   Tamulpur                   Honey                                            Primary     Agriculture
+167   Assam   Tinsukia                   Assam Lemon                                      Primary     Agriculture
+168   Assam   Udalguri                   Orthodox Tea (black) and Green Tea               Primary     Agriculture
+169   Assam   Udalguri                   Eri (cocoon and fabric)                          Secondary   Textile
+170   Assam   West Karbi Anglong         Ginger                                           Primary     Agriculture
+171   Bihar   Araria                     Makhana                                          Primary     Agriculture
+172   Bihar   Araria                     Jute                                             Secondary   Handicraft
+173   Bihar   Arwal                      Mushroom                                         Primary     Agriculture
+174   Bihar   Arwal                      Pumpkin                                          Secondary   Agriculture
+175   Bihar   Aurangabad                 Lemon Grass                                      Primary     Agriculture
+176   Bihar   Aurangabad                 Strawberry                                       Secondary   Agriculture
+177   Bihar   Banka                      Banka Silk                                       Primary     Handloom
+178   Bihar   Banka                      Katarni Rice                                     Secondary   Agriculture
+179   Bihar   Begusarai        Maize                  Primary     Agriculture
+180   Bihar   Begusarai        Chilly                 Secondary   Agriculture
+181   Bihar   Bhagalpur        Bhagalpur Silk         Primary     Handloom
+182   Bihar   Bhagalpur        Manjusha Painting      Secondary   Handicraft
+183   Bihar   Bhagalpur        Jardalu Mango          Tertiary    Agriculture
+184   Bihar   Bhojpur          Bhojpur Painting       Primary     Handicraft
+185   Bihar   Bhojpur          Applique Work          Secondary   Handloom
+186   Bihar   Bhojpur          Rice                   Tertiary    Agriculture
+187   Bihar   Buxar            Sonachud Rice          Primary     Agriculture
+188   Bihar   Buxar            Mentha                 Secondary   Agriculture
+189   Bihar   Buxar            Hand Embroidery        Tertiary    Handloom
+190   Bihar   Darbhanga        Makhana (Foxnut)       Primary     Agriculture
+191   Bihar   Darbhanga        Madhubhani Paintings   Secondary   Handicraft
+192   Bihar   Darbhanga        Terracotta             Tertiary    Handicraft
+193   Bihar   East Champaran   Seep Buttons           Primary     Manufacturing
+194   Bihar   East Champaran   Litchi                 Secondary   Agriculture
+195   Bihar   East Champaran   Bags & Garments        Tertiary    Textile
+196   Bihar   Gaya             Stone Art              Primary     Handicraft
+197   Bihar   Gaya             Tilkut                 Secondary   Food Processing
+198   Bihar   Gaya             Handloom/Garments      Tertiary    Textile
+199   Bihar   Gopalganj        Sugarcane              Primary     Agriculture
+200   Bihar   Gopalganj        Turmeric               Secondary   Agriculture
+201   Bihar   Jamui            Crochet Goods          Primary     Handicraft
+202   Bihar   Jamui            Jackfruit              Secondary   Agriculture
+203   Bihar   Jehanabad        Mushroom               Primary     Agriculture
+204   Bihar   Jehanabad        Rice                   Secondary   Agriculture
+205   Bihar   Kaimur           Rice                   Primary     Agriculture
+206   Bihar   Kaimur           Carpet                 Secondary   Textile
+207   Bihar   Katihar          Jute                   Primary     Handicraft
+208   Bihar   Katihar          Makhana (Foxnut)       Secondary   Agriculture
+209   Bihar   Katihar          Maize                  Tertiary    Agriculture
+210   Bihar   Khagaria         Banana                 Primary     Agriculture
+211   Bihar   Khagaria         Bamboo Art             Secondary   Handicraft
+212   Bihar   Khagaria      Maize                     Tertiary    Agriculture
+213   Bihar   Kishanganj    Tea                       Primary     Agriculture
+214   Bihar   Kishanganj    Pineapple                 Secondary   Agriculture
+215   Bihar   Kishanganj    Dragon Fruit              Tertiary    Agriculture
+216   Bihar   Lakhisarai    Tomato                    Primary     Agriculture
+217   Bihar   Lakhisarai    Pulses (Masoor)           Secondary   Food Processing
+218   Bihar   Madhepura     Bamboo Art                Primary     Handicraft
+219   Bihar   Madhepura     Mango                     Secondary   Agriculture
+220   Bihar   Madhubani     Madhubhani Painting       Primary     Handicraft
+221   Bihar   Madhubani     Sikki Painting            Secondary   Handicraft
+222   Bihar   Madhubani     Makhana (Foxnut)          Tertiary    Agriculture
+223   Bihar   Munger        Lemon Grass               Primary     Agriculture
+224   Bihar   Munger        Mentha                    Secondary   Agriculture
+225   Bihar   Muzaffarpur   Shahi Litchi              Primary     Agriculture
+226   Bihar   Muzaffarpur   Sujni Embroidery          Secondary   Handloom
+227   Bihar   Muzaffarpur   Bags & Garments           Tertiary    Textile
+228   Bihar   Nalanda       Bawan Booti               Primary     Handloom
+229   Bihar   Nalanda       Silao Khaja               Secondary   Food Processing
+230   Bihar   Nawada        Magahi Paan/ Betel Vine   Primary     Food Processing
+231   Bihar   Nawada        Handloom                  Secondary   Handloom
+232   Bihar   Patna         Brass Metal Work          Primary     Handicraft
+233   Bihar   Patna         Tikuli Paintings          Secondary   Handicraft
+234   Bihar   Patna         Garments & Active Wear    Tertiary    Textile
+235   Bihar   Purnea        Bamboo Art                Primary     Handicraft
+236   Bihar   Purnea        Jute                      Secondary   Handicraft
+237   Bihar   Purnea        Makhana (Foxnut)          Tertiary    Agriculture
+238   Bihar   Rohtas        Menthol                   Primary     Agriculture
+239   Bihar   Rohtas        Sonachud Rice             Secondary   Agriculture
+240   Bihar   Rohtas        Tomato                    Tertiary    Agriculture
+241   Bihar   Saharsa       Makhana (Foxnut)          Primary     Agriculture
+242   Bihar   Samastipur    Bamboo Art                Primary     Handicraft
+243   Bihar   Samastipur    Turmeric                  Secondary   Agriculture
+244   Bihar   Saran         Tomato                    Primary     Agriculture
+245   Bihar          Sheikhpura                      Onion                                             Primary     Agriculture
+246   Bihar          Sheohar                         Maize                                             Primary     Agriculture
+247   Bihar          Sitamarhi                       Sikki Art                                         Primary     Handicraft
+248   Bihar          Sitamarhi                       Applique Work                                     Secondary   Handloom
+249   Bihar          Sitamarhi                       Litchi                                            Tertiary    Agriculture
+250   Bihar          Siwan                           Mentha                                            Primary     Agriculture
+251   Bihar          Supaul                          Lac Bangles                                       Primary     Handicraft
+252   Bihar          Supaul                          Makhana (Foxnut)                                  Secondary   Agriculture
+253   Bihar          Vaishali                        Sujni Embroidery                                  Primary     Handloom
+254   Bihar          Vaishali                        Banana                                            Secondary   Agriculture
+255   Bihar          Vaishali                        Honey                                             Tertiary    Agriculture
+256   Bihar          West Champaran                  Marcha Chura                                      Primary     Food Processing
+257   Bihar          West Champaran                  Ready made Garments                               Secondary   Textile
+258   Chandigarh     Chandigarh                      Tourism                                           Primary     Tourism
+259   Chhattisgarh   Balod                           Handloom                                          Primary     Handloom
+260   Chhattisgarh   Baloda bazar                    Rice based products - poha etc                    Primary     Food Processing
+261   Chhattisgarh   Balrampur                       Rice- Jiraphul, Bisni etc                         Primary     Agriculture
+262   Chhattisgarh   Bastar                          Bell Metal (Dhokra)                               Primary     Handicraft
+263   Chhattisgarh   Bastar                          Tamarind                                          Secondary   Agriculture
+264   Chhattisgarh   Bemetara                        Papaya Based Product                              Primary     Food Processing
+265   Chhattisgarh   Bijapur                         Minor Forest Produce - Tamarind and Mahua         Primary     Agriculture
+266   Chhattisgarh   Bilaspur                        Black Rice                                        Primary     Agriculture
+267   Chhattisgarh   Dantewada                       Minor Forest Produce - Tamarind                   Primary     Agriculture
+268   Chhattisgarh   Dhamtari                        Rice                                              Primary     Agriculture
+269   Chhattisgarh   Durg                            Tomato Based Product                              Primary     Food Processing
+270   Chhattisgarh   Gariaband                       Minor Forest Produce - Chirounji                  Primary     Agriculture
+271   Chhattisgarh   Gaurella Pendra Marwahi         Groundnuts                                        Primary     Agriculture
+272   Chhattisgarh   Janjagir-Champa                 Kosa                                              Primary     Handloom
+273   Chhattisgarh   Jashpur                         Litchi                                            Primary     Agriculture
+274   Chhattisgarh   Kabirdham                       Sugarcane based product (Ex. Jaggery, Molasses)   Primary     Food Processing
+275   Chhattisgarh   Kanker                          Custard Apple Based Product                       Primary     Food Processing
+276   Chhattisgarh   Khairagarh-Chhuikhadan-Gandai   Soyabean                                          Primary     Agriculture
+277   Chhattisgarh   Kondagaon                       Bell Metal (Dhokra)                               Primary     Handicraft
+278   Chhattisgarh               Kondagaon                        Bastar Craft                             Secondary   Handicraft
+279   Chhattisgarh               Korba                            Minor Forest Produce - Mahua             Primary     Food Processing
+280   Chhattisgarh               Koriya                           Tomato                                   Primary     Agriculture
+281   Chhattisgarh               Mahasamund                       Milk Based Product                       Primary     Dairy
+
+282   Chhattisgarh               Manendragarh- Chirmiri- Bharatpur Tomato                                  Primary     Agriculture
+
+283   Chhattisgarh               Manpur-Mohla- Ambagad Chowki Soyabean                                     Primary     Agriculture
+284   Chhattisgarh               Mungeli                          Groundnuts                               Primary     Agriculture
+285   Chhattisgarh               Narayanpur                       Black Gram                               Primary     Agriculture
+286   Chhattisgarh               Raigarh - Bilaigarh              Tomato                                   Primary     Agriculture
+287   Chhattisgarh               Raipur                           Papaya Based Product                     Primary     Food Processing
+288   Chhattisgarh               Rajnandgaon                      Soyabean                                 Primary     Agriculture
+289   Chhattisgarh               Sakti                            Kosa                                     Primary     Handloom
+290   Chhattisgarh               Sarangarh-Bilaigarh              Tomato                                   Primary     Agriculture
+291   Chhattisgarh               Sukma                            Wooden Craft                             Primary     Handicraft
+292   Chhattisgarh               Sukma                            Millet Based Product                     Secondary   Food Processing
+293   Chhattisgarh               Surajpur                         Turmeric                                 Primary     Agriculture
+294   Chhattisgarh               Surajpur                         Potato                                   Secondary   Agriculture
+295   Chhattisgarh               Surguja                          Jackfruit                                Primary     Agriculture
+296   Chhattisgarh               Surguja                          Potato                                   Secondary   Agriculture
+      Dadra & Nagar Haveli and
+297                              Dadra & Nagar Haveli             Textile (Yarn)                           Primary     Textile
+      Daman & Diu
+      Dadra & Nagar Haveli and
+298                              Daman                            Plastic Products                         Primary     Manufacturing
+      Daman & Diu
+      Dadra & Nagar Haveli and
+299                              Diu                              Marine                                   Primary     Marine
+      Daman & Diu
+300   Delhi                      Central                          Dry Fruits & Spices                      Primary     Agriculture
+301   Delhi                      East                             Ceramic Tiles & Sanitary Goods           Primary     Manufacturing
+302   Delhi                      New Delhi                        Automobile Refurbishing Component        Primary     Manufacturing
+303   Delhi                      North                            Light engineering goods                  Primary     Manufacturing
+304   Delhi                      North-East                       Apparels (Jackets & Jeans)               Primary     Textile
+305   Delhi                      North-West                       Stainless Steel Utensils/ Kitchen Ware   Primary     Manufacturing
+306   Delhi                      Shahdara                         Readymade Clothes/Garments               Primary     Textile
+307   Delhi                      South                            Tourism (Medical & Religious)            Primary     Tourism
+308   Delhi     South            Hospitality Services                               Secondary   Others
+309   Delhi     South-East       Embroidery/ Sequence Ladies Garments               Primary     Textile
+310   Delhi     South-West       Milk Based Product                                 Primary     Dairy
+311   Delhi     West             Furniture items                                    Primary     Manufacturing
+312   Goa       North Goa        Cashew Nuts                                        Primary     Agriculture
+313   Goa       North Goa        Feni                                               Secondary   Food Processing
+314   Goa       South Goa        Feni                                               Primary     Food Processing
+315   Goa       South Goa        Cashew Nuts                                        Secondary   Agriculture
+316   Gujarat   Ahmedabad        Garments & Apparel                                 Primary     Textile
+317   Gujarat   Ahmedabad        Terracotta                                         Secondary   Handicraft
+318   Gujarat   Ahmedabad        Mata ni Pachedi/ Saudagiri Block Print             Tertiary    Handloom
+319   Gujarat   Ahmedabad        Gamthi Block print                                 Others      Handloom
+320   Gujarat   Amreli           Peanuts Based Products                             Primary     Food Processing
+321   Gujarat   Amreli           Beadwork                                           Secondary   Handicraft
+322   Gujarat   Anand            Milk based Products                                Primary     Dairy
+323   Gujarat   Anand            Agate Stone                                        Secondary   Handicraft
+324   Gujarat   Aravalli         Agro Processing                                    Primary     Food Processing
+325   Gujarat   Banaskantha      Granite and Marble Blocks                          Primary     Manufacturing
+326   Gujarat   Banaskantha      Food Processing/Milk Preparation                   Secondary   Food Processing
+327   Gujarat   Banaskantha      Soof Embroidery/Applique                           Tertiary    Handloom
+                                 Chemicals (Chemicals, Agro Chemicals, Pesticide,
+328   Gujarat   Bharuch                                                             Primary     Others
+                                 Pharmaceutical, API)
+329   Gujarat   Bharuch          Sujani                                             Secondary   Handloom
+330   Gujarat   Bhavnagar        Dehydrated Vegetables (Onion)                      Primary     Food Processing
+331   Gujarat   Bhavnagar        Beadwork                                           Secondary   Handicraft
+332   Gujarat   Bhavnagar        Peanut butter                                      Tertiary    Food Processing
+333   Gujarat   Botad            Groundnuts/ Peanuts                                Primary     Agriculture
+334   Gujarat   Botad            Jining                                             Secondary   Manufacturing
+335   Gujarat   Chhota Udaipur   Furniture Products                                 Primary     Handicraft
+336   Gujarat   Chhota Udaipur   Pithora Painting                                   Secondary   Handicraft
+337   Gujarat   Chhota Udaipur   Sankheda furniture                                 Tertiary    Handicraft
+338   Gujarat   Dahod            Corn Products                                      Primary     Food Processing
+339   Gujarat   Dahod            Soyabean/ Soya Based Products                      Secondary   Agriculture
+340   Gujarat   Dahod                     Kharif Maiz (Agro)                            Tertiary    Agriculture
+341   Gujarat   Dahod                     Ravi Maiz (Agro)                              Others      Agriculture
+342   Gujarat   Dang                      Nagali Products                               Primary     Food Processing
+343   Gujarat   Dang                      Strawberry & Strawberry Products              Secondary   Food Processing
+344   Gujarat   Devbhoomi Dwarka          Marine & Fisheries/ Dholdara Fish             Primary     Marine
+345   Gujarat   Devbhoomi Dwarka          Khambhaliya Shawl                             Secondary   Handloom
+346   Gujarat   Devbhoomi Dwarka          Salt                                          Tertiary    Food Processing
+347   Gujarat   Gandhinagar               Software and Financial Services               Primary     Others
+348   Gujarat   Gandhinagar               Wood work/ Block Making                       Secondary   Handicraft
+349   Gujarat   Gir Somnath               Kesar Mango                                   Primary     Agriculture
+350   Gujarat   Gir Somnath               Marine & Fisheries Industry                   Secondary   Marine
+351   Gujarat   Himmatnagar/Sabarkantha   Ceramic Tiles                                 Primary     Manufacturing
+352   Gujarat   Himmatnagar/Sabarkantha   Potato (Cold storage)                         Secondary   Agriculture
+353   Gujarat   Himmatnagar/Sabarkantha   Terracotta                                    Tertiary    Handicraft
+354   Gujarat   Jamnagar                  Bandhni                                       Primary     Handloom
+355   Gujarat   Jamnagar                  Petrochemcials                                Secondary   Others
+356   Gujarat   Jamnagar                  Brass Parts                                   Tertiary    Manufacturing
+357   Gujarat   Junagadh                  Groundnuts/ Peanuts (Peanut Based Products)   Primary     Food Processing
+358   Gujarat   Junagadh                  Beadwork                                      Secondary   Handicraft
+359   Gujarat   Junagadh                  Mango                                         Tertiary    Agriculture
+360   Gujarat   Kachchh                   Handicraft Items                              Primary     Handicraft
+361   Gujarat   Kachchh                   Green Dates                                   Secondary   Agriculture
+362   Gujarat   Kachchh                   Salt                                          Tertiary    Food Processing
+363   Gujarat   Kachchh                   Bhujodi Shawl weaving                         Others      Handloom
+364   Gujarat   Kachchh                   Hand Embroidery                               Others      Handloom
+365   Gujarat   Kachchh                   Ajrakh                                        Others      Handicraft
+366   Gujarat   Kachchh                   Leather Work                                  Others      Handicraft
+367   Gujarat   Kheda (Nadiad)            Agro Products                                 Primary     Food Processing
+368   Gujarat   Kheda (Nadiad)            Mathia                                        Secondary   Food Processing
+369   Gujarat   Mahisagar                 Food Processing Papaya                        Primary     Food Processing
+370   Gujarat   Mehsana                   Dairy/ Milk product                           Primary     Dairy
+371   Gujarat   Mehsana                   Agri Products                                 Secondary   Food Processing
+372   Gujarat   Mehsana                   Cumin                                         Tertiary    Agriculture
+373   Gujarat   Mehsana         Castor                               Others      Food Processing
+374   Gujarat   Morbi           Ceramic Tiles & Sanitary Ware        Primary     Manufacturing
+375   Gujarat   Morbi           Pottery                              Secondary   Handicraft
+376   Gujarat   Narmada         Banana                               Primary     Agriculture
+377   Gujarat   Narmada         Bamboo Products                      Secondary   Handicraft
+378   Gujarat   Narmada         Sugarcane value added products       Tertiary    Food Processing
+379   Gujarat   Navsari         Mango (Hafus)                        Primary     Agriculture
+380   Gujarat   Navsari         Warli                                Secondary   Handicraft
+381   Gujarat   Panchmahal      Plastic Products                     Primary     Manufacturing
+382   Gujarat   Panchmahal      Agro (Turmeric)                      Secondary   Agriculture
+383   Gujarat   Patan           Double Ikat Patan                    Primary     Handloom
+384   Gujarat   Patan           Cumin                                Secondary   Agriculture
+385   Gujarat   Patan           Isabgul                              Tertiary    Agriculture
+386   Gujarat   Patan           Patola                               Others      Handloom
+387   Gujarat   Porbandar       Marine (Queen Fish)                  Primary     Marine
+388   Gujarat   Rajkot          Engineering Goods/Machine products   Primary     Manufacturing
+389   Gujarat   Rajkot          Single Ikat weaving                  Secondary   Handicraft
+390   Gujarat   Surat           Gems and Jewellery                   Primary     Manufacturing
+391   Gujarat   Surat           Zari and Zardozi                     Secondary   Handicraft
+392   Gujarat   Surat           Sadeli                               Tertiary    Handicraft
+393   Gujarat   Surendranagar   Single Ikat weaving                  Primary     Handloom
+394   Gujarat   Surendranagar   Tangaliya Shawl                      Secondary   Handloom
+395   Gujarat   Surendranagar   Spinning and Cotton Yarn             Tertiary    Textile
+396   Gujarat   Tapi            Rice based products                  Primary     Food Processing
+397   Gujarat   Tapi            Bamboo Products                      Secondary   Handicraft
+398   Gujarat   Tapi            Peanuts                              Tertiary    Agriculture
+399   Gujarat   Tapi            Fruits                               Others      Agriculture
+400   Gujarat   Tapi            Lady Finger                          Others      Agriculture
+401   Gujarat   Vadodara        Pharmaceuticals                      Primary     Others
+402   Gujarat   Vadodara        Engineering Products                 Secondary   Manufacturing
+403   Gujarat   Valsad          Chemical Products                    Primary     Others
+404   Gujarat   Valsad          Mango                                Secondary   Agriculture
+405   Gujarat   Valsad          Prawns                               Tertiary    Marine
+406   Haryana   Ambala          Scientific Equipment                                  Primary     Manufacturing
+407   Haryana   Ambala          Precision Engineering Products                        Secondary   Manufacturing
+408   Haryana   Bhiwani         Milk Product                                          Primary     Dairy
+409   Haryana   Bhiwani         Cattle Feed                                           Secondary   Agriculture
+410   Haryana   Bhiwani         Plastic Products                                      Tertiary    Manufacturing
+                                Mining & Crushing Equipment for Minerals & Stones
+411   Haryana   Charkhi Dadri                                                     Primary         Manufacturing
+                                (Jaws and Screens, etc)
+412   Haryana   Charkhi Dadri   Wooden Handicraft Items (Gift item, Furniture etc.)   Secondary   Handicraft
+413   Haryana   Faridabad       Auto Components                                       Primary     Manufacturing
+414   Haryana   Faridabad       Machine Tools                                         Secondary   Manufacturing
+415   Haryana   Fatehabad       Cotton & Agri-based products                          Primary     Agriculture
+416   Haryana   Fatehabad       Agriculture Implements                                Secondary   Manufacturing
+417   Haryana   Gurugram        Textile and Apparels                                  Primary     Textile
+418   Haryana   Gurugram        Enginering Goods                                      Secondary   Manufacturing
+419   Haryana   Hisar           Steel Products                                        Primary     Manufacturing
+420   Haryana   Hisar           Agriculture Implements                                Secondary   Manufacturing
+421   Haryana   Hisar           Dairy products                                        Tertiary    Dairy
+422   Haryana   Jhajjar         Footwear                                              Primary     Manufacturing
+423   Haryana   Jind            Poultry Feed                                          Primary     Food Processing
+424   Haryana   Jind            Engineering Goods                                     Secondary   Manufacturing
+425   Haryana   Kaithal         Food Processing (Rice Mill & Dairy Products )         Primary     Food Processing
+426   Haryana   Kaithal         Metal Products                                        Secondary   Manufacturing
+427   Haryana   Karnal          Ayurvedic Products                                    Primary     Others
+428   Haryana   Karnal          Food Processing                                       Secondary   Food Processing
+429   Haryana   Karnal          Printing and Packaging                                Tertiary    Manufacturing
+430   Haryana   Kurukshetra     Agri - Implements                                     Primary     Manufacturing
+431   Haryana   Kurukshetra     Tourism (Mahabharata)                                 Secondary   Tourism
+432   Haryana   Mahendragarh    Mustard Oil                                           Primary     Food Processing
+433   Haryana   Mewat (Nuh)     Apparels                                              Primary     Textile
+434   Haryana   Mewat (Nuh)     Food Processing                                       Secondary   Food Processing
+435   Haryana   Palwal          Machineries - Agriculture & Dairy                     Primary     Manufacturing
+436   Haryana   Panchkula       Automobile Parts                                      Primary     Manufacturing
+437   Haryana   Panchkula       Pharmaceuticals                                       Secondary   Manufacturing
+438   Haryana            Panipat          Handloom and Textiles                        Primary     Textile
+439   Haryana            Rewari           Motorcycles/ bikes                           Primary     Manufacturing
+440   Haryana            Rewari           Engineering Goods                            Secondary   Manufacturing
+441   Haryana            Rohtak           Fasteners and Machine Tools                  Primary     Manufacturing
+442   Haryana            Sirsa            Cotton Products (Balls, Swabs)               Primary     Textile
+443   Haryana            Sirsa            Sheet Fabrication (Pre Fab Structures)       Secondary   Manufacturing
+444   Haryana            Sonipat          Plastic Moulded Products (Electronic Toys)   Primary     Manufacturing
+445   Haryana            Sonipat          Food Processing                              Secondary   Food Processing
+446   Haryana            Sonipat          Stainless Steel Products                     Tertiary    Manufacturing
+447   Haryana            Yamunanagar      Plywood                                      Primary     Manufacturing
+448   Haryana            Yamunanagar      Metal Utensils                               Secondary   Manufacturing
+449   Himachal Pradesh   Bilaspur         Processing of Indian Gooseberry (Amla)       Primary     Food Processing
+450   Himachal Pradesh   Chamba           Chamba Rumal                                 Primary     Handloom
+451   Himachal Pradesh   Hamirpur         Agro-products processing                     Primary     Food Processing
+452   Himachal Pradesh   Kangra           Kangra Tea                                   Primary     Agriculture
+453   Himachal Pradesh   Kangra           Kangra Paintings                             Secondary   Handicraft
+454   Himachal Pradesh   Kinnaur          Oil - Himachali Chulli                       Primary     Manufacturing
+455   Himachal Pradesh   Kullu            Shawl - Kullu                                Primary     Handloom
+456   Himachal Pradesh   Lahaul & Spiti   Processing of Seabuckthorn (Charma)          Primary     Food Processing
+457   Himachal Pradesh   Mandi            Steel Furniture                              Primary     Manufacturing
+458   Himachal Pradesh   Shimla           Tourism                                      Primary     Tourism
+459   Himachal Pradesh   Sirmaur          Packaging (Corrugated Boxes)                 Primary     Manufacturing
+460   Himachal Pradesh   Solan            Mushrooms                                    Primary     Agriculture
+461   Himachal Pradesh   Una              Light Engineering Industry                   Primary     Manufacturing
+462   Jammu & Kashmir    Anantnag         Trout Fish                                   Primary     Marine
+463   Jammu & Kashmir    Bandipora        Crewal Based Shawl                           Primary     Textile
+464   Jammu & Kashmir    Baramulla        Apples                                       Primary     Agriculture
+465   Jammu & Kashmir    Budgam           Kani Shawls                                  Primary     Handloom
+466   Jammu & Kashmir    Doda             Natural Oils (Lavender)                      Primary     Manufacturing
+467   Jammu & Kashmir    Ganderbal        Wicker Willow                                Primary     Handicraft
+468   Jammu & Kashmir    Jammu            Basmati Rice                                 Primary     Agriculture
+469   Jammu & Kashmir    Kathua           Basholi Pashmina                             Primary     Handloom
+470   Jammu & Kashmir    Kathua           Basohli Painting                             Secondary   Handicraft
+471   Jammu & Kashmir   Kishtwar                      Saffron                             Primary   Agriculture
+472   Jammu & Kashmir   Kulgam                        Garlic                              Primary   Agriculture
+473   Jammu & Kashmir   Kupwara                       Walnut                              Primary   Agriculture
+474   Jammu & Kashmir   Poonch                        Pecannut                            Primary   Agriculture
+475   Jammu & Kashmir   Pulwama                       Saffron                             Primary   Agriculture
+476   Jammu & Kashmir   Rajouri                       Walnut                              Primary   Agriculture
+477   Jammu & Kashmir   Ramban                        Honey                               Primary   Agriculture
+478   Jammu & Kashmir   Reasi                         Aromatic Plants                     Primary   Agriculture
+479   Jammu & Kashmir   Samba                         Mushroom                            Primary   Agriculture
+480   Jammu & Kashmir   Shopian                       Apple                               Primary   Agriculture
+481   Jammu & Kashmir   Srinagar                      Silk Carpet (Hand Knotted Carpet)   Primary   Handicraft
+482   Jammu & Kashmir   Udhampur                      Garlic                              Primary   Agriculture
+483   Jharkhand         Bokaro                        Woodcraft                           Primary   Handicraft
+484   Jharkhand         Chatra                        Vegetable                           Primary   Agriculture
+485   Jharkhand         Deogarh                       Lac Products                        Primary   Manufacturing
+486   Jharkhand         Dhanbad                       Coal                                Primary   Manufacturing
+487   Jharkhand         Dumka                         Bamboo                              Primary   Handicraft
+488   Jharkhand         East Singhbhum (Jamshedpur)   Paithkar Painting                   Primary   Handicraft
+489   Jharkhand         Garghwa                       Carpets                             Primary   Textile
+490   Jharkhand         Giridih                       Steel-TMT Bar                       Primary   Manufacturing
+491   Jharkhand         Godda                         Tasar Silk                          Primary   Handloom
+492   Jharkhand         Gumla                         Ragi                                Primary   Agriculture
+493   Jharkhand         Hazaribagh                    Sohrai Painting                     Primary   Handicraft
+494   Jharkhand         Jamtara                       Nuts- Cashew                        Primary   Agriculture
+495   Jharkhand         Khunti                        Lac                                 Primary   Handicraft
+496   Jharkhand         Koderma                       Mica                                Primary   Manufacturing
+497   Jharkhand         Latehar                       Mahua                               Primary   Agriculture
+498   Jharkhand         Lohardaga                     Honey                               Primary   Agriculture
+499   Jharkhand         Pakur                         Jute                                Primary   Handicraft
+500   Jharkhand         Palamau                       Pulses- Arhar                       Primary   Agriculture
+501   Jharkhand         Ramgarh                       Silver Jewellery                    Primary   Manufacturing
+502   Jharkhand         Ranchi                        Ready Made Garments                 Primary   Textile
+503   Jharkhand         Sahibganj                     Jute                                Primary   Handicraft
+504   Jharkhand   Saraikela- Kharsawan        Kharsawan Silk                                   Primary     Textile
+505   Jharkhand   Simdega                     Minor Forest Produce                             Primary     Agriculture
+506   Jharkhand   West Singhbhum (Chaibasa)   Custard Apple                                    Primary     Agriculture
+507   Karnataka   Bagalkote                   Ilkal Saree                                      Primary     Handloom
+508   Karnataka   Ballary                     Steel and Allied activities                      Primary     Manufacturing
+509   Karnataka   Ballary                     Bellary Denim Jeans                              Secondary   Textile
+510   Karnataka   Belagavi                    Auto components                                  Primary     Manufacturing
+511   Karnataka   Belagavi                    Foundry                                          Secondary   Manufacturing
+512   Karnataka   Bengaluru Rural             Aerospace & Defense                              Primary     Manufacturing
+513   Karnataka   Bengaluru Rural             Ready-made garment Manufacturing                 Secondary   Textile
+514   Karnataka   Bengaluru Urban             IT/ITES and R&D                                  Primary     Manufacturing
+515   Karnataka   Bengaluru Urban             Handloom Silk Sarees                             Secondary   Handloom
+516   Karnataka   Bidar                       Bidari ware                                      Primary     Handicraft
+517   Karnataka   Chamarajanagara             Turmeric                                         Primary     Agriculture
+518   Karnataka   Chamarajanagara             Stone Work                                       Secondary   Manufacturing
+519   Karnataka   Chikkaballapura             ESDM                                             Primary     Manufacturing
+520   Karnataka   Chikkaballapura             Shidlagatta silk and Raw Silk based sarees       Secondary   Handloom
+521   Karnataka   Chikkamagaluru              Coffee - Arabica                                 Primary     Agriculture
+522   Karnataka   Chikkamagaluru              Spice                                            Secondary   Agriculture
+523   Karnataka   Chikkamagaluru              Areca leaf based Products (Plates, Cups Etc)     Tertiary    Manufacturing
+524   Karnataka   Chitradurga                 Molakalmuru sarees                               Primary     Handloom
+525   Karnataka   Dakshina Kannada            Marine Products                                  Primary     Marine
+526   Karnataka   Dakshina Kannada            Textile processing                               Secondary   Textile
+527   Karnataka   Davanagere                  Millets                                          Primary     Agriculture
+528   Karnataka   Davanagere                  Cotton based processing (ginning) & garmenting   Secondary   Textile
+529   Karnataka   Dharwad                     FMCG                                             Primary     Food Processing
+530   Karnataka   Dharwad                     Volve Mfg                                        Secondary   Manufacturing
+531   Karnataka   Gadag                       Byadagi Chilies                                  Primary     Agriculture
+532   Karnataka   Gadag                       Textiles                                         Secondary   Textile
+533   Karnataka   Hassan                      Coir products                                    Primary     Handicraft
+534   Karnataka   Hassan                      Jacquard Bedsheet                                Secondary   Textile
+535   Karnataka   Haveri                      Chilli - Bydagi                                  Primary     Agriculture
+536   Karnataka   Haveri                      Spice Products                                   Secondary   Agriculture
+537   Karnataka   Kalburgi         Toor Dal                           Primary     Agriculture
+538   Karnataka   Kalburgi         Cement                             Secondary   Manufacturing
+539   Karnataka   Kalburgi         Shahabad stones                    Tertiary    Manufacturing
+540   Karnataka   Kodagu           Coffee                             Primary     Agriculture
+541   Karnataka   Kodagu           Spices                             Secondary   Agriculture
+542   Karnataka   Kodagu           Homemade chocolates/wines          Tertiary    Food Processing
+543   Karnataka   Kolar            Automobiles                        Primary     Manufacturing
+544   Karnataka   Kolar            Shivarapatna stone craft           Secondary   Handicraft
+545   Karnataka   Koppala          Kinhal toys                        Primary     Handicraft
+546   Karnataka   Mandya           Jaggery                            Primary     Agriculture
+547   Karnataka   Mandya           Rice based products                Secondary   Food Processing
+548   Karnataka   Mysore           ESDM                               Primary     Manufacturing
+549   Karnataka   Mysore           Rosewood inlay art                 Secondary   Handicraft
+550   Karnataka   Raichuru         Pharma                             Primary     Others
+551   Karnataka   Raichuru         Cotton and cotton based products   Secondary   Textile
+552   Karnataka   Ramanagara       Channapatna toys                   Primary     Handicraft
+553   Karnataka   Ramanagara       EV Cluster                         Secondary   Manufacturing
+554   Karnataka   Shivamogga       BioPharma and Wellness             Primary     Others
+555   Karnataka   Shivamogga       Wooden Carving                     Secondary   Handicraft
+556   Karnataka   Tumakuru         Machine Tool                       Primary     Manufacturing
+557   Karnataka   Tumakuru         Coir based Industries              Secondary   Manufacturing
+558   Karnataka   Udupi            Marine Products                    Primary     Marine
+559   Karnataka   Udupi            Gems and Jewellery                 Secondary   Handicraft
+560   Karnataka   Uttara Kannada   Spices                             Primary     Agriculture
+561   Karnataka   Uttara Kannada   Ayurvedic Medicine Mfg             Secondary   Others
+562   Karnataka   Vijayanagara     Sanduru Lambani Embroidery         Primary     Handloom
+563   Karnataka   Vijayapura       Reisin                             Primary     Agriculture
+564   Karnataka   Vijayapura       Agricultural Implements            Secondary   Manufacturing
+565   Karnataka   Yadagiri         Pharmaceuticals                    Primary     Others
+566   Karnataka   Yadagiri         Cotton and Cotton based Products   Secondary   Textile
+567   Kerala      Alappuzha        Coir products                      Primary     Handicraft
+568   Kerala      Ernakulam        Oleo Raisins                       Primary     Agriculture
+569   Kerala      Idukki           Spices                             Primary     Agriculture
+570   Kerala           Kannur               Handloom Products           Primary     Handloom
+571   Kerala           Kasaragod            Cashew Products             Primary     Food Processing
+572   Kerala           Kollam               Cashew Nut Products         Primary     Food Processing
+573   Kerala           Kottayam             Rubber Products             Primary     Manufacturing
+574   Kerala           Kozhikode            Coconut Products            Primary     Food Processing
+575   Kerala           Malappuram           Food Products               Primary     Food Processing
+576   Kerala           Palakkad             Palakkadan Matta Rice       Primary     Agriculture
+577   Kerala           Pathanamthitta       Food Products               Primary     Food Processing
+578   Kerala           Thiruvananthapuram   Handloom Products           Primary     Textile
+579   Kerala           Thrissur             Coconut Products            Primary     Food Processing
+580   Kerala           Wayanad              Coffee                      Primary     Agriculture
+581   Ladakh           Kargil               Apricot                     Primary     Agriculture
+582   Ladakh           Kargil               Tourism                     Secondary   Tourism
+583   Ladakh           Leh                  Seabuckthorn                Primary     Agriculture
+584   Ladakh           Leh                  Pashmina                    Secondary   Handloom
+585   Lakshadweep      Lakshadweep          Coconut Derived Products    Primary     Food Processing
+586   Madhya Pradesh   Agar Malwa           Oranges                     Primary     Agriculture
+587   Madhya Pradesh   Alirajpur            Mahua                       Primary     Food Processing
+588   Madhya Pradesh   Anuppur              Kodo Kutki                  Primary     Agriculture
+589   Madhya Pradesh   Ashoknagar           Chanderi Handloom           Primary     Handloom
+590   Madhya Pradesh   Badhwani             Ginger                      Primary     Agriculture
+591   Madhya Pradesh   Balaghat             Chinnaur Rice               Primary     Agriculture
+592   Madhya Pradesh   Betul                Teak                        Primary     Agriculture
+593   Madhya Pradesh   Bhind                Mustard                     Primary     Agriculture
+594   Madhya Pradesh   Bhopal               Zari Zardozi                Primary     Handloom
+595   Madhya Pradesh   Bhopal               Jute Products               Secondary   Handicraft
+596   Madhya Pradesh   Burhanpur            Banana                      Primary     Agriculture
+597   Madhya Pradesh   Chhatarpur           Furniture - Wooden          Primary     Handicraft
+598   Madhya Pradesh   Chhindwara           Oranges & Orange Products   Primary     Agriculture
+599   Madhya Pradesh   Damoh                Gram                        Primary     Agriculture
+600   Madhya Pradesh   Datia                Jaggery                     Primary     Agriculture
+601   Madhya Pradesh   Dewas                Bamboo                      Primary     Handicraft
+602   Madhya Pradesh   Dhar (Pithampur)     Bagh Prints                 Primary     Handloom
+603   Madhya Pradesh   Dindori       Kodo Kutki                   Primary   Agriculture
+604   Madhya Pradesh   Guna          Coriander                    Primary   Agriculture
+605   Madhya Pradesh   Gwalior       Sandstone Tiles              Primary   Manufacturing
+606   Madhya Pradesh   Harda         Bamboo                       Primary   Handicraft
+607   Madhya Pradesh   Hoshangabad   Sightseeing                  Primary   Tourism
+608   Madhya Pradesh   Indore        Potato                       Primary   Agriculture
+609   Madhya Pradesh   Jabalpur      Peas                         Primary   Agriculture
+610   Madhya Pradesh   Jhabua        Kadaknath Chicken            Primary   Food Processing
+611   Madhya Pradesh   Katni         Cut Stone                    Primary   Manufacturing
+612   Madhya Pradesh   Khandwa       Onion                        Primary   Agriculture
+613   Madhya Pradesh   Khargone      Chilli                       Primary   Agriculture
+614   Madhya Pradesh   Mandla        Kodo Kudki                   Primary   Agriculture
+615   Madhya Pradesh   Mandsaur      Garlic                       Primary   Agriculture
+616   Madhya Pradesh   Morena        Mustard Oil                  Primary   Food Processing
+617   Madhya Pradesh   Narsinghpur   Toor Dal                     Primary   Food Processing
+618   Madhya Pradesh   Neemuch       Coriander                    Primary   Agriculture
+619   Madhya Pradesh   Niwari        Ginger                       Primary   Agriculture
+620   Madhya Pradesh   Panna         Gooseberry                   Primary   Agriculture
+621   Madhya Pradesh   Raisen        Basmati Rice                 Primary   Agriculture
+622   Madhya Pradesh   Rajgarh       Orange                       Primary   Agriculture
+623   Madhya Pradesh   Ratlam        Ratlami Namkeen              Primary   Food Processing
+624   Madhya Pradesh   Rewa          Bamboo                       Primary   Handicraft
+625   Madhya Pradesh   Sagar         Farm Equipment               Primary   Manufacturing
+626   Madhya Pradesh   Satna         Tomato                       Primary   Agriculture
+627   Madhya Pradesh   Sehore        Wooden Toys and Handicraft   Primary   Handicraft
+628   Madhya Pradesh   Seoni         Cilantro                     Primary   Agriculture
+629   Madhya Pradesh   Shahdol       Turmeric                     Primary   Agriculture
+630   Madhya Pradesh   Shajapur      Onion                        Primary   Agriculture
+631   Madhya Pradesh   Sheopur       Guava                        Primary   Agriculture
+632   Madhya Pradesh   Shivpuri      Cloth Jacket                 Primary   Textile
+633   Madhya Pradesh   Sidhi         Carpet (Panja Dari)          Primary   Textile
+634   Madhya Pradesh   Singrauli     Kodo Kutki (Millet)          Primary   Agriculture
+635   Madhya Pradesh   Tikamgarh     Ginger                       Primary   Agriculture
+636   Madhya Pradesh   Ujjain       Batik print                                 Primary     Textile
+637   Madhya Pradesh   Umaria       Mahua                                       Primary     Food Processing
+638   Madhya Pradesh   Vidisha      Farm Equipment                              Primary     Manufacturing
+639   Maharashtra      Ahmednagar   Cane Sugar                                  Primary     Manufacturing
+640   Maharashtra      Ahmednagar   Dairy Products (Milk based products)        Secondary   Manufacturing
+641   Maharashtra      Akola        Cotton Ginning and pressing                 Primary     Textile
+642   Maharashtra      Akola        Pulses (Daal)                               Secondary   Food Processing
+643   Maharashtra      Amravati     Textile                                     Primary     Textile
+644   Maharashtra      Amravati     Mandarin Orange                             Secondary   Agriculture
+645   Maharashtra      Aurangabad   Marathwada Kesar Mango                      Primary     Agriculture
+646   Maharashtra      Aurangabad   Auto components                             Secondary   Manufacturing
+647   Maharashtra      Beed         Cotton and cotton seed oil                  Primary     Manufacturing
+648   Maharashtra      Beed         Beed Custard Apple                          Secondary   Agriculture
+649   Maharashtra      Bhandara     Rice                                        Primary     Agriculture
+650   Maharashtra      Bhandara     Mineral based products                      Secondary   Others
+651   Maharashtra      Buldhana     Cotton Related Products                     Primary     Agriculture
+652   Maharashtra      Buldhana     Seeds for planting                          Secondary   Agriculture
+653   Maharashtra      Chandrapur   Rice                                        Primary     Agriculture
+654   Maharashtra      Chandrapur   Bamboo Products                             Secondary   Handicraft
+655   Maharashtra      Dhule        De-Oiled Cake                               Primary     Food Processing
+656   Maharashtra      Dhule        Textile                                     Secondary   Textile
+657   Maharashtra      Gadchiroli   Rice                                        Primary     Agriculture
+658   Maharashtra      Gadchiroli   Forest products                             Secondary   Agriculture
+659   Maharashtra      Gondia       Rice                                        Primary     Agriculture
+660   Maharashtra      Gondia       Bamboo Articles                             Secondary   Handicraft
+661   Maharashtra      Hingoli      Turmeric                                    Primary     Agriculture
+662   Maharashtra      Hingoli      Soyabean and Soyabean based products        Secondary   Food Processing
+663   Maharashtra      Jalgaon      Jalgaon Banana                              Primary     Agriculture
+664   Maharashtra      Jalgaon      Plastic PVC Pipes                           Secondary   Manufacturing
+665   Maharashtra      Jalna        Sweet Orange                                Primary     Agriculture
+666   Maharashtra      Jalna        TMT Steel Bars                              Secondary   Manufacturing
+667   Maharashtra      Kolhapur     Kolhapur Jaggery (Sugarcane Products etc)   Primary     Food Processing
+668   Maharashtra      Kolhapur     Engineering                                 Secondary   Manufacturing
+669   Maharashtra   Latur             Soya bean and Soya bean based products   Primary     Food Processing
+670   Maharashtra   Latur             Pulses                                   Secondary   Food Processing
+671   Maharashtra   Mumbai City       Gems & Jewellery                         Primary     Manufacturing
+672   Maharashtra   Mumbai City       Leather                                  Secondary   Handicraft
+673   Maharashtra   Mumbai Suburban   Gems & Jewellery                         Primary     Manufacturing
+674   Maharashtra   Mumbai Suburban   Marine Produce                           Secondary   Marine
+675   Maharashtra   Nagpur            Nagpur Orange                            Primary     Agriculture
+676   Maharashtra   Nagpur            Engineering                              Secondary   Manufacturing
+677   Maharashtra   Nanded            Soya bean and soya bean products         Primary     Food Processing
+678   Maharashtra   Nanded            Spices                                   Secondary   Agriculture
+679   Maharashtra   Nandurbar         Chilli powder                            Primary     Food Processing
+680   Maharashtra   Nandurbar         Textile                                  Secondary   Textile
+681   Maharashtra   Nashik            Grapes/ Raisins                          Primary     Agriculture
+682   Maharashtra   Nashik            Paithani Sarees                          Secondary   Handloom
+683   Maharashtra   Osmanabad         Pulses                                   Primary     Food Processing
+684   Maharashtra   Osmanabad         Sugar                                    Secondary   Food Processing
+685   Maharashtra   Palghar           Dahanu Gholvad Chikoo (Sapota)           Primary     Agriculture
+686   Maharashtra   Palghar           Marine Produce                           Secondary   Marine
+687   Maharashtra   Parbhani          Grams (Hara bhara)                       Primary     Agriculture
+688   Maharashtra   Parbhani          Jaggery                                  Secondary   Agriculture
+689   Maharashtra   Pune              Engineering Goods                        Primary     Manufacturing
+690   Maharashtra   Pune              Frozen Food                              Secondary   Food Processing
+691   Maharashtra   Raigad            Marine Produce                           Primary     Marine
+692   Maharashtra   Raigad            Iron and Steel                           Secondary   Manufacturing
+693   Maharashtra   Ratnagiri         Alphonso Mangoes                         Primary     Agriculture
+694   Maharashtra   Ratnagiri         Marine Produce                           Secondary   Marine
+695   Maharashtra   Sangli            Turmeric                                 Primary     Agriculture
+696   Maharashtra   Sangli            Pump Spares                              Secondary   Manufacturing
+697   Maharashtra   Satara            Strawberries                             Primary     Agriculture
+698   Maharashtra   Satara            Jaggery                                  Secondary   Agriculture
+699   Maharashtra   Sindhudurg        Vengurla Cashew                          Primary     Agriculture
+700   Maharashtra   Sindhudurg        Devgad Alphonso Mango                    Secondary   Agriculture
+701   Maharashtra   Solapur           Solapur Terry Towel                      Primary     Textile
+702   Maharashtra   Solapur                    Pomegranate                          Secondary   Agriculture
+703   Maharashtra   Thane                      Garments & Textiles                  Primary     Textile
+704   Maharashtra   Thane                      Millets                              Secondary   Agriculture
+705   Maharashtra   Wardha                     Cotton Yarn                          Primary     Textile
+706   Maharashtra   Wardha                     Waigaon Turmeric                     Secondary   Agriculture
+707   Maharashtra   Washim                     Soya bean and soya bean products     Primary     Food Processing
+708   Maharashtra   Washim                     Cotton related products & Textiles   Secondary   Textile
+709   Maharashtra   Yavatmal                   Cotton Ginning and pressing          Primary     Textile
+710   Maharashtra   Yavatmal                   Dolomite and Limestone               Secondary   Manufacturing
+711   Manipur       Bishnupur                  Moirang Fi Chanbi Fanek              Primary     Handloom
+712   Manipur       Chandel                    Turmeric                             Primary     Agriculture
+713   Manipur       Churachandpur              Handicraft - Tribals                 Primary     Handicraft
+714   Manipur       Imphal East                Wangkhei Phee                        Primary     Handloom
+715   Manipur       Imphal West                Toys- Laiphadibi                     Primary     Handicraft
+716   Manipur       Imphal West                Khurkul Muga                         Secondary   Handloom
+717   Manipur       Jiribam                    Bamboo                               Primary     Handicraft
+718   Manipur       Kakching                   Rice - Black Chakao                  Primary     Agriculture
+719   Manipur       Kamjong                    King Chilli                          Primary     Agriculture
+720   Manipur       Kangpokpi                  Turmeric                             Primary     Agriculture
+721   Manipur       Noney                      Banana                               Primary     Agriculture
+722   Manipur       Pherzawl                   Ginger                               Primary     Agriculture
+723   Manipur       Senapati                   Kiwi                                 Primary     Agriculture
+724   Manipur       Tamenglong                 Oranges (Tamenglong Mandarin)        Primary     Agriculture
+725   Manipur       Tengnoupal                 Bamboo                               Primary     Handicraft
+726   Manipur       Thoubal                    Pineapple                            Primary     Agriculture
+727   Manipur       Ukhrul                     Kachai Lemon                         Primary     Agriculture
+728   Meghalaya     East Garo Hills            Pineapple                            Primary     Agriculture
+729   Meghalaya     East Jaintia Hills         Turmeric                             Primary     Agriculture
+730   Meghalaya     East Khasi Hills           Khasi Mandarin (Orange)              Primary     Agriculture
+731   Meghalaya     East Khasi Hills           Cane & Bamboo Handicrafts            Secondary   Handicraft
+732   Meghalaya     Eastern West Khasi Hills   Kiwi                                 Primary     Agriculture
+733   Meghalaya     Eastern West Khasi Hills   Cane & Bamboo Products               Secondary   Handicraft
+734   Meghalaya     North Garo Hills           Banana                               Primary     Agriculture
+735   Meghalaya   Ri-Bhoi                  Pineapple                          Primary     Agriculture
+736   Meghalaya   Ri-Bhoi                  Eri Silk Handloom (Ryndia)         Secondary   Handloom
+737   Meghalaya   South Garo Hills         Jackfruit                          Primary     Agriculture
+738   Meghalaya   South West Garo Hills    Pineapple                          Primary     Agriculture
+739   Meghalaya   South West Khasi Hills   Honey                              Primary     Agriculture
+740   Meghalaya   West Garo Hills          Cashew                             Primary     Agriculture
+741   Meghalaya   West Jaintia Hills       Turmeric (Lakadong)                Primary     Agriculture
+742   Meghalaya   West Jaintia Hills       Black Pottery (Khiew Ranei)        Secondary   Handicraft
+743   Meghalaya   West Khasi Hills         Ginger                             Primary     Agriculture
+744   Meghalaya   West Khasi Hills         Cane & Bamboo Handicrafts (Mats)   Secondary   Handicraft
+745   Mizoram     Aizawl                   Dragon Fruit                       Primary     Agriculture
+746   Mizoram     Champhai                 Mizo Chilli                        Primary     Agriculture
+747   Mizoram     Champhai                 Passion Fruit                      Secondary   Agriculture
+748   Mizoram     Hnahthial                Mizo Chilli                        Primary     Agriculture
+749   Mizoram     Khawzawl                 Pineapple                          Primary     Agriculture
+750   Mizoram     Khawzawl                 Passion Fruit                      Secondary   Agriculture
+751   Mizoram     Kolasib                  Dragon Fruit                       Primary     Agriculture
+752   Mizoram     Lawngtlai                Mizo Chilli                        Primary     Agriculture
+753   Mizoram     Lunglei                  Banana                             Primary     Agriculture
+754   Mizoram     Lunglei                  Passion Fruit                      Secondary   Agriculture
+755   Mizoram     Mamit                    Turmeric                           Primary     Agriculture
+756   Mizoram     Saitual                  Ginger                             Primary     Agriculture
+757   Mizoram     Saitual                  Passion Fruit                      Secondary   Agriculture
+758   Mizoram     Serchhip                 Banana                             Primary     Agriculture
+759   Mizoram     Serchhip                 Passion Fruit                      Secondary   Agriculture
+760   Mizoram     Siaha                    Mizo Chilli                        Primary     Agriculture
+761   Nagaland    Chumukedima              Pineapple                          Primary     Agriculture
+762   Nagaland    Dimapur                  Pineapple                          Primary     Agriculture
+763   Nagaland    Dimapur                  Bamboo                             Secondary   Handicraft
+764   Nagaland    Kiphire                  Kholar (Kidney Beans)              Primary     Agriculture
+765   Nagaland    Kohima                   Pickle                             Primary     Food Processing
+766   Nagaland    Kohima                   Naga Chilli                        Secondary   Agriculture
+767   Nagaland    Longleng                 Ginger                             Primary     Agriculture
+768   Nagaland   Mokokchung   Coffee                       Primary     Agriculture
+769   Nagaland   Mokokchung   Tea                          Secondary   Agriculture
+770   Nagaland   Mokokchung   Banana                       Tertiary    Agriculture
+771   Nagaland   Mokokchung   Ginger                       Others      Agriculture
+772   Nagaland   Mon          Large Cardamom               Primary     Agriculture
+773   Nagaland   Mon          Tea                          Secondary   Agriculture
+774   Nagaland   Mon          Bamboo                       Tertiary    Handicraft
+775   Nagaland   Mon          Handicraft                   Others      Handicraft
+776   Nagaland   Niuland      Banana                       Primary     Agriculture
+777   Nagaland   Niuland      Yam                          Secondary   Agriculture
+778   Nagaland   Niuland      Rubber                       Tertiary    Agriculture
+779   Nagaland   Noklak       Millet                       Primary     Agriculture
+780   Nagaland   Noklak       Ginger                       Secondary   Agriculture
+781   Nagaland   Noklak       Handicraft                   Tertiary    Handicraft
+782   Nagaland   Peren        Naga King Chilli             Primary     Agriculture
+783   Nagaland   Peren        Handicraft                   Secondary   Handicraft
+784   Nagaland   Phek         Kiwi                         Primary     Agriculture
+785   Nagaland   Phek         Wood/ Bamboo                 Secondary   Handicraft
+786   Nagaland   Shamator     Kholar (Kidney Beans)        Primary     Agriculture
+787   Nagaland   Tseminyu     Turmeric                     Primary     Agriculture
+788   Nagaland   Tuensang     Kholar (Kidney Beans)        Primary     Agriculture
+789   Nagaland   Tuensang     Anthurium                    Secondary   Agriculture
+790   Nagaland   Wokha        Banana and Banana Products   Primary     Food Processing
+791   Nagaland   Wokha        Ginger                       Secondary   Agriculture
+792   Nagaland   Wokha        Passion Fruit                Tertiary    Agriculture
+793   Nagaland   Zunheboto    Soyabean                     Primary     Agriculture
+794   Odisha     Angul        Terracotta                   Primary     Handicraft
+795   Odisha     Balasore     Marine Products              Primary     Marine
+796   Odisha     Balasore     Stone Craft                  Secondary   Handicraft
+797   Odisha     Bargarh      Handloom                     Primary     Handloom
+798   Odisha     Bhadrak      Rice                         Primary     Agriculture
+799   Odisha     Bhadrak      Fish                         Secondary   Marine
+800   Odisha     Bolangir     Cotton                       Primary     Agriculture
+801   Odisha   Bolangir               Onion                               Secondary   Agriculture
+802   Odisha   Boudh                  Handloom Patta Saree                Primary     Handloom
+803   Odisha   Cuttack                Silver Filigree (Tarakashi Art)     Primary     Handicraft
+804   Odisha   Cuttack                Handloom of Maniabandha             Secondary   Handloom
+805   Odisha   Deogarh                Watermelon                          Primary     Agriculture
+806   Odisha   Deogarh                Orange                              Secondary   Agriculture
+807   Odisha   Deogarh                Litchi                              Tertiary    Agriculture
+808   Odisha   Dhenkanal              Handicrafts                         Primary     Handicraft
+809   Odisha   Dhenkanal              Cashew                              Secondary   Agriculture
+810   Odisha   Gajapati               Cashew Kernel                       Primary     Agriculture
+811   Odisha   Gajapati               Granite Slab                        Secondary   Manufacturing
+812   Odisha   Gajapati               Turmeric Oil                        Tertiary    Food Processing
+813   Odisha   Ganjam                 Handloom                            Primary     Handloom
+814   Odisha   Ganjam                 Cashew                              Secondary   Agriculture
+815   Odisha   Ganjam                 Granite Slab                        Tertiary    Manufacturing
+816   Odisha   Jagatsinghpur          Rice                                Primary     Agriculture
+817   Odisha   Jagatsinghpur          Marine                              Secondary   Marine
+818   Odisha   Jajpur                 Stone Carving                       Primary     Handicraft
+819   Odisha   Jajpur                 Handicraft                          Secondary   Handicraft
+820   Odisha   Jharsuguda             Aluminium Ingot                     Primary     Manufacturing
+821   Odisha   Jharsuguda             Chilly                              Secondary   Agriculture
+822   Odisha   Jharsuguda             Ginger                              Tertiary    Agriculture
+823   Odisha   Kalahandi              Handicraft (Wood Carving)           Primary     Handicraft
+824   Odisha   Kandhamal              Turmeric                            Primary     Agriculture
+825   Odisha   Kendrapara             Golden Grass Product                Primary     Handicraft
+826   Odisha   Kendujhar (Keonjhar)   Terracotta                          Primary     Handicraft
+827   Odisha   Khurda                 Fish product                        Primary     Marine
+828   Odisha   Khurda                 Handicrafts (Stone Carving)         Secondary   Handicraft
+829   Odisha   Khurda                 Handicrafts (Pattachitra)           Tertiary    Handicraft
+830   Odisha   Khurda                 Handicrafts (Palm Leaf Engraving)   Others      Handicraft
+831   Odisha   Koraput                Cashew                              Primary     Agriculture
+832   Odisha   Malkangiri             Millets                             Primary     Agriculture
+833   Odisha   Malkangiri             Tribal Jewellery                    Secondary   Handicraft
+834   Odisha       Malkangiri             Turmeric                                Tertiary    Agriculture
+835   Odisha       Malkangiri             Processed Fish                          Others      Marine
+836   Odisha       Mayurbhanj             Rice                                    Primary     Agriculture
+837   Odisha       Nabarangpur            Maize                                   Primary     Agriculture
+838   Odisha       Nayagarh               Brass and Bell Metal                    Primary     Handicraft
+839   Odisha       Nuapada                Cotton                                  Primary     Agriculture
+840   Odisha       Nuapada                Onion                                   Secondary   Agriculture
+841   Odisha       Puri                   Handicrafts (Pattachitra)               Primary     Handicraft
+842   Odisha       Puri                   Marine Products                         Secondary   Marine
+843   Odisha       Rayagada               Cotton                                  Primary     Agriculture
+844   Odisha       Rayagada               Tamarind                                Secondary   Agriculture
+845   Odisha       Sambalpur              Sambalpuri Bandha Saree                 Primary     Handloom
+846   Odisha       Sambalpur              Chilly                                  Secondary   Agriculture
+847   Odisha       Sambalpur              Sambalpuri Fabric Jewellery             Tertiary    Handicraft
+848   Odisha       Sonepur (Subarnapur)   Bomkai Sarees & Fabrics                 Primary     Textile
+849   Odisha       Sundergarh             Bamboo Craft                            Primary     Handicraft
+850   Puducherry   Karaikal               Chemicals and Allied Products           Primary     Others
+851   Puducherry   Karaikal               Dry Fish                                Secondary   Marine
+852   Puducherry   Puducherry             Terracotta                              Primary     Handicraft
+853   Puducherry   Puducherry             Papier Mache                            Secondary   Handicraft
+854   Punjab       Amritsar               Embroidery                              Primary     Handloom
+855   Punjab       Amritsar               Tourism                                 Secondary   Tourism
+856   Punjab       Amritsar               Achar-Muraba                            Tertiary    Food Processing
+857   Punjab       Barnala                Textile-Towels                          Primary     Textile
+858   Punjab       Barnala                Poultry Meat & Chicken                  Secondary   Food Processing
+859   Punjab       Bathinda               Citrus Fruits (Kinnow)                  Primary     Agriculture
+860   Punjab       Bathinda               Honey                                   Secondary   Agriculture
+861   Punjab       Bathinda               Cotton, Yarn                            Tertiary    Textile
+862   Punjab       Faridkot               Basmati (Rice)                          Primary     Agriculture
+863   Punjab       Faridkot               Agriculture Implements                  Secondary   Manufacturing
+864   Punjab       Fatehgarh Sahib        Forged Items                            Primary     Manufacturing
+865   Punjab       Fatehgarh Sahib        Machine parts/ Rolling Mill Machinery   Secondary   Manufacturing
+866   Punjab       Fazilka                Citrus Fruits (Kinnow)                  Primary     Agriculture
+867   Punjab   Fazilka                           Basmati (Rice)                       Secondary   Agriculture
+868   Punjab   Ferozepur                         Basmati (Rice)                       Primary     Agriculture
+869   Punjab   Ferozepur                         Chillies                             Secondary   Agriculture
+870   Punjab   Gurdaspur                         Foundry Cluster                      Primary     Manufacturing
+871   Punjab   Gurdaspur                         Jaggery                              Secondary   Agriculture
+872   Punjab   Hoshiarpur                        Tractor & parts                      Primary     Manufacturing
+873   Punjab   Hoshiarpur                        Plywood/ Wood Inlay Products         Secondary   Handicraft
+874   Punjab   Jalandhar                         Sports Goods                         Primary     Manufacturing
+875   Punjab   Jalandhar                         Hand Tools                           Secondary   Manufacturing
+876   Punjab   Jalandhar                         Honey                                Tertiary    Agriculture
+877   Punjab   Jalandhar                         Leather                              Others      Handicraft
+878   Punjab   Kapurthala                        Diesel engine and Auto Parts         Primary     Manufacturing
+879   Punjab   Ludhiana                          Readymade Garments                   Primary     Textile
+880   Punjab   Ludhiana                          Engineering Goods                    Secondary   Manufacturing
+881   Punjab   Malerkotla                        Metal Casting                        Primary     Manufacturing
+882   Punjab   Malerkotla                        Embroidery                           Secondary   Handloom
+883   Punjab   Mansa                             Cotton Yarn                          Primary     Textile
+884   Punjab   Mansa                             Agriculture Implements               Secondary   Manufacturing
+885   Punjab   Moga                              Agriculture Implements               Primary     Manufacturing
+886   Punjab   Pathankot                         Litchi                               Primary     Agriculture
+887   Punjab   Patiala                           Embroidery Fabric-Phulkari           Primary     Handloom
+888   Punjab   Rupnagar                          Maize                                Primary     Agriculture
+889   Punjab   Rupnagar                          Agriculture Implements               Secondary   Manufacturing
+               Sahibzada Ajit Singh Nagar (SAS
+890   Punjab                                     Engineering Goods                    Primary     Manufacturing
+               Nagar)/ Mohali
+               Sahibzada Ajit Singh Nagar (SAS
+891   Punjab                                     Sculptures                           Secondary   Handicraft
+               Nagar)/ Mohali
+               Sahibzada Ajit Singh Nagar (SAS
+892   Punjab                                     Pharmaceuticals/ Medical Equipment   Tertiary    Manufacturing
+               Nagar)/ Mohali
+893   Punjab   Sangrur                           Vegetable Oil                        Primary     Food Processing
+               Shahid Bhagat Singh Nagar
+894   Punjab                                     Jaggery                              Primary     Food Processing
+               (Nawanshahar)
+895   Punjab   Sri Muktsar Sahib                 Agriculture Implements               Primary     Manufacturing
+896   Punjab   Tarn Taran                        Basmati (Rice)                       Primary     Agriculture
+897   Punjab      Tarn Taran          Milk                              Secondary   Agriculture
+898   Punjab      Tarn Taran          Pears                             Tertiary    Agriculture
+899   Rajasthan   Ajmer               Granite and Marble Products       Primary     Manufacturing
+900   Rajasthan   Alwar               Automobiles Parts                 Primary     Manufacturing
+901   Rajasthan   Balotra             Textile Products                  Primary     Textile
+902   Rajasthan   Banswara            Marble Products                   Primary     Manufacturing
+903   Rajasthan   Baran               Garlic Products                   Primary     Agriculture
+904   Rajasthan   Barmer              Kasheedakari                      Primary     Handloom
+905   Rajasthan   Beawar              Quartz and Feldspar Powder        Primary     Manufacturing
+906   Rajasthan   Bharatpur           Agro Based Products               Primary     Food Processing
+907   Rajasthan   Bhilwara            Textile Products                  Primary     Textile
+908   Rajasthan   Bikaner             Bikaneri Namkeen                  Primary     Food Processing
+909   Rajasthan   Bundi               Rice                              Primary     Agriculture
+910   Rajasthan   Chittorgarh         Granite and Marble Products       Primary     Manufacturing
+911   Rajasthan   Churu               Wood Products                     Primary     Handicraft
+912   Rajasthan   Dausa               Stone Products                    Primary     Manufacturing
+913   Rajasthan   Deedwana-Kuchaman   Marble & Granite Products         Primary     Manufacturing
+914   Rajasthan   Deeg                Stone Based Products              Primary     Manufacturing
+915   Rajasthan   Dholpur             Stone Based Products              Primary     Manufacturing
+916   Rajasthan   Dungarpur           Granite Products                  Primary     Manufacturing
+917   Rajasthan   Hanumangarh         Agro Based Product                Primary     Agriculture
+918   Rajasthan   Jaipur              Gems & Jewellery                  Primary     Manufacturing
+919   Rajasthan   Jaisalmer           Yellow Stone Products             Primary     Manufacturing
+920   Rajasthan   Jalore              Granite Products                  Primary     Manufacturing
+921   Rajasthan   Jhalawar            Kota Stone Products               Primary     Manufacturing
+922   Rajasthan   Jhunjhunu           Wooden Handicraft Products        Primary     Handicraft
+923   Rajasthan   Jodhpur             Wooden Furniture Products         Primary     Handicraft
+924   Rajasthan   Karauli             Sandstone Products                Primary     Manufacturing
+925   Rajasthan   Khairthal-Tijara    Automobiles Parts                 Primary     Manufacturing
+926   Rajasthan   Kota                Kota Doria                        Primary     Handloom
+927   Rajasthan   Kotputli-Behror     Automobiles Parts                 Primary     Manufacturing
+928   Rajasthan   Nagaur              Pan Methi and Spices Processing   Primary     Food Processing
+929   Rajasthan   Pali                Textile Products                  Primary     Textile
+930   Rajasthan    Phalodi                 Sonamukhi Products                  Primary     Food Processing
+931   Rajasthan    Pratapgarh              Thewa Jewellery                     Primary     Handicraft
+932   Rajasthan    Rajsamand               Granite and Marble Products         Primary     Manufacturing
+933   Rajasthan    Salumber                Quartz                              Primary     Manufacturing
+934   Rajasthan    Sawai Madhopur          Marble Products                     Primary     Manufacturing
+935   Rajasthan    Sikar                   Wooden Furniture Products           Primary     Handicraft
+936   Rajasthan    Sirohi                  Marble Products                     Primary     Handicraft
+937   Rajasthan    Sri Ganganagar          Mustard Oil                         Primary     Food Processing
+938   Rajasthan    Tonk                    Slate Stone Products                Primary     Manufacturing
+939   Rajasthan    Udaipur                 Marble and Granite Products         Primary     Manufacturing
+940   Sikkim       East Sikkim (Gangtok)   Tourism                             Primary     Tourism
+941   Sikkim       East Sikkim (Gangtok)   Pharma related                      Secondary   Others
+942   Sikkim       East Sikkim (Gangtok)   Handloom and Handicraft             Tertiary    Handicraft
+943   Sikkim       North Sikkim (Mangan)   Buck Wheat                          Primary     Agriculture
+944   Sikkim       North Sikkim (Mangan)   Orange                              Secondary   Agriculture
+945   Sikkim       North Sikkim (Mangan)   Cardamom                            Tertiary    Agriculture
+946   Sikkim       North Sikkim (Mangan)   Handloom and Handicraft             Others      Handloom
+947   Sikkim       Pakyong                 Floriculture                        Primary     Agriculture
+948   Sikkim       Pakyong                 Cardamom                            Secondary   Agriculture
+949   Sikkim       Pakyong                 Dalle Chillies                      Tertiary    Agriculture
+950   Sikkim       Pakyong                 Handloom and Handicraft             Others      Handloom
+951   Sikkim       Soreng                  Cardamom                            Primary     Agriculture
+952   Sikkim       Soreng                  Animal Husbandry Related Products   Secondary   Agriculture
+953   Sikkim       Soreng                  Dalle Chillies                      Tertiary    Agriculture
+954   Sikkim       Soreng                  Handloom and Handicraft             Others      Handloom
+955   Sikkim       South Sikkim (Namchi)   Tea                                 Primary     Agriculture
+956   Sikkim       South Sikkim (Namchi)   Dalle Chillies                      Secondary   Agriculture
+957   Sikkim       South Sikkim (Namchi)   Handloom and Handicraft             Tertiary    Handloom
+958   Sikkim       West Sikkim (Geyzing)   Tourism                             Primary     Tourism
+959   Sikkim       West Sikkim (Geyzing)   Trout Fishing                       Secondary   Marine
+960   Sikkim       West Sikkim (Geyzing)   Handloom and Handicraft             Tertiary    Handloom
+961   Tamil Nadu   Ariyalur                Cashew Processing                   Primary     Food Processing
+962   Tamil Nadu   Chengalpattu            Automobile products                 Primary     Manufacturing
+963   Tamil Nadu   Chennai                   Engineering and Auto components   Primary     Manufacturing
+964   Tamil Nadu   Coimbatore                Motor Pumps                       Primary     Manufacturing
+965   Tamil Nadu   Cuddalore                 Cashew Nuts                       Primary     Agriculture
+966   Tamil Nadu   Dharmapuri                Ready Made Garments               Primary     Textile
+967   Tamil Nadu   Dharmapuri                Auto Components                   Secondary   Manufacturing
+968   Tamil Nadu   Dindigul                  Coir Pith Blocks                  Primary     Manufacturing
+969   Tamil Nadu   Dindigul                  Garlic                            Secondary   Agriculture
+970   Tamil Nadu   Dindigul                  Dindigul Locks                    Tertiary    Manufacturing
+971   Tamil Nadu   Erode                     Handloom and Powerloom products   Primary     Textile
+972   Tamil Nadu   Erode                     Turmeric                          Secondary   Agriculture
+973   Tamil Nadu   Erode                     Readymade Fabric                  Tertiary    Textile
+974   Tamil Nadu   Kallakurichi              Food Products - Rice              Primary     Food Processing
+975   Tamil Nadu   Kancheepuram              Textile Garments                  Primary     Textile
+976   Tamil Nadu   Kancheepuram              Silk                              Secondary   Handloom
+977   Tamil Nadu   Kanyakumari               Cashewnuts                        Primary     Agriculture
+978   Tamil Nadu   Karur                     Textiles - Home Made Ups          Primary     Textile
+979   Tamil Nadu   Krishnagiri               Mango - Food Processing           Primary     Food Processing
+980   Tamil Nadu   Madurai                   Readymade Garments                Primary     Textile
+981   Tamil Nadu   Mayiladuthurai            Rice                              Primary     Agriculture
+982   Tamil Nadu   Mayiladuthurai            Coconut                           Secondary   Agriculture
+983   Tamil Nadu   Nagapattinam              Marine foods                      Primary     Marine
+984   Tamil Nadu   Namakkal                  Poultry feed and products         Primary     Agriculture
+985   Tamil Nadu   Nilgiris                  Tea                               Primary     Agriculture
+986   Tamil Nadu   Perambalur                Maize                             Primary     Agriculture
+987   Tamil Nadu   Perambalur                Handicraft Products               Secondary   Handicraft
+988   Tamil Nadu   Pudukkottai               Engineering Products              Primary     Manufacturing
+989   Tamil Nadu   Pudukkottai               Cashew                            Secondary   Agriculture
+990   Tamil Nadu   Ramnad (Ramanathapuram)   Marine Foods                      Primary     Marine
+991   Tamil Nadu   Ramnad (Ramanathapuram)   Dry Fish                          Secondary   Marine
+992   Tamil Nadu   Ranipet                   Leather products                  Primary     Handicraft
+993   Tamil Nadu   Salem                     Silver Jewellery                  Primary     Handicraft
+994   Tamil Nadu   Salem                     Salem Silk                        Secondary   Handicraft
+995   Tamil Nadu   Sivagangai                Coir Products                     Primary     Handicraft
+996    Tamil Nadu   Sivagangai                   Miniature Cucumber                  Secondary   Agriculture
+997    Tamil Nadu   Tenkasi                      Coir pith block                     Primary     Handicraft
+998    Tamil Nadu   Thanjavur                    Agriculture Products - Coconuts     Primary     Agriculture
+999    Tamil Nadu   Thanjavur                    Handicraft & Handloom               Secondary   Handicraft
+1000   Tamil Nadu   Theni                        Textile Made Ups                    Primary     Textile
+1001   Tamil Nadu   Theni                        Banana                              Secondary   Agriculture
+1002   Tamil Nadu   Thiruvallur                  Engineering and Auto components     Primary     Manufacturing
+1003   Tamil Nadu   Thiruvallur                  Engineering Tools and Electronics   Secondary   Manufacturing
+1004   Tamil Nadu   Thiruvarur                   Agriculture Products                Primary     Agriculture
+1005   Tamil Nadu   Tiruchi (Thiruchirappalli)   Engineering Products                Primary     Manufacturing
+1006   Tamil Nadu   Tiruchi (Thiruchirappalli)   Leather Products                    Secondary   Handicraft
+1007   Tamil Nadu   Tirunelveli                  Readymade Garments                  Primary     Textile
+1008   Tamil Nadu   Tirupathur                   Leather products                    Primary     Handicraft
+1009   Tamil Nadu   Tiruppur                     Hosiery Garments                    Primary     Textile
+1010   Tamil Nadu   Tiruvannamalai               Edible Oil                          Primary     Food Processing
+1011   Tamil Nadu   Tuticorin (Thoothukudi)      Marine Foods                        Primary     Marine
+1012   Tamil Nadu   Vellore                      Leather Products                    Primary     Handicraft
+1013   Tamil Nadu   Villupuram                   Rice                                Primary     Agriculture
+1014   Tamil Nadu   Virudhunagar                 Gauze Cloth                         Primary     Textile
+1015   Tamil Nadu   Virudhunagar                 Sivakasi Crackers                   Secondary   Manufacturing
+1016   Telangana    Adilabad                     Cotton Bales                        Primary     Textile
+1017   Telangana    Bhadradri Kothagudem         Chillies                            Primary     Agriculture
+1018   Telangana    Hyderabad                    Studded gold jewllery               Primary     Manufacturing
+1019   Telangana    Jagtial                      Mango                               Primary     Agriculture
+1020   Telangana    Jangaon                      Brass Artifacts                     Primary     Manufacturing
+1021   Telangana    Jayashanker Bhupalpally      Chillies                            Primary     Agriculture
+1022   Telangana    Jogulamba Gadwal             Groundnut (Nuts)                    Primary     Agriculture
+1023   Telangana    Kamareddy                    Soyabean                            Primary     Agriculture
+1024   Telangana    Karimnager                   Granites                            Primary     Manufacturing
+1025   Telangana    Karimnager                   Silverfiligree                      Secondary   Handicraft
+1026   Telangana    Khamman                      Chillies                            Primary     Agriculture
+1027   Telangana    Khamman                      Granite                             Secondary   Manufacturing
+1028   Telangana    Kumaram Bheem Asifabad       Millets                             Primary     Agriculture
+1029   Telangana   Mahabubnager                   Mango (Banaganapalle)                          Primary     Agriculture
+1030   Telangana   Mancherial                     Mango                                          Primary     Agriculture
+1031   Telangana   Medak                          Tomato processed products                      Primary     Food Processing
+1032   Telangana   Medchal Malkajgiri             Pharmaceuticals & Biotech Products             Primary     Manufacturing
+1033   Telangana   Mhabubabad                     Chillies                                       Primary     Agriculture
+1034   Telangana   Mulugu                         Chillies                                       Primary     Agriculture
+1035   Telangana   Nagarkurnool                   Mango                                          Primary     Agriculture
+1036   Telangana   Nalgonda                       Cotton                                         Primary     Textile
+1037   Telangana   Narayanpet                     Cotton & Silk Sarees                           Primary     Textile
+1038   Telangana   Narayanpet                     Custard Apple (Pulp)                           Secondary   Food Processing
+1039   Telangana   Nirmal                         Cotton Bales                                   Primary     Textile
+1040   Telangana   Nizamabad                      Turmeric                                       Primary     Agriculture
+1041   Telangana   Peddapalli                     Rice based products                            Primary     Food Processing
+1042   Telangana   Rajanna Sircilla               Fisheries                                      Primary     Marine
+1043   Telangana   Ranga Reddy                    Biscuits & Confectionery                       Primary     Food Processing
+1044   Telangana   Sangareddy                     Engineering Products                           Primary     Manufacturing
+1045   Telangana   Siddipet                       Golabama Sarees                                Primary     Handloom
+1046   Telangana   Siddipet                       Cherial Paintings                              Secondary   Handicraft
+1047   Telangana   Suryapet                       Cement                                         Primary     Manufacturing
+1048   Telangana   Vikarabad                      Fullers Earth/Betonitte granules and powder    Primary     Manufacturing
+1049   Telangana   Wanaparthy                     Groundnut (Nuts)                               Primary     Agriculture
+1050   Telangana   Warangal Rural                 Warangal Durries                               Primary     Textile
+1051   Telangana   Warangal Urban (Hanumakonda)   Granite Slabs                                  Primary     Manufacturing
+1052   Telangana   Yadadri Bhuvanagiri            Handloom Ikkat Products                        Primary     Handloom
+1053   Tripura     Dhalai                         Queen Pineapple and Pineapple Based Products   Primary     Agriculture
+1054   Tripura     Gomati                         Risha                                          Primary     Handloom
+1055   Tripura     Gomati                         Matabari Pera                                  Secondary   Food Processing
+1056   Tripura     Khowai                         Scented Rice                                   Primary     Agriculture
+1057   Tripura     North Tripura                  Agar Products                                  Primary     Manufacturing
+1058   Tripura     Sepahijala                     Tripura Silk                                   Primary     Textile
+1059   Tripura     Sepahijala                     Wood and Bamboo based Handicraft Items         Secondary   Handicraft
+1060   Tripura     South Tripura                  Cashew Nut                                     Primary     Agriculture
+1061   Tripura     Unakoti                        Tea                                            Primary     Agriculture
+1062   Tripura         West Tripura                   Bamboo based products and Desktop Products      Primary     Handicraft
+1063   Uttar Pradesh   Agra                           Leather Products                                Primary     Handicraft
+1064   Uttar Pradesh   Agra                           Handicrafts- Stone & Marble                     Secondary   Handicraft
+1065   Uttar Pradesh   Aligarh                        Lock & Hardware                                 Primary     Manufacturing
+1066   Uttar Pradesh   Aligarh                        Metal Handicraft                                Secondary   Handicraft
+1067   Uttar Pradesh   Ambedkar Nagar                 Textile Products                                Primary     Textile
+1068   Uttar Pradesh   Amethi                         Moonj products                                  Primary     Handicraft
+1069   Uttar Pradesh   Amethi                         Food Processing                                 Secondary   Food Processing
+1070   Uttar Pradesh   Amroha                         Musical Instruments (Dholak)                    Primary     Manufacturing
+1071   Uttar Pradesh   Amroha                         Readymade Garments                              Secondary   Textile
+1072   Uttar Pradesh   Auraiya                        Milk Processing (Desi Ghee) and Milk Products   Primary     Dairy
+1073   Uttar Pradesh   Ayodhya (Faizabad)             Jaggery Products                                Primary     Food Processing
+1074   Uttar Pradesh   Azamgarh                       Black Pottery Artefacts                         Primary     Handicraft
+1075   Uttar Pradesh   Azamgarh                       Textile Products (Reshmi Sari)                  Secondary   Handloom
+1076   Uttar Pradesh   Baghpat                        Home Decorative Goods                           Primary     Manufacturing
+1077   Uttar Pradesh   Bahraich                       (Wheat Stalk) Handicrafts                       Primary     Handicraft
+1078   Uttar Pradesh   Bahraich                       Food Processing                                 Secondary   Food Processing
+1079   Uttar Pradesh   Ballia                         Bindi (Tikuli)                                  Primary     Handicraft
+1080   Uttar Pradesh   Balrampur                      Food Processing (Pulses)                        Primary     Food Processing
+1081   Uttar Pradesh   Banda                          Shazar Stone Craft                              Primary     Handicraft
+1082   Uttar Pradesh   Barabanki                      Handloom Products and Textile Products          Primary     Textile
+1083   Uttar Pradesh   Bareilly                       Zari and Zardozi                                Primary     Handicraft
+1084   Uttar Pradesh   Bareilly                       Bamboo Products                                 Secondary   Handicraft
+1085   Uttar Pradesh   Bareilly                       Goldsmith Industry                              Tertiary    Handicraft
+1086   Uttar Pradesh   Basti                          Wooden Crafts                                   Primary     Handicraft
+1087   Uttar Pradesh   Basti                          Vinegar Products                                Secondary   Food Processing
+1088   Uttar Pradesh   Bhadohi (Sant Ravidas Nagar)   Carpet (Dari)                                   Primary     Handicraft
+1089   Uttar Pradesh   Bijnor                         Wood Craft                                      Primary     Manufacturing
+1090   Uttar Pradesh   Budaun                         Zari and Zardozi                                Primary     Handicraft
+1091   Uttar Pradesh   Bulandshahar                   Ceramic Products                                Primary     Manufacturing
+1092   Uttar Pradesh   Chandauli                      Zari-Zardozi                                    Primary     Handicraft
+1093   Uttar Pradesh   Chandauli                      Black Rice                                      Secondary   Agriculture
+1094   Uttar Pradesh   Chitrakoot                     Wooden Toys and Wood Art Products               Primary     Handicraft
+1095   Uttar Pradesh   Deoria               Decorative Products                                  Primary     Handicraft
+1096   Uttar Pradesh   Deoria               Embroidery and Weaving (Knitting) Products           Secondary   Handloom
+1097   Uttar Pradesh   Deoria               Readymade Garments                                   Tertiary    Textile
+1098   Uttar Pradesh   Etah                 Ankle Bells (Ghungroo), Bells and Brass Products     Primary     Manufacturing
+1099   Uttar Pradesh   Etawah               Textile Products, Tailoring and Garment Embroidery   Primary     Textile
+1100   Uttar Pradesh   Farrukhabad          Textile Printing                                     Primary     Textile
+1101   Uttar Pradesh   Farrukhabad          Zari Zardozi                                         Secondary   Handicraft
+1102   Uttar Pradesh   Fatehpur             Bedsheets                                            Primary     Textile
+1103   Uttar Pradesh   Fatehpur             Iron Fabrication Work                                Secondary   Manufacturing
+1104   Uttar Pradesh   Firozabad            Glassware                                            Primary     Manufacturing
+1105   Uttar Pradesh   Gautam Buddh Nagar   Readymade Garments and Textile Products              Primary     Textile
+1106   Uttar Pradesh   Ghaziabad            Engineering goods                                    Primary     Manufacturing
+1107   Uttar Pradesh   Ghazipur             Jute Wall hangings                                   Primary     Handicraft
+1108   Uttar Pradesh   Gonda                Food Processing                                      Primary     Food Processing
+1109   Uttar Pradesh   Gorakhpur            Terracotta                                           Primary     Handicraft
+1110   Uttar Pradesh   Gorakhpur            Readymade Garments                                   Secondary   Textile
+1111   Uttar Pradesh   Hamirpur             Shoes                                                Primary     Manufacturing
+1112   Uttar Pradesh   Hapur                Home Decorative Goods                                Primary     Manufacturing
+1113   Uttar Pradesh   Hardoi               Handloom Products and Textile Products               Primary     Handloom
+1114   Uttar Pradesh   Hathras              Hing (Asafoetida) Processing                         Primary     Agriculture
+1115   Uttar Pradesh   Hathras              Ready Made Garments                                  Secondary   Textile
+1116   Uttar Pradesh   Jalaun               Handmade Paper Art                                   Primary     Handicraft
+1117   Uttar Pradesh   Jalaun               Peas Processing                                      Secondary   Food Processing
+1118   Uttar Pradesh   Jaunpur              Woollen Carpets (Dari)                               Primary     Textile
+1119   Uttar Pradesh   Jhansi               Soft Toys                                            Primary     Manufacturing
+1120   Uttar Pradesh   Jhansi               Textile Products                                     Secondary   Manufacturing
+1121   Uttar Pradesh   Kannauj              Perfume (Attar), Incense Sticks and Products         Primary     Manufacturing
+1122   Uttar Pradesh   Kanpur Dehat         Zinc Utensils                                        Primary     Manufacturing
+1123   Uttar Pradesh   Kanpur Dehat         Plastic Products                                     Secondary   Manufacturing
+1124   Uttar Pradesh   Kanpur Nagar         Leather Products                                     Primary     Handicraft
+1125   Uttar Pradesh   Kanpur Nagar         Hosiery and Textile Products                         Secondary   Textile
+1126   Uttar Pradesh   Kasganj              Zari Zardozi                                         Primary     Handicraft
+1127   Uttar Pradesh   Kaushambi            Food Processing (Banana and Guava)                   Primary     Food Processing
+1128   Uttar Pradesh   Kushinagar         Banana Fiber Products and Banana Products         Primary     Agriculture
+1129   Uttar Pradesh   Lakhimpur Kheri    Tribal craft                                      Primary     Handicraft
+1130   Uttar Pradesh   Lakhimpur Kheri    Jaggery Products                                  Secondary   Food Processing
+1131   Uttar Pradesh   Lalitpur           Zari Silk Sarees                                  Primary     Handloom
+1132   Uttar Pradesh   Lalitpur           Food Processing                                   Secondary   Food Processing
+1133   Uttar Pradesh   Lalitpur           School Dress (Readymade Garments/Hosiery)         Tertiary    Textile
+1134   Uttar Pradesh   Lucknow            Chikankari & Zari Zardozi                         Primary     Textile
+1135   Uttar Pradesh   Maharajganj        Furniture                                         Primary     Manufacturing
+1136   Uttar Pradesh   Mahoba             Gaura Stone Craft and Metal Crafts                Primary     Handicraft
+1137   Uttar Pradesh   Mainpuri           Tarkashi Art                                      Primary     Handicraft
+1138   Uttar Pradesh   Mainpuri           Textile Sewing                                    Secondary   Manufacturing
+1139   Uttar Pradesh   Mainpuri           Zari Zardozi                                      Tertiary    Handicraft
+1140   Uttar Pradesh   Mathura            Sanitary Fittings                                 Primary     Manufacturing
+1141   Uttar Pradesh   Mathura            Costume of Thakurji                               Secondary   Handicraft
+1142   Uttar Pradesh   Mathura            Shrinagar Sculpture and Kanthi Mala               Tertiary    Handicraft
+1143   Uttar Pradesh   Mau                Powerloom Textile                                 Primary     Textile
+1144   Uttar Pradesh   Meerut             Sports Goods                                      Primary     Manufacturing
+1145   Uttar Pradesh   Mirzapur           Carpets                                           Primary     Textile
+1146   Uttar Pradesh   Mirzapur           Metal Industry (Brass)                            Secondary   Handicraft
+1147   Uttar Pradesh   Moradabad          Metal Craft                                       Primary     Manufacturing
+1148   Uttar Pradesh   Muzaffarnagar      Jaggery Products                                  Primary     Food Processing
+1149   Uttar Pradesh   Pilibhit           Flute and Wooden Products                         Primary     Manufacturing
+1150   Uttar Pradesh   Pratapgarh         Food Processing (Aamla Products)                  Primary     Food Processing
+1151   Uttar Pradesh   Prayagraj          Moonj products                                    Primary     Handicraft
+1152   Uttar Pradesh   Prayagraj          Food Processing                                   Secondary   Food Processing
+1153   Uttar Pradesh   Raebareli          Wood Work                                         Primary     Handicraft
+                                          Applique Work along with Patch Work, Zari Patch
+1154   Uttar Pradesh   Rampur                                                               Primary     Handicraft
+                                          work, and Mentha
+1155   Uttar Pradesh   Saharanpur         Wood Carving                                      Primary     Handicraft
+1156   Uttar Pradesh   Sambhal            Handicraft (Horn-Bone Products)                   Primary     Handicraft
+1157   Uttar Pradesh   Sant Kabir Nagar   Brass Utensils                                    Primary     Manufacturing
+1158   Uttar Pradesh   Sant Kabir Nagar   Hosiery Products                                  Secondary   Manufacturing
+1159   Uttar Pradesh   Shahjahanpur       Zari and Zardozi                                  Primary     Handicraft
+1160   Uttar Pradesh   Shamli              Rim and Axle and Iron Work        Primary     Handicraft
+1161   Uttar Pradesh   Shravasti           Tribal craft and Furniture        Primary     Handicraft
+1162   Uttar Pradesh   Siddharthnagar      Kala namak Rice                   Primary     Food Processing
+1163   Uttar Pradesh   Sitapur             Carpets (Dari)                    Primary     Textile
+1164   Uttar Pradesh   Sonbhadra           Carpets                           Primary     Textile
+1165   Uttar Pradesh   Sultanpur           Moonj Products                    Primary     Handicraft
+1166   Uttar Pradesh   Sultanpur           Iron and Steel Fabrication        Secondary   Manufacturing
+1167   Uttar Pradesh   Unnao               Zari Zardozi                      Primary     Handicraft
+1168   Uttar Pradesh   Unnao               Leather Products                  Secondary   Manufacturing
+1169   Uttar Pradesh   Varanasi            Silk Products                     Primary     Textile
+1170   Uttar Pradesh   Varanasi            Pink Enamel (Gulaabi Minakari)    Secondary   Handicraft
+1171   Uttar Pradesh   Varanasi            Wooden Lacquer Ware               Tertiary    Handicraft
+1172   Uttar Pradesh   Varanasi            Toys                              Others      Handicraft
+1173   Uttarakhand     Almora              Bal Mithai                        Primary     Food Processing
+1174   Uttarakhand     Bageshwar           Copper based products             Primary     Handicraft
+1175   Uttarakhand     Chamoli             Nettle based products             Primary     Food Processing
+1176   Uttarakhand     Champawat           Himalyan Honey                    Primary     Agriculture
+1177   Uttarakhand     Dehradun            Bakery                            Primary     Food Processing
+1178   Uttarakhand     Haridwar            Jaggery                           Primary     Food Processing
+1179   Uttarakhand     Nanital             Aipan Products                    Primary     Handicraft
+1180   Uttarakhand     Pauri Garwal        Herbal Products                   Primary     Agriculture
+1181   Uttarakhand     Pithoragarh         Woollen Product                   Primary     Handloom
+1182   Uttarakhand     Rudraprayag         Wood Crafts (Temple imitiation)   Primary     Handicraft
+1183   Uttarakhand     Tehri Garhwal       Natural fibre                     Primary     Textile
+1184   Uttarakhand     Udham Singh Nagar   Moonj Grass product               Primary     Handicraft
+1185   Uttarakhand     Uttarkashi          Red Rice                          Primary     Agriculture
+1186   West Bengal     Alipurduar          Wooden Furniture                  Primary     Handicraft
+1187   West Bengal     Alipurduar          Plywood & Allied Products         Secondary   Manufacturing
+1188   West Bengal     Alipurduar          Steel Furniture                   Tertiary    Manufacturing
+1189   West Bengal     Bankura             Terracota                         Primary     Handicraft
+1190   West Bengal     Bankura             Dokra                             Secondary   Handicraft
+1191   West Bengal     Bankura             Baluchari                         Tertiary    Handloom
+1192   West Bengal     Birbhum             Santiniketan Leather goods        Primary     Handicraft
+1193   West Bengal   Birbhum             Kantha                                            Secondary   Handloom
+1194   West Bengal   Cooch Behar         Sital pati & its products                         Primary     Handicraft
+1195   West Bengal   Cooch Behar         Mekhla dress materials                            Secondary   Handloom
+1196   West Bengal   Dakshin Dinajpur    Wooden Mask & Wall Hanging                        Primary     Handicraft
+1197   West Bengal   Dakshin Dinajpur    Bamboo Craft                                      Secondary   Handicraft
+1198   West Bengal   Darjeeling          Darjeeling Tea                                    Primary     Agriculture
+1199   West Bengal   Darjeeling          Orange                                            Secondary   Agriculture
+1200   West Bengal   Darjeeling          Darjeeling Honey                                  Tertiary    Food Processing
+1201   West Bengal   Hooghly             Handloom saree (Dhaniakhali)                      Primary     Handloom
+1202   West Bengal   Hooghly             Costume Jewellery                                 Secondary   Manufacturing
+1203   West Bengal   Hooghly             Chikan Embroidery                                 Tertiary    Handloom
+1204   West Bengal   Howrah              Gems & Jewellery                                  Primary     Handicraft
+1205   West Bengal   Howrah              Engineering Goods                                 Secondary   Manufacturing
+1206   West Bengal   Jalpaiguri          Tea                                               Primary     Agriculture
+1207   West Bengal   Jalpaiguri          Cane Furniture                                    Secondary   Manufacturing
+1208   West Bengal   Jalpaiguri          Wood Carving                                      Tertiary    Handicraft
+1209   West Bengal   Jhargram            Sal leaf based products                           Primary     Manufacturing
+1210   West Bengal   Jhargram            Sabai grass-based Handicraft                      Secondary   Handicraft
+1211   West Bengal   Kalimpong           Orchid & Flowers                                  Primary     Agriculture
+1212   West Bengal   Kalimpong           Large Cardamom                                    Secondary   Agriculture
+1213   West Bengal   Kolkata             Leather goods                                     Primary     Handicraft
+1214   West Bengal   Kolkata             Kids wear/ Readymade Garments                     Secondary   Textile
+1215   West Bengal   Malda               Silk and Silk products                            Primary     Textile
+1216   West Bengal   Malda               Makhana                                           Secondary   Agriculture
+1217   West Bengal   Malda               Mango and its processed products                  Tertiary    Food Processing
+1218   West Bengal   Murshidabad         Murshidabad Silk Saree/Scarf                      Primary     Handloom
+1219   West Bengal   Murshidabad         Mango and its processed products                  Secondary   Food Processing
+1220   West Bengal   Nadia               Tangail, Jamdani Saree & Shantipore Saree         Primary     Handloom
+1221   West Bengal   Nadia               Clay Doll                                         Secondary   Handicraft
+1222   West Bengal   North 24 Parganas   Steel Furniture                                   Primary     Manufacturing
+1223   West Bengal   North 24 Parganas   Jute diversified products                         Secondary   Handicraft
+1224   West Bengal   North 24 Parganas   Jewllery box                                      Tertiary    Handicraft
+1225   West Bengal   Paschim Bardhaman   Refractory bricks & similar refractory ceramics   Primary     Manufacturing
+                         Paschim Medinipur (West
+1226   West Bengal                                         Patachitra                           Primary     Handicraft
+                         Medinipur)
+                         Paschim Medinipur (West
+1227   West Bengal                                         Madur (Mat) & Mat products           Secondary   Handicraft
+                         Medinipur)
+                         Paschim Medinipur (West
+1228   West Bengal                                         Fabricated Steel Products            Tertiary    Manufacturing
+                         Medinipur)
+1229   West Bengal       Purba Bardhaman                   Dokra                                Primary     Handicraft
+1230   West Bengal       Purba Bardhaman                   Rice Bran Oil & De-oiled Rice Bran   Secondary   Food Processing
+1231   West Bengal       Purba Bardhaman                   Tangail, Jamdani Saree               Tertiary    Handloom
+1232   West Bengal       Purba Bardhaman                   Sitabhog- Mihidana                   Others      Food Processing
+1233   West Bengal       Purba Medinipur (East Medinipur) Processed cashew nuts                 Primary     Food Processing
+1234   West Bengal       Purba Medinipur (East Medinipur) Patachitra                            Secondary   Handicraft
+1235   West Bengal       Purba Medinipur (East Medinipur) Human Hair (Washed)                   Tertiary    Others
+1236   West Bengal       Purba Medinipur (East Medinipur) Marine Products                       Others      Marine
+1237   West Bengal       Purulia                           Lac & Lac Products                   Primary     Handicraft
+1238   West Bengal       Purulia                           Chow Mask                            Secondary   Handicraft
+1239   West Bengal       South 24 Parganas                 Leather Goods                        Primary     Handicraft
+1240   West Bengal       South 24 Parganas                 Marine Products                      Secondary   Marine
+1241   West Bengal       South 24 Parganas                 Sundarban Honey                      Tertiary    Agriculture
+1242   West Bengal       Uttar Dinajpur (North Dinajpur)   Tulai Panji Rice (Aromatic Rice)     Primary     Agriculture
+1243   West Bengal       Uttar Dinajpur (North Dinajpur)   Jute diversified products            Secondary   Handicraft
+
+
+   Product Awaited For                 State
+ 1            Mauganj              Madhya Pradesh
+ 2            Maihar               Madhya Pradesh
+ 3           Pandhurna             Madhya Pradesh
+ 4             Meluri                Nagaland
+

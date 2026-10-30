@@ -10,6 +10,7 @@ import { Button, CursorTooltip, Icon, Spinner } from "@/components/ui";
 import { states } from "@/data/india";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { setUrlParams } from "@/hooks/useUrlParam";
+import { districtPath } from "@/lib/districts";
 import { stateNameToCode } from "@/lib/map-projection";
 import { createStateMetricColorScale, isMapMetric, type MapMetric } from "@/lib/map-view";
 import { METRICS } from "@/lib/metrics";
@@ -599,7 +600,7 @@ export default function MapPage() {
           const name: string | undefined = district?.properties?.district;
           if (district && name) {
             const code = district.layer.id.slice("d-fill-".length);
-            routerRef.current.push(`/state/${code}#district-${encodeURIComponent(name)}`);
+            routerRef.current.push(districtPath(code, name));
             return;
           }
           const code = stateNameToCode[features.find((f) => f.layer.id === "state-fill")?.properties?.ST_NM];

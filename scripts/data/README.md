@@ -62,3 +62,29 @@ bun run build:names -- --fetch   # refresh the snapshot from Wikidata first (nee
 - `sources/name-overrides.json` fixes wrong or outdated labels, per language, state and English name.
   Add corrections there rather than editing the generated files.
 - Places with no label in a language fall back to English.
+
+## Neighbouring districts
+
+`build_neighbours.ts` writes `src/data/neighbours.json`, the districts that share a border with each district
+in the same state, worked out from shared boundary points in `public/geo/states/<STATE>.json`.
+
+```sh
+bun run build:neighbours
+```
+
+Run it again whenever district boundaries or names change. `bun run check:data` fails if it is out of date.
+
+## One District One Product
+
+`build_odop.py` writes `src/data/odop.json`, the ODOP products for each district.
+
+```sh
+bun run build:odop
+```
+
+- `sources/odop/odop-product-list-v33.txt` is the text of DPIIT's *ODOP Product List, V33 (31 December 2025)*,
+  extracted with `pdftotext -layout` from <https://static.investindia.gov.in/s3fs-public/2026-02/odop_product_list.pdf>
+  (linked from <https://www.investindia.gov.in/one-district-one-product>). To update, replace it with the text of a newer list.
+- `ALIASES` in the script maps the list's district spellings to ours. Districts created after our boundaries
+  (for example Rajasthan's 2023 districts) are reported and left out rather than assigned to a parent district.
+- Product names are kept in English as published.

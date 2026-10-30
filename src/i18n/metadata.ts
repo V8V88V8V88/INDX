@@ -8,9 +8,10 @@ interface PageMetadataOptions {
   href: string;
   title: string;
   description: string;
+  image?: string;
 }
 
-export function pageMetadata({ locale, href, title, description }: PageMetadataOptions): Metadata {
+export function pageMetadata({ locale, href, title, description, image }: PageMetadataOptions): Metadata {
   const url = getPathname({ href, locale });
   return {
     title,
@@ -22,8 +23,8 @@ export function pageMetadata({ locale, href, title, description }: PageMetadataO
         ["x-default", getPathname({ href, locale: routing.defaultLocale })],
       ]),
     },
-    openGraph: { title, description, url, siteName: "INDX", locale, type: "website" },
-    twitter: { card: "summary_large_image", title, description },
+    openGraph: { title, description, url, siteName: "INDX", locale, type: "website", ...(image && { images: [image] }) },
+    twitter: { card: "summary_large_image", title, description, ...(image && { images: [image] }) },
   };
 }
 

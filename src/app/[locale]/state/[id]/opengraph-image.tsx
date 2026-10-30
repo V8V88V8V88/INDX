@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
 import { formatPopulation, getStateById, states } from "@/data/india";
 import { routing } from "@/i18n/routing";
-import { OG_SIZE, OgCard, ogFonts, ogText, shapePath } from "@/lib/og";
+import { OG_SIZE, OgCard, ogFonts, shapePath } from "@/lib/og";
 
 export const size = OG_SIZE;
 export const contentType = "image/png";
@@ -28,6 +28,6 @@ export default async function Image({ params }: { params: Promise<{ id: string }
 
   return new ImageResponse(
     <OgCard title={title} subtitle={subtitle} stats={stats} paths={await shapePath(`geo/states/${state.id}.json`, 500)} />,
-    { ...size, fonts: await ogFonts(ogText(title, subtitle, ...stats.flatMap((s) => [s.label, s.value]))) },
+    { ...size, fonts: await ogFonts() },
   );
 }

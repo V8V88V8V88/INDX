@@ -46,7 +46,8 @@
     "footer": "ফুটার",
     "source": "সোর্স কোড",
     "madeBy": "নির্মাতা",
-    "skipToContent": "মূল বিষয়বস্তুতে যান"
+    "skipToContent": "মূল বিষয়বস্তুতে যান",
+    "menu": "মেনু"
   },
   "Metrics": {
     "label": "মাপকাঠি",
@@ -192,7 +193,6 @@
     "statesAndUts": "রাজ্য ও কেন্দ্রশাসিত অঞ্চল",
     "statesAndUtsValue": "{states} ও {uts}",
     "districtCount": "{count}টি জেলা",
-    "hdiSubtitle": "মানব উন্নয়ন সূচক · UNDP 2023",
     "rankings": "র‍্যাঙ্কিং",
     "sortOrder": "ক্রম",
     "highestFirst": "সর্বোচ্চ আগে",
@@ -358,7 +358,8 @@
       "hdi": "উপ-জাতীয় মানব উন্নয়ন সূচক, 2023",
       "wikipedia": "আজকের জেলা সীমানায় 2011 জনগণনার সংখ্যা ও GSDP-র তালিকা",
       "boundaries": "রাজ্য ও জেলার সীমানা",
-      "names": "ভারতীয় ভাষায় জেলা ও শহরের নাম"
+      "names": "ভারতীয় ভাষায় জেলা ও শহরের নাম",
+      "odop": "এক জেলা এক পণ্য তালিকা, সংস্করণ 33 (31 ডিসেম্বর 2025)"
     },
     "openDataTitle": "উন্মুক্ত তথ্য",
     "openDataIntro": "INDX-এর সব তথ্য বিনামূল্যে ব্যবহার করা যায়। CSV হিসেবে ডাউনলোড করুন বা নিচের JSON API থেকে নিন, আর প্রকাশ করার সময় INDX ও মূল উৎসের নাম উল্লেখ করুন।",
@@ -380,5 +381,36 @@
     "copied": "কপি হয়েছে",
     "open": "INDX-এ খুলুন",
     "frameTitle": "{metric} অনুযায়ী {place}, INDX থেকে"
+  },
+  "District": {
+    "eyebrow": "জেলা · {state}",
+    "title": "{name}, {state}",
+    "description": "{state}-এর {name} জেলার জনসংখ্যা, আয়তন, সাক্ষরতা ও লিঙ্গ অনুপাত, এবং রাজ্যে ও ভারতে এর স্থান।",
+    "neighbours": "প্রতিবেশী জেলা",
+    "allDistricts": "{state}-এর সব জেলা",
+    "openPage": "জেলার পেজ খুলুন",
+    "district": "জেলা",
+    "noNeighbours": "এই রাজ্যে কোনো প্রতিবেশী জেলা নেই।"
+  },
+  "Odop": {
+    "title": "এক জেলা এক পণ্য",
+    "none": "এই জেলার জন্য এখনও কোনো ODOP পণ্য তালিকাভুক্ত নেই।",
+    "categories": {
+      "Primary": "প্রধান",
+      "Secondary": "দ্বিতীয়",
+      "Tertiary": "তৃতীয়",
+      "Others": "এর জন্যও পরিচিত"
+    },
+    "sectors": {
+      "Agriculture": "কৃষি",
+      "Food Processing": "খাদ্য প্রক্রিয়াকরণ",
+      "Handicraft": "হস্তশিল্প",
+      "Handloom": "তাঁত",
+      "Textile": "বস্ত্র",
+      "Manufacturing": "উৎপাদন শিল্প",
+      "Marine": "সামুদ্রিক",
+      "Dairy": "দুগ্ধ",
+      "Others": "অন্যান্য"
+    }
   }
 }

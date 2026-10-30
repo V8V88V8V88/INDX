@@ -7,9 +7,10 @@ import { useFormat } from "@/hooks/useFormat";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { getStateById } from "@/data/india";
 import { cn } from "@/lib/cn";
+import { districtPath } from "@/lib/districts";
 import { PlaceBadges } from "./PlaceBadges";
 import { reportDataErrorUrl } from "./SourcesInfo";
-import { Button, Icon, Stat, buttonStyles } from "./ui";
+import { Button, Icon, LinkButton, Stat, buttonStyles } from "./ui";
 
 interface DistrictInfoCardProps {
   district: District | null;
@@ -23,6 +24,7 @@ const statClass = "px-3 py-2.5";
 export function DistrictInfoCard({ district, districtName, onClose, className }: DistrictInfoCardProps) {
   const { formatPopulation, formatArea, formatDensity } = useFormat();
   const t = useTranslations("Districts");
+  const tDistrict = useTranslations("District");
   const tCommon = useTranslations("Common");
   const tMetrics = useTranslations("Metrics");
   const { placeName } = usePlaceNames();
@@ -69,6 +71,12 @@ export function DistrictInfoCard({ district, districtName, onClose, className }:
           <Stat className={statClass} size="sm" label={tMetrics("literacyRate.short")} value={`${district.literacyRate}%`} />
           {district.sexRatio > 0 && <Stat className={statClass} size="sm" label={tMetrics("sexRatio.short")} value={district.sexRatio} />}
           {district.headquarters && <Stat className={statClass} size="sm" label={t("hq")} value={placeName(district.stateId, district.headquarters)} />}
+          <div className="col-span-3 px-2 pb-1.5 pt-1">
+            <LinkButton href={districtPath(district.stateId, district.name)} size="sm" className="w-full">
+              {tDistrict("openPage")}
+              <Icon name="arrow-up" size={14} className="rotate-90" />
+            </LinkButton>
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-3 p-1">

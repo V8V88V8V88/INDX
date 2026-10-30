@@ -21,6 +21,7 @@ const SOURCES = [
   { id: "wikipedia", name: "Wikipedia", href: "https://www.wikipedia.org" },
   { id: "boundaries", name: "India Maps Data", href: "https://github.com/udit-001/india-maps-data" },
   { id: "names", name: "Wikidata", href: "https://www.wikidata.org" },
+  { id: "odop", name: "DPIIT / Invest India ODOP", href: "https://www.investindia.gov.in/one-district-one-product" },
 ] as const;
 
 const ENDPOINTS = [
