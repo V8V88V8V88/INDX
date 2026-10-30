@@ -9,21 +9,14 @@ const BG = "#0a0a0a";
 const ACCENT = "#14b8a6";
 const MUTED = "#a1a1aa";
 
-async function googleFont(family: string, weight: number, text: string) {
-  const url = `https://fonts.googleapis.com/css2?family=${family.replace(/ /g, "+")}:wght@${weight}&text=${encodeURIComponent(text)}`;
-  const css = await (await fetch(url)).text();
-  const source = css.match(/src: url\((.+?)\) format\('(opentype|truetype)'\)/)?.[1];
-  if (!source) throw new Error(`No font file for ${family}`);
-  return (await fetch(source)).arrayBuffer();
-}
-
-export async function ogFonts(text: string) {
+export async function ogFonts() {
+  const font = await readFile(path.join(process.cwd(), "node_modules/next/dist/compiled/@vercel/og/Geist-Regular.ttf"));
+  const data = font.buffer.slice(font.byteOffset, font.byteOffset + font.byteLength) as ArrayBuffer;
   return [
-    { name: "Inter", data: await googleFont("Inter", 400, text), weight: 400 as const },
-    { name: "Inter", data: await googleFont("Inter", 700, text), weight: 700 as const },
+    { name: "Geist", data, weight: 400 as const },
+    { name: "Geist", data, weight: 700 as const },
   ];
 }
-
 function decimate(minDistance: number): d3.GeoStreamWrapper {
   return {
     stream(output) {
@@ -83,7 +76,7 @@ export function OgCard({ title, subtitle, stats, paths }: {
   const shapeSize = 500;
 
   return (
-    <div style={{ display: "flex", width: "100%", height: "100%", background: BG, color: "#fafafa", fontFamily: "Inter", padding: 64 }}>
+    <div style={{ display: "flex", width: "100%", height: "100%", background: BG, color: "#fafafa", fontFamily: "Geist", padding: 64 }}>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, paddingRight: 32 }}>
         <div style={{ display: "flex", alignItems: "baseline", fontSize: 40, fontWeight: 700, letterSpacing: -1.5 }}>
           INDX
@@ -111,8 +104,4 @@ export function OgCard({ title, subtitle, stats, paths }: {
       </div>
     </div>
   );
-}
-
-export function ogText(...parts: string[]) {
-  return parts.join(" ") + " INDX0123456789.,·#%&()+-/";
 }
