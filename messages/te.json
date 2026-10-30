@@ -24,7 +24,8 @@
     "compare": "పోల్చండి",
     "dataSources": "డేటా మూలాలు",
     "allSources": "అన్ని మూలాలు",
-    "sortAZ": "అ–హ"
+    "sortAZ": "అ–హ",
+    "reportError": "డేటాలో తప్పును తెలియజేయండి"
   },
   "Nav": {
     "map": "మ్యాప్",

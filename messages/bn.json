@@ -24,7 +24,8 @@
     "compare": "তুলনা করুন",
     "dataSources": "তথ্যসূত্র",
     "allSources": "সব তথ্যসূত্র",
-    "sortAZ": "অ–য়"
+    "sortAZ": "অ–য়",
+    "reportError": "তথ্যে ভুল জানান"
   },
   "Nav": {
     "map": "মানচিত্র",

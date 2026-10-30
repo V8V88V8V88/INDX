@@ -13,7 +13,7 @@ import { useFormat } from "@/hooks/useFormat";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { getMetricPaletteIndices } from "@/lib/map-view";
-import { REGIONS } from "@/lib/metrics";
+import { METRIC_SOURCES, REGIONS } from "@/lib/metrics";
 import type { MetricKey, State } from "@/types";
 
 type SortOrder = "desc" | "asc" | "alpha";
@@ -108,6 +108,7 @@ export default function Home() {
               </div>
               <span className="text-xs text-text-muted">{tCommon("high")}</span>
               <span className="ml-4 text-xs font-medium text-text-tertiary">{tMetrics(`${metric}.long`)}</span>
+              <span className="text-xs text-text-muted">{METRIC_SOURCES[metric]}</span>
             </div>
           </motion.div>
         </section>
@@ -125,7 +126,9 @@ export default function Home() {
 
           <div className="mb-4 flex items-center justify-between gap-3">
             <SegmentedControl label={t("filterByRegion")} size="sm" options={regionOptions} value={region} onChange={setRegion} scrollable />
-            <SourcesInfo className="shrink-0">{t("sources")}</SourcesInfo>
+            <SourcesInfo className="shrink-0" place="India">
+              {t("sources")}
+            </SourcesInfo>
           </div>
 
           <Card plain key={metric} trigger={isPageReady}>

@@ -24,7 +24,8 @@
     "compare": "સરખામણી કરો",
     "dataSources": "ડેટા સ્રોત",
     "allSources": "બધા સ્રોત",
-    "sortAZ": "અ–જ્ઞ"
+    "sortAZ": "અ–જ્ઞ",
+    "reportError": "ડેટામાં ભૂલ જણાવો"
   },
   "Nav": {
     "map": "નકશો",

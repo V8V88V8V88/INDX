@@ -2,12 +2,17 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
+import { newIssueUrl } from "@/lib/site";
 import { Link } from "@/i18n/navigation";
 import { Button, Icon } from "./ui";
 
 const VISIBLE_MS = 5000;
 
-export function SourcesInfo({ children, className }: { children: ReactNode; className?: string }) {
+export function reportDataErrorUrl(place: string) {
+  return newIssueUrl("data-error.yml", { title: `Data error: ${place}`, place, page: window.location.href });
+}
+
+export function SourcesInfo({ children, className, place }: { children: ReactNode; className?: string; place?: string }) {
   const [open, setOpen] = useState(false);
   const t = useTranslations("Common");
 
@@ -40,6 +45,17 @@ export function SourcesInfo({ children, className }: { children: ReactNode; clas
             <Link href="/about" className="text-text-primary underline-offset-2 hover:underline">
               {t("allSources")}
             </Link>
+            {place && (
+              <a
+                href={reportDataErrorUrl(place)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 flex items-center gap-1.5 text-text-primary underline-offset-2 hover:underline"
+              >
+                <Icon name="flag" size={12} />
+                {t("reportError")}
+              </a>
+            )}
           </div>
         )}
       </div>

@@ -22,6 +22,7 @@ export type IconName =
   | "minus"
   | "layers"
   | "languages"
+  | "flag"
   | "info";
 
 const paths: Record<IconName, ReactNode> = {
@@ -95,6 +96,12 @@ const paths: Record<IconName, ReactNode> = {
     <>
       <circle cx="12" cy="12" r="10" />
       <path d="M12 16v-4M12 8h.01" />
+    </>
+  ),
+  flag: (
+    <>
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <path d="M4 22v-7" />
     </>
   ),
   languages: (

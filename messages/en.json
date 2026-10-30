@@ -24,7 +24,8 @@
     "compare": "Compare",
     "dataSources": "Data sources",
     "allSources": "All sources",
-    "sortAZ": "A–Z"
+    "sortAZ": "A–Z",
+    "reportError": "Report a data error"
   },
   "Nav": {
     "map": "Map",

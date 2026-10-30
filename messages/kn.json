@@ -24,7 +24,8 @@
     "compare": "ಹೋಲಿಸಿ",
     "dataSources": "ಡೇಟಾ ಮೂಲಗಳು",
     "allSources": "ಎಲ್ಲಾ ಮೂಲಗಳು",
-    "sortAZ": "ಅ–ಳ"
+    "sortAZ": "ಅ–ಳ",
+    "reportError": "ಡೇಟಾ ದೋಷವನ್ನು ತಿಳಿಸಿ"
   },
   "Nav": {
     "map": "ನಕ್ಷೆ",

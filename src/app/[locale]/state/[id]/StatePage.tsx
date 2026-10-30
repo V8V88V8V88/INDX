@@ -24,6 +24,7 @@ import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { colorIndexForRank, getMetricPaletteIndices, type MapMetric } from "@/lib/map-view";
+import { DISTRICT_SOURCES, METRIC_SOURCES } from "@/lib/metrics";
 import type { District, State } from "@/types";
 
 function normalizeDistrictName(name: string): string {
@@ -227,6 +228,7 @@ export function StatePage({ id }: { id: string }) {
                 title={t("populationYear", { year: 2026 })}
                 value={formatPopulation(state.population)}
                 subtitle={tCommon("rankInIndia", { rank: populationRank })}
+                source={METRIC_SOURCES.population}
                 delay={0.1}
                 trigger={isPageReady}
               />
@@ -235,6 +237,7 @@ export function StatePage({ id }: { id: string }) {
                 value={formatCurrency(state.gdp * 10000000, state.gdpYear)}
                 unit=""
                 subtitle={t("rankWithPerPerson", { rank: gdpRank, value: formatCurrency(state.gdpPerCapita, state.gdpYear) })}
+                source={METRIC_SOURCES.gdp}
                 delay={0.15}
                 trigger={isPageReady}
               />
@@ -243,6 +246,7 @@ export function StatePage({ id }: { id: string }) {
                 value={state.literacyRate}
                 unit="%"
                 subtitle={tCommon("rankInIndia", { rank: literacyRank })}
+                source={METRIC_SOURCES.literacyRate}
                 delay={0.2}
                 trigger={isPageReady}
               />
@@ -250,6 +254,7 @@ export function StatePage({ id }: { id: string }) {
                 title={tMetrics("hdi.short")}
                 value={state.hdi.toFixed(3)}
                 subtitle={tCommon("rankInIndia", { rank: hdiRank })}
+                source={METRIC_SOURCES.hdi}
                 delay={0.25}
                 trigger={isPageReady}
               />
@@ -294,6 +299,9 @@ export function StatePage({ id }: { id: string }) {
                 </div>
                 <span className="text-xs text-text-muted">{tCommon("high")}</span>
                 <span className="ml-4 text-xs font-medium text-text-tertiary">{tMetrics(`${mapMetric}.long`)}</span>
+                {mapMetric in DISTRICT_SOURCES && (
+                  <span className="text-xs text-text-muted">{DISTRICT_SOURCES[mapMetric as keyof typeof DISTRICT_SOURCES]}</span>
+                )}
               </div>
             )}
 
@@ -340,7 +348,9 @@ export function StatePage({ id }: { id: string }) {
               },
             ]}
           />
-          <SourcesInfo className="absolute right-0 top-2">{t("sources")}</SourcesInfo>
+          <SourcesInfo className="absolute right-0 top-2" place={state.name}>
+            {t("sources")}
+          </SourcesInfo>
         </section>
 
 

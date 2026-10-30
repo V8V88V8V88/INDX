@@ -24,7 +24,8 @@
     "compare": "तुलना करा",
     "dataSources": "डेटा स्रोत",
     "allSources": "सर्व स्रोत",
-    "sortAZ": "अ–ज्ञ"
+    "sortAZ": "अ–ज्ञ",
+    "reportError": "डेटामधील चूक कळवा"
   },
   "Nav": {
     "map": "नकाशा",

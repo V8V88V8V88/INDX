@@ -5,9 +5,11 @@ import { useTranslations } from "next-intl";
 import type { District } from "@/types";
 import { useFormat } from "@/hooks/useFormat";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
+import { getStateById } from "@/data/india";
 import { cn } from "@/lib/cn";
 import { PlaceBadges } from "./PlaceBadges";
-import { Button, Icon, Stat } from "./ui";
+import { reportDataErrorUrl } from "./SourcesInfo";
+import { Button, Icon, Stat, buttonStyles } from "./ui";
 
 interface DistrictInfoCardProps {
   district: District | null;
@@ -39,9 +41,21 @@ export function DistrictInfoCard({ district, districtName, onClose, className }:
           <h3 className="truncate font-semibold text-text-primary">{district ? placeName(district.stateId, name) : name}</h3>
           <PlaceBadges isCapital={district?.isCapital} isMetro={district?.isMetro} tier={district?.tier} />
         </div>
-        <Button variant="ghost" size="sm" iconOnly onClick={onClose} aria-label={tCommon("close")}>
-          <Icon name="close" />
-        </Button>
+        <div className="flex shrink-0 items-center">
+          <a
+            href={district ? reportDataErrorUrl(`${name}, ${getStateById(district.stateId)?.name ?? district.stateId}`) : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={tCommon("reportError")}
+            aria-label={tCommon("reportError")}
+            className={buttonStyles({ variant: "ghost", size: "sm", iconOnly: true, className: cn(!district && "invisible") })}
+          >
+            <Icon name="flag" size={14} />
+          </a>
+          <Button variant="ghost" size="sm" iconOnly onClick={onClose} aria-label={tCommon("close")}>
+            <Icon name="close" />
+          </Button>
+        </div>
       </div>
 
       {district ? (
