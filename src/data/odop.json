@@ -1,0 +1,7546 @@
+{
+ "AN": {
+  "Nicobars": [
+   {
+    "category": "Primary",
+    "product": "Coconut & Coconut based products",
+    "sector": "Agriculture"
+   }
+  ],
+  "North and Middle Andaman": [
+   {
+    "category": "Primary",
+    "product": "Fisheries/Marine products",
+    "sector": "Marine"
+   }
+  ],
+  "South Andaman": [
+   {
+    "category": "Primary",
+    "product": "Marine Products",
+    "sector": "Marine"
+   }
+  ]
+ },
+ "AP": {
+  "Alluri Sitharama Raju": [
+   {
+    "category": "Primary",
+    "product": "Coffee (Araku)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo Craft",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Rock Bee Honey",
+    "sector": "Food Processing"
+   }
+  ],
+  "Anakapalli": [
+   {
+    "category": "Primary",
+    "product": "Etikoppaka Lacquerware/ Wooden Toys",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Palm Leaf",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Payakaraopet Silk Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Anantapuramu": [
+   {
+    "category": "Primary",
+    "product": "Cotton/Jean Pants",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Dharmavaram Silk Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Annamayya": [
+   {
+    "category": "Primary",
+    "product": "Cotton / Jean Pants",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Red Sander & Wood Carvings",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Raja Rani Dolls",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Applique Work",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Mandanapalle Silk Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Bapatla": [
+   {
+    "category": "Primary",
+    "product": "Granite Cutting and Polishing",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cotton Bags",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Chirala Silk Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Chittoor": [
+   {
+    "category": "Primary",
+    "product": "Venkatagiri Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mango Pulp",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "The Glass Beads",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Others",
+    "product": "Kollangantu Tie & Dye Check Lungies",
+    "sector": "Textile"
+   },
+   {
+    "category": "Others",
+    "product": "Teracotta",
+    "sector": "Handicraft"
+   }
+  ],
+  "East Godavari": [
+   {
+    "category": "Primary",
+    "product": "Fruit Based Food Products (Pickles, Mango Jelly, Fruit Pulp, Cashew nuts, Lemon extracts)",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Ratnam pens",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "White Wood Birds",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Pulagurta Clothing Shirting & Sarees",
+    "sector": "Textile"
+   },
+   {
+    "category": "Others",
+    "product": "Muramunda Cotton Shirting & Sarees",
+    "sector": "Textile"
+   },
+   {
+    "category": "Others",
+    "product": "Veeravaram Silk Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Dulla Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Eluru": [
+   {
+    "category": "Primary",
+    "product": "Gold Jewellery",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Hand Knotted Carpet weaving",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Walking Sticks",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Nuziveedu veena",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Eluru Cotton Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Guntur": [
+   {
+    "category": "Primary",
+    "product": "Chillies",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bronze Casting",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Mangalagiri Sarees and Fabric",
+    "sector": "Handloom"
+   }
+  ],
+  "Kakinada": [
+   {
+    "category": "Primary",
+    "product": "Uppada Jamdani Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Peddapuram Silk Dhotis, Upper and shirtings",
+    "sector": "Textile"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Kalamkari Block Printing",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Cashew Kernel",
+    "sector": "Agriculture"
+   }
+  ],
+  "Konaseema": [
+   {
+    "category": "Others",
+    "product": "Natural banana fibres",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Others",
+    "product": "Bandaru Lanka Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Angara Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Primary",
+    "product": "Coconut & Coir",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Shrimp",
+    "sector": "Marine"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Oil & Natural Gas",
+    "sector": "Others"
+   },
+   {
+    "category": "Others",
+    "product": "Pasalapudi Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Krishna": [
+   {
+    "category": "Primary",
+    "product": "Machilipatnam Kalamkari",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Kalamkari Block Printing",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Pedana kalamkari Fabrics",
+    "sector": "Textile"
+   },
+   {
+    "category": "Others",
+    "product": "Bandar / Polavaram Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Gold Jewellery",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kurnool": [
+   {
+    "category": "Primary",
+    "product": "Stone carved products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Kodumuru Gadwal Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Yemmiganuru Bedsheets",
+    "sector": "Textile"
+   }
+  ],
+  "NTR": [
+   {
+    "category": "Primary",
+    "product": "Kondapalli Toys",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bandar type Resham (Art Silk) Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Nandyal": [
+   {
+    "category": "Tertiary",
+    "product": "Allagadda Stone Carving",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Primary",
+    "product": "Banganapalli Mangoes",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Nandivargam plain towels & plain lungis",
+    "sector": "Textile"
+   }
+  ],
+  "Palnadu": [
+   {
+    "category": "Primary",
+    "product": "Durgi Stone Carving",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sattenapalli Bedsheets",
+    "sector": "Textile"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Leather Puppets",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Spice Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Parvathipuram Manyam": [
+   {
+    "category": "Primary",
+    "product": "Bobilli Veena",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bobilli Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Severa Adivasi Paintings",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Prakasam": [
+   {
+    "category": "Primary",
+    "product": "Granite (Black Galaxy)",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Ethamukkala Check Lungis",
+    "sector": "Textile"
+   }
+  ],
+  "Sri Potti Sriramulu Nellore": [
+   {
+    "category": "Primary",
+    "product": "Udayagiri Wooden Cutlery",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Patturu Cotton Silk Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Sri Sathya Sai": [
+   {
+    "category": "Primary",
+    "product": "Silk Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Leather Puppets",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Dharmavaram Silk Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Srikakulam": [
+   {
+    "category": "Primary",
+    "product": "Ponduru Cotton Sarees",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Budithi Brassware",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Ponduru Dhoti & Shirtings",
+    "sector": "Textile"
+   },
+   {
+    "category": "Others",
+    "product": "Jute Works",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Cashew Kernels",
+    "sector": "Agriculture"
+   }
+  ],
+  "Tirupati": [
+   {
+    "category": "Primary",
+    "product": "Srikalahasti Kalamkari Fabrics/ Handicrafts",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Venkatagiri Cotton Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Pen kalamkari",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Wood Carvings",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Lord Venkateswara Swamy Photo",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Chennuru Silk Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Visakhapatnam": [
+   {
+    "category": "Primary",
+    "product": "Seafood Cluster",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Basket Weaving",
+    "sector": "Handicraft"
+   }
+  ],
+  "Vizianagaram": [
+   {
+    "category": "Primary",
+    "product": "Mango Jelly",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bobilli Veena",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Design Bedsheets",
+    "sector": "Textile"
+   }
+  ],
+  "West Godavari": [
+   {
+    "category": "Primary",
+    "product": "Processed Prawn & Shrimp",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Veemavaram Light Weight Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Crochet Lace",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Narspur Crochet Laces",
+    "sector": "Handloom"
+   }
+  ],
+  "YSR": [
+   {
+    "category": "Secondary",
+    "product": "Vonipenta Brass",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Madhavaram Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Prodattur Raw (Kora) Silk Shirting",
+    "sector": "Textile"
+   },
+   {
+    "category": "Primary",
+    "product": "Barytes & Barium Compounds",
+    "sector": "Others"
+   }
+  ]
+ },
+ "AR": {
+  "Anjaw": [
+   {
+    "category": "Primary",
+    "product": "Large Cardamom",
+    "sector": "Agriculture"
+   }
+  ],
+  "Changlang": [
+   {
+    "category": "Primary",
+    "product": "Traditional Handloom and Handicraft Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "East Kameng": [
+   {
+    "category": "Primary",
+    "product": "Orange",
+    "sector": "Agriculture"
+   }
+  ],
+  "East Siang": [
+   {
+    "category": "Primary",
+    "product": "Textile and Traditional Handloom Products",
+    "sector": "Textile"
+   }
+  ],
+  "Kamle": [
+   {
+    "category": "Primary",
+    "product": "Organic Green Tea",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kra Daadi": [
+   {
+    "category": "Primary",
+    "product": "Large Cardamom",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kurung Kumey": [
+   {
+    "category": "Primary",
+    "product": "Large Cardamom",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lepa Rada": [
+   {
+    "category": "Primary",
+    "product": "Finger Millet",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lohit": [
+   {
+    "category": "Primary",
+    "product": "Mustard Seed",
+    "sector": "Agriculture"
+   }
+  ],
+  "Longding": [
+   {
+    "category": "Primary",
+    "product": "Foxtail Millet",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lower Dibang Valley": [
+   {
+    "category": "Primary",
+    "product": "Traditional Textiles and Handloom Products",
+    "sector": "Textile"
+   }
+  ],
+  "Lower Siang": [
+   {
+    "category": "Primary",
+    "product": "Areca Nut",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lower Subansiri": [
+   {
+    "category": "Primary",
+    "product": "Kiwi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Namsai": [
+   {
+    "category": "Primary",
+    "product": "Khampti Rice (Khau Tai)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Pakke Kessang": [
+   {
+    "category": "Primary",
+    "product": "Jua and Lahi Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Papum Pare": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Shi Yomi": [
+   {
+    "category": "Primary",
+    "product": "Kiwi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Siang": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Tawang": [
+   {
+    "category": "Primary",
+    "product": "Monpa Hand Bags",
+    "sector": "Handicraft"
+   }
+  ],
+  "Tirap": [
+   {
+    "category": "Primary",
+    "product": "Pickle",
+    "sector": "Food Processing"
+   }
+  ],
+  "Upper Dibang Valley": [
+   {
+    "category": "Primary",
+    "product": "Kiwi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Upper Siang": [
+   {
+    "category": "Primary",
+    "product": "Cane & Bamboo Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Upper Subansiri": [
+   {
+    "category": "Primary",
+    "product": "Finger Millet",
+    "sector": "Agriculture"
+   }
+  ],
+  "West Kameng": [
+   {
+    "category": "Primary",
+    "product": "Kidney Beans",
+    "sector": "Agriculture"
+   }
+  ],
+  "West Siang": [
+   {
+    "category": "Primary",
+    "product": "Pineapple",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "AS": {
+  "Baksa": [
+   {
+    "category": "Primary",
+    "product": "Honey",
+    "sector": "Agriculture"
+   }
+  ],
+  "Barpeta": [
+   {
+    "category": "Primary",
+    "product": "Bell Metal Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Biswanath": [
+   {
+    "category": "Primary",
+    "product": "Tea",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bongaigaon": [
+   {
+    "category": "Primary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   }
+  ],
+  "Cachar": [
+   {
+    "category": "Primary",
+    "product": "Scented and Glutonious Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Charaideo": [
+   {
+    "category": "Primary",
+    "product": "Aromatic Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Chirang": [
+   {
+    "category": "Primary",
+    "product": "Lemon",
+    "sector": "Agriculture"
+   }
+  ],
+  "Darrang": [
+   {
+    "category": "Primary",
+    "product": "Vegetables",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dhemaji": [
+   {
+    "category": "Primary",
+    "product": "Red Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dhubri": [
+   {
+    "category": "Primary",
+    "product": "Chilly",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dibrugarh": [
+   {
+    "category": "Primary",
+    "product": "Organic Tea",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dima Hasao": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Goalpara": [
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   }
+  ],
+  "Golaghat": [
+   {
+    "category": "Primary",
+    "product": "Agarwood & Its Derivatives",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Orthodox tea",
+    "sector": "Agriculture"
+   }
+  ],
+  "Hailakandi": [
+   {
+    "category": "Primary",
+    "product": "Arecanut",
+    "sector": "Agriculture"
+   }
+  ],
+  "Hojai": [
+   {
+    "category": "Primary",
+    "product": "Jaggery",
+    "sector": "Food Processing"
+   }
+  ],
+  "Jorhat": [
+   {
+    "category": "Primary",
+    "product": "Bhoot Jholokia",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kamrup": [
+   {
+    "category": "Primary",
+    "product": "Home Furnishing made of Eri , Muga & Assam Silk,etc.",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   }
+  ],
+  "Karbi Anglong": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Karimganj": [
+   {
+    "category": "Primary",
+    "product": "Plates and Bowls made of Arecanut Leaf Sheath",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cane & Bamboo Furniture & Decorative Items",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kokrajhar": [
+   {
+    "category": "Primary",
+    "product": "Mushroom",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lakhimpur": [
+   {
+    "category": "Primary",
+    "product": "Handloom Products of Silk & Cotton",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Processed Pork",
+    "sector": "Food Processing"
+   }
+  ],
+  "Majuli": [
+   {
+    "category": "Primary",
+    "product": "Mustard Seeds",
+    "sector": "Agriculture"
+   }
+  ],
+  "Morigaon": [
+   {
+    "category": "Primary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   }
+  ],
+  "Nagaon": [
+   {
+    "category": "Primary",
+    "product": "Pearl",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Fruits and vegetables",
+    "sector": "Agriculture"
+   }
+  ],
+  "Nalbari": [
+   {
+    "category": "Primary",
+    "product": "Rice & Rice Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sivasagar": [
+   {
+    "category": "Primary",
+    "product": "Rice & Rice Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sonitpur": [
+   {
+    "category": "Primary",
+    "product": "Parboiled Rice, Steam Rice & all Rice products",
+    "sector": "Agriculture"
+   }
+  ],
+  "South Salmara Mankachar": [
+   {
+    "category": "Primary",
+    "product": "Processed cashew nuts",
+    "sector": "Food Processing"
+   }
+  ],
+  "Tinsukia": [
+   {
+    "category": "Primary",
+    "product": "Assam Lemon",
+    "sector": "Agriculture"
+   }
+  ],
+  "Udalguri": [
+   {
+    "category": "Primary",
+    "product": "Orthodox Tea (black) and Green Tea",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Eri (cocoon and fabric)",
+    "sector": "Textile"
+   }
+  ],
+  "West Karbi Anglong": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "BR": {
+  "Araria": [
+   {
+    "category": "Primary",
+    "product": "Makhana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jute",
+    "sector": "Handicraft"
+   }
+  ],
+  "Arwal": [
+   {
+    "category": "Primary",
+    "product": "Mushroom",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pumpkin",
+    "sector": "Agriculture"
+   }
+  ],
+  "Aurangabad": [
+   {
+    "category": "Primary",
+    "product": "Lemon Grass",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Strawberry",
+    "sector": "Agriculture"
+   }
+  ],
+  "Banka": [
+   {
+    "category": "Primary",
+    "product": "Banka Silk",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Katarni Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Begusarai": [
+   {
+    "category": "Primary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Chilly",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bhagalpur": [
+   {
+    "category": "Primary",
+    "product": "Bhagalpur Silk",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Manjusha Painting",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Jardalu Mango",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bhojpur": [
+   {
+    "category": "Primary",
+    "product": "Bhojpur Painting",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Applique Work",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Buxar": [
+   {
+    "category": "Primary",
+    "product": "Sonachud Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mentha",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Hand Embroidery",
+    "sector": "Handloom"
+   }
+  ],
+  "Darbhanga": [
+   {
+    "category": "Primary",
+    "product": "Makhana (Foxnut)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Madhubhani Paintings",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Terracotta",
+    "sector": "Handicraft"
+   }
+  ],
+  "East Champaran": [
+   {
+    "category": "Primary",
+    "product": "Seep Buttons",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Litchi",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Bags & Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Gaya": [
+   {
+    "category": "Primary",
+    "product": "Stone Art",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tilkut",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Handloom/Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Gopalganj": [
+   {
+    "category": "Primary",
+    "product": "Sugarcane",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Jamui": [
+   {
+    "category": "Primary",
+    "product": "Crochet Goods",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jackfruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "Jehanabad": [
+   {
+    "category": "Primary",
+    "product": "Mushroom",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kaimur": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Carpet",
+    "sector": "Textile"
+   }
+  ],
+  "Katihar": [
+   {
+    "category": "Primary",
+    "product": "Jute",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Makhana (Foxnut)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   }
+  ],
+  "Khagaria": [
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo Art",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kishanganj": [
+   {
+    "category": "Primary",
+    "product": "Tea",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pineapple",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Dragon Fruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lakhisarai": [
+   {
+    "category": "Primary",
+    "product": "Tomato",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pulses (Masoor)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Madhepura": [
+   {
+    "category": "Primary",
+    "product": "Bamboo Art",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mango",
+    "sector": "Agriculture"
+   }
+  ],
+  "Madhubani": [
+   {
+    "category": "Primary",
+    "product": "Madhubhani Painting",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sikki Painting",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Makhana (Foxnut)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Munger": [
+   {
+    "category": "Primary",
+    "product": "Lemon Grass",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mentha",
+    "sector": "Agriculture"
+   }
+  ],
+  "Muzaffarpur": [
+   {
+    "category": "Primary",
+    "product": "Shahi Litchi",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sujni Embroidery",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Bags & Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Nalanda": [
+   {
+    "category": "Primary",
+    "product": "Bawan Booti",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Silao Khaja",
+    "sector": "Food Processing"
+   }
+  ],
+  "Nawada": [
+   {
+    "category": "Primary",
+    "product": "Magahi Paan/ Betel Vine",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handloom",
+    "sector": "Handloom"
+   }
+  ],
+  "Patna": [
+   {
+    "category": "Primary",
+    "product": "Brass Metal Work",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tikuli Paintings",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Garments & Active Wear",
+    "sector": "Textile"
+   }
+  ],
+  "Purnia": [
+   {
+    "category": "Primary",
+    "product": "Bamboo Art",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jute",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Makhana (Foxnut)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Rohtas": [
+   {
+    "category": "Primary",
+    "product": "Menthol",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sonachud Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Tomato",
+    "sector": "Agriculture"
+   }
+  ],
+  "Saharsa": [
+   {
+    "category": "Primary",
+    "product": "Makhana (Foxnut)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Samastipur": [
+   {
+    "category": "Primary",
+    "product": "Bamboo Art",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Saran": [
+   {
+    "category": "Primary",
+    "product": "Tomato",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sheikhpura": [
+   {
+    "category": "Primary",
+    "product": "Onion",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sheohar": [
+   {
+    "category": "Primary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sitamarhi": [
+   {
+    "category": "Primary",
+    "product": "Sikki Art",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Applique Work",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Litchi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Siwan": [
+   {
+    "category": "Primary",
+    "product": "Mentha",
+    "sector": "Agriculture"
+   }
+  ],
+  "Supaul": [
+   {
+    "category": "Primary",
+    "product": "Lac Bangles",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Makhana (Foxnut)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Vaishali": [
+   {
+    "category": "Primary",
+    "product": "Sujni Embroidery",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Honey",
+    "sector": "Agriculture"
+   }
+  ],
+  "West Champaran": [
+   {
+    "category": "Primary",
+    "product": "Marcha Chura",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Ready made Garments",
+    "sector": "Textile"
+   }
+  ]
+ },
+ "CG": {
+  "Balod": [
+   {
+    "category": "Primary",
+    "product": "Handloom",
+    "sector": "Handloom"
+   }
+  ],
+  "Baloda Bazar": [
+   {
+    "category": "Primary",
+    "product": "Rice based products - poha etc",
+    "sector": "Food Processing"
+   }
+  ],
+  "Balrampur": [
+   {
+    "category": "Primary",
+    "product": "Rice- Jiraphul, Bisni etc",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bametara": [
+   {
+    "category": "Primary",
+    "product": "Papaya Based Product",
+    "sector": "Food Processing"
+   }
+  ],
+  "Bastar": [
+   {
+    "category": "Primary",
+    "product": "Bell Metal (Dhokra)",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tamarind",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bijapur": [
+   {
+    "category": "Primary",
+    "product": "Minor Forest Produce - Tamarind and Mahua",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bilaspur": [
+   {
+    "category": "Primary",
+    "product": "Black Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dakshin Bastar Dantewada": [
+   {
+    "category": "Primary",
+    "product": "Minor Forest Produce - Tamarind",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dhamtari": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Durg": [
+   {
+    "category": "Primary",
+    "product": "Tomato Based Product",
+    "sector": "Food Processing"
+   }
+  ],
+  "Gariaband": [
+   {
+    "category": "Primary",
+    "product": "Minor Forest Produce - Chirounji",
+    "sector": "Agriculture"
+   }
+  ],
+  "Janjgir Champa": [
+   {
+    "category": "Primary",
+    "product": "Kosa",
+    "sector": "Handloom"
+   }
+  ],
+  "Jashpur": [
+   {
+    "category": "Primary",
+    "product": "Litchi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kabeerdham": [
+   {
+    "category": "Primary",
+    "product": "Sugarcane based product (Ex. Jaggery, Molasses)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Kondagaon": [
+   {
+    "category": "Primary",
+    "product": "Bell Metal (Dhokra)",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bastar Craft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Korba": [
+   {
+    "category": "Primary",
+    "product": "Minor Forest Produce - Mahua",
+    "sector": "Food Processing"
+   }
+  ],
+  "Koriya": [
+   {
+    "category": "Primary",
+    "product": "Tomato",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mahasamund": [
+   {
+    "category": "Primary",
+    "product": "Milk Based Product",
+    "sector": "Dairy"
+   }
+  ],
+  "Mungeli": [
+   {
+    "category": "Primary",
+    "product": "Groundnuts",
+    "sector": "Agriculture"
+   }
+  ],
+  "Narayanpur": [
+   {
+    "category": "Primary",
+    "product": "Black Gram",
+    "sector": "Agriculture"
+   }
+  ],
+  "Raigarh": [
+   {
+    "category": "Primary",
+    "product": "Tomato",
+    "sector": "Agriculture"
+   }
+  ],
+  "Raipur": [
+   {
+    "category": "Primary",
+    "product": "Papaya Based Product",
+    "sector": "Food Processing"
+   }
+  ],
+  "Rajnandgaon": [
+   {
+    "category": "Primary",
+    "product": "Soyabean",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sukma": [
+   {
+    "category": "Primary",
+    "product": "Wooden Craft",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Millet Based Product",
+    "sector": "Food Processing"
+   }
+  ],
+  "Surajpur": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Potato",
+    "sector": "Agriculture"
+   }
+  ],
+  "Surguja": [
+   {
+    "category": "Primary",
+    "product": "Jackfruit",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Potato",
+    "sector": "Agriculture"
+   }
+  ],
+  "Uttar Bastar Kanker": [
+   {
+    "category": "Primary",
+    "product": "Custard Apple Based Product",
+    "sector": "Food Processing"
+   }
+  ]
+ },
+ "CH": {
+  "Chandigarh": [
+   {
+    "category": "Primary",
+    "product": "Tourism",
+    "sector": "Tourism"
+   }
+  ]
+ },
+ "DD": {
+  "Dadra and Nagar Haveli": [
+   {
+    "category": "Primary",
+    "product": "Textile (Yarn)",
+    "sector": "Textile"
+   }
+  ],
+  "Daman": [
+   {
+    "category": "Primary",
+    "product": "Plastic Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Diu": [
+   {
+    "category": "Primary",
+    "product": "Marine",
+    "sector": "Marine"
+   }
+  ]
+ },
+ "DL": {
+  "Central Delhi": [
+   {
+    "category": "Primary",
+    "product": "Dry Fruits & Spices",
+    "sector": "Agriculture"
+   }
+  ],
+  "East Delhi": [
+   {
+    "category": "Primary",
+    "product": "Ceramic Tiles & Sanitary Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "New Delhi": [
+   {
+    "category": "Primary",
+    "product": "Automobile Refurbishing Component",
+    "sector": "Manufacturing"
+   }
+  ],
+  "North Delhi": [
+   {
+    "category": "Primary",
+    "product": "Light engineering goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "North East Delhi": [
+   {
+    "category": "Primary",
+    "product": "Apparels (Jackets & Jeans)",
+    "sector": "Textile"
+   }
+  ],
+  "North West Delhi": [
+   {
+    "category": "Primary",
+    "product": "Stainless Steel Utensils/ Kitchen Ware",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Shahdara": [
+   {
+    "category": "Primary",
+    "product": "Readymade Clothes/Garments",
+    "sector": "Textile"
+   }
+  ],
+  "South Delhi": [
+   {
+    "category": "Primary",
+    "product": "Tourism (Medical & Religious)",
+    "sector": "Tourism"
+   },
+   {
+    "category": "Secondary",
+    "product": "Hospitality Services",
+    "sector": "Others"
+   }
+  ],
+  "South East Delhi": [
+   {
+    "category": "Primary",
+    "product": "Embroidery/ Sequence Ladies Garments",
+    "sector": "Textile"
+   }
+  ],
+  "South West Delhi": [
+   {
+    "category": "Primary",
+    "product": "Milk Based Product",
+    "sector": "Dairy"
+   }
+  ],
+  "West Delhi": [
+   {
+    "category": "Primary",
+    "product": "Furniture items",
+    "sector": "Manufacturing"
+   }
+  ]
+ },
+ "GA": {
+  "North Goa": [
+   {
+    "category": "Primary",
+    "product": "Cashew Nuts",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Feni",
+    "sector": "Food Processing"
+   }
+  ],
+  "South Goa": [
+   {
+    "category": "Primary",
+    "product": "Feni",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cashew Nuts",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "GJ": {
+  "Ahmedabad": [
+   {
+    "category": "Primary",
+    "product": "Garments & Apparel",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Terracotta",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Mata ni Pachedi/ Saudagiri Block Print",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Gamthi Block print",
+    "sector": "Handloom"
+   }
+  ],
+  "Amreli": [
+   {
+    "category": "Primary",
+    "product": "Peanuts Based Products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Beadwork",
+    "sector": "Handicraft"
+   }
+  ],
+  "Anand": [
+   {
+    "category": "Primary",
+    "product": "Milk based Products",
+    "sector": "Dairy"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agate Stone",
+    "sector": "Handicraft"
+   }
+  ],
+  "Aravalli": [
+   {
+    "category": "Primary",
+    "product": "Agro Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Banaskantha": [
+   {
+    "category": "Primary",
+    "product": "Granite and Marble Blocks",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Food Processing/Milk Preparation",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Soof Embroidery/Applique",
+    "sector": "Handloom"
+   }
+  ],
+  "Bharuch": [
+   {
+    "category": "Primary",
+    "product": "Chemicals (Chemicals, Agro Chemicals, Pesticide, Pharmaceutical, API)",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sujani",
+    "sector": "Handloom"
+   }
+  ],
+  "Bhavnagar": [
+   {
+    "category": "Primary",
+    "product": "Dehydrated Vegetables (Onion)",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Beadwork",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Peanut butter",
+    "sector": "Food Processing"
+   }
+  ],
+  "Botad": [
+   {
+    "category": "Primary",
+    "product": "Groundnuts/ Peanuts",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jining",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Chhota Udaipur": [
+   {
+    "category": "Primary",
+    "product": "Furniture Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pithora Painting",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Sankheda furniture",
+    "sector": "Handicraft"
+   }
+  ],
+  "Dahod": [
+   {
+    "category": "Primary",
+    "product": "Corn Products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Soyabean/ Soya Based Products",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Kharif Maiz (Agro)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Ravi Maiz (Agro)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dang": [
+   {
+    "category": "Primary",
+    "product": "Nagali Products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Strawberry & Strawberry Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Devbhumi Dwarka": [
+   {
+    "category": "Primary",
+    "product": "Marine & Fisheries/ Dholdara Fish",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Khambhaliya Shawl",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Salt",
+    "sector": "Food Processing"
+   }
+  ],
+  "Gandhinagar": [
+   {
+    "category": "Primary",
+    "product": "Software and Financial Services",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Wood work/ Block Making",
+    "sector": "Handicraft"
+   }
+  ],
+  "Gir Somnath": [
+   {
+    "category": "Primary",
+    "product": "Kesar Mango",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Marine & Fisheries Industry",
+    "sector": "Marine"
+   }
+  ],
+  "Jamnagar": [
+   {
+    "category": "Primary",
+    "product": "Bandhni",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Petrochemcials",
+    "sector": "Others"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Brass Parts",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Junagadh": [
+   {
+    "category": "Primary",
+    "product": "Groundnuts/ Peanuts (Peanut Based Products)",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Beadwork",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Mango",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kheda": [
+   {
+    "category": "Primary",
+    "product": "Agro Products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mathia",
+    "sector": "Food Processing"
+   }
+  ],
+  "Kutch": [
+   {
+    "category": "Primary",
+    "product": "Handicraft Items",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Green Dates",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Salt",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Others",
+    "product": "Bhujodi Shawl weaving",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Hand Embroidery",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Ajrakh",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Leather Work",
+    "sector": "Handicraft"
+   }
+  ],
+  "Mahisagar": [
+   {
+    "category": "Primary",
+    "product": "Food Processing Papaya",
+    "sector": "Food Processing"
+   }
+  ],
+  "Mehsana": [
+   {
+    "category": "Primary",
+    "product": "Dairy/ Milk product",
+    "sector": "Dairy"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agri Products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Cumin",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Castor",
+    "sector": "Food Processing"
+   }
+  ],
+  "Morbi": [
+   {
+    "category": "Primary",
+    "product": "Ceramic Tiles & Sanitary Ware",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pottery",
+    "sector": "Handicraft"
+   }
+  ],
+  "Narmada": [
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Sugarcane value added products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Navsari": [
+   {
+    "category": "Primary",
+    "product": "Mango (Hafus)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Warli",
+    "sector": "Handicraft"
+   }
+  ],
+  "Panchmahal": [
+   {
+    "category": "Primary",
+    "product": "Plastic Products",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agro (Turmeric)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Patan": [
+   {
+    "category": "Primary",
+    "product": "Double Ikat Patan",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cumin",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Isabgul",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Patola",
+    "sector": "Handloom"
+   }
+  ],
+  "Porbandar": [
+   {
+    "category": "Primary",
+    "product": "Marine (Queen Fish)",
+    "sector": "Marine"
+   }
+  ],
+  "Rajkot": [
+   {
+    "category": "Primary",
+    "product": "Engineering Goods/Machine products",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Single Ikat weaving",
+    "sector": "Handicraft"
+   }
+  ],
+  "Sabarkantha": [
+   {
+    "category": "Primary",
+    "product": "Ceramic Tiles",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Potato (Cold storage)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Terracotta",
+    "sector": "Handicraft"
+   }
+  ],
+  "Surat": [
+   {
+    "category": "Primary",
+    "product": "Gems and Jewellery",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Zari and Zardozi",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Sadeli",
+    "sector": "Handicraft"
+   }
+  ],
+  "Surendranagar": [
+   {
+    "category": "Primary",
+    "product": "Single Ikat weaving",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tangaliya Shawl",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Spinning and Cotton Yarn",
+    "sector": "Textile"
+   }
+  ],
+  "Tapi": [
+   {
+    "category": "Primary",
+    "product": "Rice based products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Peanuts",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Fruits",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Lady Finger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Vadodara": [
+   {
+    "category": "Primary",
+    "product": "Pharmaceuticals",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Engineering Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Valsad": [
+   {
+    "category": "Primary",
+    "product": "Chemical Products",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mango",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Prawns",
+    "sector": "Marine"
+   }
+  ]
+ },
+ "HP": {
+  "Bilaspur": [
+   {
+    "category": "Primary",
+    "product": "Processing of Indian Gooseberry (Amla)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Chamba": [
+   {
+    "category": "Primary",
+    "product": "Chamba Rumal",
+    "sector": "Handloom"
+   }
+  ],
+  "Hamirpur": [
+   {
+    "category": "Primary",
+    "product": "Agro-products processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Kangra": [
+   {
+    "category": "Primary",
+    "product": "Kangra Tea",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Kangra Paintings",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kinnaur": [
+   {
+    "category": "Primary",
+    "product": "Oil - Himachali Chulli",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kullu": [
+   {
+    "category": "Primary",
+    "product": "Shawl - Kullu",
+    "sector": "Handloom"
+   }
+  ],
+  "Lahaul and Spiti": [
+   {
+    "category": "Primary",
+    "product": "Processing of Seabuckthorn (Charma)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Mandi": [
+   {
+    "category": "Primary",
+    "product": "Steel Furniture",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Shimla": [
+   {
+    "category": "Primary",
+    "product": "Tourism",
+    "sector": "Tourism"
+   }
+  ],
+  "Sirmaur": [
+   {
+    "category": "Primary",
+    "product": "Packaging (Corrugated Boxes)",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Solan": [
+   {
+    "category": "Primary",
+    "product": "Mushrooms",
+    "sector": "Agriculture"
+   }
+  ],
+  "Una": [
+   {
+    "category": "Primary",
+    "product": "Light Engineering Industry",
+    "sector": "Manufacturing"
+   }
+  ]
+ },
+ "HR": {
+  "Ambala": [
+   {
+    "category": "Primary",
+    "product": "Scientific Equipment",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Precision Engineering Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Bhiwani": [
+   {
+    "category": "Primary",
+    "product": "Milk Product",
+    "sector": "Dairy"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cattle Feed",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Plastic Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Charkhi Dadri": [
+   {
+    "category": "Primary",
+    "product": "Mining & Crushing Equipment for Minerals & Stones (Jaws and Screens, etc)",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Wooden Handicraft Items (Gift item, Furniture etc.)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Faridabad": [
+   {
+    "category": "Primary",
+    "product": "Auto Components",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Machine Tools",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Fatehabad": [
+   {
+    "category": "Primary",
+    "product": "Cotton & Agri-based products",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agriculture Implements",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Gurugram": [
+   {
+    "category": "Primary",
+    "product": "Textile and Apparels",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Enginering Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Hisar": [
+   {
+    "category": "Primary",
+    "product": "Steel Products",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agriculture Implements",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Dairy products",
+    "sector": "Dairy"
+   }
+  ],
+  "Jhajjar": [
+   {
+    "category": "Primary",
+    "product": "Footwear",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jind": [
+   {
+    "category": "Primary",
+    "product": "Poultry Feed",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Engineering Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kaithal": [
+   {
+    "category": "Primary",
+    "product": "Food Processing (Rice Mill & Dairy Products )",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Metal Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Karnal": [
+   {
+    "category": "Primary",
+    "product": "Ayurvedic Products",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Food Processing",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Printing and Packaging",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kurukshetra": [
+   {
+    "category": "Primary",
+    "product": "Agri - Implements",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tourism (Mahabharata)",
+    "sector": "Tourism"
+   }
+  ],
+  "Mahendragarh": [
+   {
+    "category": "Primary",
+    "product": "Mustard Oil",
+    "sector": "Food Processing"
+   }
+  ],
+  "Nuh": [
+   {
+    "category": "Primary",
+    "product": "Apparels",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Food Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Palwal": [
+   {
+    "category": "Primary",
+    "product": "Machineries - Agriculture & Dairy",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Panchkula": [
+   {
+    "category": "Primary",
+    "product": "Automobile Parts",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pharmaceuticals",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Panipat": [
+   {
+    "category": "Primary",
+    "product": "Handloom and Textiles",
+    "sector": "Textile"
+   }
+  ],
+  "Rewari": [
+   {
+    "category": "Primary",
+    "product": "Motorcycles/ bikes",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Engineering Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Rohtak": [
+   {
+    "category": "Primary",
+    "product": "Fasteners and Machine Tools",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Sirsa": [
+   {
+    "category": "Primary",
+    "product": "Cotton Products (Balls, Swabs)",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sheet Fabrication (Pre Fab Structures)",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Sonipat": [
+   {
+    "category": "Primary",
+    "product": "Plastic Moulded Products (Electronic Toys)",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Food Processing",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Stainless Steel Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Yamunanagar": [
+   {
+    "category": "Primary",
+    "product": "Plywood",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Metal Utensils",
+    "sector": "Manufacturing"
+   }
+  ]
+ },
+ "JH": {
+  "Bokaro": [
+   {
+    "category": "Primary",
+    "product": "Woodcraft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Chatra": [
+   {
+    "category": "Primary",
+    "product": "Vegetable",
+    "sector": "Agriculture"
+   }
+  ],
+  "Deoghar": [
+   {
+    "category": "Primary",
+    "product": "Lac Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Dhanbad": [
+   {
+    "category": "Primary",
+    "product": "Coal",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Dumka": [
+   {
+    "category": "Primary",
+    "product": "Bamboo",
+    "sector": "Handicraft"
+   }
+  ],
+  "East Singhbhum": [
+   {
+    "category": "Primary",
+    "product": "Paithkar Painting",
+    "sector": "Handicraft"
+   }
+  ],
+  "Garhwa": [
+   {
+    "category": "Primary",
+    "product": "Carpets",
+    "sector": "Textile"
+   }
+  ],
+  "Giridih": [
+   {
+    "category": "Primary",
+    "product": "Steel-TMT Bar",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Godda": [
+   {
+    "category": "Primary",
+    "product": "Tasar Silk",
+    "sector": "Handloom"
+   }
+  ],
+  "Gumla": [
+   {
+    "category": "Primary",
+    "product": "Ragi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Hazaribagh": [
+   {
+    "category": "Primary",
+    "product": "Sohrai Painting",
+    "sector": "Handicraft"
+   }
+  ],
+  "Jamtara": [
+   {
+    "category": "Primary",
+    "product": "Nuts- Cashew",
+    "sector": "Agriculture"
+   }
+  ],
+  "Khunti": [
+   {
+    "category": "Primary",
+    "product": "Lac",
+    "sector": "Handicraft"
+   }
+  ],
+  "Koderma": [
+   {
+    "category": "Primary",
+    "product": "Mica",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Latehar": [
+   {
+    "category": "Primary",
+    "product": "Mahua",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lohardaga": [
+   {
+    "category": "Primary",
+    "product": "Honey",
+    "sector": "Agriculture"
+   }
+  ],
+  "Pakur": [
+   {
+    "category": "Primary",
+    "product": "Jute",
+    "sector": "Handicraft"
+   }
+  ],
+  "Palamu": [
+   {
+    "category": "Primary",
+    "product": "Pulses- Arhar",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ramgarh": [
+   {
+    "category": "Primary",
+    "product": "Silver Jewellery",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Ranchi": [
+   {
+    "category": "Primary",
+    "product": "Ready Made Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Sahibganj": [
+   {
+    "category": "Primary",
+    "product": "Jute",
+    "sector": "Handicraft"
+   }
+  ],
+  "Saraikela-Kharsawan": [
+   {
+    "category": "Primary",
+    "product": "Kharsawan Silk",
+    "sector": "Textile"
+   }
+  ],
+  "Simdega": [
+   {
+    "category": "Primary",
+    "product": "Minor Forest Produce",
+    "sector": "Agriculture"
+   }
+  ],
+  "West Singhbhum": [
+   {
+    "category": "Primary",
+    "product": "Custard Apple",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "JK": {
+  "Anantnag": [
+   {
+    "category": "Primary",
+    "product": "Trout Fish",
+    "sector": "Marine"
+   }
+  ],
+  "Bandipora": [
+   {
+    "category": "Primary",
+    "product": "Crewal Based Shawl",
+    "sector": "Textile"
+   }
+  ],
+  "Baramulla": [
+   {
+    "category": "Primary",
+    "product": "Apples",
+    "sector": "Agriculture"
+   }
+  ],
+  "Budgam": [
+   {
+    "category": "Primary",
+    "product": "Kani Shawls",
+    "sector": "Handloom"
+   }
+  ],
+  "Doda": [
+   {
+    "category": "Primary",
+    "product": "Natural Oils (Lavender)",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Ganderbal": [
+   {
+    "category": "Primary",
+    "product": "Wicker Willow",
+    "sector": "Handicraft"
+   }
+  ],
+  "Jammu": [
+   {
+    "category": "Primary",
+    "product": "Basmati Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kathua": [
+   {
+    "category": "Primary",
+    "product": "Basholi Pashmina",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Basohli Painting",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kishtwar": [
+   {
+    "category": "Primary",
+    "product": "Saffron",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kulgam": [
+   {
+    "category": "Primary",
+    "product": "Garlic",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kupwara": [
+   {
+    "category": "Primary",
+    "product": "Walnut",
+    "sector": "Agriculture"
+   }
+  ],
+  "Pulwama": [
+   {
+    "category": "Primary",
+    "product": "Saffron",
+    "sector": "Agriculture"
+   }
+  ],
+  "Punch": [
+   {
+    "category": "Primary",
+    "product": "Pecannut",
+    "sector": "Agriculture"
+   }
+  ],
+  "Rajouri": [
+   {
+    "category": "Primary",
+    "product": "Walnut",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ramban": [
+   {
+    "category": "Primary",
+    "product": "Honey",
+    "sector": "Agriculture"
+   }
+  ],
+  "Reasi": [
+   {
+    "category": "Primary",
+    "product": "Aromatic Plants",
+    "sector": "Agriculture"
+   }
+  ],
+  "Samba": [
+   {
+    "category": "Primary",
+    "product": "Mushroom",
+    "sector": "Agriculture"
+   }
+  ],
+  "Shopiyan": [
+   {
+    "category": "Primary",
+    "product": "Apple",
+    "sector": "Agriculture"
+   }
+  ],
+  "Srinagar": [
+   {
+    "category": "Primary",
+    "product": "Silk Carpet (Hand Knotted Carpet)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Udhampur": [
+   {
+    "category": "Primary",
+    "product": "Garlic",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "KA": {
+  "Bagalkote": [
+   {
+    "category": "Primary",
+    "product": "Ilkal Saree",
+    "sector": "Handloom"
+   }
+  ],
+  "Ballari": [
+   {
+    "category": "Primary",
+    "product": "Steel and Allied activities",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bellary Denim Jeans",
+    "sector": "Textile"
+   }
+  ],
+  "Belagavi": [
+   {
+    "category": "Primary",
+    "product": "Auto components",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Foundry",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Bengaluru Rural": [
+   {
+    "category": "Primary",
+    "product": "Aerospace & Defense",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Ready-made garment Manufacturing",
+    "sector": "Textile"
+   }
+  ],
+  "Bengaluru Urban": [
+   {
+    "category": "Primary",
+    "product": "IT/ITES and R&D",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handloom Silk Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Bidar": [
+   {
+    "category": "Primary",
+    "product": "Bidari ware",
+    "sector": "Handicraft"
+   }
+  ],
+  "Chamarajanagara": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Stone Work",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Chikkaballapura": [
+   {
+    "category": "Primary",
+    "product": "ESDM",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Shidlagatta silk and Raw Silk based sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Chikkamagaluru": [
+   {
+    "category": "Primary",
+    "product": "Coffee - Arabica",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Spice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Areca leaf based Products (Plates, Cups Etc)",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Chitradurga": [
+   {
+    "category": "Primary",
+    "product": "Molakalmuru sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Dakshina Kannada": [
+   {
+    "category": "Primary",
+    "product": "Marine Products",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Textile processing",
+    "sector": "Textile"
+   }
+  ],
+  "Davanagere": [
+   {
+    "category": "Primary",
+    "product": "Millets",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cotton based processing (ginning) & garmenting",
+    "sector": "Textile"
+   }
+  ],
+  "Dharwad": [
+   {
+    "category": "Primary",
+    "product": "FMCG",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Volve Mfg",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Gadag": [
+   {
+    "category": "Primary",
+    "product": "Byadagi Chilies",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Textiles",
+    "sector": "Textile"
+   }
+  ],
+  "Hassan": [
+   {
+    "category": "Primary",
+    "product": "Coir products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jacquard Bedsheet",
+    "sector": "Textile"
+   }
+  ],
+  "Haveri": [
+   {
+    "category": "Primary",
+    "product": "Chilli - Bydagi",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Spice Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kalaburagi": [
+   {
+    "category": "Primary",
+    "product": "Toor Dal",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cement",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Shahabad stones",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kodagu": [
+   {
+    "category": "Primary",
+    "product": "Coffee",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Spices",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Homemade chocolates/wines",
+    "sector": "Food Processing"
+   }
+  ],
+  "Kolar": [
+   {
+    "category": "Primary",
+    "product": "Automobiles",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Shivarapatna stone craft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Koppal": [
+   {
+    "category": "Primary",
+    "product": "Kinhal toys",
+    "sector": "Handicraft"
+   }
+  ],
+  "Mandya": [
+   {
+    "category": "Primary",
+    "product": "Jaggery",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Rice based products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Mysuru": [
+   {
+    "category": "Primary",
+    "product": "ESDM",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Rosewood inlay art",
+    "sector": "Handicraft"
+   }
+  ],
+  "Raichur": [
+   {
+    "category": "Primary",
+    "product": "Pharma",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cotton and cotton based products",
+    "sector": "Textile"
+   }
+  ],
+  "Ramanagara": [
+   {
+    "category": "Primary",
+    "product": "Channapatna toys",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "EV Cluster",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Shivamogga": [
+   {
+    "category": "Primary",
+    "product": "BioPharma and Wellness",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Wooden Carving",
+    "sector": "Handicraft"
+   }
+  ],
+  "Tumakuru": [
+   {
+    "category": "Primary",
+    "product": "Machine Tool",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Coir based Industries",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Udupi": [
+   {
+    "category": "Primary",
+    "product": "Marine Products",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Gems and Jewellery",
+    "sector": "Handicraft"
+   }
+  ],
+  "Uttara Kannada": [
+   {
+    "category": "Primary",
+    "product": "Spices",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Ayurvedic Medicine Mfg",
+    "sector": "Others"
+   }
+  ],
+  "Vijayapura": [
+   {
+    "category": "Primary",
+    "product": "Reisin",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agricultural Implements",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Yadgir": [
+   {
+    "category": "Primary",
+    "product": "Pharmaceuticals",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cotton and Cotton based Products",
+    "sector": "Textile"
+   }
+  ]
+ },
+ "KL": {
+  "Alappuzha": [
+   {
+    "category": "Primary",
+    "product": "Coir products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Ernakulam": [
+   {
+    "category": "Primary",
+    "product": "Oleo Raisins",
+    "sector": "Agriculture"
+   }
+  ],
+  "Idukki": [
+   {
+    "category": "Primary",
+    "product": "Spices",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kannur": [
+   {
+    "category": "Primary",
+    "product": "Handloom Products",
+    "sector": "Handloom"
+   }
+  ],
+  "Kasaragod": [
+   {
+    "category": "Primary",
+    "product": "Cashew Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Kollam": [
+   {
+    "category": "Primary",
+    "product": "Cashew Nut Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Kottayam": [
+   {
+    "category": "Primary",
+    "product": "Rubber Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kozhikode": [
+   {
+    "category": "Primary",
+    "product": "Coconut Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Malappuram": [
+   {
+    "category": "Primary",
+    "product": "Food Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Palakkad": [
+   {
+    "category": "Primary",
+    "product": "Palakkadan Matta Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Pathanamthitta": [
+   {
+    "category": "Primary",
+    "product": "Food Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Thiruvananthapuram": [
+   {
+    "category": "Primary",
+    "product": "Handloom Products",
+    "sector": "Textile"
+   }
+  ],
+  "Thrissur": [
+   {
+    "category": "Primary",
+    "product": "Coconut Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Wayanad": [
+   {
+    "category": "Primary",
+    "product": "Coffee",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "LA": {
+  "Kargil": [
+   {
+    "category": "Primary",
+    "product": "Apricot",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tourism",
+    "sector": "Tourism"
+   }
+  ],
+  "Leh": [
+   {
+    "category": "Primary",
+    "product": "Seabuckthorn",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pashmina",
+    "sector": "Handloom"
+   }
+  ]
+ },
+ "LD": {
+  "Lakshadweep": [
+   {
+    "category": "Primary",
+    "product": "Coconut Derived Products",
+    "sector": "Food Processing"
+   }
+  ]
+ },
+ "MH": {
+  "Ahmednagar": [
+   {
+    "category": "Primary",
+    "product": "Cane Sugar",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Dairy Products (Milk based products)",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Akola": [
+   {
+    "category": "Primary",
+    "product": "Cotton Ginning and pressing",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pulses (Daal)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Amravati": [
+   {
+    "category": "Primary",
+    "product": "Textile",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mandarin Orange",
+    "sector": "Agriculture"
+   }
+  ],
+  "Aurangabad": [
+   {
+    "category": "Primary",
+    "product": "Marathwada Kesar Mango",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Auto components",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Beed": [
+   {
+    "category": "Primary",
+    "product": "Cotton and cotton seed oil",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Beed Custard Apple",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bhandara": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mineral based products",
+    "sector": "Others"
+   }
+  ],
+  "Buldhana": [
+   {
+    "category": "Primary",
+    "product": "Cotton Related Products",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Seeds for planting",
+    "sector": "Agriculture"
+   }
+  ],
+  "Chandrapur": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Dhule": [
+   {
+    "category": "Primary",
+    "product": "De-Oiled Cake",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Textile",
+    "sector": "Textile"
+   }
+  ],
+  "Gadchiroli": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Forest products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Gondia": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo Articles",
+    "sector": "Handicraft"
+   }
+  ],
+  "Hingoli": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Soyabean and Soyabean based products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Jalgaon": [
+   {
+    "category": "Primary",
+    "product": "Jalgaon Banana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Plastic PVC Pipes",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jalna": [
+   {
+    "category": "Primary",
+    "product": "Sweet Orange",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "TMT Steel Bars",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kolhapur": [
+   {
+    "category": "Primary",
+    "product": "Kolhapur Jaggery (Sugarcane Products etc)",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Engineering",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Latur": [
+   {
+    "category": "Primary",
+    "product": "Soya bean and Soya bean based products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pulses",
+    "sector": "Food Processing"
+   }
+  ],
+  "Mumbai": [
+   {
+    "category": "Primary",
+    "product": "Gems & Jewellery",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Leather",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Marine Produce",
+    "sector": "Marine"
+   }
+  ],
+  "Nagpur": [
+   {
+    "category": "Primary",
+    "product": "Nagpur Orange",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Engineering",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Nanded": [
+   {
+    "category": "Primary",
+    "product": "Soya bean and soya bean products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Spices",
+    "sector": "Agriculture"
+   }
+  ],
+  "Nandurbar": [
+   {
+    "category": "Primary",
+    "product": "Chilli powder",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Textile",
+    "sector": "Textile"
+   }
+  ],
+  "Nashik": [
+   {
+    "category": "Primary",
+    "product": "Grapes/ Raisins",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Paithani Sarees",
+    "sector": "Handloom"
+   }
+  ],
+  "Osmanabad": [
+   {
+    "category": "Primary",
+    "product": "Pulses",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sugar",
+    "sector": "Food Processing"
+   }
+  ],
+  "Palghar": [
+   {
+    "category": "Primary",
+    "product": "Dahanu Gholvad Chikoo (Sapota)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Marine Produce",
+    "sector": "Marine"
+   }
+  ],
+  "Parbhani": [
+   {
+    "category": "Primary",
+    "product": "Grams (Hara bhara)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jaggery",
+    "sector": "Agriculture"
+   }
+  ],
+  "Pune": [
+   {
+    "category": "Primary",
+    "product": "Engineering Goods",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Frozen Food",
+    "sector": "Food Processing"
+   }
+  ],
+  "Raigad": [
+   {
+    "category": "Primary",
+    "product": "Marine Produce",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Iron and Steel",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Ratnagiri": [
+   {
+    "category": "Primary",
+    "product": "Alphonso Mangoes",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Marine Produce",
+    "sector": "Marine"
+   }
+  ],
+  "Sangli": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pump Spares",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Satara": [
+   {
+    "category": "Primary",
+    "product": "Strawberries",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jaggery",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sindhudurg": [
+   {
+    "category": "Primary",
+    "product": "Vengurla Cashew",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Devgad Alphonso Mango",
+    "sector": "Agriculture"
+   }
+  ],
+  "Solapur": [
+   {
+    "category": "Primary",
+    "product": "Solapur Terry Towel",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pomegranate",
+    "sector": "Agriculture"
+   }
+  ],
+  "Thane": [
+   {
+    "category": "Primary",
+    "product": "Garments & Textiles",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Millets",
+    "sector": "Agriculture"
+   }
+  ],
+  "Wardha": [
+   {
+    "category": "Primary",
+    "product": "Cotton Yarn",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Waigaon Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Washim": [
+   {
+    "category": "Primary",
+    "product": "Soya bean and soya bean products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cotton related products & Textiles",
+    "sector": "Textile"
+   }
+  ],
+  "Yavatmal": [
+   {
+    "category": "Primary",
+    "product": "Cotton Ginning and pressing",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Dolomite and Limestone",
+    "sector": "Manufacturing"
+   }
+  ]
+ },
+ "ML": {
+  "East Garo Hills": [
+   {
+    "category": "Primary",
+    "product": "Pineapple",
+    "sector": "Agriculture"
+   }
+  ],
+  "East Jaintia Hills": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "East Khasi Hills": [
+   {
+    "category": "Primary",
+    "product": "Khasi Mandarin (Orange)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cane & Bamboo Handicrafts",
+    "sector": "Handicraft"
+   }
+  ],
+  "North Garo Hills": [
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ribhoi": [
+   {
+    "category": "Primary",
+    "product": "Pineapple",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Eri Silk Handloom (Ryndia)",
+    "sector": "Handloom"
+   }
+  ],
+  "South Garo Hills": [
+   {
+    "category": "Primary",
+    "product": "Jackfruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "South West Garo Hills": [
+   {
+    "category": "Primary",
+    "product": "Pineapple",
+    "sector": "Agriculture"
+   }
+  ],
+  "South West Khasi Hills": [
+   {
+    "category": "Primary",
+    "product": "Honey",
+    "sector": "Agriculture"
+   }
+  ],
+  "West Garo Hills": [
+   {
+    "category": "Primary",
+    "product": "Cashew",
+    "sector": "Agriculture"
+   }
+  ],
+  "West Jaintia Hills": [
+   {
+    "category": "Primary",
+    "product": "Turmeric (Lakadong)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Black Pottery (Khiew Ranei)",
+    "sector": "Handicraft"
+   }
+  ],
+  "West Khasi Hills": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cane & Bamboo Handicrafts (Mats)",
+    "sector": "Handicraft"
+   }
+  ]
+ },
+ "MN": {
+  "Bishnupur": [
+   {
+    "category": "Primary",
+    "product": "Moirang Fi Chanbi Fanek",
+    "sector": "Handloom"
+   }
+  ],
+  "Chandel": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Churachandpur": [
+   {
+    "category": "Primary",
+    "product": "Handicraft - Tribals",
+    "sector": "Handicraft"
+   }
+  ],
+  "Imphal East": [
+   {
+    "category": "Primary",
+    "product": "Wangkhei Phee",
+    "sector": "Handloom"
+   }
+  ],
+  "Imphal West": [
+   {
+    "category": "Primary",
+    "product": "Toys- Laiphadibi",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Khurkul Muga",
+    "sector": "Handloom"
+   }
+  ],
+  "Jiribam": [
+   {
+    "category": "Primary",
+    "product": "Bamboo",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kakching": [
+   {
+    "category": "Primary",
+    "product": "Rice - Black Chakao",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kamjong": [
+   {
+    "category": "Primary",
+    "product": "King Chilli",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kangpokpi": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Noney": [
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   }
+  ],
+  "Pherzawl": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Senapati": [
+   {
+    "category": "Primary",
+    "product": "Kiwi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Tamenglong": [
+   {
+    "category": "Primary",
+    "product": "Oranges (Tamenglong Mandarin)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Tengnoupal": [
+   {
+    "category": "Primary",
+    "product": "Bamboo",
+    "sector": "Handicraft"
+   }
+  ],
+  "Thoubal": [
+   {
+    "category": "Primary",
+    "product": "Pineapple",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ukhrul": [
+   {
+    "category": "Primary",
+    "product": "Kachai Lemon",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "MP": {
+  "Agar Malwa": [
+   {
+    "category": "Primary",
+    "product": "Oranges",
+    "sector": "Agriculture"
+   }
+  ],
+  "Alirajpur": [
+   {
+    "category": "Primary",
+    "product": "Mahua",
+    "sector": "Food Processing"
+   }
+  ],
+  "Anuppur": [
+   {
+    "category": "Primary",
+    "product": "Kodo Kutki",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ashoknagar": [
+   {
+    "category": "Primary",
+    "product": "Chanderi Handloom",
+    "sector": "Handloom"
+   }
+  ],
+  "Balaghat": [
+   {
+    "category": "Primary",
+    "product": "Chinnaur Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Barwani": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Betul": [
+   {
+    "category": "Primary",
+    "product": "Teak",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bhind": [
+   {
+    "category": "Primary",
+    "product": "Mustard",
+    "sector": "Agriculture"
+   }
+  ],
+  "Bhopal": [
+   {
+    "category": "Primary",
+    "product": "Zari Zardozi",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jute Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Burhanpur": [
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   }
+  ],
+  "Chhatarpur": [
+   {
+    "category": "Primary",
+    "product": "Furniture - Wooden",
+    "sector": "Handicraft"
+   }
+  ],
+  "Chhindwara": [
+   {
+    "category": "Primary",
+    "product": "Oranges & Orange Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Damoh": [
+   {
+    "category": "Primary",
+    "product": "Gram",
+    "sector": "Agriculture"
+   }
+  ],
+  "Datia": [
+   {
+    "category": "Primary",
+    "product": "Jaggery",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dewas": [
+   {
+    "category": "Primary",
+    "product": "Bamboo",
+    "sector": "Handicraft"
+   }
+  ],
+  "Dhar": [
+   {
+    "category": "Primary",
+    "product": "Bagh Prints",
+    "sector": "Handloom"
+   }
+  ],
+  "Dindori": [
+   {
+    "category": "Primary",
+    "product": "Kodo Kutki",
+    "sector": "Agriculture"
+   }
+  ],
+  "Guna": [
+   {
+    "category": "Primary",
+    "product": "Coriander",
+    "sector": "Agriculture"
+   }
+  ],
+  "Gwalior": [
+   {
+    "category": "Primary",
+    "product": "Sandstone Tiles",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Harda": [
+   {
+    "category": "Primary",
+    "product": "Bamboo",
+    "sector": "Handicraft"
+   }
+  ],
+  "Hoshangabad": [
+   {
+    "category": "Primary",
+    "product": "Sightseeing",
+    "sector": "Tourism"
+   }
+  ],
+  "Indore": [
+   {
+    "category": "Primary",
+    "product": "Potato",
+    "sector": "Agriculture"
+   }
+  ],
+  "Jabalpur": [
+   {
+    "category": "Primary",
+    "product": "Peas",
+    "sector": "Agriculture"
+   }
+  ],
+  "Jhabua": [
+   {
+    "category": "Primary",
+    "product": "Kadaknath Chicken",
+    "sector": "Food Processing"
+   }
+  ],
+  "Katni": [
+   {
+    "category": "Primary",
+    "product": "Cut Stone",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Khandwa": [
+   {
+    "category": "Primary",
+    "product": "Onion",
+    "sector": "Agriculture"
+   }
+  ],
+  "Khargone": [
+   {
+    "category": "Primary",
+    "product": "Chilli",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mandla": [
+   {
+    "category": "Primary",
+    "product": "Kodo Kudki",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mandsaur": [
+   {
+    "category": "Primary",
+    "product": "Garlic",
+    "sector": "Agriculture"
+   }
+  ],
+  "Morena": [
+   {
+    "category": "Primary",
+    "product": "Mustard Oil",
+    "sector": "Food Processing"
+   }
+  ],
+  "Narsinghpur": [
+   {
+    "category": "Primary",
+    "product": "Toor Dal",
+    "sector": "Food Processing"
+   }
+  ],
+  "Neemuch": [
+   {
+    "category": "Primary",
+    "product": "Coriander",
+    "sector": "Agriculture"
+   }
+  ],
+  "Niwari": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Panna": [
+   {
+    "category": "Primary",
+    "product": "Gooseberry",
+    "sector": "Agriculture"
+   }
+  ],
+  "Raisen": [
+   {
+    "category": "Primary",
+    "product": "Basmati Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Rajgarh": [
+   {
+    "category": "Primary",
+    "product": "Orange",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ratlam": [
+   {
+    "category": "Primary",
+    "product": "Ratlami Namkeen",
+    "sector": "Food Processing"
+   }
+  ],
+  "Rewa": [
+   {
+    "category": "Primary",
+    "product": "Bamboo",
+    "sector": "Handicraft"
+   }
+  ],
+  "Sagar": [
+   {
+    "category": "Primary",
+    "product": "Farm Equipment",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Satna": [
+   {
+    "category": "Primary",
+    "product": "Tomato",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sehore": [
+   {
+    "category": "Primary",
+    "product": "Wooden Toys and Handicraft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Seoni": [
+   {
+    "category": "Primary",
+    "product": "Cilantro",
+    "sector": "Agriculture"
+   }
+  ],
+  "Shahdol": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Shajapur": [
+   {
+    "category": "Primary",
+    "product": "Onion",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sheopur": [
+   {
+    "category": "Primary",
+    "product": "Guava",
+    "sector": "Agriculture"
+   }
+  ],
+  "Shivpuri": [
+   {
+    "category": "Primary",
+    "product": "Cloth Jacket",
+    "sector": "Textile"
+   }
+  ],
+  "Sidhi": [
+   {
+    "category": "Primary",
+    "product": "Carpet (Panja Dari)",
+    "sector": "Textile"
+   }
+  ],
+  "Singrauli": [
+   {
+    "category": "Primary",
+    "product": "Kodo Kutki (Millet)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Tikamgarh": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ujjain": [
+   {
+    "category": "Primary",
+    "product": "Batik print",
+    "sector": "Textile"
+   }
+  ],
+  "Umaria": [
+   {
+    "category": "Primary",
+    "product": "Mahua",
+    "sector": "Food Processing"
+   }
+  ],
+  "Vidisha": [
+   {
+    "category": "Primary",
+    "product": "Farm Equipment",
+    "sector": "Manufacturing"
+   }
+  ]
+ },
+ "MZ": {
+  "Aizawl": [
+   {
+    "category": "Primary",
+    "product": "Dragon Fruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "Champhai": [
+   {
+    "category": "Primary",
+    "product": "Mizo Chilli",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Passion Fruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "Hnahthial": [
+   {
+    "category": "Primary",
+    "product": "Mizo Chilli",
+    "sector": "Agriculture"
+   }
+  ],
+  "Khawzawl": [
+   {
+    "category": "Primary",
+    "product": "Pineapple",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Passion Fruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kolasib": [
+   {
+    "category": "Primary",
+    "product": "Dragon Fruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lawngtlai": [
+   {
+    "category": "Primary",
+    "product": "Mizo Chilli",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lunglei": [
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Passion Fruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mamit": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Saiha": [
+   {
+    "category": "Primary",
+    "product": "Mizo Chilli",
+    "sector": "Agriculture"
+   }
+  ],
+  "Serchhip": [
+   {
+    "category": "Primary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Passion Fruit",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "NL": {
+  "Dimapur": [
+   {
+    "category": "Primary",
+    "product": "Pineapple",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kiphire": [
+   {
+    "category": "Primary",
+    "product": "Kholar (Kidney Beans)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kohima": [
+   {
+    "category": "Primary",
+    "product": "Pickle",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Naga Chilli",
+    "sector": "Agriculture"
+   }
+  ],
+  "Longleng": [
+   {
+    "category": "Primary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mokokchung": [
+   {
+    "category": "Primary",
+    "product": "Coffee",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tea",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mon": [
+   {
+    "category": "Primary",
+    "product": "Large Cardamom",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tea",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Bamboo",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Handicraft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Peren": [
+   {
+    "category": "Primary",
+    "product": "Naga King Chilli",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handicraft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Phek": [
+   {
+    "category": "Primary",
+    "product": "Kiwi",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Wood/ Bamboo",
+    "sector": "Handicraft"
+   }
+  ],
+  "Tuensang": [
+   {
+    "category": "Primary",
+    "product": "Kholar (Kidney Beans)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Anthurium",
+    "sector": "Agriculture"
+   }
+  ],
+  "Wokha": [
+   {
+    "category": "Primary",
+    "product": "Banana and Banana Products",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Passion Fruit",
+    "sector": "Agriculture"
+   }
+  ],
+  "Zunheboto": [
+   {
+    "category": "Primary",
+    "product": "Soyabean",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "OR": {
+  "Angul": [
+   {
+    "category": "Primary",
+    "product": "Terracotta",
+    "sector": "Handicraft"
+   }
+  ],
+  "Balangir": [
+   {
+    "category": "Primary",
+    "product": "Cotton",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Onion",
+    "sector": "Agriculture"
+   }
+  ],
+  "Balasore": [
+   {
+    "category": "Primary",
+    "product": "Marine Products",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Stone Craft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Bargarh": [
+   {
+    "category": "Primary",
+    "product": "Handloom",
+    "sector": "Handloom"
+   }
+  ],
+  "Bhadrak": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Fish",
+    "sector": "Marine"
+   }
+  ],
+  "Boudh": [
+   {
+    "category": "Primary",
+    "product": "Handloom Patta Saree",
+    "sector": "Handloom"
+   }
+  ],
+  "Cuttack": [
+   {
+    "category": "Primary",
+    "product": "Silver Filigree (Tarakashi Art)",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handloom of Maniabandha",
+    "sector": "Handloom"
+   }
+  ],
+  "Deogarh": [
+   {
+    "category": "Primary",
+    "product": "Watermelon",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Orange",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Litchi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dhenkanal": [
+   {
+    "category": "Primary",
+    "product": "Handicrafts",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cashew",
+    "sector": "Agriculture"
+   }
+  ],
+  "Gajapati": [
+   {
+    "category": "Primary",
+    "product": "Cashew Kernel",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Granite Slab",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Turmeric Oil",
+    "sector": "Food Processing"
+   }
+  ],
+  "Ganjam": [
+   {
+    "category": "Primary",
+    "product": "Handloom",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cashew",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Granite Slab",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jagatsinghpur": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Marine",
+    "sector": "Marine"
+   }
+  ],
+  "Jajpur": [
+   {
+    "category": "Primary",
+    "product": "Stone Carving",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handicraft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Jharsuguda": [
+   {
+    "category": "Primary",
+    "product": "Aluminium Ingot",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Chilly",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Ginger",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kalahandi": [
+   {
+    "category": "Primary",
+    "product": "Handicraft (Wood Carving)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kandhamal": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kendrapara": [
+   {
+    "category": "Primary",
+    "product": "Golden Grass Product",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kendujhar": [
+   {
+    "category": "Primary",
+    "product": "Terracotta",
+    "sector": "Handicraft"
+   }
+  ],
+  "Khordha": [
+   {
+    "category": "Primary",
+    "product": "Fish product",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handicrafts (Stone Carving)",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Handicrafts (Pattachitra)",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Handicrafts (Palm Leaf Engraving)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Koraput": [
+   {
+    "category": "Primary",
+    "product": "Cashew",
+    "sector": "Agriculture"
+   }
+  ],
+  "Malkangiri": [
+   {
+    "category": "Primary",
+    "product": "Millets",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tribal Jewellery",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Processed Fish",
+    "sector": "Marine"
+   }
+  ],
+  "Mayurbhanj": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Nabarangapur": [
+   {
+    "category": "Primary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   }
+  ],
+  "Nayagarh": [
+   {
+    "category": "Primary",
+    "product": "Brass and Bell Metal",
+    "sector": "Handicraft"
+   }
+  ],
+  "Nuapada": [
+   {
+    "category": "Primary",
+    "product": "Cotton",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Onion",
+    "sector": "Agriculture"
+   }
+  ],
+  "Puri": [
+   {
+    "category": "Primary",
+    "product": "Handicrafts (Pattachitra)",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Marine Products",
+    "sector": "Marine"
+   }
+  ],
+  "Rayagada": [
+   {
+    "category": "Primary",
+    "product": "Cotton",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tamarind",
+    "sector": "Agriculture"
+   }
+  ],
+  "Sambalpur": [
+   {
+    "category": "Primary",
+    "product": "Sambalpuri Bandha Saree",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Chilly",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Sambalpuri Fabric Jewellery",
+    "sector": "Handicraft"
+   }
+  ],
+  "Subarnapur": [
+   {
+    "category": "Primary",
+    "product": "Bomkai Sarees & Fabrics",
+    "sector": "Textile"
+   }
+  ],
+  "Sundargarh": [
+   {
+    "category": "Primary",
+    "product": "Bamboo Craft",
+    "sector": "Handicraft"
+   }
+  ]
+ },
+ "PB": {
+  "Amritsar": [
+   {
+    "category": "Primary",
+    "product": "Embroidery",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Tourism",
+    "sector": "Tourism"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Achar-Muraba",
+    "sector": "Food Processing"
+   }
+  ],
+  "Barnala": [
+   {
+    "category": "Primary",
+    "product": "Textile-Towels",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Poultry Meat & Chicken",
+    "sector": "Food Processing"
+   }
+  ],
+  "Bathinda": [
+   {
+    "category": "Primary",
+    "product": "Citrus Fruits (Kinnow)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Honey",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Cotton, Yarn",
+    "sector": "Textile"
+   }
+  ],
+  "Faridkot": [
+   {
+    "category": "Primary",
+    "product": "Basmati (Rice)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agriculture Implements",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Fatehgarh Sahib": [
+   {
+    "category": "Primary",
+    "product": "Forged Items",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Machine parts/ Rolling Mill Machinery",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Fazilka": [
+   {
+    "category": "Primary",
+    "product": "Citrus Fruits (Kinnow)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Basmati (Rice)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ferozepur": [
+   {
+    "category": "Primary",
+    "product": "Basmati (Rice)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Chillies",
+    "sector": "Agriculture"
+   }
+  ],
+  "Gurdaspur": [
+   {
+    "category": "Primary",
+    "product": "Foundry Cluster",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jaggery",
+    "sector": "Agriculture"
+   }
+  ],
+  "Hoshiarpur": [
+   {
+    "category": "Primary",
+    "product": "Tractor & parts",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Plywood/ Wood Inlay Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Jalandhar": [
+   {
+    "category": "Primary",
+    "product": "Sports Goods",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Hand Tools",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Honey",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Leather",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kapurthala": [
+   {
+    "category": "Primary",
+    "product": "Diesel engine and Auto Parts",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Ludhiana": [
+   {
+    "category": "Primary",
+    "product": "Readymade Garments",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Engineering Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Mansa": [
+   {
+    "category": "Primary",
+    "product": "Cotton Yarn",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agriculture Implements",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Moga": [
+   {
+    "category": "Primary",
+    "product": "Agriculture Implements",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Pathankot": [
+   {
+    "category": "Primary",
+    "product": "Litchi",
+    "sector": "Agriculture"
+   }
+  ],
+  "Patiala": [
+   {
+    "category": "Primary",
+    "product": "Embroidery Fabric-Phulkari",
+    "sector": "Handloom"
+   }
+  ],
+  "Rupnagar": [
+   {
+    "category": "Primary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Agriculture Implements",
+    "sector": "Manufacturing"
+   }
+  ],
+  "S.A.S. Nagar": [
+   {
+    "category": "Primary",
+    "product": "Engineering Goods",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sculptures",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Pharmaceuticals/ Medical Equipment",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Sangrur": [
+   {
+    "category": "Primary",
+    "product": "Vegetable Oil",
+    "sector": "Food Processing"
+   }
+  ],
+  "Shahid Bhagat Singh Nagar": [
+   {
+    "category": "Primary",
+    "product": "Jaggery",
+    "sector": "Food Processing"
+   }
+  ],
+  "Sri Muktsar Sahib": [
+   {
+    "category": "Primary",
+    "product": "Agriculture Implements",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Tarn Taran": [
+   {
+    "category": "Primary",
+    "product": "Basmati (Rice)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Milk",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Pears",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "PY": {
+  "Karaikal": [
+   {
+    "category": "Primary",
+    "product": "Chemicals and Allied Products",
+    "sector": "Others"
+   },
+   {
+    "category": "Secondary",
+    "product": "Dry Fish",
+    "sector": "Marine"
+   }
+  ],
+  "Puducherry": [
+   {
+    "category": "Primary",
+    "product": "Terracotta",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Papier Mache",
+    "sector": "Handicraft"
+   }
+  ]
+ },
+ "RJ": {
+  "Ajmer": [
+   {
+    "category": "Primary",
+    "product": "Granite and Marble Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Alwar": [
+   {
+    "category": "Primary",
+    "product": "Automobiles Parts",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Banswara": [
+   {
+    "category": "Primary",
+    "product": "Marble Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Baran": [
+   {
+    "category": "Primary",
+    "product": "Garlic Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Barmer": [
+   {
+    "category": "Primary",
+    "product": "Kasheedakari",
+    "sector": "Handloom"
+   }
+  ],
+  "Bharatpur": [
+   {
+    "category": "Primary",
+    "product": "Agro Based Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Bhilwara": [
+   {
+    "category": "Primary",
+    "product": "Textile Products",
+    "sector": "Textile"
+   }
+  ],
+  "Bikaner": [
+   {
+    "category": "Primary",
+    "product": "Bikaneri Namkeen",
+    "sector": "Food Processing"
+   }
+  ],
+  "Bundi": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Chittorgarh": [
+   {
+    "category": "Primary",
+    "product": "Granite and Marble Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Churu": [
+   {
+    "category": "Primary",
+    "product": "Wood Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Dausa": [
+   {
+    "category": "Primary",
+    "product": "Stone Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Dholpur": [
+   {
+    "category": "Primary",
+    "product": "Stone Based Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Dungarpur": [
+   {
+    "category": "Primary",
+    "product": "Granite Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Ganganagar": [
+   {
+    "category": "Primary",
+    "product": "Mustard Oil",
+    "sector": "Food Processing"
+   }
+  ],
+  "Hanumangarh": [
+   {
+    "category": "Primary",
+    "product": "Agro Based Product",
+    "sector": "Agriculture"
+   }
+  ],
+  "Jaipur": [
+   {
+    "category": "Primary",
+    "product": "Gems & Jewellery",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jaisalmer": [
+   {
+    "category": "Primary",
+    "product": "Yellow Stone Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jalore": [
+   {
+    "category": "Primary",
+    "product": "Granite Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jhalawar": [
+   {
+    "category": "Primary",
+    "product": "Kota Stone Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jhunjhunu": [
+   {
+    "category": "Primary",
+    "product": "Wooden Handicraft Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Jodhpur": [
+   {
+    "category": "Primary",
+    "product": "Wooden Furniture Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Karauli": [
+   {
+    "category": "Primary",
+    "product": "Sandstone Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kota": [
+   {
+    "category": "Primary",
+    "product": "Kota Doria",
+    "sector": "Handloom"
+   }
+  ],
+  "Nagaur": [
+   {
+    "category": "Primary",
+    "product": "Pan Methi and Spices Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Pali": [
+   {
+    "category": "Primary",
+    "product": "Textile Products",
+    "sector": "Textile"
+   }
+  ],
+  "Pratapgarh": [
+   {
+    "category": "Primary",
+    "product": "Thewa Jewellery",
+    "sector": "Handicraft"
+   }
+  ],
+  "Rajsamand": [
+   {
+    "category": "Primary",
+    "product": "Granite and Marble Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Sawai Madhopur": [
+   {
+    "category": "Primary",
+    "product": "Marble Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Sikar": [
+   {
+    "category": "Primary",
+    "product": "Wooden Furniture Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Sirohi": [
+   {
+    "category": "Primary",
+    "product": "Marble Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Tonk": [
+   {
+    "category": "Primary",
+    "product": "Slate Stone Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Udaipur": [
+   {
+    "category": "Primary",
+    "product": "Marble and Granite Products",
+    "sector": "Manufacturing"
+   }
+  ]
+ },
+ "SK": {
+  "East Sikkim": [
+   {
+    "category": "Primary",
+    "product": "Tourism",
+    "sector": "Tourism"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pharma related",
+    "sector": "Others"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Handloom and Handicraft",
+    "sector": "Handicraft"
+   }
+  ],
+  "North Sikkim": [
+   {
+    "category": "Primary",
+    "product": "Buck Wheat",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Orange",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Cardamom",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Others",
+    "product": "Handloom and Handicraft",
+    "sector": "Handloom"
+   }
+  ],
+  "South Sikkim": [
+   {
+    "category": "Primary",
+    "product": "Tea",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Dalle Chillies",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Handloom and Handicraft",
+    "sector": "Handloom"
+   }
+  ],
+  "West Sikkim": [
+   {
+    "category": "Primary",
+    "product": "Tourism",
+    "sector": "Tourism"
+   },
+   {
+    "category": "Secondary",
+    "product": "Trout Fishing",
+    "sector": "Marine"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Handloom and Handicraft",
+    "sector": "Handloom"
+   }
+  ]
+ },
+ "TG": {
+  "Adilabad": [
+   {
+    "category": "Primary",
+    "product": "Cotton Bales",
+    "sector": "Textile"
+   }
+  ],
+  "Bhadradri Kothagudem": [
+   {
+    "category": "Primary",
+    "product": "Chillies",
+    "sector": "Agriculture"
+   }
+  ],
+  "Hyderabad": [
+   {
+    "category": "Primary",
+    "product": "Studded gold jewllery",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jagtial": [
+   {
+    "category": "Primary",
+    "product": "Mango",
+    "sector": "Agriculture"
+   }
+  ],
+  "Jangaon": [
+   {
+    "category": "Primary",
+    "product": "Brass Artifacts",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jayashankar Bhupalapally": [
+   {
+    "category": "Primary",
+    "product": "Chillies",
+    "sector": "Agriculture"
+   }
+  ],
+  "Jogulamba Gadwal": [
+   {
+    "category": "Primary",
+    "product": "Groundnut (Nuts)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kamareddy": [
+   {
+    "category": "Primary",
+    "product": "Soyabean",
+    "sector": "Agriculture"
+   }
+  ],
+  "Karimnagar": [
+   {
+    "category": "Primary",
+    "product": "Granites",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Silverfiligree",
+    "sector": "Handicraft"
+   }
+  ],
+  "Khammam": [
+   {
+    "category": "Primary",
+    "product": "Chillies",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Granite",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Komaram Bheem": [
+   {
+    "category": "Primary",
+    "product": "Millets",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mahabubabad": [
+   {
+    "category": "Primary",
+    "product": "Chillies",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mahabubnagar": [
+   {
+    "category": "Primary",
+    "product": "Mango (Banaganapalle)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Mancherial": [
+   {
+    "category": "Primary",
+    "product": "Mango",
+    "sector": "Agriculture"
+   }
+  ],
+  "Medak": [
+   {
+    "category": "Primary",
+    "product": "Tomato processed products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Medchal Malkajgiri": [
+   {
+    "category": "Primary",
+    "product": "Pharmaceuticals & Biotech Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Mulugu": [
+   {
+    "category": "Primary",
+    "product": "Chillies",
+    "sector": "Agriculture"
+   }
+  ],
+  "Nagarkurnool": [
+   {
+    "category": "Primary",
+    "product": "Mango",
+    "sector": "Agriculture"
+   }
+  ],
+  "Nalgonda": [
+   {
+    "category": "Primary",
+    "product": "Cotton",
+    "sector": "Textile"
+   }
+  ],
+  "Narayanpet": [
+   {
+    "category": "Primary",
+    "product": "Cotton & Silk Sarees",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Custard Apple (Pulp)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Nirmal": [
+   {
+    "category": "Primary",
+    "product": "Cotton Bales",
+    "sector": "Textile"
+   }
+  ],
+  "Nizamabad": [
+   {
+    "category": "Primary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   }
+  ],
+  "Peddapalli": [
+   {
+    "category": "Primary",
+    "product": "Rice based products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Rajanna Sircilla": [
+   {
+    "category": "Primary",
+    "product": "Fisheries",
+    "sector": "Marine"
+   }
+  ],
+  "Ranga Reddy": [
+   {
+    "category": "Primary",
+    "product": "Biscuits & Confectionery",
+    "sector": "Food Processing"
+   }
+  ],
+  "Sangareddy": [
+   {
+    "category": "Primary",
+    "product": "Engineering Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Siddipet": [
+   {
+    "category": "Primary",
+    "product": "Golabama Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cherial Paintings",
+    "sector": "Handicraft"
+   }
+  ],
+  "Suryapet": [
+   {
+    "category": "Primary",
+    "product": "Cement",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Vikarabad": [
+   {
+    "category": "Primary",
+    "product": "Fullers Earth/Betonitte granules and powder",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Wanaparthy": [
+   {
+    "category": "Primary",
+    "product": "Groundnut (Nuts)",
+    "sector": "Agriculture"
+   }
+  ],
+  "Warangal Rural": [
+   {
+    "category": "Primary",
+    "product": "Warangal Durries",
+    "sector": "Textile"
+   }
+  ],
+  "Warangal Urban": [
+   {
+    "category": "Primary",
+    "product": "Granite Slabs",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Yadadri Bhuvanagiri": [
+   {
+    "category": "Primary",
+    "product": "Handloom Ikkat Products",
+    "sector": "Handloom"
+   }
+  ]
+ },
+ "TN": {
+  "Ariyalur": [
+   {
+    "category": "Primary",
+    "product": "Cashew Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Chengalpattu": [
+   {
+    "category": "Primary",
+    "product": "Automobile products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Chennai": [
+   {
+    "category": "Primary",
+    "product": "Engineering and Auto components",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Coimbatore": [
+   {
+    "category": "Primary",
+    "product": "Motor Pumps",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Cuddalore": [
+   {
+    "category": "Primary",
+    "product": "Cashew Nuts",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dharmapuri": [
+   {
+    "category": "Primary",
+    "product": "Ready Made Garments",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Auto Components",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Dindigul": [
+   {
+    "category": "Primary",
+    "product": "Coir Pith Blocks",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Garlic",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Dindigul Locks",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Erode": [
+   {
+    "category": "Primary",
+    "product": "Handloom and Powerloom products",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Turmeric",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Readymade Fabric",
+    "sector": "Textile"
+   }
+  ],
+  "Kallakurichi": [
+   {
+    "category": "Primary",
+    "product": "Food Products - Rice",
+    "sector": "Food Processing"
+   }
+  ],
+  "Kancheepuram": [
+   {
+    "category": "Primary",
+    "product": "Textile Garments",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Silk",
+    "sector": "Handloom"
+   }
+  ],
+  "Kanyakumari": [
+   {
+    "category": "Primary",
+    "product": "Cashewnuts",
+    "sector": "Agriculture"
+   }
+  ],
+  "Karur": [
+   {
+    "category": "Primary",
+    "product": "Textiles - Home Made Ups",
+    "sector": "Textile"
+   }
+  ],
+  "Krishnagiri": [
+   {
+    "category": "Primary",
+    "product": "Mango - Food Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Madurai": [
+   {
+    "category": "Primary",
+    "product": "Readymade Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Nagapattinam": [
+   {
+    "category": "Primary",
+    "product": "Marine foods",
+    "sector": "Marine"
+   }
+  ],
+  "Namakkal": [
+   {
+    "category": "Primary",
+    "product": "Poultry feed and products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Nilgiris": [
+   {
+    "category": "Primary",
+    "product": "Tea",
+    "sector": "Agriculture"
+   }
+  ],
+  "Perambalur": [
+   {
+    "category": "Primary",
+    "product": "Maize",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handicraft Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Pudukkottai": [
+   {
+    "category": "Primary",
+    "product": "Engineering Products",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cashew",
+    "sector": "Agriculture"
+   }
+  ],
+  "Ramanathapuram": [
+   {
+    "category": "Primary",
+    "product": "Marine Foods",
+    "sector": "Marine"
+   },
+   {
+    "category": "Secondary",
+    "product": "Dry Fish",
+    "sector": "Marine"
+   }
+  ],
+  "Ranipet": [
+   {
+    "category": "Primary",
+    "product": "Leather products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Salem": [
+   {
+    "category": "Primary",
+    "product": "Silver Jewellery",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Salem Silk",
+    "sector": "Handicraft"
+   }
+  ],
+  "Sivaganga": [
+   {
+    "category": "Primary",
+    "product": "Coir Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Miniature Cucumber",
+    "sector": "Agriculture"
+   }
+  ],
+  "Tenkasi": [
+   {
+    "category": "Primary",
+    "product": "Coir pith block",
+    "sector": "Handicraft"
+   }
+  ],
+  "Thanjavur": [
+   {
+    "category": "Primary",
+    "product": "Agriculture Products - Coconuts",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handicraft & Handloom",
+    "sector": "Handicraft"
+   }
+  ],
+  "Theni": [
+   {
+    "category": "Primary",
+    "product": "Textile Made Ups",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Banana",
+    "sector": "Agriculture"
+   }
+  ],
+  "Thiruvallur": [
+   {
+    "category": "Primary",
+    "product": "Engineering and Auto components",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Engineering Tools and Electronics",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Thiruvarur": [
+   {
+    "category": "Primary",
+    "product": "Agriculture Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Thoothukkudi": [
+   {
+    "category": "Primary",
+    "product": "Marine Foods",
+    "sector": "Marine"
+   }
+  ],
+  "Tiruchirappalli": [
+   {
+    "category": "Primary",
+    "product": "Engineering Products",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Leather Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Tirunelveli": [
+   {
+    "category": "Primary",
+    "product": "Readymade Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Tirupathur": [
+   {
+    "category": "Primary",
+    "product": "Leather products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Tiruppur": [
+   {
+    "category": "Primary",
+    "product": "Hosiery Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Tiruvannamalai": [
+   {
+    "category": "Primary",
+    "product": "Edible Oil",
+    "sector": "Food Processing"
+   }
+  ],
+  "Vellore": [
+   {
+    "category": "Primary",
+    "product": "Leather Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Viluppuram": [
+   {
+    "category": "Primary",
+    "product": "Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Virudhunagar": [
+   {
+    "category": "Primary",
+    "product": "Gauze Cloth",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sivakasi Crackers",
+    "sector": "Manufacturing"
+   }
+  ]
+ },
+ "TR": {
+  "Dhalai": [
+   {
+    "category": "Primary",
+    "product": "Queen Pineapple and Pineapple Based Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Gomati": [
+   {
+    "category": "Primary",
+    "product": "Risha",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Matabari Pera",
+    "sector": "Food Processing"
+   }
+  ],
+  "Khowai": [
+   {
+    "category": "Primary",
+    "product": "Scented Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "North Tripura": [
+   {
+    "category": "Primary",
+    "product": "Agar Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Sipahijala": [
+   {
+    "category": "Primary",
+    "product": "Tripura Silk",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Wood and Bamboo based Handicraft Items",
+    "sector": "Handicraft"
+   }
+  ],
+  "South Tripura": [
+   {
+    "category": "Primary",
+    "product": "Cashew Nut",
+    "sector": "Agriculture"
+   }
+  ],
+  "Unokoti": [
+   {
+    "category": "Primary",
+    "product": "Tea",
+    "sector": "Agriculture"
+   }
+  ],
+  "West Tripura": [
+   {
+    "category": "Primary",
+    "product": "Bamboo based products and Desktop Products",
+    "sector": "Handicraft"
+   }
+  ]
+ },
+ "UK": {
+  "Almora": [
+   {
+    "category": "Primary",
+    "product": "Bal Mithai",
+    "sector": "Food Processing"
+   }
+  ],
+  "Bageshwar": [
+   {
+    "category": "Primary",
+    "product": "Copper based products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Chamoli": [
+   {
+    "category": "Primary",
+    "product": "Nettle based products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Champawat": [
+   {
+    "category": "Primary",
+    "product": "Himalyan Honey",
+    "sector": "Agriculture"
+   }
+  ],
+  "Dehradun": [
+   {
+    "category": "Primary",
+    "product": "Bakery",
+    "sector": "Food Processing"
+   }
+  ],
+  "Haridwar": [
+   {
+    "category": "Primary",
+    "product": "Jaggery",
+    "sector": "Food Processing"
+   }
+  ],
+  "Nainital": [
+   {
+    "category": "Primary",
+    "product": "Aipan Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Pauri Garhwal": [
+   {
+    "category": "Primary",
+    "product": "Herbal Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Pithoragarh": [
+   {
+    "category": "Primary",
+    "product": "Woollen Product",
+    "sector": "Handloom"
+   }
+  ],
+  "Rudraprayag": [
+   {
+    "category": "Primary",
+    "product": "Wood Crafts (Temple imitiation)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Tehri Garhwal": [
+   {
+    "category": "Primary",
+    "product": "Natural fibre",
+    "sector": "Textile"
+   }
+  ],
+  "Udham Singh Nagar": [
+   {
+    "category": "Primary",
+    "product": "Moonj Grass product",
+    "sector": "Handicraft"
+   }
+  ],
+  "Uttarkashi": [
+   {
+    "category": "Primary",
+    "product": "Red Rice",
+    "sector": "Agriculture"
+   }
+  ]
+ },
+ "UP": {
+  "Agra": [
+   {
+    "category": "Primary",
+    "product": "Leather Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Handicrafts- Stone & Marble",
+    "sector": "Handicraft"
+   }
+  ],
+  "Aligarh": [
+   {
+    "category": "Primary",
+    "product": "Lock & Hardware",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Metal Handicraft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Ambedkar Nagar": [
+   {
+    "category": "Primary",
+    "product": "Textile Products",
+    "sector": "Textile"
+   }
+  ],
+  "Amethi": [
+   {
+    "category": "Primary",
+    "product": "Moonj products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Food Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Amroha": [
+   {
+    "category": "Primary",
+    "product": "Musical Instruments (Dholak)",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Readymade Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Auraiya": [
+   {
+    "category": "Primary",
+    "product": "Milk Processing (Desi Ghee) and Milk Products",
+    "sector": "Dairy"
+   }
+  ],
+  "Ayodhya": [
+   {
+    "category": "Primary",
+    "product": "Jaggery Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Azamgarh": [
+   {
+    "category": "Primary",
+    "product": "Black Pottery Artefacts",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Textile Products (Reshmi Sari)",
+    "sector": "Handloom"
+   }
+  ],
+  "Baghpat": [
+   {
+    "category": "Primary",
+    "product": "Home Decorative Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Bahraich": [
+   {
+    "category": "Primary",
+    "product": "(Wheat Stalk) Handicrafts",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Food Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Ballia": [
+   {
+    "category": "Primary",
+    "product": "Bindi (Tikuli)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Balrampur": [
+   {
+    "category": "Primary",
+    "product": "Food Processing (Pulses)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Banda": [
+   {
+    "category": "Primary",
+    "product": "Shazar Stone Craft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Barabanki": [
+   {
+    "category": "Primary",
+    "product": "Handloom Products and Textile Products",
+    "sector": "Textile"
+   }
+  ],
+  "Bareilly": [
+   {
+    "category": "Primary",
+    "product": "Zari and Zardozi",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Goldsmith Industry",
+    "sector": "Handicraft"
+   }
+  ],
+  "Basti": [
+   {
+    "category": "Primary",
+    "product": "Wooden Crafts",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Vinegar Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Bhadohi": [
+   {
+    "category": "Primary",
+    "product": "Carpet (Dari)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Bijnor": [
+   {
+    "category": "Primary",
+    "product": "Wood Craft",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Budaun": [
+   {
+    "category": "Primary",
+    "product": "Zari and Zardozi",
+    "sector": "Handicraft"
+   }
+  ],
+  "Bulandshahr": [
+   {
+    "category": "Primary",
+    "product": "Ceramic Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Chandauli": [
+   {
+    "category": "Primary",
+    "product": "Zari-Zardozi",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Black Rice",
+    "sector": "Agriculture"
+   }
+  ],
+  "Chitrakoot": [
+   {
+    "category": "Primary",
+    "product": "Wooden Toys and Wood Art Products",
+    "sector": "Handicraft"
+   }
+  ],
+  "Deoria": [
+   {
+    "category": "Primary",
+    "product": "Decorative Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Embroidery and Weaving (Knitting) Products",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Readymade Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Etah": [
+   {
+    "category": "Primary",
+    "product": "Ankle Bells (Ghungroo), Bells and Brass Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Etawah": [
+   {
+    "category": "Primary",
+    "product": "Textile Products, Tailoring and Garment Embroidery",
+    "sector": "Textile"
+   }
+  ],
+  "Farrukhabad": [
+   {
+    "category": "Primary",
+    "product": "Textile Printing",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Zari Zardozi",
+    "sector": "Handicraft"
+   }
+  ],
+  "Fatehpur": [
+   {
+    "category": "Primary",
+    "product": "Bedsheets",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Iron Fabrication Work",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Firozabad": [
+   {
+    "category": "Primary",
+    "product": "Glassware",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Gautam Buddha Nagar": [
+   {
+    "category": "Primary",
+    "product": "Readymade Garments and Textile Products",
+    "sector": "Textile"
+   }
+  ],
+  "Ghaziabad": [
+   {
+    "category": "Primary",
+    "product": "Engineering goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Ghazipur": [
+   {
+    "category": "Primary",
+    "product": "Jute Wall hangings",
+    "sector": "Handicraft"
+   }
+  ],
+  "Gonda": [
+   {
+    "category": "Primary",
+    "product": "Food Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Gorakhpur": [
+   {
+    "category": "Primary",
+    "product": "Terracotta",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Readymade Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Hamirpur": [
+   {
+    "category": "Primary",
+    "product": "Shoes",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Hapur": [
+   {
+    "category": "Primary",
+    "product": "Home Decorative Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Hardoi": [
+   {
+    "category": "Primary",
+    "product": "Handloom Products and Textile Products",
+    "sector": "Handloom"
+   }
+  ],
+  "Hathras": [
+   {
+    "category": "Primary",
+    "product": "Hing (Asafoetida) Processing",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Ready Made Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Jalaun": [
+   {
+    "category": "Primary",
+    "product": "Handmade Paper Art",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Peas Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Jaunpur": [
+   {
+    "category": "Primary",
+    "product": "Woollen Carpets (Dari)",
+    "sector": "Textile"
+   }
+  ],
+  "Jhansi": [
+   {
+    "category": "Primary",
+    "product": "Soft Toys",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Textile Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kannauj": [
+   {
+    "category": "Primary",
+    "product": "Perfume (Attar), Incense Sticks and Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kanpur Dehat": [
+   {
+    "category": "Primary",
+    "product": "Zinc Utensils",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Plastic Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Kanpur Nagar": [
+   {
+    "category": "Primary",
+    "product": "Leather Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Hosiery and Textile Products",
+    "sector": "Textile"
+   }
+  ],
+  "Kasganj": [
+   {
+    "category": "Primary",
+    "product": "Zari Zardozi",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kaushambi": [
+   {
+    "category": "Primary",
+    "product": "Food Processing (Banana and Guava)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Kushinagar": [
+   {
+    "category": "Primary",
+    "product": "Banana Fiber Products and Banana Products",
+    "sector": "Agriculture"
+   }
+  ],
+  "Lakhimpur Kheri": [
+   {
+    "category": "Primary",
+    "product": "Tribal craft",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jaggery Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Lalitpur": [
+   {
+    "category": "Primary",
+    "product": "Zari Silk Sarees",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Food Processing",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "School Dress (Readymade Garments/Hosiery)",
+    "sector": "Textile"
+   }
+  ],
+  "Lucknow": [
+   {
+    "category": "Primary",
+    "product": "Chikankari & Zari Zardozi",
+    "sector": "Textile"
+   }
+  ],
+  "Maharajganj": [
+   {
+    "category": "Primary",
+    "product": "Furniture",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Mahoba": [
+   {
+    "category": "Primary",
+    "product": "Gaura Stone Craft and Metal Crafts",
+    "sector": "Handicraft"
+   }
+  ],
+  "Mainpuri": [
+   {
+    "category": "Primary",
+    "product": "Tarkashi Art",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Textile Sewing",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Zari Zardozi",
+    "sector": "Handicraft"
+   }
+  ],
+  "Mathura": [
+   {
+    "category": "Primary",
+    "product": "Sanitary Fittings",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Costume of Thakurji",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Shrinagar Sculpture and Kanthi Mala",
+    "sector": "Handicraft"
+   }
+  ],
+  "Mau": [
+   {
+    "category": "Primary",
+    "product": "Powerloom Textile",
+    "sector": "Textile"
+   }
+  ],
+  "Meerut": [
+   {
+    "category": "Primary",
+    "product": "Sports Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Mirzapur": [
+   {
+    "category": "Primary",
+    "product": "Carpets",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Metal Industry (Brass)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Moradabad": [
+   {
+    "category": "Primary",
+    "product": "Metal Craft",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Muzaffarnagar": [
+   {
+    "category": "Primary",
+    "product": "Jaggery Products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Pilibhit": [
+   {
+    "category": "Primary",
+    "product": "Flute and Wooden Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Pratapgarh": [
+   {
+    "category": "Primary",
+    "product": "Food Processing (Aamla Products)",
+    "sector": "Food Processing"
+   }
+  ],
+  "Prayagraj": [
+   {
+    "category": "Primary",
+    "product": "Moonj products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Food Processing",
+    "sector": "Food Processing"
+   }
+  ],
+  "Rae Bareli": [
+   {
+    "category": "Primary",
+    "product": "Wood Work",
+    "sector": "Handicraft"
+   }
+  ],
+  "Rampur": [
+   {
+    "category": "Primary",
+    "product": "Applique Work along with Patch Work, Zari Patch work, and Mentha",
+    "sector": "Handicraft"
+   }
+  ],
+  "Saharanpur": [
+   {
+    "category": "Primary",
+    "product": "Wood Carving",
+    "sector": "Handicraft"
+   }
+  ],
+  "Sambhal": [
+   {
+    "category": "Primary",
+    "product": "Handicraft (Horn-Bone Products)",
+    "sector": "Handicraft"
+   }
+  ],
+  "Sant Kabir Nagar": [
+   {
+    "category": "Primary",
+    "product": "Brass Utensils",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Hosiery Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Shahjahanpur": [
+   {
+    "category": "Primary",
+    "product": "Zari and Zardozi",
+    "sector": "Handicraft"
+   }
+  ],
+  "Shamli": [
+   {
+    "category": "Primary",
+    "product": "Rim and Axle and Iron Work",
+    "sector": "Handicraft"
+   }
+  ],
+  "Shrawasti": [
+   {
+    "category": "Primary",
+    "product": "Tribal craft and Furniture",
+    "sector": "Handicraft"
+   }
+  ],
+  "Siddharthnagar": [
+   {
+    "category": "Primary",
+    "product": "Kala namak Rice",
+    "sector": "Food Processing"
+   }
+  ],
+  "Sitapur": [
+   {
+    "category": "Primary",
+    "product": "Carpets (Dari)",
+    "sector": "Textile"
+   }
+  ],
+  "Sonbhadra": [
+   {
+    "category": "Primary",
+    "product": "Carpets",
+    "sector": "Textile"
+   }
+  ],
+  "Sultanpur": [
+   {
+    "category": "Primary",
+    "product": "Moonj Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Iron and Steel Fabrication",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Unnao": [
+   {
+    "category": "Primary",
+    "product": "Zari Zardozi",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Leather Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Varanasi": [
+   {
+    "category": "Primary",
+    "product": "Silk Products",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Pink Enamel (Gulaabi Minakari)",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Wooden Lacquer Ware",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Others",
+    "product": "Toys",
+    "sector": "Handicraft"
+   }
+  ]
+ },
+ "WB": {
+  "Alipurduar": [
+   {
+    "category": "Primary",
+    "product": "Wooden Furniture",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Plywood & Allied Products",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Steel Furniture",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Bankura": [
+   {
+    "category": "Primary",
+    "product": "Terracota",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Dokra",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Baluchari",
+    "sector": "Handloom"
+   }
+  ],
+  "Birbhum": [
+   {
+    "category": "Primary",
+    "product": "Santiniketan Leather goods",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Kantha",
+    "sector": "Handloom"
+   }
+  ],
+  "Cooch Behar": [
+   {
+    "category": "Primary",
+    "product": "Sital pati & its products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mekhla dress materials",
+    "sector": "Handloom"
+   }
+  ],
+  "Dakshin Dinajpur": [
+   {
+    "category": "Primary",
+    "product": "Wooden Mask & Wall Hanging",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Bamboo Craft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Darjeeling": [
+   {
+    "category": "Primary",
+    "product": "Darjeeling Tea",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Orange",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Darjeeling Honey",
+    "sector": "Food Processing"
+   }
+  ],
+  "Hooghly": [
+   {
+    "category": "Primary",
+    "product": "Handloom saree (Dhaniakhali)",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Costume Jewellery",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Chikan Embroidery",
+    "sector": "Handloom"
+   }
+  ],
+  "Howrah": [
+   {
+    "category": "Primary",
+    "product": "Gems & Jewellery",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Engineering Goods",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Jalpaiguri": [
+   {
+    "category": "Primary",
+    "product": "Tea",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Cane Furniture",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Wood Carving",
+    "sector": "Handicraft"
+   }
+  ],
+  "Jhargram": [
+   {
+    "category": "Primary",
+    "product": "Sal leaf based products",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Sabai grass-based Handicraft",
+    "sector": "Handicraft"
+   }
+  ],
+  "Kalimpong": [
+   {
+    "category": "Primary",
+    "product": "Orchid & Flowers",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Large Cardamom",
+    "sector": "Agriculture"
+   }
+  ],
+  "Kolkata": [
+   {
+    "category": "Primary",
+    "product": "Leather goods",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Kids wear/ Readymade Garments",
+    "sector": "Textile"
+   }
+  ],
+  "Malda": [
+   {
+    "category": "Primary",
+    "product": "Silk and Silk products",
+    "sector": "Textile"
+   },
+   {
+    "category": "Secondary",
+    "product": "Makhana",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Mango and its processed products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Murshidabad": [
+   {
+    "category": "Primary",
+    "product": "Murshidabad Silk Saree/Scarf",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Mango and its processed products",
+    "sector": "Food Processing"
+   }
+  ],
+  "Nadia": [
+   {
+    "category": "Primary",
+    "product": "Tangail, Jamdani Saree & Shantipore Saree",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Secondary",
+    "product": "Clay Doll",
+    "sector": "Handicraft"
+   }
+  ],
+  "North 24 Parganas": [
+   {
+    "category": "Primary",
+    "product": "Steel Furniture",
+    "sector": "Manufacturing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jute diversified products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Jewllery box",
+    "sector": "Handicraft"
+   }
+  ],
+  "Paschim Bardhaman": [
+   {
+    "category": "Primary",
+    "product": "Refractory bricks & similar refractory ceramics",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Paschim Medinipur": [
+   {
+    "category": "Primary",
+    "product": "Patachitra",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Madur (Mat) & Mat products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Fabricated Steel Products",
+    "sector": "Manufacturing"
+   }
+  ],
+  "Purba Bardhaman": [
+   {
+    "category": "Primary",
+    "product": "Dokra",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Rice Bran Oil & De-oiled Rice Bran",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Tangail, Jamdani Saree",
+    "sector": "Handloom"
+   },
+   {
+    "category": "Others",
+    "product": "Sitabhog- Mihidana",
+    "sector": "Food Processing"
+   }
+  ],
+  "Purba Medinipur": [
+   {
+    "category": "Primary",
+    "product": "Processed cashew nuts",
+    "sector": "Food Processing"
+   },
+   {
+    "category": "Secondary",
+    "product": "Patachitra",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Human Hair (Washed)",
+    "sector": "Others"
+   },
+   {
+    "category": "Others",
+    "product": "Marine Products",
+    "sector": "Marine"
+   }
+  ],
+  "Purulia": [
+   {
+    "category": "Primary",
+    "product": "Lac & Lac Products",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Chow Mask",
+    "sector": "Handicraft"
+   }
+  ],
+  "South 24 Parganas": [
+   {
+    "category": "Primary",
+    "product": "Leather Goods",
+    "sector": "Handicraft"
+   },
+   {
+    "category": "Secondary",
+    "product": "Marine Products",
+    "sector": "Marine"
+   },
+   {
+    "category": "Tertiary",
+    "product": "Sundarban Honey",
+    "sector": "Agriculture"
+   }
+  ],
+  "Uttar Dinajpur": [
+   {
+    "category": "Primary",
+    "product": "Tulai Panji Rice (Aromatic Rice)",
+    "sector": "Agriculture"
+   },
+   {
+    "category": "Secondary",
+    "product": "Jute diversified products",
+    "sector": "Handicraft"
+   }
+  ]
+ }
+}

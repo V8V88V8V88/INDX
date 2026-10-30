@@ -1,5 +1,6 @@
 import { states } from "@/data/india";
 import neighbours from "@/data/neighbours.json";
+import odop from "@/data/odop.json";
 import { districtFiles, placeNameFiles } from "@/data/server-data";
 import { placeNameKey } from "./place-names";
 import type { District } from "@/types";
@@ -19,12 +20,19 @@ export interface Averages {
   density: number;
 }
 
+export interface OdopProduct {
+  product: string;
+  category: "Primary" | "Secondary" | "Tertiary" | "Others";
+  sector: "Agriculture" | "Food Processing" | "Handicraft" | "Handloom" | "Textile" | "Manufacturing" | "Marine" | "Dairy" | "Others";
+}
+
 export interface DistrictProfile {
   district: District;
   ranks: Record<DistrictMetric, Rank>;
   stateAverages: Averages;
   indiaAverages: Averages;
   neighbours: string[];
+  odop: OdopProduct[];
 }
 
 const RANKED: DistrictMetric[] = ["population", "area", "density", "literacyRate", "sexRatio"];
@@ -77,6 +85,7 @@ export function districtProfile(stateId: string, district: District): DistrictPr
     stateAverages: averages(stateList),
     indiaAverages: averages(india),
     neighbours: (neighbours as Record<string, Record<string, string[]>>)[stateId]?.[district.name] ?? [],
+    odop: (odop as Record<string, Record<string, OdopProduct[]>>)[stateId]?.[district.name] ?? [],
   };
 }
 

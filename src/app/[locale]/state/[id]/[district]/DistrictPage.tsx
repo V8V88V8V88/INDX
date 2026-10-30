@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Footer, Header, MetricCard, PlaceBadges, SourcesInfo, StateMap } from "@/components";
-import { Icon, LinkButton, SectionHeader } from "@/components/ui";
+import { Badge, Icon, LinkButton, SectionHeader } from "@/components/ui";
 import { getStateById } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
@@ -21,8 +21,9 @@ interface DistrictPageProps {
 
 export function DistrictPage({ stateId, profile, names }: DistrictPageProps) {
   const state = getStateById(stateId)!;
-  const { district, ranks, stateAverages, indiaAverages, neighbours } = profile;
+  const { district, ranks, stateAverages, indiaAverages, neighbours, odop } = profile;
   const t = useTranslations("District");
+  const tOdop = useTranslations("Odop");
   const tDistricts = useTranslations("Districts");
   const tCommon = useTranslations("Common");
   const tMetrics = useTranslations("Metrics");
@@ -146,6 +147,27 @@ export function DistrictPage({ stateId, profile, names }: DistrictPageProps) {
               </tbody>
             </table>
           </div>
+        </motion.section>
+
+        <motion.section {...reveal(reduceMotion, 0.14)} className="mb-12">
+          <SectionHeader
+            title={tOdop("title")}
+            description={tOdop("intro", { name })}
+            actions={<SourcesInfo>DPIIT · ODOP v33, 31 Dec 2025 ·</SourcesInfo>}
+          />
+          {odop.length > 0 ? (
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {odop.map((item) => (
+                <li key={item.product} className="rounded-xl border border-border-light bg-bg-secondary/60 p-4">
+                  <p className="text-xs font-medium uppercase tracking-wide text-text-muted">{tOdop(`categories.${item.category}`)}</p>
+                  <p className="mt-1.5 font-semibold text-text-primary">{item.product}</p>
+                  <Badge className="mt-3">{tOdop(`sectors.${item.sector}`)}</Badge>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-sm text-text-muted">{tOdop("none")}</p>
+          )}
         </motion.section>
 
         <motion.section {...reveal(reduceMotion, 0.16)} className="mb-12">

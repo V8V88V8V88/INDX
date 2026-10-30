@@ -358,7 +358,8 @@
       "hdi": "Subnational Human Development Index, 2023",
       "wikipedia": "2011 census figures on current district boundaries and compiled GSDP tables",
       "boundaries": "State and district boundaries",
-      "names": "District and city names in Indian languages"
+      "names": "District and city names in Indian languages",
+      "odop": "One District One Product list, version 33 (31 December 2025)"
     },
     "openDataTitle": "Open data",
     "openDataIntro": "Everything on INDX is free to use. Download it as CSV or read it from the JSON API below, and credit INDX and the original sources when you publish it.",
@@ -393,5 +394,27 @@
     "openPage": "Open district page",
     "district": "District",
     "noNeighbours": "No neighbouring districts in this state."
+  },
+  "Odop": {
+    "title": "One District One Product",
+    "intro": "What {name} is known for making, as chosen under the Government of India's ODOP programme.",
+    "none": "No ODOP product is listed for this district yet.",
+    "categories": {
+      "Primary": "Main",
+      "Secondary": "Second",
+      "Tertiary": "Third",
+      "Others": "Also known for"
+    },
+    "sectors": {
+      "Agriculture": "Agriculture",
+      "Food Processing": "Food processing",
+      "Handicraft": "Handicraft",
+      "Handloom": "Handloom",
+      "Textile": "Textile",
+      "Manufacturing": "Manufacturing",
+      "Marine": "Marine",
+      "Dairy": "Dairy",
+      "Others": "Other"
+    }
   }
 }
