@@ -3,7 +3,11 @@
     "title": "INDX - India, mapped and indexed",
     "description": "Explore every state, union territory and district of India on an interactive map, with the numbers behind each one.",
     "pageTitle": "{page} - INDX",
-    "stateDescription": "Districts, population, GDP, literacy and HDI of {name}, mapped and ranked."
+    "stateDescription": "Districts, population, GDP, literacy and HDI of {name}, mapped and ranked.",
+    "tagline": "India, mapped and indexed",
+    "mapDescription": "Full-screen map of India's states and districts, coloured by population, GDP, literacy, HDI and more.",
+    "compareDescription": "Compare any two Indian states, cities or districts side by side: population, area, GDP, literacy, HDI and more.",
+    "aboutDescription": "Why INDX exists, where its numbers come from, and how to reuse its open data."
   },
   "Common": {
     "india": "India",

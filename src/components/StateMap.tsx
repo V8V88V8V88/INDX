@@ -6,7 +6,7 @@ import * as d3 from "d3";
 import { useTranslations } from "next-intl";
 import { useStateGeo } from "@/hooks/useGeo";
 import { useSubDistrictGeoData, filterSubDistrictsByDistrict } from "@/hooks/useSubDistrictGeoData";
-import { EDGE_FADE_STYLE } from "@/lib/map-projection";
+import { EDGE_FADE_STYLE, rewindForD3 } from "@/lib/map-projection";
 import { Button, CursorTooltip, Icon, Spinner } from "./ui";
 
 interface StateMapProps {
@@ -108,19 +108,6 @@ function zoomBox([x, y, w, h]: Box, [[x0, y0], [x1, y1]]: [[number, number], [nu
   const cx = Math.min(Math.max((x0 + x1) / 2, x + zw / 2), x + w - zw / 2);
   const cy = Math.min(Math.max((y0 + y1) / 2, y + zh / 2), y + h - zh / 2);
   return [cx - zw / 2, cy - zh / 2, zw, zh];
-}
-
-function rewindForD3<T extends GeoJSON.Feature<GeoJSON.Polygon | GeoJSON.MultiPolygon>>(feature: T): T {
-  if (d3.geoArea(feature) <= 2 * Math.PI) return feature;
-  const geometry = feature.geometry;
-  const reverse = (rings: GeoJSON.Position[][]) => rings.map((ring) => [...ring].reverse());
-  return {
-    ...feature,
-    geometry:
-      geometry.type === "Polygon"
-        ? { ...geometry, coordinates: reverse(geometry.coordinates) }
-        : { ...geometry, coordinates: geometry.coordinates.map(reverse) },
-  };
 }
 
 export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick, districtFill, labelFor = identity }: StateMapProps) {
