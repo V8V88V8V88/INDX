@@ -63,9 +63,10 @@ const identity = (name: string) => name;
 interface PlaceOptions {
   dropOverlaps: boolean;
   first?: string;
+  frame: [number, number, number, number];
 }
 
-function placeLabels(districts: LabelSource[], baseSize: number, labelFor: (name: string) => string, { dropOverlaps, first }: PlaceOptions): PlacedLabel[] {
+function placeLabels(districts: LabelSource[], baseSize: number, labelFor: (name: string) => string, { dropOverlaps, first, frame }: PlaceOptions): PlacedLabel[] {
   const placed: { x0: number; y0: number; x1: number; y1: number }[] = [];
   const overlaps = (b: (typeof placed)[number]) =>
     placed.some((p) => b.x0 < p.x1 && b.x1 > p.x0 && b.y0 < p.y1 && b.y1 > p.y0);
@@ -79,13 +80,14 @@ function placeLabels(districts: LabelSource[], baseSize: number, labelFor: (name
 
   return byArea.flatMap((d) => {
     const [[bx0, by0], [bx1, by1]] = d.bounds;
-    const [cx, cy] = d.centroid;
+    const [centerX, cy] = d.centroid;
     let fallback: PlacedLabel | null = null;
 
     for (const size of [baseSize, baseSize * 0.82]) {
       const lines = labelLines(labelFor(d.name), size, bx1 - bx0);
       const w = Math.max(...lines.map((l) => l.length)) * size * CHAR_WIDTH;
       const h = lines.length * size * LINE_HEIGHT;
+      const cx = Math.min(Math.max(centerX, frame[0] + w / 2), frame[0] + frame[2] - w / 2);
       for (const step of [0, -1, 1, -2, 2, -3, 3]) {
         const y = cy + step * size * LINE_HEIGHT;
         if (step !== 0 && (y < by0 || y > by1)) continue;
@@ -363,9 +365,9 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   const zoomed = selectedPath ? zoomBox(mapData.box, selectedPath.bounds) : mapData.box;
   const zoomedViewBox = zoomed.join(" ");
   const isZoomedIn = zoomed[2] < mapData.box[2] * 0.95;
-  const labelSize = Math.max(zoomed[2], zoomed[3]) / (narrow ? 40 : 68);
+  const labelSize = Math.max(zoomed[2], zoomed[3]) / (narrow ? 54 : 68);
   const labels = showLabels
-    ? placeLabels(mapData.paths, labelSize, labelFor, { dropOverlaps: narrow, first: selectedPath?.name })
+    ? placeLabels(mapData.paths, labelSize, labelFor, { dropOverlaps: narrow, first: selectedPath?.name, frame: zoomed })
     : [];
 
   return (
