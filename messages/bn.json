@@ -386,9 +386,6 @@
     "eyebrow": "জেলা · {state}",
     "title": "{name}, {state}",
     "description": "{state}-এর {name} জেলার জনসংখ্যা, আয়তন, সাক্ষরতা ও লিঙ্গ অনুপাত, এবং রাজ্যে ও ভারতে এর স্থান।",
-    "rankState": "{state}-এ {total}টির মধ্যে #{rank}",
-    "rankIndia": "ভারতে {total}টির মধ্যে #{rank}",
-    "compareTitle": "তুলনায় কেমন",
     "neighbours": "প্রতিবেশী জেলা",
     "allDistricts": "{state}-এর সব জেলা",
     "openPage": "জেলার পেজ খুলুন",
@@ -397,7 +394,6 @@
   },
   "Odop": {
     "title": "এক জেলা এক পণ্য",
-    "intro": "{name} কী তৈরির জন্য পরিচিত, ভারত সরকারের ODOP কর্মসূচির অধীনে বাছাই করা পণ্য।",
     "none": "এই জেলার জন্য এখনও কোনো ODOP পণ্য তালিকাভুক্ত নেই।",
     "categories": {
       "Primary": "প্রধান",

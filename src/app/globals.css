@@ -119,6 +119,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -190,8 +191,8 @@ body {
     outline-offset: 2px;
   }
 
-  svg a:focus-visible,
-  svg [role="button"]:focus-visible {
+  svg a:focus,
+  svg [role="button"]:focus {
     outline: none;
   }
 

@@ -386,9 +386,6 @@
     "eyebrow": "ज़िला · {state}",
     "title": "{name}, {state}",
     "description": "{state} के {name} ज़िले की जनसंख्या, क्षेत्रफल, साक्षरता और लिंगानुपात, और राज्य व भारत में इसकी रैंक।",
-    "rankState": "{state} में {total} में से #{rank}",
-    "rankIndia": "भारत में {total} में से #{rank}",
-    "compareTitle": "तुलना में कैसा है",
     "neighbours": "पड़ोसी ज़िले",
     "allDistricts": "{state} के सभी ज़िले",
     "openPage": "ज़िले का पेज खोलें",
@@ -397,7 +394,6 @@
   },
   "Odop": {
     "title": "एक ज़िला एक उत्पाद",
-    "intro": "{name} किस चीज़ के लिए जाना जाता है, भारत सरकार की ODOP योजना के तहत चुने गए उत्पाद।",
     "none": "इस ज़िले के लिए अभी कोई ODOP उत्पाद सूचीबद्ध नहीं है।",
     "categories": {
       "Primary": "मुख्य",

@@ -386,9 +386,6 @@
     "eyebrow": "District · {state}",
     "title": "{name}, {state}",
     "description": "Population, area, literacy and sex ratio of {name} district in {state}, and how it ranks in the state and in India.",
-    "rankState": "#{rank} of {total} in {state}",
-    "rankIndia": "#{rank} of {total} in India",
-    "compareTitle": "How it compares",
     "neighbours": "Neighbouring districts",
     "allDistricts": "All districts of {state}",
     "openPage": "Open district page",
@@ -397,7 +394,6 @@
   },
   "Odop": {
     "title": "One District One Product",
-    "intro": "What {name} is known for making, as chosen under the Government of India's ODOP programme.",
     "none": "No ODOP product is listed for this district yet.",
     "categories": {
       "Primary": "Main",

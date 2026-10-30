@@ -74,12 +74,12 @@ export function useFormat() {
     };
 
     const formatArea = (valInSqKm: number): string => {
-        if (settings.distanceUnit === "km") {
-            return formatNumber(valInSqKm) + " km²";
+        const value = settings.distanceUnit === "km" ? valInSqKm : valInSqKm * 0.386102;
+        const unit = settings.distanceUnit === "km" ? " km²" : " mi²";
+        if (value < 100000) {
+            return Math.round(value).toLocaleString(settings.numberFormat === "indian" ? "en-IN" : "en-US") + unit;
         }
-        // Area in sq miles = sq km * 0.386102
-        const valInSqMiles = valInSqKm * 0.386102;
-        return formatNumber(valInSqMiles) + " mi²";
+        return formatNumber(value) + unit;
     };
 
     return {
