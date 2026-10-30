@@ -1,0 +1,21 @@
+name: Bug
+description: Something on the site is broken
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      placeholder: https://ind-x.vercel.app/compare
+  - type: input
+    id: device
+    attributes:
+      label: Browser and device
+      placeholder: Chrome on Android

@@ -15,3 +15,5 @@ export { InlineSearch } from "./InlineSearch";
 export { Spotlight } from "./Spotlight";
 export { PageLoader } from "./PageLoader";
 export { SourcesInfo } from "./SourcesInfo";
+export { DownloadCsv } from "./DownloadCsv";
+export { EmbedButton } from "./EmbedButton";

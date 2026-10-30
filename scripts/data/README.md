@@ -45,3 +45,20 @@ State literacy (PLFS 2023-24), area and HDI in `india.ts` are not touched by the
   projected sex ratio drifts more than 15% from 2011, the build uses the 2011 census × the
   national growth factor instead and prints a note.
 - District literacy is the 2011 census value. No newer district-level figure exists.
+
+## Place names
+
+`build_names.py` writes `public/data/names/<language>.json`: district, headquarters and city names in
+each Indian language the site supports, keyed by state and English name.
+
+```sh
+bun run build:names              # rebuild from the saved Wikidata snapshot
+bun run build:names -- --fetch   # refresh the snapshot from Wikidata first (needs network)
+```
+
+- `sources/wikidata-names.json` is the saved Wikidata snapshot, so normal builds stay offline.
+- Names are matched by state and English name. `ALIASES` in the script maps our names to Wikidata's
+  where a district was renamed or is spelled differently.
+- `sources/name-overrides.json` fixes wrong or outdated labels, per language, state and English name.
+  Add corrections there rather than editing the generated files.
+- Places with no label in a language fall back to English.

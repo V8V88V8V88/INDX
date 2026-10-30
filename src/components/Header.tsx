@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
-import { openSpotlight } from "./Spotlight";
-import { Button, Icon, LinkButton } from "./ui";
+import { openSettings, SettingsDialog } from "./SettingsDialog";
+import { openSpotlight, Spotlight } from "./Spotlight";
+import { Button, Icon } from "./ui";
 
 interface BreadcrumbItem {
   label: string;
@@ -19,11 +21,13 @@ interface HeaderProps {
 }
 
 const navLinks = [
-  { href: "/map", label: "Map" },
-  { href: "/compare", label: "Compare" },
-];
+  { href: "/map", key: "map" },
+  { href: "/compare", key: "compare" },
+] as const;
 
 export function Header({ breadcrumbs, overlay }: HeaderProps) {
+  const t = useTranslations("Nav");
+  const tCommon = useTranslations("Common");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
@@ -36,6 +40,12 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
 
   return (
     <header className={cn("top-0 z-50 w-full", overlay ? "fixed" : "sticky")}>
+      <a
+        href="#main"
+        className="sr-only rounded-full bg-bg-card px-4 py-2 text-sm font-medium text-text-primary shadow-lg focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50"
+      >
+        {t("skipToContent")}
+      </a>
       <div
         aria-hidden="true"
         className={cn(
@@ -50,9 +60,9 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
         </Link>
 
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 text-sm sm:flex">
+          <nav aria-label={t("breadcrumb")} className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 text-sm sm:flex">
             <Link href="/" className="text-text-tertiary transition-colors hover:text-text-primary">
-              India
+              {tCommon("india")}
             </Link>
             {breadcrumbs.map((item, i) => (
               <div key={item.href} className="flex items-center gap-2">
@@ -72,7 +82,7 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
         )}
 
         <div className="flex items-center gap-1">
-          <nav aria-label="Main" className="mr-2 flex items-center gap-4">
+          <nav aria-label={t("main")} className="mr-2 flex items-center gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -83,19 +93,22 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
                   pathname === link.href ? "text-text-primary" : "text-text-secondary",
                 )}
               >
-                {link.label}
+                {t(link.key)}
               </Link>
             ))}
           </nav>
-          <Button variant="ghost" size="sm" iconOnly onClick={openSpotlight} aria-label="Search" title="Search (Ctrl+K)">
+          <Button variant="ghost" size="sm" iconOnly onClick={openSpotlight} aria-label={t("search")} title={t("searchShortcut")}>
             <Icon name="search" size={18} />
           </Button>
+          <LanguageSwitcher />
           <ThemeToggle />
-          <LinkButton href="/settings" variant="ghost" size="sm" iconOnly aria-label="Settings" title="Settings">
+          <Button variant="ghost" size="sm" iconOnly onClick={openSettings} aria-label={t("settings")} title={t("settings")} aria-haspopup="dialog">
             <Icon name="settings" size={18} />
-          </LinkButton>
+          </Button>
         </div>
       </div>
+      <Spotlight />
+      <SettingsDialog />
     </header>
   );
 }

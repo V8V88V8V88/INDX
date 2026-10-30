@@ -1,16 +1,22 @@
-import type { MetricKey } from "@/types";
+import type { MetricKey, State } from "@/types";
 
-export const METRICS: readonly { key: MetricKey; label: string; longLabel: string }[] = [
-  { key: "population", label: "Population", longLabel: "Population" },
-  { key: "gdp", label: "GDP", longLabel: "GDP" },
-  { key: "gdpPerCapita", label: "GDP / Person", longLabel: "GDP per Person" },
-  { key: "literacyRate", label: "Literacy", longLabel: "Literacy Rate" },
-  { key: "hdi", label: "HDI", longLabel: "Human Development Index" },
-  { key: "density", label: "Density", longLabel: "Population Density" },
-  { key: "sexRatio", label: "Sex Ratio", longLabel: "Sex Ratio" },
-  { key: "area", label: "Area", longLabel: "Area" },
-];
+export const METRICS: readonly MetricKey[] = ["population", "gdp", "gdpPerCapita", "literacyRate", "hdi", "density", "sexRatio", "area"];
 
-export function getMetric(key: MetricKey) {
-  return METRICS.find((m) => m.key === key)!;
-}
+export const REGIONS: readonly State["region"][] = ["North", "South", "East", "West", "Central", "Northeast"];
+
+export const METRIC_SOURCES: Record<MetricKey, string> = {
+  population: "RGI 2026",
+  gdp: "MoSPI",
+  gdpPerCapita: "MoSPI",
+  literacyRate: "PLFS 2023-24",
+  hdi: "UNDP 2023",
+  density: "RGI 2026",
+  sexRatio: "RGI 2026",
+  area: "Census 2011",
+};
+
+export const DISTRICT_SOURCES = {
+  population: "IIPS 2026",
+  literacyRate: "Census 2011",
+  sexRatio: "IIPS 2026",
+} as const;

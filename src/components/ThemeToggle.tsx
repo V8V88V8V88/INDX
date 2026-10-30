@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button, Icon } from "./ui";
 
 export type ThemePreference = "system" | "light" | "dark";
@@ -55,6 +56,7 @@ export function useThemePreference(): ThemePreference {
 export function ThemeToggle() {
   const mounted = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const t = useTranslations("Nav");
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -67,7 +69,7 @@ export function ThemeToggle() {
   if (!mounted) return <div className="h-8 w-8" />;
 
   return (
-    <Button variant="ghost" size="sm" iconOnly onClick={toggle} aria-label="Toggle theme" title="Toggle theme">
+    <Button variant="ghost" size="sm" iconOnly onClick={toggle} aria-label={t("toggleTheme")} title={t("toggleTheme")}>
       <Icon name={theme === "light" ? "moon" : "sun"} size={18} />
     </Button>
   );

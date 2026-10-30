@@ -2,24 +2,26 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useDistricts } from "@/hooks/useDistricts";
 import { useFormat } from "@/hooks/useFormat";
+import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { cn } from "@/lib/cn";
 import type { City, District } from "@/types";
+import { DownloadCsv } from "./DownloadCsv";
 import { PlaceBadges } from "./PlaceBadges";
 import { Button, Icon, SegmentedControl, Stat } from "./ui";
 
 type FilterType = "all" | "cities" | "1" | "2" | "3" | "4";
 export type SortType = "population" | "area" | "density" | "literacy" | "sexRatio" | "name";
 
-const sortOptions = [
-  { value: "population", label: "Population", title: "Sort by population" },
-  { value: "area", label: "Area", title: "Sort by area" },
-  { value: "density", label: "Density", title: "Sort by density" },
-  { value: "literacy", label: "Literacy", title: "Sort by literacy" },
-  { value: "sexRatio", label: "Sex Ratio", title: "Sort by sex ratio" },
-  { value: "name", label: "A–Z", title: "Sort alphabetically" },
-] as const;
+const sortMetric = {
+  population: "population",
+  area: "area",
+  density: "density",
+  literacy: "literacyRate",
+  sexRatio: "sexRatio",
+} as const;
 
 const sortValue: Record<Exclude<SortType, "name">, (d: District) => number> = {
   population: (d) => d.population,
@@ -109,6 +111,18 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const { data: districts, isLoading, error } = useDistricts(stateCode);
+  const t = useTranslations("Districts");
+  const tCommon = useTranslations("Common");
+  const tMetrics = useTranslations("Metrics");
+  const { placeName } = usePlaceNames();
+
+  const sortOptions = [
+    ...(Object.keys(sortMetric) as (keyof typeof sortMetric)[]).map((value) => {
+      const label = tMetrics(`${sortMetric[value]}.short`);
+      return { value, label, title: t("sortBy", { label }) };
+    }),
+    { value: "name" as const, label: tCommon("sortAZ"), title: t("sortAlphabetically") },
+  ];
 
   const items = useMemo(() => {
     const districtList = districts || [];
@@ -177,25 +191,28 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
     const result = items.filter(
       (item) =>
         (filter === "all" || (filter === "cities" ? item.isMajor : String(item.tier) === filter)) &&
-        (!q || item.name.toLowerCase().includes(q) || item.headquarters?.toLowerCase().includes(q)),
+        (!q ||
+          item.name.toLowerCase().includes(q) ||
+          placeName(stateCode, item.name).toLowerCase().includes(q) ||
+          item.headquarters?.toLowerCase().includes(q)),
     );
 
     const direction = ascending ? 1 : -1;
     return [...result].sort((a, b) =>
       sortBy === "name"
-        ? -direction * a.name.localeCompare(b.name)
+        ? -direction * placeName(stateCode, a.name).localeCompare(placeName(stateCode, b.name))
         : direction * (sortValue[sortBy](a) - sortValue[sortBy](b)),
     );
-  }, [items, filter, query, sortBy, ascending]);
+  }, [items, filter, query, sortBy, ascending, placeName, stateCode]);
 
   const filterOptions = useMemo(() => {
     const tiers = [...new Set(items.map((i) => i.tier).filter((t): t is number => !!t))].sort();
     return [
-      { value: "all" as FilterType, label: `All (${items.length})` },
-      { value: "cities" as FilterType, label: `Major Cities (${items.filter((i) => i.hasCity).length})` },
-      ...(tiers.length > 1 ? tiers.map((t) => ({ value: String(t) as FilterType, label: `Tier ${t}` })) : []),
+      { value: "all" as FilterType, label: t("all", { count: items.length }) },
+      { value: "cities" as FilterType, label: t("majorCities", { count: items.filter((i) => i.hasCity).length }) },
+      ...(tiers.length > 1 ? tiers.map((tier) => ({ value: String(tier) as FilterType, label: tCommon("tier", { tier }) })) : []),
     ];
-  }, [items]);
+  }, [items, t, tCommon]);
 
   const fillMetric = sortValue[sortBy === "name" ? "population" : sortBy];
   const fillValues = items.map(fillMetric).filter((v) => v > 0);
@@ -250,13 +267,11 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
     return (
       <div>
         <div className="flex flex-col gap-2">
-          <p className="font-medium text-text-primary">Error loading district data</p>
+          <p className="font-medium text-text-primary">{t("loadError")}</p>
           <p className="text-sm text-text-muted">
-            {error instanceof Error ? error.message : "Failed to fetch data from API"}
+            {error instanceof Error ? error.message : t("loadErrorDetail")}
           </p>
-          <p className="text-xs text-text-tertiary mt-2">
-            Please check your API configuration or enable local data fallback in settings.
-          </p>
+          <p className="text-xs text-text-tertiary mt-2">{t("loadErrorHint")}</p>
         </div>
       </div>
     );
@@ -265,7 +280,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   if (items.length === 0) {
     return (
       <div>
-        <p className="text-text-muted">Data for {stateName} coming soon.</p>
+        <p className="text-text-muted">{t("comingSoon", { name: stateName })}</p>
       </div>
     );
   }
@@ -273,7 +288,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
   return (
     <div>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <SegmentedControl label="Filter districts" size="sm" value={filter} onChange={setFilter} options={filterOptions} scrollable />
+        <SegmentedControl label={t("filter")} size="sm" value={filter} onChange={setFilter} options={filterOptions} scrollable />
         <div className="flex min-w-0 max-w-full flex-1 flex-wrap items-center justify-end gap-2">
           {searchOpen || query ? (
             <label className="flex h-9 w-full min-w-0 items-center gap-2 rounded-full border border-border-light bg-bg-secondary px-3 sm:w-48">
@@ -290,24 +305,25 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
                     setSearchOpen(false);
                   }
                 }}
-                placeholder="Search districts"
-                aria-label="Search districts"
+                placeholder={t("search")}
+                aria-label={t("search")}
                 className="min-w-0 flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-muted focus:outline-none"
               />
             </label>
           ) : (
-            <Button size="sm" iconOnly onClick={() => setSearchOpen(true)} title="Search districts" aria-label="Search districts">
+            <Button size="sm" iconOnly onClick={() => setSearchOpen(true)} title={t("search")} aria-label={t("search")}>
               <Icon name="search" size={14} />
             </Button>
           )}
           <div className="flex min-w-0 max-w-full items-center gap-2">
-            <SegmentedControl label="Sort districts" size="sm" value={sortBy} onChange={changeSort} options={sortOptions} scrollable />
+            <SegmentedControl label={t("sort")} size="sm" value={sortBy} onChange={changeSort} options={sortOptions} scrollable />
+            <DownloadCsv href={`/api/v1/states/${stateCode}/districts.csv`} variant="secondary" />
             <Button
               size="sm"
               iconOnly
               onClick={() => setAscending((a) => !a)}
-              title={ascending ? "Ascending" : "Descending"}
-              aria-label={ascending ? "Sort descending" : "Sort ascending"}
+              title={ascending ? t("ascending") : t("descending")}
+              aria-label={ascending ? t("sortDescending") : t("sortAscending")}
             >
               <Icon name={ascending ? "arrow-up" : "arrow-down"} size={14} />
             </Button>
@@ -316,7 +332,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
       </div>
 
       {filteredAndSorted.length === 0 && (
-        <p className="py-8 text-center text-sm text-text-muted">No districts match these filters.</p>
+        <p className="py-8 text-center text-sm text-text-muted">{t("noMatches")}</p>
       )}
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -324,6 +340,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
           <DistrictItem
             key={item.id}
             item={item}
+            displayName={placeName(stateCode, item.name)}
             delay={i * 0.015}
             rank={ranks?.get(item.id)}
             sortBy={sortBy}
@@ -343,9 +360,12 @@ interface ItemWithCity extends District {
   isMajor?: boolean;
 }
 
-function DistrictItem({ item, delay, rank, sortBy, fill, isSelected, onSelect }: { item: ItemWithCity; delay: number; rank?: number; sortBy: SortType; fill: number; isSelected?: boolean; onSelect?: () => void }) {
+function DistrictItem({ item, displayName, delay, rank, sortBy, fill, isSelected, onSelect }: { item: ItemWithCity; displayName: string; delay: number; rank?: number; sortBy: SortType; fill: number; isSelected?: boolean; onSelect?: () => void }) {
   const city = item.cityData;
   const { formatPopulation, formatDensity, formatArea } = useFormat();
+  const t = useTranslations("Districts");
+  const tCommon = useTranslations("Common");
+  const tMetrics = useTranslations("Metrics");
 
   const isCapital = city?.isCapital || item.isCapital;
   const isMetro = city?.isMetro || item.isMetro || city?.tier === 1 || item.tier === 1;
@@ -361,9 +381,9 @@ function DistrictItem({ item, delay, rank, sortBy, fill, isSelected, onSelect }:
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, delay: Math.min(delay, 0.3) }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25, delay: Math.min(delay, 0.2) }}
       onClick={handleClick}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -392,12 +412,12 @@ function DistrictItem({ item, delay, rank, sortBy, fill, isSelected, onSelect }:
         <div className="min-w-0">
           <h4 className="flex items-center gap-2 text-base font-semibold text-text-primary sm:text-lg">
             {rank && <span className="shrink-0 text-sm font-semibold tabular-nums text-text-muted">{rank}</span>}
-            <span className="truncate">{item.name}</span>
+            <span className="truncate">{displayName}</span>
             {item.hasCity && (
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary" title="Major city" aria-label="Major city" />
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary" title={tCommon("majorCity")} aria-label={tCommon("majorCity")} />
             )}
           </h4>
-          {showHeadquarters && <p className="truncate text-xs text-text-muted">HQ: {item.headquarters}</p>}
+          {showHeadquarters && <p className="truncate text-xs text-text-muted">{t("headquarters", { name: item.headquarters! })}</p>}
         </div>
         <div className="shrink-0 pt-0.5">
           <PlaceBadges isCapital={isCapital} isMetro={isMetro} tier={city?.tier || item.tier} />
@@ -405,11 +425,11 @@ function DistrictItem({ item, delay, rank, sortBy, fill, isSelected, onSelect }:
       </div>
 
       <div className="relative mt-3 grid grid-cols-2 gap-x-3 gap-y-2 xl:grid-cols-[1fr_1fr_1.35fr_1fr]">
-        <Stat size="sm" label="Pop." value={formatPopulation(item.population)} />
-        {item.literacyRate > 0 && <Stat size="sm" label="Literacy" value={`${item.literacyRate}%`} />}
+        <Stat size="sm" label={tMetrics("pop")} value={formatPopulation(item.population)} />
+        {item.literacyRate > 0 && <Stat size="sm" label={tMetrics("literacyRate.short")} value={`${item.literacyRate}%`} />}
         <Stat
           size="sm"
-          label="Density"
+          label={tMetrics("density.short")}
           value={
             <>
               {densityValue}
@@ -418,9 +438,9 @@ function DistrictItem({ item, delay, rank, sortBy, fill, isSelected, onSelect }:
           }
         />
         {sortBy === "area" ? (
-          <Stat size="sm" label="Area" value={formatArea(item.area)} />
+          <Stat size="sm" label={tMetrics("area.short")} value={formatArea(item.area)} />
         ) : (
-          item.sexRatio > 0 && <Stat size="sm" label="Sex Ratio" value={item.sexRatio} />
+          item.sexRatio > 0 && <Stat size="sm" label={tMetrics("sexRatio.short")} value={item.sexRatio} />
         )}
       </div>
     </motion.div>

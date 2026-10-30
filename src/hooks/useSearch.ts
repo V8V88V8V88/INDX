@@ -2,7 +2,9 @@
 
 import { useCallback, useMemo, useState } from "react";
 import { useQueries } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 import { states } from "@/data/india";
+import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { fetchDistrictsFromAPI } from "@/lib/api";
 import type { City, District, State } from "@/types";
 
@@ -12,6 +14,7 @@ export interface PlaceResult {
   type: Exclude<SearchResultType, "page">;
   id: string;
   name: string;
+  stateName: string;
   state: State;
   city?: City;
   district?: District;
@@ -22,6 +25,7 @@ export interface PageResult {
   type: "page";
   id: string;
   name: string;
+  stateName?: undefined;
   state?: undefined;
   path: string;
 }
@@ -30,20 +34,26 @@ export type SearchResult = PlaceResult | PageResult;
 
 const typeOrder: Record<SearchResultType, number> = { page: 0, state: 1, city: 2, district: 3 };
 
-const pages = [{ id: "map", name: "India Map", keywords: ["india map", "map", "full map"], path: "/map" }];
+const pages = [{ id: "map", keywords: ["india map", "map", "full map"], path: "/map" }] as const;
 
-function useDistrictsFor(term: string) {
+type Names = ReturnType<typeof usePlaceNames>;
+
+function matches(term: string, ...names: string[]) {
+  return names.some((name) => name.toLowerCase().includes(term));
+}
+
+function useDistrictsFor(term: string, { stateName, placeName }: Names) {
   const wantedStateIds = useMemo(() => {
     if (term.length < 2) return new Set<string>();
     const candidates = states.filter(
       (state) =>
-        state.name.toLowerCase().includes(term) ||
+        matches(term, state.name, stateName(state.id, state.name)) ||
         state.code.toLowerCase() === term ||
-        state.cities.some((city) => city.name.toLowerCase().includes(term)),
+        state.cities.some((city) => matches(term, city.name, placeName(state.id, city.name))),
     );
     if (candidates.length > 0) return new Set(candidates.slice(0, 6).map((s) => s.id));
     return term.length >= 3 ? new Set(states.map((s) => s.id)) : new Set<string>();
-  }, [term]);
+  }, [term, stateName, placeName]);
 
   return useQueries({
     queries: states.map((state) => ({
@@ -61,26 +71,32 @@ export function useSearch({ includePages = false } = {}) {
   const [query, setQueryState] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const term = query.toLowerCase().trim();
-  const districtsByState = useDistrictsFor(term);
+  const names = usePlaceNames();
+  const { stateName, placeName } = names;
+  const t = useTranslations("Search.pages");
+  const districtsByState = useDistrictsFor(term, names);
 
   const results = useMemo<SearchResult[]>(() => {
     if (!term) return [];
-    const matches: SearchResult[] = includePages
+    const found: SearchResult[] = includePages
       ? pages
-          .filter((page) => page.keywords.some((k) => k.includes(term) || term.includes(k)))
-          .map((page): PageResult => ({ type: "page", id: page.id, name: page.name, path: page.path }))
+          .filter((page) => page.keywords.some((k) => k.includes(term) || term.includes(k)) || matches(term, t(page.id)))
+          .map((page): PageResult => ({ type: "page", id: page.id, name: t(page.id), path: page.path }))
       : [];
 
     for (const state of states) {
-      if (state.name.toLowerCase().includes(term) || state.code.toLowerCase() === term) {
-        matches.push({ type: "state", id: state.id, name: state.name, state, path: `/state/${state.id}` });
+      const localState = stateName(state.id, state.name);
+      if (matches(term, state.name, localState) || state.code.toLowerCase() === term) {
+        found.push({ type: "state", id: state.id, name: localState, stateName: localState, state, path: `/state/${state.id}` });
       }
       for (const city of state.cities) {
-        if (city.name.toLowerCase().includes(term)) {
-          matches.push({
+        const localCity = placeName(state.id, city.name);
+        if (matches(term, city.name, localCity)) {
+          found.push({
             type: "city",
             id: city.id,
-            name: city.name,
+            name: localCity,
+            stateName: localState,
             state,
             city,
             path: `/state/${state.id}#city-${city.id}`,
@@ -88,11 +104,13 @@ export function useSearch({ includePages = false } = {}) {
         }
       }
       for (const district of districtsByState.get(state.id) ?? []) {
-        if (district.name.toLowerCase().includes(term)) {
-          matches.push({
+        const localDistrict = placeName(state.id, district.name);
+        if (matches(term, district.name, localDistrict)) {
+          found.push({
             type: "district",
             id: district.id || district.name,
-            name: district.name,
+            name: localDistrict,
+            stateName: localState,
             state,
             district,
             path: `/state/${state.id}#district-${encodeURIComponent(district.name)}`,
@@ -101,14 +119,14 @@ export function useSearch({ includePages = false } = {}) {
       }
     }
 
-    return matches.sort((a, b) => {
+    return found.sort((a, b) => {
       const exactA = a.name.toLowerCase() === term;
       const exactB = b.name.toLowerCase() === term;
       if (exactA !== exactB) return exactA ? -1 : 1;
       if (a.type !== b.type) return typeOrder[a.type] - typeOrder[b.type];
       return a.name.localeCompare(b.name);
     });
-  }, [term, districtsByState, includePages]);
+  }, [term, districtsByState, includePages, stateName, placeName, t]);
 
   const activeIndex = Math.min(selectedIndex, Math.max(results.length - 1, 0));
 

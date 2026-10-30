@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useCallback, useMemo, useEffect, useRef } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import * as d3 from "d3";
+import { useTranslations } from "next-intl";
 import { states } from "@/data/india";
 import { createStateMetricColorScale, type MapMetric } from "@/lib/map-view";
 import { EDGE_FADE_STYLE, stateNameToCode } from "@/lib/map-projection";
-import { getMetric } from "@/lib/metrics";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
+import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { Button, CursorTooltip, Icon, LinkButton, Spinner } from "./ui";
 
 interface IndiaMapProps {
@@ -16,6 +17,8 @@ interface IndiaMapProps {
   onStateSelect?: (stateId: string | null) => void;
   colorByMetric?: MapMetric;
   interactive?: boolean;
+  embedded?: boolean;
+  extraControls?: ReactNode;
 }
 
 interface GeoFeature {
@@ -34,6 +37,8 @@ export function IndiaMap({
   onStateSelect,
   colorByMetric = "population",
   interactive = true,
+  embedded = false,
+  extraControls,
 }: IndiaMapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const gRef = useRef<SVGGElement>(null);
@@ -48,6 +53,11 @@ export function IndiaMap({
   const rafRef = useRef<number | null>(null);
   const latestMouseRef = useRef({ x: 0, y: 0 });
   const formatMetric = useMetricFormatter();
+  const t = useTranslations("IndiaMap");
+  const tCommon = useTranslations("Common");
+  const tMetrics = useTranslations("Metrics");
+  const tRegions = useTranslations("Regions");
+  const { stateName, capitalName } = usePlaceNames();
 
   useEffect(() => {
     let cancelled = false;
@@ -185,7 +195,7 @@ export function IndiaMap({
   if (loadError) {
     return (
       <div className="flex h-[600px] items-center justify-center" role="alert">
-        <div className="text-text-muted">Couldn&apos;t load the map. Please refresh to try again.</div>
+        <div className="text-text-muted">{tCommon("mapLoadError")}</div>
       </div>
     );
   }
@@ -193,7 +203,7 @@ export function IndiaMap({
   if (!geoData) {
     return (
       <div className="flex h-[600px] items-center justify-center">
-        <Spinner label="Loading map" />
+        <Spinner label={tCommon("loadingMap")} />
       </div>
     );
   }
@@ -268,7 +278,7 @@ export function IndiaMap({
 
             if (interactive && stateData) {
               return (
-                <Link key={`link-${i}`} href={`/state/${stateCode}`} aria-label={stateData.name}>
+                <Link key={`link-${i}`} href={`/state/${stateCode}`} aria-label={stateName(stateData.id)}>
                   {pathContent}
                 </Link>
               );
@@ -311,8 +321,8 @@ export function IndiaMap({
                     paintOrder: "stroke fill",
                   }}
                 >
-                  <tspan x={labelX} dy="0" stroke="var(--bg-card)" strokeWidth="4" strokeOpacity="0.9" fill="var(--text-primary)" style={{ paintOrder: "stroke fill" }}>Dadra & Nagar Haveli</tspan>
-                  <tspan x={labelX} dy={lineHeight} stroke="var(--bg-card)" strokeWidth="4" strokeOpacity="0.9" fill="var(--text-primary)" style={{ paintOrder: "stroke fill" }}>&amp; Daman &amp; Diu</tspan>
+                  <tspan x={labelX} dy="0" stroke="var(--bg-card)" strokeWidth="4" strokeOpacity="0.9" fill="var(--text-primary)" style={{ paintOrder: "stroke fill" }}>{t("ddLine1")}</tspan>
+                  <tspan x={labelX} dy={lineHeight} stroke="var(--bg-card)" strokeWidth="4" strokeOpacity="0.9" fill="var(--text-primary)" style={{ paintOrder: "stroke fill" }}>{t("ddLine2")}</tspan>
                 </text>
               );
             }
@@ -336,7 +346,7 @@ export function IndiaMap({
                   paintOrder: "stroke fill",
                 }}
               >
-                {stateData.name}
+                {stateName(stateData.id)}
               </text>
             );
           })}
@@ -353,7 +363,7 @@ export function IndiaMap({
             className="pointer-events-none absolute inset-x-0 bottom-2 z-20 flex justify-center"
           >
             <div className="rounded-full bg-bg-card/80 px-2.5 py-1 text-xs text-text-tertiary backdrop-blur-sm">
-              Pinch or Ctrl + scroll to zoom
+              {t("zoomHint")}
             </div>
           </motion.div>
         )}
@@ -368,7 +378,7 @@ export function IndiaMap({
         const stateValue = hoveredData[colorByMetric] ?? 0;
 
         const formatValue = (value: number) => formatMetric(colorByMetric, value);
-        const metricLabel = getMetric(colorByMetric).longLabel;
+        const metricLabel = tMetrics(`${colorByMetric}.long`);
 
         return (
           <motion.div
@@ -377,9 +387,9 @@ export function IndiaMap({
             exit={{ opacity: 0 }}
             className="absolute bottom-4 left-4 z-10 rounded-2xl border border-border-light bg-bg-card p-4 shadow-lg"
           >
-            <h3 className="text-lg font-semibold text-text-primary">{hoveredData.name}</h3>
+            <h3 className="text-lg font-semibold text-text-primary">{stateName(hoveredData.id)}</h3>
             <p className="mb-3 text-sm text-text-tertiary">
-              {hoveredData.region} · {hoveredData.capital}
+              {tRegions(hoveredData.region)} · {capitalName(hoveredData.id, hoveredData.capital)}
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between gap-4">
@@ -389,7 +399,7 @@ export function IndiaMap({
                 </span>
               </div>
               <div className="flex justify-between gap-4">
-                <span className="text-text-muted">Country Average</span>
+                <span className="text-text-muted">{t("countryAverage")}</span>
                 <span className="font-mono text-text-tertiary">
                   {formatValue(countryAvg)}
                 </span>
@@ -401,7 +411,7 @@ export function IndiaMap({
 
       <div className="absolute right-0 top-0 z-10 flex gap-2">
         {isTransformed && (
-          <Button variant="overlay" size="sm" iconOnly onClick={resetZoom} title="Reset zoom" aria-label="Reset zoom">
+          <Button variant="overlay" size="sm" iconOnly onClick={resetZoom} title={t("resetZoom")} aria-label={t("resetZoom")}>
             <Icon name="reset" size={14} />
           </Button>
         )}
@@ -411,26 +421,29 @@ export function IndiaMap({
           iconOnly
           pressed={showLabels}
           onClick={() => setShowLabels(!showLabels)}
-          title={showLabels ? "Hide labels" : "Show labels"}
-          aria-label="Show state names"
+          title={showLabels ? t("hideLabels") : t("showLabels")}
+          aria-label={t("showStateNames")}
         >
           <Icon name="tag" size={14} />
         </Button>
-        <LinkButton
-          href={fullscreenHref}
-          variant="overlay"
-          size="sm"
-          iconOnly
-          title="Fullscreen map (zoom to districts & sub-districts)"
-          aria-label="Open fullscreen map"
-        >
-          <Icon name="expand" size={14} />
-        </LinkButton>
+        {extraControls}
+        {!embedded && (
+          <LinkButton
+            href={fullscreenHref}
+            variant="overlay"
+            size="sm"
+            iconOnly
+            title={t("fullscreen")}
+            aria-label={t("openFullscreen")}
+          >
+            <Icon name="expand" size={14} />
+          </LinkButton>
+        )}
       </div>
 
       {hoveredState && (
         <CursorTooltip x={mousePos.x} y={mousePos.y}>
-          {getStateData(hoveredState)?.name || hoveredState}
+          {stateName(hoveredState, getStateData(hoveredState)?.name)}
         </CursorTooltip>
       )}
     </>

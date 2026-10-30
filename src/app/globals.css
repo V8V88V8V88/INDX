@@ -109,7 +109,7 @@
   --color-accent-dark: var(--accent-dark);
   --color-border-light: var(--border-light);
   --color-border-medium: var(--border-medium);
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", var(--font-script, system-ui), system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
@@ -188,6 +188,17 @@ body {
   :focus-visible {
     outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
+  }
+
+  svg a:focus-visible,
+  svg [role="button"]:focus-visible {
+    outline: none;
+  }
+
+  svg a:focus-visible path,
+  svg path[role="button"]:focus-visible {
+    stroke: var(--accent-primary);
+    stroke-width: 2.5px;
   }
 }
 

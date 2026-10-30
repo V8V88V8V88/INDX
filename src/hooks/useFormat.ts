@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { useTranslations } from "next-intl";
 import { useSettings } from "@/contexts/SettingsContext";
 import { FY_AVERAGE_INR_PER_USD, getServerUsdRate, getUsdRate, subscribeUsdRate } from "@/lib/fx";
 import { formatNumber as formatNumberIN, formatPopulation as formatPopulationIN } from "@/data/india";
@@ -8,23 +9,31 @@ import { formatNumber as formatNumberIN, formatPopulation as formatPopulationIN 
 export function useFormat() {
     const { settings } = useSettings();
     const usdRate = useSyncExternalStore(subscribeUsdRate, getUsdRate, getServerUsdRate);
+    const tUnits = useTranslations("Units");
+    const tCommon = useTranslations("Common");
+    const units = {
+        thousand: tUnits("thousand"),
+        lakh: tUnits("lakh"),
+        crore: tUnits("crore"),
+        lakhCrore: tUnits("lakhCrore"),
+    };
 
     const formatNumber = (val: number): string => {
         if (settings.numberFormat === "indian") {
-            return formatNumberIN(val);
+            return formatNumberIN(val, units);
         }
         // International Format (K, M, B, T)
-        if (val >= 1000000000000) return (val / 1000000000000).toFixed(2) + " T";
-        if (val >= 1000000000) return (val / 1000000000).toFixed(2) + " B";
-        if (val >= 1000000) return (val / 1000000).toFixed(2) + " M";
-        if (val >= 1000) return (val / 1000).toFixed(1) + " K";
+        if (val >= 1000000000000) return (val / 1000000000000).toFixed(2) + " " + tUnits("trillion");
+        if (val >= 1000000000) return (val / 1000000000).toFixed(2) + " " + tUnits("billion");
+        if (val >= 1000000) return (val / 1000000).toFixed(2) + " " + tUnits("million");
+        if (val >= 1000) return (val / 1000).toFixed(1) + " " + tUnits("thousand");
         return val.toLocaleString("en-US");
     };
 
     const formatPopulation = (val: number | undefined | null): string => {
-        if (val === undefined || val === null) return "N/A";
+        if (val === undefined || val === null) return tCommon("notAvailable");
         if (settings.numberFormat === "indian") {
-            return formatPopulationIN(val);
+            return formatPopulationIN(val, units);
         }
         return formatNumber(val);
     };
@@ -38,9 +47,9 @@ export function useFormat() {
         const valInUSD = valInINR / rate;
 
         // Apply formatting to USD value
-        if (valInUSD >= 1000000000) return "$" + (valInUSD / 1000000000).toFixed(2) + " B";
-        if (valInUSD >= 1000000) return "$" + (valInUSD / 1000000).toFixed(2) + " M";
-        if (valInUSD >= 1000) return "$" + (valInUSD / 1000).toFixed(1) + " K";
+        if (valInUSD >= 1000000000) return "$" + (valInUSD / 1000000000).toFixed(2) + " " + tUnits("billion");
+        if (valInUSD >= 1000000) return "$" + (valInUSD / 1000000).toFixed(2) + " " + tUnits("million");
+        if (valInUSD >= 1000) return "$" + (valInUSD / 1000).toFixed(1) + " " + tUnits("thousand");
         return "$" + valInUSD.toLocaleString("en-US", { maximumFractionDigits: 0 });
     };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Wordmark } from "./ui";
 
 const css = `
@@ -18,6 +19,8 @@ const css = `
 `;
 
 export function PageLoader() {
+  const t = useTranslations("Common");
+
   return (
     <motion.div
       initial={{ opacity: 1 }}
@@ -25,7 +28,7 @@ export function PageLoader() {
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-bg-primary"
       role="status"
-      aria-label="Loading"
+      aria-label={t("loading")}
     >
       <style>{css}</style>
       <Wordmark className="w-28 text-text-primary" dotClassName="loader-dot" />

@@ -731,17 +731,26 @@ export function getStateById(id: string): State | undefined {
   return states.find((s) => s.id === id);
 }
 
-export function formatNumber(num: number): string {
-  if (num >= 1000000000000) return (num / 1000000000000).toFixed(2) + " Lakh Cr";
-  if (num >= 10000000) return (num / 10000000).toFixed(2) + " Cr";
-  if (num >= 100000) return (num / 100000).toFixed(2) + " L";
-  if (num >= 1000) return (num / 1000).toFixed(1) + "K";
+export interface NumberUnits {
+  thousand: string;
+  lakh: string;
+  crore: string;
+  lakhCrore: string;
+}
+
+const defaultUnits: NumberUnits = { thousand: "K", lakh: "L", crore: "Cr", lakhCrore: "Lakh Cr" };
+
+export function formatNumber(num: number, units: NumberUnits = defaultUnits): string {
+  if (num >= 1000000000000) return (num / 1000000000000).toFixed(2) + " " + units.lakhCrore;
+  if (num >= 10000000) return (num / 10000000).toFixed(2) + " " + units.crore;
+  if (num >= 100000) return (num / 100000).toFixed(2) + " " + units.lakh;
+  if (num >= 1000) return (num / 1000).toFixed(1) + units.thousand;
   return num.toLocaleString("en-IN");
 }
 
-export function formatPopulation(pop: number | undefined | null): string {
+export function formatPopulation(pop: number | undefined | null, units: NumberUnits = defaultUnits): string {
   if (pop === undefined || pop === null) return "N/A";
-  if (pop >= 10000000) return (pop / 10000000).toFixed(1) + " Cr";
-  if (pop >= 100000) return (pop / 100000).toFixed(1) + " L";
+  if (pop >= 10000000) return (pop / 10000000).toFixed(1) + " " + units.crore;
+  if (pop >= 100000) return (pop / 100000).toFixed(1) + " " + units.lakh;
   return pop.toLocaleString("en-IN");
 }

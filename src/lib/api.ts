@@ -100,8 +100,16 @@ const stateCodeToFileName: Record<string, string> = {
   "TG": "ts",
 };
 
+export function districtFileName(stateCode: string): string {
+  return stateCodeToFileName[stateCode] || stateCode.toLowerCase();
+}
+
+export function prepareDistricts(stateCode: string, districts: District[]): District[] {
+  return markCapitalAndMetro(stateCode, dedupeDistricts(districts));
+}
+
 export async function fetchDistrictsFromAPI(stateCode: string): Promise<District[]> {
-  const fileName = stateCodeToFileName[stateCode] || stateCode.toLowerCase();
+  const fileName = districtFileName(stateCode);
   const response = await fetch(`/data/districts/${fileName}.json`, {
     signal: AbortSignal.timeout(5000),
   });
@@ -111,5 +119,5 @@ export async function fetchDistrictsFromAPI(stateCode: string): Promise<District
   }
 
   const districts = (await response.json()) as District[];
-  return markCapitalAndMetro(stateCode, dedupeDistricts(districts));
+  return prepareDistricts(stateCode, districts);
 }
