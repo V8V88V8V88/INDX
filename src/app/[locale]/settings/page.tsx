@@ -3,7 +3,7 @@
 import { useReducedMotion, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Footer, Header } from "@/components";
-import { AppearanceSettings, FormatSettings, LanguageSettings, ResetSettingsButton, SettingsSection } from "@/components/SettingsPanel";
+import { SettingsContent } from "@/components/SettingsPanel";
 import { reveal } from "@/lib/motion";
 
 export default function SettingsPage() {
@@ -21,22 +21,7 @@ export default function SettingsPage() {
         </motion.section>
 
         <motion.div {...reveal(reduceMotion, 0.08)} className="card p-6">
-          <SettingsSection title={t("appearance")}>
-            <div className="space-y-4">
-              <LanguageSettings />
-              <AppearanceSettings />
-            </div>
-          </SettingsSection>
-        </motion.div>
-
-        <motion.div {...reveal(reduceMotion, 0.16)} className="card mt-6 p-6">
-          <SettingsSection title={t("unitsAndFormats")}>
-            <FormatSettings className="md:grid-cols-3" />
-          </SettingsSection>
-        </motion.div>
-
-        <motion.div {...reveal(reduceMotion, 0.24)} className="mt-6">
-          <ResetSettingsButton />
+          <SettingsContent />
         </motion.div>
       </main>
       <Footer />

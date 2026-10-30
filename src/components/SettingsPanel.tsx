@@ -34,9 +34,20 @@ export function LanguageSettings() {
   const t = useTranslations("Settings");
   const locale = useLocale();
   const changeLocale = useChangeLocale();
+  const reportUrl = `https://github.com/V8V88V8V88/INDX/issues/new?template=translation.yml&language=${encodeURIComponent(
+    LOCALES.find((l) => l.code === locale)?.name ?? locale,
+  )}`;
 
   return (
-    <Panel title={t("language")}>
+    <Panel
+      title={t("language")}
+      hint={
+        <a href={reportUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-text-primary">
+          {t("translationError")}
+          <Icon name="external" size={12} />
+        </a>
+      }
+    >
       <div role="radiogroup" aria-label={t("language")} className="flex flex-wrap gap-2">
         {LOCALES.map((option) => {
           const selected = option.code === locale;
@@ -184,5 +195,24 @@ export function ResetSettingsButton() {
       <Icon name="reset" size={14} />
       {t("reset")}
     </Button>
+  );
+}
+
+export function SettingsContent() {
+  const t = useTranslations("Settings");
+
+  return (
+    <div className="space-y-8">
+      <SettingsSection title={t("appearance")}>
+        <div className="space-y-4">
+          <LanguageSettings />
+          <AppearanceSettings />
+        </div>
+      </SettingsSection>
+      <SettingsSection title={t("unitsAndFormats")}>
+        <FormatSettings className="sm:grid-cols-3" />
+      </SettingsSection>
+      <ResetSettingsButton />
+    </div>
   );
 }

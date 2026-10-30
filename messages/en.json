@@ -330,7 +330,8 @@
     "currency": "Currency",
     "currencyInrHint": "Values as published",
     "currencyUsdHint": "At each figure's fiscal-year average, e.g. ₹{rate} = $1 for FY {year}",
-    "reset": "Reset to defaults"
+    "reset": "Reset to defaults",
+    "translationError": "Found a translation mistake? Report it on GitHub"
   },
   "About": {
     "breadcrumb": "About",

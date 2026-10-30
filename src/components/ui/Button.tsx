@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import type { ButtonHTMLAttributes, ComponentProps } from "react";
+import type { ComponentProps } from "react";
 import { cn } from "@/lib/cn";
 
 type Variant = "primary" | "secondary" | "ghost" | "overlay";
@@ -36,7 +36,7 @@ export function buttonStyles({ variant = "secondary", size = "md", iconOnly, pre
   );
 }
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & Omit<StyleOptions, "className">;
+type ButtonProps = ComponentProps<"button"> & Omit<StyleOptions, "className">;
 
 export function Button({ variant, size, iconOnly, pressed, className, type = "button", ...props }: ButtonProps) {
   return (

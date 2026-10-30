@@ -6,8 +6,9 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
+import { openSettings, SettingsDialog } from "./SettingsDialog";
 import { openSpotlight, Spotlight } from "./Spotlight";
-import { Button, Icon, LinkButton } from "./ui";
+import { Button, Icon } from "./ui";
 
 interface BreadcrumbItem {
   label: string;
@@ -95,12 +96,13 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
           </Button>
           <LanguageSwitcher />
           <ThemeToggle />
-          <LinkButton href="/settings" variant="ghost" size="sm" iconOnly aria-label={t("settings")} title={t("settings")}>
+          <Button variant="ghost" size="sm" iconOnly onClick={openSettings} aria-label={t("settings")} title={t("settings")} aria-haspopup="dialog">
             <Icon name="settings" size={18} />
-          </LinkButton>
+          </Button>
         </div>
       </div>
       <Spotlight />
+      <SettingsDialog />
     </header>
   );
 }
