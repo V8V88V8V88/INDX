@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { states } from "@/data/india";
 import { createStateMetricColorScale, type MapMetric } from "@/lib/map-view";
 import { EDGE_FADE_STYLE, stateNameToCode } from "@/lib/map-projection";
+import { useIndiaGeo } from "@/hooks/useGeo";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { Button, CursorTooltip, Icon, LinkButton, Spinner } from "./ui";
@@ -42,8 +43,7 @@ export function IndiaMap({
 }: IndiaMapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const gRef = useRef<SVGGElement>(null);
-  const [geoData, setGeoData] = useState<GeoData | null>(null);
-  const [loadError, setLoadError] = useState(false);
+  const { data: geoData, isError: loadError } = useIndiaGeo<GeoData>();
   const [hoveredState, setHoveredState] = useState<string | null>(null);
   const [transform, setTransform] = useState({ k: 1, x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -58,25 +58,6 @@ export function IndiaMap({
   const tMetrics = useTranslations("Metrics");
   const tRegions = useTranslations("Regions");
   const { stateName, capitalName } = usePlaceNames();
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/india-states.json")
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        if (!cancelled) setGeoData(data);
-      })
-      .catch((err) => {
-        console.error("Failed to load India map", err);
-        if (!cancelled) setLoadError(true);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   useEffect(() => {
     if (!svgRef.current) return;

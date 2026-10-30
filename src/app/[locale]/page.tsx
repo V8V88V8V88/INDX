@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
 import { EASE_OUT, FADE_DURATION } from "@/lib/motion";
@@ -10,6 +10,8 @@ import { DownloadCsv, EmbedButton, Footer, Header, MetricCard, IndiaMap, MetricS
 import { Card, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
 import { DISTRICT_COUNT, india, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
+import { useIndiaGeo } from "@/hooks/useGeo";
+import { useSlowLoader } from "@/hooks/useSlowLoader";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { getMetricPaletteIndices } from "@/lib/map-view";
@@ -43,7 +45,8 @@ export default function Home() {
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const [region, setRegion] = useState<RegionFilter>("all");
   const [hoveredState, setHoveredState] = useState<string | null>(null);
-  const [isPageReady, setIsPageReady] = useState(false);
+  const isPageReady = !useIndiaGeo().isPending;
+  const showLoader = useSlowLoader(isPageReady);
   const { formatPopulation } = useFormat();
   const formatMetric = useMetricFormatter();
   const prefersReducedMotion = useReducedMotion();
@@ -51,11 +54,6 @@ export default function Home() {
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
     : { duration: FADE_DURATION, ease: EASE_OUT };
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsPageReady(true), 800);
-    return () => clearTimeout(timer);
-  }, []);
 
   const rankedStates = useMemo(() => {
     const sorted = [...states];
@@ -68,7 +66,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-bg-primary">
-      <AnimatePresence>{!isPageReady && <PageLoader />}</AnimatePresence>
+      <AnimatePresence>{showLoader && <PageLoader />}</AnimatePresence>
       <Header />
 
       <main id="main" className="mx-auto max-w-7xl px-6 py-8">

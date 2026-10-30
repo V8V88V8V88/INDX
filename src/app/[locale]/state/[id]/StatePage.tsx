@@ -23,6 +23,8 @@ import { Icon, LinkButton, SectionHeader } from "@/components/ui";
 import { getStateById, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
+import { useStateGeo } from "@/hooks/useGeo";
+import { useSlowLoader } from "@/hooks/useSlowLoader";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { districtFillFor, findDistrictByName, type DistrictMetric } from "@/lib/districts";
 import { getMetricPaletteIndices } from "@/lib/map-view";
@@ -81,7 +83,6 @@ export function StatePage({ id }: { id: string }) {
     ? { duration: 0 }
     : { duration: FADE_DURATION, ease: EASE_OUT };
 
-  const [isPageReady, setIsPageReady] = useState(false);
   const [mapSort, setMapSort] = useState<SortType>("population");
   const hash = useSyncExternalStore(subscribeHash, getHash, getServerHash);
   const skipScrollHashRef = useRef<string | null>(null);
@@ -91,18 +92,10 @@ export function StatePage({ id }: { id: string }) {
     notFound();
   }
 
-  const { data: districts } = useDistricts(state.id);
-
-  useEffect(() => {
-    // Smart Pre-load:
-    // We delay the "ready" state slightly to allowing heavy components (Map, Charts)
-    // to hydrate and render their initial frame BEHIND the loader.
-    // This ensures that when the loader fades out, the UI is fully painted and 60fps smooth.
-    const timer = setTimeout(() => {
-      setIsPageReady(true);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
+  const { data: districts, isPending: districtsPending } = useDistricts(state.id);
+  const { isPending: geoPending } = useStateGeo(state.id);
+  const isPageReady = !districtsPending && !geoPending;
+  const showLoader = useSlowLoader(isPageReady);
 
   const selectedDistrict = useMemo(
     () => selectionFromHash(hash, state, districts),
@@ -157,7 +150,7 @@ export function StatePage({ id }: { id: string }) {
   return (
     <div className="min-h-screen bg-bg-primary">
       <AnimatePresence>
-        {!isPageReady && <PageLoader />}
+        {showLoader && <PageLoader />}
       </AnimatePresence>
 
       <Header
