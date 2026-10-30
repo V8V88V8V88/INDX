@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-bg-primary">
       <Header />
-      <main className="mx-auto flex max-w-7xl flex-col items-center justify-center px-6 py-24">
+      <main id="main" className="mx-auto flex max-w-7xl flex-col items-center justify-center px-6 py-24">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

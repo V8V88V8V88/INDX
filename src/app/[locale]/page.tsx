@@ -71,7 +71,7 @@ export default function Home() {
       <AnimatePresence>{!isPageReady && <PageLoader />}</AnimatePresence>
       <Header />
 
-      <main className="mx-auto max-w-7xl px-6 py-8">
+      <main id="main" className="mx-auto max-w-7xl px-6 py-8">
         <section className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           <div>
             <motion.div

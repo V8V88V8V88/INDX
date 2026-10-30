@@ -41,7 +41,8 @@
     "main": "ਮੁੱਖ",
     "footer": "ਫੁੱਟਰ",
     "source": "ਸੋਰਸ ਕੋਡ",
-    "madeBy": "ਬਣਾਉਣ ਵਾਲੇ"
+    "madeBy": "ਬਣਾਉਣ ਵਾਲੇ",
+    "skipToContent": "ਮੁੱਖ ਸਮੱਗਰੀ 'ਤੇ ਜਾਓ"
   },
   "Metrics": {
     "label": "ਮਾਪਦੰਡ",

@@ -712,7 +712,7 @@ export default function MapPage() {
     <div className="relative h-screen overflow-hidden bg-bg-primary">
       <Header overlay breadcrumbs={[{ label: t("breadcrumb"), href: "/map" }]} />
 
-      <main className="relative h-full">
+      <main id="main" className="relative h-full">
         <div ref={containerRef} className="h-full w-full" role="region" aria-label={t("region")} />
         <div
           className="pointer-events-none absolute inset-0 shadow-[inset_0_0_160px_40px_var(--map-vignette)]"

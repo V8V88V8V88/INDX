@@ -41,7 +41,8 @@
     "main": "મુખ્ય",
     "footer": "ફૂટર",
     "source": "સોર્સ કોડ",
-    "madeBy": "બનાવનાર"
+    "madeBy": "બનાવનાર",
+    "skipToContent": "મુખ્ય સામગ્રી પર જાઓ"
   },
   "Metrics": {
     "label": "માપદંડ",

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -11,6 +11,7 @@ import { SETTINGS_KEY, defaultSettings } from "@/lib/settings";
 import { routing } from "@/i18n/routing";
 import { scriptFonts } from "@/i18n/fonts";
 import { SettingsProvider } from "@/contexts/SettingsContext";
+import { ServiceWorker } from "@/components/ServiceWorker";
 import { cn } from "@/lib/cn";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
@@ -39,8 +40,16 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     title: t("title"),
     description: t("description"),
     keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],
+    icons: { apple: "/icons/apple-touch-icon.png" },
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
 
 const themeBootScript = `(function(){try{
 var d=document.documentElement,t=localStorage.getItem("theme");
@@ -74,6 +83,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             <QueryProvider>{children}</QueryProvider>
           </SettingsProvider>
         </NextIntlClientProvider>
+        <ServiceWorker />
         <SpeedInsights />
         <Analytics />
       </body>

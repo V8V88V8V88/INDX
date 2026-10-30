@@ -41,7 +41,8 @@
     "main": "ಮುಖ್ಯ",
     "footer": "ಅಡಿಟಿಪ್ಪಣಿ",
     "source": "ಮೂಲ ಕೋಡ್",
-    "madeBy": "ರಚನೆ"
+    "madeBy": "ರಚನೆ",
+    "skipToContent": "ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಹೋಗಿ"
   },
   "Metrics": {
     "label": "ಮಾಪನ",

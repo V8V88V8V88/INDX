@@ -41,7 +41,8 @@
     "main": "Main",
     "footer": "Footer",
     "source": "Source",
-    "madeBy": "Made by"
+    "madeBy": "Made by",
+    "skipToContent": "Skip to content"
   },
   "Metrics": {
     "label": "Metric",

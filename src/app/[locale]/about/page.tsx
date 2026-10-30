@@ -50,7 +50,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-bg-primary">
       <Header breadcrumbs={[{ label: t("breadcrumb"), href: "/about" }]} />
 
-      <main className="mx-auto max-w-7xl px-6 py-8">
+      <main id="main" className="mx-auto max-w-7xl px-6 py-8">
         <h1 className="text-display mb-4 text-text-primary">{t("title")}</h1>
         <p className="mb-12 max-w-2xl text-lg text-text-tertiary">{t("intro")}</p>
 

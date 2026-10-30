@@ -14,7 +14,7 @@ export default function SettingsPage() {
     <div className="min-h-screen bg-bg-primary">
       <Header breadcrumbs={[{ label: t("breadcrumb"), href: "/settings" }]} />
 
-      <main className="mx-auto max-w-4xl px-6 py-8">
+      <main id="main" className="mx-auto max-w-4xl px-6 py-8">
         <motion.section {...reveal(reduceMotion)} className="mb-8">
           <h1 className="text-headline mb-2 text-text-primary">{t("title")}</h1>
           <p className="text-text-tertiary">{t("intro")}</p>

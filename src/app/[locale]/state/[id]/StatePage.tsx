@@ -164,7 +164,7 @@ export function StatePage({ id }: { id: string }) {
         breadcrumbs={[{ label: stateName(state.id, state.name), href: `/state/${state.id}` }]}
       />
 
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
+      <main id="main" className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
         {/* Hero Section */}
         <motion.section
           initial={prefersReducedMotion ? false : { opacity: 0 }}

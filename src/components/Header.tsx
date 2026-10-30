@@ -40,6 +40,12 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
 
   return (
     <header className={cn("top-0 z-50 w-full", overlay ? "fixed" : "sticky")}>
+      <a
+        href="#main"
+        className="sr-only rounded-full bg-bg-card px-4 py-2 text-sm font-medium text-text-primary shadow-lg focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50"
+      >
+        {t("skipToContent")}
+      </a>
       <div
         aria-hidden="true"
         className={cn(

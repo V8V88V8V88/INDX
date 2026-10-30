@@ -317,7 +317,7 @@ export default function ComparePage() {
     <div className="min-h-screen bg-bg-primary">
       <Header breadcrumbs={[{ label: t("breadcrumb"), href: "/compare" }]} />
 
-      <main className="mx-auto max-w-7xl px-6 py-8">
+      <main id="main" className="mx-auto max-w-7xl px-6 py-8">
         <motion.section {...reveal(reduceMotion)} className="mb-8">
           <h1 className="text-display mb-3 text-text-primary">{t("title")}</h1>
           <p className="max-w-2xl text-lg text-text-tertiary">{t("intro")}</p>
