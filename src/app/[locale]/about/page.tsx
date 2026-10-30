@@ -23,6 +23,12 @@ const SOURCES = [
   { id: "names", name: "Wikidata", href: "https://www.wikidata.org" },
 ] as const;
 
+const ENDPOINTS = [
+  { id: "states", path: "/api/v1/states", csv: "/api/v1/states.csv" },
+  { id: "state", path: "/api/v1/states/UP", csv: null },
+  { id: "districts", path: "/api/v1/states/UP/districts", csv: "/api/v1/states/UP/districts.csv" },
+] as const;
+
 function Section({ title, children, index }: { title: string; children: ReactNode; index: number }) {
   const reduceMotion = useReducedMotion();
 
@@ -78,6 +84,27 @@ export default function AboutPage() {
                     className="mt-1 shrink-0 text-text-muted transition-colors group-hover:text-accent-primary"
                   />
                 </a>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section title={t("openDataTitle")} index={3}>
+          <p className="mb-6 max-w-2xl leading-relaxed text-text-secondary">{t("openDataIntro")}</p>
+          <ul className="max-w-3xl">
+            {ENDPOINTS.map((endpoint) => (
+              <li key={endpoint.id} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-border-light py-3">
+                <span className="text-sm text-text-secondary">{t(`endpoints.${endpoint.id}`)}</span>
+                <span className="flex items-baseline gap-4 font-mono text-sm">
+                  <a href={endpoint.path} className="text-text-primary underline-offset-2 hover:underline">
+                    {endpoint.path}
+                  </a>
+                  {endpoint.csv && (
+                    <a href={endpoint.csv} className="text-text-muted underline-offset-2 hover:text-text-primary hover:underline">
+                      CSV
+                    </a>
+                  )}
+                </span>
               </li>
             ))}
           </ul>

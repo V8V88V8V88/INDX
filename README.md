@@ -32,13 +32,27 @@ Explore every state, union territory and district of India on an interactive map
 | **States** | Each state's districts, cities and key numbers |
 | **Compare** | Put states side by side, or against the national average |
 | **Rankings** | Sort by population, GDP, literacy, HDI, density, sex ratio or area |
-| **Search** | Jump to any state, district or city |
+| **Search** | Jump to any state, district or city, in English or your own language |
 
 Covers all 28 states, 8 union territories and 733 districts.
 
 ## Data
 
 India hasn't had a census since 2011, so population figures are official 2026 projections (RGI/MoHFW, with IIPS district projections). GDP comes from MoSPI, literacy from PLFS 2023-24. Sources and method are in [`scripts/data/README.md`](scripts/data/README.md).
+
+All of it is free to reuse. Every table has a CSV download, and there's a read-only JSON API:
+
+| Endpoint | Returns |
+| --- | --- |
+| `/api/v1/states` ([CSV](https://ind-x.vercel.app/api/v1/states.csv)) | All states and union territories |
+| `/api/v1/states/UP` | One state with its districts |
+| `/api/v1/states/UP/districts` (`.csv` too) | Districts of one state |
+
+GSDP is in crore rupees, area in km², sex ratio in females per 1,000 males.
+
+## Languages
+
+The site is available in English, Hindi, Bengali, Marathi, Telugu, Tamil, Gujarati, Kannada, Malayalam, Odia and Punjabi. Translations are machine-assisted, so corrections from native speakers are very welcome; see [CONTRIBUTING.md](CONTRIBUTING.md#translations).
 
 ## Run locally
 

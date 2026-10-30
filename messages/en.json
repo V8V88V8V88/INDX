@@ -25,7 +25,8 @@
     "dataSources": "Data sources",
     "allSources": "All sources",
     "sortAZ": "A–Z",
-    "reportError": "Report a data error"
+    "reportError": "Report a data error",
+    "downloadCsv": "Download CSV"
   },
   "Nav": {
     "map": "Map",
@@ -353,6 +354,13 @@
       "wikipedia": "2011 census figures on current district boundaries and compiled GSDP tables",
       "boundaries": "State and district boundaries",
       "names": "District and city names in Indian languages"
+    },
+    "openDataTitle": "Open data",
+    "openDataIntro": "Everything on INDX is free to use. Download it as CSV or read it from the JSON API below, and credit INDX and the original sources when you publish it.",
+    "endpoints": {
+      "states": "All states and union territories",
+      "state": "One state with its districts",
+      "districts": "Districts of one state"
     }
   },
   "NotFound": {

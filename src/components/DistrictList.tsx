@@ -8,6 +8,7 @@ import { useFormat } from "@/hooks/useFormat";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { cn } from "@/lib/cn";
 import type { City, District } from "@/types";
+import { DownloadCsv } from "./DownloadCsv";
 import { PlaceBadges } from "./PlaceBadges";
 import { Button, Icon, SegmentedControl, Stat } from "./ui";
 
@@ -316,6 +317,7 @@ export function DistrictList({ stateCode, stateName, cities = [], selectedDistri
           )}
           <div className="flex min-w-0 max-w-full items-center gap-2">
             <SegmentedControl label={t("sort")} size="sm" value={sortBy} onChange={changeSort} options={sortOptions} scrollable />
+            <DownloadCsv href={`/api/v1/states/${stateCode}/districts.csv`} variant="secondary" />
             <Button
               size="sm"
               iconOnly

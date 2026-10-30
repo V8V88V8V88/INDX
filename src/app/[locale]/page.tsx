@@ -6,7 +6,7 @@ import type { Transition } from "framer-motion";
 import { EASE_OUT, FADE_DURATION } from "@/lib/motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader, SourcesInfo } from "@/components";
+import { DownloadCsv, Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader, SourcesInfo } from "@/components";
 import { Card, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
 import { DISTRICT_COUNT, india, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
@@ -126,9 +126,10 @@ export default function Home() {
 
           <div className="mb-4 flex items-center justify-between gap-3">
             <SegmentedControl label={t("filterByRegion")} size="sm" options={regionOptions} value={region} onChange={setRegion} scrollable />
-            <SourcesInfo className="shrink-0" place="India">
-              {t("sources")}
-            </SourcesInfo>
+            <div className="flex shrink-0 items-center">
+              <DownloadCsv href="/api/v1/states.csv" />
+              <SourcesInfo place="India">{t("sources")}</SourcesInfo>
+            </div>
           </div>
 
           <Card plain key={metric} trigger={isPageReady}>
