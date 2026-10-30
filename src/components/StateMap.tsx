@@ -60,18 +60,24 @@ function labelLines(name: string, size: number, maxWidth: number): string[] {
 
 const identity = (name: string) => name;
 
-function placeLabels(districts: LabelSource[], baseSize: number, labelFor: (name: string) => string): PlacedLabel[] {
+interface PlaceOptions {
+  dropOverlaps: boolean;
+  first?: string;
+}
+
+function placeLabels(districts: LabelSource[], baseSize: number, labelFor: (name: string) => string, { dropOverlaps, first }: PlaceOptions): PlacedLabel[] {
   const placed: { x0: number; y0: number; x1: number; y1: number }[] = [];
   const overlaps = (b: (typeof placed)[number]) =>
     placed.some((p) => b.x0 < p.x1 && b.x1 > p.x0 && b.y0 < p.y1 && b.y1 > p.y0);
 
   const byArea = [...districts].sort(
     (a, b) =>
+      Number(b.name === first) - Number(a.name === first) ||
       (a.bounds[1][0] - a.bounds[0][0]) * (a.bounds[1][1] - a.bounds[0][1]) -
-      (b.bounds[1][0] - b.bounds[0][0]) * (b.bounds[1][1] - b.bounds[0][1]),
+        (b.bounds[1][0] - b.bounds[0][0]) * (b.bounds[1][1] - b.bounds[0][1]),
   );
 
-  return byArea.map((d) => {
+  return byArea.flatMap((d) => {
     const [[bx0, by0], [bx1, by1]] = d.bounds;
     const [cx, cy] = d.centroid;
     let fallback: PlacedLabel | null = null;
@@ -88,12 +94,12 @@ function placeLabels(districts: LabelSource[], baseSize: number, labelFor: (name
         fallback ??= label;
         if (!overlaps(box)) {
           placed.push(box);
-          return label;
+          return [label];
         }
       }
     }
 
-    return fallback!;
+    return dropOverlaps && d.name !== first ? [] : [fallback!];
   });
 }
 
@@ -116,9 +122,8 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   const { data: loadedGeo, isPending: loading } = useStateGeo<DistrictGeoData>(stateCode);
   const geoData = loadedGeo ?? null;
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
-  const [showLabels, setShowLabels] = useState(
-    () => typeof window === "undefined" || window.matchMedia("(min-width: 640px)").matches
-  );
+  const [showLabels, setShowLabels] = useState(true);
+  const [narrow] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches);
   const [hoveredSubDistrict, setHoveredSubDistrict] = useState<string | null>(null);
   const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
   const [prevStateCode, setPrevStateCode] = useState(stateCode);
@@ -358,8 +363,10 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   const zoomed = selectedPath ? zoomBox(mapData.box, selectedPath.bounds) : mapData.box;
   const zoomedViewBox = zoomed.join(" ");
   const isZoomedIn = zoomed[2] < mapData.box[2] * 0.95;
-  const labelSize = Math.max(zoomed[2], zoomed[3]) / 68;
-  const labels = showLabels ? placeLabels(mapData.paths, labelSize, labelFor) : [];
+  const labelSize = Math.max(zoomed[2], zoomed[3]) / (narrow ? 40 : 68);
+  const labels = showLabels
+    ? placeLabels(mapData.paths, labelSize, labelFor, { dropOverlaps: narrow, first: selectedPath?.name })
+    : [];
 
   return (
     <div className="relative w-full" style={{ overflow: "visible" }}>

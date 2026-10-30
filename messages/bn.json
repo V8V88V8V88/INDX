@@ -46,7 +46,8 @@
     "footer": "ফুটার",
     "source": "সোর্স কোড",
     "madeBy": "নির্মাতা",
-    "skipToContent": "মূল বিষয়বস্তুতে যান"
+    "skipToContent": "মূল বিষয়বস্তুতে যান",
+    "menu": "মেনু"
   },
   "Metrics": {
     "label": "মাপকাঠি",

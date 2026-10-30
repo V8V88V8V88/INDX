@@ -46,7 +46,8 @@
     "footer": "फ़ुटर",
     "source": "सोर्स कोड",
     "madeBy": "निर्माता",
-    "skipToContent": "मुख्य सामग्री पर जाएँ"
+    "skipToContent": "मुख्य सामग्री पर जाएँ",
+    "menu": "मेनू"
   },
   "Metrics": {
     "label": "मापदंड",
