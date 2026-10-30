@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, useSyncExternalStore } from "react";
+import { useMemo, useEffect, useRef, useSyncExternalStore } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Transition } from "framer-motion";
 import { EASE_OUT, FADE_DURATION } from "@/lib/motion";
@@ -18,11 +18,14 @@ import {
   SourcesInfo,
   StateMap,
 } from "@/components";
-import type { SortType } from "@/components/DistrictList";
+import { isSortType, type SortType } from "@/components/DistrictList";
 import { Icon, LinkButton, SectionHeader } from "@/components/ui";
 import { getStateById, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
+import { useStateGeo } from "@/hooks/useGeo";
+import { useSlowLoader } from "@/hooks/useSlowLoader";
+import { useUrlParam } from "@/hooks/useUrlParam";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { districtFillFor, findDistrictByName, type DistrictMetric } from "@/lib/districts";
 import { getMetricPaletteIndices } from "@/lib/map-view";
@@ -81,8 +84,7 @@ export function StatePage({ id }: { id: string }) {
     ? { duration: 0 }
     : { duration: FADE_DURATION, ease: EASE_OUT };
 
-  const [isPageReady, setIsPageReady] = useState(false);
-  const [mapSort, setMapSort] = useState<SortType>("population");
+  const [mapSort, setMapSort] = useUrlParam<SortType>("sort", "population", isSortType);
   const hash = useSyncExternalStore(subscribeHash, getHash, getServerHash);
   const skipScrollHashRef = useRef<string | null>(null);
   const lastScrolledHashRef = useRef<string | null>(null);
@@ -91,18 +93,10 @@ export function StatePage({ id }: { id: string }) {
     notFound();
   }
 
-  const { data: districts } = useDistricts(state.id);
-
-  useEffect(() => {
-    // Smart Pre-load:
-    // We delay the "ready" state slightly to allowing heavy components (Map, Charts)
-    // to hydrate and render their initial frame BEHIND the loader.
-    // This ensures that when the loader fades out, the UI is fully painted and 60fps smooth.
-    const timer = setTimeout(() => {
-      setIsPageReady(true);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
+  const { data: districts, isPending: districtsPending } = useDistricts(state.id);
+  const { isPending: geoPending } = useStateGeo(state.id);
+  const isPageReady = !districtsPending && !geoPending;
+  const showLoader = useSlowLoader(isPageReady);
 
   const selectedDistrict = useMemo(
     () => selectionFromHash(hash, state, districts),
@@ -157,7 +151,7 @@ export function StatePage({ id }: { id: string }) {
   return (
     <div className="min-h-screen bg-bg-primary">
       <AnimatePresence>
-        {!isPageReady && <PageLoader />}
+        {showLoader && <PageLoader />}
       </AnimatePresence>
 
       <Header
@@ -344,6 +338,7 @@ export function StatePage({ id }: { id: string }) {
             cities={state.cities}
             selectedDistrict={selectedDistrict}
             onDistrictSelect={(d) => selectDistrict(d)}
+            sortBy={mapSort}
             onSortChange={setMapSort}
           />
         </section>

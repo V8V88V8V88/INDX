@@ -4,8 +4,9 @@ import { useState, useMemo, useEffect, useId, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import * as d3 from "d3";
 import { useTranslations } from "next-intl";
+import { useStateGeo } from "@/hooks/useGeo";
 import { useSubDistrictGeoData, filterSubDistrictsByDistrict } from "@/hooks/useSubDistrictGeoData";
-import { EDGE_FADE_STYLE } from "@/lib/map-projection";
+import { EDGE_FADE_STYLE, rewindForD3 } from "@/lib/map-projection";
 import { Button, CursorTooltip, Icon, Spinner } from "./ui";
 
 interface StateMapProps {
@@ -109,23 +110,11 @@ function zoomBox([x, y, w, h]: Box, [[x0, y0], [x1, y1]]: [[number, number], [nu
   return [cx - zw / 2, cy - zh / 2, zw, zh];
 }
 
-function rewindForD3<T extends GeoJSON.Feature<GeoJSON.Polygon | GeoJSON.MultiPolygon>>(feature: T): T {
-  if (d3.geoArea(feature) <= 2 * Math.PI) return feature;
-  const geometry = feature.geometry;
-  const reverse = (rings: GeoJSON.Position[][]) => rings.map((ring) => [...ring].reverse());
-  return {
-    ...feature,
-    geometry:
-      geometry.type === "Polygon"
-        ? { ...geometry, coordinates: reverse(geometry.coordinates) }
-        : { ...geometry, coordinates: geometry.coordinates.map(reverse) },
-  };
-}
-
 export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick, districtFill, labelFor = identity }: StateMapProps) {
   const t = useTranslations("StateMap");
   const tCommon = useTranslations("Common");
-  const [loaded, setLoaded] = useState<{ code: string; data: DistrictGeoData | null } | null>(null);
+  const { data: loadedGeo, isPending: loading } = useStateGeo<DistrictGeoData>(stateCode);
+  const geoData = loadedGeo ?? null;
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [showLabels, setShowLabels] = useState(
     () => typeof window === "undefined" || window.matchMedia("(min-width: 640px)").matches
@@ -133,9 +122,6 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   const [hoveredSubDistrict, setHoveredSubDistrict] = useState<string | null>(null);
   const [internalSelectedDistrict, setInternalSelectedDistrict] = useState<string | null>(null);
   const [prevStateCode, setPrevStateCode] = useState(stateCode);
-
-  const loading = loaded?.code !== stateCode;
-  const geoData = loading ? null : loaded.data;
 
   if (stateCode !== prevStateCode) {
     setPrevStateCode(stateCode);
@@ -152,24 +138,6 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
     setHoveredSubDistrict(null);
   }
   const setSelectedDistrict = onDistrictSelect || setInternalSelectedDistrict;
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch(`/geo/states/${stateCode}.json`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Not found");
-        return res.json();
-      })
-      .then((data) => {
-        if (!cancelled) setLoaded({ code: stateCode, data });
-      })
-      .catch(() => {
-        if (!cancelled) setLoaded({ code: stateCode, data: null });
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [stateCode]);
 
   // Handle ESC key to unselect district
   useEffect(() => {

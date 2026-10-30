@@ -1,3 +1,5 @@
+import * as d3 from "d3";
+
 export const stateNameToCode: Record<string, string> = {
   "Andhra Pradesh": "AP",
   "Arunachal Pradesh": "AR",
@@ -46,3 +48,16 @@ export const EDGE_FADE_STYLE = {
   maskComposite: "intersect",
   WebkitMaskComposite: "source-in",
 } as const;
+
+export function rewindForD3<T extends GeoJSON.Feature<GeoJSON.Polygon | GeoJSON.MultiPolygon>>(feature: T): T {
+  if (d3.geoArea(feature) <= 2 * Math.PI) return feature;
+  const geometry = feature.geometry;
+  const reverse = (rings: GeoJSON.Position[][]) => rings.map((ring) => [...ring].reverse());
+  return {
+    ...feature,
+    geometry:
+      geometry.type === "Polygon"
+        ? { ...geometry, coordinates: reverse(geometry.coordinates) }
+        : { ...geometry, coordinates: geometry.coordinates.map(reverse) },
+  };
+}

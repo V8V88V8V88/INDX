@@ -9,6 +9,7 @@ import { Header } from "@/components";
 import { Button, CursorTooltip, Icon, Spinner } from "@/components/ui";
 import { states } from "@/data/india";
 import { usePlaceNames } from "@/hooks/usePlaceNames";
+import { setUrlParams } from "@/hooks/useUrlParam";
 import { stateNameToCode } from "@/lib/map-projection";
 import { createStateMetricColorScale, isMapMetric, type MapMetric } from "@/lib/map-view";
 import { METRICS } from "@/lib/metrics";
@@ -558,6 +559,10 @@ export default function MapPage() {
 
         m.on("zoomend", () => setZoom(m.getZoom()));
         m.on("moveend", loadVisibleDistricts);
+        m.on("moveend", () => {
+          const center = m.getCenter();
+          setUrlParams({ lng: center.lng.toFixed(4), lat: center.lat.toFixed(4), z: m.getZoom().toFixed(2) });
+        });
 
         m.on("mousemove", (e) => {
           const point = e.point;
@@ -669,6 +674,7 @@ export default function MapPage() {
     const next = !showLabels;
     setShowLabels(next);
     labelsRef.current = next;
+    setUrlParams({ labels: next ? null : "0" });
     const m = mapRef.current;
     if (!m) return;
     const vis = next ? "visible" : "none";
@@ -693,10 +699,7 @@ export default function MapPage() {
     const m = mapRef.current;
     if (m?.getLayer("state-fill")) m.setPaintProperty("state-fill", "fill-color", stateFillExpr(next, tc().terrain));
     if (m?.getLayer("hillshade")) m.setLayoutProperty("hillshade", "visibility", next === "terrain" ? "visible" : "none");
-    const url = new URL(window.location.href);
-    if (next === "terrain") url.searchParams.delete("m");
-    else url.searchParams.set("m", next);
-    window.history.replaceState(window.history.state, "", url);
+    setUrlParams({ m: next === "terrain" ? null : next });
   };
 
   const resetView = () => {

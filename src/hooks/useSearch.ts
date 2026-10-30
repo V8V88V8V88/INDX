@@ -67,8 +67,8 @@ function useDistrictsFor(term: string, { stateName, placeName }: Names) {
   });
 }
 
-export function useSearch({ includePages = false } = {}) {
-  const [query, setQueryState] = useState("");
+export function useSearch({ includePages = false, initialQuery = "" } = {}) {
+  const [query, setQueryState] = useState(initialQuery);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const term = query.toLowerCase().trim();
   const names = usePlaceNames();
