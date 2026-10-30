@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef, useSyncExternalStore } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Transition } from "framer-motion";
+import { EASE_OUT, FADE_DURATION } from "@/lib/motion";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
@@ -100,7 +101,7 @@ export function StatePage({ id }: { id: string }) {
   const prefersReducedMotion = useReducedMotion();
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
-    : { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
+    : { duration: FADE_DURATION, ease: EASE_OUT };
 
   const [isPageReady, setIsPageReady] = useState(false);
   const [mapSort, setMapSort] = useState<SortType>("population");
@@ -194,8 +195,8 @@ export function StatePage({ id }: { id: string }) {
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
         {/* Hero Section */}
         <motion.section
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-          animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
+          animate={isPageReady ? { opacity: 1 } : { opacity: 0 }}
           transition={smooth}
           className="mb-4 sm:mb-8"
         >
@@ -263,8 +264,8 @@ export function StatePage({ id }: { id: string }) {
           {/* Right Column: Map - Now takes full column */}
           <div id="state-map" className="relative order-1 -mx-4 sm:mx-0 lg:order-none lg:col-span-2 lg:-mt-32">
             <motion.div
-              initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.97 }}
-              animate={isPageReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.97 }}
+              initial={prefersReducedMotion ? false : { opacity: 0 }}
+              animate={isPageReady ? { opacity: 1 } : { opacity: 0 }}
               transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
               className="flex flex-col items-center justify-center"
               style={{ overflow: "visible" }}

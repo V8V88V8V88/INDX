@@ -88,7 +88,7 @@ function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" 
   const t = useTranslations("Compare");
   const { placeName } = usePlaceNames();
   return (
-    <motion.div {...reveal(reduceMotion, 0.08, { x: side === "left" ? -20 : 20 })} className="space-y-4">
+    <motion.div {...reveal(reduceMotion, side === "left" ? 0.04 : 0.08)} className="space-y-4">
       {item ? (
         <>
           <div>

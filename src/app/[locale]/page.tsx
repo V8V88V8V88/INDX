@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
+import { EASE_OUT, FADE_DURATION } from "@/lib/motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader, SourcesInfo } from "@/components";
@@ -48,7 +49,7 @@ export default function Home() {
 
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
-    : { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
+    : { duration: FADE_DURATION, ease: EASE_OUT };
 
   useEffect(() => {
     const timer = setTimeout(() => setIsPageReady(true), 800);
@@ -73,8 +74,8 @@ export default function Home() {
         <section className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           <div>
             <motion.div
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-              animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0 }}
+              animate={isPageReady ? { opacity: 1 } : { opacity: 0 }}
               transition={smooth}
               className="mb-6"
             >
@@ -91,8 +92,8 @@ export default function Home() {
           </div>
 
           <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.985 }}
-            animate={isPageReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.985 }}
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
+            animate={isPageReady ? { opacity: 1 } : { opacity: 0 }}
             transition={prefersReducedMotion ? { duration: 0 } : { ...smooth, delay: 0.1 }}
             className="min-w-0 lg:col-span-2 lg:self-center"
           >
