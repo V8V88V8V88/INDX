@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Button, Icon } from "./ui";
 
 const VISIBLE_MS = 5000;
 
 export function SourcesInfo({ children, className }: { children: ReactNode; className?: string }) {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("Common");
 
   useEffect(() => {
     if (!open) return;
@@ -23,8 +25,8 @@ export function SourcesInfo({ children, className }: { children: ReactNode; clas
           size="sm"
           iconOnly
           onClick={() => setOpen((o) => !o)}
-          title="Data sources"
-          aria-label="Data sources"
+          title={t("dataSources")}
+          aria-label={t("dataSources")}
           aria-expanded={open}
         >
           <Icon name="info" size={14} />
@@ -36,7 +38,7 @@ export function SourcesInfo({ children, className }: { children: ReactNode; clas
           >
             {children}{" "}
             <Link href="/about" className="text-text-primary underline-offset-2 hover:underline">
-              All sources
+              {t("allSources")}
             </Link>
           </div>
         )}

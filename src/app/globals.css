@@ -109,7 +109,7 @@
   --color-accent-dark: var(--accent-dark);
   --color-border-light: var(--border-light);
   --color-border-medium: var(--border-medium);
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", var(--font-script, system-ui), system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 

@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, useRef, useSyncExternalStore } from "reac
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Transition } from "framer-motion";
 import { notFound } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   ComparisonTable,
   DistrictInfoCard,
@@ -20,8 +21,8 @@ import { Icon, LinkButton, SectionHeader } from "@/components/ui";
 import { getStateById, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useDistricts } from "@/hooks/useDistricts";
+import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { colorIndexForRank, getMetricPaletteIndices, type MapMetric } from "@/lib/map-view";
-import { getMetric } from "@/lib/metrics";
 import type { District, State } from "@/types";
 
 function normalizeDistrictName(name: string): string {
@@ -91,6 +92,11 @@ function selectionFromHash(hash: string, state: State, districts: District[] | u
 export function StatePage({ id }: { id: string }) {
   const state = getStateById(id);
   const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
+  const t = useTranslations("State");
+  const tCommon = useTranslations("Common");
+  const tMetrics = useTranslations("Metrics");
+  const tRegions = useTranslations("Regions");
+  const { stateName, capitalName, placeName } = usePlaceNames();
   const prefersReducedMotion = useReducedMotion();
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
@@ -182,7 +188,7 @@ export function StatePage({ id }: { id: string }) {
       </AnimatePresence>
 
       <Header
-        breadcrumbs={[{ label: state.name, href: `/state/${state.id}` }]}
+        breadcrumbs={[{ label: stateName(state.id, state.name), href: `/state/${state.id}` }]}
       />
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
@@ -194,19 +200,19 @@ export function StatePage({ id }: { id: string }) {
           className="mb-4 sm:mb-8"
         >
           <p className="mb-2 sm:mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">
-            {state.region} India · {state.code}
+            {tRegions("ofIndia", { region: state.region })} · {state.code}
           </p>
-          <h1 className="text-display mb-2 sm:mb-3 text-text-primary">{state.name}</h1>
+          <h1 className="text-display mb-2 sm:mb-3 text-text-primary">{stateName(state.id, state.name)}</h1>
           <p className="max-w-2xl text-base sm:text-lg text-text-tertiary">
-            Capital:{" "}
+            {t("capital")}{" "}
             <button
               onClick={() => selectDistrict(findCapitalDistrict(state, districts))}
               className="text-text-secondary transition-colors hover:text-accent-primary hover:underline"
             >
-              {state.capital}
+              {capitalName(state.id, state.capital)}
             </button>
             {" · "}
-            {formatArea(state.area)} area
+            {t("area", { area: formatArea(state.area) })}
           </p>
         </motion.section>
 
@@ -217,32 +223,32 @@ export function StatePage({ id }: { id: string }) {
             {/* Key Metrics Grid */}
             <div className="order-2 grid grid-cols-2 gap-3 sm:gap-4 lg:order-none lg:grid-cols-1 lg:gap-3">
               <MetricCard
-                title="Population (2026)"
+                title={t("populationYear", { year: 2026 })}
                 value={formatPopulation(state.population)}
-                subtitle={`#${populationRank} in India`}
+                subtitle={tCommon("rankInIndia", { rank: populationRank })}
                 delay={0.1}
                 trigger={isPageReady}
               />
               <MetricCard
-                title={state.gdpYear ? `GSDP (${state.gdpYear})` : "GSDP"}
+                title={state.gdpYear ? tMetrics("gsdpYear", { year: state.gdpYear }) : tMetrics("gsdp")}
                 value={formatCurrency(state.gdp * 10000000, state.gdpYear)}
                 unit=""
-                subtitle={`#${gdpRank} in India · ${formatCurrency(state.gdpPerCapita, state.gdpYear)} per person`}
+                subtitle={t("rankWithPerPerson", { rank: gdpRank, value: formatCurrency(state.gdpPerCapita, state.gdpYear) })}
                 delay={0.15}
                 trigger={isPageReady}
               />
               <MetricCard
-                title="Literacy Rate"
+                title={tMetrics("literacyRate.long")}
                 value={state.literacyRate}
                 unit="%"
-                subtitle={`#${literacyRank} in India`}
+                subtitle={tCommon("rankInIndia", { rank: literacyRank })}
                 delay={0.2}
                 trigger={isPageReady}
               />
               <MetricCard
-                title="HDI"
+                title={tMetrics("hdi.short")}
                 value={state.hdi.toFixed(3)}
-                subtitle={`#${hdiRank} in India`}
+                subtitle={tCommon("rankInIndia", { rank: hdiRank })}
                 delay={0.25}
                 trigger={isPageReady}
               />
@@ -250,7 +256,7 @@ export function StatePage({ id }: { id: string }) {
 
             <LinkButton href={`/compare?a=${state.id}`} size="sm" className="order-2 justify-self-center lg:order-none lg:self-center">
               <Icon name="plus" size={14} />
-              Compare
+              {tCommon("compare")}
             </LinkButton>
           </div>
 
@@ -272,20 +278,21 @@ export function StatePage({ id }: { id: string }) {
                     selectDistrict((districts && findDistrictByName(districts, d)?.name) || d)
                   }
                   districtFill={districtFill}
+                  labelFor={(name) => placeName(state.id, name)}
                 />
               </div>
             </motion.div>
 
             {mapMetric && districtFill && !selectedDistrict && (
               <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
-                <span className="text-xs text-text-muted">Low</span>
+                <span className="text-xs text-text-muted">{tCommon("low")}</span>
                 <div className="flex overflow-hidden rounded-full">
                   {getMetricPaletteIndices(mapMetric).map((i) => (
                     <div key={i} className="h-3 w-8" style={{ backgroundColor: `var(--choro-${i})` }} />
                   ))}
                 </div>
-                <span className="text-xs text-text-muted">High</span>
-                <span className="ml-4 text-xs font-medium text-text-tertiary">{getMetric(mapMetric).longLabel}</span>
+                <span className="text-xs text-text-muted">{tCommon("high")}</span>
+                <span className="ml-4 text-xs font-medium text-text-tertiary">{tMetrics(`${mapMetric}.long`)}</span>
               </div>
             )}
 
@@ -307,45 +314,43 @@ export function StatePage({ id }: { id: string }) {
 
         <section className="relative mb-10">
           <ComparisonTable
-            columns={[state.name, "India"]}
+            columns={[stateName(state.id, state.name), tCommon("india")]}
             delay={0.15}
             trigger={isPageReady}
             rows={[
               {
-                label: "Literacy Rate",
+                label: tMetrics("literacyRate.long"),
                 values: [`${state.literacyRate.toFixed(1)}%`, `${nationalStats.literacyRate.toFixed(1)}%`],
                 winner: state.literacyRate > nationalStats.literacyRate ? 0 : 1,
               },
               {
-                label: "HDI",
+                label: tMetrics("hdi.short"),
                 values: [state.hdi.toFixed(3), nationalStats.hdi.toFixed(3)],
                 winner: state.hdi > nationalStats.hdi ? 0 : 1,
               },
               {
-                label: "Density",
+                label: tMetrics("density.short"),
                 values: [formatDensity(state.density), formatDensity(nationalStats.density)],
               },
               {
-                label: "GDP per Person",
+                label: tMetrics("gdpPerCapita.long"),
                 values: [formatCurrency(state.gdpPerCapita, state.gdpYear), formatCurrency(nationalStats.gdpPerCapita, nationalStats.gdpYear)],
                 winner: state.gdpPerCapita > nationalStats.gdpPerCapita ? 0 : 1,
               },
             ]}
           />
-          <SourcesInfo className="absolute right-0 top-2">
-            Population: 2026 projections (RGI, IIPS) · GDP: MoSPI · Literacy: PLFS 2023-24, districts Census 2011 · HDI: UNDP 2023 ·
-          </SourcesInfo>
+          <SourcesInfo className="absolute right-0 top-2">{t("sources")}</SourcesInfo>
         </section>
 
 
         <section className="mb-12" data-districts-section>
           <SectionHeader
-            title="Districts"
-            description={`Administrative divisions of ${state.name}`}
+            title={t("districts")}
+            description={t("districtsDescription", { name: stateName(state.id, state.name) })}
           />
           <DistrictList
             stateCode={state.id}
-            stateName={state.name}
+            stateName={stateName(state.id, state.name)}
             cities={state.cities}
             selectedDistrict={selectedDistrict}
             onDistrictSelect={(d) => selectDistrict(d)}

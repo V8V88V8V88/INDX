@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import type * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Header } from "@/components";
 import { Button, CursorTooltip, Icon, Spinner } from "@/components/ui";
 import { states } from "@/data/india";
+import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { stateNameToCode } from "@/lib/map-projection";
 import { createStateMetricColorScale, isMapMetric, type MapMetric } from "@/lib/map-view";
 import { METRICS } from "@/lib/metrics";
@@ -272,10 +274,12 @@ function hillshadeSource(dark: boolean): maplibregl.RasterSourceSpecification {
 
 type FillMode = MapMetric | "terrain";
 
-const fillOptions: { value: FillMode; label: string }[] = [
-  { value: "terrain", label: "Terrain" },
-  ...METRICS.map((m) => ({ value: m.key, label: m.label })),
-];
+interface HoveredPlace {
+  stateCode: string | null;
+  name: string;
+}
+
+const fillModes: FillMode[] = ["terrain", ...METRICS];
 
 function stateFillExpr(mode: FillMode, terrain: string[]): maplibregl.ExpressionSpecification {
   if (mode === "terrain") return terrainElevationExpr(terrain);
@@ -306,6 +310,10 @@ function centroidPoints(geo: GeoJSON.FeatureCollection, pickProps: (props: GeoJS
 const zoomButtonClass = "flex h-9 w-9 items-center justify-center text-text-secondary transition-colors hover:bg-bg-secondary hover:text-text-primary";
 
 export default function MapPage() {
+  const t = useTranslations("MapPage");
+  const tCommon = useTranslations("Common");
+  const tMetrics = useTranslations("Metrics");
+  const { stateName, placeName } = usePlaceNames();
   const router = useRouter();
   const routerRef = useRef(router);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -320,7 +328,7 @@ export default function MapPage() {
   const [loadError, setLoadError] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
   const [basemap, setBasemap] = useState(false);
-  const [hovered, setHovered] = useState<{ name: string; x: number; y: number } | null>(null);
+  const [hovered, setHovered] = useState<(HoveredPlace & { district: boolean; x: number; y: number }) | null>(null);
   const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [baseZoom, setBaseZoom] = useState(DEFAULT_ZOOM);
 
@@ -561,11 +569,17 @@ export default function MapPage() {
             const features = m.queryRenderedFeatures(point);
             const district = features.find((f) => f.layer.id.startsWith("d-fill-"));
             const st = features.find((f) => f.layer.id === "state-fill");
-            const name: string | null = district?.properties?.district || st?.properties?.ST_NM || null;
+            const districtName: string | undefined = district?.properties?.district;
+            const stateGeoName: string | undefined = st?.properties?.ST_NM;
             const target = district ?? st;
             setHoverTarget(target?.id != null ? { source: target.source, id: target.id } : null);
-            m.getCanvas().style.cursor = name ? "pointer" : "";
-            setHovered(name ? { name, x: clientX, y: clientY } : null);
+            const place: HoveredPlace | null = districtName
+              ? { stateCode: district!.layer.id.slice("d-fill-".length), name: districtName }
+              : stateGeoName
+                ? { stateCode: stateNameToCode[stateGeoName] ?? null, name: stateGeoName }
+                : null;
+            m.getCanvas().style.cursor = place ? "pointer" : "";
+            setHovered(place ? { ...place, district: !!districtName, x: clientX, y: clientY } : null);
           });
         });
         m.on("mouseout", () => {
@@ -696,10 +710,10 @@ export default function MapPage() {
 
   return (
     <div className="relative h-screen overflow-hidden bg-bg-primary">
-      <Header overlay breadcrumbs={[{ label: "Map", href: "/map" }]} />
+      <Header overlay breadcrumbs={[{ label: t("breadcrumb"), href: "/map" }]} />
 
       <main className="relative h-full">
-        <div ref={containerRef} className="h-full w-full" role="region" aria-label="Map of India by state and district" />
+        <div ref={containerRef} className="h-full w-full" role="region" aria-label={t("region")} />
         <div
           className="pointer-events-none absolute inset-0 shadow-[inset_0_0_160px_40px_var(--map-vignette)]"
           aria-hidden="true"
@@ -707,21 +721,21 @@ export default function MapPage() {
 
         {loadError ? (
           <div className="absolute inset-0 z-30 flex items-center justify-center bg-bg-primary" role="alert">
-            <p className="text-text-muted">Couldn&apos;t load the map. Please refresh to try again.</p>
+            <p className="text-text-muted">{tCommon("mapLoadError")}</p>
           </div>
         ) : !ready && (
           <div className="absolute inset-0 z-30 flex items-center justify-center bg-bg-primary">
-            <Spinner label="Loading map" />
+            <Spinner label={tCommon("loadingMap")} />
           </div>
         )}
 
         <div className="pointer-events-none absolute inset-0">
 
           <div className="pointer-events-auto absolute right-4 top-16 z-10 flex flex-col items-end gap-2">
-            <Button variant="overlay" iconOnly pressed={showLabels} onClick={toggleLabels} title="Toggle labels" aria-label="Show labels">
+            <Button variant="overlay" iconOnly pressed={showLabels} onClick={toggleLabels} title={t("toggleLabels")} aria-label={t("showLabels")}>
               <Icon name="tag" />
             </Button>
-            <Button variant="overlay" iconOnly pressed={basemap} onClick={toggleBasemap} title="Toggle basemap" aria-label="Show basemap">
+            <Button variant="overlay" iconOnly pressed={basemap} onClick={toggleBasemap} title={t("toggleBasemap")} aria-label={t("showBasemap")}>
               <Icon name="globe" />
             </Button>
             <div className="relative">
@@ -730,8 +744,8 @@ export default function MapPage() {
                 iconOnly
                 pressed={fillOpen}
                 onClick={() => setFillOpen((open) => !open)}
-                title="Color map by"
-                aria-label="Color map by"
+                title={t("colorBy")}
+                aria-label={t("colorBy")}
                 aria-expanded={fillOpen}
               >
                 <Icon name="layers" />
@@ -741,23 +755,23 @@ export default function MapPage() {
                   <div className="fixed inset-0" onClick={() => setFillOpen(false)} aria-hidden="true" />
                   <div
                     role="menu"
-                    aria-label="Color map by"
+                    aria-label={t("colorBy")}
                     className="absolute right-full top-0 mr-2 w-40 overflow-hidden rounded-2xl border border-border-light bg-bg-card/95 p-1 shadow-lg backdrop-blur-md"
                   >
-                    {fillOptions.map((option) => (
+                    {fillModes.map((mode) => (
                       <button
-                        key={option.value}
+                        key={mode}
                         type="button"
                         role="menuitemradio"
-                        aria-checked={fill === option.value}
-                        onClick={() => chooseFill(option.value)}
+                        aria-checked={fill === mode}
+                        onClick={() => chooseFill(mode)}
                         className={`block w-full rounded-xl px-3 py-1.5 text-left text-sm transition-colors ${
-                          fill === option.value
+                          fill === mode
                             ? "bg-accent-primary text-white"
                             : "text-text-secondary hover:bg-bg-secondary hover:text-text-primary"
                         }`}
                       >
-                        {option.label}
+                        {mode === "terrain" ? tMetrics("terrain") : tMetrics(`${mode}.short`)}
                       </button>
                     ))}
                   </div>
@@ -768,15 +782,15 @@ export default function MapPage() {
 
           <div className="pointer-events-auto absolute bottom-4 right-4 z-10 flex flex-col items-end gap-2">
             {hasZoomed && (
-              <Button variant="overlay" iconOnly onClick={resetView} title="Reset" aria-label="Reset view">
+              <Button variant="overlay" iconOnly onClick={resetView} title={t("reset")} aria-label={t("resetView")}>
                 <Icon name="reset" size={14} />
               </Button>
             )}
             <div className="flex flex-col overflow-hidden rounded-full border border-border-light bg-bg-card/90 shadow-sm backdrop-blur-sm">
-              <button type="button" onClick={doZoomIn} className={`${zoomButtonClass} border-b border-border-light`} title="Zoom in" aria-label="Zoom in">
+              <button type="button" onClick={doZoomIn} className={`${zoomButtonClass} border-b border-border-light`} title={t("zoomIn")} aria-label={t("zoomIn")}>
                 <Icon name="plus" />
               </button>
-              <button type="button" onClick={doZoomOut} className={zoomButtonClass} title="Zoom out" aria-label="Zoom out">
+              <button type="button" onClick={doZoomOut} className={zoomButtonClass} title={t("zoomOut")} aria-label={t("zoomOut")}>
                 <Icon name="minus" />
               </button>
             </div>
@@ -785,7 +799,11 @@ export default function MapPage() {
 
         {hovered && (
           <CursorTooltip x={hovered.x} y={hovered.y}>
-            {hovered.name}
+            {!hovered.stateCode
+              ? hovered.name
+              : hovered.district
+                ? placeName(hovered.stateCode, hovered.name)
+                : stateName(hovered.stateCode, hovered.name)}
           </CursorTooltip>
         )}
       </main>

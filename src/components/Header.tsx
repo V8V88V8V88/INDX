@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
-import { openSpotlight } from "./Spotlight";
+import { openSpotlight, Spotlight } from "./Spotlight";
 import { Button, Icon, LinkButton } from "./ui";
 
 interface BreadcrumbItem {
@@ -19,11 +20,13 @@ interface HeaderProps {
 }
 
 const navLinks = [
-  { href: "/map", label: "Map" },
-  { href: "/compare", label: "Compare" },
-];
+  { href: "/map", key: "map" },
+  { href: "/compare", key: "compare" },
+] as const;
 
 export function Header({ breadcrumbs, overlay }: HeaderProps) {
+  const t = useTranslations("Nav");
+  const tCommon = useTranslations("Common");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
@@ -50,9 +53,9 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
         </Link>
 
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 text-sm sm:flex">
+          <nav aria-label={t("breadcrumb")} className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 text-sm sm:flex">
             <Link href="/" className="text-text-tertiary transition-colors hover:text-text-primary">
-              India
+              {tCommon("india")}
             </Link>
             {breadcrumbs.map((item, i) => (
               <div key={item.href} className="flex items-center gap-2">
@@ -72,7 +75,7 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
         )}
 
         <div className="flex items-center gap-1">
-          <nav aria-label="Main" className="mr-2 flex items-center gap-4">
+          <nav aria-label={t("main")} className="mr-2 flex items-center gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -83,19 +86,21 @@ export function Header({ breadcrumbs, overlay }: HeaderProps) {
                   pathname === link.href ? "text-text-primary" : "text-text-secondary",
                 )}
               >
-                {link.label}
+                {t(link.key)}
               </Link>
             ))}
           </nav>
-          <Button variant="ghost" size="sm" iconOnly onClick={openSpotlight} aria-label="Search" title="Search (Ctrl+K)">
+          <Button variant="ghost" size="sm" iconOnly onClick={openSpotlight} aria-label={t("search")} title={t("searchShortcut")}>
             <Icon name="search" size={18} />
           </Button>
+          <LanguageSwitcher />
           <ThemeToggle />
-          <LinkButton href="/settings" variant="ghost" size="sm" iconOnly aria-label="Settings" title="Settings">
+          <LinkButton href="/settings" variant="ghost" size="sm" iconOnly aria-label={t("settings")} title={t("settings")}>
             <Icon name="settings" size={18} />
           </LinkButton>
         </div>
       </div>
+      <Spotlight />
     </header>
   );
 }

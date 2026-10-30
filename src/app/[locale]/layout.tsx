@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { QueryProvider } from "@/lib/query-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { THEMES } from "@/lib/theme";
 import { SETTINGS_KEY, defaultSettings } from "@/lib/settings";
-import "./globals.css";
+import { routing } from "@/i18n/routing";
+import { scriptFonts } from "@/i18n/fonts";
+import { SettingsProvider } from "@/contexts/SettingsContext";
+import { cn } from "@/lib/cn";
+import "../globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,14 +26,19 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "INDX - India, mapped and indexed",
-  description: "Explore every state, union territory and district of India on an interactive map, with the numbers behind each one.",
-  keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],
-};
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
-import { SettingsProvider } from "@/contexts/SettingsContext";
-import { Spotlight } from "@/components/Spotlight";
+export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale: hasLocale(routing.locales, locale) ? locale : routing.defaultLocale, namespace: "Metadata" });
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],
+  };
+}
 
 const themeBootScript = `(function(){try{
 var d=document.documentElement,t=localStorage.getItem("theme");
@@ -40,15 +52,14 @@ d.style.setProperty("--accent-muted",c.muted);
 d.style.setProperty("--accent-dark",c.dark);
 }catch(e){}})();`;
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+
   return (
     <html
-      lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      lang={locale}
+      className={cn(inter.variable, jetbrainsMono.variable, scriptFonts[locale]?.variable)}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -56,12 +67,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
       </head>
       <body className="antialiased">
-        <SettingsProvider>
-          <QueryProvider>
-            {children}
-            <Spotlight />
-          </QueryProvider>
-        </SettingsProvider>
+        <NextIntlClientProvider>
+          <SettingsProvider>
+            <QueryProvider>{children}</QueryProvider>
+          </SettingsProvider>
+        </NextIntlClientProvider>
         <SpeedInsights />
         <Analytics />
       </body>

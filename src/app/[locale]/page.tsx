@@ -3,32 +3,40 @@
 import { useState, useMemo, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Footer, Header, MetricCard, IndiaMap, MetricSelector, PageLoader, SourcesInfo } from "@/components";
 import { Card, Icon, SectionHeader, SegmentedControl } from "@/components/ui";
 import { DISTRICT_COUNT, india, nationalStats, states } from "@/data/india";
 import { useFormat } from "@/hooks/useFormat";
 import { useMetricFormatter } from "@/hooks/useMetricFormatter";
+import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { getMetricPaletteIndices } from "@/lib/map-view";
-import { getMetric } from "@/lib/metrics";
+import { REGIONS } from "@/lib/metrics";
 import type { MetricKey, State } from "@/types";
 
 type SortOrder = "desc" | "asc" | "alpha";
 
-const sortOptions = [
-  { value: "desc", label: <Icon name="arrow-down" size={14} />, title: "Highest first" },
-  { value: "asc", label: <Icon name="arrow-up" size={14} />, title: "Lowest first" },
-  { value: "alpha", label: "A–Z", title: "Alphabetical" },
-] as const;
-
 type RegionFilter = "all" | State["region"];
 
-const regionOptions: { value: RegionFilter; label: string }[] = [
-  { value: "all", label: "All regions" },
-  ...(["North", "South", "East", "West", "Central", "Northeast"] as const).map((r) => ({ value: r, label: r })),
-];
-
 export default function Home() {
+  const t = useTranslations("Home");
+  const tCommon = useTranslations("Common");
+  const tMetrics = useTranslations("Metrics");
+  const tRegions = useTranslations("Regions");
+  const { stateName } = usePlaceNames();
+
+  const sortOptions = [
+    { value: "desc", label: <Icon name="arrow-down" size={14} />, title: t("highestFirst") },
+    { value: "asc", label: <Icon name="arrow-up" size={14} />, title: t("lowestFirst") },
+    { value: "alpha", label: tCommon("sortAZ"), title: t("alphabetical") },
+  ] as const;
+
+  const regionOptions: { value: RegionFilter; label: string }[] = [
+    { value: "all", label: tRegions("all") },
+    ...REGIONS.map((r) => ({ value: r, label: tRegions(r) })),
+  ];
+
   const [metric, setMetric] = useState<MetricKey>("population");
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const [region, setRegion] = useState<RegionFilter>("all");
@@ -37,7 +45,6 @@ export default function Home() {
   const { formatPopulation } = useFormat();
   const formatMetric = useMetricFormatter();
   const prefersReducedMotion = useReducedMotion();
-  const metricInfo = getMetric(metric);
 
   const smooth: Transition = prefersReducedMotion
     ? { duration: 0 }
@@ -50,10 +57,10 @@ export default function Home() {
 
   const rankedStates = useMemo(() => {
     const sorted = [...states];
-    if (sortOrder === "alpha") return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    if (sortOrder === "alpha") return sorted.sort((a, b) => stateName(a.id).localeCompare(stateName(b.id)));
     const dir = sortOrder === "asc" ? 1 : -1;
     return sorted.sort((a, b) => dir * ((a[metric] ?? 0) - (b[metric] ?? 0)));
-  }, [metric, sortOrder]);
+  }, [metric, sortOrder, stateName]);
 
   const maxValue = Math.max(...states.map((s) => s[metric] ?? 0), 1);
 
@@ -71,17 +78,15 @@ export default function Home() {
               transition={smooth}
               className="mb-6"
             >
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">2026 Data</p>
-              <h1 className="text-display mb-4 text-text-primary">India</h1>
-              <p className="text-lg text-text-tertiary">
-                Everything about India, plotted on one map. Explore, compare and rank any place in the country.
-              </p>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">{t("eyebrow", { year: 2026 })}</p>
+              <h1 className="text-display mb-4 text-text-primary">{t("title")}</h1>
+              <p className="text-lg text-text-tertiary">{t("intro")}</p>
             </motion.div>
             <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:gap-3">
-              <MetricCard title="Total Population" value={formatPopulation(india.population)} subtitle="2026 estimate" delay={0.1} trigger={isPageReady} />
-              <MetricCard title="States & UTs" value="28 & 8" subtitle={`${DISTRICT_COUNT} districts`} delay={0.15} trigger={isPageReady} />
-              <MetricCard title="Literacy Rate" value={nationalStats.literacyRate.toFixed(1)} unit="%" subtitle="PLFS 2023-24" delay={0.2} trigger={isPageReady} />
-              <MetricCard title="HDI" value={nationalStats.hdi.toFixed(3)} subtitle="Human Development Index · UNDP 2023" delay={0.25} trigger={isPageReady} />
+              <MetricCard title={t("totalPopulation")} value={formatPopulation(india.population)} subtitle={t("estimate", { year: 2026 })} delay={0.1} trigger={isPageReady} />
+              <MetricCard title={t("statesAndUts")} value={t("statesAndUtsValue", { states: 28, uts: 8 })} subtitle={t("districtCount", { count: DISTRICT_COUNT })} delay={0.15} trigger={isPageReady} />
+              <MetricCard title={tMetrics("literacyRate.long")} value={nationalStats.literacyRate.toFixed(1)} unit="%" subtitle="PLFS 2023-24" delay={0.2} trigger={isPageReady} />
+              <MetricCard title={tMetrics("hdi.short")} value={nationalStats.hdi.toFixed(3)} subtitle={t("hdiSubtitle")} delay={0.25} trigger={isPageReady} />
             </div>
           </div>
 
@@ -94,34 +99,32 @@ export default function Home() {
             <IndiaMap colorByMetric={metric} selectedState={hoveredState} interactive />
 
             <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
-              <span className="text-xs text-text-muted">Low</span>
+              <span className="text-xs text-text-muted">{tCommon("low")}</span>
               <div className="flex overflow-hidden rounded-full">
                 {getMetricPaletteIndices(metric).map((i) => (
                   <div key={i} className="h-3 w-8" style={{ backgroundColor: `var(--choro-${i})` }} />
                 ))}
               </div>
-              <span className="text-xs text-text-muted">High</span>
-              <span className="ml-4 text-xs font-medium text-text-tertiary">{metricInfo.longLabel}</span>
+              <span className="text-xs text-text-muted">{tCommon("high")}</span>
+              <span className="ml-4 text-xs font-medium text-text-tertiary">{tMetrics(`${metric}.long`)}</span>
             </div>
           </motion.div>
         </section>
 
         <section className="mb-12">
           <SectionHeader
-            title="Rankings"
+            title={t("rankings")}
             actions={
               <>
                 <MetricSelector selected={metric} onSelect={setMetric} />
-                <SegmentedControl label="Sort order" options={sortOptions} value={sortOrder} onChange={setSortOrder} />
+                <SegmentedControl label={t("sortOrder")} options={sortOptions} value={sortOrder} onChange={setSortOrder} />
               </>
             }
           />
 
           <div className="mb-4 flex items-center justify-between gap-3">
-            <SegmentedControl label="Filter by region" size="sm" options={regionOptions} value={region} onChange={setRegion} scrollable />
-            <SourcesInfo className="shrink-0">
-              Population: 2026 projections (RGI) · GDP: MoSPI · Literacy: PLFS 2023-24 · HDI: UNDP 2023 ·
-            </SourcesInfo>
+            <SegmentedControl label={t("filterByRegion")} size="sm" options={regionOptions} value={region} onChange={setRegion} scrollable />
+            <SourcesInfo className="shrink-0">{t("sources")}</SourcesInfo>
           </div>
 
           <Card plain key={metric} trigger={isPageReady}>
@@ -144,8 +147,8 @@ export default function Home() {
                   <div className="relative flex items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-3">
                       <span className="w-6 shrink-0 text-right text-sm font-semibold tabular-nums text-text-muted">{i + 1}</span>
-                      <span className="truncate text-sm font-medium text-text-primary" title={state.name}>
-                        {state.name}
+                      <span className="truncate text-sm font-medium text-text-primary" title={stateName(state.id)}>
+                        {stateName(state.id)}
                       </span>
                     </div>
                     <span className="shrink-0 whitespace-nowrap font-mono text-xs text-text-secondary">

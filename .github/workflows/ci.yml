@@ -39,6 +39,7 @@ jobs:
         run: |
           bun run check:data
           bun run check:districts
+          bun run check:i18n
 
       - name: Build
         run: bun run build

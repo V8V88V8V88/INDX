@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Header } from "@/components";
 import { Icon, LinkButton } from "@/components/ui";
 
 export default function NotFound() {
+  const t = useTranslations("NotFound");
+
   return (
     <div className="min-h-screen bg-bg-primary">
       <Header />
@@ -17,19 +20,17 @@ export default function NotFound() {
         >
           <div className="mb-6 text-8xl font-bold text-text-muted">404</div>
           <h1 className="mb-4 text-2xl font-semibold text-text-primary">
-            Page Not Found
+            {t("title")}
           </h1>
           <p className="mb-8 max-w-md text-text-tertiary">
-            The page you&apos;re looking for doesn&apos;t exist or the state/city data 
-            is not available yet.
+            {t("description")}
           </p>
           <LinkButton href="/" variant="primary">
             <Icon name="arrow-left" />
-            Back to India
+            {t("back")}
           </LinkButton>
         </motion.div>
       </main>
     </div>
   );
 }
-

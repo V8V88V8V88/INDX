@@ -3,11 +3,13 @@
 import { useState, useSyncExternalStore } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import { Footer, Header, InlineSearch, StateMap } from "@/components";
 import { cn } from "@/lib/cn";
 import { EASE_OUT, reveal } from "@/lib/motion";
 import { useDistricts } from "@/hooks/useDistricts";
 import { useFormat } from "@/hooks/useFormat";
+import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { getStateById } from "@/data/india";
 import type { PlaceResult } from "@/hooks/useSearch";
 import type { City, District, State } from "@/types";
@@ -37,6 +39,12 @@ function itemName(item: CompareItem) {
   if (item.type === "city") return item.city.name;
   if (item.type === "district") return item.district.name;
   return item.state.name;
+}
+
+function useItemLabel() {
+  const { stateName, placeName } = usePlaceNames();
+  return (item: CompareItem) =>
+    item.type === "state" ? stateName(item.state.id, item.state.name) : placeName(item.state.id, itemName(item));
 }
 
 function itemFigures(item: CompareItem) {
@@ -77,6 +85,8 @@ function rankDistricts(districts: District[]) {
 
 function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" | "right" }) {
   const reduceMotion = useReducedMotion();
+  const t = useTranslations("Compare");
+  const { placeName } = usePlaceNames();
   return (
     <motion.div {...reveal(reduceMotion, 0.08, { x: side === "left" ? -20 : 20 })} className="space-y-4">
       {item ? (
@@ -87,12 +97,13 @@ function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" 
               selectedDistrict={item.type === "state" ? null : itemName(item)}
               onDistrictSelect={() => {}}
               onDistrictClick={() => {}}
+              labelFor={(name) => placeName(item.state.id, name)}
             />
           </div>
         </>
       ) : (
         <div className="flex min-h-[320px] items-center justify-center rounded-2xl border border-dashed border-border-light">
-          <p className="text-text-muted">Select a state, city, or district</p>
+          <p className="text-text-muted">{t("empty")}</p>
         </div>
       )}
     </motion.div>
@@ -102,9 +113,11 @@ function CompareColumn({ item, side }: { item: CompareItem | null; side: "left" 
 function TopDistricts({ state, align }: { state: State; align: "left" | "right" }) {
   const { data: districts } = useDistricts(state.id);
   const { formatPopulation } = useFormat();
+  const t = useTranslations("Compare");
+  const { placeName } = usePlaceNames();
   const top = districts ? rankDistricts(districts).slice(0, 5) : [];
 
-  if (top.length === 0) return <p className="text-sm text-text-muted">No district data</p>;
+  if (top.length === 0) return <p className="text-sm text-text-muted">{t("noDistrictData")}</p>;
 
   return (
     <ul className="space-y-1.5">
@@ -113,7 +126,7 @@ function TopDistricts({ state, align }: { state: State; align: "left" | "right" 
           key={district.id || district.name}
           className={cn("flex items-baseline gap-2", align === "left" && "flex-row-reverse")}
         >
-          <span className="truncate text-sm font-medium text-text-primary">{district.name}</span>
+          <span className="truncate text-sm font-medium text-text-primary">{placeName(state.id, district.name)}</span>
           <span className="shrink-0 text-xs tabular-nums text-text-muted">{formatPopulation(district.population)}</span>
         </li>
       ))}
@@ -123,6 +136,11 @@ function TopDistricts({ state, align }: { state: State; align: "left" | "right" 
 
 function useComparisonRows(left: CompareItem, right: CompareItem): CompareRow[] {
   const { formatPopulation, formatCurrency, formatArea, formatDensity } = useFormat();
+  const t = useTranslations("Compare");
+  const tCommon = useTranslations("Common");
+  const tMetrics = useTranslations("Metrics");
+  const tRegions = useTranslations("Regions");
+  const { stateName, capitalName } = usePlaceNames();
   const pair = <T,>(fn: (item: CompareItem) => T): [T, T] => [fn(left), fn(right)];
   const figures = pair(itemFigures);
   const numeric = (
@@ -133,9 +151,9 @@ function useComparisonRows(left: CompareItem, right: CompareItem): CompareRow[] 
   ): CompareRow => ({ label, raw, values: [format(raw[0]), format(raw[1])], higherIsBetter });
 
   const rows: CompareRow[] = [
-    numeric("Population", [figures[0].population, figures[1].population], formatPopulation),
-    numeric("Area", [figures[0].area, figures[1].area], formatArea),
-    numeric("Density", [figures[0].density, figures[1].density], formatDensity),
+    numeric(tMetrics("population.short"), [figures[0].population, figures[1].population], formatPopulation),
+    numeric(tMetrics("area.short"), [figures[0].area, figures[1].area], formatArea),
+    numeric(tMetrics("density.short"), [figures[0].density, figures[1].density], formatDensity),
   ];
 
   if (left.type === "state" && right.type === "state") {
@@ -147,15 +165,15 @@ function useComparisonRows(left: CompareItem, right: CompareItem): CompareRow[] 
       higherIsBetter: true,
     });
     rows.push(
-      numeric("Literacy", s((x) => x.literacyRate), (v) => `${v.toFixed(1)}%`, true),
-      numeric("HDI", s((x) => x.hdi), (v) => v.toFixed(3), true),
-      numeric("Sex Ratio", s((x) => x.sexRatio), (v) => v.toString(), true),
-      money("GSDP", (x) => x.gdp * 10000000),
-      money("GSDP / person", (x) => Math.round((x.gdp * 10000000) / x.population)),
-      { label: "Capital", values: [left.state.capital, right.state.capital] },
-      { label: "Region", values: [left.state.region, right.state.region] },
+      numeric(tMetrics("literacyRate.short"), s((x) => x.literacyRate), (v) => `${v.toFixed(1)}%`, true),
+      numeric(tMetrics("hdi.short"), s((x) => x.hdi), (v) => v.toFixed(3), true),
+      numeric(tMetrics("sexRatio.short"), s((x) => x.sexRatio), (v) => v.toString(), true),
+      money(tMetrics("gsdp"), (x) => x.gdp * 10000000),
+      money(tMetrics("gsdpPerPerson"), (x) => Math.round((x.gdp * 10000000) / x.population)),
+      { label: t("capital"), values: [capitalName(left.state.id, left.state.capital), capitalName(right.state.id, right.state.capital)] },
+      { label: t("region"), values: [tRegions(left.state.region), tRegions(right.state.region)] },
       {
-        label: "Top Districts",
+        label: t("topDistricts"),
         block: true,
         values: [<TopDistricts key="l" state={left.state} align="left" />, <TopDistricts key="r" state={right.state} align="right" />],
       },
@@ -176,13 +194,14 @@ function useComparisonRows(left: CompareItem, right: CompareItem): CompareRow[] 
       districtValue(right, (d) => d.sexRatio),
     ];
 
-    if (literacy[0] && literacy[1]) rows.push(numeric("Literacy", [literacy[0], literacy[1]], (v) => `${v}%`, true));
-    if (sexRatio[0] && sexRatio[1]) rows.push(numeric("Sex Ratio", [sexRatio[0], sexRatio[1]], (v) => v.toString(), true));
+    if (literacy[0] && literacy[1]) rows.push(numeric(tMetrics("literacyRate.short"), [literacy[0], literacy[1]], (v) => `${v}%`, true));
+    if (sexRatio[0] && sexRatio[1]) rows.push(numeric(tMetrics("sexRatio.short"), [sexRatio[0], sexRatio[1]], (v) => v.toString(), true));
+    const yesNo = (value: boolean) => (value ? tCommon("yes") : tCommon("no"));
     rows.push(
-      { label: "Tier", values: p((c) => `Tier ${c.tier}`) },
-      { label: "Metro", values: p((c) => (c.isMetro || c.tier === 1 ? "Yes" : "No")) },
-      { label: "Capital", values: p((c) => (c.isCapital ? "Yes" : "No")) },
-      { label: "State", values: p((_, i) => i.state.name) },
+      { label: t("tier"), values: p((c) => tCommon("tier", { tier: c.tier })) },
+      { label: t("metro"), values: p((c) => yesNo(c.isMetro || c.tier === 1)) },
+      { label: t("capital"), values: p((c) => yesNo(c.isCapital)) },
+      { label: t("state"), values: p((_, i) => stateName(i.state.id, i.state.name)) },
     );
   }
 
@@ -204,11 +223,13 @@ function CompareBar({ share, align, strong }: { share: number; align: "left" | "
 }
 
 function HeadToHead({ left, right, rows }: { left: string; right: string; rows: CompareRow[] }) {
+  const t = useTranslations("Compare");
+
   return (
     <div>
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-border-light px-1 pb-4">
         <p className="truncate text-right font-semibold text-text-primary">{left}</p>
-        <span className="text-xs font-medium uppercase tracking-wider text-text-muted">vs</span>
+        <span className="text-xs font-medium uppercase tracking-wider text-text-muted">{t("versus")}</span>
         <p className="truncate font-semibold text-text-primary">{right}</p>
       </div>
 
@@ -265,10 +286,11 @@ function HeadToHead({ left, right, rows }: { left: string; right: string; rows: 
 function Comparison({ left, right }: { left: CompareItem; right: CompareItem }) {
   const rows = useComparisonRows(left, right);
   const reduceMotion = useReducedMotion();
+  const itemLabel = useItemLabel();
 
   return (
     <motion.section {...reveal(reduceMotion, 0.16)}>
-      <HeadToHead left={itemName(left)} right={itemName(right)} rows={rows} />
+      <HeadToHead left={itemLabel(left)} right={itemLabel(right)} rows={rows} />
     </motion.section>
   );
 }
@@ -285,21 +307,20 @@ export default function ComparePage() {
   const initialState = getStateById(initialStateId);
   const left = pickedLeft !== undefined ? pickedLeft : initialState ? { type: "state" as const, state: initialState } : null;
 
+  const t = useTranslations("Compare");
   const slots = [
-    { label: "Item 1", placeholder: "Search for first state, city, or district...", set: setLeft },
-    { label: "Item 2", placeholder: "Search for second state, city, or district...", set: setRight },
+    { label: t("item1"), placeholder: t("placeholder1"), set: setLeft },
+    { label: t("item2"), placeholder: t("placeholder2"), set: setRight },
   ];
 
   return (
     <div className="min-h-screen bg-bg-primary">
-      <Header breadcrumbs={[{ label: "Compare", href: "/compare" }]} />
+      <Header breadcrumbs={[{ label: t("breadcrumb"), href: "/compare" }]} />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
         <motion.section {...reveal(reduceMotion)} className="mb-8">
-          <h1 className="text-display mb-3 text-text-primary">Compare</h1>
-          <p className="max-w-2xl text-lg text-text-tertiary">
-            Select two states, cities, or districts to compare their geographic, demographic, and economic data side by side.
-          </p>
+          <h1 className="text-display mb-3 text-text-primary">{t("title")}</h1>
+          <p className="max-w-2xl text-lg text-text-tertiary">{t("intro")}</p>
         </motion.section>
 
         <section className="mb-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-2">

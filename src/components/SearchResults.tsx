@@ -1,11 +1,11 @@
 "use client";
 
 import type { InputHTMLAttributes, ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import type { SearchResult } from "@/hooks/useSearch";
 import { cn } from "@/lib/cn";
 import { Icon, Kbd } from "./ui";
 
-const typeLabel = { page: "Page", state: "State", city: "City", district: "District" };
 const typeIcon = { page: "globe", state: "state", city: "city", district: "district" } as const;
 
 interface SearchInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
@@ -28,9 +28,12 @@ export function SearchInput({
   expanded,
   trailing,
   className,
-  placeholder = "Search states, cities, or districts...",
+  placeholder,
   ...props
 }: SearchInputProps) {
+  const t = useTranslations("Search");
+  const label = placeholder ?? t("placeholder");
+
   return (
     <div className={cn("flex items-center gap-3 px-4 py-3.5", className)}>
       <Icon name="search" size={18} className="shrink-0 text-text-muted" />
@@ -38,8 +41,8 @@ export function SearchInput({
         type="text"
         value={value}
         onChange={(e) => onValueChange(e.target.value)}
-        placeholder={placeholder}
-        aria-label={placeholder}
+        placeholder={label}
+        aria-label={label}
         role="combobox"
         aria-expanded={expanded}
         aria-controls={listboxId}
@@ -53,7 +56,7 @@ export function SearchInput({
           type="button"
           onClick={onClear}
           className="shrink-0 rounded-full p-1 text-text-muted transition-colors hover:bg-bg-secondary hover:text-text-primary"
-          aria-label="Clear search"
+          aria-label={t("clear")}
         >
           <Icon name="close" />
         </button>
@@ -72,17 +75,19 @@ interface SearchResultsProps {
 }
 
 export function SearchResults({ query, results, activeIndex, listboxId, onSelect }: SearchResultsProps) {
+  const t = useTranslations("Search");
+
   if (results.length === 0) {
     return (
       <div className="px-4 py-12 text-center">
-        <p className="text-sm text-text-tertiary">No results found for &quot;{query}&quot;</p>
+        <p className="text-sm text-text-tertiary">{t("noResults", { query })}</p>
       </div>
     );
   }
 
   return (
     <>
-      <div className="max-h-96 overflow-y-auto py-1" id={listboxId} role="listbox" aria-label="Search results">
+      <div className="max-h-96 overflow-y-auto py-1" id={listboxId} role="listbox" aria-label={t("results")}>
         {results.map((result, index) => {
           const active = index === activeIndex;
           return (
@@ -109,24 +114,22 @@ export function SearchResults({ query, results, activeIndex, listboxId, onSelect
                   {result.name}
                 </span>
                 {result.state && result.type !== "state" && (
-                  <span className="mt-0.5 block truncate text-xs text-text-muted">{result.state.name}</span>
+                  <span className="mt-0.5 block truncate text-xs text-text-muted">{result.stateName}</span>
                 )}
               </span>
-              <span className="shrink-0 text-xs text-text-muted">{typeLabel[result.type]}</span>
+              <span className="shrink-0 text-xs text-text-muted">{t(`type.${result.type}`)}</span>
             </button>
           );
         })}
       </div>
       <div className="flex items-center justify-between border-t border-border-light px-4 py-2 text-xs text-text-muted">
-        <span>
-          {results.length} {results.length === 1 ? "result" : "results"}
-        </span>
+        <span>{t("count", { count: results.length })}</span>
         <div className="hidden items-center gap-4 sm:flex">
           <span>
-            <Kbd>↑↓</Kbd> navigate
+            <Kbd>↑↓</Kbd> {t("navigate")}
           </span>
           <span>
-            <Kbd>↵</Kbd> select
+            <Kbd>↵</Kbd> {t("select")}
           </span>
         </div>
       </div>

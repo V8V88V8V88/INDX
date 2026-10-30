@@ -8,10 +8,11 @@
     "copy:map-worker": "cp node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs public/maplibre-gl-worker.mjs",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "check:districts": "bun scripts/check-district-anomalies.ts",
     "build:data": "python3 scripts/data/build_data.py",
-    "check:data": "python3 scripts/data/build_data.py --check"
+    "check:data": "python3 scripts/data/build_data.py --check",
+    "check:i18n": "bun scripts/check-i18n.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.105.0",
@@ -21,6 +22,7 @@
     "framer-motion": "^14.8.0",
     "maplibre-gl": "^6.16.0",
     "next": "16.4.3",
+    "next-intl": "4.14.9",
     "react": "19.3.1",
     "react-dom": "19.3.1"
   },

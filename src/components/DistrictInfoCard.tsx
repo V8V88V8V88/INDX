@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import type { District } from "@/types";
 import { useFormat } from "@/hooks/useFormat";
+import { usePlaceNames } from "@/hooks/usePlaceNames";
 import { cn } from "@/lib/cn";
 import { PlaceBadges } from "./PlaceBadges";
 import { Button, Icon, Stat } from "./ui";
@@ -18,6 +20,11 @@ const statClass = "px-3 py-2.5";
 
 export function DistrictInfoCard({ district, districtName, onClose, className }: DistrictInfoCardProps) {
   const { formatPopulation, formatArea, formatDensity } = useFormat();
+  const t = useTranslations("Districts");
+  const tCommon = useTranslations("Common");
+  const tMetrics = useTranslations("Metrics");
+  const { placeName } = usePlaceNames();
+  const name = district?.name || districtName;
 
   return (
     <motion.div
@@ -29,10 +36,10 @@ export function DistrictInfoCard({ district, districtName, onClose, className }:
     >
       <div className="flex items-center justify-between gap-3 border-b border-border-light py-2 pl-4 pr-2">
         <div className="flex min-w-0 items-center gap-2">
-          <h3 className="truncate font-semibold text-text-primary">{district?.name || districtName}</h3>
+          <h3 className="truncate font-semibold text-text-primary">{district ? placeName(district.stateId, name) : name}</h3>
           <PlaceBadges isCapital={district?.isCapital} isMetro={district?.isMetro} tier={district?.tier} />
         </div>
-        <Button variant="ghost" size="sm" iconOnly onClick={onClose} aria-label="Close">
+        <Button variant="ghost" size="sm" iconOnly onClick={onClose} aria-label={tCommon("close")}>
           <Icon name="close" />
         </Button>
       </div>
@@ -40,14 +47,14 @@ export function DistrictInfoCard({ district, districtName, onClose, className }:
       {district ? (
         <div
           className="grid grid-cols-3 p-1"
-          title="Population & sex ratio: 2026 projection · Literacy: Census 2011"
+          title={t("infoSources")}
         >
-          <Stat className={statClass} size="sm" label="Population" value={formatPopulation(district.population)} />
-          <Stat className={statClass} size="sm" label="Area" value={formatArea(district.area)} />
-          <Stat className={statClass} size="sm" label="Density" value={formatDensity(district.density)} />
-          <Stat className={statClass} size="sm" label="Literacy" value={`${district.literacyRate}%`} />
-          {district.sexRatio > 0 && <Stat className={statClass} size="sm" label="Sex Ratio" value={district.sexRatio} />}
-          {district.headquarters && <Stat className={statClass} size="sm" label="HQ" value={district.headquarters} />}
+          <Stat className={statClass} size="sm" label={tMetrics("population.short")} value={formatPopulation(district.population)} />
+          <Stat className={statClass} size="sm" label={tMetrics("area.short")} value={formatArea(district.area)} />
+          <Stat className={statClass} size="sm" label={tMetrics("density.short")} value={formatDensity(district.density)} />
+          <Stat className={statClass} size="sm" label={tMetrics("literacyRate.short")} value={`${district.literacyRate}%`} />
+          {district.sexRatio > 0 && <Stat className={statClass} size="sm" label={tMetrics("sexRatio.short")} value={district.sexRatio} />}
+          {district.headquarters && <Stat className={statClass} size="sm" label={t("hq")} value={placeName(district.stateId, district.headquarters)} />}
         </div>
       ) : (
         <div className="grid grid-cols-3 p-1">

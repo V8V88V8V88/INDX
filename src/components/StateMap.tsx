@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useId, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import * as d3 from "d3";
+import { useTranslations } from "next-intl";
 import { useSubDistrictGeoData, filterSubDistrictsByDistrict } from "@/hooks/useSubDistrictGeoData";
 import { EDGE_FADE_STYLE } from "@/lib/map-projection";
 import { Button, CursorTooltip, Icon, Spinner } from "./ui";
@@ -14,6 +15,7 @@ interface StateMapProps {
   onDistrictClick?: (district: string) => void;
   onSubDistrictClick?: (subDistrict: { name: string; district: string }) => void;
   districtFill?: (districtName: string) => string | undefined;
+  labelFor?: (districtName: string) => string;
 }
 
 interface DistrictFeature {
@@ -55,7 +57,9 @@ function labelLines(name: string, size: number, maxWidth: number): string[] {
   return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
 }
 
-function placeLabels(districts: LabelSource[], baseSize: number): PlacedLabel[] {
+const identity = (name: string) => name;
+
+function placeLabels(districts: LabelSource[], baseSize: number, labelFor: (name: string) => string): PlacedLabel[] {
   const placed: { x0: number; y0: number; x1: number; y1: number }[] = [];
   const overlaps = (b: (typeof placed)[number]) =>
     placed.some((p) => b.x0 < p.x1 && b.x1 > p.x0 && b.y0 < p.y1 && b.y1 > p.y0);
@@ -72,7 +76,7 @@ function placeLabels(districts: LabelSource[], baseSize: number): PlacedLabel[] 
     let fallback: PlacedLabel | null = null;
 
     for (const size of [baseSize, baseSize * 0.82]) {
-      const lines = labelLines(d.name, size, bx1 - bx0);
+      const lines = labelLines(labelFor(d.name), size, bx1 - bx0);
       const w = Math.max(...lines.map((l) => l.length)) * size * CHAR_WIDTH;
       const h = lines.length * size * LINE_HEIGHT;
       for (const step of [0, -1, 1, -2, 2, -3, 3]) {
@@ -118,7 +122,9 @@ function rewindForD3<T extends GeoJSON.Feature<GeoJSON.Polygon | GeoJSON.MultiPo
   };
 }
 
-export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick, districtFill }: StateMapProps) {
+export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict, onDistrictSelect, onDistrictClick, onSubDistrictClick, districtFill, labelFor = identity }: StateMapProps) {
+  const t = useTranslations("StateMap");
+  const tCommon = useTranslations("Common");
   const [loaded, setLoaded] = useState<{ code: string; data: DistrictGeoData | null } | null>(null);
   const [hoveredDistrict, setHoveredDistrict] = useState<string | null>(null);
   const [showLabels, setShowLabels] = useState(
@@ -367,7 +373,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   if (loading) {
     return (
       <div className="flex h-[320px] w-full items-center lg:h-[600px] justify-center rounded-2xl bg-bg-secondary/50">
-        <Spinner label="Loading map" />
+        <Spinner label={tCommon("loadingMap")} />
       </div>
     );
   }
@@ -375,7 +381,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   if (!geoData || mapData.paths.length === 0) {
     return (
       <div className="flex h-[320px] w-full items-center lg:h-[600px] justify-center rounded-2xl bg-bg-secondary/50 text-text-muted">
-        District boundaries not available
+        {t("unavailable")}
       </div>
     );
   }
@@ -385,7 +391,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
   const zoomedViewBox = zoomed.join(" ");
   const isZoomedIn = zoomed[2] < mapData.box[2] * 0.95;
   const labelSize = Math.max(zoomed[2], zoomed[3]) / 68;
-  const labels = showLabels ? placeLabels(mapData.paths, labelSize) : [];
+  const labels = showLabels ? placeLabels(mapData.paths, labelSize, labelFor) : [];
 
   return (
     <div className="relative w-full" style={{ overflow: "visible" }}>
@@ -400,7 +406,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
           preserveAspectRatio="xMidYMid meet"
           onMouseMove={handleMouseMove}
           role="group"
-          aria-label="District map"
+          aria-label={t("label")}
         >
           <filter id={`${filterId}-glow`} x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="2" result="blur" />
@@ -440,7 +446,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
                 key={district.name}
                 role="button"
                 tabIndex={0}
-                aria-label={district.name}
+                aria-label={labelFor(district.name)}
                 aria-pressed={isSelected}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -548,8 +554,8 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
           size="sm"
           iconOnly
           onClick={() => setSelectedDistrict(null)}
-          title="Back to full map"
-          aria-label="Zoom out to full map"
+          title={t("backToFullMap")}
+          aria-label={t("zoomOut")}
           className="absolute left-4 top-0 sm:left-0"
         >
           <Icon name="arrow-left" size={14} />
@@ -562,8 +568,8 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
         iconOnly
         pressed={showLabels}
         onClick={() => setShowLabels((v) => !v)}
-        title="Toggle district names"
-        aria-label="Show district names"
+        title={t("toggleNames")}
+        aria-label={t("showNames")}
         className="absolute right-4 top-0 sm:right-0"
       >
         <Icon name="tag" size={14} />
@@ -571,7 +577,7 @@ export function StateMap({ stateCode, selectedDistrict: externalSelectedDistrict
 
       {hoveredDistrict && !hoveredSubDistrict && (
         <CursorTooltip x={mousePos.x} y={mousePos.y}>
-          {hoveredDistrict}
+          {labelFor(hoveredDistrict)}
         </CursorTooltip>
       )}
 

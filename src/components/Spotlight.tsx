@@ -2,7 +2,8 @@
 
 import { useEffect, useId, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { useSearch, type SearchResult } from "@/hooks/useSearch";
 import { SearchInput, SearchResults } from "./SearchResults";
 import { Kbd } from "./ui";
@@ -17,6 +18,8 @@ export function Spotlight() {
   const [isOpen, setIsOpen] = useState(false);
   const { query, setQuery, results, activeIndex, handleKeyDown } = useSearch({ includePages: true });
   const router = useRouter();
+  const currentPath = usePathname();
+  const t = useTranslations("Nav");
   const listboxId = useId();
 
   const close = () => {
@@ -48,7 +51,7 @@ export function Spotlight() {
   const select = (result: SearchResult) => {
     close();
     const [pathname, hash] = result.path.split("#");
-    if (hash && window.location.pathname === pathname) {
+    if (hash && currentPath === pathname) {
       window.location.hash = hash;
     } else {
       router.push(result.path);
@@ -74,7 +77,7 @@ export function Spotlight() {
             className="fixed left-1/2 top-20 z-50 w-full max-w-2xl -translate-x-1/2"
             role="dialog"
             aria-modal="true"
-            aria-label="Search"
+            aria-label={t("search")}
           >
             <div className="mx-4 overflow-hidden rounded-2xl border border-border-light bg-bg-card shadow-xl">
               <SearchInput

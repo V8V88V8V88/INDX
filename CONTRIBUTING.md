@@ -43,6 +43,17 @@ Open http://localhost:3000.
 - Generated data is rebuilt by `scripts/data/build_data.py`. Change the script or the files in `scripts/data/sources/`, not the generated output. See [`scripts/data/README.md`](scripts/data/README.md).
 - If you find a wrong number but can't fix it, [report it](https://github.com/V8V88V8V88/INDX/issues/new?template=data-error.yml) with the place, the value you see, and where the correct value comes from.
 
+## Translations
+
+All interface text lives in `messages/<language>.json`. English (`en.json`) is the reference.
+
+- **Fixing a translation:** edit the value in that language's file. Keep the keys and anything in `{curly braces}` exactly as they are.
+- **Adding text to the site:** add the English text to `en.json`, use it with `useTranslations`, and add the same key to every other language file (an English placeholder is fine, a native speaker can translate it later).
+- **Adding a language:** copy `en.json` to `messages/<code>.json`, translate it, and add the language to `LOCALES` in `src/i18n/routing.ts`.
+- District and city names come from Wikidata through the data build, not from these files.
+
+`bun run check:i18n` reports missing keys and broken placeholders.
+
 ## Commits and pull requests
 
 - Write commit messages in the imperative, in plain English: `Fix district search on mobile`, not `fixed stuff`.
