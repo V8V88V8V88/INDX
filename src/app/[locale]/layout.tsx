@@ -12,6 +12,7 @@ import { routing } from "@/i18n/routing";
 import { scriptFonts } from "@/i18n/fonts";
 import { SettingsProvider } from "@/contexts/SettingsContext";
 import { cn } from "@/lib/cn";
+import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const inter = Inter({
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
   const { locale } = await params;
   const t = await getTranslations({ locale: hasLocale(routing.locales, locale) ? locale : routing.defaultLocale, namespace: "Metadata" });
   return {
+    metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
     keywords: ["India", "data visualization", "statistics", "geography", "states", "cities", "districts"],

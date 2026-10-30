@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { REPO_URL } from "@/lib/site";
 import { GitHubIcon, Wordmark } from "./ui";
 
 const linkClass = "text-text-secondary transition-colors hover:text-text-primary";
@@ -22,7 +23,7 @@ export function Footer() {
             {t("about")}
           </Link>
           <a
-            href="https://github.com/v8V88V8V88/INDX"
+            href={REPO_URL}
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-1.5 ${linkClass}`}

@@ -6,6 +6,7 @@ import { useSettings } from "@/contexts/SettingsContext";
 import { LOCALES } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
 import { FY_AVERAGE_INR_PER_USD } from "@/lib/fx";
+import { newIssueUrl } from "@/lib/site";
 import { THEMES } from "@/lib/theme";
 import { useChangeLocale } from "./LanguageSwitcher";
 import { setThemePreference, useThemePreference } from "./ThemeToggle";
@@ -34,9 +35,7 @@ export function LanguageSettings() {
   const t = useTranslations("Settings");
   const locale = useLocale();
   const changeLocale = useChangeLocale();
-  const reportUrl = `https://github.com/V8V88V8V88/INDX/issues/new?template=translation.yml&language=${encodeURIComponent(
-    LOCALES.find((l) => l.code === locale)?.name ?? locale,
-  )}`;
+  const reportUrl = newIssueUrl("translation.yml", { language: LOCALES.find((l) => l.code === locale)?.name ?? locale });
 
   return (
     <Panel
