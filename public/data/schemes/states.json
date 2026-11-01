@@ -2902,7 +2902,7 @@
       "BSKY"
     ],
     "scope": "state",
-    "stateId": "OD",
+    "stateId": "OR",
     "government": "Government of Odisha",
     "ministry": "Health and Family Welfare Department, Odisha",
     "launchDate": "2018-08-15",
@@ -2958,7 +2958,7 @@
       "GJAY"
     ],
     "scope": "state",
-    "stateId": "OD",
+    "stateId": "OR",
     "government": "Government of Odisha",
     "ministry": "Health and Family Welfare Department, Odisha",
     "launchYear": 2025,
@@ -3012,7 +3012,7 @@
       "Mission Shakti Odisha"
     ],
     "scope": "state",
-    "stateId": "OD",
+    "stateId": "OR",
     "government": "Government of Odisha",
     "ministry": "Mission Shakti Department, Odisha",
     "launchYear": 2001,
@@ -3064,7 +3064,7 @@
       "Subhadra"
     ],
     "scope": "state",
-    "stateId": "OD",
+    "stateId": "OR",
     "government": "Government of Odisha",
     "ministry": "Mission Shakti Department, Odisha",
     "launchDate": "2024-09-17",
@@ -4030,7 +4030,7 @@
       "Aarogyasri"
     ],
     "scope": "state",
-    "stateId": "TS",
+    "stateId": "TG",
     "government": "Government of Telangana",
     "ministry": "Health Department, Telangana",
     "launchYear": 2007,
@@ -4081,7 +4081,7 @@
       "Gruha Jyothi Telangana"
     ],
     "scope": "state",
-    "stateId": "TS",
+    "stateId": "TG",
     "government": "Government of Telangana",
     "ministry": "Energy Department, Telangana",
     "launchDate": "2024-02-27",
@@ -4133,7 +4133,7 @@
       "Indiramma Housing"
     ],
     "scope": "state",
-    "stateId": "TS",
+    "stateId": "TG",
     "government": "Government of Telangana",
     "ministry": "Housing Department, Telangana",
     "launchDate": "2024-03-11",
@@ -4184,7 +4184,7 @@
       "Shaadi Mubarak"
     ],
     "scope": "state",
-    "stateId": "TS",
+    "stateId": "TG",
     "government": "Government of Telangana",
     "ministry": "Social Welfare Department, Telangana",
     "launchDate": "2014-10-02",
@@ -4237,7 +4237,7 @@
       "Mahalakshmi Scheme"
     ],
     "scope": "state",
-    "stateId": "TS",
+    "stateId": "TG",
     "government": "Government of Telangana",
     "ministry": "Transport Department, Telangana",
     "launchDate": "2023-12-09",
@@ -4289,7 +4289,7 @@
       "Raitu Bandhu"
     ],
     "scope": "state",
-    "stateId": "TS",
+    "stateId": "TG",
     "government": "Government of Telangana",
     "ministry": "Agriculture Department, Telangana",
     "launchDate": "2018-05-10",
@@ -4345,7 +4345,7 @@
       "Raitu Bharosa"
     ],
     "scope": "state",
-    "stateId": "TS",
+    "stateId": "TG",
     "government": "Government of Telangana",
     "ministry": "Agriculture Department, Telangana",
     "launchDate": "2025-01-26",
