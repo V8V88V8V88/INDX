@@ -22,7 +22,8 @@ interface HeaderProps {
 
 const navLinks = [
   { href: "/map", key: "map" },
-  { href: "/compare", key: "compare" },
+  { href: "/schemes", key: "scheme" },
+  { href: "/compare", key: "compare" }
 ] as const;
 
 const menuLinks = [...navLinks, { href: "/about", key: "about" }] as const;
