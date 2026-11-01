@@ -1,0 +1,1234 @@
+[
+  {
+    "id": "ch-destitute-women",
+    "name": "Financial Assistance to Destitute Women (Chandigarh)",
+    "aliases": [
+      "Chandigarh Widow Pension"
+    ],
+    "scope": "Union Territories",
+    "stateId": "CH",
+    "government": "Chandigarh Administration",
+    "ministry": "Social Welfare Department, Chandigarh",
+    "launchYear": 1990,
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "objectives": "Aid to destitute women.",
+    "targetBeneficiaries": [
+      "Women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Chandigarh",
+        "criteria": "Eligible women."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly assistance",
+        "details": "Amount notified."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://chandigarh.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://chandigarh.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Financial Assistance to Destitute Women — official portal",
+        "url": "https://chandigarh.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ch-old-age-samman",
+    "name": "Old Age Samman Allowance (Chandigarh)",
+    "aliases": [
+      "OASA Chandigarh"
+    ],
+    "scope": "Union Territories",
+    "stateId": "CH",
+    "government": "Chandigarh Administration",
+    "ministry": "Social Welfare Department, Chandigarh",
+    "launchYear": 1990,
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "objectives": "Pension for elderly.",
+    "targetBeneficiaries": [
+      "Senior citizens"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Chandigarh",
+        "criteria": "Chandigarh residents aged 60+."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly allowance",
+        "details": "Amount notified."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://chandigarh.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://chandigarh.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Old Age Samman Allowance — official portal",
+        "url": "https://chandigarh.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-ayushman-pmjay",
+    "name": "Ayushman Bharat PM-JAY (Delhi) with Delhi top-up",
+    "aliases": [
+      "Delhi Ayushman"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Health and Family Welfare Department, Delhi",
+    "launchDate": "2025-04-05",
+    "launchYear": 2025,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Implement AB PM-JAY in Delhi with a state top-up.",
+    "targetBeneficiaries": [
+      "Families in Delhi"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Eligible Delhi households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "₹5 lakh central plus Delhi top-up."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply for the card.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ayushman Bharat PM-JAY — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-electricity-subsidy",
+    "name": "Delhi Electricity Subsidy Scheme",
+    "aliases": [
+      "Delhi 200 units free"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Power Department, Delhi",
+    "launchYear": 2015,
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "objectives": "Subsidise household electricity.",
+    "targetBeneficiaries": [
+      "Domestic consumers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Delhi domestic consumers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Subsidy on bills",
+        "details": "Up to 200 units free."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Opt in.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Delhi Electricity Subsidy Scheme — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-farishtey",
+    "name": "Farishtey Dilli Ke",
+    "aliases": [
+      "Farishtey"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Transport Department, Delhi",
+    "launchYear": 2018,
+    "categories": [
+      "healthcare"
+    ],
+    "objectives": "Cashless treatment for accident victims.",
+    "targetBeneficiaries": [
+      "Accident victims"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Anyone in Delhi."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free treatment",
+        "details": "At any hospital."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Good Samaritan.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Farishtey Dilli Ke — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-free-bus-travel-women",
+    "name": "Delhi Free Bus Travel Scheme for Women",
+    "aliases": [
+      "Delhi Free Bus Ride"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Transport Department, Delhi",
+    "launchDate": "2019-10-29",
+    "launchYear": 2019,
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "objectives": "Promote women mobility and workforce participation by providing free travel in public buses.",
+    "targetBeneficiaries": [
+      "Women residents of Delhi"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "All women residing in Delhi travelling in DTC and cluster buses."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free travel in DTC and cluster buses",
+        "details": "Free pink ticket from the conductor; Pink Saheli Smart Card introduced for resident women."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Obtain free pink ticket from bus conductor onboard.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Government of NCT of Delhi portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-free-water",
+    "name": "Delhi Free Water Scheme",
+    "aliases": [
+      "Jal Board free water"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Delhi Jal Board",
+    "launchYear": 2015,
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "objectives": "Free water.",
+    "targetBeneficiaries": [
+      "Households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Metered domestic users."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "20,000 litres free per month",
+        "details": "Metered."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Delhi Free Water Scheme — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-jai-bhim-pratibha",
+    "name": "Jai Bhim Mukhyamantri Pratibha Vikas Yojana",
+    "aliases": [
+      "JBMPVY"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Social Welfare Department, Delhi",
+    "launchYear": 2019,
+    "categories": [
+      "education",
+      "sc-st-obc",
+      "scholarships"
+    ],
+    "objectives": "Coaching for SC, ST, OBC students.",
+    "targetBeneficiaries": [
+      "Students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Delhi residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free coaching",
+        "details": "For exams."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Jai Bhim Mukhyamantri Pratibha Vikas Yojana — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-ladli",
+    "name": "Delhi Ladli Scheme",
+    "aliases": [
+      "Ladli Delhi"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Women and Child Development Department, Delhi",
+    "launchYear": 2008,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Improve girl child status.",
+    "targetBeneficiaries": [
+      "Girls"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Delhi girls."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Staged assistance",
+        "details": "Paid at milestones."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Delhi Ladli Scheme — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-lakshmi-yojana",
+    "name": "Delhi Lakshmi Yojana",
+    "aliases": [
+      "Mahila Samriddhi Yojana"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Women and Child Development Department, Delhi",
+    "launchDate": "2026-08-26",
+    "launchYear": 2026,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide monthly income support to women from lower-income households.",
+    "targetBeneficiaries": [
+      "Women aged 21-60 in Delhi"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Delhi resident women aged 21-60 from lower-income households; government employees, taxpayers, pensioners and four-wheeler owners are excluded."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹2,500 per month",
+        "details": "Transfers from 1 September 2026; part may be routed to a locked savings option."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the Women and Child Development Department portal.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Delhi Lakshmi Yojana — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "YourStory — launch coverage",
+        "url": "https://yourstory.com/2026/08/delhi-lakshmi-yojana-launch-rs-2500-enterprise-savings",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Announced as Mahila Samriddhi Yojana; launched under the current name on 2026-08-26.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-mohalla-clinic",
+    "name": "Aam Aadmi Mohalla Clinics",
+    "aliases": [
+      "Mohalla Clinic",
+      "Ayushman Arogya Mandir Delhi"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Health and Family Welfare Department, Delhi",
+    "launchYear": 2015,
+    "categories": [
+      "healthcare"
+    ],
+    "objectives": "Free primary health care.",
+    "targetBeneficiaries": [
+      "General population"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "All residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free consultations, medicines and tests",
+        "details": "At neighbourhood clinics."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Visit.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Aam Aadmi Mohalla Clinics — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-old-age-pension",
+    "name": "Delhi Old Age Pension Scheme",
+    "aliases": [
+      "Delhi Pension"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Social Welfare Department, Delhi",
+    "launchYear": 1982,
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "objectives": "Pension for elderly.",
+    "targetBeneficiaries": [
+      "Senior citizens"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Delhi residents aged 60+ within income criteria."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly pension",
+        "details": "₹2,500 for 70+ category."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Delhi Old Age Pension Scheme — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dl-tirth-yatra",
+    "name": "Mukhyamantri Tirth Yatra Yojana",
+    "aliases": [
+      "Delhi Tirth Yatra"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Revenue Department, Delhi",
+    "launchYear": 2018,
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "objectives": "Pilgrimage for seniors.",
+    "targetBeneficiaries": [
+      "Senior citizens"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Delhi",
+        "criteria": "Delhi residents aged 60+."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free pilgrimage",
+        "details": "For up to ₹1 lakh."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://delhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://delhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Tirth Yatra Yojana — official portal",
+        "url": "https://delhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jk-back-to-village",
+    "name": "Back to Village Programme",
+    "aliases": [
+      "B2V"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Rural Development Department, J&K",
+    "launchYear": 2019,
+    "categories": [
+      "rural-development"
+    ],
+    "objectives": "Take governance to villages.",
+    "targetBeneficiaries": [
+      "Villagers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jammu and Kashmir",
+        "criteria": "Rural residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Development works",
+        "details": "Awareness camps."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Panchayat.",
+        "url": "https://jk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Back to Village Programme — official portal",
+        "url": "https://jk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jk-hadp",
+    "name": "Holistic Agriculture Development Programme (HADP)",
+    "aliases": [
+      "HADP"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Agriculture Production Department, J&K",
+    "launchYear": 2021,
+    "categories": [
+      "agriculture"
+    ],
+    "objectives": "Doubling farmer income.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jammu and Kashmir",
+        "criteria": "J&K farmers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Project funding",
+        "details": "Value chains."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://jk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Holistic Agriculture Development Programme — official portal",
+        "url": "https://jk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jk-health-scheme",
+    "name": "Jammu and Kashmir Health Scheme (SEHAT)",
+    "aliases": [
+      "JK SEHAT Scheme"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Department of Health and Medical Education, J&K",
+    "launchDate": "2020-12-26",
+    "launchYear": 2020,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide universal health insurance coverage to all residents of Jammu and Kashmir.",
+    "targetBeneficiaries": [
+      "All residents of Jammu and Kashmir"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jammu and Kashmir",
+        "criteria": "All families residing in Jammu & Kashmir (universal coverage regardless of socio-economic status)."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹5 lakh health insurance per family per year",
+        "details": "Cashless treatment at empanelled hospitals across India."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register with Aadhaar and domicile certificate on AB PM-JAY / SEHAT portal.",
+        "url": "https://www.jkhealth.org"
+      }
+    ],
+    "officialUrls": [
+      "https://www.jkhealth.org"
+    ],
+    "sources": [
+      {
+        "title": "J&K Health Scheme portal",
+        "url": "https://www.jkhealth.org",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "jk-himayat",
+    "name": "Himayat",
+    "aliases": [
+      "Himayat Skill"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Department of Skill Development, J&K",
+    "launchYear": 2011,
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "objectives": "Skill training and placement.",
+    "targetBeneficiaries": [
+      "Youth"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jammu and Kashmir",
+        "criteria": "J&K youth."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free training",
+        "details": "Placement."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Enrol.",
+        "url": "https://jk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Himayat — official portal",
+        "url": "https://jk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jk-iss-pension",
+    "name": "Integrated Social Security Scheme (ISSS)",
+    "aliases": [
+      "ISSS Pension"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Social Welfare Department, J&K",
+    "launchYear": 2008,
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "objectives": "Pensions.",
+    "targetBeneficiaries": [
+      "Elderly, widows"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jammu and Kashmir",
+        "criteria": "Eligible residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly pension",
+        "details": "Notified amount."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://jk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Integrated Social Security Scheme — official portal",
+        "url": "https://jk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jk-ladli-beti",
+    "name": "Ladli Beti Scheme (J&K)",
+    "aliases": [
+      "Ladli Beti"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Social Welfare Department, J&K",
+    "launchYear": 2015,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Girl child promotion.",
+    "targetBeneficiaries": [
+      "Girls"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jammu and Kashmir",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹ stages",
+        "details": "Fixed deposit."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://jk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ladli Beti Scheme — official portal",
+        "url": "https://jk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jk-mission-youth",
+    "name": "Mission Youth",
+    "aliases": [
+      "JK Mission Youth"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Mission Youth, J&K",
+    "launchYear": 2022,
+    "categories": [
+      "employment",
+      "msme"
+    ],
+    "objectives": "Youth entrepreneurship.",
+    "targetBeneficiaries": [
+      "Youth"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jammu and Kashmir",
+        "criteria": "J&K youth."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Handholding",
+        "details": "Incentives."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://jk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mission Youth — official portal",
+        "url": "https://jk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "py-girl-child",
+    "name": "Girl Child Protection Scheme (Puducherry)",
+    "aliases": [
+      "Puducherry Girl Child"
+    ],
+    "scope": "Union Territories",
+    "stateId": "PY",
+    "government": "Government of Puducherry",
+    "ministry": "Social Welfare Department, Puducherry",
+    "launchYear": 1992,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Protect girl child.",
+    "targetBeneficiaries": [
+      "Girls"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Puducherry",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Deposit and benefits",
+        "details": "At maturity."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://py.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://py.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Girl Child Protection Scheme — official portal",
+        "url": "https://py.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "py-old-age-pension",
+    "name": "Puducherry Old Age Pension Scheme",
+    "aliases": [
+      "Puducherry OAP"
+    ],
+    "scope": "Union Territories",
+    "stateId": "PY",
+    "government": "Government of Puducherry",
+    "ministry": "Department of Social Welfare, Puducherry",
+    "launchYear": 1980,
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "objectives": "Provide financial social security assistance to senior citizens in Puducherry UT.",
+    "targetBeneficiaries": [
+      "Senior citizens in Puducherry"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Puducherry",
+        "criteria": "Destitute or poor senior citizens aged 60+ residing in Puducherry for at least 5 years."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly pension assistance",
+        "details": "Regular monthly financial pension credited to beneficiary bank accounts."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline / online",
+        "steps": "Apply through local Social Welfare Department office.",
+        "url": "https://py.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://py.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Government of Puducherry portal",
+        "url": "https://py.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "py-widow-pension",
+    "name": "Puducherry Widow Pension Scheme",
+    "aliases": [
+      "Puducherry Widow Pension"
+    ],
+    "scope": "Union Territories",
+    "stateId": "PY",
+    "government": "Government of Puducherry",
+    "ministry": "Social Welfare Department, Puducherry",
+    "launchYear": 1980,
+    "categories": [
+      "social-security",
+      "women-child"
+    ],
+    "objectives": "Pension for widows.",
+    "targetBeneficiaries": [
+      "Widows"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Puducherry",
+        "criteria": "Eligible widows."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly pension",
+        "details": "DBT."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://py.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://py.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Puducherry Widow Pension Scheme — official portal",
+        "url": "https://py.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "py-women-head-1000",
+    "name": "Monthly Assistance to Women Heads of Families (Puducherry)",
+    "aliases": [
+      "Puducherry ₹1,000 scheme"
+    ],
+    "scope": "Union Territories",
+    "stateId": "PY",
+    "government": "Government of Puducherry",
+    "ministry": "Women and Child Development Department, Puducherry",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Monthly assistance to women.",
+    "targetBeneficiaries": [
+      "Women heads of families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Puducherry",
+        "criteria": "Puducherry residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,000 per month",
+        "details": "DBT."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://py.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://py.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Monthly Assistance to Women Heads of Families — official portal",
+        "url": "https://py.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  }
+]

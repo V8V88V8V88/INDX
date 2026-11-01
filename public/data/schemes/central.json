@@ -1,0 +1,6117 @@
+[
+  {
+    "id": "abdm",
+    "name": "Ayushman Bharat Digital Mission (ABDM)",
+    "aliases": [
+      "ABDM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "department": "National Health Authority",
+    "launchDate": "2021-09-27",
+    "launchYear": 2021,
+    "categories": [
+      "healthcare"
+    ],
+    "objectives": "Create a national digital health ecosystem with interoperable health records through ABHA numbers and health facility and professional registries.",
+    "targetBeneficiaries": [
+      "All citizens",
+      "Healthcare providers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All Indian residents can voluntarily create an ABHA (Ayushman Bharat Health Account) number."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free ABHA number and digital health records",
+        "details": "Consent-based sharing of health records across facilities, plus tele-consultation and e-prescription ecosystem."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Create an ABHA number on the ABDM portal using Aadhaar or a mobile number, or at a participating health facility.",
+        "url": "https://abdm.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://abdm.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ayushman Bharat Digital Mission — official portal",
+        "url": "https://abdm.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "agriculture-infrastructure-fund",
+    "name": "Agriculture Infrastructure Fund (AIF)",
+    "aliases": [
+      "AIF"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "launchDate": "2020-08-09",
+    "launchYear": 2020,
+    "categories": [
+      "agriculture",
+      "infrastructure",
+      "financial-inclusion"
+    ],
+    "objectives": "Mobilise ₹1 lakh crore for post-harvest and farm infrastructure.",
+    "targetBeneficiaries": [
+      "Farmers",
+      "FPOs",
+      "Agri-entrepreneurs",
+      "Start-ups"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Eligible entities building post-harvest management and community farming assets."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "3% interest subvention",
+        "details": "On loans up to ₹2 crore for up to seven years, with CGTMSE credit guarantee."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the AIF portal through a participating bank.",
+        "url": "https://agriinfra.dac.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://agriinfra.dac.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Agriculture Infrastructure Fund — official portal",
+        "url": "https://agriinfra.dac.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ahidf",
+    "name": "Animal Husbandry Infrastructure Development Fund (AHIDF)",
+    "aliases": [
+      "AHIDF"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "department": "Department of Animal Husbandry and Dairying",
+    "launchYear": 2020,
+    "categories": [
+      "agriculture",
+      "msme",
+      "financial-inclusion"
+    ],
+    "objectives": "Incentivise private investment in dairy, meat processing and feed plants.",
+    "targetBeneficiaries": [
+      "Entrepreneurs",
+      "FPOs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Eligible private players and MSMEs."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "3% interest subvention",
+        "details": "Credit guarantee of 25% of loan."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply via the AHIDF portal.",
+        "url": "https://dahd.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://dahd.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Animal Husbandry Infrastructure Development Fund — official portal",
+        "url": "https://dahd.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "amrut-2",
+    "name": "AMRUT 2.0",
+    "aliases": [
+      "Atal Mission for Rejuvenation and Urban Transformation 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "launchDate": "2021-10-01",
+    "launchYear": 2021,
+    "categories": [
+      "urban-development",
+      "infrastructure"
+    ],
+    "objectives": "Universal water supply and sewage coverage in statutory towns.",
+    "targetBeneficiaries": [
+      "Urban households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Households in covered towns."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Water and sewerage connections",
+        "details": "Tap connections and sewage treatment."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through urban local bodies.",
+        "url": "https://mohua.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mohua.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "AMRUT 2.0 — official portal",
+        "url": "https://mohua.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "atal-pension-yojana",
+    "name": "Atal Pension Yojana (APY)",
+    "aliases": [
+      "APY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Pension Fund Regulatory and Development Authority",
+    "launchDate": "2015-05-09",
+    "launchYear": 2015,
+    "categories": [
+      "social-security",
+      "senior-citizens",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide a guaranteed minimum pension to subscribers, mainly workers in the unorganised sector, after they reach 60 years of age.",
+    "targetBeneficiaries": [
+      "Unorganised sector workers aged 18–40"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Indian citizens aged 18–40 with a savings bank/post office account; not income-tax payers (as per scheme rules)."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Guaranteed pension of ₹1,000–₹5,000 per month",
+        "details": "Pension begins at age 60, with the same amount paid to the spouse and corpus returned to nominees."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Bank / post office",
+        "steps": "Approach the bank/post office where you hold an account and submit the APY registration form.",
+        "url": "https://www.npscra.nsdl.co.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.npscra.nsdl.co.in"
+    ],
+    "sources": [
+      {
+        "title": "PFRDA / NPS Trust — Atal Pension Yojana",
+        "url": "https://www.npscra.nsdl.co.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "ayushman-bharat-pmjay",
+    "name": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)",
+    "aliases": [
+      "PM-JAY",
+      "Ayushman Bharat"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "department": "National Health Authority",
+    "launchDate": "2018-09-23",
+    "launchYear": 2018,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide health cover for secondary and tertiary care hospitalisation to poor and vulnerable families, reducing catastrophic out-of-pocket medical expenditure.",
+    "targetBeneficiaries": [
+      "Poor and vulnerable families",
+      "Senior citizens aged 70 and above"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Families identified by the deprivation criteria of the 2011 Socio-Economic Caste Census, plus all senior citizens aged 70+ (extended 2024) irrespective of income."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹5 lakh health cover per family per year",
+        "details": "Cashless, paperless secondary and tertiary hospitalisation at empanelled public and private hospitals."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / hospital",
+        "steps": "Check eligibility on the PM-JAY portal or via the Ayushman app, then visit an empanelled hospital to use the Ayushman Card.",
+        "url": "https://pmjay.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmjay.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM-JAY official portal (National Health Authority)",
+        "url": "https://pmjay.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "ayushman-vay-vandana",
+    "name": "Ayushman Vay Vandana Card (AB PM-JAY, 70+)",
+    "aliases": [
+      "AB PM-JAY Vay Vandana",
+      "Vay Vandana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "department": "National Health Authority",
+    "launchDate": "2024-10-29",
+    "launchYear": 2024,
+    "categories": [
+      "healthcare",
+      "senior-citizens",
+      "social-security"
+    ],
+    "objectives": "Extend free health cover to all senior citizens aged 70 and above.",
+    "targetBeneficiaries": [
+      "Senior citizens aged 70+"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All Indian citizens aged 70 and above irrespective of income."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹5 lakh per family per year",
+        "details": "Family floater cover for 70+ households; senior members already under PM-JAY share the cover with an additional top-up."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply for the Vay Vandana card on the PM-JAY portal or Ayushman app using Aadhaar eKYC.",
+        "url": "https://pmjay.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmjay.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ayushman Vay Vandana Card — official portal",
+        "url": "https://pmjay.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "beti-bachao-beti-padhao",
+    "name": "Beti Bachao Beti Padhao (BBBP)",
+    "aliases": [
+      "BBBP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "launchDate": "2015-01-22",
+    "launchYear": 2015,
+    "categories": [
+      "women-child",
+      "education"
+    ],
+    "objectives": "Address the declining child sex ratio and promote the education and survival of the girl child through awareness and convergent action.",
+    "targetBeneficiaries": [
+      "Girl children",
+      "Families and communities"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Awareness and outreach apply universally; specific benefits are delivered through associated schemes and district-level interventions."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Improved survival, protection and education of the girl child",
+        "details": "Implemented through convergent action with education, health and district administration programmes."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Not applicable",
+        "steps": "A mass awareness and convergent-action scheme; no individual application. Related benefits flow through linked schemes.",
+        "url": "https://wcd.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://wcd.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ministry of Women and Child Development",
+        "url": "https://wcd.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "cgtmse",
+    "name": "Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTMSE)",
+    "aliases": [
+      "CGTMSE"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "launchYear": 2000,
+    "categories": [
+      "msme",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide collateral-free credit guarantee to micro and small enterprises.",
+    "targetBeneficiaries": [
+      "Micro and small enterprises"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Eligible MSEs seeking bank credit."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Collateral-free loans",
+        "details": "Guarantee cover for eligible loans, enhanced limit from 2025."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Bank",
+        "steps": "Through member lending institutions.",
+        "url": "https://www.cgtmse.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.cgtmse.in"
+    ],
+    "sources": [
+      {
+        "title": "Credit Guarantee Fund Trust for Micro and Small Enterprises — official portal",
+        "url": "https://www.cgtmse.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "dajgua",
+    "name": "Dharti Aaba Janjatiya Gram Utkarsh Abhiyan (DAJGUA)",
+    "aliases": [
+      "PM-JUGA",
+      "Dharti Aaba Abhiyan"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Tribal Affairs",
+    "launchYear": 2024,
+    "categories": [
+      "sc-st-obc",
+      "rural-development",
+      "infrastructure"
+    ],
+    "objectives": "Saturate tribal-majority villages with basic services and livelihood support.",
+    "targetBeneficiaries": [
+      "Tribal households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Tribal-majority villages and aspirational tribal districts."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Convergence of services",
+        "details": "Approx. ₹79,156 crore for housing, drinking water, healthcare, education and livelihood."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the district administration.",
+        "url": "https://tribal.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://tribal.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Dharti Aaba Janjatiya Gram Utkarsh Abhiyan — official portal",
+        "url": "https://tribal.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "day-nrlm",
+    "name": "Deendayal Antyodaya Yojana – National Rural Livelihoods Mission (DAY-NRLM)",
+    "aliases": [
+      "DAY-NRLM",
+      "NRLM",
+      "Aajeevika"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "launchDate": "2011-06-03",
+    "launchYear": 2011,
+    "categories": [
+      "rural-development",
+      "women-child",
+      "employment",
+      "financial-inclusion"
+    ],
+    "objectives": "Reduce rural poverty through SHGs and sustainable livelihoods.",
+    "targetBeneficiaries": [
+      "Rural poor women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Rural poor households, organised in SHGs."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "SHG credit and support",
+        "details": "Revolving funds, community investment support and interest subvention."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Join an SHG via the state rural livelihood mission.",
+        "url": "https://nrlm.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nrlm.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Deendayal Antyodaya Yojana – National Rural Livelihoods Mission — official portal",
+        "url": "https://nrlm.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ddu-gky",
+    "name": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana (DDU-GKY)",
+    "aliases": [
+      "DDU-GKY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "launchDate": "2014-09-25",
+    "launchYear": 2014,
+    "categories": [
+      "employment",
+      "rural-development"
+    ],
+    "objectives": "Provide placement-linked skills training to rural youth.",
+    "targetBeneficiaries": [
+      "Rural youth aged 15-35"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Poor rural youth within the age limit."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free skilling and placement",
+        "details": "Placement support and post-placement tracking."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through training partners or state missions.",
+        "url": "https://ddugky.info"
+      }
+    ],
+    "officialUrls": [
+      "https://ddugky.info"
+    ],
+    "sources": [
+      {
+        "title": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana — official portal",
+        "url": "https://ddugky.info",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ddugjy",
+    "name": "Deen Dayal Upadhyaya Gram Jyoti Yojana (DDUGJY)",
+    "aliases": [
+      "DDUGJY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Power",
+    "launchDate": "2014-12-03",
+    "launchYear": 2014,
+    "categories": [
+      "infrastructure",
+      "rural-development"
+    ],
+    "objectives": "Separate agricultural feeders and strengthen rural power distribution.",
+    "targetBeneficiaries": [
+      "Rural consumers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Rural areas."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Rural electrification support",
+        "details": "Feeder separation and sub-transmission."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through DISCOMs.",
+        "url": "https://powermin.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://powermin.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Deen Dayal Upadhyaya Gram Jyoti Yojana — official portal",
+        "url": "https://powermin.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "merged",
+    "statusNote": "Subsumed into the Revamped Distribution Sector Scheme.",
+    "supersededBy": [
+      "rdss"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "digital-india",
+    "name": "Digital India",
+    "aliases": [
+      "Digital India Programme"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Electronics and Information Technology",
+    "launchDate": "2015-07-01",
+    "launchYear": 2015,
+    "categories": [
+      "infrastructure"
+    ],
+    "objectives": "Transform India into a digitally empowered society.",
+    "targetBeneficiaries": [
+      "General population"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All citizens."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Digital infrastructure and services",
+        "details": "DigiLocker, UMANG, broadband and e-governance."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Use the Digital India services portal.",
+        "url": "https://www.digitalindia.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.digitalindia.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Digital India — official portal",
+        "url": "https://www.digitalindia.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "e-nam",
+    "name": "National Agriculture Market (e-NAM)",
+    "aliases": [
+      "eNAM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Small Farmers Agribusiness Consortium",
+    "launchDate": "2016-04-14",
+    "launchYear": 2016,
+    "categories": [
+      "agriculture"
+    ],
+    "objectives": "Create a unified online market for agricultural commodities.",
+    "targetBeneficiaries": [
+      "Farmers",
+      "Traders",
+      "FPOs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Farmers and traders registered with a mandi integrated with e-NAM."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Online price discovery and trading",
+        "details": "Access to a pan-India market and online payments."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the e-NAM portal or at the mandi.",
+        "url": "https://enam.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://enam.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "National Agriculture Market — official portal",
+        "url": "https://enam.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "e-shram",
+    "name": "e-Shram",
+    "aliases": [
+      "eSHRAM",
+      "e-Shram portal"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Labour and Employment",
+    "launchDate": "2021-08-26",
+    "launchYear": 2021,
+    "categories": [
+      "employment",
+      "social-security"
+    ],
+    "objectives": "Create a national database of unorganised workers and link them to social security and welfare schemes.",
+    "targetBeneficiaries": [
+      "Unorganised sector workers",
+      "Gig and platform workers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Unorganised workers aged 16–59, not members of EPFO/ESIC, including migrant, gig and platform workers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Universal Account Number and scheme access",
+        "details": "Registered workers get an e-Shram card and access to social security schemes and accidental insurance."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / CSC",
+        "steps": "Self-register on the e-Shram portal with Aadhaar and bank details, or via a Common Service Centre.",
+        "url": "https://eshram.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://eshram.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "e-Shram official portal",
+        "url": "https://eshram.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "eklavya-model-residential-schools",
+    "name": "Eklavya Model Residential Schools (EMRS)",
+    "aliases": [
+      "EMRS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Tribal Affairs",
+    "launchYear": 1997,
+    "categories": [
+      "education",
+      "sc-st-obc",
+      "infrastructure"
+    ],
+    "objectives": "Provide quality residential education to ST children.",
+    "targetBeneficiaries": [
+      "ST students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "ST children in Classes 6-12."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free residential schooling",
+        "details": "Quality education with hostel and facilities."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through entrance exams by the state tribal department.",
+        "url": "https://emrs.tribal.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://emrs.tribal.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Eklavya Model Residential Schools — official portal",
+        "url": "https://emrs.tribal.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "esanjeevani",
+    "name": "eSanjeevani",
+    "aliases": [
+      "e-Sanjeevani"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "launchYear": 2019,
+    "categories": [
+      "healthcare"
+    ],
+    "objectives": "Provide free telemedicine consultation.",
+    "targetBeneficiaries": [
+      "General population"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Any citizen."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free tele-consultation",
+        "details": "Doctor-to-doctor and patient-to-doctor consultations."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / app",
+        "steps": "Use the eSanjeevani portal or app.",
+        "url": "https://esanjeevani.mohfw.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://esanjeevani.mohfw.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "eSanjeevani — official portal",
+        "url": "https://esanjeevani.mohfw.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "icds",
+    "name": "Integrated Child Development Services (ICDS)",
+    "aliases": [
+      "ICDS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "launchDate": "1975-10-02",
+    "launchYear": 1975,
+    "categories": [
+      "women-child",
+      "healthcare",
+      "education"
+    ],
+    "objectives": "Provide nutrition, health and pre-school education to young children and mothers.",
+    "targetBeneficiaries": [
+      "Children under 6",
+      "Pregnant and lactating women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Registered at Anganwadi centres."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Anganwadi services",
+        "details": "Supplementary nutrition, immunisation, health check-ups and pre-school education."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through Anganwadi centres.",
+        "url": "https://wcd.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://wcd.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Integrated Child Development Services — official portal",
+        "url": "https://wcd.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "merged",
+    "statusNote": "Now implemented under Saksham Anganwadi and Poshan 2.0.",
+    "supersededBy": [
+      "poshan-2"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "indira-awaas-yojana",
+    "name": "Indira Awaas Yojana (IAY)",
+    "aliases": [
+      "IAY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "launchYear": 1985,
+    "categories": [
+      "housing",
+      "rural-development"
+    ],
+    "objectives": "Provide houses to rural poor.",
+    "targetBeneficiaries": [
+      "Rural poor"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Rural BPL families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Housing assistance",
+        "details": "Discontinued after rebranding."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through Gram Panchayat.",
+        "url": "https://pmayg.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmayg.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Indira Awaas Yojana — official portal",
+        "url": "https://pmayg.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "renamed",
+    "statusNote": "Renamed PMAY-Gramin from 2016.",
+    "renamedTo": "pmay-gramin",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "industrial-development-scheme-jk",
+    "name": "New Central Sector Scheme for Industrial Development of Jammu and Kashmir",
+    "aliases": [
+      "J&K Industrial Development Scheme"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Commerce and Industry",
+    "department": "Department for Promotion of Industry and Internal Trade",
+    "launchDate": "2021-01-29",
+    "launchYear": 2021,
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "objectives": "Promote industrial investment in J&K.",
+    "targetBeneficiaries": [
+      "Investors"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "New and existing units in J&K."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Capital and interest incentives",
+        "details": "Reimbursements and subsidies."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Through the scheme portal.",
+        "url": "https://www.dpiit.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.dpiit.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "New Central Sector Scheme for Industrial Development of Jammu and Kashmir — official portal",
+        "url": "https://www.dpiit.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jal-jeevan-mission",
+    "name": "Jal Jeevan Mission (Har Ghar Jal)",
+    "aliases": [
+      "JJM",
+      "Har Ghar Jal"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Jal Shakti",
+    "department": "Department of Drinking Water and Sanitation",
+    "launchDate": "2019-08-15",
+    "launchYear": 2019,
+    "categories": [
+      "rural-development",
+      "infrastructure",
+      "healthcare"
+    ],
+    "objectives": "Provide safely managed and adequate drinking water through household tap connections in rural India.",
+    "targetBeneficiaries": [
+      "Rural households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India (rural)",
+        "criteria": "Rural households without a functional household tap connection; prioritised for water-scarce and quality-affected villages."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Functional household tap connection",
+        "details": "Assured potable water supply of the prescribed per-capita norm, with source sustainability measures."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Gram Panchayat / PWS",
+        "steps": "Requested through the Gram Panchayat or Public Water System; progress tracked on the JJM dashboard.",
+        "url": "https://jaljeevanmission.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jaljeevanmission.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Jal Jeevan Mission official portal",
+        "url": "https://jaljeevanmission.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "janani-suraksha-yojana",
+    "name": "Janani Suraksha Yojana (JSY)",
+    "aliases": [
+      "JSY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "launchDate": "2005-04-12",
+    "launchYear": 2005,
+    "categories": [
+      "healthcare",
+      "women-child"
+    ],
+    "objectives": "Reduce maternal and neonatal mortality by promoting institutional delivery.",
+    "targetBeneficiaries": [
+      "Pregnant women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Pregnant women delivering in government or accredited facilities."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cash incentive",
+        "details": "₹1,400 (rural) and ₹1,000 (urban) in low-performing states; ₹700 and ₹600 in others."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Register at the health facility or through an ASHA.",
+        "url": "https://nhm.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nhm.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Janani Suraksha Yojana — official portal",
+        "url": "https://nhm.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jssk",
+    "name": "Janani Shishu Suraksha Karyakram (JSSK)",
+    "aliases": [
+      "JSSK"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "launchDate": "2011-06-01",
+    "launchYear": 2011,
+    "categories": [
+      "healthcare",
+      "women-child"
+    ],
+    "objectives": "Remove out-of-pocket expense for institutional delivery and sick-newborn care.",
+    "targetBeneficiaries": [
+      "Pregnant women",
+      "Sick newborns"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All pregnant women delivering in public facilities."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free entitlements",
+        "details": "Free delivery, C-section, drugs, diagnostics, diet, blood and transport."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Available at public health facilities.",
+        "url": "https://nhm.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nhm.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Janani Shishu Suraksha Karyakram — official portal",
+        "url": "https://nhm.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "kisan-credit-card",
+    "name": "Kisan Credit Card (KCC)",
+    "aliases": [
+      "KCC"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "launchYear": 1998,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Give farmers timely short-term credit for cultivation and allied activities.",
+    "targetBeneficiaries": [
+      "Farmers",
+      "Tenant farmers",
+      "Fishers",
+      "Livestock owners"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Farmers, tenant farmers, sharecroppers and allied-sector farmers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Concessional crop loans",
+        "details": "Interest subvention on loans; collateral-free limit raised; limit raised to ₹5 lakh in Budget 2025-26."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Bank / online",
+        "steps": "Apply at any bank branch or through the PM-KISAN KCC drive.",
+        "url": "https://pmkisan.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmkisan.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Kisan Credit Card — official portal",
+        "url": "https://pmkisan.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "lakhpati-didi",
+    "name": "Lakhpati Didi Scheme",
+    "aliases": [
+      "Lakhpati Didi"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "department": "Department of Rural Development",
+    "launchDate": "2023-08-15",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "employment",
+      "rural-development"
+    ],
+    "objectives": "Enable women SHG members to earn a sustainable household income of at least ₹1 lakh per year through livelihood activities.",
+    "targetBeneficiaries": [
+      "Women members of Self Help Groups"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Women who are members of SHGs under DAY-NRLM."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Livelihood support and institutional credit",
+        "details": "Skilling, SHG credit linkage and market access to raise household income to ₹1 lakh or more annually."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Join or form an SHG through the state rural livelihood mission or block office.",
+        "url": "https://nrlm.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nrlm.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Lakhpati Didi Scheme — official portal",
+        "url": "https://nrlm.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "DAY-NRLM",
+        "url": "https://nrlm.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mahila-samman-savings-certificate",
+    "name": "Mahila Samman Savings Certificate (MSSC)",
+    "aliases": [
+      "MSSC"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "launchDate": "2023-04-01",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Small savings instrument for women and girls.",
+    "targetBeneficiaries": [
+      "Women and girls"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Any woman or guardian of a girl."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "7.5% interest",
+        "details": "Maximum deposit ₹2 lakh over two years."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Post office / bank",
+        "steps": "Open an account.",
+        "url": "https://www.indiapost.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.indiapost.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mahila Samman Savings Certificate — official portal",
+        "url": "https://www.indiapost.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "closed",
+    "statusNote": "Subscription window ended on 31 March 2025.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mgnrega",
+    "name": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)",
+    "aliases": [
+      "MGNREGA",
+      "NREGA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "department": "Department of Rural Development",
+    "launchDate": "2006-02-02",
+    "launchYear": 2006,
+    "categories": [
+      "employment",
+      "rural-development"
+    ],
+    "objectives": "Enhance livelihood security in rural areas by guaranteeing at least 100 days of wage employment in a financial year to every household whose adult members volunteer unskilled manual work.",
+    "targetBeneficiaries": [
+      "Rural households",
+      "Unskilled rural workers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India (rural)",
+        "criteria": "Any rural household whose adult members are willing to do unskilled manual work; registration is through the Gram Panchayat."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Guaranteed 100 days of wage employment per household per year",
+        "details": "Statutory entitlement; unemployment allowance payable if work is not provided within 15 days of demand."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply for a Job Card at the Gram Panchayat, then submit a written/online work demand to the Panchayat.",
+        "url": "https://nrega.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nrega.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "MGNREGA official portal",
+        "url": "https://nrega.nic.in",
+        "accessed": "2026-10-11"
+      },
+      {
+        "title": "Business Standard — VB-G RAM G notification",
+        "url": "https://www.business-standard.com/india-news/vb-g-ram-g-replacing-mgnrega-to-come-into-force-across-india-from-july-1-126051100540_1.html",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "replaced",
+    "lastUpdated": "2026-10-24",
+    "supersededBy": [
+      "vb-g-ram-g"
+    ],
+    "statusNote": "Repealed and replaced by the VB-G RAM G Act with effect from 2026-07-01 (125 days, 60:40 cost sharing)."
+  },
+  {
+    "id": "mission-indradhanush",
+    "name": "Mission Indradhanush",
+    "aliases": [
+      "Intensified Mission Indradhanush"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "launchDate": "2014-12-25",
+    "launchYear": 2014,
+    "categories": [
+      "healthcare",
+      "women-child"
+    ],
+    "objectives": "Immunise children and pregnant women against vaccine-preventable diseases.",
+    "targetBeneficiaries": [
+      "Children under 2",
+      "Pregnant women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Unvaccinated or partially vaccinated children and pregnant women."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free vaccination",
+        "details": "Special drives for left-out and dropped-out beneficiaries."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Visit the nearest health centre or immunisation session.",
+        "url": "https://www.mohfw.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.mohfw.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mission Indradhanush — official portal",
+        "url": "https://www.mohfw.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mission-shakti",
+    "name": "Mission Shakti",
+    "aliases": [
+      "Sambal",
+      "Samarthya"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "launchDate": "2022-04-01",
+    "launchYear": 2022,
+    "categories": [
+      "women-child"
+    ],
+    "objectives": "Empower women through safety, security and enabling services.",
+    "targetBeneficiaries": [
+      "Women",
+      "Girls"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All women and girls."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Integrated support",
+        "details": "One Stop Centres, Women Helpline 181, Mahila Shakti Kendras, Shakti Sadan and Sakhi Niwas."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline / helpline",
+        "steps": "Call 181 or visit a One Stop Centre.",
+        "url": "https://missionshakti.wcd.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://missionshakti.wcd.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mission Shakti — official portal",
+        "url": "https://missionshakti.wcd.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "namo-drone-didi",
+    "name": "Namo Drone Didi",
+    "aliases": [
+      "Drone Didi"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "launchDate": "2023-11-29",
+    "launchYear": 2023,
+    "categories": [
+      "agriculture",
+      "women-child",
+      "employment"
+    ],
+    "objectives": "Provide agricultural drones to women SHGs.",
+    "targetBeneficiaries": [
+      "Women SHGs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Selected women SHGs."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "80% subsidy",
+        "details": "Up to ₹8 lakh per drone."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the cluster-level federation.",
+        "url": "https://agriwelfare.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://agriwelfare.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Namo Drone Didi — official portal",
+        "url": "https://agriwelfare.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "naps",
+    "name": "National Apprenticeship Promotion Scheme (NAPS)",
+    "aliases": [
+      "NAPS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "launchDate": "2016-08-19",
+    "launchYear": 2016,
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "objectives": "Promote apprenticeship training by supporting employers.",
+    "targetBeneficiaries": [
+      "Apprentices",
+      "Employers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Persons eligible for apprenticeship under the Apprentices Act."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Stipend support",
+        "details": "25% of stipend reimbursed to employers up to ₹1,500 a month."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the Apprenticeship India portal.",
+        "url": "https://www.apprenticeshipindia.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.apprenticeshipindia.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "National Apprenticeship Promotion Scheme — official portal",
+        "url": "https://www.apprenticeshipindia.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "national-health-mission",
+    "name": "National Health Mission (NHM)",
+    "aliases": [
+      "NHM",
+      "NRHM",
+      "NUHM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "launchYear": 2013,
+    "categories": [
+      "healthcare",
+      "rural-development",
+      "urban-development"
+    ],
+    "objectives": "Provide accessible and affordable healthcare across rural and urban areas.",
+    "targetBeneficiaries": [
+      "General population"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All citizens at public facilities."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Public health strengthening",
+        "details": "Free drugs, diagnostics, ASHA workers and health infrastructure support."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Visit public health facilities.",
+        "url": "https://nhm.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nhm.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "National Health Mission — official portal",
+        "url": "https://nhm.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Combines the National Rural Health Mission (2005) and National Urban Health Mission (2013).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "national-pension-system",
+    "name": "National Pension System (NPS)",
+    "aliases": [
+      "NPS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Pension Fund Regulatory and Development Authority",
+    "launchDate": "2004-01-01",
+    "launchYear": 2004,
+    "categories": [
+      "social-security",
+      "financial-inclusion",
+      "senior-citizens"
+    ],
+    "objectives": "Provide market-linked retirement savings for employees and citizens.",
+    "targetBeneficiaries": [
+      "Government employees",
+      "Citizens aged 18-70"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All citizens aged 18-70 (open to all citizens since 2009)."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Retirement corpus and annuity",
+        "details": "Tier-I account with tax benefits; partial withdrawals and mandatory annuity purchase at exit."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / bank",
+        "steps": "Open an account via eNPS or a point of presence.",
+        "url": "https://www.npscra.nsdl.co.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.npscra.nsdl.co.in"
+    ],
+    "sources": [
+      {
+        "title": "National Pension System — official portal",
+        "url": "https://www.npscra.nsdl.co.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "national-social-assistance-programme",
+    "name": "National Social Assistance Programme (NSAP)",
+    "aliases": [
+      "NSAP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "department": "Department of Rural Development",
+    "launchDate": "1995-08-15",
+    "launchYear": 1995,
+    "categories": [
+      "social-security",
+      "senior-citizens",
+      "sc-st-obc"
+    ],
+    "objectives": "Provide social assistance to the aged, widows and persons with disabilities living below the poverty line.",
+    "targetBeneficiaries": [
+      "BPL elderly",
+      "Widows",
+      "Persons with disabilities",
+      "Bereaved families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Households below the poverty line as per the applicable state/UT norms; components include old-age, widow and disability pensions."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly pension and one-time assistance",
+        "details": "Central assistance under old-age, widow and disability pension components, plus a family benefit on death of the breadwinner."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline / online",
+        "steps": "Apply through the local authorities or the state/UT social welfare department; many states accept applications on the NSAP portal.",
+        "url": "https://nsap.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nsap.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "NSAP official portal",
+        "url": "https://nsap.nic.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "nfsa",
+    "name": "National Food Security Act (NFSA)",
+    "aliases": [
+      "NFSA",
+      "Food Security Act"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "department": "Department of Food and Public Distribution",
+    "launchDate": "2013-09-10",
+    "launchYear": 2013,
+    "categories": [
+      "social-security",
+      "rural-development",
+      "urban-development"
+    ],
+    "objectives": "Provide legal entitlement to subsidised foodgrains.",
+    "targetBeneficiaries": [
+      "Priority and AAY households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Households identified by states under priority and Antyodaya categories."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "5 kg grain per person per month",
+        "details": "35 kg per household for AAY; now free under PMGKAY."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Obtain a ration card.",
+        "url": "https://dfpd.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://dfpd.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "National Food Security Act — official portal",
+        "url": "https://dfpd.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ni-kshay-poshan-yojana",
+    "name": "Ni-kshay Poshan Yojana",
+    "aliases": [
+      "NPY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "launchDate": "2018-04-01",
+    "launchYear": 2018,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide nutritional support to TB patients.",
+    "targetBeneficiaries": [
+      "TB patients"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Notified TB patients on treatment."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly DBT",
+        "details": "₹1,000 per month during treatment (raised from ₹500 in 2024)."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Notified at the treatment facility.",
+        "url": "https://nikshay.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nikshay.in"
+    ],
+    "sources": [
+      {
+        "title": "Ni-kshay Poshan Yojana — official portal",
+        "url": "https://nikshay.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "nipun-bharat",
+    "name": "National Initiative for Proficiency in Reading with Understanding and Numeracy (NIPUN Bharat)",
+    "aliases": [
+      "NIPUN Bharat"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "launchDate": "2021-07-05",
+    "launchYear": 2021,
+    "categories": [
+      "education"
+    ],
+    "objectives": "Ensure foundational literacy and numeracy by Grade 3.",
+    "targetBeneficiaries": [
+      "Primary school children"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Children in Grades 1 to 3."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Learning outcome targets",
+        "details": "Teacher training and learning material."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Implemented through schools.",
+        "url": "https://education.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://education.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "National Initiative for Proficiency in Reading with Understanding and Numeracy — official portal",
+        "url": "https://education.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "nmms",
+    "name": "National Means-cum-Merit Scholarship Scheme (NMMSS)",
+    "aliases": [
+      "NMMS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "launchYear": 2008,
+    "categories": [
+      "scholarships",
+      "education"
+    ],
+    "objectives": "Prevent dropout at the secondary stage.",
+    "targetBeneficiaries": [
+      "Class 9-12 students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Class 8 pass students with family income up to ₹3.5 lakh in government and aided schools."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹12,000 per year",
+        "details": "Paid for Classes 9 to 12."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply through the National Scholarship Portal.",
+        "url": "https://scholarships.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://scholarships.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "National Means-cum-Merit Scholarship Scheme — official portal",
+        "url": "https://scholarships.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "nps-vatsalya",
+    "name": "NPS Vatsalya",
+    "aliases": [
+      "National Pension System Vatsalya"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Pension Fund Regulatory and Development Authority",
+    "launchDate": "2024-09-18",
+    "launchYear": 2024,
+    "categories": [
+      "social-security",
+      "financial-inclusion",
+      "women-child"
+    ],
+    "objectives": "Let parents and guardians build a pension corpus for minors that converts to a regular NPS account at age 18.",
+    "targetBeneficiaries": [
+      "Minors (under 18)"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Any Indian citizen under 18, with a guardian opening the account."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Long-term savings for children",
+        "details": "Minimum annual contribution ₹1,000, flexible contributions, and automatic migration to the NPS Tier-I account at 18."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / bank",
+        "steps": "Open through eNPS, a point of presence bank or post office.",
+        "url": "https://www.npscra.nsdl.co.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.npscra.nsdl.co.in"
+    ],
+    "sources": [
+      {
+        "title": "NPS Vatsalya — official portal",
+        "url": "https://www.npscra.nsdl.co.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "odop",
+    "name": "One District One Product (ODOP)",
+    "aliases": [
+      "ODOP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Commerce and Industry",
+    "department": "Department for Promotion of Industry and Internal Trade",
+    "launchYear": 2018,
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "objectives": "Promote one signature product from each district.",
+    "targetBeneficiaries": [
+      "Local producers",
+      "Artisans"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Producers in the district's identified product sector."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Market, branding and export support",
+        "details": "Common facility centres and training."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the district industries centre.",
+        "url": "https://dpiit.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://dpiit.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "One District One Product — official portal",
+        "url": "https://dpiit.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "one-nation-one-ration-card",
+    "name": "One Nation One Ration Card (ONORC)",
+    "aliases": [
+      "ONORC",
+      "One Nation One Ration Card"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "department": "Department of Food and Public Distribution",
+    "launchYear": 2019,
+    "categories": [
+      "social-security",
+      "financial-inclusion",
+      "rural-development",
+      "urban-development"
+    ],
+    "objectives": "Enable ration card portability so beneficiaries, especially migrants, can draw their entitlement from any Fair Price Shop in the country.",
+    "targetBeneficiaries": [
+      "NFSA beneficiaries",
+      "Migrant workers and families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Beneficiaries covered under the National Food Security Act with an Aadhaar-seeded ration card in a participating state/UT."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Portable foodgrain entitlement",
+        "details": "Draw subsidised/free foodgrain from any ePoS-enabled Fair Price Shop using biometric authentication."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Not applicable",
+        "steps": "No separate application; beneficiaries use their existing ration card at any ePoS-enabled Fair Price Shop.",
+        "url": "https://dfpd.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://dfpd.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Department of Food and Public Distribution",
+        "url": "https://dfpd.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pahal-dbtl",
+    "name": "PAHAL (Direct Benefit Transfer for LPG)",
+    "aliases": [
+      "PAHAL",
+      "DBTL"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Petroleum and Natural Gas",
+    "launchDate": "2015-01-01",
+    "launchYear": 2015,
+    "categories": [
+      "financial-inclusion",
+      "social-security"
+    ],
+    "objectives": "Transfer LPG subsidy directly to beneficiary bank accounts.",
+    "targetBeneficiaries": [
+      "LPG consumers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "LPG consumers with Aadhaar-linked bank accounts."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Direct subsidy transfer",
+        "details": "Subsidy credited to the linked bank account."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / distributor",
+        "steps": "Link Aadhaar and bank account via the distributor.",
+        "url": "https://mylpg.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mylpg.in"
+    ],
+    "sources": [
+      {
+        "title": "PAHAL — official portal",
+        "url": "https://mylpg.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pkvy",
+    "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+    "aliases": [
+      "PKVY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "launchYear": 2015,
+    "categories": [
+      "agriculture"
+    ],
+    "objectives": "Promote organic farming through clusters.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Farmer groups."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹50,000 per hectare over three years",
+        "details": "₹31,000 as direct benefit to farmers."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through cluster formation.",
+        "url": "https://pgsindia-ncof.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pgsindia-ncof.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Paramparagat Krishi Vikas Yojana — official portal",
+        "url": "https://pgsindia-ncof.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-aasha",
+    "name": "Pradhan Mantri Annadata Aay SanraksHan Abhiyan (PM-AASHA)",
+    "aliases": [
+      "PM-AASHA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "launchDate": "2018-09-12",
+    "launchYear": 2018,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Ensure remunerative prices for farmers' produce.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Farmers selling notified oilseeds, pulses and copra."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Minimum support price assurance",
+        "details": "Price Support, Price Deficiency Payment and Pilot of Private Procurement schemes."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register with the state procurement agency.",
+        "url": "https://agriwelfare.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://agriwelfare.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Annadata Aay SanraksHan Abhiyan — official portal",
+        "url": "https://agriwelfare.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-abhim",
+    "name": "PM Ayushman Bharat Health Infrastructure Mission (PM-ABHIM)",
+    "aliases": [
+      "PM-ABHIM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "launchDate": "2021-10-25",
+    "launchYear": 2021,
+    "categories": [
+      "healthcare",
+      "infrastructure"
+    ],
+    "objectives": "Build health systems and infrastructure for pandemic preparedness.",
+    "targetBeneficiaries": [
+      "General population"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Public health facilities nationwide."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Health infrastructure",
+        "details": "Health and wellness centres, critical care blocks, labs and surveillance."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "No individual application.",
+        "url": "https://nhm.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nhm.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Ayushman Bharat Health Infrastructure Mission — official portal",
+        "url": "https://nhm.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-ajay",
+    "name": "Pradhan Mantri Anusuchit Jaati Abhyuday Yojana (PM-AJAY)",
+    "aliases": [
+      "PM-AJAY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "launchYear": 2021,
+    "categories": [
+      "sc-st-obc",
+      "rural-development",
+      "employment"
+    ],
+    "objectives": "Reduce poverty and improve infrastructure in SC-majority villages.",
+    "targetBeneficiaries": [
+      "SC communities"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "SC-majority villages and households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Integrated development",
+        "details": "Income generation, adarsh gram and hostel infrastructure."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the state social welfare department.",
+        "url": "https://socialjustice.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://socialjustice.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Anusuchit Jaati Abhyuday Yojana — official portal",
+        "url": "https://socialjustice.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-daksh",
+    "name": "PM-DAKSH",
+    "aliases": [
+      "PM DAKSH"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "launchYear": 2021,
+    "categories": [
+      "employment",
+      "sc-st-obc"
+    ],
+    "objectives": "Skill training for SC, OBC, DNT and sanitation workers.",
+    "targetBeneficiaries": [
+      "SC, OBC, DNT communities"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Target-group youth within income limits."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Skilling and up-skilling",
+        "details": "Short- and long-term training."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the PM-DAKSH portal.",
+        "url": "https://pmdaksh.dosje.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmdaksh.dosje.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM-DAKSH — official portal",
+        "url": "https://pmdaksh.dosje.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-dhan-dhaanya",
+    "name": "Pradhan Mantri Dhan-Dhaanya Krishi Yojana",
+    "aliases": [
+      "PM-DDKY",
+      "PM Dhan Dhaanya"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "launchYear": 2025,
+    "categories": [
+      "agriculture",
+      "rural-development"
+    ],
+    "objectives": "Raise agricultural productivity, storage, irrigation and credit access in 100 low-performing agricultural districts.",
+    "targetBeneficiaries": [
+      "Farmers in 100 selected districts"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Farmers in the 100 districts identified on productivity, cropping intensity and credit indicators."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Convergence of existing schemes",
+        "details": "Targeted investments in irrigation, post-harvest storage, credit and crop diversification."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through district agriculture offices; no separate individual application.",
+        "url": "https://agriwelfare.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://agriwelfare.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Dhan-Dhaanya Krishi Yojana — official portal",
+        "url": "https://agriwelfare.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-e-drive",
+    "name": "PM Electric Drive Revolution in Innovative Vehicle Enhancement (PM E-DRIVE)",
+    "aliases": [
+      "PM E-DRIVE"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Heavy Industries",
+    "launchDate": "2024-10-01",
+    "launchYear": 2024,
+    "categories": [
+      "infrastructure",
+      "urban-development"
+    ],
+    "objectives": "Accelerate EV adoption through demand incentives and charging infrastructure.",
+    "targetBeneficiaries": [
+      "Vehicle buyers",
+      "Transport agencies"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Buyers of eligible electric vehicles and fleets."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Purchase incentives",
+        "details": "Support for e-two-wheelers, e-three-wheelers, e-buses and charging stations."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Availed at dealerships.",
+        "url": "https://heavyindustries.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://heavyindustries.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Electric Drive Revolution in Innovative Vehicle Enhancement — official portal",
+        "url": "https://heavyindustries.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-e-vidya",
+    "name": "PM eVIDYA",
+    "aliases": [
+      "PM e-Vidya"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "launchDate": "2020-05-17",
+    "launchYear": 2020,
+    "categories": [
+      "education"
+    ],
+    "objectives": "Unify digital, online and on-air education for school and higher education.",
+    "targetBeneficiaries": [
+      "Students",
+      "Teachers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All learners."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Digital learning platforms",
+        "details": "DIKSHA, SWAYAM Prabha TV channels, and radio."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / TV",
+        "steps": "Access through the DIKSHA portal and app.",
+        "url": "https://pmevidya.education.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmevidya.education.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM eVIDYA — official portal",
+        "url": "https://pmevidya.education.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-ebus-sewa",
+    "name": "PM-eBus Sewa",
+    "aliases": [
+      "PM eBus Sewa"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "launchDate": "2023-08-16",
+    "launchYear": 2023,
+    "categories": [
+      "infrastructure",
+      "urban-development"
+    ],
+    "objectives": "Add 10,000 electric buses in Tier-2 and Tier-3 cities.",
+    "targetBeneficiaries": [
+      "Urban commuters"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Cities covered by the scheme."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Electric bus services",
+        "details": "Operational support for city bus operators."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through city transport agencies.",
+        "url": "https://mohua.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mohua.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM-eBus Sewa — official portal",
+        "url": "https://mohua.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-garib-kalyan-anna-yojana",
+    "name": "Pradhan Mantri Garib Kalyan Anna Yojana (PMGKAY)",
+    "aliases": [
+      "PMGKAY",
+      "Garib Kalyan Anna Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "department": "Department of Food and Public Distribution",
+    "launchDate": "2020-03-25",
+    "launchYear": 2020,
+    "categories": [
+      "social-security",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide free foodgrain to beneficiaries to ensure food security during and after the COVID-19 pandemic.",
+    "targetBeneficiaries": [
+      "NFSA beneficiaries",
+      "Poor households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Households covered under the National Food Security Act, including Antyodaya Anna Yojana and priority households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free foodgrain per person per month",
+        "details": "Additional free grain over and above the NFSA entitlement; extended under the Pradhan Mantri Garib Kalyan Anna Yojana phase."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Ration shop",
+        "steps": "Avail benefits through the Fair Price Shop using the ration card; no separate application.",
+        "url": "https://dfpd.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://dfpd.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Department of Food and Public Distribution",
+        "url": "https://dfpd.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Extended for a further five years from 2024 under the free-foodgrain phase.",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pm-internship-scheme",
+    "name": "PM Internship Scheme",
+    "aliases": [
+      "PMIS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Corporate Affairs",
+    "launchDate": "2024-10-03",
+    "launchYear": 2024,
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "objectives": "Provide 12-month paid internship experience in top companies to youth.",
+    "targetBeneficiaries": [
+      "Youth aged 21-24"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Indian citizens aged 21-24 not in full-time employment or education, with family income up to ₹8 lakh and no government job in the family."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹5,000 monthly stipend and ₹6,000 one-time grant",
+        "details": "₹4,500 from the Centre and ₹500 from the company; insurance cover included."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the PM Internship portal and apply to listed opportunities.",
+        "url": "https://pminternship.mca.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pminternship.mca.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Internship Scheme — official portal",
+        "url": "https://pminternship.mca.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Launched as a pilot in October 2024; check the portal for the current full-scale rollout status.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-janman",
+    "name": "PM Janjati Adivasi Nyaya Maha Abhiyan (PM-JANMAN)",
+    "aliases": [
+      "PM-JANMAN"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Tribal Affairs",
+    "launchDate": "2023-11-15",
+    "launchYear": 2023,
+    "categories": [
+      "sc-st-obc",
+      "housing",
+      "infrastructure",
+      "healthcare"
+    ],
+    "objectives": "Improve socio-economic conditions of Particularly Vulnerable Tribal Groups (PVTGs).",
+    "targetBeneficiaries": [
+      "PVTG households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "PVTG families and habitations identified by states."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Saturation of basic services",
+        "details": "Housing, roads, water, power, health, nutrition and education facilities across 11 interventions."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the district tribal welfare office.",
+        "url": "https://tribal.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://tribal.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Janjati Adivasi Nyaya Maha Abhiyan — official portal",
+        "url": "https://tribal.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-kisan",
+    "name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+    "aliases": [
+      "PM-KISAN",
+      "PMKisan"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "launchDate": "2019-02-24",
+    "launchYear": 2019,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide direct income support to landholding farmer families to supplement their financial needs for agricultural inputs and household expenses.",
+    "targetBeneficiaries": [
+      "Landholding farmer families across India"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Landholding farmer families with cultivable land. Excludes institutional landholders, income-tax payers, serving/retired government employees, and professionals with monthly pension above the notified limit."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹6,000 per year",
+        "details": "Paid in three equal installments of ₹2,000 directly to the bank account via DBT."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the PM-KISAN portal with Aadhaar and land records, or apply through a Common Service Centre.",
+        "url": "https://pmkisan.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmkisan.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM-KISAN official portal",
+        "url": "https://pmkisan.gov.in",
+        "accessed": "2026-10-11"
+      },
+      {
+        "title": "myScheme — national scheme platform",
+        "url": "https://www.myscheme.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pm-kmy",
+    "name": "Pradhan Mantri Kisan Maandhan Yojana (PM-KMY)",
+    "aliases": [
+      "PM-KMY",
+      "Kisan Maandhan"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "launchDate": "2019-09-12",
+    "launchYear": 2019,
+    "categories": [
+      "agriculture",
+      "senior-citizens",
+      "social-security"
+    ],
+    "objectives": "Provide old-age social security to small and marginal farmers through a contributory pension scheme.",
+    "targetBeneficiaries": [
+      "Small and marginal farmers aged 18–40"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Small and marginal farmers with cultivable land up to 2 hectares, aged 18–40, subject to exclusion criteria."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Assured pension of ₹3,000 per month",
+        "details": "Payable from age 60; the government matches the farmer's monthly contribution."
+      }
+    ],
+    "application": [
+      {
+        "channel": "CSC / online",
+        "steps": "Enrol through a Common Service Centre or the Maandhan portal with Aadhaar and bank details.",
+        "url": "https://maandhan.in"
+      }
+    ],
+    "officialUrls": [
+      "https://maandhan.in"
+    ],
+    "sources": [
+      {
+        "title": "Maandhan — PM-KMY / PM-SYM",
+        "url": "https://maandhan.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pm-kusum",
+    "name": "PM-KUSUM",
+    "aliases": [
+      "Pradhan Mantri Kisan Urja Suraksha evam Utthaan Mahabhiyan"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of New and Renewable Energy",
+    "launchDate": "2019-03-08",
+    "launchYear": 2019,
+    "categories": [
+      "agriculture",
+      "infrastructure",
+      "rural-development"
+    ],
+    "objectives": "Provide solar pumps and decentralised solar power to farmers and cut diesel dependence.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Farmers with agricultural land; component-wise eligibility for solar pumps, grid-connected pumps and solar plants."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Subsidised solar pumps",
+        "details": "Typically 30% central and 30% state subsidy, with the farmer paying the balance."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply through the state nodal agency portal.",
+        "url": "https://pmkusum.mnre.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmkusum.mnre.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM-KUSUM — official portal",
+        "url": "https://pmkusum.mnre.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Original scheme period ended March 2026; check for extension or successor.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-mudra-yojana",
+    "name": "Pradhan Mantri MUDRA Yojana (PMMY)",
+    "aliases": [
+      "PMMY",
+      "MUDRA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "MUDRA Ltd.",
+    "launchDate": "2015-04-08",
+    "launchYear": 2015,
+    "categories": [
+      "msme",
+      "financial-inclusion",
+      "employment"
+    ],
+    "objectives": "Provide institutional credit to non-corporate, non-farm micro and small enterprises to promote self-employment and entrepreneurship.",
+    "targetBeneficiaries": [
+      "Micro and small business owners",
+      "Entrepreneurs",
+      "Self-employed persons"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Any Indian citizen with a viable business plan for a non-farm income-generating micro enterprise."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Collateral-free loans up to ₹20 lakh",
+        "details": "Categorised as Shishu (up to ₹50,000), Kishore (₹50,000–₹5 lakh) and Tarun (₹5–₹10 lakh), with Tarun Plus up to ₹20 lakh."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Bank / NBFC / MFI",
+        "steps": "Apply directly to a bank, NBFC or microfinance institution with the business plan and KYC.",
+        "url": "https://www.mudra.org.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.mudra.org.in"
+    ],
+    "sources": [
+      {
+        "title": "MUDRA official portal",
+        "url": "https://www.mudra.org.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pm-national-dialysis",
+    "name": "Pradhan Mantri National Dialysis Programme",
+    "aliases": [
+      "PMNDP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "launchYear": 2016,
+    "categories": [
+      "healthcare"
+    ],
+    "objectives": "Provide free dialysis services at district hospitals.",
+    "targetBeneficiaries": [
+      "BPL patients"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "BPL patients needing dialysis."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free dialysis",
+        "details": "Delivered through district hospitals under NHM."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Visit the district hospital.",
+        "url": "https://nhm.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nhm.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri National Dialysis Programme — official portal",
+        "url": "https://nhm.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-poshan",
+    "name": "PM POSHAN (Pradhan Mantri Poshan Shakti Nirman)",
+    "aliases": [
+      "PM POSHAN",
+      "Mid-Day Meal Scheme",
+      "MDM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "department": "Department of School Education and Literacy",
+    "launchDate": "1995-08-15",
+    "launchYear": 1995,
+    "categories": [
+      "education",
+      "healthcare",
+      "women-child"
+    ],
+    "objectives": "Improve the nutritional status of school-going children and encourage school attendance and retention.",
+    "targetBeneficiaries": [
+      "Children in government and government-aided schools"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Students of Classes I–VIII in government and government-aided schools, and children in identified Balvatika/early classes."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free hot cooked meal on school days",
+        "details": "Nutritionally balanced meals as per prescribed calorie and protein norms."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Not applicable",
+        "steps": "Delivered automatically to enrolled students in eligible schools; no separate application.",
+        "url": "https://education.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://education.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Department of School Education and Literacy",
+        "url": "https://education.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "statusNote": "The erstwhile Mid-Day Meal Scheme was renamed PM POSHAN in 2021.",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pm-shri",
+    "name": "PM Schools for Rising India (PM SHRI)",
+    "aliases": [
+      "PM SHRI"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "launchDate": "2022-09-05",
+    "launchYear": 2022,
+    "categories": [
+      "education",
+      "infrastructure"
+    ],
+    "objectives": "Upgrade 14,500+ schools into model NEP-aligned institutions.",
+    "targetBeneficiaries": [
+      "Students",
+      "Schools"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Selected government schools."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Modern school infrastructure",
+        "details": "Better teaching, smart classrooms and green practices."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Schools are selected through a challenge method.",
+        "url": "https://pmshree.education.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmshree.education.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Schools for Rising India — official portal",
+        "url": "https://pmshree.education.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-surya-ghar",
+    "name": "PM Surya Ghar: Muft Bijli Yojana",
+    "aliases": [
+      "PM Surya Ghar",
+      "Muft Bijli Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of New and Renewable Energy",
+    "launchDate": "2024-02-13",
+    "launchYear": 2024,
+    "categories": [
+      "infrastructure",
+      "urban-development",
+      "rural-development"
+    ],
+    "objectives": "Install rooftop solar on 1 crore households and provide up to 300 units of free electricity a month.",
+    "targetBeneficiaries": [
+      "Residential households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Indian households with a roof suitable for solar panels, a valid electricity connection and no previous solar subsidy."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Central financial assistance for rooftop solar",
+        "details": "₹30,000 per kW for up to 2 kW and ₹18,000 for the third kW, capped at ₹78,000, plus concessional loans."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the national portal, select a vendor and apply for subsidy after DISCOM inspection.",
+        "url": "https://pmsuryaghar.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmsuryaghar.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Surya Ghar: Muft Bijli Yojana — official portal",
+        "url": "https://pmsuryaghar.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-svanidhi",
+    "name": "PM Street Vendor's AtmaNirbhar Nidhi (PM-SVANidhi)",
+    "aliases": [
+      "PM-SVANidhi",
+      "SVANidhi"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "launchDate": "2020-06-01",
+    "launchYear": 2020,
+    "categories": [
+      "msme",
+      "urban-development",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide affordable working capital loans to street vendors to resume their livelihoods after the COVID-19 lockdown.",
+    "targetBeneficiaries": [
+      "Street vendors"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India (urban)",
+        "criteria": "Street vendors in possession of a Certificate of Vending / identity card, or those identified by Urban Local Bodies."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Collateral-free working capital loans",
+        "details": "First loan up to ₹10,000, with higher tranches on repayment and interest subsidy/credit on digital transactions."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / ULB",
+        "steps": "Apply on the PM-SVANidhi portal; applications are routed through the Urban Local Body for approval.",
+        "url": "https://pmsvanidhi.mohua.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmsvanidhi.mohua.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM-SVANidhi official portal",
+        "url": "https://pmsvanidhi.mohua.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pm-sym",
+    "name": "Pradhan Mantri Shram Yogi Maan-dhan (PM-SYM)",
+    "aliases": [
+      "PM-SYM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Labour and Employment",
+    "launchDate": "2019-02-15",
+    "launchYear": 2019,
+    "categories": [
+      "social-security",
+      "employment",
+      "senior-citizens"
+    ],
+    "objectives": "Provide old-age protection to unorganised workers.",
+    "targetBeneficiaries": [
+      "Unorganised workers aged 18-40"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Monthly income up to ₹15,000, not covered under NPS, EPFO or ESIC."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹3,000 monthly pension",
+        "details": "After age 60, with matching government contribution."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / CSC",
+        "steps": "Enrol through a Common Service Centre.",
+        "url": "https://maandhan.in"
+      }
+    ],
+    "officialUrls": [
+      "https://maandhan.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Shram Yogi Maan-dhan — official portal",
+        "url": "https://maandhan.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-usha",
+    "name": "Pradhan Mantri Uchchatar Shiksha Abhiyan (PM-USHA)",
+    "aliases": [
+      "PM-USHA",
+      "RUSA 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "launchYear": 2023,
+    "categories": [
+      "education",
+      "infrastructure"
+    ],
+    "objectives": "Strengthen state higher education institutions.",
+    "targetBeneficiaries": [
+      "State universities and colleges"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "State higher education institutions."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Funding for institutions",
+        "details": "Quality, equity and governance improvements."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through state governments.",
+        "url": "https://education.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://education.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Uchchatar Shiksha Abhiyan — official portal",
+        "url": "https://education.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-vbry",
+    "name": "Pradhan Mantri Viksit Bharat Rozgar Yojana (PM-VBRY)",
+    "aliases": [
+      "PM-VBRY",
+      "Employment Linked Incentive",
+      "ELI Scheme"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Labour and Employment",
+    "launchDate": "2025-08-01",
+    "launchYear": 2025,
+    "categories": [
+      "employment"
+    ],
+    "objectives": "Create formal jobs through incentives to first-time employees and employers.",
+    "targetBeneficiaries": [
+      "First-time employees",
+      "Employers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Employees newly registered with EPFO with wages up to ₹1 lakh per month; jobs created between 1 Aug 2025 and 31 Jul 2027."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Up to ₹15,000 one-month wage to first-time employees",
+        "details": "Paid in two instalments; employers get up to ₹3,000 per additional employee per month for two years (four for manufacturing)."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Through UAN activation and EPFO registration; employers claim via the EPFO portal.",
+        "url": "https://labour.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://labour.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Viksit Bharat Rozgar Yojana — official portal",
+        "url": "https://labour.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-vidyalaxmi",
+    "name": "PM-Vidyalaxmi",
+    "aliases": [
+      "PM Vidyalakshmi"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "launchDate": "2024-11-06",
+    "launchYear": 2024,
+    "categories": [
+      "education",
+      "financial-inclusion",
+      "scholarships"
+    ],
+    "objectives": "Provide collateral-free education loans for meritorious students.",
+    "targetBeneficiaries": [
+      "Students in top higher education institutions"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Admitted to eligible quality higher education institutions."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Education loan guarantee",
+        "details": "75% credit guarantee on loans up to ₹7.5 lakh; interest subvention for family income up to ₹8 lakh."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the PM-Vidyalaxmi portal.",
+        "url": "https://pmvidyalaxmi.co.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmvidyalaxmi.co.in"
+    ],
+    "sources": [
+      {
+        "title": "PM-Vidyalaxmi — official portal",
+        "url": "https://pmvidyalaxmi.co.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-vikas",
+    "name": "PM Virasat Ka Samvardhan (PM VIKAS)",
+    "aliases": [
+      "PM VIKAS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Minority Affairs",
+    "launchYear": 2023,
+    "categories": [
+      "msme",
+      "employment",
+      "education"
+    ],
+    "objectives": "Integrated skilling and entrepreneurship support for minority communities.",
+    "targetBeneficiaries": [
+      "Minority communities"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Members of notified minority communities."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Skill and entrepreneurship support",
+        "details": "Training, credit and market linkage."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Through the Ministry portal.",
+        "url": "https://minorityaffairs.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://minorityaffairs.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Virasat Ka Samvardhan — official portal",
+        "url": "https://minorityaffairs.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-vishwakarma",
+    "name": "PM Vishwakarma",
+    "aliases": [
+      "PM Vishwakarma Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "launchDate": "2023-09-17",
+    "launchYear": 2023,
+    "categories": [
+      "msme",
+      "employment",
+      "sc-st-obc"
+    ],
+    "objectives": "Provide end-to-end support to artisans and craftspeople who work with their hands and tools, covering skill, credit and market access.",
+    "targetBeneficiaries": [
+      "Artisans and craftspeople in traditional trades"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Artisans/craftspeople in one of the notified family-based trades, aged 18+, excluding those who used similar loan schemes in the last five years."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Skill training, toolkit incentive and collateral-free credit",
+        "details": "Includes ₹15,000 toolkit incentive and credit support up to ₹3 lakh in two tranches at concessional interest."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / CSC",
+        "steps": "Register at a Common Service Centre or the PM Vishwakarma portal, then complete verification and training.",
+        "url": "https://pmvishwakarma.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmvishwakarma.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Vishwakarma official portal",
+        "url": "https://pmvishwakarma.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pm-wani",
+    "name": "PM Wi-Fi Access Network Interface (PM-WANI)",
+    "aliases": [
+      "PM-WANI"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Communications",
+    "department": "Department of Telecommunications",
+    "launchDate": "2020-12-09",
+    "launchYear": 2020,
+    "categories": [
+      "infrastructure"
+    ],
+    "objectives": "Proliferate public Wi-Fi hotspots across the country.",
+    "targetBeneficiaries": [
+      "General population"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Open to all."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Public Wi-Fi access",
+        "details": "Through Public Data Offices."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Connect through registered hotspot providers.",
+        "url": "https://pmwani.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmwani.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Wi-Fi Access Network Interface — official portal",
+        "url": "https://pmwani.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pm-yasasvi",
+    "name": "PM YASASVI",
+    "aliases": [
+      "PM YASASVI Scholarship"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "launchYear": 2021,
+    "categories": [
+      "scholarships",
+      "education",
+      "sc-st-obc"
+    ],
+    "objectives": "Scholarships for OBC, EBC and DNT students.",
+    "targetBeneficiaries": [
+      "OBC, EBC and DNT students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Students from eligible communities within income limits."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Pre-matric and post-matric scholarships",
+        "details": "Merit-based support through an entrance test."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply through the National Scholarship Portal.",
+        "url": "https://scholarships.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://scholarships.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM YASASVI — official portal",
+        "url": "https://scholarships.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pmay-gramin",
+    "name": "Pradhan Mantri Awas Yojana – Gramin (PMAY-G)",
+    "aliases": [
+      "PMAY-G",
+      "PMAY Gramin"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "department": "Department of Rural Development",
+    "launchDate": "2016-04-01",
+    "launchYear": 2016,
+    "categories": [
+      "housing",
+      "rural-development"
+    ],
+    "objectives": "Provide a pucca house with basic amenities to all eligible rural households that are homeless or living in kutcha/dilapidated houses.",
+    "targetBeneficiaries": [
+      "Rural homeless families",
+      "Rural households in kutcha houses"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India (rural)",
+        "criteria": "Households identified through the housing deprivation parameters of SECC 2011 and verified by the Gram Sabha."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Financial assistance for house construction",
+        "details": "Assistance released in installments, plus support for toilet, LPG, electricity and drinking water convergence."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Beneficiaries are identified from the SECC/Awaas+ list and verified by the Gram Sabha; construction is tracked on the PMAY-G MIS.",
+        "url": "https://pmayg.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmayg.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "PMAY-Gramin official portal",
+        "url": "https://pmayg.nic.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmay-urban",
+    "name": "Pradhan Mantri Awas Yojana – Urban (PMAY-U)",
+    "aliases": [
+      "PMAY-U",
+      "PMAY Urban",
+      "Housing for All Urban"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "launchDate": "2015-06-25",
+    "launchYear": 2015,
+    "categories": [
+      "housing",
+      "urban-development"
+    ],
+    "objectives": "Ensure a pucca house with basic amenities to all eligible urban households, especially the economically weaker sections and low-income groups.",
+    "targetBeneficiaries": [
+      "Economically Weaker Sections (EWS)",
+      "Low Income Group (LIG)",
+      "Middle Income Group (MIG)"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India (urban)",
+        "criteria": "Urban households without a pucca house; income slabs apply to the credit-linked interest subsidy component."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Central assistance for affordable housing",
+        "details": "Support across four verticals: in-situ slum redevelopment, affordable housing in partnership, beneficiary-led construction, and interest subsidy on home loans."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / ULB",
+        "steps": "Apply through the state/UT housing board or the PMAY-U portal as per the applicable vertical.",
+        "url": "https://pmay-urban.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmay-urban.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PMAY-Urban official portal",
+        "url": "https://pmay-urban.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "replaced",
+    "lastUpdated": "2026-10-24",
+    "supersededBy": [
+      "pmay-urban-2"
+    ],
+    "statusNote": "Succeeded by PMAY-U 2.0 (2024-2029)."
+  },
+  {
+    "id": "pmay-urban-2",
+    "name": "Pradhan Mantri Awas Yojana – Urban 2.0 (PMAY-U 2.0)",
+    "aliases": [
+      "PMAY-U 2.0",
+      "PMAY Urban 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "launchYear": 2024,
+    "categories": [
+      "housing",
+      "urban-development"
+    ],
+    "objectives": "Assist 1 crore urban families with affordable housing over five years.",
+    "targetBeneficiaries": [
+      "EWS, LIG and MIG urban families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Urban households without a pucca house anywhere in India, with annual income up to ₹9 lakh (EWS up to ₹3 lakh, LIG ₹3-6 lakh, MIG ₹6-9 lakh)."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Central assistance of ₹2.5 lakh per house",
+        "details": "Four verticals: Beneficiary-Led Construction, Affordable Housing in Partnership, Affordable Rental Housing and Interest Subsidy Scheme."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the PMAY-U 2.0 portal or through the urban local body.",
+        "url": "https://pmay-urban.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmay-urban.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Awas Yojana – Urban 2.0 — official portal",
+        "url": "https://pmay-urban.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "supersedes": [
+      "pmay-urban"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pmbjp",
+    "name": "Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBJP)",
+    "aliases": [
+      "Jan Aushadhi",
+      "PMBJP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Chemicals and Fertilizers",
+    "department": "Department of Pharmaceuticals",
+    "launchYear": 2008,
+    "categories": [
+      "healthcare"
+    ],
+    "objectives": "Make quality generic medicines available at affordable prices.",
+    "targetBeneficiaries": [
+      "General population"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Open to all."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Low-cost generic medicines",
+        "details": "Prices typically 50-90% lower than branded equivalents."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Buy at Jan Aushadhi Kendras.",
+        "url": "https://janaushadhi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://janaushadhi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Bhartiya Janaushadhi Pariyojana — official portal",
+        "url": "https://janaushadhi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pmdp-jk",
+    "name": "Prime Minister's Development Package for Jammu and Kashmir",
+    "aliases": [
+      "PMDP J&K"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Home Affairs",
+    "launchDate": "2015-11-07",
+    "launchYear": 2015,
+    "categories": [
+      "infrastructure",
+      "rural-development"
+    ],
+    "objectives": "Infrastructure, health and education development.",
+    "targetBeneficiaries": [
+      "Residents of J&K"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Jammu and Kashmir."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Capital investment package",
+        "details": "Infrastructure and social sector projects."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through UT administration.",
+        "url": "https://mha.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mha.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Prime Minister's Development Package for Jammu and Kashmir — official portal",
+        "url": "https://mha.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pmegp",
+    "name": "Prime Minister's Employment Generation Programme (PMEGP)",
+    "aliases": [
+      "PMEGP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "department": "Khadi and Village Industries Commission",
+    "launchYear": 2008,
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "objectives": "Generate employment by setting up micro enterprises through credit-linked subsidy, in both rural and urban areas.",
+    "targetBeneficiaries": [
+      "Unemployed youth",
+      "Artisans",
+      "Entrepreneurs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Individuals aged 18+ setting up a new micro enterprise; higher subsidy for SC/ST, OBC, women, minorities, ex-servicemen and differently-abled applicants."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Credit-linked subsidy up to 35% of project cost",
+        "details": "Margin money subsidy varies by beneficiary category and area (rural/urban); loans up to the prescribed project ceiling."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the PMEGP e-portal with the project proposal for screening and bank sanction.",
+        "url": "https://www.kviconline.gov.in/pmegpeportal"
+      }
+    ],
+    "officialUrls": [
+      "https://www.kviconline.gov.in/pmegpeportal"
+    ],
+    "sources": [
+      {
+        "title": "PMEGP e-portal (KVIC)",
+        "url": "https://www.kviconline.gov.in/pmegpeportal",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmfby",
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "aliases": [
+      "PMFBY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "launchDate": "2016-02-18",
+    "launchYear": 2016,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide comprehensive risk insurance against crop failure due to natural calamities to stabilise farmers' income.",
+    "targetBeneficiaries": [
+      "Farmers growing notified crops"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India (notified crops/areas)",
+        "criteria": "Farmers, including tenant and sharecroppers, cultivating notified crops in notified areas; voluntary for those with existing crop loans in some states."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Crop insurance with low farmer premium",
+        "details": "Farmer premium capped at 2% (kharif), 1.5% (rabi) and 5% (commercial/horticultural) of sum insured; balance subsidised."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / bank / CSC",
+        "steps": "Enrol through the PMFBY portal, a bank, or a Common Service Centre before the notified cut-off date.",
+        "url": "https://pmfby.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmfby.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PMFBY official portal",
+        "url": "https://pmfby.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmfme",
+    "name": "PM Formalisation of Micro Food Processing Enterprises (PMFME)",
+    "aliases": [
+      "PMFME"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Food Processing Industries",
+    "launchYear": 2020,
+    "categories": [
+      "msme",
+      "agriculture",
+      "employment"
+    ],
+    "objectives": "Upgrade and formalise micro food processing units.",
+    "targetBeneficiaries": [
+      "Micro food processing units",
+      "FPOs",
+      "SHGs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Existing individual micro food processing enterprises and groups."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "35% credit-linked subsidy",
+        "details": "Up to ₹10 lakh per unit, plus seed capital to SHG members."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the PMFME portal.",
+        "url": "https://pmfme.mofpi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmfme.mofpi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PM Formalisation of Micro Food Processing Enterprises — official portal",
+        "url": "https://pmfme.mofpi.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pmgsy",
+    "name": "Pradhan Mantri Gram Sadak Yojana (PMGSY)",
+    "aliases": [
+      "PMGSY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "launchDate": "2000-12-25",
+    "launchYear": 2000,
+    "categories": [
+      "rural-development",
+      "infrastructure"
+    ],
+    "objectives": "Provide all-weather road connectivity to unconnected habitations.",
+    "targetBeneficiaries": [
+      "Rural habitations"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Eligible unconnected habitations per population norms."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Rural roads",
+        "details": "PMGSY-IV approved in 2024 for 25,000 habitations."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Planned through state rural road agencies.",
+        "url": "https://pmgsy.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmgsy.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Gram Sadak Yojana — official portal",
+        "url": "https://pmgsy.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pmjdy",
+    "name": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
+    "aliases": [
+      "PMJDY",
+      "Jan Dhan Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "launchDate": "2014-08-28",
+    "launchYear": 2014,
+    "categories": [
+      "financial-inclusion"
+    ],
+    "objectives": "Ensure access to financial services — basic savings accounts, credit, insurance and pension — for every household.",
+    "targetBeneficiaries": [
+      "Unbanked and under-banked households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Any Indian citizen aged 10 years or above without a bank account can open a zero-balance account."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Zero-balance bank account with RuPay card",
+        "details": "Accident insurance cover on the card, overdraft facility after satisfactory operation, and access to DBT transfers."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Bank branch / Bank Mitra",
+        "steps": "Visit any bank branch or a Bank Mitra with Aadhaar and a photograph to open an account.",
+        "url": "https://pmjdy.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmjdy.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PMJDY official portal",
+        "url": "https://pmjdy.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmjjby",
+    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
+    "aliases": [
+      "PMJJBY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "launchDate": "2015-05-09",
+    "launchYear": 2015,
+    "categories": [
+      "social-security",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide affordable life insurance cover to people in the 18–50 age group through banks and post offices.",
+    "targetBeneficiaries": [
+      "Bank/post office account holders aged 18–50"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Individuals aged 18–50 holding a savings bank/post office account who give auto-debit consent."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹2 lakh life cover",
+        "details": "Payable to the nominee on death due to any reason; renewable annually."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Bank / post office",
+        "steps": "Submit the enrolment form and auto-debit consent at your bank or post office.",
+        "url": "https://jansuraksha.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jansuraksha.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Jan Suraksha — PMJJBY",
+        "url": "https://jansuraksha.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmksy",
+    "name": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
+    "aliases": [
+      "PMKSY",
+      "Per Drop More Crop"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "launchDate": "2015-07-01",
+    "launchYear": 2015,
+    "categories": [
+      "agriculture",
+      "rural-development",
+      "infrastructure"
+    ],
+    "objectives": "Expand irrigation coverage and improve water-use efficiency.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Farmers with agricultural land; micro-irrigation support through state agencies."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Subsidy for micro-irrigation",
+        "details": "Up to 55% for small and marginal farmers and 45% for others under Per Drop More Crop."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / offline",
+        "steps": "Apply through the state horticulture or agriculture department.",
+        "url": "https://pmksy.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmksy.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Krishi Sinchayee Yojana — official portal",
+        "url": "https://pmksy.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pmkvy",
+    "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
+    "aliases": [
+      "PMKVY",
+      "Skill India"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "launchYear": 2015,
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "objectives": "Enable a large number of Indian youth to take up industry-relevant skill training and become employable.",
+    "targetBeneficiaries": [
+      "Youth and job seekers",
+      "School/college dropouts"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Unemployed youth and others seeking skill certification, with course-specific age and education requirements."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free short-term skill training and certification",
+        "details": "Includes monetary reward on certification and placement assistance under the current phase."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the PMKVY portal or at an empanelled training centre.",
+        "url": "https://www.pmkvyofficial.org"
+      }
+    ],
+    "officialUrls": [
+      "https://www.pmkvyofficial.org"
+    ],
+    "sources": [
+      {
+        "title": "PMKVY official portal",
+        "url": "https://www.pmkvyofficial.org",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmmsy",
+    "name": "Pradhan Mantri Matsya Sampada Yojana (PMMSY)",
+    "aliases": [
+      "PMMSY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "department": "Department of Fisheries",
+    "launchDate": "2020-09-10",
+    "launchYear": 2020,
+    "categories": [
+      "agriculture",
+      "employment"
+    ],
+    "objectives": "Sustainable development of the fisheries sector.",
+    "targetBeneficiaries": [
+      "Fishers",
+      "Fish farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Fishers and fish farmers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Subsidy up to 40-60%",
+        "details": "Higher for women and SC/ST."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Via state fisheries department.",
+        "url": "https://pmmsy.dof.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmmsy.dof.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Matsya Sampada Yojana — official portal",
+        "url": "https://pmmsy.dof.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pmmvy",
+    "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    "aliases": [
+      "PMMVY",
+      "Matru Vandana Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "launchDate": "2017-01-01",
+    "launchYear": 2017,
+    "categories": [
+      "women-child",
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide partial compensation for wage loss and maternity benefits to pregnant women and lactating mothers.",
+    "targetBeneficiaries": [
+      "Pregnant women and lactating mothers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Pregnant and lactating mothers, except those in regular employment with the central/state government receiving paid maternity leave."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cash incentive of ₹5,000 (first living child)",
+        "details": "PMMVY 2.0 extends benefits of ₹6,000 for a second child if it is a girl, subject to conditions."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Anganwadi / ASHA / online",
+        "steps": "Register at the local Anganwadi centre or on the PMMVY portal and submit the required documents at each instalment.",
+        "url": "https://pmmvy.wcd.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmmvy.wcd.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PMMVY official portal",
+        "url": "https://pmmvy.wcd.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmsby",
+    "name": "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
+    "aliases": [
+      "PMSBY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "launchDate": "2015-05-09",
+    "launchYear": 2015,
+    "categories": [
+      "social-security",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide accidental death and disability insurance cover at a nominal premium through banks and post offices.",
+    "targetBeneficiaries": [
+      "Bank/post office account holders aged 18–70"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Individuals aged 18–70 holding a savings bank/post office account who give auto-debit consent."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹2 lakh accident cover",
+        "details": "₹2 lakh for accidental death and total disability; ₹1 lakh for partial permanent disability."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Bank / post office",
+        "steps": "Submit the enrolment form and auto-debit consent at your bank or post office.",
+        "url": "https://jansuraksha.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://jansuraksha.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Jan Suraksha — PMSBY",
+        "url": "https://jansuraksha.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmuy",
+    "name": "Pradhan Mantri Ujjwala Yojana (PMUY)",
+    "aliases": [
+      "PMUY",
+      "Ujjwala Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Petroleum and Natural Gas",
+    "launchDate": "2016-05-01",
+    "launchYear": 2016,
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "objectives": "Provide clean cooking fuel (LPG) to women from poor households to protect their health and the environment.",
+    "targetBeneficiaries": [
+      "Adult women from poor households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Adult women belonging to a poor household as per the applicable beneficiary lists (SECC, SC/ST, PMAY, AAY, etc.)."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Deposit-free LPG connection",
+        "details": "First refill and stove provided under the scheme; subsequent refills subsidised for eligible beneficiaries."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / distributor",
+        "steps": "Apply on the PMUY portal or submit KYC to an LPG distributor.",
+        "url": "https://pmuy.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmuy.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "PMUY official portal",
+        "url": "https://pmuy.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "pmvvy",
+    "name": "Pradhan Mantri Vaya Vandana Yojana (PMVVY)",
+    "aliases": [
+      "PMVVY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "launchDate": "2017-05-04",
+    "launchYear": 2017,
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "objectives": "Provide assured pension to senior citizens through LIC.",
+    "targetBeneficiaries": [
+      "Senior citizens aged 60+"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Age 60 and above."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Assured monthly pension",
+        "details": "Fixed return for ten years."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through LIC.",
+        "url": "https://licindia.in"
+      }
+    ],
+    "officialUrls": [
+      "https://licindia.in"
+    ],
+    "sources": [
+      {
+        "title": "Pradhan Mantri Vaya Vandana Yojana — official portal",
+        "url": "https://licindia.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "closed",
+    "statusNote": "Subscription closed on 31 March 2023 without extension.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "poshan-2",
+    "name": "Saksham Anganwadi and Poshan 2.0",
+    "aliases": [
+      "Poshan 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "launchYear": 2021,
+    "categories": [
+      "women-child",
+      "healthcare"
+    ],
+    "objectives": "Improve nutrition and health of children, adolescent girls, pregnant and lactating women.",
+    "targetBeneficiaries": [
+      "Children under 6",
+      "Pregnant and lactating women",
+      "Adolescent girls"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Beneficiaries registered at Anganwadi centres."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Supplementary nutrition and early childhood care",
+        "details": "Hot cooked meals, take-home rations and health checks."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Register at the nearest Anganwadi centre.",
+        "url": "https://poshantracker.in"
+      }
+    ],
+    "officialUrls": [
+      "https://poshantracker.in"
+    ],
+    "sources": [
+      {
+        "title": "Saksham Anganwadi and Poshan 2.0 — official portal",
+        "url": "https://poshantracker.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "supersedes": [
+      "icds",
+      "poshan-abhiyaan"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "poshan-abhiyaan",
+    "name": "POSHAN Abhiyaan",
+    "aliases": [
+      "National Nutrition Mission"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "launchDate": "2018-03-08",
+    "launchYear": 2018,
+    "categories": [
+      "women-child",
+      "healthcare"
+    ],
+    "objectives": "Reduce stunting, undernutrition and anaemia through convergent action.",
+    "targetBeneficiaries": [
+      "Children",
+      "Women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Children, adolescent girls, pregnant and lactating women."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Nutrition convergence mission",
+        "details": "Behaviour change, monitoring and technology support."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through Anganwadi centres.",
+        "url": "https://poshantracker.in"
+      }
+    ],
+    "officialUrls": [
+      "https://poshantracker.in"
+    ],
+    "sources": [
+      {
+        "title": "POSHAN Abhiyaan — official portal",
+        "url": "https://poshantracker.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "merged",
+    "statusNote": "Subsumed into Saksham Anganwadi and Poshan 2.0.",
+    "supersededBy": [
+      "poshan-2"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "post-matric-scholarship-sc",
+    "name": "Post Matric Scholarship for Scheduled Castes",
+    "aliases": [
+      "PMS-SC"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "launchYear": 1944,
+    "categories": [
+      "scholarships",
+      "education",
+      "sc-st-obc"
+    ],
+    "objectives": "Support SC students pursuing post-matriculation education.",
+    "targetBeneficiaries": [
+      "SC students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "SC students with family income up to ₹2.5 lakh."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Scholarship",
+        "details": "Tuition fees plus maintenance allowance."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply through the National Scholarship Portal.",
+        "url": "https://scholarships.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://scholarships.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Post Matric Scholarship for Scheduled Castes — official portal",
+        "url": "https://scholarships.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ppf",
+    "name": "Public Provident Fund (PPF)",
+    "aliases": [
+      "PPF"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "launchYear": 1968,
+    "categories": [
+      "financial-inclusion",
+      "social-security"
+    ],
+    "objectives": "Long-term tax-advantaged savings.",
+    "targetBeneficiaries": [
+      "Citizens"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Resident Indians."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "15-year account",
+        "details": "Interest notified quarterly, ₹500 to ₹1.5 lakh a year."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Post office / bank",
+        "steps": "Open an account.",
+        "url": "https://www.indiapost.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.indiapost.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Public Provident Fund — official portal",
+        "url": "https://www.indiapost.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rashtriya-gokul-mission",
+    "name": "Rashtriya Gokul Mission (RGM)",
+    "aliases": [
+      "RGM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "department": "Department of Animal Husbandry and Dairying",
+    "launchDate": "2014-12-01",
+    "launchYear": 2014,
+    "categories": [
+      "agriculture",
+      "rural-development"
+    ],
+    "objectives": "Conserve and develop indigenous bovine breeds.",
+    "targetBeneficiaries": [
+      "Dairy farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Farmers and breeders."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Breed improvement support",
+        "details": "Gokul Grams and artificial insemination."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through animal husbandry departments.",
+        "url": "https://dahd.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://dahd.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Rashtriya Gokul Mission — official portal",
+        "url": "https://dahd.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rashtriya-gram-swaraj-abhiyan",
+    "name": "Rashtriya Gram Swaraj Abhiyan (RGSA)",
+    "aliases": [
+      "RGSA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Panchayati Raj",
+    "launchDate": "2018-04-21",
+    "launchYear": 2018,
+    "categories": [
+      "rural-development"
+    ],
+    "objectives": "Strengthen panchayats.",
+    "targetBeneficiaries": [
+      "Panchayat representatives"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Panchayats."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Capacity building",
+        "details": "Training and infrastructure support."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through state panchayat departments.",
+        "url": "https://panchayat.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://panchayat.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Rashtriya Gram Swaraj Abhiyan — official portal",
+        "url": "https://panchayat.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rashtriya-swasthya-bima-yojana",
+    "name": "Rashtriya Swasthya Bima Yojana (RSBY)",
+    "aliases": [
+      "RSBY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Labour and Employment",
+    "launchDate": "2008-04-01",
+    "launchYear": 2008,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Cashless health insurance for BPL families.",
+    "targetBeneficiaries": [
+      "BPL families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Eligible BPL families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless hospitalisation",
+        "details": "Smart card based cover."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through enrolment.",
+        "url": "https://pmjay.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://pmjay.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Rashtriya Swasthya Bima Yojana — official portal",
+        "url": "https://pmjay.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "merged",
+    "statusNote": "Merged into AB PM-JAY from 2018.",
+    "supersededBy": [
+      "ayushman-bharat-pmjay"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rashtriya-vayoshri-yojana",
+    "name": "Rashtriya Vayoshri Yojana (RVY)",
+    "aliases": [
+      "RVY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "launchDate": "2017-04-01",
+    "launchYear": 2017,
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "objectives": "Provide physical aids and assisted-living devices to BPL senior citizens.",
+    "targetBeneficiaries": [
+      "BPL senior citizens"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "BPL seniors with age-related disabilities."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free aids and devices",
+        "details": "Wheelchairs, hearing aids, walkers."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through camps organised by ALIMCO.",
+        "url": "https://socialjustice.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://socialjustice.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Rashtriya Vayoshri Yojana — official portal",
+        "url": "https://socialjustice.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rdss",
+    "name": "Revamped Distribution Sector Scheme (RDSS)",
+    "aliases": [
+      "RDSS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Power",
+    "launchDate": "2021-07-20",
+    "launchYear": 2021,
+    "categories": [
+      "infrastructure"
+    ],
+    "objectives": "Improve DISCOM financial health and reduce losses via smart meters and upgrades.",
+    "targetBeneficiaries": [
+      "Electricity consumers",
+      "DISCOMs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Participating DISCOMs."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Smart meters and network upgrades",
+        "details": "Results-linked financial assistance."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through DISCOMs.",
+        "url": "https://powermin.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://powermin.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Revamped Distribution Sector Scheme — official portal",
+        "url": "https://powermin.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "supersedes": [
+      "ddugjy"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rkvy",
+    "name": "Rashtriya Krishi Vikas Yojana (RKVY)",
+    "aliases": [
+      "RKVY",
+      "PM-RKVY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "launchYear": 2007,
+    "categories": [
+      "agriculture"
+    ],
+    "objectives": "Support states in agriculture and allied development.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "State-identified."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Project-based support",
+        "details": "Infrastructure and productivity."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through state agriculture departments.",
+        "url": "https://rkvy.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://rkvy.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Rashtriya Krishi Vikas Yojana — official portal",
+        "url": "https://rkvy.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Restructured into umbrella schemes (PM-RKVY and Krishonnati Yojana).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "samagra-shiksha",
+    "name": "Samagra Shiksha",
+    "aliases": [
+      "Samagra Shiksha Abhiyan",
+      "SSA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "department": "Department of School Education and Literacy",
+    "launchYear": 2018,
+    "categories": [
+      "education"
+    ],
+    "objectives": "Provide an integrated scheme for school education covering pre-school to senior secondary, bridging gaps across all levels.",
+    "targetBeneficiaries": [
+      "School children",
+      "Government and aided schools"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Implemented through states/UTs for the school education system; individual entitlements apply to enrolled students."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Integrated support for school education",
+        "details": "Covers access, infrastructure, teachers, and student entitlements such as uniforms and textbooks."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Not applicable",
+        "steps": "Delivered through state education departments and schools; no individual application.",
+        "url": "https://samagrashiksha.education.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://samagrashiksha.education.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Samagra Shiksha official portal",
+        "url": "https://samagrashiksha.education.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "sarva-shiksha-abhiyan",
+    "name": "Sarva Shiksha Abhiyan (SSA)",
+    "aliases": [
+      "SSA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "launchYear": 2001,
+    "categories": [
+      "education"
+    ],
+    "objectives": "Universalise elementary education.",
+    "targetBeneficiaries": [
+      "Children aged 6-14"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Children in school."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free elementary education",
+        "details": "Infrastructure and teachers."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through schools.",
+        "url": "https://samagra.education.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://samagra.education.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Sarva Shiksha Abhiyan — official portal",
+        "url": "https://samagra.education.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "merged",
+    "statusNote": "Merged into Samagra Shiksha in 2018.",
+    "supersededBy": [
+      "samagra-shiksha"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "saubhagya",
+    "name": "Saubhagya (Pradhan Mantri Sahaj Bijli Har Ghar Yojana)",
+    "aliases": [
+      "SAUBHAGYA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Power",
+    "launchDate": "2017-09-25",
+    "launchYear": 2017,
+    "categories": [
+      "infrastructure",
+      "rural-development"
+    ],
+    "objectives": "Provide last-mile electricity connections to all unelectrified households.",
+    "targetBeneficiaries": [
+      "Unelectrified households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Willing unelectrified households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free electricity connections",
+        "details": "Free for poor households."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the DISCOM.",
+        "url": "https://saubhagya.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://saubhagya.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Saubhagya — official portal",
+        "url": "https://saubhagya.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "closed",
+    "statusNote": "Closed in 2022 after claimed universal household electrification.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "scss",
+    "name": "Senior Citizens' Savings Scheme (SCSS)",
+    "aliases": [
+      "SCSS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "launchDate": "2004-08-02",
+    "launchYear": 2004,
+    "categories": [
+      "senior-citizens",
+      "social-security",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide regular income to retirees.",
+    "targetBeneficiaries": [
+      "Senior citizens aged 60+"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "60 and above, or 55-60 on superannuation."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Quarterly interest",
+        "details": "Deposit limit ₹30 lakh, five-year tenure."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Bank / post office",
+        "steps": "Open an account at either.",
+        "url": "https://www.indiapost.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.indiapost.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Senior Citizens' Savings Scheme — official portal",
+        "url": "https://www.indiapost.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "smart-cities-mission",
+    "name": "Smart Cities Mission",
+    "aliases": [
+      "SCM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "launchDate": "2015-06-25",
+    "launchYear": 2015,
+    "categories": [
+      "urban-development",
+      "infrastructure"
+    ],
+    "objectives": "Develop 100 smart cities with core infrastructure and clean environment.",
+    "targetBeneficiaries": [
+      "Urban residents"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "100 selected cities."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "City infrastructure",
+        "details": "Area-based development and pan-city smart solutions."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Implemented by SPVs.",
+        "url": "https://smartcities.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://smartcities.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Smart Cities Mission — official portal",
+        "url": "https://smartcities.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "closed",
+    "statusNote": "Mission period ended on 31 March 2025.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "soil-health-card",
+    "name": "Soil Health Card Scheme",
+    "aliases": [
+      "SHC"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "launchDate": "2015-02-19",
+    "launchYear": 2015,
+    "categories": [
+      "agriculture"
+    ],
+    "objectives": "Provide farmers with soil nutrient status and crop-wise fertiliser recommendations.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All farmers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free soil testing and card",
+        "details": "Cards issued periodically with recommended nutrient doses."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline / online",
+        "steps": "Request through the agriculture department or the SHC portal.",
+        "url": "https://soilhealth.dac.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://soilhealth.dac.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Soil Health Card Scheme — official portal",
+        "url": "https://soilhealth.dac.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "stand-up-india",
+    "name": "Stand Up India",
+    "aliases": [
+      "StandUp India",
+      "Stand-Up India Scheme"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "launchDate": "2016-04-05",
+    "launchYear": 2016,
+    "categories": [
+      "msme",
+      "financial-inclusion",
+      "sc-st-obc"
+    ],
+    "objectives": "Promote entrepreneurship among women and Scheduled Caste/Scheduled Tribe borrowers by facilitating bank loans for greenfield enterprises.",
+    "targetBeneficiaries": [
+      "SC/ST entrepreneurs",
+      "Women entrepreneurs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "SC/ST and/or women entrepreneurs aged 18+ setting up a greenfield non-individual enterprise in manufacturing, services, trading or agri-allied activities."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Bank loans of ₹10 lakh to ₹1 crore",
+        "details": "Composite loan covering term and working capital; at least one SC/ST and one woman borrower per bank branch."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the Stand-Up India portal, which routes the application to the nearest eligible bank branch.",
+        "url": "https://www.standupmitra.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.standupmitra.in"
+    ],
+    "sources": [
+      {
+        "title": "Stand-Up India official portal",
+        "url": "https://www.standupmitra.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "startup-india",
+    "name": "Startup India",
+    "aliases": [
+      "Startup India Initiative"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Commerce and Industry",
+    "department": "Department for Promotion of Industry and Internal Trade",
+    "launchDate": "2016-01-16",
+    "launchYear": 2016,
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "objectives": "Foster entrepreneurship and innovation through startup support.",
+    "targetBeneficiaries": [
+      "Startups",
+      "Entrepreneurs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Entities recognised by DPIIT as startups."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Tax benefits, funding and IPR support",
+        "details": "Fund of Funds and credit guarantee support."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the Startup India portal.",
+        "url": "https://www.startupindia.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.startupindia.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Startup India — official portal",
+        "url": "https://www.startupindia.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "sugamya-bharat-abhiyan",
+    "name": "Accessible India Campaign (Sugamya Bharat Abhiyan)",
+    "aliases": [
+      "Sugamya Bharat"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "department": "Department of Empowerment of Persons with Disabilities",
+    "launchDate": "2015-12-03",
+    "launchYear": 2015,
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "objectives": "Create barrier-free built environments, transport and ICT for persons with disabilities.",
+    "targetBeneficiaries": [
+      "Persons with disabilities"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "All persons with disabilities."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Accessibility upgrades",
+        "details": "Government buildings, transport and websites."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through relevant authorities.",
+        "url": "https://disabilityaffairs.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://disabilityaffairs.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Accessible India Campaign — official portal",
+        "url": "https://disabilityaffairs.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "sukanya-samriddhi",
+    "name": "Sukanya Samriddhi Yojana (SSY)",
+    "aliases": [
+      "SSY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Economic Affairs",
+    "launchDate": "2015-01-22",
+    "launchYear": 2015,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Encourage parents to save for a girl child's education and marriage.",
+    "targetBeneficiaries": [
+      "Girl children under 10"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Account opened by a guardian for a girl child below 10 years."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "High-interest small savings",
+        "details": "Minimum ₹250 and maximum ₹1.5 lakh a year; tax-free interest; 21-year maturity."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline / bank",
+        "steps": "Open at a post office or authorised bank.",
+        "url": "https://www.indiapost.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.indiapost.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Sukanya Samriddhi Yojana — official portal",
+        "url": "https://www.indiapost.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "svamitva",
+    "name": "SVAMITVA Scheme",
+    "aliases": [
+      "SVAMITVA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Panchayati Raj",
+    "launchDate": "2020-04-24",
+    "launchYear": 2020,
+    "categories": [
+      "rural-development"
+    ],
+    "objectives": "Give rural property owners legal ownership records.",
+    "targetBeneficiaries": [
+      "Rural property owners"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Owners of rural inhabited (abadi) land."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Property cards",
+        "details": "Drone-mapped land records enabling bank loans."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the state revenue or panchayat department.",
+        "url": "https://svamitva.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://svamitva.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "SVAMITVA Scheme — official portal",
+        "url": "https://svamitva.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "swachh-bharat-mission-gramin",
+    "name": "Swachh Bharat Mission – Gramin (SBM-G)",
+    "aliases": [
+      "SBM-G"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Jal Shakti",
+    "department": "Department of Drinking Water and Sanitation",
+    "launchDate": "2014-10-02",
+    "launchYear": 2014,
+    "categories": [
+      "rural-development",
+      "healthcare"
+    ],
+    "objectives": "Make rural India open-defecation free and improve solid and liquid waste management.",
+    "targetBeneficiaries": [
+      "Rural households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Rural households without toilets."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹12,000 incentive",
+        "details": "For individual household latrine construction."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / offline",
+        "steps": "Apply via the SBM-G portal or Gram Panchayat.",
+        "url": "https://swachhbharatmission.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://swachhbharatmission.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Swachh Bharat Mission – Gramin — official portal",
+        "url": "https://swachhbharatmission.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "swachh-bharat-mission-urban-2",
+    "name": "Swachh Bharat Mission – Urban 2.0 (SBM-U 2.0)",
+    "aliases": [
+      "SBM-U 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "launchDate": "2021-10-01",
+    "launchYear": 2021,
+    "categories": [
+      "urban-development",
+      "infrastructure"
+    ],
+    "objectives": "Make cities garbage-free and water secure.",
+    "targetBeneficiaries": [
+      "Urban residents",
+      "ULBs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Urban local bodies."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Urban sanitation support",
+        "details": "Waste processing, sewage management and recycling."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through urban local bodies.",
+        "url": "https://sbmurban.org"
+      }
+    ],
+    "officialUrls": [
+      "https://sbmurban.org"
+    ],
+    "sources": [
+      {
+        "title": "Swachh Bharat Mission – Urban 2.0 — official portal",
+        "url": "https://sbmurban.org",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "unified-pension-scheme",
+    "name": "Unified Pension Scheme (UPS)",
+    "aliases": [
+      "UPS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "launchDate": "2025-04-01",
+    "launchYear": 2025,
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "objectives": "Offer central government employees an assured pension option alongside NPS.",
+    "targetBeneficiaries": [
+      "Central government employees"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Central government employees under NPS who opt in; state governments may adopt."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Assured payout",
+        "details": "50% of average basic pay of the last 12 months for 25 years of service, minimum ₹10,000 per month after 10 years, and 60% as family pension."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline / online",
+        "steps": "Submit an option through the employer and NPS portal.",
+        "url": "https://www.npscra.nsdl.co.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.npscra.nsdl.co.in"
+    ],
+    "sources": [
+      {
+        "title": "Unified Pension Scheme — official portal",
+        "url": "https://www.npscra.nsdl.co.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "vb-g-ram-g",
+    "name": "Viksit Bharat – Guarantee for Rozgar and Ajeevika Mission (Gramin) (VB-G RAM G)",
+    "aliases": [
+      "VB-G RAM G",
+      "VB-GRAM",
+      "G RAM G"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "department": "Department of Rural Development",
+    "launchDate": "2026-07-01",
+    "launchYear": 2026,
+    "categories": [
+      "employment",
+      "rural-development"
+    ],
+    "objectives": "Provide a statutory guarantee of wage employment in rural areas and build durable assets aligned with the Viksit Bharat @2047 vision.",
+    "targetBeneficiaries": [
+      "Rural households",
+      "Adult members willing to do unskilled manual work"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Rural households whose adult members volunteer for unskilled manual work; existing MGNREGA job cards stay valid once renewed and e-KYC verified (valid three years)."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "125 days of guaranteed wage employment per household per year",
+        "details": "Daily floor wage of ₹300; a 60-day pause during peak sowing and harvest; most states bear 40% of costs (10% for NE and Himalayan states and UTs with legislature)."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline / online",
+        "steps": "Renew the job card with e-KYC at the Gram Panchayat and submit a work demand.",
+        "url": "https://nrega.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nrega.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Viksit Bharat – Guarantee for Rozgar and Ajeevika Mission — official portal",
+        "url": "https://nrega.nic.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "Business Standard — VB-G RAM G notification",
+        "url": "https://www.business-standard.com/india-news/vb-g-ram-g-replacing-mgnrega-to-come-into-force-across-india-from-july-1-126051100540_1.html",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "The News Minute — explainer",
+        "url": "https://www.thenewsminute.com/news/explainer-what-changes-as-vb-g-ram-g-replaces-mgnrega",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Came into force on 2026-07-01, repealing MGNREGA. Union allocation for 2026-27 is ₹95,692.31 crore.",
+    "supersedes": [
+      "mgnrega"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "vibrant-villages-programme",
+    "name": "Vibrant Villages Programme (VVP)",
+    "aliases": [
+      "VVP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Home Affairs",
+    "launchDate": "2023-02-15",
+    "launchYear": 2023,
+    "categories": [
+      "rural-development",
+      "infrastructure"
+    ],
+    "objectives": "Develop border villages.",
+    "targetBeneficiaries": [
+      "Border village residents"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "All India",
+        "criteria": "Identified border villages."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Infrastructure and livelihood support",
+        "details": "Roads, tourism and connectivity."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the district administration.",
+        "url": "https://mha.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mha.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Vibrant Villages Programme — official portal",
+        "url": "https://mha.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  }
+]

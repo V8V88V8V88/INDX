@@ -15,7 +15,8 @@
     "build:neighbours": "bun scripts/data/build_neighbours.ts",
     "build:odop": "python3 scripts/data/build_odop.py",
     "check:data": "python3 scripts/data/build_data.py --check && python3 scripts/data/build_names.py --check && bun scripts/data/build_neighbours.ts --check && python3 scripts/data/build_odop.py --check",
-    "check:i18n": "bun scripts/check-i18n.ts"
+    "check:i18n": "bun scripts/check-i18n.ts",
+    "check:schemes": "bun scripts/check-scheme.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.105.0",

@@ -1,0 +1,5096 @@
+[
+  {
+    "id": "ap-annadata-sukhibhava",
+    "name": "Annadata Sukhibhava",
+    "aliases": [
+      "Annadata Sukhibhava PM-KISAN"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "Agriculture Department, Andhra Pradesh",
+    "launchDate": "2025-08-02",
+    "launchYear": 2025,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide farmers with annual income support combining state and PM-KISAN assistance.",
+    "targetBeneficiaries": [
+      "Farmer families in Andhra Pradesh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Andhra Pradesh",
+        "criteria": "Landholding and tenant farmer families in AP; PM-KISAN-eligible farmers receive the combined amount."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹20,000 per year per farmer family",
+        "details": "₹14,000 state share plus ₹6,000 under PM-KISAN, paid in three instalments."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Verify on the Rythu Seva Kendra list and register through the village agriculture assistant.",
+        "url": "https://www.ap.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.ap.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Annadata Sukhibhava — official portal",
+        "url": "https://www.ap.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ap-deepam-2",
+    "name": "Deepam 2.0",
+    "aliases": [
+      "Deepam Scheme",
+      "Free LPG cylinders AP"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "Civil Supplies Department, Andhra Pradesh",
+    "launchDate": "2024-11-01",
+    "launchYear": 2024,
+    "categories": [
+      "social-security",
+      "women-child"
+    ],
+    "objectives": "Provide free LPG cylinders to eligible households.",
+    "targetBeneficiaries": [
+      "White ration card households in Andhra Pradesh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Andhra Pradesh",
+        "criteria": "Households with a white ration card and a gas connection in the household head's name."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Three free LPG cylinders per year",
+        "details": "Payment is made upfront and reimbursed to the bank account."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / offline",
+        "steps": "Book the cylinder; reimbursement is credited via DBT.",
+        "url": "https://www.ap.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.ap.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Deepam 2.0 — official portal",
+        "url": "https://www.ap.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ap-ntr-bharosa-pension",
+    "name": "NTR Bharosa Pensions",
+    "aliases": [
+      "NTR Bharosa",
+      "YSR Pension Kanuka"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "Department of Rural Development (SERP), Andhra Pradesh",
+    "launchDate": "2024-07-01",
+    "launchYear": 2024,
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "objectives": "Provide monthly social security pensions.",
+    "targetBeneficiaries": [
+      "Elderly, widows, persons with disabilities and other vulnerable groups"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Andhra Pradesh",
+        "criteria": "Residents in notified pension categories."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹4,000 monthly pension",
+        "details": "Higher amounts for persons with disabilities and chronic illness categories."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply at the village or ward secretariat.",
+        "url": "https://www.ap.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.ap.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "NTR Bharosa Pensions — official portal",
+        "url": "https://www.ap.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Successor to the YSR Pension Kanuka scheme (2019).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ap-stree-shakti",
+    "name": "Stree Shakti (Free Bus Travel for Women)",
+    "aliases": [
+      "AP Free Bus Scheme"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "Transport Department, Andhra Pradesh",
+    "launchDate": "2025-08-15",
+    "launchYear": 2025,
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "objectives": "Provide free bus travel for women in the state.",
+    "targetBeneficiaries": [
+      "Women residents of Andhra Pradesh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Andhra Pradesh",
+        "criteria": "Women residing in AP with a valid ID, in notified APSRTC services."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free travel in notified APSRTC buses",
+        "details": "Covers ordinary and express categories within the state."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Show a valid ID with the conductor.",
+        "url": "https://www.ap.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.ap.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Stree Shakti — official portal",
+        "url": "https://www.ap.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ap-talliki-vandanam",
+    "name": "Talliki Vandanam",
+    "aliases": [
+      "Thalliki Vandanam"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "School Education Department, Andhra Pradesh",
+    "launchDate": "2025-06-12",
+    "launchYear": 2025,
+    "categories": [
+      "education",
+      "women-child"
+    ],
+    "objectives": "Support mothers in sending children to school.",
+    "targetBeneficiaries": [
+      "Mothers of schoolchildren in Andhra Pradesh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Andhra Pradesh",
+        "criteria": "Mothers or guardians of students in Classes 1-12 in government and private schools in AP."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹15,000 per child per year",
+        "details": "₹13,000 transferred to the mother and the remainder retained for school maintenance."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the school headmaster and village secretariat.",
+        "url": "https://www.ap.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.ap.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Talliki Vandanam — official portal",
+        "url": "https://www.ap.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ar-cm-arogya-arunachal",
+    "name": "Chief Minister Arogya Arunachal Yojana (CMAAY)",
+    "aliases": [
+      "CMAAY"
+    ],
+    "scope": "state",
+    "stateId": "AR",
+    "government": "Government of Arunachal Pradesh",
+    "ministry": "Department of Health and Family Welfare, Arunachal Pradesh",
+    "launchYear": 2018,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless health cover to families.",
+    "targetBeneficiaries": [
+      "Residents of Arunachal Pradesh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Arunachal Pradesh",
+        "criteria": "Eligible families notified by the state."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless hospital treatment",
+        "details": "Cover up to the limit notified under the scheme."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Enrol at designated centres.",
+        "url": "https://arunachalpradesh.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://arunachalpradesh.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Chief Minister Arogya Arunachal Yojana — official portal",
+        "url": "https://arunachalpradesh.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "as-orunodoi",
+    "name": "Orunodoi",
+    "aliases": [
+      "Orunodoi 3.0"
+    ],
+    "scope": "state",
+    "stateId": "AS",
+    "government": "Government of Assam",
+    "ministry": "Finance Department, Assam",
+    "launchDate": "2020-10-02",
+    "launchYear": 2020,
+    "categories": [
+      "women-child",
+      "social-security",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide monthly financial assistance to low-income families.",
+    "targetBeneficiaries": [
+      "Women heads of low-income families in Assam"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Assam",
+        "criteria": "Families identified by income criteria; payment goes to the woman of the household."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly DBT",
+        "details": "₹1,250 per month per family (revised from ₹830)."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the Orunodoi portal.",
+        "url": "https://orunodoi.assam.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://orunodoi.assam.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Orunodoi — official portal",
+        "url": "https://orunodoi.assam.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "br-balika-cycle",
+    "name": "Mukhyamantri Balika Cycle Yojana",
+    "aliases": [
+      "Balika Cycle Yojana"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Education Department, Bihar",
+    "launchYear": 2007,
+    "categories": [
+      "education",
+      "women-child"
+    ],
+    "objectives": "Reduce girl dropouts by providing bicycles.",
+    "targetBeneficiaries": [
+      "Girl students of Class 9"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Bihar",
+        "criteria": "Girls studying in Class 9 in Bihar government or aided schools."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cash assistance for a bicycle",
+        "details": "Paid by DBT."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through the school.",
+        "url": "https://state.bihar.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://state.bihar.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Balika Cycle Yojana — official portal",
+        "url": "https://state.bihar.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "br-jeevika",
+    "name": "Bihar Rural Livelihoods Promotion Society (JEEViKA)",
+    "aliases": [
+      "JEEViKA",
+      "Bihar Jeevika"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Rural Development Department, Bihar",
+    "launchYear": 2006,
+    "categories": [
+      "rural-development",
+      "women-child",
+      "employment"
+    ],
+    "objectives": "Improve rural livelihoods through SHGs.",
+    "targetBeneficiaries": [
+      "Rural poor women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Bihar",
+        "criteria": "Rural poor households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "SHG credit and training",
+        "details": "Community investment funds and enterprises."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Join an SHG at the village organisation.",
+        "url": "https://state.bihar.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://state.bihar.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Bihar Rural Livelihoods Promotion Society — official portal",
+        "url": "https://state.bihar.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "br-kanya-utthan",
+    "name": "Mukhyamantri Kanya Utthan Yojana",
+    "aliases": [
+      "Kanya Utthan Yojana"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Social Welfare Department, Bihar",
+    "launchYear": 2018,
+    "categories": [
+      "women-child",
+      "education",
+      "scholarships"
+    ],
+    "objectives": "Encourage girls' education and delay marriage through staged cash incentives.",
+    "targetBeneficiaries": [
+      "Girls in Bihar"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Bihar",
+        "criteria": "Girls domiciled in Bihar; unmarried for intermediate and graduation incentives."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Staged incentives",
+        "details": "₹25,000 for passing Intermediate and ₹50,000 for graduation, plus earlier-stage incentives."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the Kanya Utthan portal.",
+        "url": "https://state.bihar.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://state.bihar.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Kanya Utthan Yojana — official portal",
+        "url": "https://state.bihar.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "br-mahila-rozgar",
+    "name": "Mukhyamantri Mahila Rozgar Yojana",
+    "aliases": [
+      "MMRY Bihar"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Rural Development Department (JEEViKA), Bihar",
+    "launchDate": "2025-09-26",
+    "launchYear": 2025,
+    "categories": [
+      "women-child",
+      "employment",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide seed money to women to start livelihood activities.",
+    "targetBeneficiaries": [
+      "Women from rural households in Bihar"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Bihar",
+        "criteria": "Women members of JEEViKA SHGs / registered households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹10,000 initial assistance",
+        "details": "Further assistance up to ₹2 lakh subject to livelihood assessment."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Through JEEViKA community organisation.",
+        "url": "https://state.bihar.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://state.bihar.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Mahila Rozgar Yojana — official portal",
+        "url": "https://state.bihar.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "br-student-credit-card",
+    "name": "Bihar Student Credit Card Scheme",
+    "aliases": [
+      "BSCC"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Education Department, Bihar",
+    "launchDate": "2016-10-02",
+    "launchYear": 2016,
+    "categories": [
+      "education",
+      "scholarships",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide education loans for higher studies.",
+    "targetBeneficiaries": [
+      "Students domiciled in Bihar"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Bihar",
+        "criteria": "Bihar residents admitted to recognised institutions after Class 12."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Education loan up to ₹4 lakh",
+        "details": "At concessional interest rates without collateral."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the Student Credit Card portal.",
+        "url": "https://state.bihar.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://state.bihar.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Bihar Student Credit Card Scheme — official portal",
+        "url": "https://state.bihar.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "cg-godhan-nyay",
+    "name": "Godhan Nyay Yojana",
+    "aliases": [
+      "Godhan Nyay"
+    ],
+    "scope": "state",
+    "stateId": "CG",
+    "government": "Government of Chhattisgarh",
+    "ministry": "Agriculture Department, Chhattisgarh",
+    "launchDate": "2020-07-20",
+    "launchYear": 2020,
+    "categories": [
+      "agriculture",
+      "rural-development"
+    ],
+    "objectives": "Purchase cow dung to promote vermicompost and rural income.",
+    "targetBeneficiaries": [
+      "Livestock owners"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Chhattisgarh",
+        "criteria": "Cattle owners in CG."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Payment per kg of cow dung",
+        "details": "Rate notified by the state."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At Gauthans.",
+        "url": "https://cgstate.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://cgstate.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Godhan Nyay Yojana — official portal",
+        "url": "https://cgstate.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "cg-krishak-unnati",
+    "name": "Krishak Unnati Yojana",
+    "aliases": [
+      "Krishi Unnati Yojana"
+    ],
+    "scope": "state",
+    "stateId": "CG",
+    "government": "Government of Chhattisgarh",
+    "ministry": "Agriculture Development Department, Chhattisgarh",
+    "launchYear": 2025,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide enhanced paddy procurement support to farmers.",
+    "targetBeneficiaries": [
+      "Paddy farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Chhattisgarh",
+        "criteria": "Registered paddy farmers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Higher paddy price support",
+        "details": "Input subsidy / bonus over MSP."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Register for paddy procurement.",
+        "url": "https://cgstate.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://cgstate.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Krishak Unnati Yojana — official portal",
+        "url": "https://cgstate.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Check the current procurement-year rates.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "cg-mahtari-vandan",
+    "name": "Mahtari Vandan Yojana",
+    "aliases": [
+      "Mahtari Vandan"
+    ],
+    "scope": "state",
+    "stateId": "CG",
+    "government": "Government of Chhattisgarh",
+    "ministry": "Women and Child Development Department, Chhattisgarh",
+    "launchDate": "2024-03-10",
+    "launchYear": 2024,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide monthly financial assistance to women.",
+    "targetBeneficiaries": [
+      "Married women aged 21 and above in Chhattisgarh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Chhattisgarh",
+        "criteria": "Married women aged 21+ domiciled in CG, excluding taxpayers and government employees."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,000 per month",
+        "details": "Direct bank transfer."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / offline",
+        "steps": "Apply at the Anganwadi or on the portal.",
+        "url": "https://cgstate.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://cgstate.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mahtari Vandan Yojana — official portal",
+        "url": "https://cgstate.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ga-dayanand-social-security",
+    "name": "Dayanand Social Security Scheme (DSSS)",
+    "aliases": [
+      "DSSS"
+    ],
+    "scope": "state",
+    "stateId": "GA",
+    "government": "Government of Goa",
+    "ministry": "Directorate of Social Welfare, Goa",
+    "launchYear": 1987,
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "objectives": "Provide monthly assistance to vulnerable groups.",
+    "targetBeneficiaries": [
+      "Elderly, widows, persons with disabilities"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Goa",
+        "criteria": "Eligible residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly assistance",
+        "details": "Amount varies by category."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply at the Social Welfare office.",
+        "url": "https://www.goa.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.goa.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Dayanand Social Security Scheme — official portal",
+        "url": "https://www.goa.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ga-griha-aadhar",
+    "name": "Griha Aadhar Scheme",
+    "aliases": [
+      "Griha Aadhar"
+    ],
+    "scope": "state",
+    "stateId": "GA",
+    "government": "Government of Goa",
+    "ministry": "Women and Child Development Department, Goa",
+    "launchYear": 2012,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide financial assistance to housewives.",
+    "targetBeneficiaries": [
+      "Housewives in Goa"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Goa",
+        "criteria": "Goa-domiciled housewives within income limits."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,500 per month",
+        "details": "Direct bank transfer."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the Goa portal.",
+        "url": "https://www.goa.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.goa.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Griha Aadhar Scheme — official portal",
+        "url": "https://www.goa.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ga-ladli-laxmi",
+    "name": "Ladli Laxmi Scheme (Goa)",
+    "aliases": [
+      "Laadli Laxmi Goa"
+    ],
+    "scope": "state",
+    "stateId": "GA",
+    "government": "Government of Goa",
+    "ministry": "Women and Child Development Department, Goa",
+    "launchYear": 2013,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide financial assistance to girls at marriage or after age 18.",
+    "targetBeneficiaries": [
+      "Girls in Goa"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Goa",
+        "criteria": "Girls domiciled in Goa within income limits."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1 lakh one-time assistance",
+        "details": "At age 18 or on marriage."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the portal.",
+        "url": "https://www.goa.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.goa.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ladli Laxmi Scheme — official portal",
+        "url": "https://www.goa.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "gj-kisan-suryodaya",
+    "name": "Kisan Suryodaya Yojana",
+    "aliases": [
+      "KSY"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Energy and Petrochemicals Department, Gujarat",
+    "launchDate": "2020-10-24",
+    "launchYear": 2020,
+    "categories": [
+      "agriculture",
+      "infrastructure"
+    ],
+    "objectives": "Provide daytime electricity for irrigation.",
+    "targetBeneficiaries": [
+      "Farmers in Gujarat"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Gujarat",
+        "criteria": "Farmers with agricultural connections."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Daytime power supply",
+        "details": "Eight hours of day-time electricity for farming."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "No separate application.",
+        "url": "https://gujaratindia.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://gujaratindia.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Kisan Suryodaya Yojana — official portal",
+        "url": "https://gujaratindia.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "gj-ma-vatsalya",
+    "name": "Mukhyamantri Amrutum / MA Vatsalya",
+    "aliases": [
+      "MA Yojana",
+      "PMJAY-MA"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Health and Family Welfare Department, Gujarat",
+    "launchYear": 2012,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless tertiary care to poor families.",
+    "targetBeneficiaries": [
+      "BPL families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Gujarat",
+        "criteria": "Eligible families under income criteria."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Cover limit raised under PMJAY-MA."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At empanelled hospitals.",
+        "url": "https://gujaratindia.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://gujaratindia.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Amrutum / MA Vatsalya — official portal",
+        "url": "https://gujaratindia.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "gj-namo-lakshmi",
+    "name": "Namo Lakshmi Yojana",
+    "aliases": [
+      "Namo Lakshmi"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Education Department, Gujarat",
+    "launchYear": 2024,
+    "categories": [
+      "education",
+      "women-child",
+      "scholarships"
+    ],
+    "objectives": "Reduce girls' dropout rates in Classes 9-12.",
+    "targetBeneficiaries": [
+      "Girls in Classes 9-12"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Gujarat",
+        "criteria": "Girls studying in government and aided schools in Gujarat."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹50,000 over four years",
+        "details": "Paid in instalments subject to attendance."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply via the school.",
+        "url": "https://gujaratindia.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://gujaratindia.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Namo Lakshmi Yojana — official portal",
+        "url": "https://gujaratindia.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "gj-namo-saraswati",
+    "name": "Namo Saraswati Vigyan Sadhana Yojana",
+    "aliases": [
+      "Namo Saraswati"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Education Department, Gujarat",
+    "launchYear": 2024,
+    "categories": [
+      "education",
+      "scholarships"
+    ],
+    "objectives": "Encourage students to pursue science stream.",
+    "targetBeneficiaries": [
+      "Class 11-12 science students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Gujarat",
+        "criteria": "Students in the science stream."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹25,000 assistance",
+        "details": "Paid in instalments."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via the school.",
+        "url": "https://gujaratindia.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://gujaratindia.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Namo Saraswati Vigyan Sadhana Yojana — official portal",
+        "url": "https://gujaratindia.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "gj-vahali-dikri",
+    "name": "Vahali Dikri Yojana",
+    "aliases": [
+      "Vahali Dikri"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Women and Child Development Department, Gujarat",
+    "launchYear": 2019,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Promote girl child education and discourage child marriage.",
+    "targetBeneficiaries": [
+      "Girl children born after 2019"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Gujarat",
+        "criteria": "Families with up to two daughters, within income limits."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1.1 lakh in stages",
+        "details": "Paid at school-entry stages and at marriage."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via the Anganwadi.",
+        "url": "https://gujaratindia.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://gujaratindia.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Vahali Dikri Yojana — official portal",
+        "url": "https://gujaratindia.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "hp-natural-farming",
+    "name": "Rajiv Gandhi Prakritik Kheti Khushhal Kisan Yojana",
+    "aliases": [
+      "Prakritik Kheti"
+    ],
+    "scope": "state",
+    "stateId": "HP",
+    "government": "Government of Himachal Pradesh",
+    "ministry": "Agriculture Department, Himachal Pradesh",
+    "launchYear": 2018,
+    "categories": [
+      "agriculture"
+    ],
+    "objectives": "Promote natural farming.",
+    "targetBeneficiaries": [
+      "Farmers in HP"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Himachal Pradesh",
+        "criteria": "Farmers practising natural farming."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Training and input support",
+        "details": "Subsidies for natural farming inputs."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via the agriculture department.",
+        "url": "https://himachal.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://himachal.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Rajiv Gandhi Prakritik Kheti Khushhal Kisan Yojana — official portal",
+        "url": "https://himachal.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "hp-sukh-aashray",
+    "name": "Mukhya Mantri Sukh Aashray Yojana",
+    "aliases": [
+      "Sukh Aashray"
+    ],
+    "scope": "state",
+    "stateId": "HP",
+    "government": "Government of Himachal Pradesh",
+    "ministry": "Social Justice and Empowerment Department, Himachal Pradesh",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "objectives": "Support destitute children and vulnerable persons.",
+    "targetBeneficiaries": [
+      "Destitute children"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Himachal Pradesh",
+        "criteria": "Eligible orphans and destitute children."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly assistance and care",
+        "details": "Education and support."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via the district office.",
+        "url": "https://himachal.nic.in"
+      }
+    ],
+    "officialUrls": [
+      "https://himachal.nic.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhya Mantri Sukh Aashray Yojana — official portal",
+        "url": "https://himachal.nic.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "hr-bhavantar-bharpai",
+    "name": "Bhavantar Bharpai Yojana",
+    "aliases": [
+      "BBY Haryana"
+    ],
+    "scope": "state",
+    "stateId": "HR",
+    "government": "Government of Haryana",
+    "ministry": "Horticulture Department, Haryana",
+    "launchYear": 2017,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Compensate farmers for price drops on notified vegetables and fruits.",
+    "targetBeneficiaries": [
+      "Horticulture farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Haryana",
+        "criteria": "Registered farmers growing notified crops."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Price deficit compensation",
+        "details": "Paid when market prices fall below fixed rates."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on Meri Fasal Mera Byora.",
+        "url": "https://haryana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://haryana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Bhavantar Bharpai Yojana — official portal",
+        "url": "https://haryana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "hr-lado-lakshmi",
+    "name": "Lado Lakshmi Yojana",
+    "aliases": [
+      "Lado Lakshmi"
+    ],
+    "scope": "state",
+    "stateId": "HR",
+    "government": "Government of Haryana",
+    "ministry": "Women and Child Development Department, Haryana",
+    "launchDate": "2025-09-25",
+    "launchYear": 2025,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide monthly assistance to women.",
+    "targetBeneficiaries": [
+      "Women in Haryana"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Haryana",
+        "criteria": "Haryana-domiciled women aged 23+ within income limit."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹2,100 per month",
+        "details": "Direct bank transfer."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the portal.",
+        "url": "https://haryana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://haryana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Lado Lakshmi Yojana — official portal",
+        "url": "https://haryana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "hr-meri-fasal-mera-byora",
+    "name": "Meri Fasal Mera Byora",
+    "aliases": [
+      "MFMB"
+    ],
+    "scope": "state",
+    "stateId": "HR",
+    "government": "Government of Haryana",
+    "ministry": "Agriculture Department, Haryana",
+    "launchYear": 2019,
+    "categories": [
+      "agriculture"
+    ],
+    "objectives": "Register crop details for procurement and scheme benefits.",
+    "targetBeneficiaries": [
+      "Farmers in Haryana"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Haryana",
+        "criteria": "Farmers in the state."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Access to procurement and crop loss compensation",
+        "details": "Single registration for state schemes."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the portal.",
+        "url": "https://haryana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://haryana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Meri Fasal Mera Byora — official portal",
+        "url": "https://haryana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jh-fasal-rahat",
+    "name": "Mukhyamantri Rajya Fasal Rahat Yojana",
+    "aliases": [
+      "Fasal Rahat"
+    ],
+    "scope": "state",
+    "stateId": "JH",
+    "government": "Government of Jharkhand",
+    "ministry": "Agriculture Department, Jharkhand",
+    "launchYear": 2022,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Compensate farmers for crop loss.",
+    "targetBeneficiaries": [
+      "Farmers in Jharkhand"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jharkhand",
+        "criteria": "Registered farmers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Compensation for crop loss",
+        "details": "Up to the notified amount per acre."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the portal.",
+        "url": "https://www.jharkhand.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.jharkhand.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Rajya Fasal Rahat Yojana — official portal",
+        "url": "https://www.jharkhand.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jh-maiyan-samman",
+    "name": "Mukhyamantri Maiyan Samman Yojana",
+    "aliases": [
+      "Maiyan Samman"
+    ],
+    "scope": "state",
+    "stateId": "JH",
+    "government": "Government of Jharkhand",
+    "ministry": "Department of Women, Child Development and Social Security, Jharkhand",
+    "launchDate": "2024-08-18",
+    "launchYear": 2024,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide monthly financial assistance to women.",
+    "targetBeneficiaries": [
+      "Women aged 18-50 in Jharkhand"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jharkhand",
+        "criteria": "Jharkhand-domiciled women aged 18-50, excluding taxpayers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹2,500 per month",
+        "details": "Raised from ₹1,000 from December 2024."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the portal.",
+        "url": "https://www.jharkhand.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.jharkhand.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Maiyan Samman Yojana — official portal",
+        "url": "https://www.jharkhand.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jh-sarvjan-pension",
+    "name": "Sarvjan Pension Yojana",
+    "aliases": [
+      "Sarvjan Pension"
+    ],
+    "scope": "state",
+    "stateId": "JH",
+    "government": "Government of Jharkhand",
+    "ministry": "Department of Women, Child Development and Social Security, Jharkhand",
+    "launchYear": 2020,
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "objectives": "Provide universal pension to eligible persons.",
+    "targetBeneficiaries": [
+      "Elderly, widows, persons with disabilities"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jharkhand",
+        "criteria": "Eligible residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly pension",
+        "details": "Amount notified by the state."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the portal.",
+        "url": "https://www.jharkhand.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.jharkhand.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Sarvjan Pension Yojana — official portal",
+        "url": "https://www.jharkhand.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "jh-savitribai-phule-kishori",
+    "name": "Savitribai Phule Kishori Samriddhi Yojana",
+    "aliases": [
+      "SPKSY"
+    ],
+    "scope": "state",
+    "stateId": "JH",
+    "government": "Government of Jharkhand",
+    "ministry": "Department of Women, Child Development and Social Security, Jharkhand",
+    "launchYear": 2019,
+    "categories": [
+      "women-child",
+      "education",
+      "scholarships"
+    ],
+    "objectives": "Encourage girls' education.",
+    "targetBeneficiaries": [
+      "Girl students Classes 8-12"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Jharkhand",
+        "criteria": "Girls in government schools."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹40,000 total",
+        "details": "Paid in stages."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via the school.",
+        "url": "https://www.jharkhand.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.jharkhand.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Savitribai Phule Kishori Samriddhi Yojana — official portal",
+        "url": "https://www.jharkhand.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ka-anna-bhagya",
+    "name": "Anna Bhagya",
+    "aliases": [
+      "Anna Bhagya Yojana"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Food and Civil Supplies Department, Karnataka",
+    "launchDate": "2013-07-10",
+    "launchYear": 2013,
+    "categories": [
+      "social-security"
+    ],
+    "objectives": "Provide food security to BPL families.",
+    "targetBeneficiaries": [
+      "BPL families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Karnataka",
+        "criteria": "Priority household ration card holders."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Foodgrain and cash transfer",
+        "details": "Additional grain via DBT in lieu of rice where unavailable."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via the ration shop.",
+        "url": "https://sevasindhu.karnataka.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://sevasindhu.karnataka.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Anna Bhagya — official portal",
+        "url": "https://sevasindhu.karnataka.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Relaunched on 2023-07-10.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ka-gruha-jyothi",
+    "name": "Gruha Jyothi",
+    "aliases": [
+      "Gruha Jyothi Yojana"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Energy Department, Karnataka",
+    "launchDate": "2023-08-01",
+    "launchYear": 2023,
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "objectives": "Provide free electricity to households.",
+    "targetBeneficiaries": [
+      "Residential households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Karnataka",
+        "criteria": "Domestic consumers in Karnataka."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "200 units free per month",
+        "details": "Subject to average consumption."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on Seva Sindhu.",
+        "url": "https://sevasindhu.karnataka.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://sevasindhu.karnataka.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Gruha Jyothi — official portal",
+        "url": "https://sevasindhu.karnataka.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ka-gruha-lakshmi",
+    "name": "Gruha Lakshmi",
+    "aliases": [
+      "Gruha Lakshmi Yojana"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Department of Women and Child Development, Karnataka",
+    "launchDate": "2023-08-30",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide monthly assistance to women heads of families.",
+    "targetBeneficiaries": [
+      "Women heads of families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Karnataka",
+        "criteria": "Women heads in BPL/APL ration card households, excluding taxpayers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹2,000 per month",
+        "details": "DBT to bank account."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on Seva Sindhu.",
+        "url": "https://sevasindhu.karnataka.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://sevasindhu.karnataka.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Gruha Lakshmi — official portal",
+        "url": "https://sevasindhu.karnataka.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ka-shakti",
+    "name": "Shakti Scheme",
+    "aliases": [
+      "Shakti Bus Scheme"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Transport Department, Karnataka",
+    "launchDate": "2023-06-11",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "objectives": "Provide free travel facility for women across Karnataka in non-luxury government buses.",
+    "targetBeneficiaries": [
+      "Women residents of Karnataka"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Karnataka",
+        "criteria": "All women residents/domiciles of Karnataka travelling in state-run road transport corporation buses."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free travel in government buses across Karnataka",
+        "details": "Applicable on express and ordinary state transport buses with a Shakti Smart Card."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / Seva Sindhu",
+        "steps": "Apply for Shakti Smart Card on Seva Sindhu portal.",
+        "url": "https://sevasindhu.karnataka.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://sevasindhu.karnataka.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Seva Sindhu Karnataka portal",
+        "url": "https://sevasindhu.karnataka.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "ka-yuva-nidhi",
+    "name": "Yuva Nidhi",
+    "aliases": [
+      "Yuva Nidhi Yojana"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Skill Development Department, Karnataka",
+    "launchDate": "2024-01-12",
+    "launchYear": 2024,
+    "categories": [
+      "employment",
+      "education",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide unemployment allowance to graduates and diploma holders.",
+    "targetBeneficiaries": [
+      "Unemployed youth"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Karnataka",
+        "criteria": "Graduates and diploma holders unemployed for six months after passing."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹3,000 or ₹1,500 per month",
+        "details": "For up to 24 months."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on Seva Sindhu.",
+        "url": "https://sevasindhu.karnataka.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://sevasindhu.karnataka.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Yuva Nidhi — official portal",
+        "url": "https://sevasindhu.karnataka.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "kl-kasp",
+    "name": "Karunya Arogya Suraksha Padhathi (KASP)",
+    "aliases": [
+      "KASP"
+    ],
+    "scope": "state",
+    "stateId": "KL",
+    "government": "Government of Kerala",
+    "ministry": "State Health Agency, Kerala",
+    "launchDate": "2019-04-01",
+    "launchYear": 2019,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide health insurance to families.",
+    "targetBeneficiaries": [
+      "Poor families in Kerala"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Kerala",
+        "criteria": "Families identified under the scheme."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment up to ₹5 lakh",
+        "details": "Up to the notified limit."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via the empanelled hospital.",
+        "url": "https://sha.kerala.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://sha.kerala.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Karunya Arogya Suraksha Padhathi — official portal",
+        "url": "https://sha.kerala.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Kerala government changed in May 2026; verify continuation.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "kl-kudumbashree",
+    "name": "Kudumbashree",
+    "aliases": [
+      "Kudumbashree Mission"
+    ],
+    "scope": "state",
+    "stateId": "KL",
+    "government": "Government of Kerala",
+    "ministry": "Local Self-Government Department, Kerala",
+    "launchDate": "1998-05-17",
+    "launchYear": 1998,
+    "categories": [
+      "women-child",
+      "rural-development",
+      "urban-development",
+      "employment"
+    ],
+    "objectives": "Eradicate poverty through women-led collectives.",
+    "targetBeneficiaries": [
+      "Women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Kerala",
+        "criteria": "Women from low-income households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Microfinance and livelihoods",
+        "details": "Community network."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Join a neighbourhood group.",
+        "url": "https://www.kudumbashree.org"
+      }
+    ],
+    "officialUrls": [
+      "https://www.kudumbashree.org"
+    ],
+    "sources": [
+      {
+        "title": "Kudumbashree — official portal",
+        "url": "https://www.kudumbashree.org",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Verify under the new government (May 2026).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "kl-life-mission",
+    "name": "Livelihood Inclusion and Financial Empowerment (LIFE) Mission",
+    "aliases": [
+      "LIFE Mission"
+    ],
+    "scope": "state",
+    "stateId": "KL",
+    "government": "Government of Kerala",
+    "ministry": "Local Self-Government Department, Kerala",
+    "launchYear": 2016,
+    "categories": [
+      "housing"
+    ],
+    "objectives": "Provide housing to homeless and landless families.",
+    "targetBeneficiaries": [
+      "Homeless families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Kerala",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Housing assistance",
+        "details": "Houses and apartments."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the portal.",
+        "url": "https://kerala.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://kerala.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Livelihood Inclusion and Financial Empowerment — official portal",
+        "url": "https://kerala.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Verify under the new government (May 2026).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mh-ladki-bahin",
+    "name": "Mukhyamantri Majhi Ladki Bahin Yojana",
+    "aliases": [
+      "Ladki Bahin Yojana"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Department of Women and Child Development, Maharashtra",
+    "launchDate": "2024-07-01",
+    "launchYear": 2024,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Enhance financial independence and welfare of women in Maharashtra.",
+    "targetBeneficiaries": [
+      "Women aged 21-65 in Maharashtra"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Maharashtra",
+        "criteria": "Married, widowed, divorced, deserted and destitute women aged 21-65 with family income below ₹2.5 lakh."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,500 per month financial assistance",
+        "details": "Direct benefit transfer into women's bank accounts."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / Nari Shakti App",
+        "steps": "Apply online via Nari Shakti Doot app or portal.",
+        "url": "https://ladkibahin.maharashtra.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://ladkibahin.maharashtra.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ladki Bahin portal Maharashtra",
+        "url": "https://ladkibahin.maharashtra.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "mh-lek-ladki",
+    "name": "Lek Ladki Yojana",
+    "aliases": [
+      "Lek Ladki"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Women and Child Development Department, Maharashtra",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Encourage girl child education and welfare.",
+    "targetBeneficiaries": [
+      "Girls in Maharashtra"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Maharashtra",
+        "criteria": "Girls from yellow/orange ration card households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,01,000 in stages",
+        "details": "Paid from birth to 18."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via Anganwadi.",
+        "url": "https://www.maharashtra.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.maharashtra.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Lek Ladki Yojana — official portal",
+        "url": "https://www.maharashtra.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mh-mjpjay",
+    "name": "Mahatma Jyotirao Phule Jan Arogya Yojana (MJPJAY)",
+    "aliases": [
+      "MJPJAY"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Public Health Department, Maharashtra",
+    "launchDate": "2012-07-02",
+    "launchYear": 2012,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless health insurance.",
+    "targetBeneficiaries": [
+      "Families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Maharashtra",
+        "criteria": "Eligible ration card families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment up to ₹5 lakh",
+        "details": "Integrated with AB PM-JAY."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At empanelled hospitals.",
+        "url": "https://www.maharashtra.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.maharashtra.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mahatma Jyotirao Phule Jan Arogya Yojana — official portal",
+        "url": "https://www.maharashtra.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mh-namo-shetkari",
+    "name": "Namo Shetkari Mahasanman Nidhi Yojana",
+    "aliases": [
+      "Namo Shetkari"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Agriculture Department, Maharashtra",
+    "launchYear": 2023,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Supplement PM-KISAN.",
+    "targetBeneficiaries": [
+      "Farmers in Maharashtra"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Maharashtra",
+        "criteria": "PM-KISAN farmers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹6,000 per year",
+        "details": "Paid in three instalments."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Linked to PM-KISAN.",
+        "url": "https://www.maharashtra.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.maharashtra.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Namo Shetkari Mahasanman Nidhi Yojana — official portal",
+        "url": "https://www.maharashtra.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mh-vayoshri",
+    "name": "Mukhyamantri Vayoshri Yojana",
+    "aliases": [
+      "Vayoshri"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Social Justice Department, Maharashtra",
+    "launchYear": 2024,
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "objectives": "Provide aids to senior citizens.",
+    "targetBeneficiaries": [
+      "Senior citizens aged 65+"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Maharashtra",
+        "criteria": "Income below limit."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹3,000 one-time",
+        "details": "For aids."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on portal.",
+        "url": "https://www.maharashtra.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.maharashtra.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Vayoshri Yojana — official portal",
+        "url": "https://www.maharashtra.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mh-yuva-karya-prashikshan",
+    "name": "Mukhyamantri Yuva Karya Prashikshan Yojana",
+    "aliases": [
+      "CM-YKPY"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Skill Development Department, Maharashtra",
+    "launchYear": 2024,
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "objectives": "Provide stipend-based on-the-job training.",
+    "targetBeneficiaries": [
+      "Youth"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Maharashtra",
+        "criteria": "Youth aged 18-35."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly stipend",
+        "details": "₹6,000 to ₹10,000."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on portal.",
+        "url": "https://www.maharashtra.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.maharashtra.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Yuva Karya Prashikshan Yojana — official portal",
+        "url": "https://www.maharashtra.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ml-cm-elevate",
+    "name": "Chief Minister's Entrepreneurship Elevate (CM ELEVATE)",
+    "aliases": [
+      "CM ELEVATE"
+    ],
+    "scope": "state",
+    "stateId": "ML",
+    "government": "Government of Meghalaya",
+    "ministry": "Planning Department, Meghalaya",
+    "launchYear": 2021,
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "objectives": "Support entrepreneurs with grants.",
+    "targetBeneficiaries": [
+      "Entrepreneurs"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Meghalaya",
+        "criteria": "Meghalaya residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Grants and mentoring",
+        "details": "Seed support."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://meghalaya.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://meghalaya.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Chief Minister's Entrepreneurship Elevate — official portal",
+        "url": "https://meghalaya.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ml-mhis",
+    "name": "Megha Health Insurance Scheme (MHIS)",
+    "aliases": [
+      "MHIS"
+    ],
+    "scope": "state",
+    "stateId": "ML",
+    "government": "Government of Meghalaya",
+    "ministry": "Health Department, Meghalaya",
+    "launchYear": 2012,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless health cover.",
+    "targetBeneficiaries": [
+      "Residents of Meghalaya"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Meghalaya",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Up to notified limit."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Enrol.",
+        "url": "https://meghalaya.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://meghalaya.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Megha Health Insurance Scheme — official portal",
+        "url": "https://meghalaya.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mn-cmht",
+    "name": "Chief Minister Gi Hakshelgi Tengbang (CMHT)",
+    "aliases": [
+      "CMHT"
+    ],
+    "scope": "state",
+    "stateId": "MN",
+    "government": "Government of Manipur",
+    "ministry": "Health Department, Manipur",
+    "launchYear": 2017,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless health insurance.",
+    "targetBeneficiaries": [
+      "Residents of Manipur"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Manipur",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Up to notified limit."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Enrol.",
+        "url": "https://manipur.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://manipur.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Chief Minister Gi Hakshelgi Tengbang — official portal",
+        "url": "https://manipur.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mp-kisan-kalyan",
+    "name": "Mukhyamantri Kisan Kalyan Yojana",
+    "aliases": [
+      "Kisan Kalyan Yojana"
+    ],
+    "scope": "state",
+    "stateId": "MP",
+    "government": "Government of Madhya Pradesh",
+    "ministry": "Farmer Welfare Department, Madhya Pradesh",
+    "launchYear": 2020,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Supplement PM-KISAN.",
+    "targetBeneficiaries": [
+      "Farmers in MP"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Madhya Pradesh",
+        "criteria": "PM-KISAN farmers in MP."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹4,000 per year",
+        "details": "Paid in two instalments."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Linked to PM-KISAN.",
+        "url": "https://mp.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mp.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Kisan Kalyan Yojana — official portal",
+        "url": "https://mp.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mp-ladli-behna",
+    "name": "Mukhyamantri Ladli Behna Yojana",
+    "aliases": [
+      "Ladli Behna Yojana MP"
+    ],
+    "scope": "state",
+    "stateId": "MP",
+    "government": "Government of Madhya Pradesh",
+    "ministry": "Department of Women and Child Development, MP",
+    "launchDate": "2023-03-05",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Improve health, nutrition and economic self-reliance of women in Madhya Pradesh.",
+    "targetBeneficiaries": [
+      "Women aged 21-60 in Madhya Pradesh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Madhya Pradesh",
+        "criteria": "Women residents of MP aged 21-60 with family income below ₹2.5 lakh and no income-tax payers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly financial assistance of ₹1,250",
+        "details": "Direct bank transfer to eligible beneficiaries."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / Camp",
+        "steps": "Apply through designated camps or portal in MP.",
+        "url": "https://cmladlibehna.mp.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://cmladlibehna.mp.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ladli Behna portal MP",
+        "url": "https://cmladlibehna.mp.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-11"
+  },
+  {
+    "id": "mp-ladli-laxmi",
+    "name": "Ladli Laxmi Yojana",
+    "aliases": [
+      "Ladli Laxmi"
+    ],
+    "scope": "state",
+    "stateId": "MP",
+    "government": "Government of Madhya Pradesh",
+    "ministry": "Women and Child Development Department, Madhya Pradesh",
+    "launchDate": "2007-04-01",
+    "launchYear": 2007,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Improve the status of the girl child.",
+    "targetBeneficiaries": [
+      "Girls born in MP"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Madhya Pradesh",
+        "criteria": "Girls domiciled in MP."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Staged assistance",
+        "details": "Paid on school and at age 21."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Via Anganwadi.",
+        "url": "https://mp.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mp.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ladli Laxmi Yojana — official portal",
+        "url": "https://mp.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mp-teerth-darshan",
+    "name": "Mukhyamantri Teerth Darshan Yojana",
+    "aliases": [
+      "Teerth Darshan"
+    ],
+    "scope": "state",
+    "stateId": "MP",
+    "government": "Government of Madhya Pradesh",
+    "ministry": "Department of Religious Trusts and Endowments, Madhya Pradesh",
+    "launchYear": 2012,
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "objectives": "Pilgrimage assistance for senior citizens.",
+    "targetBeneficiaries": [
+      "Senior citizens"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Madhya Pradesh",
+        "criteria": "Residents above 60."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free pilgrimage",
+        "details": "Travel, food and stay."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on portal.",
+        "url": "https://mp.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mp.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Teerth Darshan Yojana — official portal",
+        "url": "https://mp.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mz-mshcs",
+    "name": "Mizoram State Health Care Scheme (MSHCS)",
+    "aliases": [
+      "MSHCS"
+    ],
+    "scope": "state",
+    "stateId": "MZ",
+    "government": "Government of Mizoram",
+    "ministry": "Health Department, Mizoram",
+    "launchYear": 2008,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide health care coverage.",
+    "targetBeneficiaries": [
+      "Residents of Mizoram"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Mizoram",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Up to limit."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Enrol.",
+        "url": "https://mizoram.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mizoram.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mizoram State Health Care Scheme — official portal",
+        "url": "https://mizoram.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "mz-nlup",
+    "name": "New Land Use Policy (NLUP)",
+    "aliases": [
+      "NLUP"
+    ],
+    "scope": "state",
+    "stateId": "MZ",
+    "government": "Government of Mizoram",
+    "ministry": "Land Resources, Soil and Water Conservation Department, Mizoram",
+    "launchYear": 2011,
+    "categories": [
+      "agriculture",
+      "rural-development"
+    ],
+    "objectives": "Promote settled farming.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Mizoram",
+        "criteria": "Eligible households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Livelihood assistance",
+        "details": "Grants for farming."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://mizoram.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mizoram.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "New Land Use Policy — official portal",
+        "url": "https://mizoram.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "nl-nhis",
+    "name": "Nagaland Health Insurance Scheme (NHIS)",
+    "aliases": [
+      "NHIS"
+    ],
+    "scope": "state",
+    "stateId": "NL",
+    "government": "Government of Nagaland",
+    "ministry": "Health Department, Nagaland",
+    "launchYear": 2018,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless health insurance.",
+    "targetBeneficiaries": [
+      "Residents of Nagaland"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Nagaland",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Up to limit."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Enrol.",
+        "url": "https://nagaland.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://nagaland.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Nagaland Health Insurance Scheme — official portal",
+        "url": "https://nagaland.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "od-bsky",
+    "name": "Biju Swasthya Kalyan Yojana (BSKY)",
+    "aliases": [
+      "BSKY"
+    ],
+    "scope": "state",
+    "stateId": "OR",
+    "government": "Government of Odisha",
+    "ministry": "Health and Family Welfare Department, Odisha",
+    "launchDate": "2018-08-15",
+    "launchYear": 2018,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless health cover to families.",
+    "targetBeneficiaries": [
+      "Families in Odisha"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Odisha",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Cover limit notified under the scheme."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At empanelled hospitals.",
+        "url": "https://odisha.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://odisha.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Biju Swasthya Kalyan Yojana — official portal",
+        "url": "https://odisha.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "merged",
+    "statusNote": "Merged into Gopabandhu Jan Arogya Yojana (2025).",
+    "supersededBy": [
+      "od-gopabandhu-jan-arogya"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "od-gopabandhu-jan-arogya",
+    "name": "Gopabandhu Jan Arogya Yojana (GJAY)",
+    "aliases": [
+      "GJAY"
+    ],
+    "scope": "state",
+    "stateId": "OR",
+    "government": "Government of Odisha",
+    "ministry": "Health and Family Welfare Department, Odisha",
+    "launchYear": 2025,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless secondary and tertiary care alongside AB PM-JAY.",
+    "targetBeneficiaries": [
+      "Families in Odisha"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Odisha",
+        "criteria": "Eligible families in Odisha."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "₹5 lakh per family per year, ₹10 lakh for women members."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At empanelled hospitals with the health card.",
+        "url": "https://odisha.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://odisha.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Gopabandhu Jan Arogya Yojana — official portal",
+        "url": "https://odisha.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "supersedes": [
+      "od-bsky"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "od-mission-shakti",
+    "name": "Mission Shakti (Odisha)",
+    "aliases": [
+      "Mission Shakti Odisha"
+    ],
+    "scope": "state",
+    "stateId": "OR",
+    "government": "Government of Odisha",
+    "ministry": "Mission Shakti Department, Odisha",
+    "launchYear": 2001,
+    "categories": [
+      "women-child",
+      "employment",
+      "financial-inclusion"
+    ],
+    "objectives": "Empower women through SHGs.",
+    "targetBeneficiaries": [
+      "Women SHG members"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Odisha",
+        "criteria": "Women in SHGs."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Credit and livelihoods",
+        "details": "Interest subvention and training."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Join an SHG.",
+        "url": "https://odisha.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://odisha.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mission Shakti — official portal",
+        "url": "https://odisha.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "od-subhadra",
+    "name": "Subhadra Yojana",
+    "aliases": [
+      "Subhadra"
+    ],
+    "scope": "state",
+    "stateId": "OR",
+    "government": "Government of Odisha",
+    "ministry": "Mission Shakti Department, Odisha",
+    "launchDate": "2024-09-17",
+    "launchYear": 2024,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide financial assistance to women.",
+    "targetBeneficiaries": [
+      "Women aged 21-60 in Odisha"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Odisha",
+        "criteria": "Odisha women aged 21-60, excluding taxpayers and government employees."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹10,000 per year for five years",
+        "details": "Paid in two instalments of ₹5,000 via DBT."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / offline",
+        "steps": "Apply through Mo Seba Kendras or the portal.",
+        "url": "https://subhadra.odisha.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://subhadra.odisha.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Subhadra Yojana — official portal",
+        "url": "https://subhadra.odisha.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pb-aam-aadmi-clinic",
+    "name": "Aam Aadmi Clinics",
+    "aliases": [
+      "Mohalla Clinics Punjab"
+    ],
+    "scope": "state",
+    "stateId": "PB",
+    "government": "Government of Punjab",
+    "ministry": "Department of Health and Family Welfare, Punjab",
+    "launchDate": "2022-08-15",
+    "launchYear": 2022,
+    "categories": [
+      "healthcare"
+    ],
+    "objectives": "Provide free primary health care.",
+    "targetBeneficiaries": [
+      "General population"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Punjab",
+        "criteria": "All residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free consultations, medicines and tests",
+        "details": "At neighbourhood clinics."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Visit the clinic.",
+        "url": "https://punjab.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://punjab.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Aam Aadmi Clinics — official portal",
+        "url": "https://punjab.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pb-ashirwad",
+    "name": "Ashirwad Scheme",
+    "aliases": [
+      "Shagun Scheme Punjab"
+    ],
+    "scope": "state",
+    "stateId": "PB",
+    "government": "Government of Punjab",
+    "ministry": "Department of Social Justice, Empowerment and Minorities, Punjab",
+    "launchDate": "2016-04-01",
+    "launchYear": 2016,
+    "categories": [
+      "women-child",
+      "sc-st-obc",
+      "social-security"
+    ],
+    "objectives": "Support marriages of girls from poor families.",
+    "targetBeneficiaries": [
+      "Girls from SC, BC, minority and EWS households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Punjab",
+        "criteria": "Eligible families within income limits."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cash assistance at marriage",
+        "details": "Amount notified by the state."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the portal.",
+        "url": "https://punjab.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://punjab.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Ashirwad Scheme — official portal",
+        "url": "https://punjab.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pb-mukh-mantri-sehat",
+    "name": "Mukh Mantri Sehat Yojana",
+    "aliases": [
+      "Mukh Mantri Sehat Bima Yojana",
+      "Punjab Health Card"
+    ],
+    "scope": "state",
+    "stateId": "PB",
+    "government": "Government of Punjab",
+    "ministry": "Department of Health and Family Welfare (State Health Agency), Punjab",
+    "launchYear": 2025,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide universal cashless health cover of up to ₹10 lakh per family per year.",
+    "targetBeneficiaries": [
+      "All families in Punjab"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Punjab",
+        "criteria": "All Punjab residents with a health card; Aadhaar and voter ID based registration."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment up to ₹10 lakh per year",
+        "details": "Covers secondary and tertiary care at empanelled hospitals, with a top-up on PM-JAY."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / camp",
+        "steps": "Register for a health card at a Seva Kendra, CSC or online.",
+        "url": "https://punjab.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://punjab.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukh Mantri Sehat Yojana — official portal",
+        "url": "https://punjab.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "The Tribune — Punjab Cabinet approves scheme",
+        "url": "https://www.tribuneindia.com/news/punjab/cm-approves-cashless-health-scheme",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "supersedes": [
+      "pb-sarbat-sehat-bima"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "pb-sarbat-sehat-bima",
+    "name": "Sarbat Sehat Bima Yojana",
+    "aliases": [
+      "SSBY"
+    ],
+    "scope": "state",
+    "stateId": "PB",
+    "government": "Government of Punjab",
+    "ministry": "Department of Health and Family Welfare (State Health Agency), Punjab",
+    "launchYear": 2019,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless health cover to eligible families.",
+    "targetBeneficiaries": [
+      "Eligible families in Punjab"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Punjab",
+        "criteria": "Eligible families under notified categories."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment up to ₹5 lakh",
+        "details": "Per family per year."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At empanelled hospitals.",
+        "url": "https://punjab.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://punjab.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Sarbat Sehat Bima Yojana — official portal",
+        "url": "https://punjab.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "replaced",
+    "statusNote": "Cover expanded to universal ₹10 lakh under Mukh Mantri Sehat Yojana.",
+    "supersededBy": [
+      "pb-mukh-mantri-sehat"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rj-chiranjeevi",
+    "name": "Mukhyamantri Chiranjeevi Swasthya Bima Yojana",
+    "aliases": [
+      "Chiranjeevi Yojana"
+    ],
+    "scope": "state",
+    "stateId": "RJ",
+    "government": "Government of Rajasthan",
+    "ministry": "Medical, Health and Family Welfare Department, Rajasthan",
+    "launchDate": "2021-05-01",
+    "launchYear": 2021,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide universal cashless health cover.",
+    "targetBeneficiaries": [
+      "Families in Rajasthan"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Rajasthan",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Up to ₹25 lakh."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At empanelled hospitals.",
+        "url": "https://rajasthan.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://rajasthan.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Chiranjeevi Swasthya Bima Yojana — official portal",
+        "url": "https://rajasthan.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "merged",
+    "statusNote": "Merged into MAA Yojana.",
+    "supersededBy": [
+      "rj-maa-yojana"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rj-maa-yojana",
+    "name": "Mukhyamantri Ayushman Arogya (MAA) Yojana",
+    "aliases": [
+      "MAA Yojana"
+    ],
+    "scope": "state",
+    "stateId": "RJ",
+    "government": "Government of Rajasthan",
+    "ministry": "Medical, Health and Family Welfare Department, Rajasthan",
+    "launchYear": 2024,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide cashless health cover integrated with AB PM-JAY.",
+    "targetBeneficiaries": [
+      "Families in Rajasthan"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Rajasthan",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Cover as notified by the state."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At empanelled hospitals.",
+        "url": "https://rajasthan.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://rajasthan.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Ayushman Arogya — official portal",
+        "url": "https://rajasthan.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "supersedes": [
+      "rj-chiranjeevi"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rj-palanhar",
+    "name": "Palanhar Yojana",
+    "aliases": [
+      "Palanhar"
+    ],
+    "scope": "state",
+    "stateId": "RJ",
+    "government": "Government of Rajasthan",
+    "ministry": "Women and Child Development Department, Rajasthan",
+    "launchYear": 2005,
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "objectives": "Support orphans and children in need.",
+    "targetBeneficiaries": [
+      "Orphans and vulnerable children"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Rajasthan",
+        "criteria": "Eligible children."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Monthly assistance",
+        "details": "Paid till the child turns 18."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on SSO portal.",
+        "url": "https://rajasthan.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://rajasthan.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Palanhar Yojana — official portal",
+        "url": "https://rajasthan.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "rj-rajshri",
+    "name": "Rajshri Yojana",
+    "aliases": [
+      "Mukhyamantri Rajshri Yojana"
+    ],
+    "scope": "state",
+    "stateId": "RJ",
+    "government": "Government of Rajasthan",
+    "ministry": "Women and Child Development Department, Rajasthan",
+    "launchYear": 2016,
+    "categories": [
+      "women-child",
+      "education",
+      "financial-inclusion"
+    ],
+    "objectives": "Encourage the birth and education of girls.",
+    "targetBeneficiaries": [
+      "Girl children"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Rajasthan",
+        "criteria": "Girls born in government hospitals."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹50,000 in stages",
+        "details": "Paid at birth, school and Class 12."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on portal.",
+        "url": "https://rajasthan.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://rajasthan.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Rajshri Yojana — official portal",
+        "url": "https://rajasthan.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "sk-cmses",
+    "name": "Chief Minister's Self Employment Scheme (CMSES)",
+    "aliases": [
+      "CMSES"
+    ],
+    "scope": "state",
+    "stateId": "SK",
+    "government": "Government of Sikkim",
+    "ministry": "Commerce and Industries Department, Sikkim",
+    "launchYear": 2018,
+    "categories": [
+      "msme",
+      "employment",
+      "financial-inclusion"
+    ],
+    "objectives": "Promote self-employment.",
+    "targetBeneficiaries": [
+      "Youth"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Sikkim",
+        "criteria": "Sikkim residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Subsidised loans",
+        "details": "Capital support."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://sikkim.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://sikkim.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Chief Minister's Self Employment Scheme — official portal",
+        "url": "https://sikkim.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "tn-cmchis",
+    "name": "Chief Minister's Comprehensive Health Insurance Scheme (CMCHIS)",
+    "aliases": [
+      "CMCHIS"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Health and Family Welfare Department, Tamil Nadu",
+    "launchYear": 2009,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Provide health insurance.",
+    "targetBeneficiaries": [
+      "Families with income up to ₹1.2 lakh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Tamil Nadu",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment up to ₹5 lakh",
+        "details": "At empanelled hospitals."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Enrol with the card.",
+        "url": "https://www.cmchistn.com"
+      }
+    ],
+    "officialUrls": [
+      "https://www.cmchistn.com"
+    ],
+    "sources": [
+      {
+        "title": "Chief Minister's Comprehensive Health Insurance Scheme — official portal",
+        "url": "https://www.cmchistn.com",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "tn-kaalai-unavu",
+    "name": "Mudhalamaichar Kaalai Unavu Thittam",
+    "aliases": [
+      "Breakfast Scheme"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "School Education Department, Tamil Nadu",
+    "launchDate": "2022-09-15",
+    "launchYear": 2022,
+    "categories": [
+      "education",
+      "women-child"
+    ],
+    "objectives": "Provide free breakfast to schoolchildren.",
+    "targetBeneficiaries": [
+      "Primary school students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Tamil Nadu",
+        "criteria": "Students in government schools."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free breakfast",
+        "details": "Daily."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At school.",
+        "url": "https://www.tn.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.tn.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mudhalamaichar Kaalai Unavu Thittam — official portal",
+        "url": "https://www.tn.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Verify under the new government (May 2026).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "tn-kmut",
+    "name": "Kalaignar Magalir Urimai Thogai (KMUT)",
+    "aliases": [
+      "Magalir Urimai Thogai",
+      "Urimai Thogai"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Social Welfare and Women Empowerment Department, Tamil Nadu",
+    "launchDate": "2023-09-15",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide monthly assistance to women heads of families.",
+    "targetBeneficiaries": [
+      "Women heads of families in Tamil Nadu"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Tamil Nadu",
+        "criteria": "Eligible women, excluding government employees, taxpayers and four-wheeler owners."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,000 per month",
+        "details": "Hike to ₹2,500 promised by the new government; not yet implemented."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on the portal.",
+        "url": "https://www.tn.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.tn.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Kalaignar Magalir Urimai Thogai — official portal",
+        "url": "https://www.tn.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "DT Next — hike modalities",
+        "url": "https://www.dtnext.in/news/tamilnadu/urimai-thogai-hike-on-cards-modalities-being-finalised-minister-k-jegadeshwari",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Being restructured by the TVK government since May 2026.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "tn-makkalai-thedi-maruthuvam",
+    "name": "Makkalai Thedi Maruthuvam",
+    "aliases": [
+      "MTM"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Health and Family Welfare Department, Tamil Nadu",
+    "launchDate": "2021-08-05",
+    "launchYear": 2021,
+    "categories": [
+      "healthcare"
+    ],
+    "objectives": "Provide doorstep health services.",
+    "targetBeneficiaries": [
+      "Residents"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Tamil Nadu",
+        "criteria": "Patients with chronic conditions."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Doorstep medicines and care",
+        "details": "Home-based services."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Visit by health workers.",
+        "url": "https://www.tn.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.tn.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Makkalai Thedi Maruthuvam — official portal",
+        "url": "https://www.tn.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Verify under the new government (May 2026).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "tn-naan-mudhalvan",
+    "name": "Naan Mudhalvan",
+    "aliases": [
+      "Naan Mudhalvan Skilling"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Tamil Nadu Skill Development Corporation",
+    "launchDate": "2022-03-01",
+    "launchYear": 2022,
+    "categories": [
+      "education",
+      "employment"
+    ],
+    "objectives": "Skill students for employment.",
+    "targetBeneficiaries": [
+      "Students and youth"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Tamil Nadu",
+        "criteria": "Students in TN colleges."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free skilling courses",
+        "details": "Industry-linked training."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register on the portal.",
+        "url": "https://www.tn.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.tn.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Naan Mudhalvan — official portal",
+        "url": "https://www.tn.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Verify under the new government (May 2026).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "tn-pudhumai-penn",
+    "name": "Moovalur Ramamirtham Ammaiyar Higher Education Assurance Scheme (Pudhumai Penn)",
+    "aliases": [
+      "Pudhumai Penn Scheme"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Social Welfare and Women Empowerment Department, TN",
+    "launchDate": "2022-09-05",
+    "launchYear": 2022,
+    "categories": [
+      "women-child",
+      "education",
+      "scholarships"
+    ],
+    "objectives": "Promote higher education among girl students who studied in government schools.",
+    "targetBeneficiaries": [
+      "Girl students pursuing higher education in TN"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Tamil Nadu",
+        "criteria": "Girls who studied from Class 6 to 12 in government schools and enrolled in higher education."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,000 monthly financial assistance",
+        "details": "Directly credited to student bank accounts until course completion."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply through institutional portals or social welfare department.",
+        "url": "https://www.tn.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.tn.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Government of Tamil Nadu portal",
+        "url": "https://www.tn.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24",
+    "statusNote": "Continued by the TVK government (May 2026)."
+  },
+  {
+    "id": "tn-tamil-pudhalvan",
+    "name": "Tamil Pudhalvan",
+    "aliases": [
+      "Tamil Puthalvan"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "School Education Department, Tamil Nadu",
+    "launchYear": 2024,
+    "categories": [
+      "scholarships",
+      "education"
+    ],
+    "objectives": "Support boys from government schools in higher education.",
+    "targetBeneficiaries": [
+      "Boy students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Tamil Nadu",
+        "criteria": "Boys who studied Class 6-12 in government schools."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,000 per month",
+        "details": "Until course completion."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Via institution.",
+        "url": "https://www.tn.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.tn.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Tamil Pudhalvan — official portal",
+        "url": "https://www.tn.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "UNI — continuation of schemes",
+        "url": "https://test.uniindia.com/under-one-of-the-2-flagship-schemes-of-dmk-regime-vijay-govt-deposits-rs-1-000-pm-for-students-rs-1k-for-women-housholds-under-kmut-soon/south/news/3843220.html",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Continued by the new government (May 2026).",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "tr-mmjay",
+    "name": "Mukhya Mantri Jan Arogya Yojana (Tripura)",
+    "aliases": [
+      "MMJAY Tripura"
+    ],
+    "scope": "state",
+    "stateId": "TR",
+    "government": "Government of Tripura",
+    "ministry": "Health Department, Tripura",
+    "launchYear": 2022,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Health insurance.",
+    "targetBeneficiaries": [
+      "Residents"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Tripura",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment",
+        "details": "Up to limit."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Enrol.",
+        "url": "https://tripura.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://tripura.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhya Mantri Jan Arogya Yojana — official portal",
+        "url": "https://tripura.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ts-aarogyasri",
+    "name": "Rajiv Aarogyasri",
+    "aliases": [
+      "Aarogyasri"
+    ],
+    "scope": "state",
+    "stateId": "TG",
+    "government": "Government of Telangana",
+    "ministry": "Health Department, Telangana",
+    "launchYear": 2007,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Cashless health cover.",
+    "targetBeneficiaries": [
+      "Families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Telangana",
+        "criteria": "White ration card holders."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Cashless treatment up to ₹10 lakh",
+        "details": "Raised in 2023."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "At hospitals.",
+        "url": "https://www.aarogyasri.telangana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.aarogyasri.telangana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Rajiv Aarogyasri — official portal",
+        "url": "https://www.aarogyasri.telangana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ts-gruha-jyothi",
+    "name": "Gruha Jyothi (Telangana)",
+    "aliases": [
+      "Gruha Jyothi Telangana"
+    ],
+    "scope": "state",
+    "stateId": "TG",
+    "government": "Government of Telangana",
+    "ministry": "Energy Department, Telangana",
+    "launchDate": "2024-02-27",
+    "launchYear": 2024,
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "objectives": "Free electricity.",
+    "targetBeneficiaries": [
+      "Households"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Telangana",
+        "criteria": "Domestic consumers with white ration card."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "200 units free",
+        "details": "Per month."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register.",
+        "url": "https://www.telangana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.telangana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Gruha Jyothi — official portal",
+        "url": "https://www.telangana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ts-indiramma-indlu",
+    "name": "Indiramma Indlu",
+    "aliases": [
+      "Indiramma Housing"
+    ],
+    "scope": "state",
+    "stateId": "TG",
+    "government": "Government of Telangana",
+    "ministry": "Housing Department, Telangana",
+    "launchDate": "2024-03-11",
+    "launchYear": 2024,
+    "categories": [
+      "housing"
+    ],
+    "objectives": "Housing for poor.",
+    "targetBeneficiaries": [
+      "Homeless families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Telangana",
+        "criteria": "Eligible households."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹5 lakh",
+        "details": "For house construction."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://www.telangana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.telangana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Indiramma Indlu — official portal",
+        "url": "https://www.telangana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ts-kalyana-lakshmi",
+    "name": "Kalyana Lakshmi / Shaadi Mubarak",
+    "aliases": [
+      "Shaadi Mubarak"
+    ],
+    "scope": "state",
+    "stateId": "TG",
+    "government": "Government of Telangana",
+    "ministry": "Social Welfare Department, Telangana",
+    "launchDate": "2014-10-02",
+    "launchYear": 2014,
+    "categories": [
+      "women-child",
+      "sc-st-obc",
+      "financial-inclusion"
+    ],
+    "objectives": "Marriage assistance.",
+    "targetBeneficiaries": [
+      "Brides from poor families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Telangana",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,00,116",
+        "details": "One-time."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://www.telangana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.telangana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Kalyana Lakshmi / Shaadi Mubarak — official portal",
+        "url": "https://www.telangana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ts-mahalakshmi",
+    "name": "Mahalakshmi (Free Bus Travel)",
+    "aliases": [
+      "Mahalakshmi Scheme"
+    ],
+    "scope": "state",
+    "stateId": "TG",
+    "government": "Government of Telangana",
+    "ministry": "Transport Department, Telangana",
+    "launchDate": "2023-12-09",
+    "launchYear": 2023,
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "objectives": "Free bus travel for women.",
+    "targetBeneficiaries": [
+      "Women and transgender persons"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Telangana",
+        "criteria": "Telangana residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free travel in TGSRTC buses",
+        "details": "Express and ordinary."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Show ID.",
+        "url": "https://www.telangana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.telangana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mahalakshmi — official portal",
+        "url": "https://www.telangana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ts-rythu-bandhu",
+    "name": "Rythu Bandhu",
+    "aliases": [
+      "Raitu Bandhu"
+    ],
+    "scope": "state",
+    "stateId": "TG",
+    "government": "Government of Telangana",
+    "ministry": "Agriculture Department, Telangana",
+    "launchDate": "2018-05-10",
+    "launchYear": 2018,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Investment support to farmers.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Telangana",
+        "criteria": "Landowners."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹10,000 per acre per year",
+        "details": "Two seasons."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Auto.",
+        "url": "https://www.telangana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.telangana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Rythu Bandhu — official portal",
+        "url": "https://www.telangana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "replaced",
+    "statusNote": "Replaced by Rythu Bharosa.",
+    "supersededBy": [
+      "ts-rythu-bharosa"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "ts-rythu-bharosa",
+    "name": "Rythu Bharosa",
+    "aliases": [
+      "Raitu Bharosa"
+    ],
+    "scope": "state",
+    "stateId": "TG",
+    "government": "Government of Telangana",
+    "ministry": "Agriculture Department, Telangana",
+    "launchDate": "2025-01-26",
+    "launchYear": 2025,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Investment support to farmers.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Telangana",
+        "criteria": "Eligible farmers."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹12,000 per acre per year",
+        "details": "Two seasons."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Auto.",
+        "url": "https://www.telangana.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://www.telangana.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Rythu Bharosa — official portal",
+        "url": "https://www.telangana.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "supersedes": [
+      "ts-rythu-bandhu"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "uk-atal-ayushman",
+    "name": "Atal Ayushman Uttarakhand Yojana",
+    "aliases": [
+      "Atal Ayushman"
+    ],
+    "scope": "state",
+    "stateId": "UK",
+    "government": "Government of Uttarakhand",
+    "ministry": "Health Department, Uttarakhand",
+    "launchYear": 2019,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Universal health cover.",
+    "targetBeneficiaries": [
+      "Residents"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Uttarakhand",
+        "criteria": "All families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹5 lakh cover",
+        "details": "Cashless."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Card.",
+        "url": "https://uk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://uk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Atal Ayushman Uttarakhand Yojana — official portal",
+        "url": "https://uk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "uk-nanda-gaura",
+    "name": "Nanda Gaura Devi Kanya Dhan Yojana",
+    "aliases": [
+      "Nanda Gaura"
+    ],
+    "scope": "state",
+    "stateId": "UK",
+    "government": "Government of Uttarakhand",
+    "ministry": "Women Empowerment and Child Development Department, Uttarakhand",
+    "launchYear": 2018,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Support girl child.",
+    "targetBeneficiaries": [
+      "Girls"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Uttarakhand",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Assistance at birth and 12th",
+        "details": "Cash."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://uk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://uk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Nanda Gaura Devi Kanya Dhan Yojana — official portal",
+        "url": "https://uk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "uk-swarojgar",
+    "name": "Mukhyamantri Swarojgar Yojana",
+    "aliases": [
+      "Swarojgar Yojana"
+    ],
+    "scope": "state",
+    "stateId": "UK",
+    "government": "Government of Uttarakhand",
+    "ministry": "Industries Department, Uttarakhand",
+    "launchYear": 2015,
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "objectives": "Self-employment support.",
+    "targetBeneficiaries": [
+      "Youth"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Uttarakhand",
+        "criteria": "Eligible residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Subsidised loans",
+        "details": "Capital."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Apply.",
+        "url": "https://uk.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://uk.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Swarojgar Yojana — official portal",
+        "url": "https://uk.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "up-bal-seva",
+    "name": "Mukhyamantri Bal Seva Yojana",
+    "aliases": [
+      "Bal Seva"
+    ],
+    "scope": "state",
+    "stateId": "UP",
+    "government": "Government of Uttar Pradesh",
+    "ministry": "Women and Child Welfare Department, Uttar Pradesh",
+    "launchYear": 2021,
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "objectives": "Support orphans.",
+    "targetBeneficiaries": [
+      "Orphans"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Uttar Pradesh",
+        "criteria": "Eligible children."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹4,000 per month",
+        "details": "Education support."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://up.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://up.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Bal Seva Yojana — official portal",
+        "url": "https://up.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "up-cm-yuva",
+    "name": "Mukhyamantri Yuva Udyami Vikas Abhiyan (CM YUVA)",
+    "aliases": [
+      "CM YUVA"
+    ],
+    "scope": "state",
+    "stateId": "UP",
+    "government": "Government of Uttar Pradesh",
+    "ministry": "MSME Department, Uttar Pradesh",
+    "launchDate": "2025-01-24",
+    "launchYear": 2025,
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "objectives": "Support youth entrepreneurs.",
+    "targetBeneficiaries": [
+      "Youth"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Uttar Pradesh",
+        "criteria": "Youth aged 21-40."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹5 lakh interest-free loan",
+        "details": "For entrepreneurs."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://up.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://up.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Yuva Udyami Vikas Abhiyan — official portal",
+        "url": "https://up.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "up-kanya-sumangala",
+    "name": "Mukhyamantri Kanya Sumangala Yojana",
+    "aliases": [
+      "Kanya Sumangala Yojana"
+    ],
+    "scope": "state",
+    "stateId": "UP",
+    "government": "Government of Uttar Pradesh",
+    "ministry": "Department of Women and Child Welfare, UP",
+    "launchDate": "2019-10-25",
+    "launchYear": 2019,
+    "categories": [
+      "women-child",
+      "education"
+    ],
+    "objectives": "Provide conditional cash transfers to families to foster health and educational standards of girl children.",
+    "targetBeneficiaries": [
+      "Girl children in Uttar Pradesh"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Uttar Pradesh",
+        "criteria": "Families residing in UP with annual income up to ₹3 lakh, maximum 2 girl children."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹25,000 across 6 milestones",
+        "details": "Assistance raised from ₹15,000 to ₹25,000 in 2024; disbursed from birth to graduation."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply on Kanya Sumangala portal.",
+        "url": "https://mksy.up.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://mksy.up.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "MKSY portal UP",
+        "url": "https://mksy.up.gov.in",
+        "accessed": "2026-10-11"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "up-samuhik-vivah",
+    "name": "Mukhyamantri Samuhik Vivah Yojana",
+    "aliases": [
+      "Samuhik Vivah"
+    ],
+    "scope": "state",
+    "stateId": "UP",
+    "government": "Government of Uttar Pradesh",
+    "ministry": "Social Welfare Department, Uttar Pradesh",
+    "launchYear": 2017,
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "objectives": "Assist marriages of poor families.",
+    "targetBeneficiaries": [
+      "Couples"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "Uttar Pradesh",
+        "criteria": "Eligible families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹51,000 per couple",
+        "details": "Includes ₹35,000 to bride."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Apply.",
+        "url": "https://up.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://up.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Mukhyamantri Samuhik Vivah Yojana — official portal",
+        "url": "https://up.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "wb-annapurna-bhandar",
+    "name": "Annapurna Bhandar",
+    "aliases": [
+      "Annapurna Yojana",
+      "Matri Shakti Bharosa"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Department of Women and Child Development and Social Welfare, West Bengal",
+    "launchDate": "2026-06-01",
+    "launchYear": 2026,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Provide monthly financial assistance to women.",
+    "targetBeneficiaries": [
+      "Women in West Bengal"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "West Bengal",
+        "criteria": "Women resident in WB; government employees, pensioners and income-tax payers excluded; fresh application and verification required."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹3,000 per month",
+        "details": "Via DBT."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online / offline",
+        "steps": "Fill the application form.",
+        "url": "https://wb.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://wb.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Annapurna Bhandar — official portal",
+        "url": "https://wb.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "Business Today — Annapurna vs Lakshmir Bhandar",
+        "url": "https://www.businesstoday.in/amp/personal-finance/news/story/annapurna-bhandar-vs-lakshmir-bhandar-what-changes-for-women-beneficiaries-in-west-bengal-533003-2026-05-24",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "supersedes": [
+      "wb-lakshmir-bhandar"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "wb-free-bus-women",
+    "name": "Free Bus Travel for Women (West Bengal)",
+    "aliases": [
+      "WB Free Bus"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Transport Department, West Bengal",
+    "launchDate": "2026-06-01",
+    "launchYear": 2026,
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "objectives": "Free travel in state-run buses.",
+    "targetBeneficiaries": [
+      "Women in WB"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "West Bengal",
+        "criteria": "Women residents."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Free travel",
+        "details": "State buses."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Show ID.",
+        "url": "https://wb.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://wb.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Free Bus Travel for Women — official portal",
+        "url": "https://wb.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "The Logical Indian — June 1 rollout",
+        "url": "https://thelogicalindian.com/west-bengal-to-introduce-womens-aid-ayushman-bharat-and-free-bus-travel-from-june-1/",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "wb-kanyashree",
+    "name": "Kanyashree Prakalpa",
+    "aliases": [
+      "Kanyashree"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Department of Women and Child Development and Social Welfare, West Bengal",
+    "launchYear": 2013,
+    "categories": [
+      "women-child",
+      "education",
+      "scholarships"
+    ],
+    "objectives": "Improve girls' education.",
+    "targetBeneficiaries": [
+      "Girl students"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "West Bengal",
+        "criteria": "Girls aged 13-18."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Annual scholarship and one-time grant",
+        "details": "K1 and K2."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Via school.",
+        "url": "https://wbkanyashree.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://wbkanyashree.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Kanyashree Prakalpa — official portal",
+        "url": "https://wbkanyashree.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Government change in 2026; verify.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "wb-krishak-bandhu",
+    "name": "Krishak Bandhu",
+    "aliases": [
+      "Krishak Bandhu Scheme"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Agriculture Department, West Bengal",
+    "launchYear": 2019,
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "objectives": "Farmer income and death benefit.",
+    "targetBeneficiaries": [
+      "Farmers"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "West Bengal",
+        "criteria": "Landowners."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "Assistance and ₹2 lakh death benefit",
+        "details": "Annual."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Register.",
+        "url": "https://wb.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://wb.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Krishak Bandhu — official portal",
+        "url": "https://wb.gov.in",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Government change in 2026; verify.",
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "wb-lakshmir-bhandar",
+    "name": "Lakshmir Bhandar",
+    "aliases": [
+      "Lakshmi Bhandar"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Department of Women and Child Development and Social Welfare, West Bengal",
+    "launchYear": 2021,
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "objectives": "Monthly assistance to women.",
+    "targetBeneficiaries": [
+      "Women"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "West Bengal",
+        "criteria": "Women in WB."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹1,500 per month",
+        "details": "General category."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Online",
+        "steps": "Duare Sarkar.",
+        "url": "https://wb.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://wb.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Lakshmir Bhandar — official portal",
+        "url": "https://wb.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "The Organiser — replacement",
+        "url": "https://organiser.org/2026/05/28/355502/bharat/wb-bjp-exposes-irregularities-in-tmcs-lakshmir-bhandar-scheme-says-30-lakh-ineligible-beneficiaries-received-funds/amp/",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "replaced",
+    "statusNote": "Replaced by Annapurna Bhandar from 1 June 2026; beneficiaries paid under old terms during verification.",
+    "supersededBy": [
+      "wb-annapurna-bhandar"
+    ],
+    "lastUpdated": "2026-10-24"
+  },
+  {
+    "id": "wb-swasthya-sathi",
+    "name": "Swasthya Sathi",
+    "aliases": [
+      "Swasthya Sathi Card"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Department of Health and Family Welfare, West Bengal",
+    "launchDate": "2016-12-01",
+    "launchYear": 2016,
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "objectives": "Cashless health cover.",
+    "targetBeneficiaries": [
+      "Families"
+    ],
+    "eligibility": [
+      {
+        "appliesTo": "West Bengal",
+        "criteria": "All families."
+      }
+    ],
+    "benefits": [
+      {
+        "summary": "₹5 lakh cover",
+        "details": "Cashless."
+      }
+    ],
+    "application": [
+      {
+        "channel": "Offline",
+        "steps": "Card.",
+        "url": "https://swasthyasathi.gov.in"
+      }
+    ],
+    "officialUrls": [
+      "https://swasthyasathi.gov.in"
+    ],
+    "sources": [
+      {
+        "title": "Swasthya Sathi — official portal",
+        "url": "https://swasthyasathi.gov.in",
+        "accessed": "2026-10-24"
+      },
+      {
+        "title": "National Herald — welfare uncertainty",
+        "url": "https://www.nationalheraldindia.com/amp/story/national/welfare-scheme-uncertainty-west-bengal-bjp-govt-maa-canteen-lakshmir-bhandar",
+        "accessed": "2026-10-24"
+      }
+    ],
+    "status": "active",
+    "statusNote": "Future uncertain; the new government is rolling out Ayushman Bharat from 1 June 2026.",
+    "lastUpdated": "2026-10-24"
+  }
+]
