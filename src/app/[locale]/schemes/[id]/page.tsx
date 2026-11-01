@@ -147,7 +147,7 @@ export default function SchemeDetailPage({ params }: PageProps) {
               <p className="text-base leading-relaxed text-text-secondary">{scheme.objectives}</p>
             </Panel>
 
-            <Panel title={td("benefits")} count={scheme.benefits.length}>
+            <Panel title={td("benefits")}>
               {scheme.benefits.length > 0 ? (
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {scheme.benefits.map((benefit, index) => (
@@ -163,7 +163,7 @@ export default function SchemeDetailPage({ params }: PageProps) {
               )}
             </Panel>
 
-            <Panel title={td("eligibility")} count={scheme.eligibility.length}>
+            <Panel title={td("eligibility")}>
               {scheme.eligibility.length > 0 ? (
                 <ul className="divide-y divide-border-light">
                   {scheme.eligibility.map((entry, index) => (
@@ -215,7 +215,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Panel({ title, count, children }: { title: string; count?: number; children: React.ReactNode }) {
+function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="card p-6">
       <div className="mb-4 flex items-center justify-between gap-3">

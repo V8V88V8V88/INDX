@@ -33,28 +33,30 @@ export default function SchemesPage() {
   const [stateId, setStateId] = useState("all");
   const [category, setCategory] = useState<"all" | SchemeCategory>("all");
   const [status, setStatus] = useState<StatusFilter>("all");
-  const all = schemes ?? [];
+  const all = useMemo(() => schemes ?? [], [schemes]);
   const stateOptions = useMemo(() => {
     const ids = new Set(all.map((s) => s.stateId).filter((v): v is string => Boolean(v)));
     return Array.from(ids).map((id) => ({ id, name: stateNameById.get(id) ?? id })).sort((a, b) => a.name.localeCompare(b.name));
   }, [all]);
-  const matches = (s: SchemeSummary, skip?: "category") => {
+  const matchingByOtherFilters = useMemo(() => all.filter((s) => {
     const term = search.trim().toLowerCase();
     if (scope !== "all" && s.scope !== scope) return false;
     if (stateId !== "all" && s.stateId !== stateId) return false;
     if (status !== "all" && s.status !== status) return false;
-    if (skip !== "category" && category !== "all" && !s.categories.includes(category)) return false;
     if (!term) return true;
     return [s.name, ...(s.aliases ?? []), s.ministry ?? "", s.government].join(" ").toLowerCase().includes(term);
-  };
+  }), [all, search, scope, stateId, status]);
 
-  const filtered = useMemo(() => all.filter((s) => matches(s)), [all, search, scope, stateId, category, status]);
+  const filtered = useMemo(
+    () => matchingByOtherFilters.filter((s) => category === "all" || s.categories.includes(category)),
+    [matchingByOtherFilters, category],
+  );
 
   const categoryCounts = useMemo(() => {
     const counts = new Map<SchemeCategory, number>();
-    all.filter((s) => matches(s, "category")).forEach((s) => s.categories.forEach((c) => counts.set(c, (counts.get(c) ?? 0) + 1)));
+    matchingByOtherFilters.forEach((s) => s.categories.forEach((c) => counts.set(c, (counts.get(c) ?? 0) + 1)));
     return counts;
-  }, [all, search, scope, stateId, status]);
+  }, [matchingByOtherFilters]);
 
   const scopeCount = (v: ScopeFilter) => (v === "all" ? all.length : all.filter((s) => s.scope === v).length);
   const hasFilters = search || scope !== "all" || stateId !== "all" || category !== "all" || status !== "all";
