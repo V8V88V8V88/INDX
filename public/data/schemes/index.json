@@ -1,0 +1,4464 @@
+[
+  {
+    "id": "abdm",
+    "name": "Ayushman Bharat Digital Mission (ABDM)",
+    "aliases": [
+      "ABDM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://abdm.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "agriculture-infrastructure-fund",
+    "name": "Agriculture Infrastructure Fund (AIF)",
+    "aliases": [
+      "AIF"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture",
+      "infrastructure",
+      "financial-inclusion"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://agriinfra.dac.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ahidf",
+    "name": "Animal Husbandry Infrastructure Development Fund (AHIDF)",
+    "aliases": [
+      "AHIDF"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "categories": [
+      "agriculture",
+      "msme",
+      "financial-inclusion"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://dahd.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "amrut-2",
+    "name": "AMRUT 2.0",
+    "aliases": [
+      "Atal Mission for Rejuvenation and Urban Transformation 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": [
+      "urban-development",
+      "infrastructure"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://mohua.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ap-annadata-sukhibhava",
+    "name": "Annadata Sukhibhava",
+    "aliases": [
+      "Annadata Sukhibhava PM-KISAN"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "Agriculture Department, Andhra Pradesh",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://www.ap.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ap-deepam-2",
+    "name": "Deepam 2.0",
+    "aliases": [
+      "Deepam Scheme",
+      "Free LPG cylinders AP"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "Civil Supplies Department, Andhra Pradesh",
+    "categories": [
+      "social-security",
+      "women-child"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.ap.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ap-ntr-bharosa-pension",
+    "name": "NTR Bharosa Pensions",
+    "aliases": [
+      "NTR Bharosa",
+      "YSR Pension Kanuka"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "Department of Rural Development (SERP), Andhra Pradesh",
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.ap.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ap-stree-shakti",
+    "name": "Stree Shakti (Free Bus Travel for Women)",
+    "aliases": [
+      "AP Free Bus Scheme"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "Transport Department, Andhra Pradesh",
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://www.ap.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ap-talliki-vandanam",
+    "name": "Talliki Vandanam",
+    "aliases": [
+      "Thalliki Vandanam"
+    ],
+    "scope": "state",
+    "stateId": "AP",
+    "government": "Government of Andhra Pradesh",
+    "ministry": "School Education Department, Andhra Pradesh",
+    "categories": [
+      "education",
+      "women-child"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://www.ap.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ar-cm-arogya-arunachal",
+    "name": "Chief Minister Arogya Arunachal Yojana (CMAAY)",
+    "aliases": [
+      "CMAAY"
+    ],
+    "scope": "state",
+    "stateId": "AR",
+    "government": "Government of Arunachal Pradesh",
+    "ministry": "Department of Health and Family Welfare, Arunachal Pradesh",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://arunachalpradesh.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "as-orunodoi",
+    "name": "Orunodoi",
+    "aliases": [
+      "Orunodoi 3.0"
+    ],
+    "scope": "state",
+    "stateId": "AS",
+    "government": "Government of Assam",
+    "ministry": "Finance Department, Assam",
+    "categories": [
+      "women-child",
+      "social-security",
+      "financial-inclusion"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://orunodoi.assam.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "atal-pension-yojana",
+    "name": "Atal Pension Yojana (APY)",
+    "aliases": [
+      "APY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "social-security",
+      "senior-citizens",
+      "financial-inclusion"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://www.npscra.nsdl.co.in",
+    "file": "central"
+  },
+  {
+    "id": "ayushman-bharat-pmjay",
+    "name": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)",
+    "aliases": [
+      "PM-JAY",
+      "Ayushman Bharat"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://pmjay.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ayushman-vay-vandana",
+    "name": "Ayushman Vay Vandana Card (AB PM-JAY, 70+)",
+    "aliases": [
+      "AB PM-JAY Vay Vandana",
+      "Vay Vandana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare",
+      "senior-citizens",
+      "social-security"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://pmjay.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "beti-bachao-beti-padhao",
+    "name": "Beti Bachao Beti Padhao (BBBP)",
+    "aliases": [
+      "BBBP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "categories": [
+      "women-child",
+      "education"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://wcd.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "br-balika-cycle",
+    "name": "Mukhyamantri Balika Cycle Yojana",
+    "aliases": [
+      "Balika Cycle Yojana"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Education Department, Bihar",
+    "categories": [
+      "education",
+      "women-child"
+    ],
+    "launchYear": 2007,
+    "status": "active",
+    "officialUrl": "https://state.bihar.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "br-jeevika",
+    "name": "Bihar Rural Livelihoods Promotion Society (JEEViKA)",
+    "aliases": [
+      "JEEViKA",
+      "Bihar Jeevika"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Rural Development Department, Bihar",
+    "categories": [
+      "rural-development",
+      "women-child",
+      "employment"
+    ],
+    "launchYear": 2006,
+    "status": "active",
+    "officialUrl": "https://state.bihar.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "br-kanya-utthan",
+    "name": "Mukhyamantri Kanya Utthan Yojana",
+    "aliases": [
+      "Kanya Utthan Yojana"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Social Welfare Department, Bihar",
+    "categories": [
+      "women-child",
+      "education",
+      "scholarships"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://state.bihar.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "br-mahila-rozgar",
+    "name": "Mukhyamantri Mahila Rozgar Yojana",
+    "aliases": [
+      "MMRY Bihar"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Rural Development Department (JEEViKA), Bihar",
+    "categories": [
+      "women-child",
+      "employment",
+      "financial-inclusion"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://state.bihar.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "br-student-credit-card",
+    "name": "Bihar Student Credit Card Scheme",
+    "aliases": [
+      "BSCC"
+    ],
+    "scope": "state",
+    "stateId": "BR",
+    "government": "Government of Bihar",
+    "ministry": "Education Department, Bihar",
+    "categories": [
+      "education",
+      "scholarships",
+      "financial-inclusion"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://state.bihar.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "cg-godhan-nyay",
+    "name": "Godhan Nyay Yojana",
+    "aliases": [
+      "Godhan Nyay"
+    ],
+    "scope": "state",
+    "stateId": "CG",
+    "government": "Government of Chhattisgarh",
+    "ministry": "Agriculture Department, Chhattisgarh",
+    "categories": [
+      "agriculture",
+      "rural-development"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://cgstate.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "cg-krishak-unnati",
+    "name": "Krishak Unnati Yojana",
+    "aliases": [
+      "Krishi Unnati Yojana"
+    ],
+    "scope": "state",
+    "stateId": "CG",
+    "government": "Government of Chhattisgarh",
+    "ministry": "Agriculture Development Department, Chhattisgarh",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://cgstate.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "cg-mahtari-vandan",
+    "name": "Mahtari Vandan Yojana",
+    "aliases": [
+      "Mahtari Vandan"
+    ],
+    "scope": "state",
+    "stateId": "CG",
+    "government": "Government of Chhattisgarh",
+    "ministry": "Women and Child Development Department, Chhattisgarh",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://cgstate.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "cgtmse",
+    "name": "Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTMSE)",
+    "aliases": [
+      "CGTMSE"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "categories": [
+      "msme",
+      "financial-inclusion"
+    ],
+    "launchYear": 2000,
+    "status": "active",
+    "officialUrl": "https://www.cgtmse.in",
+    "file": "central"
+  },
+  {
+    "id": "ch-destitute-women",
+    "name": "Financial Assistance to Destitute Women (Chandigarh)",
+    "aliases": [
+      "Chandigarh Widow Pension"
+    ],
+    "scope": "Union Territories",
+    "stateId": "CH",
+    "government": "Chandigarh Administration",
+    "ministry": "Social Welfare Department, Chandigarh",
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "launchYear": 1990,
+    "status": "active",
+    "officialUrl": "https://chandigarh.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "ch-old-age-samman",
+    "name": "Old Age Samman Allowance (Chandigarh)",
+    "aliases": [
+      "OASA Chandigarh"
+    ],
+    "scope": "Union Territories",
+    "stateId": "CH",
+    "government": "Chandigarh Administration",
+    "ministry": "Social Welfare Department, Chandigarh",
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "launchYear": 1990,
+    "status": "active",
+    "officialUrl": "https://chandigarh.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dajgua",
+    "name": "Dharti Aaba Janjatiya Gram Utkarsh Abhiyan (DAJGUA)",
+    "aliases": [
+      "PM-JUGA",
+      "Dharti Aaba Abhiyan"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Tribal Affairs",
+    "categories": [
+      "sc-st-obc",
+      "rural-development",
+      "infrastructure"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://tribal.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "day-nrlm",
+    "name": "Deendayal Antyodaya Yojana – National Rural Livelihoods Mission (DAY-NRLM)",
+    "aliases": [
+      "DAY-NRLM",
+      "NRLM",
+      "Aajeevika"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "rural-development",
+      "women-child",
+      "employment",
+      "financial-inclusion"
+    ],
+    "launchYear": 2011,
+    "status": "active",
+    "officialUrl": "https://nrlm.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ddu-gky",
+    "name": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana (DDU-GKY)",
+    "aliases": [
+      "DDU-GKY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "employment",
+      "rural-development"
+    ],
+    "launchYear": 2014,
+    "status": "active",
+    "officialUrl": "https://ddugky.info",
+    "file": "central"
+  },
+  {
+    "id": "ddugjy",
+    "name": "Deen Dayal Upadhyaya Gram Jyoti Yojana (DDUGJY)",
+    "aliases": [
+      "DDUGJY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Power",
+    "categories": [
+      "infrastructure",
+      "rural-development"
+    ],
+    "launchYear": 2014,
+    "status": "merged",
+    "officialUrl": "https://powermin.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "digital-india",
+    "name": "Digital India",
+    "aliases": [
+      "Digital India Programme"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Electronics and Information Technology",
+    "categories": [
+      "infrastructure"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://www.digitalindia.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "dl-ayushman-pmjay",
+    "name": "Ayushman Bharat PM-JAY (Delhi) with Delhi top-up",
+    "aliases": [
+      "Delhi Ayushman"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Health and Family Welfare Department, Delhi",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-electricity-subsidy",
+    "name": "Delhi Electricity Subsidy Scheme",
+    "aliases": [
+      "Delhi 200 units free"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Power Department, Delhi",
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-farishtey",
+    "name": "Farishtey Dilli Ke",
+    "aliases": [
+      "Farishtey"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Transport Department, Delhi",
+    "categories": [
+      "healthcare"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-free-bus-travel-women",
+    "name": "Delhi Free Bus Travel Scheme for Women",
+    "aliases": [
+      "Delhi Free Bus Ride"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Transport Department, Delhi",
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-free-water",
+    "name": "Delhi Free Water Scheme",
+    "aliases": [
+      "Jal Board free water"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Delhi Jal Board",
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-jai-bhim-pratibha",
+    "name": "Jai Bhim Mukhyamantri Pratibha Vikas Yojana",
+    "aliases": [
+      "JBMPVY"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Social Welfare Department, Delhi",
+    "categories": [
+      "education",
+      "sc-st-obc",
+      "scholarships"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-ladli",
+    "name": "Delhi Ladli Scheme",
+    "aliases": [
+      "Ladli Delhi"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Women and Child Development Department, Delhi",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2008,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-lakshmi-yojana",
+    "name": "Delhi Lakshmi Yojana",
+    "aliases": [
+      "Mahila Samriddhi Yojana"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Women and Child Development Department, Delhi",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2026,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-mohalla-clinic",
+    "name": "Aam Aadmi Mohalla Clinics",
+    "aliases": [
+      "Mohalla Clinic",
+      "Ayushman Arogya Mandir Delhi"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Health and Family Welfare Department, Delhi",
+    "categories": [
+      "healthcare"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-old-age-pension",
+    "name": "Delhi Old Age Pension Scheme",
+    "aliases": [
+      "Delhi Pension"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Social Welfare Department, Delhi",
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "launchYear": 1982,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "dl-tirth-yatra",
+    "name": "Mukhyamantri Tirth Yatra Yojana",
+    "aliases": [
+      "Delhi Tirth Yatra"
+    ],
+    "scope": "Union Territories",
+    "stateId": "DL",
+    "government": "Government of NCT of Delhi",
+    "ministry": "Revenue Department, Delhi",
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://delhi.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "e-nam",
+    "name": "National Agriculture Market (e-NAM)",
+    "aliases": [
+      "eNAM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://enam.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "e-shram",
+    "name": "e-Shram",
+    "aliases": [
+      "eSHRAM",
+      "e-Shram portal"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Labour and Employment",
+    "categories": [
+      "employment",
+      "social-security"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://eshram.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "eklavya-model-residential-schools",
+    "name": "Eklavya Model Residential Schools (EMRS)",
+    "aliases": [
+      "EMRS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Tribal Affairs",
+    "categories": [
+      "education",
+      "sc-st-obc",
+      "infrastructure"
+    ],
+    "launchYear": 1997,
+    "status": "active",
+    "officialUrl": "https://emrs.tribal.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "esanjeevani",
+    "name": "eSanjeevani",
+    "aliases": [
+      "e-Sanjeevani"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://esanjeevani.mohfw.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ga-dayanand-social-security",
+    "name": "Dayanand Social Security Scheme (DSSS)",
+    "aliases": [
+      "DSSS"
+    ],
+    "scope": "state",
+    "stateId": "GA",
+    "government": "Government of Goa",
+    "ministry": "Directorate of Social Welfare, Goa",
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "launchYear": 1987,
+    "status": "active",
+    "officialUrl": "https://www.goa.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ga-griha-aadhar",
+    "name": "Griha Aadhar Scheme",
+    "aliases": [
+      "Griha Aadhar"
+    ],
+    "scope": "state",
+    "stateId": "GA",
+    "government": "Government of Goa",
+    "ministry": "Women and Child Development Department, Goa",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2012,
+    "status": "active",
+    "officialUrl": "https://www.goa.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ga-ladli-laxmi",
+    "name": "Ladli Laxmi Scheme (Goa)",
+    "aliases": [
+      "Laadli Laxmi Goa"
+    ],
+    "scope": "state",
+    "stateId": "GA",
+    "government": "Government of Goa",
+    "ministry": "Women and Child Development Department, Goa",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2013,
+    "status": "active",
+    "officialUrl": "https://www.goa.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "gj-kisan-suryodaya",
+    "name": "Kisan Suryodaya Yojana",
+    "aliases": [
+      "KSY"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Energy and Petrochemicals Department, Gujarat",
+    "categories": [
+      "agriculture",
+      "infrastructure"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://gujaratindia.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "gj-ma-vatsalya",
+    "name": "Mukhyamantri Amrutum / MA Vatsalya",
+    "aliases": [
+      "MA Yojana",
+      "PMJAY-MA"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Health and Family Welfare Department, Gujarat",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2012,
+    "status": "active",
+    "officialUrl": "https://gujaratindia.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "gj-namo-lakshmi",
+    "name": "Namo Lakshmi Yojana",
+    "aliases": [
+      "Namo Lakshmi"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Education Department, Gujarat",
+    "categories": [
+      "education",
+      "women-child",
+      "scholarships"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://gujaratindia.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "gj-namo-saraswati",
+    "name": "Namo Saraswati Vigyan Sadhana Yojana",
+    "aliases": [
+      "Namo Saraswati"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Education Department, Gujarat",
+    "categories": [
+      "education",
+      "scholarships"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://gujaratindia.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "gj-vahali-dikri",
+    "name": "Vahali Dikri Yojana",
+    "aliases": [
+      "Vahali Dikri"
+    ],
+    "scope": "state",
+    "stateId": "GJ",
+    "government": "Government of Gujarat",
+    "ministry": "Women and Child Development Department, Gujarat",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://gujaratindia.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "hp-natural-farming",
+    "name": "Rajiv Gandhi Prakritik Kheti Khushhal Kisan Yojana",
+    "aliases": [
+      "Prakritik Kheti"
+    ],
+    "scope": "state",
+    "stateId": "HP",
+    "government": "Government of Himachal Pradesh",
+    "ministry": "Agriculture Department, Himachal Pradesh",
+    "categories": [
+      "agriculture"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://himachal.nic.in",
+    "file": "states"
+  },
+  {
+    "id": "hp-sukh-aashray",
+    "name": "Mukhya Mantri Sukh Aashray Yojana",
+    "aliases": [
+      "Sukh Aashray"
+    ],
+    "scope": "state",
+    "stateId": "HP",
+    "government": "Government of Himachal Pradesh",
+    "ministry": "Social Justice and Empowerment Department, Himachal Pradesh",
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://himachal.nic.in",
+    "file": "states"
+  },
+  {
+    "id": "hr-bhavantar-bharpai",
+    "name": "Bhavantar Bharpai Yojana",
+    "aliases": [
+      "BBY Haryana"
+    ],
+    "scope": "state",
+    "stateId": "HR",
+    "government": "Government of Haryana",
+    "ministry": "Horticulture Department, Haryana",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2017,
+    "status": "active",
+    "officialUrl": "https://haryana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "hr-lado-lakshmi",
+    "name": "Lado Lakshmi Yojana",
+    "aliases": [
+      "Lado Lakshmi"
+    ],
+    "scope": "state",
+    "stateId": "HR",
+    "government": "Government of Haryana",
+    "ministry": "Women and Child Development Department, Haryana",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://haryana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "hr-meri-fasal-mera-byora",
+    "name": "Meri Fasal Mera Byora",
+    "aliases": [
+      "MFMB"
+    ],
+    "scope": "state",
+    "stateId": "HR",
+    "government": "Government of Haryana",
+    "ministry": "Agriculture Department, Haryana",
+    "categories": [
+      "agriculture"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://haryana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "icds",
+    "name": "Integrated Child Development Services (ICDS)",
+    "aliases": [
+      "ICDS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "categories": [
+      "women-child",
+      "healthcare",
+      "education"
+    ],
+    "launchYear": 1975,
+    "status": "merged",
+    "officialUrl": "https://wcd.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "indira-awaas-yojana",
+    "name": "Indira Awaas Yojana (IAY)",
+    "aliases": [
+      "IAY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "housing",
+      "rural-development"
+    ],
+    "launchYear": 1985,
+    "status": "renamed",
+    "officialUrl": "https://pmayg.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "industrial-development-scheme-jk",
+    "name": "New Central Sector Scheme for Industrial Development of Jammu and Kashmir",
+    "aliases": [
+      "J&K Industrial Development Scheme"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Commerce and Industry",
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://www.dpiit.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "jal-jeevan-mission",
+    "name": "Jal Jeevan Mission (Har Ghar Jal)",
+    "aliases": [
+      "JJM",
+      "Har Ghar Jal"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Jal Shakti",
+    "categories": [
+      "rural-development",
+      "infrastructure",
+      "healthcare"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://jaljeevanmission.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "janani-suraksha-yojana",
+    "name": "Janani Suraksha Yojana (JSY)",
+    "aliases": [
+      "JSY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare",
+      "women-child"
+    ],
+    "launchYear": 2005,
+    "status": "active",
+    "officialUrl": "https://nhm.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "jh-fasal-rahat",
+    "name": "Mukhyamantri Rajya Fasal Rahat Yojana",
+    "aliases": [
+      "Fasal Rahat"
+    ],
+    "scope": "state",
+    "stateId": "JH",
+    "government": "Government of Jharkhand",
+    "ministry": "Agriculture Department, Jharkhand",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://www.jharkhand.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "jh-maiyan-samman",
+    "name": "Mukhyamantri Maiyan Samman Yojana",
+    "aliases": [
+      "Maiyan Samman"
+    ],
+    "scope": "state",
+    "stateId": "JH",
+    "government": "Government of Jharkhand",
+    "ministry": "Department of Women, Child Development and Social Security, Jharkhand",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.jharkhand.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "jh-sarvjan-pension",
+    "name": "Sarvjan Pension Yojana",
+    "aliases": [
+      "Sarvjan Pension"
+    ],
+    "scope": "state",
+    "stateId": "JH",
+    "government": "Government of Jharkhand",
+    "ministry": "Department of Women, Child Development and Social Security, Jharkhand",
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://www.jharkhand.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "jh-savitribai-phule-kishori",
+    "name": "Savitribai Phule Kishori Samriddhi Yojana",
+    "aliases": [
+      "SPKSY"
+    ],
+    "scope": "state",
+    "stateId": "JH",
+    "government": "Government of Jharkhand",
+    "ministry": "Department of Women, Child Development and Social Security, Jharkhand",
+    "categories": [
+      "women-child",
+      "education",
+      "scholarships"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://www.jharkhand.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "jk-back-to-village",
+    "name": "Back to Village Programme",
+    "aliases": [
+      "B2V"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Rural Development Department, J&K",
+    "categories": [
+      "rural-development"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://jk.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "jk-hadp",
+    "name": "Holistic Agriculture Development Programme (HADP)",
+    "aliases": [
+      "HADP"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Agriculture Production Department, J&K",
+    "categories": [
+      "agriculture"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://jk.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "jk-health-scheme",
+    "name": "Jammu and Kashmir Health Scheme (SEHAT)",
+    "aliases": [
+      "JK SEHAT Scheme"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Department of Health and Medical Education, J&K",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://www.jkhealth.org",
+    "file": "union-territories"
+  },
+  {
+    "id": "jk-himayat",
+    "name": "Himayat",
+    "aliases": [
+      "Himayat Skill"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Department of Skill Development, J&K",
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "launchYear": 2011,
+    "status": "active",
+    "officialUrl": "https://jk.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "jk-iss-pension",
+    "name": "Integrated Social Security Scheme (ISSS)",
+    "aliases": [
+      "ISSS Pension"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Social Welfare Department, J&K",
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "launchYear": 2008,
+    "status": "active",
+    "officialUrl": "https://jk.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "jk-ladli-beti",
+    "name": "Ladli Beti Scheme (J&K)",
+    "aliases": [
+      "Ladli Beti"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Social Welfare Department, J&K",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://jk.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "jk-mission-youth",
+    "name": "Mission Youth",
+    "aliases": [
+      "JK Mission Youth"
+    ],
+    "scope": "Union Territories",
+    "stateId": "JK",
+    "government": "Government of Jammu and Kashmir",
+    "ministry": "Mission Youth, J&K",
+    "categories": [
+      "employment",
+      "msme"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://jk.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "jssk",
+    "name": "Janani Shishu Suraksha Karyakram (JSSK)",
+    "aliases": [
+      "JSSK"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare",
+      "women-child"
+    ],
+    "launchYear": 2011,
+    "status": "active",
+    "officialUrl": "https://nhm.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ka-anna-bhagya",
+    "name": "Anna Bhagya",
+    "aliases": [
+      "Anna Bhagya Yojana"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Food and Civil Supplies Department, Karnataka",
+    "categories": [
+      "social-security"
+    ],
+    "launchYear": 2013,
+    "status": "active",
+    "officialUrl": "https://sevasindhu.karnataka.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ka-gruha-jyothi",
+    "name": "Gruha Jyothi",
+    "aliases": [
+      "Gruha Jyothi Yojana"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Energy Department, Karnataka",
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://sevasindhu.karnataka.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ka-gruha-lakshmi",
+    "name": "Gruha Lakshmi",
+    "aliases": [
+      "Gruha Lakshmi Yojana"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Department of Women and Child Development, Karnataka",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://sevasindhu.karnataka.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ka-shakti",
+    "name": "Shakti Scheme",
+    "aliases": [
+      "Shakti Bus Scheme"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Transport Department, Karnataka",
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://sevasindhu.karnataka.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ka-yuva-nidhi",
+    "name": "Yuva Nidhi",
+    "aliases": [
+      "Yuva Nidhi Yojana"
+    ],
+    "scope": "state",
+    "stateId": "KA",
+    "government": "Government of Karnataka",
+    "ministry": "Skill Development Department, Karnataka",
+    "categories": [
+      "employment",
+      "education",
+      "financial-inclusion"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://sevasindhu.karnataka.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "kisan-credit-card",
+    "name": "Kisan Credit Card (KCC)",
+    "aliases": [
+      "KCC"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 1998,
+    "status": "active",
+    "officialUrl": "https://pmkisan.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "kl-kasp",
+    "name": "Karunya Arogya Suraksha Padhathi (KASP)",
+    "aliases": [
+      "KASP"
+    ],
+    "scope": "state",
+    "stateId": "KL",
+    "government": "Government of Kerala",
+    "ministry": "State Health Agency, Kerala",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://sha.kerala.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "kl-kudumbashree",
+    "name": "Kudumbashree",
+    "aliases": [
+      "Kudumbashree Mission"
+    ],
+    "scope": "state",
+    "stateId": "KL",
+    "government": "Government of Kerala",
+    "ministry": "Local Self-Government Department, Kerala",
+    "categories": [
+      "women-child",
+      "rural-development",
+      "urban-development",
+      "employment"
+    ],
+    "launchYear": 1998,
+    "status": "active",
+    "officialUrl": "https://www.kudumbashree.org",
+    "file": "states"
+  },
+  {
+    "id": "kl-life-mission",
+    "name": "Livelihood Inclusion and Financial Empowerment (LIFE) Mission",
+    "aliases": [
+      "LIFE Mission"
+    ],
+    "scope": "state",
+    "stateId": "KL",
+    "government": "Government of Kerala",
+    "ministry": "Local Self-Government Department, Kerala",
+    "categories": [
+      "housing"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://kerala.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "lakhpati-didi",
+    "name": "Lakhpati Didi Scheme",
+    "aliases": [
+      "Lakhpati Didi"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "women-child",
+      "employment",
+      "rural-development"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://nrlm.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "mahila-samman-savings-certificate",
+    "name": "Mahila Samman Savings Certificate (MSSC)",
+    "aliases": [
+      "MSSC"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2023,
+    "status": "closed",
+    "officialUrl": "https://www.indiapost.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "mgnrega",
+    "name": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)",
+    "aliases": [
+      "MGNREGA",
+      "NREGA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "employment",
+      "rural-development"
+    ],
+    "launchYear": 2006,
+    "status": "replaced",
+    "officialUrl": "https://nrega.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "mh-ladki-bahin",
+    "name": "Mukhyamantri Majhi Ladki Bahin Yojana",
+    "aliases": [
+      "Ladki Bahin Yojana"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Department of Women and Child Development, Maharashtra",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://ladkibahin.maharashtra.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mh-lek-ladki",
+    "name": "Lek Ladki Yojana",
+    "aliases": [
+      "Lek Ladki"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Women and Child Development Department, Maharashtra",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://www.maharashtra.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mh-mjpjay",
+    "name": "Mahatma Jyotirao Phule Jan Arogya Yojana (MJPJAY)",
+    "aliases": [
+      "MJPJAY"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Public Health Department, Maharashtra",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2012,
+    "status": "active",
+    "officialUrl": "https://www.maharashtra.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mh-namo-shetkari",
+    "name": "Namo Shetkari Mahasanman Nidhi Yojana",
+    "aliases": [
+      "Namo Shetkari"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Agriculture Department, Maharashtra",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://www.maharashtra.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mh-vayoshri",
+    "name": "Mukhyamantri Vayoshri Yojana",
+    "aliases": [
+      "Vayoshri"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Social Justice Department, Maharashtra",
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.maharashtra.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mh-yuva-karya-prashikshan",
+    "name": "Mukhyamantri Yuva Karya Prashikshan Yojana",
+    "aliases": [
+      "CM-YKPY"
+    ],
+    "scope": "state",
+    "stateId": "MH",
+    "government": "Government of Maharashtra",
+    "ministry": "Skill Development Department, Maharashtra",
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.maharashtra.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mission-indradhanush",
+    "name": "Mission Indradhanush",
+    "aliases": [
+      "Intensified Mission Indradhanush"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare",
+      "women-child"
+    ],
+    "launchYear": 2014,
+    "status": "active",
+    "officialUrl": "https://www.mohfw.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "mission-shakti",
+    "name": "Mission Shakti",
+    "aliases": [
+      "Sambal",
+      "Samarthya"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "categories": [
+      "women-child"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://missionshakti.wcd.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ml-cm-elevate",
+    "name": "Chief Minister's Entrepreneurship Elevate (CM ELEVATE)",
+    "aliases": [
+      "CM ELEVATE"
+    ],
+    "scope": "state",
+    "stateId": "ML",
+    "government": "Government of Meghalaya",
+    "ministry": "Planning Department, Meghalaya",
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://meghalaya.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ml-mhis",
+    "name": "Megha Health Insurance Scheme (MHIS)",
+    "aliases": [
+      "MHIS"
+    ],
+    "scope": "state",
+    "stateId": "ML",
+    "government": "Government of Meghalaya",
+    "ministry": "Health Department, Meghalaya",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2012,
+    "status": "active",
+    "officialUrl": "https://meghalaya.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mn-cmht",
+    "name": "Chief Minister Gi Hakshelgi Tengbang (CMHT)",
+    "aliases": [
+      "CMHT"
+    ],
+    "scope": "state",
+    "stateId": "MN",
+    "government": "Government of Manipur",
+    "ministry": "Health Department, Manipur",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2017,
+    "status": "active",
+    "officialUrl": "https://manipur.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mp-kisan-kalyan",
+    "name": "Mukhyamantri Kisan Kalyan Yojana",
+    "aliases": [
+      "Kisan Kalyan Yojana"
+    ],
+    "scope": "state",
+    "stateId": "MP",
+    "government": "Government of Madhya Pradesh",
+    "ministry": "Farmer Welfare Department, Madhya Pradesh",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://mp.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mp-ladli-behna",
+    "name": "Mukhyamantri Ladli Behna Yojana",
+    "aliases": [
+      "Ladli Behna Yojana MP"
+    ],
+    "scope": "state",
+    "stateId": "MP",
+    "government": "Government of Madhya Pradesh",
+    "ministry": "Department of Women and Child Development, MP",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://cmladlibehna.mp.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mp-ladli-laxmi",
+    "name": "Ladli Laxmi Yojana",
+    "aliases": [
+      "Ladli Laxmi"
+    ],
+    "scope": "state",
+    "stateId": "MP",
+    "government": "Government of Madhya Pradesh",
+    "ministry": "Women and Child Development Department, Madhya Pradesh",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2007,
+    "status": "active",
+    "officialUrl": "https://mp.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mp-teerth-darshan",
+    "name": "Mukhyamantri Teerth Darshan Yojana",
+    "aliases": [
+      "Teerth Darshan"
+    ],
+    "scope": "state",
+    "stateId": "MP",
+    "government": "Government of Madhya Pradesh",
+    "ministry": "Department of Religious Trusts and Endowments, Madhya Pradesh",
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "launchYear": 2012,
+    "status": "active",
+    "officialUrl": "https://mp.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mz-mshcs",
+    "name": "Mizoram State Health Care Scheme (MSHCS)",
+    "aliases": [
+      "MSHCS"
+    ],
+    "scope": "state",
+    "stateId": "MZ",
+    "government": "Government of Mizoram",
+    "ministry": "Health Department, Mizoram",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2008,
+    "status": "active",
+    "officialUrl": "https://mizoram.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "mz-nlup",
+    "name": "New Land Use Policy (NLUP)",
+    "aliases": [
+      "NLUP"
+    ],
+    "scope": "state",
+    "stateId": "MZ",
+    "government": "Government of Mizoram",
+    "ministry": "Land Resources, Soil and Water Conservation Department, Mizoram",
+    "categories": [
+      "agriculture",
+      "rural-development"
+    ],
+    "launchYear": 2011,
+    "status": "active",
+    "officialUrl": "https://mizoram.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "namo-drone-didi",
+    "name": "Namo Drone Didi",
+    "aliases": [
+      "Drone Didi"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture",
+      "women-child",
+      "employment"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://agriwelfare.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "naps",
+    "name": "National Apprenticeship Promotion Scheme (NAPS)",
+    "aliases": [
+      "NAPS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://www.apprenticeshipindia.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "national-health-mission",
+    "name": "National Health Mission (NHM)",
+    "aliases": [
+      "NHM",
+      "NRHM",
+      "NUHM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare",
+      "rural-development",
+      "urban-development"
+    ],
+    "launchYear": 2013,
+    "status": "active",
+    "officialUrl": "https://nhm.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "national-pension-system",
+    "name": "National Pension System (NPS)",
+    "aliases": [
+      "NPS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "social-security",
+      "financial-inclusion",
+      "senior-citizens"
+    ],
+    "launchYear": 2004,
+    "status": "active",
+    "officialUrl": "https://www.npscra.nsdl.co.in",
+    "file": "central"
+  },
+  {
+    "id": "national-social-assistance-programme",
+    "name": "National Social Assistance Programme (NSAP)",
+    "aliases": [
+      "NSAP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "social-security",
+      "senior-citizens",
+      "sc-st-obc"
+    ],
+    "launchYear": 1995,
+    "status": "active",
+    "officialUrl": "https://nsap.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "nfsa",
+    "name": "National Food Security Act (NFSA)",
+    "aliases": [
+      "NFSA",
+      "Food Security Act"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "categories": [
+      "social-security",
+      "rural-development",
+      "urban-development"
+    ],
+    "launchYear": 2013,
+    "status": "active",
+    "officialUrl": "https://dfpd.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ni-kshay-poshan-yojana",
+    "name": "Ni-kshay Poshan Yojana",
+    "aliases": [
+      "NPY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://nikshay.in",
+    "file": "central"
+  },
+  {
+    "id": "nipun-bharat",
+    "name": "National Initiative for Proficiency in Reading with Understanding and Numeracy (NIPUN Bharat)",
+    "aliases": [
+      "NIPUN Bharat"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "education"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://education.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "nl-nhis",
+    "name": "Nagaland Health Insurance Scheme (NHIS)",
+    "aliases": [
+      "NHIS"
+    ],
+    "scope": "state",
+    "stateId": "NL",
+    "government": "Government of Nagaland",
+    "ministry": "Health Department, Nagaland",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://nagaland.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "nmms",
+    "name": "National Means-cum-Merit Scholarship Scheme (NMMSS)",
+    "aliases": [
+      "NMMS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "scholarships",
+      "education"
+    ],
+    "launchYear": 2008,
+    "status": "active",
+    "officialUrl": "https://scholarships.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "nps-vatsalya",
+    "name": "NPS Vatsalya",
+    "aliases": [
+      "National Pension System Vatsalya"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "social-security",
+      "financial-inclusion",
+      "women-child"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.npscra.nsdl.co.in",
+    "file": "central"
+  },
+  {
+    "id": "od-bsky",
+    "name": "Biju Swasthya Kalyan Yojana (BSKY)",
+    "aliases": [
+      "BSKY"
+    ],
+    "scope": "state",
+    "stateId": "OD",
+    "government": "Government of Odisha",
+    "ministry": "Health and Family Welfare Department, Odisha",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2018,
+    "status": "merged",
+    "officialUrl": "https://odisha.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "od-gopabandhu-jan-arogya",
+    "name": "Gopabandhu Jan Arogya Yojana (GJAY)",
+    "aliases": [
+      "GJAY"
+    ],
+    "scope": "state",
+    "stateId": "OD",
+    "government": "Government of Odisha",
+    "ministry": "Health and Family Welfare Department, Odisha",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://odisha.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "od-mission-shakti",
+    "name": "Mission Shakti (Odisha)",
+    "aliases": [
+      "Mission Shakti Odisha"
+    ],
+    "scope": "state",
+    "stateId": "OD",
+    "government": "Government of Odisha",
+    "ministry": "Mission Shakti Department, Odisha",
+    "categories": [
+      "women-child",
+      "employment",
+      "financial-inclusion"
+    ],
+    "launchYear": 2001,
+    "status": "active",
+    "officialUrl": "https://odisha.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "od-subhadra",
+    "name": "Subhadra Yojana",
+    "aliases": [
+      "Subhadra"
+    ],
+    "scope": "state",
+    "stateId": "OD",
+    "government": "Government of Odisha",
+    "ministry": "Mission Shakti Department, Odisha",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://subhadra.odisha.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "odop",
+    "name": "One District One Product (ODOP)",
+    "aliases": [
+      "ODOP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Commerce and Industry",
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://dpiit.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "one-nation-one-ration-card",
+    "name": "One Nation One Ration Card (ONORC)",
+    "aliases": [
+      "ONORC",
+      "One Nation One Ration Card"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "categories": [
+      "social-security",
+      "financial-inclusion",
+      "rural-development",
+      "urban-development"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://dfpd.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pahal-dbtl",
+    "name": "PAHAL (Direct Benefit Transfer for LPG)",
+    "aliases": [
+      "PAHAL",
+      "DBTL"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Petroleum and Natural Gas",
+    "categories": [
+      "financial-inclusion",
+      "social-security"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://mylpg.in",
+    "file": "central"
+  },
+  {
+    "id": "pb-aam-aadmi-clinic",
+    "name": "Aam Aadmi Clinics",
+    "aliases": [
+      "Mohalla Clinics Punjab"
+    ],
+    "scope": "state",
+    "stateId": "PB",
+    "government": "Government of Punjab",
+    "ministry": "Department of Health and Family Welfare, Punjab",
+    "categories": [
+      "healthcare"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://punjab.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "pb-ashirwad",
+    "name": "Ashirwad Scheme",
+    "aliases": [
+      "Shagun Scheme Punjab"
+    ],
+    "scope": "state",
+    "stateId": "PB",
+    "government": "Government of Punjab",
+    "ministry": "Department of Social Justice, Empowerment and Minorities, Punjab",
+    "categories": [
+      "women-child",
+      "sc-st-obc",
+      "social-security"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://punjab.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "pb-mukh-mantri-sehat",
+    "name": "Mukh Mantri Sehat Yojana",
+    "aliases": [
+      "Mukh Mantri Sehat Bima Yojana",
+      "Punjab Health Card"
+    ],
+    "scope": "state",
+    "stateId": "PB",
+    "government": "Government of Punjab",
+    "ministry": "Department of Health and Family Welfare (State Health Agency), Punjab",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://punjab.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "pb-sarbat-sehat-bima",
+    "name": "Sarbat Sehat Bima Yojana",
+    "aliases": [
+      "SSBY"
+    ],
+    "scope": "state",
+    "stateId": "PB",
+    "government": "Government of Punjab",
+    "ministry": "Department of Health and Family Welfare (State Health Agency), Punjab",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2019,
+    "status": "replaced",
+    "officialUrl": "https://punjab.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "pkvy",
+    "name": "Paramparagat Krishi Vikas Yojana (PKVY)",
+    "aliases": [
+      "PKVY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://pgsindia-ncof.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-aasha",
+    "name": "Pradhan Mantri Annadata Aay SanraksHan Abhiyan (PM-AASHA)",
+    "aliases": [
+      "PM-AASHA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://agriwelfare.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-abhim",
+    "name": "PM Ayushman Bharat Health Infrastructure Mission (PM-ABHIM)",
+    "aliases": [
+      "PM-ABHIM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare",
+      "infrastructure"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://nhm.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-ajay",
+    "name": "Pradhan Mantri Anusuchit Jaati Abhyuday Yojana (PM-AJAY)",
+    "aliases": [
+      "PM-AJAY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "categories": [
+      "sc-st-obc",
+      "rural-development",
+      "employment"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://socialjustice.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-daksh",
+    "name": "PM-DAKSH",
+    "aliases": [
+      "PM DAKSH"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "categories": [
+      "employment",
+      "sc-st-obc"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://pmdaksh.dosje.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-dhan-dhaanya",
+    "name": "Pradhan Mantri Dhan-Dhaanya Krishi Yojana",
+    "aliases": [
+      "PM-DDKY",
+      "PM Dhan Dhaanya"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture",
+      "rural-development"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://agriwelfare.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-e-drive",
+    "name": "PM Electric Drive Revolution in Innovative Vehicle Enhancement (PM E-DRIVE)",
+    "aliases": [
+      "PM E-DRIVE"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Heavy Industries",
+    "categories": [
+      "infrastructure",
+      "urban-development"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://heavyindustries.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-e-vidya",
+    "name": "PM eVIDYA",
+    "aliases": [
+      "PM e-Vidya"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "education"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://pmevidya.education.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-ebus-sewa",
+    "name": "PM-eBus Sewa",
+    "aliases": [
+      "PM eBus Sewa"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": [
+      "infrastructure",
+      "urban-development"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://mohua.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-garib-kalyan-anna-yojana",
+    "name": "Pradhan Mantri Garib Kalyan Anna Yojana (PMGKAY)",
+    "aliases": [
+      "PMGKAY",
+      "Garib Kalyan Anna Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "categories": [
+      "social-security",
+      "financial-inclusion"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://dfpd.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-internship-scheme",
+    "name": "PM Internship Scheme",
+    "aliases": [
+      "PMIS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Corporate Affairs",
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://pminternship.mca.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-janman",
+    "name": "PM Janjati Adivasi Nyaya Maha Abhiyan (PM-JANMAN)",
+    "aliases": [
+      "PM-JANMAN"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Tribal Affairs",
+    "categories": [
+      "sc-st-obc",
+      "housing",
+      "infrastructure",
+      "healthcare"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://tribal.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-kisan",
+    "name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+    "aliases": [
+      "PM-KISAN",
+      "PMKisan"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://pmkisan.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-kmy",
+    "name": "Pradhan Mantri Kisan Maandhan Yojana (PM-KMY)",
+    "aliases": [
+      "PM-KMY",
+      "Kisan Maandhan"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture",
+      "senior-citizens",
+      "social-security"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://maandhan.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-kusum",
+    "name": "PM-KUSUM",
+    "aliases": [
+      "Pradhan Mantri Kisan Urja Suraksha evam Utthaan Mahabhiyan"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of New and Renewable Energy",
+    "categories": [
+      "agriculture",
+      "infrastructure",
+      "rural-development"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://pmkusum.mnre.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-mudra-yojana",
+    "name": "Pradhan Mantri MUDRA Yojana (PMMY)",
+    "aliases": [
+      "PMMY",
+      "MUDRA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "msme",
+      "financial-inclusion",
+      "employment"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://www.mudra.org.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-national-dialysis",
+    "name": "Pradhan Mantri National Dialysis Programme",
+    "aliases": [
+      "PMNDP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Health and Family Welfare",
+    "categories": [
+      "healthcare"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://nhm.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-poshan",
+    "name": "PM POSHAN (Pradhan Mantri Poshan Shakti Nirman)",
+    "aliases": [
+      "PM POSHAN",
+      "Mid-Day Meal Scheme",
+      "MDM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "education",
+      "healthcare",
+      "women-child"
+    ],
+    "launchYear": 1995,
+    "status": "active",
+    "officialUrl": "https://education.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-shri",
+    "name": "PM Schools for Rising India (PM SHRI)",
+    "aliases": [
+      "PM SHRI"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "education",
+      "infrastructure"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://pmshree.education.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-surya-ghar",
+    "name": "PM Surya Ghar: Muft Bijli Yojana",
+    "aliases": [
+      "PM Surya Ghar",
+      "Muft Bijli Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of New and Renewable Energy",
+    "categories": [
+      "infrastructure",
+      "urban-development",
+      "rural-development"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://pmsuryaghar.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-svanidhi",
+    "name": "PM Street Vendor's AtmaNirbhar Nidhi (PM-SVANidhi)",
+    "aliases": [
+      "PM-SVANidhi",
+      "SVANidhi"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": [
+      "msme",
+      "urban-development",
+      "financial-inclusion"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://pmsvanidhi.mohua.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-sym",
+    "name": "Pradhan Mantri Shram Yogi Maan-dhan (PM-SYM)",
+    "aliases": [
+      "PM-SYM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Labour and Employment",
+    "categories": [
+      "social-security",
+      "employment",
+      "senior-citizens"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://maandhan.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-usha",
+    "name": "Pradhan Mantri Uchchatar Shiksha Abhiyan (PM-USHA)",
+    "aliases": [
+      "PM-USHA",
+      "RUSA 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "education",
+      "infrastructure"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://education.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-vbry",
+    "name": "Pradhan Mantri Viksit Bharat Rozgar Yojana (PM-VBRY)",
+    "aliases": [
+      "PM-VBRY",
+      "Employment Linked Incentive",
+      "ELI Scheme"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Labour and Employment",
+    "categories": [
+      "employment"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://labour.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-vidyalaxmi",
+    "name": "PM-Vidyalaxmi",
+    "aliases": [
+      "PM Vidyalakshmi"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "education",
+      "financial-inclusion",
+      "scholarships"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://pmvidyalaxmi.co.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-vikas",
+    "name": "PM Virasat Ka Samvardhan (PM VIKAS)",
+    "aliases": [
+      "PM VIKAS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Minority Affairs",
+    "categories": [
+      "msme",
+      "employment",
+      "education"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://minorityaffairs.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-vishwakarma",
+    "name": "PM Vishwakarma",
+    "aliases": [
+      "PM Vishwakarma Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "categories": [
+      "msme",
+      "employment",
+      "sc-st-obc"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://pmvishwakarma.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-wani",
+    "name": "PM Wi-Fi Access Network Interface (PM-WANI)",
+    "aliases": [
+      "PM-WANI"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Communications",
+    "categories": [
+      "infrastructure"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://pmwani.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pm-yasasvi",
+    "name": "PM YASASVI",
+    "aliases": [
+      "PM YASASVI Scholarship"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "categories": [
+      "scholarships",
+      "education",
+      "sc-st-obc"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://scholarships.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmay-gramin",
+    "name": "Pradhan Mantri Awas Yojana – Gramin (PMAY-G)",
+    "aliases": [
+      "PMAY-G",
+      "PMAY Gramin"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "housing",
+      "rural-development"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://pmayg.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "pmay-urban",
+    "name": "Pradhan Mantri Awas Yojana – Urban (PMAY-U)",
+    "aliases": [
+      "PMAY-U",
+      "PMAY Urban",
+      "Housing for All Urban"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": [
+      "housing",
+      "urban-development"
+    ],
+    "launchYear": 2015,
+    "status": "replaced",
+    "officialUrl": "https://pmay-urban.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmay-urban-2",
+    "name": "Pradhan Mantri Awas Yojana – Urban 2.0 (PMAY-U 2.0)",
+    "aliases": [
+      "PMAY-U 2.0",
+      "PMAY Urban 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": [
+      "housing",
+      "urban-development"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://pmay-urban.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmbjp",
+    "name": "Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBJP)",
+    "aliases": [
+      "Jan Aushadhi",
+      "PMBJP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Chemicals and Fertilizers",
+    "categories": [
+      "healthcare"
+    ],
+    "launchYear": 2008,
+    "status": "active",
+    "officialUrl": "https://janaushadhi.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmdp-jk",
+    "name": "Prime Minister's Development Package for Jammu and Kashmir",
+    "aliases": [
+      "PMDP J&K"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Home Affairs",
+    "categories": [
+      "infrastructure",
+      "rural-development"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://mha.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmegp",
+    "name": "Prime Minister's Employment Generation Programme (PMEGP)",
+    "aliases": [
+      "PMEGP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "launchYear": 2008,
+    "status": "active",
+    "officialUrl": "https://www.kviconline.gov.in/pmegpeportal",
+    "file": "central"
+  },
+  {
+    "id": "pmfby",
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "aliases": [
+      "PMFBY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://pmfby.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmfme",
+    "name": "PM Formalisation of Micro Food Processing Enterprises (PMFME)",
+    "aliases": [
+      "PMFME"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Food Processing Industries",
+    "categories": [
+      "msme",
+      "agriculture",
+      "employment"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://pmfme.mofpi.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmgsy",
+    "name": "Pradhan Mantri Gram Sadak Yojana (PMGSY)",
+    "aliases": [
+      "PMGSY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "rural-development",
+      "infrastructure"
+    ],
+    "launchYear": 2000,
+    "status": "active",
+    "officialUrl": "https://pmgsy.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "pmjdy",
+    "name": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
+    "aliases": [
+      "PMJDY",
+      "Jan Dhan Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "financial-inclusion"
+    ],
+    "launchYear": 2014,
+    "status": "active",
+    "officialUrl": "https://pmjdy.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmjjby",
+    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
+    "aliases": [
+      "PMJJBY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "social-security",
+      "financial-inclusion"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://jansuraksha.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmksy",
+    "name": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
+    "aliases": [
+      "PMKSY",
+      "Per Drop More Crop"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture",
+      "rural-development",
+      "infrastructure"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://pmksy.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmkvy",
+    "name": "Pradhan Mantri Kaushal Vikas Yojana (PMKVY)",
+    "aliases": [
+      "PMKVY",
+      "Skill India"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Skill Development and Entrepreneurship",
+    "categories": [
+      "employment",
+      "education"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://www.pmkvyofficial.org",
+    "file": "central"
+  },
+  {
+    "id": "pmmsy",
+    "name": "Pradhan Mantri Matsya Sampada Yojana (PMMSY)",
+    "aliases": [
+      "PMMSY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "categories": [
+      "agriculture",
+      "employment"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://pmmsy.dof.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmmvy",
+    "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    "aliases": [
+      "PMMVY",
+      "Matru Vandana Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "categories": [
+      "women-child",
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2017,
+    "status": "active",
+    "officialUrl": "https://pmmvy.wcd.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmsby",
+    "name": "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
+    "aliases": [
+      "PMSBY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "social-security",
+      "financial-inclusion"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://jansuraksha.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmuy",
+    "name": "Pradhan Mantri Ujjwala Yojana (PMUY)",
+    "aliases": [
+      "PMUY",
+      "Ujjwala Yojana"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Petroleum and Natural Gas",
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://pmuy.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "pmvvy",
+    "name": "Pradhan Mantri Vaya Vandana Yojana (PMVVY)",
+    "aliases": [
+      "PMVVY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "launchYear": 2017,
+    "status": "closed",
+    "officialUrl": "https://licindia.in",
+    "file": "central"
+  },
+  {
+    "id": "poshan-2",
+    "name": "Saksham Anganwadi and Poshan 2.0",
+    "aliases": [
+      "Poshan 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "categories": [
+      "women-child",
+      "healthcare"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://poshantracker.in",
+    "file": "central"
+  },
+  {
+    "id": "poshan-abhiyaan",
+    "name": "POSHAN Abhiyaan",
+    "aliases": [
+      "National Nutrition Mission"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Women and Child Development",
+    "categories": [
+      "women-child",
+      "healthcare"
+    ],
+    "launchYear": 2018,
+    "status": "merged",
+    "officialUrl": "https://poshantracker.in",
+    "file": "central"
+  },
+  {
+    "id": "post-matric-scholarship-sc",
+    "name": "Post Matric Scholarship for Scheduled Castes",
+    "aliases": [
+      "PMS-SC"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "categories": [
+      "scholarships",
+      "education",
+      "sc-st-obc"
+    ],
+    "launchYear": 1944,
+    "status": "active",
+    "officialUrl": "https://scholarships.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "ppf",
+    "name": "Public Provident Fund (PPF)",
+    "aliases": [
+      "PPF"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "financial-inclusion",
+      "social-security"
+    ],
+    "launchYear": 1968,
+    "status": "active",
+    "officialUrl": "https://www.indiapost.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "py-girl-child",
+    "name": "Girl Child Protection Scheme (Puducherry)",
+    "aliases": [
+      "Puducherry Girl Child"
+    ],
+    "scope": "Union Territories",
+    "stateId": "PY",
+    "government": "Government of Puducherry",
+    "ministry": "Social Welfare Department, Puducherry",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 1992,
+    "status": "active",
+    "officialUrl": "https://py.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "py-old-age-pension",
+    "name": "Puducherry Old Age Pension Scheme",
+    "aliases": [
+      "Puducherry OAP"
+    ],
+    "scope": "Union Territories",
+    "stateId": "PY",
+    "government": "Government of Puducherry",
+    "ministry": "Department of Social Welfare, Puducherry",
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "launchYear": 1980,
+    "status": "active",
+    "officialUrl": "https://py.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "py-widow-pension",
+    "name": "Puducherry Widow Pension Scheme",
+    "aliases": [
+      "Puducherry Widow Pension"
+    ],
+    "scope": "Union Territories",
+    "stateId": "PY",
+    "government": "Government of Puducherry",
+    "ministry": "Social Welfare Department, Puducherry",
+    "categories": [
+      "social-security",
+      "women-child"
+    ],
+    "launchYear": 1980,
+    "status": "active",
+    "officialUrl": "https://py.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "py-women-head-1000",
+    "name": "Monthly Assistance to Women Heads of Families (Puducherry)",
+    "aliases": [
+      "Puducherry ₹1,000 scheme"
+    ],
+    "scope": "Union Territories",
+    "stateId": "PY",
+    "government": "Government of Puducherry",
+    "ministry": "Women and Child Development Department, Puducherry",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://py.gov.in",
+    "file": "union-territories"
+  },
+  {
+    "id": "rashtriya-gokul-mission",
+    "name": "Rashtriya Gokul Mission (RGM)",
+    "aliases": [
+      "RGM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "categories": [
+      "agriculture",
+      "rural-development"
+    ],
+    "launchYear": 2014,
+    "status": "active",
+    "officialUrl": "https://dahd.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "rashtriya-gram-swaraj-abhiyan",
+    "name": "Rashtriya Gram Swaraj Abhiyan (RGSA)",
+    "aliases": [
+      "RGSA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Panchayati Raj",
+    "categories": [
+      "rural-development"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://panchayat.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "rashtriya-swasthya-bima-yojana",
+    "name": "Rashtriya Swasthya Bima Yojana (RSBY)",
+    "aliases": [
+      "RSBY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Labour and Employment",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2008,
+    "status": "merged",
+    "officialUrl": "https://pmjay.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "rashtriya-vayoshri-yojana",
+    "name": "Rashtriya Vayoshri Yojana (RVY)",
+    "aliases": [
+      "RVY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "categories": [
+      "senior-citizens",
+      "social-security"
+    ],
+    "launchYear": 2017,
+    "status": "active",
+    "officialUrl": "https://socialjustice.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "rdss",
+    "name": "Revamped Distribution Sector Scheme (RDSS)",
+    "aliases": [
+      "RDSS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Power",
+    "categories": [
+      "infrastructure"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://powermin.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "rj-chiranjeevi",
+    "name": "Mukhyamantri Chiranjeevi Swasthya Bima Yojana",
+    "aliases": [
+      "Chiranjeevi Yojana"
+    ],
+    "scope": "state",
+    "stateId": "RJ",
+    "government": "Government of Rajasthan",
+    "ministry": "Medical, Health and Family Welfare Department, Rajasthan",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2021,
+    "status": "merged",
+    "officialUrl": "https://rajasthan.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "rj-maa-yojana",
+    "name": "Mukhyamantri Ayushman Arogya (MAA) Yojana",
+    "aliases": [
+      "MAA Yojana"
+    ],
+    "scope": "state",
+    "stateId": "RJ",
+    "government": "Government of Rajasthan",
+    "ministry": "Medical, Health and Family Welfare Department, Rajasthan",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://rajasthan.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "rj-palanhar",
+    "name": "Palanhar Yojana",
+    "aliases": [
+      "Palanhar"
+    ],
+    "scope": "state",
+    "stateId": "RJ",
+    "government": "Government of Rajasthan",
+    "ministry": "Women and Child Development Department, Rajasthan",
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "launchYear": 2005,
+    "status": "active",
+    "officialUrl": "https://rajasthan.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "rj-rajshri",
+    "name": "Rajshri Yojana",
+    "aliases": [
+      "Mukhyamantri Rajshri Yojana"
+    ],
+    "scope": "state",
+    "stateId": "RJ",
+    "government": "Government of Rajasthan",
+    "ministry": "Women and Child Development Department, Rajasthan",
+    "categories": [
+      "women-child",
+      "education",
+      "financial-inclusion"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://rajasthan.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "rkvy",
+    "name": "Rashtriya Krishi Vikas Yojana (RKVY)",
+    "aliases": [
+      "RKVY",
+      "PM-RKVY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture"
+    ],
+    "launchYear": 2007,
+    "status": "active",
+    "officialUrl": "https://rkvy.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "samagra-shiksha",
+    "name": "Samagra Shiksha",
+    "aliases": [
+      "Samagra Shiksha Abhiyan",
+      "SSA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "education"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://samagrashiksha.education.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "sarva-shiksha-abhiyan",
+    "name": "Sarva Shiksha Abhiyan (SSA)",
+    "aliases": [
+      "SSA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Education",
+    "categories": [
+      "education"
+    ],
+    "launchYear": 2001,
+    "status": "merged",
+    "officialUrl": "https://samagra.education.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "saubhagya",
+    "name": "Saubhagya (Pradhan Mantri Sahaj Bijli Har Ghar Yojana)",
+    "aliases": [
+      "SAUBHAGYA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Power",
+    "categories": [
+      "infrastructure",
+      "rural-development"
+    ],
+    "launchYear": 2017,
+    "status": "closed",
+    "officialUrl": "https://saubhagya.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "scss",
+    "name": "Senior Citizens' Savings Scheme (SCSS)",
+    "aliases": [
+      "SCSS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "senior-citizens",
+      "social-security",
+      "financial-inclusion"
+    ],
+    "launchYear": 2004,
+    "status": "active",
+    "officialUrl": "https://www.indiapost.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "sk-cmses",
+    "name": "Chief Minister's Self Employment Scheme (CMSES)",
+    "aliases": [
+      "CMSES"
+    ],
+    "scope": "state",
+    "stateId": "SK",
+    "government": "Government of Sikkim",
+    "ministry": "Commerce and Industries Department, Sikkim",
+    "categories": [
+      "msme",
+      "employment",
+      "financial-inclusion"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://sikkim.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "smart-cities-mission",
+    "name": "Smart Cities Mission",
+    "aliases": [
+      "SCM"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": [
+      "urban-development",
+      "infrastructure"
+    ],
+    "launchYear": 2015,
+    "status": "closed",
+    "officialUrl": "https://smartcities.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "soil-health-card",
+    "name": "Soil Health Card Scheme",
+    "aliases": [
+      "SHC"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "categories": [
+      "agriculture"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://soilhealth.dac.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "stand-up-india",
+    "name": "Stand Up India",
+    "aliases": [
+      "StandUp India",
+      "Stand-Up India Scheme"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "msme",
+      "financial-inclusion",
+      "sc-st-obc"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://www.standupmitra.in",
+    "file": "central"
+  },
+  {
+    "id": "startup-india",
+    "name": "Startup India",
+    "aliases": [
+      "Startup India Initiative"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Commerce and Industry",
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://www.startupindia.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "sugamya-bharat-abhiyan",
+    "name": "Accessible India Campaign (Sugamya Bharat Abhiyan)",
+    "aliases": [
+      "Sugamya Bharat"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Social Justice and Empowerment",
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://disabilityaffairs.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "sukanya-samriddhi",
+    "name": "Sukanya Samriddhi Yojana (SSY)",
+    "aliases": [
+      "SSY"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://www.indiapost.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "svamitva",
+    "name": "SVAMITVA Scheme",
+    "aliases": [
+      "SVAMITVA"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Panchayati Raj",
+    "categories": [
+      "rural-development"
+    ],
+    "launchYear": 2020,
+    "status": "active",
+    "officialUrl": "https://svamitva.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "swachh-bharat-mission-gramin",
+    "name": "Swachh Bharat Mission – Gramin (SBM-G)",
+    "aliases": [
+      "SBM-G"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Jal Shakti",
+    "categories": [
+      "rural-development",
+      "healthcare"
+    ],
+    "launchYear": 2014,
+    "status": "active",
+    "officialUrl": "https://swachhbharatmission.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "swachh-bharat-mission-urban-2",
+    "name": "Swachh Bharat Mission – Urban 2.0 (SBM-U 2.0)",
+    "aliases": [
+      "SBM-U 2.0"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "categories": [
+      "urban-development",
+      "infrastructure"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://sbmurban.org",
+    "file": "central"
+  },
+  {
+    "id": "tn-cmchis",
+    "name": "Chief Minister's Comprehensive Health Insurance Scheme (CMCHIS)",
+    "aliases": [
+      "CMCHIS"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Health and Family Welfare Department, Tamil Nadu",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2009,
+    "status": "active",
+    "officialUrl": "https://www.cmchistn.com",
+    "file": "states"
+  },
+  {
+    "id": "tn-kaalai-unavu",
+    "name": "Mudhalamaichar Kaalai Unavu Thittam",
+    "aliases": [
+      "Breakfast Scheme"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "School Education Department, Tamil Nadu",
+    "categories": [
+      "education",
+      "women-child"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://www.tn.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "tn-kmut",
+    "name": "Kalaignar Magalir Urimai Thogai (KMUT)",
+    "aliases": [
+      "Magalir Urimai Thogai",
+      "Urimai Thogai"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Social Welfare and Women Empowerment Department, Tamil Nadu",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://www.tn.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "tn-makkalai-thedi-maruthuvam",
+    "name": "Makkalai Thedi Maruthuvam",
+    "aliases": [
+      "MTM"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Health and Family Welfare Department, Tamil Nadu",
+    "categories": [
+      "healthcare"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://www.tn.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "tn-naan-mudhalvan",
+    "name": "Naan Mudhalvan",
+    "aliases": [
+      "Naan Mudhalvan Skilling"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Tamil Nadu Skill Development Corporation",
+    "categories": [
+      "education",
+      "employment"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://www.tn.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "tn-pudhumai-penn",
+    "name": "Moovalur Ramamirtham Ammaiyar Higher Education Assurance Scheme (Pudhumai Penn)",
+    "aliases": [
+      "Pudhumai Penn Scheme"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "Social Welfare and Women Empowerment Department, TN",
+    "categories": [
+      "women-child",
+      "education",
+      "scholarships"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://www.tn.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "tn-tamil-pudhalvan",
+    "name": "Tamil Pudhalvan",
+    "aliases": [
+      "Tamil Puthalvan"
+    ],
+    "scope": "state",
+    "stateId": "TN",
+    "government": "Government of Tamil Nadu",
+    "ministry": "School Education Department, Tamil Nadu",
+    "categories": [
+      "scholarships",
+      "education"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.tn.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "tr-mmjay",
+    "name": "Mukhya Mantri Jan Arogya Yojana (Tripura)",
+    "aliases": [
+      "MMJAY Tripura"
+    ],
+    "scope": "state",
+    "stateId": "TR",
+    "government": "Government of Tripura",
+    "ministry": "Health Department, Tripura",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2022,
+    "status": "active",
+    "officialUrl": "https://tripura.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ts-aarogyasri",
+    "name": "Rajiv Aarogyasri",
+    "aliases": [
+      "Aarogyasri"
+    ],
+    "scope": "state",
+    "stateId": "TS",
+    "government": "Government of Telangana",
+    "ministry": "Health Department, Telangana",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2007,
+    "status": "active",
+    "officialUrl": "https://www.aarogyasri.telangana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ts-gruha-jyothi",
+    "name": "Gruha Jyothi (Telangana)",
+    "aliases": [
+      "Gruha Jyothi Telangana"
+    ],
+    "scope": "state",
+    "stateId": "TS",
+    "government": "Government of Telangana",
+    "ministry": "Energy Department, Telangana",
+    "categories": [
+      "infrastructure",
+      "social-security"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.telangana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ts-indiramma-indlu",
+    "name": "Indiramma Indlu",
+    "aliases": [
+      "Indiramma Housing"
+    ],
+    "scope": "state",
+    "stateId": "TS",
+    "government": "Government of Telangana",
+    "ministry": "Housing Department, Telangana",
+    "categories": [
+      "housing"
+    ],
+    "launchYear": 2024,
+    "status": "active",
+    "officialUrl": "https://www.telangana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ts-kalyana-lakshmi",
+    "name": "Kalyana Lakshmi / Shaadi Mubarak",
+    "aliases": [
+      "Shaadi Mubarak"
+    ],
+    "scope": "state",
+    "stateId": "TS",
+    "government": "Government of Telangana",
+    "ministry": "Social Welfare Department, Telangana",
+    "categories": [
+      "women-child",
+      "sc-st-obc",
+      "financial-inclusion"
+    ],
+    "launchYear": 2014,
+    "status": "active",
+    "officialUrl": "https://www.telangana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ts-mahalakshmi",
+    "name": "Mahalakshmi (Free Bus Travel)",
+    "aliases": [
+      "Mahalakshmi Scheme"
+    ],
+    "scope": "state",
+    "stateId": "TS",
+    "government": "Government of Telangana",
+    "ministry": "Transport Department, Telangana",
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://www.telangana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ts-rythu-bandhu",
+    "name": "Rythu Bandhu",
+    "aliases": [
+      "Raitu Bandhu"
+    ],
+    "scope": "state",
+    "stateId": "TS",
+    "government": "Government of Telangana",
+    "ministry": "Agriculture Department, Telangana",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2018,
+    "status": "replaced",
+    "officialUrl": "https://www.telangana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "ts-rythu-bharosa",
+    "name": "Rythu Bharosa",
+    "aliases": [
+      "Raitu Bharosa"
+    ],
+    "scope": "state",
+    "stateId": "TS",
+    "government": "Government of Telangana",
+    "ministry": "Agriculture Department, Telangana",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://www.telangana.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "uk-atal-ayushman",
+    "name": "Atal Ayushman Uttarakhand Yojana",
+    "aliases": [
+      "Atal Ayushman"
+    ],
+    "scope": "state",
+    "stateId": "UK",
+    "government": "Government of Uttarakhand",
+    "ministry": "Health Department, Uttarakhand",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://uk.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "uk-nanda-gaura",
+    "name": "Nanda Gaura Devi Kanya Dhan Yojana",
+    "aliases": [
+      "Nanda Gaura"
+    ],
+    "scope": "state",
+    "stateId": "UK",
+    "government": "Government of Uttarakhand",
+    "ministry": "Women Empowerment and Child Development Department, Uttarakhand",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2018,
+    "status": "active",
+    "officialUrl": "https://uk.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "uk-swarojgar",
+    "name": "Mukhyamantri Swarojgar Yojana",
+    "aliases": [
+      "Swarojgar Yojana"
+    ],
+    "scope": "state",
+    "stateId": "UK",
+    "government": "Government of Uttarakhand",
+    "ministry": "Industries Department, Uttarakhand",
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "launchYear": 2015,
+    "status": "active",
+    "officialUrl": "https://uk.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "unified-pension-scheme",
+    "name": "Unified Pension Scheme (UPS)",
+    "aliases": [
+      "UPS"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Finance",
+    "categories": [
+      "social-security",
+      "senior-citizens"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://www.npscra.nsdl.co.in",
+    "file": "central"
+  },
+  {
+    "id": "up-bal-seva",
+    "name": "Mukhyamantri Bal Seva Yojana",
+    "aliases": [
+      "Bal Seva"
+    ],
+    "scope": "state",
+    "stateId": "UP",
+    "government": "Government of Uttar Pradesh",
+    "ministry": "Women and Child Welfare Department, Uttar Pradesh",
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "launchYear": 2021,
+    "status": "active",
+    "officialUrl": "https://up.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "up-cm-yuva",
+    "name": "Mukhyamantri Yuva Udyami Vikas Abhiyan (CM YUVA)",
+    "aliases": [
+      "CM YUVA"
+    ],
+    "scope": "state",
+    "stateId": "UP",
+    "government": "Government of Uttar Pradesh",
+    "ministry": "MSME Department, Uttar Pradesh",
+    "categories": [
+      "msme",
+      "employment"
+    ],
+    "launchYear": 2025,
+    "status": "active",
+    "officialUrl": "https://up.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "up-kanya-sumangala",
+    "name": "Mukhyamantri Kanya Sumangala Yojana",
+    "aliases": [
+      "Kanya Sumangala Yojana"
+    ],
+    "scope": "state",
+    "stateId": "UP",
+    "government": "Government of Uttar Pradesh",
+    "ministry": "Department of Women and Child Welfare, UP",
+    "categories": [
+      "women-child",
+      "education"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://mksy.up.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "up-samuhik-vivah",
+    "name": "Mukhyamantri Samuhik Vivah Yojana",
+    "aliases": [
+      "Samuhik Vivah"
+    ],
+    "scope": "state",
+    "stateId": "UP",
+    "government": "Government of Uttar Pradesh",
+    "ministry": "Social Welfare Department, Uttar Pradesh",
+    "categories": [
+      "women-child",
+      "social-security"
+    ],
+    "launchYear": 2017,
+    "status": "active",
+    "officialUrl": "https://up.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "vb-g-ram-g",
+    "name": "Viksit Bharat – Guarantee for Rozgar and Ajeevika Mission (Gramin) (VB-G RAM G)",
+    "aliases": [
+      "VB-G RAM G",
+      "VB-GRAM",
+      "G RAM G"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Rural Development",
+    "categories": [
+      "employment",
+      "rural-development"
+    ],
+    "launchYear": 2026,
+    "status": "active",
+    "officialUrl": "https://nrega.nic.in",
+    "file": "central"
+  },
+  {
+    "id": "vibrant-villages-programme",
+    "name": "Vibrant Villages Programme (VVP)",
+    "aliases": [
+      "VVP"
+    ],
+    "scope": "central",
+    "government": "Government of India",
+    "ministry": "Ministry of Home Affairs",
+    "categories": [
+      "rural-development",
+      "infrastructure"
+    ],
+    "launchYear": 2023,
+    "status": "active",
+    "officialUrl": "https://mha.gov.in",
+    "file": "central"
+  },
+  {
+    "id": "wb-annapurna-bhandar",
+    "name": "Annapurna Bhandar",
+    "aliases": [
+      "Annapurna Yojana",
+      "Matri Shakti Bharosa"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Department of Women and Child Development and Social Welfare, West Bengal",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2026,
+    "status": "active",
+    "officialUrl": "https://wb.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "wb-free-bus-women",
+    "name": "Free Bus Travel for Women (West Bengal)",
+    "aliases": [
+      "WB Free Bus"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Transport Department, West Bengal",
+    "categories": [
+      "women-child",
+      "infrastructure"
+    ],
+    "launchYear": 2026,
+    "status": "active",
+    "officialUrl": "https://wb.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "wb-kanyashree",
+    "name": "Kanyashree Prakalpa",
+    "aliases": [
+      "Kanyashree"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Department of Women and Child Development and Social Welfare, West Bengal",
+    "categories": [
+      "women-child",
+      "education",
+      "scholarships"
+    ],
+    "launchYear": 2013,
+    "status": "active",
+    "officialUrl": "https://wbkanyashree.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "wb-krishak-bandhu",
+    "name": "Krishak Bandhu",
+    "aliases": [
+      "Krishak Bandhu Scheme"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Agriculture Department, West Bengal",
+    "categories": [
+      "agriculture",
+      "financial-inclusion"
+    ],
+    "launchYear": 2019,
+    "status": "active",
+    "officialUrl": "https://wb.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "wb-lakshmir-bhandar",
+    "name": "Lakshmir Bhandar",
+    "aliases": [
+      "Lakshmi Bhandar"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Department of Women and Child Development and Social Welfare, West Bengal",
+    "categories": [
+      "women-child",
+      "financial-inclusion"
+    ],
+    "launchYear": 2021,
+    "status": "replaced",
+    "officialUrl": "https://wb.gov.in",
+    "file": "states"
+  },
+  {
+    "id": "wb-swasthya-sathi",
+    "name": "Swasthya Sathi",
+    "aliases": [
+      "Swasthya Sathi Card"
+    ],
+    "scope": "state",
+    "stateId": "WB",
+    "government": "Government of West Bengal",
+    "ministry": "Department of Health and Family Welfare, West Bengal",
+    "categories": [
+      "healthcare",
+      "social-security"
+    ],
+    "launchYear": 2016,
+    "status": "active",
+    "officialUrl": "https://swasthyasathi.gov.in",
+    "file": "states"
+  }
+]
